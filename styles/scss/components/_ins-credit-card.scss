@@ -1,0 +1,99 @@
+.ins-credit-card-wrap {
+  border-radius: 4px;
+  background: #fff;
+  -webkit-transition: all .15s;
+  transition: all .15s;
+  -webkit-box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 3px #E4E6ED;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  font-size: 0.9rem;
+  line-height: 24px;
+  color: #505565;
+  padding: 6% 5%;
+  margin-bottom: 16px;
+  min-height: 142px;
+  // position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .insites-user-card-details {
+    // margin-top: 32px;
+    position: absolute;
+    bottom: 9%;
+  }
+
+  &:hover {
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 10px 26px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.6s ease;
+  }
+
+  &_brand {
+    // min-height: 28px;
+    min-height: 20%;
+
+    & svg {
+      width: 24%;
+    }
+  }
+
+  &_expired {
+    position: absolute;
+    // bottom: 16px;
+    // right: 16px;
+    bottom: 9%;
+    right: 6%;
+    color: #fff;
+    color: #f27474;
+  }
+}
+
+
+.ins-credit-card-main-wrap {
+  position: relative;
+  padding-bottom: 56.66%;
+
+  .close-btn {
+    font-size: 18px;
+    font-size: 1.4rem;
+    line-height: 10px;
+    position: absolute;
+    // right: 16px;
+    // top: 16px;
+    right: 6%;
+    top: 9%;
+    color: #8c94a4;
+    cursor: pointer;
+
+    &:hover {
+      color: #2c1348;
+    }
+  }
+
+  &.active {
+    .ins-credit-card-wrap {
+
+      background: linear-gradient(292.96deg, #2D9CDB 6.72%, #56CCF2 91.78%);
+      color: #fff;
+
+
+      &_expired {
+        color: #fff;
+      }
+    }
+
+    .close-btn {
+      color: #e4e6ec;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+// color pallete
+$black: #2c3148;
+$red: #f27474;
+$orange: #ffa639;
+$yellow: #fdd835;
+$pink: #ff3366;
+$turquoise: #2bbad9;
+$blue: #1e86e3;
+$green: #24be8d;
+$dark-grey: #8c94a4;
+$medium-grey: #e4e6ec;
+$light-grey: #f2f4f8;
+$wash-white: #fafbfc;
+$white: #ffffff;
+
+$border-color: #eeeeee;
+
+.ins-timeline-wrap {
+  background-color: $white;
+
+  .ins-timeline-body {
+    word-break: break-word;
+  }
+
+  .ins-timeline-header {
+    padding: 20px;
+    border-bottom: solid 1px #E4E6EC;
+
+    h3 {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 18px;
+      margin-bottom: 0;
+      color: #2c3148;
+    }
+  }
+  .ins-timeline-list {
+    position: relative;
+    margin: 0;
+    overflow: auto;
+    display: block;
+    &:first-child { padding-top: 10px; }
+    &.loading { display: none; }
+
+    &:before {
+      content: "";
+      display: block;
+      width: 1px;
+      height: calc(100% + 0px);
+      background: #E4E6EC;
+      position: absolute;
+      left: 36px;
+      top: 0;
+    }
+
+  }
+}

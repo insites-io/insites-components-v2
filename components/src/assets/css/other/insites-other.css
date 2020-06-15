@@ -1,0 +1,129 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url(../fonts/OpenSans-Regular.ttf); }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(../fonts/OpenSans-Bold.ttf);
+  font-weight: 700; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(../fonts/OpenSans-BoldItalic.ttf);
+  font-weight: 700;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(../fonts/OpenSans-ExtraBold.ttf);
+  font-weight: 800; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(../fonts/OpenSans-ExtraBoldItalic.ttf);
+  font-weight: 800;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(../fonts/OpenSans-Italic.ttf);
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(../fonts/OpenSans-Light.ttf);
+  font-weight: 100; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(../fonts/OpenSans-LightItalic.ttf);
+  font-weight: 100;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(../fonts/OpenSans-SemiBold.ttf);
+  font-weight: 600; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(../fonts/OpenSans-SemiBoldItalic.ttf);
+  font-weight: 600;
+  font-style: italic; }
+
+.ins-backdrop-wrap {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998; }
+  .ins-backdrop-wrap.light {
+    background: rgba(255, 255, 255, 0.9); }
+
+.ins-heading-wrap {
+  position: relative;
+  margin-bottom: 20px; }
+  .ins-heading-wrap:before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    background-color: #E4E6EC;
+    top: calc(50% - 1px);
+    left: 0;
+    z-index: 0; }
+  .ins-heading-wrap.without-line:before {
+    content: none; }
+  .ins-heading-wrap .label-wrap {
+    position: relative;
+    color: #2c3148;
+    z-index: 1;
+    display: inline-block;
+    padding: 10px 0;
+    padding-right: 15px; }
+    .ins-heading-wrap .label-wrap h1, .ins-heading-wrap .label-wrap h2, .ins-heading-wrap .label-wrap h3, .ins-heading-wrap .label-wrap h4, .ins-heading-wrap .label-wrap h5, .ins-heading-wrap .label-wrap h6 {
+      font-family: "Open Sans", sans-serif;
+      font-size: 300;
+      margin-bottom: 0;
+      display: inline-block; }
+    .ins-heading-wrap .label-wrap h1 {
+      font-size: 4rem; }
+    .ins-heading-wrap .label-wrap h2 {
+      font-size: 3.5rem; }
+    .ins-heading-wrap .label-wrap h3 {
+      font-size: 3rem; }
+    .ins-heading-wrap .label-wrap h4 {
+      font-size: 2rem; }
+    .ins-heading-wrap .label-wrap h5 {
+      font-size: 1.5rem; }
+    .ins-heading-wrap .label-wrap h6 {
+      font-size: 1.125rem; }
+    .ins-heading-wrap .label-wrap .icon-edit {
+      margin-left: 15px;
+      font-size: 14px;
+      color: #E4E6EC;
+      cursor: pointer;
+      border: none;
+      background-color: none;
+      box-shadow: none;
+      outline: none; }
+    .ins-heading-wrap .label-wrap:hover .icon-edit {
+      color: #1e86e3; }
+  .ins-heading-wrap .input-wrap {
+    display: none; }
+    .ins-heading-wrap .input-wrap .ins-input-wrap {
+      width: calc(100% - 162px);
+      margin-right: 10px;
+      display: inline-block; }
+    .ins-heading-wrap .input-wrap input {
+      margin-bottom: 0; }
+    .ins-heading-wrap .input-wrap-buttons {
+      display: inline-block; }
+  .ins-heading-wrap.editing:before {
+    content: none; }
+  .ins-heading-wrap.editing .label-wrap {
+    display: none; }
+  .ins-heading-wrap.editing .input-wrap {
+    display: block; }

@@ -1,0 +1,121 @@
+
+ins-tag span {
+  &.tagged, &.ins-tag {
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+    font-size: 11px;
+    line-height: 14px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 70px;
+    display: inline-block;
+    background-color: #8c94a4;
+      span { margin-right: 3px; } // span icons
+      &.font-inherit {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+      }
+
+      // v1 Colors - Solid
+      // Blue
+      &.blue {
+        background-color: #1e86e3;
+      }
+      // Orange
+      &.new,
+      &.orange {
+        background-color: #ffa639;
+      }
+      // Grey / Default
+      &.closed,
+      &.grey {
+        background-color: #8c94a4;
+      }
+      // Yellow
+      &.pending,
+      &.yellow {
+        background-color: #fdd835;
+      }
+      // Red
+      &.flagged,
+      &.negative,
+      &.error,
+      &.invalid,
+      &.archived,
+      &.disabled,
+      &.red {
+        background-color: #f27474;
+      }
+      // Green
+      &.open,
+      &.positive,
+      &.published,
+      &.active,
+      &.valid,
+      &.enabled,
+      &.green {
+        background-color: #24be8d;
+      }
+
+      // v2 Colors - Light / Pastel
+      &.light { // default
+        background-color: #E4E6EC;
+        color: #2C3148;
+
+        // Blue
+        &.blue {
+          background-color: rgba(30, 134, 227, 0.1);
+          color: #1E86E3;
+
+        }
+
+        // Orange
+        &.new,
+        &.orange {
+          background-color: rgba(255, 166, 57, 0.1);
+          color: #FFA639;
+        }
+
+        // Grey / Default
+        &.closed,
+        &.grey {
+          background-color: #8c94a4;
+        }
+
+        // Yellow
+        &.pending,
+        &.yellow {
+          background-color: rgba(230, 189, 5, 0.1);
+          color: #fdd835;
+        }
+
+        // Red
+        &.flagged,
+        &.negative,
+        &.error,
+        &.invalid,
+        &.archived,
+        &.disabled,
+        &.red {
+          background-color: #F8EDEE;
+          color: #DE797B;
+        }
+
+        // Green
+        &.open,
+        &.positive,
+        &.published,
+        &.active,
+        &.valid,
+        &.enabled,
+        &.green {
+          background-color: rgba(36, 190, 141, 0.1);
+          color: #20AA7E;
+        }
+
+      }
+  } // END .tagged selector
+} // END ins-tag

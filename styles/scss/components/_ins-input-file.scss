@@ -1,0 +1,121 @@
+ins-input-file {
+    // disable state
+    &[disabled] {
+      pointer-events: none;
+      cursor: not-allowed;
+
+      .dropzone {
+        border-color: #f2f4f8;
+        .dz-message { color: #8c94a4; opacity: 0.5; }
+        .dz-clickable { cursor: not-allowed; }
+        .dz-details {
+          opacity: 1;
+          pointer-events: initial;
+        }
+        .dz-preview { min-height: 70px; }
+        .dz-remove { display: none; }
+      }
+       .ins-input-file-wrapper {
+         label, .file-restirctions { color: #8c94a4; }
+       }
+    }
+
+    // Error state style
+   &[has-error] {
+        .dropzone {
+          border-color: #f27474;
+          background-color: #fef8f8;
+        }
+
+        label, .dz-message, .ins-input-file-wrapper.is-invalid .ins-form-error,
+        .ins-input-file-wrapper.is-invalid .file-restirctions {
+            color: #f27474;
+         }
+         .ins-input-file-wrapper.is-invalid .ins-form-error {
+           display: block;
+           margin-bottom: 20px;
+         }
+    }
+
+    .file-restirctions {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2C3148;
+      font-family: "Open Sans", sans-serif;
+      margin-bottom: 2px;
+    }
+    .file-restirctions span { font-weight: 400; margin-bottom: 0 ;}
+}
+
+.ins-input-file-wrapper .ins-form-error {
+  display: none;
+  font-size: 12px;
+  font-family: "Open Sans", sans-serif;
+  line-height: 16px;
+}
+
+.dropzone {
+  border: 2px dashed;
+  border-color: #e4e6ec;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  background: none;
+  font-family: 'Open Sans', sans-serif;
+
+  .dz-message {
+    color: #8c94a4;
+    font-style: italic;
+    font-size: 14px;
+  }
+
+  .dz-preview {
+    width: 85px;
+    max-width: 85px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    &.dz-image-preview {
+      background-color: transparent;
+    }
+    .dz-remove {
+      margin-top: 2px;
+      font-size: 10px;
+      color: #1e86e3;
+    }
+    .dz-image {
+      border-radius: 4px;
+      width: 100%;
+      height: initial;
+      min-height: 85px;
+      max-height: 85px;
+
+      // file type application/*
+      &[class*="icon-"] {
+        font-size: 46px;
+        color: #e4e6ec;
+        background: none;
+        text-align: center;
+        position: relative;
+        &:before {
+          position: relative;
+          top: 4px;
+        }
+
+        img { display: none; }
+        &~.dz-details { opacity: 1; }
+      }
+    }
+    .dz-details {
+      padding: 1.5em 0.5em;
+    }
+    .dz-progress {
+      display: none;
+    }
+  }
+}

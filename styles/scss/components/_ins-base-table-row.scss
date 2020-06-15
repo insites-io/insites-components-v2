@@ -1,0 +1,12 @@
+ins-base-table-row {
+	display: table-row;
+	height: 64px;
+	width: 100%;
+
+	&:nth-child(even) {
+		background-color: #fafbfc;
+	}
+	&:hover:nth-child(odd) {
+		background-color: unset;
+	}
+}

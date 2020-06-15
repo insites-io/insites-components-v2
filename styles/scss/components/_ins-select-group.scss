@@ -1,0 +1,22 @@
+.ins-select-group {
+
+  margin-bottom: 20px;
+
+  &_label {
+    font-family: $default_font_family;
+    font-size: .875rem;
+    padding: 12px 10px;
+    background-color: $ink5;
+    color: $ink;
+  }
+
+  &_options {
+    .ins-select-option-wrap {
+      padding-left: 30px;
+    }
+  }
+}
+
+.ins-select-options-wrap.no-options .ins-select-group {
+  display: none;
+}

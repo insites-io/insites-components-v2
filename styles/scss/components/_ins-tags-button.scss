@@ -1,0 +1,72 @@
+
+:host {
+  .tag-btn {
+    cursor: text !important;
+    letter-spacing: 1px;
+    font-family: "Open Sans", sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 14px;
+    border-radius: 4px !important;
+    color: #ffffff;
+    display: table;
+    height: 36px;
+    padding: 0 16px;
+    &__label {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    &.text-transform {
+      &--uppercase {
+        text-transform: uppercase !important;
+      }
+      &--lowercase {
+        text-transform: lowercase !important;
+      }
+      &--none {
+        text-transform: none !important;
+      }
+    }
+    &.size {
+      &--small {
+        height: 24px;
+        font-size: 10px;
+        border-radius: 2px !important;
+        letter-spacing: .5px !important;
+      }
+      &--large {
+        height: 48px;
+        padding: 10px 24px;
+      }
+    }
+
+
+    &.positive,
+    &.green {
+      background-color: #24be8d;
+    }
+    &.warning {
+      background-color: #ffa639;
+    }
+    &.negative {
+      background-color: #f27474;
+    }
+    &.information-1 {
+      background-color: #ff3366;
+    }
+    &.information-2 {
+      background-color: #fdd836;
+    }
+    &.information-2 {
+      background: #fce26d;
+    }
+    &.blue {
+      background-color: #1e86e3;
+    }
+    &.turquoise {
+      background-color: #2bbad9;
+    }
+    &.grey {
+      background-color: #8C94A4;
+    }
+  }
+}

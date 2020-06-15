@@ -1,0 +1,15 @@
+ins-tab-item {
+  > div {
+    display: none;
+    padding: 40px 20px;
+    &.no-padding {
+      padding: 40px 0px;
+    }
+    &.active {
+      display: block;
+    }
+    @media screen and (max-width: 639px) {
+      padding: 20px 10px;
+    }
+  }
+}

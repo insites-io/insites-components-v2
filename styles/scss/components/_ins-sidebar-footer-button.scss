@@ -1,0 +1,21 @@
+.ins-sidebar-footer-item-wrap {
+  float: left;
+  height: 53px;
+  width: 100%;
+
+  .ins-sfiw-button {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    padding: 20px 0 18px;
+    color: #2C3148;
+    outline: none;
+    cursor: pointer;
+
+    &:hover,
+    &:active, {
+      background: #2C3148;
+      color: #fff;
+    }
+  }
+}

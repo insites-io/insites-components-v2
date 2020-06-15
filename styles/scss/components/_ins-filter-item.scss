@@ -1,0 +1,389 @@
+ins-filter-item {
+  display: inline-block;
+  margin-right: 15px;
+  .filter-item {
+    cursor: pointer;
+    position: relative;
+    // background-color: #ffffff;
+    &__button {
+      overflow: hidden;
+      position: relative;
+      border-radius: 4px;
+      background-color: #E4E6EC;
+      padding: 7px 7px;
+      color: #2C3148;
+      cursor: default;
+
+      &--text {
+        font-weight: 600;
+      }
+      &--option {
+        font-weight: normal;
+        .fas {
+          margin-left: 8px;
+          color: #8C94A4;
+          font-size: 12px;
+        }
+      }
+    }
+    &__options {
+      font-size: 14px;
+      box-shadow: 0 2px 4px 0 rgba(15, 21, 38, 0.14), 1px 1px 3px 0 rgba(140, 148, 164, 0.2);
+      border-radius: 4px;
+      padding: 7px 0;
+      display: none;
+      position: absolute;
+      min-width: 240px;
+      cursor: default;
+      z-index: 2;
+      background-color: #fff;
+
+      &.active {
+        display: block;
+        top: 37px;
+      }
+      > div {
+        color: #8C94A4;
+        padding: 7px 15px;
+        margin: 5px 0;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #e4e6ec;
+          color: #1A1D2C;
+        }
+        &.selected {
+          color: #2C3148;
+          background-color: #FAFBFC;
+        }
+      }
+    }
+  }
+}
+
+// @media only screen and (max-width: 768px) {
+
+// }
+
+@media only screen and (max-width: 414px) {
+  .ui-datepicker {
+    width: auto !important;
+  }
+
+  ins-filter-item .filter-item {
+    // float: left;
+    margin-top: 10px;
+    width: auto;
+
+    .filter-item__button--option {
+      margin-left: 5px;
+    }
+    .filter-item__button--option .fas {
+      // margin-left: 97px;
+      float: right;
+      margin-top: 5px;
+    }
+    // .filter-item__button {
+    //   margin: 5px 0 15px;
+    // }
+    .filter-item__options {
+      min-width: 229px;
+    }
+  }
+
+  ins-filter .filter__date {
+    margin: 10px -3px 0 0;
+    position: relative;
+    // float: right;
+
+    .date-filter {
+      width: auto;
+    }
+    .date-filter {
+      .fas {
+        // margin-left: 88px;
+        float: right;
+        margin-top: 6px;
+      }
+    }
+    .date-range.active {
+      // top: 48px;
+      left: -1px;
+    }
+    .date-range {
+      padding: 0px;
+      width: auto;
+      height: auto;
+      min-width: auto;
+    }
+    .date-range__picker {
+      background-color: transparent;
+      height: auto;
+      text-align: unset;
+    }
+    .date-range__from {
+      margin: 0;
+      width: 100%;
+    }
+    .date-range__to {
+      width: 100%;
+    }
+    .date-range__opt-container {
+      display: block;
+      padding: 5px;
+    }
+    .date-range__opt-container > div {
+      float: left;
+      position: relative;
+      // text-align: center;
+      margin: 6px 0;
+      width: auto;;
+    }
+    .date-range__action {
+      padding: 0 10px 10px;
+      width: auto;
+    }
+    .date-range__cancel-apply {
+      float: none;
+
+      button.size--small {
+        width: 100%;
+        margin: 15px 0 0 0;
+      }
+    }
+
+    .date-range__opt-container > div > div {
+      border-radius: 0px;
+      padding: 5px 20px;
+      width: 100%;
+    }
+
+    .date-range__action input[type="text"] {
+      width: 100%;
+    }
+    .date-range__action input[type="date"] {
+      width: 100%;
+    }
+  }
+  .date-filter__option {
+    margin-left: 5px;
+  }
+}
+
+// @media only screen and (max-width: 375px) {
+//   .ui-datepicker {
+//     width: auto !important;
+//   }
+
+//   ins-filter-item .filter-item {
+//     width: 284px;
+
+//     .filter-item__button--option {
+//       margin-left: 5px;
+//     }
+//     .filter-item__button--option .fas {
+//       // margin-left: 97px;
+//       float: right;
+//       margin-top: 5px;
+//     }
+//     // .filter-item__button {
+//     //   margin: 5px 0 15px;
+//     // }
+//     .filter-item__options {
+//       min-width: 229px;
+//     }
+//   }
+
+//   ins-filter .filter__date {
+//     margin: 0;
+
+//     .date-filter {
+//       width: 284px;
+//     }
+//     .date-filter {
+//       .fas {
+//         // margin-left: 88px;
+//         float: right;
+//         margin-top: 6px;
+//       }
+//     }
+//     .date-range.active {
+//       top: 87px;
+//       left: -1px;
+//     }
+//     .date-range {
+//       // height: auto;
+//       // padding: 0px;
+//       min-width: 227px;
+//       width: 286px;
+//     }
+//     .date-range__picker {
+//       background-color: transparent;
+//       height: auto;
+//       text-align: unset;
+//     }
+//     .date-range__from {
+//       margin: 0;
+//       width: 100%;
+//     }
+//     .date-range__to {
+//       width: 100%;
+//     }
+//     .date-range__opt-container {
+//       display: block;
+//     }
+//     .date-range__opt-container > div {
+//       float: left;
+//       position: relative;
+//       // text-align: center;
+//       margin: 0;
+//       width: 100%;
+//     }
+//     .date-range__action {
+//       padding: 0 10px 10px;
+//       width: auto;
+//     }
+//     .date-range__cancel-apply {
+//       float: none;
+
+//       button.size--small {
+//         width: 100%;
+//         margin: 15px 0 0 0;
+//       }
+//     }
+
+//     .date-range__opt-container > div > div {
+//       border-radius: 0px;
+//       padding: 5px 15px;
+//       width: 100%;
+//     }
+
+//     .date-range__action input[type="text"] {
+//       width: 100%;
+//     }
+//     .date-range__action input[type="date"] {
+//       width: 100%;
+//     }
+//   }
+//   .date-filter__option {
+//     margin-left: 5px;
+//   }
+// }
+
+@media only screen and (max-width: 320px) {
+  ins-filter-item .filter-item {
+    width: 232px;
+
+    .filter-item__button--option {
+      margin-left: 5px;
+    }
+    .filter-item__button--option .fas {
+      // margin-left: 97px;
+      float: right;
+      margin-top: 5px;
+    }
+    .filter-item__button {
+      margin: 5px 0 15px;
+      font-size: 10px;
+    }
+    .filter-item__options {
+      min-width: 232px;
+    }
+    .filter-item__options > div {
+      font-size: 10px;
+    }
+  }
+
+  ins-filter .filter__date {
+    margin: 0;
+    // float: left;
+    position: relative;
+
+    .date-filter {
+      font-size: 10px;
+      width: 232px;
+    }
+
+    .date-filter {
+      .fas {
+        // margin-left: 88px;
+        // float: right;
+        margin-top: 6px;
+      }
+    }
+
+    .date-range.active {
+      // top: 101px;
+      left: -1px;
+      display: none;
+    }
+
+    .date-range {
+      height: auto;
+      padding: 0px;
+      min-width: 227px;
+      width: 233px;
+      display: none;
+    }
+
+    .date-range__picker {
+      background-color: transparent;
+      height: auto;
+      text-align: unset;
+    }
+
+    .date-range__from {
+      margin: 0;
+      width: 100%;
+    }
+
+    .date-range__to {
+      width: 100%;
+    }
+
+    .date-range__opt-container {
+      display: block;
+    }
+
+    .date-range__opt-container > div {
+      float: left;
+      position: relative;
+      // text-align: center;
+      margin: 0;
+      width: 100%;
+    }
+
+    .date-range__action {
+      padding: 0 10px 10px;
+      width: auto;
+    }
+
+    .date-range__cancel-apply {
+      float: none;
+
+      button.size--small {
+        width: 100%;
+        margin: 15px 0 0 0;
+      }
+    }
+
+    .date-range__opt-container > div > div {
+      border-radius: 0px;
+      padding: 5px 15px;
+      width: 100%;
+    }
+
+    .date-range__action input[type="text"] {
+      width: 100%;
+    }
+    .date-range__action input[type="date"] {
+      width: 100%;
+    }
+  }
+  .date-filter__option {
+    margin-left: 5px;
+  }
+}
+
+
+

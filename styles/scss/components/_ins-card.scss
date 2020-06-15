@@ -1,0 +1,28 @@
+.ins-card-wrap {
+  border: solid 1px #e4e6ec;
+  border-radius: 3px;
+  margin-top: 0;
+  box-shadow: 1px 1px 3px #E4E6ED;
+  background: #fff;
+  transition: all .15s;
+  padding: 20px;
+
+  &:hover {
+    margin-top: -3px;
+    box-shadow: 0px 4px 13px #E4E6ED;
+  }
+
+  &.outlined {
+    border-style: dashed;
+    box-shadow: none;
+  }
+}
+
+.ins-card-wrap.steady:hover {
+  margin-top: 0px;
+  box-shadow: 1px 1px 3px #E4E6ED;
+}
+
+.ins-card-wrap.no-padding {
+  padding: 0;
+}

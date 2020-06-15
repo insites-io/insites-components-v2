@@ -1,0 +1,27 @@
+.ins-progress-bar {
+  width: 100%;
+  background: transparent;
+  text-align: center;
+  padding: 4px 15px;
+  box-sizing: border-box;
+  font-size: 12px;
+  border-bottom: solid 1px #eee;
+  color: #2c3148;
+  transition: width 0.75s;
+  position: relative;
+
+  &.hidden {
+    display: none;
+  }
+
+  .progress {
+    margin: 0;
+    background-color: #1e86e3;
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    transition: width 0.35s;
+  }
+}

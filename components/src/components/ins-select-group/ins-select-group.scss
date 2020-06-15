@@ -1,0 +1,22 @@
+.ins-select-group {
+
+  margin-bottom: 20px;
+
+  &_label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: .875rem;
+    padding: 12px 10px;
+    background-color: #f2f4f8;
+    color: #2c3148;
+  }
+
+  &_options {
+    .ins-select-option-wrap {
+      padding-left: 30px;
+    }
+  }
+}
+
+.ins-select-options-wrap.no-options .ins-select-group {
+  display: none;
+}

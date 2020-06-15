@@ -1,0 +1,15 @@
+{
+  "name": "styles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node-sass scss/insites-components.scss -o ../components/src/assets/css/",
+    "serve": "npm run build & node-sass -rw scss -wo ../components/src/assets/css/"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.13.0"
+  }
+}

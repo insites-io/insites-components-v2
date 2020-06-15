@@ -1,0 +1,327 @@
+// custom styles //
+%center--vh {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.image-picker {
+  margin-bottom: 30px;
+
+  .img-placeholder {
+    margin-bottom: 0;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    position: relative;
+    cursor: pointer;
+
+    span {
+      @extend %center--vh;
+      text-align: center;
+      width: 100px;
+      margin: auto;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .icon-wrap {
+      width: 100%;
+      top: calc(50% - 16px);
+      position: absolute;
+      color: #E4E6EC;
+      text-align: center;
+      font-size: 32px;
+    }
+  }
+
+  .img-container {
+    // margin-right: 20px;
+    margin: 0 20px 10px 0;
+    border: 1px solid #E4E6EC;
+    border-radius: 50%;
+    position: relative;
+    width: 120px;
+    height: 120px;
+  }
+
+  // selected image
+  .img-container img {
+    @extend %center--vh;
+    height: auto;
+    max-height: 100%;
+  }
+
+  .profile {
+    border-radius: 50%;
+    // background-color: #000;
+  }
+
+  .texts_image {
+    font-family: 'Open sans', sans-serif;
+    color: #8C94A4;
+    display: block;
+    font-size: 12px;
+  }
+
+  .texts_uploadinfo {
+    font-family: 'Open sans', sans-serif;
+    color: #8C94A4;
+    display: block;
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .inline-block {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .clearfix::after {
+    display: table;
+    content: ' ';
+    -webkit-flex-basis: 0;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    clear: both;
+  }
+
+  .show {
+    display: block !important;
+  }
+
+  .modal {
+    display: none;
+
+    .ins-card-wrap.steady {
+      position: fixed;
+      margin-left: -250px;
+      margin-top: -250px;
+      left: 50%;
+      top: 50%;
+      z-index: 9999;
+      width: 500px;
+      box-shadow: none;
+      height: auto !important;
+
+      @media screen and (max-width: 640px) {
+          width: 100%;
+          left: 0;
+          margin-left: 0 ;
+      }
+
+      .controllers {
+        text-align: right;
+
+        ins-button:first-child {
+          float: left;
+          @media screen and (max-width: 650px) {
+            float: none;
+          }
+          .ins-button { margin-left: 0; }
+        }
+
+        .hidden-input {
+          display: none;
+        }
+      }
+
+      .modal-header {
+        position: relative;
+
+        h3 {
+          font-size: 18px;
+          color: #2C3148;
+          margin-bottom: 20px;
+        }
+
+        .icon-close-1 {
+          position: absolute;
+          right: 0;
+          top: 0;
+          color: #8C94A4;
+          cursor: pointer;
+        }
+      }
+
+      .error-wrap {
+        display: none;
+        font-size: 12px;
+        font-family: "Open Sans",sans-serif;
+        line-height: 16px;
+        color: #f27474;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        height: auto;
+      }
+
+      .image-preview {
+        border: 1px dashed #E4E6EC;
+        margin: 0 0 20px;
+        min-height: 200px;
+        max-height: 300px;
+        width: 100%;
+        z-index: 1;
+        border-radius: 5px;
+        text-align: center;
+        position: relative;
+
+        .placeholder-text {
+          color: #8C94A4;
+          font-size: 14px;
+          margin-bottom: 0;
+          position: absolute;
+          width: 100%;
+          text-align: center;
+          top: calc(50% - 14px);
+        }
+
+        .label-content {
+          color: #8C94A4;
+          position: absolute;
+          z-index: 0;
+          width: 100%;
+
+            h4 {
+              font-family: 'Open sans', sans-serif;
+              font-size: 16px;
+              margin-top: 20px;
+            }
+
+            i {
+              font-size: 40px;
+              top: 15px;
+              position: relative;
+            }
+        }
+
+        &.svg-type img {
+          max-height: 200px;
+        }
+      }
+
+      .ins-button {
+        margin-left: 15px;
+        font-size: 12px;
+
+          @media screen and (max-width: 640px) {
+            display: block;
+            margin-bottom: 10px;
+            margin-left: 0;
+            width: 100%;
+        }
+      }
+    }
+
+
+    &.show.has-error {
+
+      .ins-card-wrap {
+
+        .error-wrap {
+          display: block;
+        }
+
+        .placeholder-text {
+          color: #f27474;
+        }
+
+        .image-preview {
+          border-color: #f27474;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// rectangle
+.image-picker.rectangle {
+   .img-preview-holder {
+    border-radius: 0;
+
+    .texts_image {
+      @extend %center--vh;
+      text-align: center;
+    }
+  }
+
+  .img-preview-holder,
+  .profile {
+    width: auto;
+  }
+
+  .img-container {
+    // margin-right: 20px;
+    border-radius: 0;
+    border: 1px solid #E4E6EC;
+    position: relative;
+    width: 360px;
+    height: 120px;
+
+    @media screen and (max-width: 920px){
+        width: 100%
+    }
+  }
+
+  // selected image
+  .img-container img {
+    @extend %center--vh;
+    border-radius: 0;
+    height: auto;
+    max-height: 100%;
+  }
+}
+
+// square
+.image-picker.square {
+   .img-preview-holder {
+    border-radius: 0;
+    margin-bottom: 5px;
+
+    .texts_image {
+      @extend %center--vh;
+      text-align: center;
+    }
+  }
+
+  .img-preview-holder,
+  .profile {
+    width: auto;
+  }
+
+  .img-container {
+    margin-right: 20px;
+    border-radius: 0;
+    border: 1px solid #E4E6EC;
+    position: relative;
+    width: 120px;
+    height: 120px;
+  }
+
+  // selected image
+  .img-container img {
+    @extend %center--vh;
+    border-radius: 0;
+    height: auto;
+    max-height: 100%;
+    border: none;
+  }
+}
+
+.cropper-line.line-s {
+  margin-bottom: 0px;
+}
+
+.cropper-crop-box span {
+  margin-bottom: 0px;
+}

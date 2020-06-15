@@ -1,0 +1,32 @@
+// color pallete
+$black: #2c3148;
+$red: #f27474;
+$orange: #ffa639;
+$yellow: #fdd835;
+$pink: #ff3366;
+$turquoise: #2bbad9;
+$blue: #1e86e3;
+$green: #24be8d;
+$dark-grey: #8c94a4;
+$medium-grey: #e4e6ec;
+$light-grey: #f2f4f8;
+$wash-white: #fafbfc;
+$white: #ffffff;
+
+ins-markdown {
+  .ins-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: $black;
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 2px;
+
+    &.disabled {
+      color: $dark-grey;
+    }
+
+    &.active {
+      color: $blue;
+    }
+  }
+}

@@ -1,0 +1,101 @@
+ins-searchbar {
+  .ins-sw-in {
+    position: relative;
+  
+    input {
+      box-shadow: none;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #2c3148;
+      border: 1px solid #E4E6EC;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      padding: .5rem;
+      padding-right: 32px;
+      
+      &::placeholder {
+        color: #8C94A4;
+      }
+      &::-moz-placeholder {
+        color: #8C94A4;
+      }
+      &:-ms-input-placeholder {
+        color: #8C94A4;
+      }
+      &:-moz-placeholder {
+        color: #8C94A4;
+      }
+
+      &:hover {
+        border-color: #8c94a4;
+      }
+
+      &:focus {
+        border-color: #1e86e3;
+        box-shadow: none;
+        outline: 0;
+      }
+
+      &:focus + .icon-search {
+        color: #1e86e3;
+      }
+
+      &:disabled {
+        border-color: #E4E6EC !important;
+        background-color: #FAFBFC;
+      }
+    }
+  
+    .icon-search {
+      font-size: 16px;
+      position: absolute;
+      right: 8px;
+      top: calc(50% - 8px);
+      color: #8C94A4;
+      -webkit-transition: color .25s ease-in-out;
+      transition: color .25s ease-in-out;
+    }
+  }
+  .spinner,
+  .spinner:after {
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+  }
+  .spinner {
+    position: absolute;
+    right: 15px;
+    top: calc(50% - 10px);
+    border-top: 2px solid #E4E6EC;
+    border-right: 2px solid #E4E6EC;
+    border-bottom: 2px solid #E4E6EC;
+    border-left: 2px solid #8C94A4;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    animation: load8 1.1s infinite linear;
+  }
+  @-webkit-keyframes load8 {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes load8 {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+}

@@ -1,0 +1,18 @@
+:host {
+  .ins-instance-sub-item {
+    &:hover {
+      background-color: #e4e6ec;
+    }
+  }
+  a {
+    display: block;
+    width: 100%;
+    padding: 15px 20px 15px 57px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #8c94a4;
+    font-size: 16px;
+    position: relative;
+  }
+}

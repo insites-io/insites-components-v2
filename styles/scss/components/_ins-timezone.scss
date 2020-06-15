@@ -1,0 +1,40 @@
+ins-timezone {
+    // :host {
+    $theme-blue: #1f86e3;
+  
+    .ins-timezone {
+      position: relative;
+  
+        select {
+          box-shadow: none;
+          font-family: "Open Sans", sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          border: 1px solid #e4e6ec;
+          border-radius: 4px;
+          margin-bottom: 5px;
+          padding: 0.5rem;
+          padding-right: 30px;
+          width: 100%;
+  
+          &:hover {
+            border: 1px solid #8c94a4;
+          }
+  
+          &:active + .icon-search,
+          &:focus + .icon-search {
+            color: $theme-blue;
+          }
+  
+        }
+        
+        label {
+          font-size: 12px;
+          font-weight: 600;
+          color: #2C3148;
+          font-family: "Open Sans", sans-serif;
+          margin-bottom: 2px;
+        }
+    }
+  }
+  

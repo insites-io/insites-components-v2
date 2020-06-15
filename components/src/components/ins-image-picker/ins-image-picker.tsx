@@ -1,0 +1,231 @@
+import { h, Component, Prop, State, Element, Event, EventEmitter} from '@stencil/core';
+import Cropper from 'cropperjs';
+
+@Component({ 
+  tag: 'ins-image-picker',
+  styleUrls: ["../../../node_modules/cropperjs/dist/cropper.min.css"]
+ })
+export class Insimagepicker {
+  @Element() insImagePickerEl: HTMLElement;
+  @Event() valueChange: EventEmitter;
+
+  @Prop({mutable: true}) imgType: string = 'picture';
+  @Prop({mutable: true}) label: string = 'CHANGE PICTURE';
+  @Prop({mutable: true}) buttonColor: string = 'blue';
+  @Prop({mutable: true}) placeholder: string = 'Drag and drop the file or add an image';
+  @Prop({mutable: true}) name: string;
+  @Prop({mutable: true}) value: any;
+  @Prop({mutable: true}) fileName: any;
+  @Prop({mutable: true}) notImageFile: boolean;
+  @Prop({mutable: true}) uploadImgContainer: string = "";
+  @Prop({mutable: true}) uploadImgRecWidth: number = 120;
+  @Prop({mutable: true}) uploadImgRecHeight: number = 120;
+  @Prop({mutable: true}) uploadImgRecFileSize: number = 25;
+
+  @State() ImageElement: HTMLImageElement;
+  @State() modal: any;
+  @State() image: any;
+  @State() cropper: any;
+  @State() base64: any;
+  @State() hiddeninput: any;
+  @State() showModal: boolean;
+
+  componentDidLoad () {
+    this.modal = this.insImagePickerEl.querySelector('.modal');
+    this.hiddeninput = this.insImagePickerEl.querySelector('.hidden-input');
+  }
+
+  displayImage(evt) {
+    let tgt = evt.target || window.event.srcElement;
+    this.processImgFile(tgt.files);
+  }
+
+  handleDrop(event) {
+    event.preventDefault();
+    let dt = event.dataTransfer;
+    this.openModal();
+    this.processImgFile(dt.files);
+  }
+
+  processImgFile(files) {
+    let component = this;
+
+    if (files[0].type === 'image/jpeg' || files[0].type === 'image/png') {
+      this.notImageFile = false;
+      this.fileName = files[0].name;
+
+      if (FileReader && files && files.length) {
+          let fr = new FileReader();
+          fr.onload = function () {
+
+            component.ImageElement = component.insImagePickerEl.querySelector('.image');
+            component.ImageElement.src = fr.result as any;
+            component.initCropper();
+          }
+          fr.readAsDataURL(files[0]);
+      }
+
+    } else if(files[0].type.includes('image/svg')) {
+      this.notImageFile = false;
+      this.fileName = files[0].name;
+
+      if (FileReader && files && files.length) {
+        let fr = new FileReader();
+        fr.onload = function () {
+
+          component.image = component.insImagePickerEl.querySelector('.image');
+          component.image.parentElement.classList.add('svg-type');
+          component.image.src = fr.result as any;
+          component.base64 = fr.result;
+
+        }
+        fr.readAsDataURL(files[0]);
+    }
+
+    } else {
+      this.notImageFile = true;
+      this.ImageElement = this.insImagePickerEl.querySelector('.image');
+      this.ImageElement.src = '';
+      this.cropper.destroy();
+    }
+  }
+
+  initCropper() {
+    let aspectRatio = NaN;
+    if (this.uploadImgContainer === "rectangle"){
+      aspectRatio = NaN;
+    } else {
+      aspectRatio = 1/1;
+    }
+
+    let component = this;
+
+    if (this.cropper){
+      this.cropper.destroy();
+    }
+
+    this.image = this.insImagePickerEl.querySelector('.image');
+    this.cropper = new Cropper(this.image, {
+      aspectRatio: aspectRatio,
+      crop() {
+        component.base64 = this.cropper.getCroppedCanvas().toDataURL();
+      },
+      ready () {
+        component.base64 = this.cropper.getCroppedCanvas().toDataURL();
+      }
+    })
+  }
+
+  exportImage(e) {
+    e.preventDefault();
+
+    this.value = this.base64;
+    this.valueChange.emit({
+      base64: this.base64,
+      filename: this.fileName
+    });
+    this.closeModal(e);
+  }
+
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal(e) {
+    e.preventDefault();
+    this.showModal = false;
+    setTimeout(() => {
+      let rippleWaves = this.insImagePickerEl.querySelectorAll('.ripple-wave');
+      for (let i = 0; i < rippleWaves.length; i++){
+        let parentNode = rippleWaves[i].parentNode;
+        parentNode.removeChild(rippleWaves[i]);
+      }
+    });
+  }
+
+  addImage() {
+    this.hiddeninput.click();
+  }
+
+  handleDrag(event) {
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <div class={`image-picker ${this.uploadImgContainer}`}>
+        <div class='inline-block img-container'
+        onDragOver={this.handleDrag}
+        onDrop={this.handleDrop.bind(this)}>
+          {this.value ?
+            <img src={this.value} alt={this.fileName} class='profile'
+            onClick={this.openModal.bind(this)} /> :
+            <div class='img-placeholder img-preview-holder'
+            onClick={this.openModal.bind(this)}>
+              <span class="texts_image">{this.placeholder}</span>
+            </div>
+          }
+        </div>
+        <div class="inline-block">
+          <span class="texts_uploadinfo">
+          File Formats: JPG, JPEG, PNG or SVG. <br />
+          Recommended Dimensions: {`${this.uploadImgRecWidth}px x ${this.uploadImgRecHeight}px`}<br />
+          Recommended File Size: {`${this.uploadImgRecFileSize} kb`}
+
+          </span>
+          <ins-button
+            label= {this.value ? 'CHANGE ' + this.imgType : 'ADD ' + this.imgType}
+            type="button"
+            size="small"
+            color={this.buttonColor}
+            outlined
+            onClick={this.openModal.bind(this)}>
+          </ins-button>
+        </div>
+
+        <div class={`modal ${this.showModal ? 'show':''} ${this.notImageFile ? 'has-error': ''}`}>
+          <div class="ins-backdrop-wrap">
+              <div class="ins-card-wrap steady">
+
+              <div class="modal-header">
+                <h3>Upload Image</h3>
+                <span class="icon-close-1" onClick={this.closeModal.bind(this)}></span>
+              </div>
+
+              <div class={`image-preview`}
+              onDragOver={this.handleDrag}
+              onDrop={this.handleDrop.bind(this)}>
+                
+                {!this.base64 ?
+                <p class="placeholder-text">Drag and drop the file or add an image</p>
+                : '' }
+                <img src="" alt="" class="image" />
+              </div>
+
+              <div class={`error-wrap`}>
+                <span>Please choose image files only.</span>
+              </div>
+
+              <div class="controllers">
+                <ins-button label="CHOOSE A FILE" type="button" outlined
+                  onOnClickInsButton={this.addImage.bind(this)}>
+                </ins-button>
+
+                {this.image ?
+                <ins-button label="SAVE" type="button" solid
+                  onOnClickInsButton={this.exportImage.bind(this)}
+                  disabled={this.notImageFile}>
+                </ins-button> : ''}
+
+                <input type="file" class="hidden-input"
+                  name={this.name}
+                  onChange={this.displayImage.bind(this)} />
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}

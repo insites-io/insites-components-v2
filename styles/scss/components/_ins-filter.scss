@@ -1,0 +1,277 @@
+ins-filter {
+  .filter {
+    font-size: 12px;
+    display: inline-block;
+    position: relative;
+
+    &__label {
+      margin-right: 18px;
+      display: block;
+      float: left;
+      margin-top: 7px;
+    }
+    &__date {
+      display: inline-block;
+      margin-right: 15px;
+    }
+    &__btn-container {
+      display: inline-block;
+      position: relative;
+      vertical-align: middle;
+    }
+  }
+  .date-filter, .filter-item {
+    .ripple-wave {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.45);
+      border-radius: 100%;
+      transform: scale(0);
+      pointer-events: none;
+    }
+    .ripple-wave.show {
+      animation: ripple .75s ease-out;
+    }
+    @keyframes a-ripple {
+      0% {
+        opacity: 0;
+      }
+      25% {
+        opacity: 1;
+      }
+      100% {
+        width: 200%;
+        padding-bottom: 200%;
+        opacity: 0;
+      }
+    }
+    @-webkit-keyframes ripple {
+      to {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+    @keyframes ripple {
+      to {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+  }
+  .date-filter {
+    border-radius: 4px;
+    background-color: #e4e6ec;
+    display: inline-block;
+    padding: 7px 7px;
+    color: #2c3148;
+    cursor: default;
+    overflow: hidden;
+    position: relative;
+
+    &__text {
+      font-weight: 600;
+    }
+    .fas {
+      margin-left: 8px;
+      color: #8c94a4;
+      font-size: 12px;
+    }
+  }
+  .date-range {
+    background-color: #ffffff;
+    font-size: 14px;
+    box-shadow: 0 2px 4px 0 rgba(15, 21, 38, 0.14),
+    1px 1px 3px 0 rgba(140, 148, 164, 0.2);
+    border-radius: 4px;
+    display: none;
+    position: absolute;
+    min-width: 575px;
+    padding: 20px;
+    z-index: 2;
+    height: 401px;
+    &.active {
+      display: block;
+      top: 36px;
+    }
+    &__opt-container {
+      display: flex;
+      justify-content: space-around;
+      > div {
+        display: inline-block;
+        font-size: 11px;
+        color: #8c94a4;
+        cursor: pointer;
+        margin: 6px 0;
+        > div {
+          display: inline-block;
+          padding: 5px;
+          border-radius: 4px;
+          &:hover {
+            background-color: #e4e6ec;
+            color: #2c3148;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    &__picker {
+      background-color: #fafbfc;
+      margin: 15px 0;
+      padding: 10px 0;
+      text-align: center;
+      height: 255px;
+    }
+    &__from,
+    &__to {
+      display: inline-block;
+      margin: 0;
+
+      @import '../../globals/css/datepicker-ui.scss';
+    }
+
+    &__from {
+      margin-right: 20px;
+    }
+    input::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+    &__action {
+      // position: absolute;
+      // bottom: 20px;
+      display: block;
+      color: #8c94a4;
+      padding: 15px 0 0;
+      width: 535px;
+
+      input[type="text"],
+      input[type="date"] {
+        font-size: 12px;
+        font-family: "Open Sans", sans-serif;
+        padding: 5px 0;
+        padding-left: 10px;
+        width: 104px;
+        text-align: center;
+        border-radius: 2px;
+        border: solid 1px #e4e6ec;
+        color: #2c3148;
+        display: inline-block;
+        background-color: #fff;
+        box-shadow: none;
+        margin: 0;
+        height: 24px;
+        &::-webkit-inner-spin-button,
+        &::-webkit-calendar-picker-indicator {
+          display: none;
+          -webkit-appearance: none;
+        }
+      }
+    }
+    &__cancel-apply {
+      float: right;
+    //  > div {
+    //    display: inline-block;
+    //    font-size: 11px;
+    //    padding: 5px 10px;
+    //    border-radius: 4px;
+    //    cursor: pointer;
+    //  }
+    //}
+    //&__cancel {
+    //  color: #1f86e3;
+    //}
+    //&__apply {
+    //  background: #1f86e3;
+    //  color: #fff;
+      ins-button:first-of-type {
+        margin-right: 10px;
+      }
+    }
+    input[type="date"]::-webkit-input-placeholder {
+      visibility: hidden !important;
+    }
+    i.fas {
+      position: absolute;
+    }
+  }
+}
+.active-tab {
+  background-color: #e4e6ec;
+  color: #2c3148;
+  font-weight: 600;
+}
+.data-range-mobile {
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .data-range-mobile {
+    background-color: #fff;
+    color: #333;
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 50px);
+    height: calc(100% - 56px);
+    z-index: 9999;
+    top: 56px;
+    right: 0px;
+    display: none;
+    overflow: auto;
+  }
+  .data-range-mobile.active {
+    display: block;
+  }
+  .tab-content {
+    color: #8c94a4;
+    padding: 10px 15px;
+    cursor: default;
+
+    .date-range__tab {
+      cursor: default;
+    }
+  }
+  .date-range-top-container {
+    border-bottom: 1px solid #f5f6f8;
+    padding: 10px 15px;
+  }
+  .date-label {
+    font-size: 16px;
+    float: left;
+  }
+  .date-range-top-container ins-button {
+    float: right;
+  }
+  .date-range-top-container ins-button button {
+    text-align: right;
+  }
+  ins-button button .btn__icon {
+    font-size: 12px;
+  }
+  .active-tab {
+    background-color: transparent !important;
+    color: #555;
+  }
+  .date-range-btn-container {
+    padding: 0 10px;
+  }
+  .ins-date-from[type=date] {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .ins-date-to[type=date] {
+    margin-bottom: 20px;
+  }
+  .ins-date-from[type=date],
+  .ins-date-to[type=date] {
+    border: 1px solid #f5f6f8;
+    border-radius: 3px;
+    box-shadow: none;
+    color: #8c94a4;
+    font-size: 12px;
+  }
+  .daterange-filter {
+    background-color: #1e86e3;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 4px !important;
+    width: 100%;
+  }
+}

@@ -1,0 +1,40 @@
+.ins-select-option-wrap {
+  opacity: 0;
+  background-color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: .875rem;
+  padding: 12px 10px;
+  color: #8C94A4;
+  cursor: pointer;
+
+  &:hover {
+    color: #2C3148;
+    background-color: #E4E6EC;
+  }
+
+  &.selected {
+    color: #2C3148;
+    background-color: #FAFBFC;
+    // background-color: #e4e6ec;
+    display: none;
+  }
+
+  &.disabled {
+    color: #e4e6ec;
+    cursor: initial;
+  }
+
+  &.disabled:hover {
+    background-color: #fff;
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.ins-select-wrap.activated {
+  .ins-select-option-wrap {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,83 @@
+.ins-loader-wrap {
+  width: 100%;
+  text-align: center;
+
+  &--state {
+    max-width: 70px;
+    // margin: 0 auto 30px;
+    margin: 0 auto 25px;
+
+    svg, img {
+      width: 100%;
+    }
+  }
+
+  &--title {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #24be8d;
+    // margin-top: 48px;
+    margin-top: 0;
+
+    &.warning {
+      color: #FFA639;
+    }
+    &.help {
+      color: #FF3366;
+    }
+    &.error {
+      color: #F27474;
+    }
+  }
+
+  &--message {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #2c3148;
+    margin-top: 16px;
+  }
+
+  .cls-1 {
+    fill:#323d53;
+  }
+
+  .positive .cls-1,
+  .green .cls-1 {
+    fill: #24be8d;
+  }
+  .warning .cls-1 {
+    fill: #ffa639;
+  }
+  .negative .cls-1 {
+    fill: #f27474;
+  }
+  .information-1 .cls-1 {
+    fill: #ff3366;
+  }
+  .information-2 .cls-1 {
+    fill: #fdd836;
+  }
+  .blue .cls-1 {
+    fill: #1e86e3;
+  }
+  .turquoise .cls-1 {
+    fill: #2bbad9;
+  }
+  .grey .cls-1 {
+    fill: #8C94A4;
+  }
+
+  @keyframes anim-rotate {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spinner {
+    animation: anim-rotate 3s infinite linear;
+  }
+
+}

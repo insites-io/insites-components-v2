@@ -1,0 +1,47 @@
+.ins-notifications-wrap {
+  position: fixed;
+  width: 380px;
+  right: 0;
+  height: 100vh;
+  top: 0;
+  z-index: 9999;
+  background-color: #fff;
+  box-sizing: border-box;
+
+  .ins-nw-header {
+
+    padding: 22px;
+    position: relative;
+    border-bottom: solid 1px #eee;
+    box-sizing: border-box;
+
+    h1 {
+      font-size: 24px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 300;
+      margin: 0;
+      color: #1A1D2C;
+    }
+
+    .ins-nwh-close {
+      position: absolute;
+      top: calc(50% - 8px);
+      right: 20px;
+      color: #BCC1CA;
+      border: none;
+      background: transparent;
+      padding: 0;
+      font-size: 16px;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+  }
+
+  .ins-nw-items-wrap {
+    padding: 20px;
+  }
+}
+
+.hide-slot {
+  display: none;
+}
