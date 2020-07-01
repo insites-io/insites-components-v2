@@ -1,6 +1,26 @@
 .ins-sidebar-footer-wrap {
   background-color: #E4E6EC;
-  width: 100%;
-  position: absolute;
+  width: 240px;
+  position: fixed;
   bottom: 0;
+  transition: width .75s;
+  z-index: 1001;
+
+  .ins-sidebar-footer-menu-toggle {
+    display: none;
+  }
+}
+
+.mini {
+  .sidebar {
+    .ins-sidebar-footer-wrap {
+      width: 50px;
+    }
+    .ins-sidebar-footer-menu-toggle {
+      display: block;
+    }
+    .slot-wrapper {
+      display: none;
+    }
+  }
 }

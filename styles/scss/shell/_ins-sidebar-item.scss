@@ -63,9 +63,8 @@ ins-sidebar-item {
       position: absolute;
       background-color: $bg-gray;
       width: 240px;
-      height: calc(100vh - 104px);
+      height: 100%;
       top: 0;
-      // top: -46px;
       left: 0;
       z-index: 1001;
       padding: 16px 0;
@@ -73,10 +72,6 @@ ins-sidebar-item {
       &.is-active {
         display: block;
         overflow: auto;
-
-        @media screen and (max-width: 1260px) {
-          max-height: 60vh;
-        }
       }
 
       .btn-nav-wrap {
@@ -88,7 +83,6 @@ ins-sidebar-item {
           outline: none;
           cursor: pointer;
           font-size: 14px;
-          // color: #8C94A4;
           color: #1E86E3;
           font-size: 14px;
           font-weight: 600;
@@ -102,10 +96,6 @@ ins-sidebar-item {
             width: 18px;
           }
         }
-      }
-
-      .ins-sidebar-item-tooltip {
-        // display: none !important;
       }
     }
 
@@ -128,14 +118,12 @@ html {
   -webkit-tap-highlight-color:black;
 }
 .ins-ripple-button {
-  // height: 46px;
   width: 100%;
   -webkit-appearance: none;
   position: relative;
   background: transparent;
   display: block;
   overflow: hidden;
-  vertical-align: middle;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -246,15 +234,4 @@ html {
   height: auto;
   opacity: 0.95;
   z-index: 9999;
-}
-
-.no-footer {
-
-  ins-sidebar-item {
-    div.ins-sidebar-item-wrap {
-      .submenu-wrap {
-        height: 94vh;
-      }
-    }
-  }
 }

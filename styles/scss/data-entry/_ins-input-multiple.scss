@@ -1,0 +1,117 @@
+// color pallete
+$black: #2c3148;
+$red: #f27474;
+$orange: #ffa639;
+$yellow: #fdd835;
+$pink: #ff3366;
+$turquoise: #2bbad9;
+$blue: #1e86e3;
+$green: #24be8d;
+$dark-grey: #8c94a4;
+$medium-grey: #e4e6ec;
+$light-grey: #0c0c0e;
+$wash-white: #fafbfc;
+$white: #ffffff;
+
+ins-input-multiple {
+    .ins-input-multiple {
+        margin-bottom: 15px;
+        label {
+            font-size: 12px;
+            font-weight: 600;
+            color: $black;
+            margin-bottom: 2px;
+        }
+        .error-message {
+            display: none;
+            font-size: 12px;
+            line-height: 16px;
+            color: $red;
+        }
+        &-container {
+            padding: 6px 4px;
+            padding-bottom: 0;
+            width: 100%;
+            background: $white;
+            border: 1px solid $medium-grey;
+            border-radius: 4px;
+            margin-bottom: 4px;
+            font-size: .875rem;
+            position: relative;
+            color: $dark-grey;
+            cursor: pointer;
+            -webkit-transition: border-color .15s ease-in,border-radius .15s ease-in;
+            transition: border-color .15s ease-in,border-radius .15s ease-in;
+        }
+        &.active {
+            label {
+                color: $blue;
+            }
+            .ins-input-multiple-container {
+                border: 1px solid $blue;
+            }
+        }
+        &.has-error {
+            label {
+                color: $red;
+            }
+            .error-message {
+                display: block;
+            }
+            .ins-input-multiple-container {
+                border: 1px solid $red;
+            }
+        }
+        &.disabled {
+            label {
+                color: $dark-grey;
+            }
+        }
+        &-choice {
+            display: inline-block;
+            background: $medium-grey;
+            padding: 2px 8px;
+            border-radius: 5px;
+            position: relative;
+            padding-right: 28px;
+            margin: 0 5px 6px 5px;
+            cursor: pointer;
+            span {
+                font-size: 14px;
+                color: $black;
+            }
+            .icon-close {
+                color: $dark-grey;
+                font-size: 7px;
+                margin-left: 10px;
+                position: absolute;
+                right: 8px;
+                top: calc(50% - 4px);
+            }
+        }
+        &-text {
+            min-width: 200px;
+            display: block;
+            margin-bottom: 6px;
+            input, input:focus, input:active {
+                border: none;
+                outline: none;
+                box-shadow: none;
+                margin-bottom: 0;
+                padding: 0 5px;
+                height: 25px;
+            }
+        }
+        &.readonly, &.disabled {
+            .ins-input-multiple-choice {
+                padding-right: 8px;
+            }
+            .has-value-readonly {
+                display: none;
+            }
+            input {
+                background: $white;
+            }
+        }
+    }
+}
