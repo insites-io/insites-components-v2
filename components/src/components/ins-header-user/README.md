@@ -1,34 +1,64 @@
-# Insites Header User```<ins-header-user>```
+# ins-header-user
 
-### Versions
-1.0.11
 
-### Basic Features
-Displays items inside header.
 
-### Configuration Options
+<!-- Auto Generated Below -->
 
-| ATTRIBUTE | TYPE | DEFAULT | OPTIONS | DESCRIPTION |
-| ------- | ------- | ------- | ------- | ------- |
-| name | string | "Label" | any | Displays name of dropdown feature in header |
-| logoutLink | string | '/' | any | Specifies link of "logout" selection |
-| profileLink | string | '/assets/pages/my-profile.html' | any | Specifies link of "MyProfile" selection |
 
-### Usage Details
+## Properties
+
+| Property         | Attribute         | Description | Type      | Default          |
+| ---------------- | ----------------- | ----------- | --------- | ---------------- |
+| `app`            | `app`             |             | `boolean` | `undefined`      |
+| `formattedRoute` | `formatted-route` |             | `string`  | `undefined`      |
+| `logoutLink`     | `logout-link`     |             | `string`  | `''`             |
+| `name`           | `name`            |             | `string`  | `'User'`         |
+| `profileLink`    | `profile-link`    |             | `string`  | `'#/my-profile'` |
+
+
+## Events
+
+| Event       | Description | Type               |
+| ----------- | ----------- | ------------------ |
+| `routePage` |             | `CustomEvent<any>` |
+
+
+## Methods
+
+### `renderMyProfile() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `routePageHandler() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+## Dependencies
+
+### Depends on
+
+- [ins-card](../ins-card)
+
+### Graph
+```mermaid
+graph TD;
+  ins-header-user --> ins-card
+  style ins-header-user fill:#f9f,stroke:#333,stroke-width:4px
 ```
-<ins-header>
-    <ins-header-user name="Sample" profile-link="/build/liquid.html" logoutLink="/build/liquid.html"></ins-header-user>
-</ins-header>
-```
 
-### Default Values
-```
-name = "John Smith" 
-logoutLink = '/'
-profileLink =  '/assets/pages/my-profile.html'
-```
+----------------------------------------------
 
-### Browser Support
-- Chrome (and all Chromium based browsers)
-- Safari
-- Firefox
+*Built with [StencilJS](https://stenciljs.com/)*

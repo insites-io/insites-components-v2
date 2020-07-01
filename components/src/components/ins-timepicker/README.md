@@ -11,26 +11,38 @@
 | -------------- | --------------- | ----------- | --------- | ----------- |
 | `disabled`     | `disabled`      |             | `boolean` | `false`     |
 | `errorMessage` | `error-message` |             | `string`  | `""`        |
-| `fieldId`      | `field-id`      |             | `string`  | `""`        |
-| `format`       | `format`        |             | `string`  | `"h:i A"`   |
 | `hasError`     | `has-error`     |             | `boolean` | `false`     |
 | `icon`         | `icon`          |             | `string`  | `""`        |
 | `label`        | `label`         |             | `string`  | `undefined` |
+| `maxTime`      | `max-time`      |             | `string`  | `""`        |
+| `minTime`      | `min-time`      |             | `string`  | `""`        |
 | `name`         | `name`          |             | `string`  | `undefined` |
-| `placeholder`  | `placeholder`   |             | `string`  | `"h:i A"`   |
+| `noMeridiem`   | `no-meridiem`   |             | `boolean` | `false`     |
+| `placeholder`  | `placeholder`   |             | `string`  | `""`        |
 | `readonly`     | `readonly`      |             | `boolean` | `false`     |
-| `required`     | `required`      |             | `boolean` | `false`     |
-| `value`        | `value`         |             | `any`     | `undefined` |
+| `value`        | `value`         |             | `string`  | `""`        |
 
 
 ## Events
 
-| Event         | Description | Type               |
-| ------------- | ----------- | ------------------ |
-| `onblur`      |             | `CustomEvent<any>` |
-| `oninput`     |             | `CustomEvent<any>` |
-| `valueChange` |             | `CustomEvent<any>` |
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `insInput`       |             | `CustomEvent<any>` |
+| `insValueChange` |             | `CustomEvent<any>` |
 
+
+## Dependencies
+
+### Depends on
+
+- [ins-date-time](../ins-date-time)
+
+### Graph
+```mermaid
+graph TD;
+  ins-timepicker --> ins-date-time
+  style ins-timepicker fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

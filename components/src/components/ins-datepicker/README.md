@@ -25,11 +25,29 @@
 
 ## Events
 
-| Event         | Description | Type               |
-| ------------- | ----------- | ------------------ |
-| `changeValue` |             | `CustomEvent<any>` |
-| `pick`        |             | `CustomEvent<any>` |
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `insInput`       |             | `CustomEvent<any>` |
+| `insValueChange` |             | `CustomEvent<any>` |
 
+
+## Dependencies
+
+### Used by
+
+ - [ins-table](../ins-table)
+
+### Depends on
+
+- [ins-date-time](../ins-date-time)
+
+### Graph
+```mermaid
+graph TD;
+  ins-datepicker --> ins-date-time
+  ins-table --> ins-datepicker
+  style ins-datepicker fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

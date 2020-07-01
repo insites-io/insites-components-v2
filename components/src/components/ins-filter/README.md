@@ -1,46 +1,53 @@
-# Insites Filter ```<ins-filter>```
+# ins-filter
 
-### Versions
-1.0.36
 
-### Basic Features
-Renders container of filter items.
 
-### Configuration Options
-| ATTRIBUTE | TYPE | DEFAULT | OPTIONS | DESCRIPTION |
-| ------- | ------- | ------- | ------- | ------- |
-| withDateFilter | boolean | false | any | Displays date filter |
-| dateTitle | any  | "" | any | Displays date filter title |
-| defaultDate | string | "" | any | Diplays defaul date displayed |
-| dateFrom | string | "" | any | Displays starting date of date filter |
-| dateTo | string | "" | any | Displays end date of date filter |
-| dateOpt | any | [Today',This Week',Last Week',This Month',Last Month',This Year',Last Year',Custom'] | any | Displays date option beside dateTitle |
+<!-- Auto Generated Below -->
 
-### Usage Details
-```
-<ins-filter with-date-filter date-title="Date Period"></ins-filter>
-```
 
-### Default Values
-```
-withDateFilter = false
-dateTitle = ""
-defaultDate = ""
-dateFrom = ""
-dateTo = ""
-dateOpt = [
-    'Today',
-    'This Week',
-    'Last Week',
-    'This Month',
-    'Last Month',
-    'This Year',
-    'Last Year',
-    'Custom'
-  ]
-```
+## Properties
 
-### Browser Support
-- Chrome (and all Chromium based browsers)
-- Safari
-- Firefox
+| Property         | Attribute          | Description | Type      | Default                                                                                                                                                                                    |
+| ---------------- | ------------------ | ----------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `dateFrom`       | `date-from`        |             | `string`  | `""`                                                                                                                                                                                       |
+| `dateOpt`        | `date-opt`         |             | `any`     | `[         'All',         'Today',         'This Week',         'Last Week',         'This Month',         'Last Month',         'This Year',         'Last Year',         'Custom'     ]` |
+| `dateTitle`      | `date-title`       |             | `any`     | `"Date Period"`                                                                                                                                                                            |
+| `dateTo`         | `date-to`          |             | `string`  | `""`                                                                                                                                                                                       |
+| `defaultDate`    | `default-date`     |             | `string`  | `""`                                                                                                                                                                                       |
+| `withDateFilter` | `with-date-filter` |             | `boolean` | `false`                                                                                                                                                                                    |
+
+
+## Events
+
+| Event           | Description | Type               |
+| --------------- | ----------- | ------------------ |
+| `insDateFilter` |             | `CustomEvent<any>` |
+| `insFilter`     |             | `CustomEvent<any>` |
+
+
+## Methods
+
+### `closeDateFilter() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `getDate() => Promise<"All" | { from: string; to: string; }>`
+
+
+
+#### Returns
+
+Type: `Promise<"All" | { from: string; to: string; }>`
+
+
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

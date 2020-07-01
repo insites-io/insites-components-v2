@@ -27,11 +27,36 @@
 
 ## Events
 
-| Event                  | Description | Type               |
-| ---------------------- | ----------- | ------------------ |
-| `clickInsButton`       |             | `CustomEvent<any>` |
-| `clickInsButtonOption` |             | `CustomEvent<any>` |
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `insClick`       |             | `CustomEvent<any>` |
+| `insClickOption` |             | `CustomEvent<any>` |
 
+
+## Dependencies
+
+### Used by
+
+ - [ins-carousel](../ins-carousel)
+ - [ins-heading](../ins-heading)
+ - [ins-image-picker](../ins-image-picker)
+ - [ins-modal](../ins-modal)
+ - [ins-select](../ins-select)
+ - [ins-table](../ins-table)
+ - [ins-thumbnail](../ins-thumbnail)
+
+### Graph
+```mermaid
+graph TD;
+  ins-carousel --> ins-button
+  ins-heading --> ins-button
+  ins-image-picker --> ins-button
+  ins-modal --> ins-button
+  ins-select --> ins-button
+  ins-table --> ins-button
+  ins-thumbnail --> ins-button
+  style ins-button fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

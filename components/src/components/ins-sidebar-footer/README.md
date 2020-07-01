@@ -1,26 +1,36 @@
-# Insites Sidebar Footer ```<ins-sidebar-footer>```
-
-### Versions
+# ins-sidebar-footer
 
 
-### Basic Features
-Renders sidebar footer container.
 
-### Usage Details
+<!-- Auto Generated Below -->
+
+
+## Methods
+
+### `toggleSidebar() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+## Dependencies
+
+### Depends on
+
+- [ins-sidebar-footer-button](../ins-sidebar-footer-button)
+
+### Graph
+```mermaid
+graph TD;
+  ins-sidebar-footer --> ins-sidebar-footer-button
+  style ins-sidebar-footer fill:#f9f,stroke:#333,stroke-width:4px
 ```
-<ins-sidebar-footer>
-        <ins-sidebar-footer-menu icon="icon-settings-1"
-                                    label="Settings">
-            <ins-sidebar-item link="/admin/settings/colour-themes"
-                                label="Color Themes"
-                                app>
-            </ins-sidebar-item>
-        </ins-sidebar-footer-menu>
-        <ins-sidebar-footer-button icon="icon-lock-1"></ins-sidebar-footer-button>
-</ins-sidebar-footer>
-```
 
-### Browser Support
-- Chrome (and all Chromium based browsers)
-- Safari
-- Firefox
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

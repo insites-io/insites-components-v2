@@ -1,17 +1,41 @@
-# Insites Header ```<ins-header>```
-
-### Versions
+# ins-header
 
 
-### Basic Features
-Renders header container.
 
-### Usage Details
-```
-<ins-header></ins-header>
-```
+<!-- Auto Generated Below -->
 
-### Browser Support
-- Chrome (and all Chromium based browsers)
-- Safari
-- Firefox
+
+## Properties
+
+| Property        | Attribute         | Description | Type      | Default     |
+| --------------- | ----------------- | ----------- | --------- | ----------- |
+| `hasMenuToggle` | `has-menu-toggle` |             | `boolean` | `true`      |
+| `supportLink`   | `support-link`    |             | `string`  | `undefined` |
+
+
+## Methods
+
+### `toggleNav() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `toggleSidebar() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

@@ -1,30 +1,38 @@
-# Insites Sidebar ```<ins-sidebar>```
-
-### Versions
+# ins-sidebar
 
 
-### Basic Features
-Renders sidebar container.
 
-### Configuration Options
+<!-- Auto Generated Below -->
 
-| ATTRIBUTE | TYPE | DEFAULT | OPTIONS | DESCRIPTION |
-| ------- | ------- | ------- | ------- | ------- |
-| fullLogo | string | /assets/images/Insites_logo.svg | any | displays Insites_logo banner |
-| iconLogo | string | /assets/images/Insites_logo_icon.svg | any | displays Icon Insites_logo when sidebar is minimized |
 
-### Usage Details
-```
-<ins-sidebar full-logo="/assets/images/Insites_logo.svg" icon-logo="/assets/images/Insites_logo_icon.svg"></ins-sidebar>
-```
+## Properties
 
-### Default Values
-```
-full-logo = "/assets/images/Insites_logo.svg"
-icon-logo = "/assets/images/Insites_logo_icon.svg"
-```
+| Property   | Attribute   | Description | Type     | Default |
+| ---------- | ----------- | ----------- | -------- | ------- |
+| `fullLogo` | `full-logo` |             | `string` | `""`    |
+| `iconLogo` | `icon-logo` |             | `string` | `""`    |
 
-### Browser Support
-- Chrome (and all Chromium based browsers)
-- Safari
-- Firefox
+
+## Events
+
+| Event              | Description | Type               |
+| ------------------ | ----------- | ------------------ |
+| `insSidebarAction` |             | `CustomEvent<any>` |
+
+
+## Methods
+
+### `minimise() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

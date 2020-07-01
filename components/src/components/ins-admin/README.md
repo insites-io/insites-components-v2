@@ -1,17 +1,10 @@
-# Insites Admin ```<ins-admin>```
+# ins-admin
 
-### Versions
-1.0.23
 
-### Basic Features
-Renders parent container for whole admin page.
 
-### Usage Details
-```
-<ins-admin></ins-admin>
-```
+<!-- Auto Generated Below -->
 
-### Browser Support
-- Chrome (and all Chromium based browsers)
-- Safari
-- Firefox
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

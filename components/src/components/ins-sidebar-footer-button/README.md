@@ -1,29 +1,51 @@
-# Insites Sidebar Footer Button```<ins-sidebar-footer-button>```
-
-### Versions
+# ins-sidebar-footer-button
 
 
-### Basic Features
-Displays sidebar footer button.
+
+<!-- Auto Generated Below -->
 
 
-### Configuration Options
+## Properties
 
-| ATTRIBUTE | TYPE | DEFAULT | OPTIONS | DESCRIPTION |
-| ------- | ------- | ------- | ------- | ------- |
-| icon | string | "icon-logout-1" | icon-close-1, icon-utilities, icon-lock-1, icon-logout-1 | displays icon of button |
+| Property | Attribute | Description | Type     | Default |
+| -------- | --------- | ----------- | -------- | ------- |
+| `icon`   | `icon`    |             | `string` | `''`    |
+| `open`   | `open`    |             | `string` | `''`    |
 
-### Usage Details
+
+## Events
+
+| Event                         | Description | Type               |
+| ----------------------------- | ----------- | ------------------ |
+| `insSidebarFooterButtonEvent` |             | `CustomEvent<any>` |
+
+
+## Methods
+
+### `insSidebarFooterButtonOnClick(event: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+## Dependencies
+
+### Used by
+
+ - [ins-sidebar-footer](../ins-sidebar-footer)
+
+### Graph
+```mermaid
+graph TD;
+  ins-sidebar-footer --> ins-sidebar-footer-button
+  style ins-sidebar-footer-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
-<ins-sidebar-footer-button icon="icon-dashboard"></ins-sidebar-footer-button>
-```
 
-### Default Values
-```
-icon = "icon-logout-1"
-```
+----------------------------------------------
 
-### Browser Support
-- Chrome (and all Chromium based browsers)
-- Safari
-- Firefox
+*Built with [StencilJS](https://stenciljs.com/)*

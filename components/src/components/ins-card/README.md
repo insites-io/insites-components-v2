@@ -1,25 +1,36 @@
-# Insites Card ```<ins-card>```
-
-### Versions
-1.0.4
-
-### Basic Features
-For container section with border line and box-shadow.
-
-### Configuration Options
-
-| DECORATOR | COMPONENT | TYPE | USAGE |
-| ------- | ------- | ------- | ------- |
-| @Element() | steady | boolean | remove the hover effects |
-| @Prop() | noPadding | boolean | remove the padding |
+# ins-card
 
 
-### Usage Details
+
+<!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property    | Attribute    | Description | Type      | Default     |
+| ----------- | ------------ | ----------- | --------- | ----------- |
+| `noPadding` | `no-padding` |             | `boolean` | `undefined` |
+| `outlined`  | `outlined`   |             | `boolean` | `undefined` |
+| `steady`    | `steady`     |             | `boolean` | `undefined` |
+
+
+## Dependencies
+
+### Used by
+
+ - [ins-header-user](../ins-header-user)
+ - [ins-image-picker](../ins-image-picker)
+ - [ins-modal](../ins-modal)
+
+### Graph
+```mermaid
+graph TD;
+  ins-header-user --> ins-card
+  ins-image-picker --> ins-card
+  ins-modal --> ins-card
+  style ins-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
-<ins-card steady noPadding></ins-card>
-```
 
-### Browser Support
-- Chrome (and all Chromium based browsers)
-- Safari
-- Firefox
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

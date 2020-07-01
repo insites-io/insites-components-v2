@@ -1,34 +1,34 @@
-# Insites Bar Chart ```<ins-bar-chart>```
-
-### Versions
-1.0.7
-
-### Basic Features
-The bar chart is exactly the same as a column chart only the x-axis and y-axis are switched.
-
-### Configuration Options
-
-| ATTRIBUTE | TYPE | DEFAULT | OPTIONS | DESCRIPTION |
-| ------- | ------- | ------- | ------- | ------- |
-| name | string | "Line Chart" | any | Specifies a name for a line chart |
-| chartData | Array | [] | any | Display chart data |
-| categories | Array | [] | any | Display categories in chart |
-| dataSrc | string | "" | any | Calls api for data |
+# ins-bar-chart
 
 
-### Usage Details
+
+<!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property     | Attribute    | Description | Type      | Default |
+| ------------ | ------------ | ----------- | --------- | ------- |
+| `categories` | --           |             | `any[]`   | `[]`    |
+| `chartData`  | --           |             | `any[]`   | `[]`    |
+| `horizontal` | `horizontal` |             | `boolean` | `false` |
+| `name`       | `name`       |             | `string`  | `""`    |
+| `stacked`    | `stacked`    |             | `boolean` | `false` |
+
+
+## Dependencies
+
+### Depends on
+
+- [ins-chart](../ins-chart)
+
+### Graph
+```mermaid
+graph TD;
+  ins-bar-chart --> ins-chart
+  style ins-bar-chart fill:#f9f,stroke:#333,stroke-width:4px
 ```
-<ins-bar-chart id="barChart" name="Column Chart" data-src="https://9p1pa4b3fa.execute-api.us-east-2.amazonaws.com/insites-barchart-deployment/insites-dummy-barchart">
-</ins-bar-chart>
-```
-### Default Values
-```
-name = "Bar Chart"
-categories = []
-chartData = []
-dataSrc = ""
-```
-### Browser Support
-- Chrome (and all Chromium based browsers)
-- Safari
-- Firefox
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

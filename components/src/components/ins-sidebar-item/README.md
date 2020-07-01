@@ -1,35 +1,103 @@
-# Insites Sidebar Item```<ins-sidebar-item>```
-
-### Versions
-1.0.23
-
-### Basic Features
-Displays sidebar item list.
+# ins-sidebar-item
 
 
-### Configuration Options
 
-| ATTRIBUTE | TYPE | DEFAULT | OPTIONS | DESCRIPTION |
-| ------- | ------- | ------- | ------- | ------- |
-| link | any | "/" | any | used to link to external style sheets |
-| icon | any | "no-icon" | icon-close-1, icon-utilities, icon-lock-1, icon-logout-1 | displays icon of sidebar item |
-| app | boolean | false | true, false | render iframe tags |
-| withSubmenu | boolean | false | true, false | creates submenu for sidebar item |
-| label | string | false | any | defines a label for an element |
-### Usage Details
-```
-<ins-sidebar-item link="/assets/pages/dashboard.html" icon="icon-dashboard" label="Dashboard" app></ins-sidebar-item>
-```
-
-### Default Values
-```
-link = "/"
-icon = "no-icon"
-label = "Label"
-```
+<!-- Auto Generated Below -->
 
 
-### Browser Support
-- Chrome (and all Chromium based browsers)
-- Safari
-- Firefox
+## Properties
+
+| Property      | Attribute      | Description | Type      | Default     |
+| ------------- | -------------- | ----------- | --------- | ----------- |
+| `app`         | `app`          |             | `boolean` | `false`     |
+| `footerLink`  | `footer-link`  |             | `string`  | `''`        |
+| `icon`        | `icon`         |             | `any`     | `'no-icon'` |
+| `label`       | `label`        |             | `string`  | `'Label'`   |
+| `landingPage` | `landing-page` |             | `boolean` | `false`     |
+| `link`        | `link`         |             | `any`     | `''`        |
+| `withSubmenu` | `with-submenu` |             | `boolean` | `false`     |
+
+
+## Events
+
+| Event       | Description | Type               |
+| ----------- | ----------- | ------------------ |
+| `routePage` |             | `CustomEvent<any>` |
+
+
+## Methods
+
+### `activate() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `activateParent() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `deactivate() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `formatRoute() => Promise<any>`
+
+
+
+#### Returns
+
+Type: `Promise<any>`
+
+
+
+### `hideSubMenu() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `routePageHandler(e: any) => Promise<{ crumbs: any[]; }>`
+
+
+
+#### Returns
+
+Type: `Promise<{ crumbs: any[]; }>`
+
+
+
+### `showSubMenu() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

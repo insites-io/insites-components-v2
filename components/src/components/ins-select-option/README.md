@@ -1,39 +1,84 @@
-# Insites Select Option ```<ins-select-option>```
+# ins-select-option
 
-### Versions
-1.0.2
 
-### Basic Features
-Displays choices of dropdown feature.
 
-### Configuration Options
+<!-- Auto Generated Below -->
 
-| ATTRIBUTE | TYPE | DEFAULT | OPTIONS | DESCRIPTION |
-| ------- | ------- | ------- | ------- | ------- |
-| label | string | 'Option' | any | Displays label of options |
-| value | string | '' | any | Defines value of option when clicked |
-| disabled | boolean | false | true, false | Disables option |
-| default | boolean | false | true, false | Make option default value of dropdown |
- = ;
- = '';
- = false;
- = false;
-### Usage Details
+
+## Properties
+
+| Property   | Attribute  | Description | Type      | Default    |
+| ---------- | ---------- | ----------- | --------- | ---------- |
+| `default`  | `default`  |             | `boolean` | `false`    |
+| `disabled` | `disabled` |             | `boolean` | `false`    |
+| `label`    | `label`    |             | `string`  | `'Option'` |
+| `value`    | `value`    |             | `string`  | `''`       |
+
+
+## Events
+
+| Event                    | Description | Type               |
+| ------------------------ | ----------- | ------------------ |
+| `defaultEvent`           |             | `CustomEvent<any>` |
+| `insSelectOptionClicked` |             | `CustomEvent<any>` |
+
+
+## Methods
+
+### `activate() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `deactivate() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `hideOption() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `showOption() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+## Dependencies
+
+### Used by
+
+ - [ins-table](../ins-table)
+
+### Graph
+```mermaid
+graph TD;
+  ins-table --> ins-select-option
+  style ins-select-option fill:#f9f,stroke:#333,stroke-width:4px
 ```
-<ins-select>
-    <ins-select-option label="choice"></ins-select-option>
-</ins-select>
-```
 
-### Default Values
-```
-label = 'Option'
-value = ''
-disabled = false
-default = false
-```
+----------------------------------------------
 
-### Browser Support
-- Chrome (and all Chromium based browsers)
-- Safari
-- Firefox
+*Built with [StencilJS](https://stenciljs.com/)*

@@ -1,31 +1,37 @@
-# Insites Loader ```<ins-loader>```
+# ins-loader
 
-### Versions
-1.0.0
 
-### Basic Features
-Acts as a loader in page to view html content.
 
-### Configuration Options
+<!-- Auto Generated Below -->
 
-| ATTRIBUTE | TYPE | DEFAULT | OPTIONS | DESCRIPTION |
-| ------- | ------- | ------- | ------- | ------- |
-| stateTitle | string | undefined | any | Displays title of loader |
-| stateMessage | string | undefined | any | Specifies meesage of loader |
-| stateIcon | string | undefined | processing, warning, Help, Error, Success, downloading, uploading | Displays icon of loader |
-| iconColor | string | undefined | any | Displays color of state icon |
 
-### Usage Details
+## Properties
+
+| Property       | Attribute       | Description | Type      | Default                                                                                 |
+| -------------- | --------------- | ----------- | --------- | --------------------------------------------------------------------------------------- |
+| `iconColor`    | `icon-color`    |             | `string`  | `""`                                                                                    |
+| `imageSource`  | `image-source`  |             | `string`  | `"https://ins-styleguide.s3-us-west-2.amazonaws.com/assets/images/loading-loop-2x.gif"` |
+| `stateIcon`    | `state-icon`    |             | `string`  | `""`                                                                                    |
+| `stateMessage` | `state-message` |             | `string`  | `""`                                                                                    |
+| `stateTitle`   | `state-title`   |             | `string`  | `""`                                                                                    |
+| `useImage`     | `use-image`     |             | `boolean` | `true`                                                                                  |
+
+
+## Dependencies
+
+### Used by
+
+ - [ins-info-table](../ins-info-table)
+ - [ins-table](../ins-table)
+
+### Graph
+```mermaid
+graph TD;
+  ins-info-table --> ins-loader
+  ins-table --> ins-loader
+  style ins-loader fill:#f9f,stroke:#333,stroke-width:4px
 ```
-<ins-loader stateMessage="page loading" stateIcon="processing"></ins-loader>
-```
 
-### Default Values
-```
-N/A
-```
+----------------------------------------------
 
-### Browser Support
-- Chrome (and all Chromium based browsers)
-- Safari
-- Firefox
+*Built with [StencilJS](https://stenciljs.com/)*

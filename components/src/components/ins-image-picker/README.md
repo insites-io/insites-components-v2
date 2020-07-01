@@ -1,30 +1,52 @@
-# Insites Image Picker ```<ins-image-picker>```
-
-### Versions
-n/A
-
-### Basic Features
-Specifies an input field where the user can input image.
-
-### Configuration Options
-| ATTRIBUTE | TYPE | DEFAULT | OPTIONS | DESCRIPTION |
-| ------- | ------- | ------- | ------- | ------- |
-| type | string | 'picture' | any | Specifies type of image input |
-| buttonColor | string | 'blue' | any | Specifies color of image input button |
+# ins-image-picker
 
 
-### Usage Details
+
+<!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property               | Attribute                  | Description | Type      | Default                                    |
+| ---------------------- | -------------------------- | ----------- | --------- | ------------------------------------------ |
+| `buttonColor`          | `button-color`             |             | `string`  | `'blue'`                                   |
+| `fileName`             | `file-name`                |             | `any`     | `undefined`                                |
+| `imgType`              | `img-type`                 |             | `string`  | `'picture'`                                |
+| `label`                | `label`                    |             | `string`  | `'CHANGE PICTURE'`                         |
+| `name`                 | `name`                     |             | `string`  | `undefined`                                |
+| `notImageFile`         | `not-image-file`           |             | `boolean` | `undefined`                                |
+| `placeholder`          | `placeholder`              |             | `string`  | `'Drag and drop the file or add an image'` |
+| `uploadImgContainer`   | `upload-img-container`     |             | `string`  | `""`                                       |
+| `uploadImgRecFileSize` | `upload-img-rec-file-size` |             | `number`  | `25`                                       |
+| `uploadImgRecHeight`   | `upload-img-rec-height`    |             | `number`  | `120`                                      |
+| `uploadImgRecWidth`    | `upload-img-rec-width`     |             | `number`  | `120`                                      |
+| `value`                | `value`                    |             | `any`     | `undefined`                                |
+
+
+## Events
+
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `insValueChange` |             | `CustomEvent<any>` |
+
+
+## Dependencies
+
+### Depends on
+
+- [ins-button](../ins-button)
+- [ins-backdrop](../ins-backdrop)
+- [ins-card](../ins-card)
+
+### Graph
+```mermaid
+graph TD;
+  ins-image-picker --> ins-button
+  ins-image-picker --> ins-backdrop
+  ins-image-picker --> ins-card
+  style ins-image-picker fill:#f9f,stroke:#333,stroke-width:4px
 ```
-<ins-image-picker type='picture'></ins-image-picker>
-```
 
-### Default Values
-```
-type = 'picture'
-buttonColor = 'blue'
-```
+----------------------------------------------
 
-### Browser Support
-- Chrome (and all Chromium based browsers)
-- Safari
-- Firefox
+*Built with [StencilJS](https://stenciljs.com/)*

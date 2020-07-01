@@ -1,4 +1,4 @@
-# ins-checkbox
+# ins-toggle-switch
 
 
 
@@ -13,7 +13,7 @@
 | `disabled`   | `disabled`    |             | `boolean` | `undefined` |
 | `falseValue` | `false-value` |             | `string`  | `""`        |
 | `label`      | `label`       |             | `string`  | `undefined` |
-| `name`       | `name`        |             | `string`  | `""`        |
+| `name`       | `name`        |             | `string`  | `undefined` |
 | `trueValue`  | `true-value`  |             | `string`  | `""`        |
 | `value`      | `value`       |             | `string`  | `undefined` |
 
@@ -22,35 +22,9 @@
 
 | Event            | Description | Type               |
 | ---------------- | ----------- | ------------------ |
-| `insClick`       |             | `CustomEvent<any>` |
+| `insToggle`      |             | `CustomEvent<any>` |
 | `insValueChange` |             | `CustomEvent<any>` |
 
-
-## Methods
-
-### `updateCheckState(state: any) => Promise<void>`
-
-
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-
-## Dependencies
-
-### Used by
-
- - [ins-table](../ins-table)
-
-### Graph
-```mermaid
-graph TD;
-  ins-table --> ins-checkbox
-  style ins-checkbox fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

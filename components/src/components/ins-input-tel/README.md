@@ -1,39 +1,81 @@
-# Insites Input Tel```<ins-input-tel>```
+# ins-input-tel
 
-### Versions
-N/A
 
-### Basic Features
-Specifies an input field where the user can enter telephone number data.
 
-### Configuration Options
-| ATTRIBUTE | TYPE | DEFAULT | OPTIONS | DESCRIPTION |
-| ------- | ------- | ------- | ------- | ------- |
-| label | string | "" | any | Defines a label for an input element. |
-| areacodePlaceholder | string | "" | any | Specifies a short hint that describes the expected value of an areacode input field |
-| areacodeValue | string | "" | any | specifies the value of an area code input element |
-| phonenumPlaceholder | string| "" | any | Specifies a short hint that describes the expected value of an phonenum input field |
-| phonenumValue | string | "" | any | specifies the value of an phone number input element |
-| areaCode | string | "" | any | Specifies name of areacode input |
-| phoneNumber | string | "" | any | Specifies name of phone number input |
+<!-- Auto Generated Below -->
 
-### Usage Details
-```
-<ins-input-tel area-code-value="0906" label="number"></ins-input-tel>
-```
 
-### Default Values
-```
-label = "" 
-areacodePlaceholder = "" 
-areacodeValue = "" 
-phonenumPlaceholder = "" 
-phonenumValue = "" 
-areaCode = "" 
-phoneNumber = "" 
-```
+## Properties
 
-### Browser Support
-- Chrome (and all Chromium based browsers)
-- Safari
-- Firefox
+| Property              | Attribute              | Description | Type      | Default     |
+| --------------------- | ---------------------- | ----------- | --------- | ----------- |
+| `areaCode`            | `area-code`            |             | `string`  | `""`        |
+| `areacodePlaceholder` | `areacode-placeholder` |             | `string`  | `""`        |
+| `areacodeValue`       | `areacode-value`       |             | `string`  | `""`        |
+| `countryCode`         | `country-code`         |             | `string`  | `"61"`      |
+| `disabled`            | `disabled`             |             | `boolean` | `undefined` |
+| `errorMessage`        | `error-message`        |             | `string`  | `""`        |
+| `hasError`            | `has-error`            |             | `boolean` | `undefined` |
+| `label`               | `label`                |             | `string`  | `""`        |
+| `noAreacode`          | `no-areacode`          |             | `boolean` | `undefined` |
+| `phoneNumber`         | `phone-number`         |             | `string`  | `""`        |
+| `phonenumPlaceholder` | `phonenum-placeholder` |             | `string`  | `""`        |
+| `phonenumValue`       | `phonenum-value`       |             | `string`  | `""`        |
+| `readonly`            | `readonly`             |             | `boolean` | `undefined` |
+| `required`            | `required`             |             | `boolean` | `undefined` |
+
+
+## Events
+
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `insInput`       |             | `CustomEvent<any>` |
+| `insValueChange` |             | `CustomEvent<any>` |
+
+
+## Methods
+
+### `getCountryData() => Promise<any>`
+
+
+
+#### Returns
+
+Type: `Promise<any>`
+
+
+
+### `getValue() => Promise<string>`
+
+
+
+#### Returns
+
+Type: `Promise<string>`
+
+
+
+### `setCountry(country: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setCountryCode(code: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

@@ -16,7 +16,10 @@
 | `icon`         | `icon`          |             | `string`  | `""`        |
 | `label`        | `label`         |             | `string`  | `undefined` |
 | `maxDate`      | `max-date`      |             | `string`  | `""`        |
+| `maxTime`      | `max-time`      |             | `string`  | `""`        |
 | `minDate`      | `min-date`      |             | `string`  | `""`        |
+| `minTime`      | `min-time`      |             | `string`  | `""`        |
+| `mode`         | `mode`          |             | `string`  | `""`        |
 | `name`         | `name`          |             | `string`  | `undefined` |
 | `noMeridiem`   | `no-meridiem`   |             | `boolean` | `false`     |
 | `placeholder`  | `placeholder`   |             | `string`  | `""`        |
@@ -26,11 +29,26 @@
 
 ## Events
 
-| Event         | Description | Type               |
-| ------------- | ----------- | ------------------ |
-| `changeValue` |             | `CustomEvent<any>` |
-| `pick`        |             | `CustomEvent<any>` |
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `insInput`       |             | `CustomEvent<any>` |
+| `insValueChange` |             | `CustomEvent<any>` |
 
+
+## Dependencies
+
+### Used by
+
+ - [ins-datepicker](../ins-datepicker)
+ - [ins-timepicker](../ins-timepicker)
+
+### Graph
+```mermaid
+graph TD;
+  ins-datepicker --> ins-date-time
+  ins-timepicker --> ins-date-time
+  style ins-date-time fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 
