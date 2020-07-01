@@ -16,23 +16,21 @@ export class InsSidebarItem {
 
   @State() submenuVisible: boolean;
   @State() isActive: boolean;
-  // @State() rippleEl: HTMLElement;
-  // @State() rippleLink: HTMLElement;
   @State() formattedRoute: string;
   @State() showTooltip: boolean = false;
 
   @Method()
   async routePageHandler(e){
+    let redirect = false;
 
-    if(e){
-      e.preventDefault();
+    if (e) {
+      if (e === "landing") redirect = true
+      else e.preventDefault();
     }
 
     this.activate();
     let gettingCrumbs = true;
-    let currentClosesEl = this.insSidebarItemEl
-      .parentElement
-      .closest('ins-sidebar-item') as any;
+    let currentClosesEl = this.insSidebarItemEl.parentElement.closest('ins-sidebar-item');
 
     let crumbs = [];
 
@@ -42,7 +40,7 @@ export class InsSidebarItem {
       withSubmenu: this.withSubmenu,
       label: this.label,
       formattedRoute: this.formattedRoute
-    };
+    }
 
     crumbs.push(crumb);
 
@@ -62,19 +60,21 @@ export class InsSidebarItem {
     crumbs.reverse();
 
     this.toggleMenuNav();
-    this.routePage.emit({crumbs});
-
-    // let insAdminEl = document.querySelector('ins-admin');
-
-    // if (this.withSubmenu && insAdminEl.className.includes('mini')) {
-      this.hideSiblingsMenu();
-    // }
+    this.routePage.emit({ crumbs, redirect });
+    this.hideSiblingsMenu();
 
     let body = document.querySelector('body');
     body.style.overflowY = null;
 
     if (this.app) {
       document.querySelector('body').style.overflowY = 'hidden';
+    }
+
+    const mq = window.matchMedia("(max-width: 1260px)");
+    let menuBar = document.querySelector('ins-sidebar') as any;
+    if (mq.matches) {
+      document.querySelector('ins-admin').classList.add('mini');
+      menuBar.minimise();
     }
 
     return { crumbs }
@@ -93,6 +93,14 @@ export class InsSidebarItem {
     return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
   }
 
+  toggleSidebar() {
+    let insAdminEl = document.querySelector('ins-admin');
+    let menuBar = document.querySelector("ins-header") as any;
+    if (menuBar && insAdminEl.className.includes('mini')) {
+        menuBar.toggleSidebar();
+    }
+  }
+
   @Method()
   async showSubMenu(){
     let insAdminEl = document.querySelector('ins-admin');
@@ -102,6 +110,7 @@ export class InsSidebarItem {
     }
 
     this.submenuVisible = true;
+    this.toggleSidebar();
   }
 
   @Method()
@@ -112,7 +121,7 @@ export class InsSidebarItem {
   @Method()
   async activate(){
     this.deactivateSiblings();
-    let checkIfSubMenu = this.insSidebarItemEl.closest('.submenu-wrap') as any;
+    let checkIfSubMenu = this.insSidebarItemEl.closest('.submenu-wrap');
     if (checkIfSubMenu) {
       checkIfSubMenu.closest('ins-sidebar-item').activateParent();
     }
@@ -137,7 +146,7 @@ export class InsSidebarItem {
   }
 
   deactivateSiblings(){
-      let submenuWrapEls = this.insSidebarItemEl.closest('ins-sidebar').querySelectorAll('ins-sidebar-item') as any;
+    let submenuWrapEls = this.insSidebarItemEl.closest('ins-sidebar').querySelectorAll('ins-sidebar-item') as any;
 
     for (let i = 0; i < submenuWrapEls.length; ++i) {
       submenuWrapEls[i].deactivate();
@@ -150,15 +159,6 @@ export class InsSidebarItem {
   }
 
   componentDidLoad(){
-    // if (this.landingPage){
-    //   setTimeout(() => {
-    //     this.routePageHandler();
-    //   }, 300);
-    // }
-    // this.rippleEl = this.insSidebarItemEl.querySelector('.js-ripple');
-    // this.rippleLink = this.insSidebarItemEl.querySelector('.ins-ripple-link');
-    // this.rippleLink.addEventListener('click', this.toggleRiple.bind(this));
-
     let target = this.insSidebarItemEl.querySelector('.ins-ripple-button') as HTMLElement;
     this.insSidebarItemEl.addEventListener('click', e => {
       e.stopPropagation();
@@ -168,15 +168,11 @@ export class InsSidebarItem {
         this.addRippleEffect(e, target);
       }
     });
-
-    // if (this.landingPage){
-    //     this.activate();
-    // }
   }
 
   @Method()
   async formatRoute() {
-    return this.locFormatRoute()
+    return this.locFormatRoute();
   }
 
   locFormatRoute() {
@@ -186,28 +182,8 @@ export class InsSidebarItem {
       formattedUrl = this.formatUrl(formattedUrl);
       return '#/app/' + formattedUrl;
     }
-
     return this.link;
   }
-
-  // toggleRiple(e) {
-  //   let $this = this.rippleEl;
-  //   let $circle = $this.firstElementChild as HTMLElement;
-
-  //   if ($circle){
-  //     let x = e.pageX - $this.parentElement.offsetLeft;
-  //     let y = e.pageY - $this.parentElement.offsetTop - 50;
-
-  //     $circle.style.top = y + "px";
-  //     $circle.style.left = x + "px";
-
-  //     $this.classList.add("activated");
-
-  //     setTimeout(function() {
-  //       $this.classList.remove("activated");
-  //     }, 500);
-  //   }
-  // };
 
   mouseLeaveHandler(){
     let insAdminEl = document.querySelector('ins-admin');
@@ -231,9 +207,6 @@ export class InsSidebarItem {
           ${this.icon ? '' : 'no-icon'}` }>
 
           <div class="ins-ripple-button">
-            {/* <div class="ins-ripple js-ripple">
-              <span class="ins-ripple__circle"></span>
-            </div> */}
 
             <a onClick={() => this.showSubMenu()} class="ins-ripple-link">
 
@@ -272,9 +245,6 @@ export class InsSidebarItem {
             ${this.icon ? '' : 'no-icon'}`}>
 
             <div class="ins-ripple-button">
-              {/* <div class="ins-ripple js-ripple">
-                <span class="ins-ripple__circle"></span>
-              </div> */}
               {this.app ?
                 <a class="ins-ripple-link"
                   href={`${this.formattedRoute}`}>

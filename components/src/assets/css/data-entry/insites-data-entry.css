@@ -1303,7 +1303,8 @@ html [type=button] {
   display: inline-block;
   position: relative; }
   .ins-button-options-wrap button.has-options {
-    padding-right: 46px; }
+    padding-right: 46px;
+    margin-bottom: 0; }
   .ins-button-options-wrap button.has-options.is-loading {
     padding-right: 16px; }
   .ins-button-options-wrap .carets {
@@ -2039,6 +2040,81 @@ ins-input-file .file-restrictions span {
     color: #24be8d; }
   .ins-dropzone.auto-upload .dz-preview .dz-error-mark {
     color: #f27474; }
+
+ins-input-multiple .ins-input-multiple {
+  margin-bottom: 15px; }
+  ins-input-multiple .ins-input-multiple label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2c3148;
+    margin-bottom: 2px; }
+  ins-input-multiple .ins-input-multiple .error-message {
+    display: none;
+    font-size: 12px;
+    line-height: 16px;
+    color: #f27474; }
+  ins-input-multiple .ins-input-multiple-container {
+    padding: 6px 4px;
+    padding-bottom: 0;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e4e6ec;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    font-size: .875rem;
+    position: relative;
+    color: #8c94a4;
+    cursor: pointer;
+    -webkit-transition: border-color .15s ease-in,border-radius .15s ease-in;
+    transition: border-color .15s ease-in,border-radius .15s ease-in; }
+  ins-input-multiple .ins-input-multiple.active label {
+    color: #1e86e3; }
+  ins-input-multiple .ins-input-multiple.active .ins-input-multiple-container {
+    border: 1px solid #1e86e3; }
+  ins-input-multiple .ins-input-multiple.has-error label {
+    color: #f27474; }
+  ins-input-multiple .ins-input-multiple.has-error .error-message {
+    display: block; }
+  ins-input-multiple .ins-input-multiple.has-error .ins-input-multiple-container {
+    border: 1px solid #f27474; }
+  ins-input-multiple .ins-input-multiple.disabled label {
+    color: #8c94a4; }
+  ins-input-multiple .ins-input-multiple-choice {
+    display: inline-block;
+    background: #e4e6ec;
+    padding: 2px 8px;
+    border-radius: 5px;
+    position: relative;
+    padding-right: 28px;
+    margin: 0 5px 6px 5px;
+    cursor: pointer; }
+    ins-input-multiple .ins-input-multiple-choice span {
+      font-size: 14px;
+      color: #2c3148; }
+    ins-input-multiple .ins-input-multiple-choice .icon-close {
+      color: #8c94a4;
+      font-size: 7px;
+      margin-left: 10px;
+      position: absolute;
+      right: 8px;
+      top: calc(50% - 4px); }
+  ins-input-multiple .ins-input-multiple-text {
+    min-width: 200px;
+    display: block;
+    margin-bottom: 6px; }
+    ins-input-multiple .ins-input-multiple-text input, ins-input-multiple .ins-input-multiple-text input:focus, ins-input-multiple .ins-input-multiple-text input:active {
+      border: none;
+      outline: none;
+      box-shadow: none;
+      margin-bottom: 0;
+      padding: 0 5px;
+      height: 25px; }
+  ins-input-multiple .ins-input-multiple.readonly .ins-input-multiple-choice, ins-input-multiple .ins-input-multiple.disabled .ins-input-multiple-choice {
+    padding-right: 8px; }
+  ins-input-multiple .ins-input-multiple.readonly .has-value-readonly, ins-input-multiple .ins-input-multiple.disabled .has-value-readonly {
+    display: none; }
+  ins-input-multiple .ins-input-multiple.readonly input, ins-input-multiple .ins-input-multiple.disabled input {
+    background: #ffffff; }
 
 .ins-select-wrap {
   position: relative; }

@@ -1,15 +1,17 @@
-import { h, Component, Prop, Event, EventEmitter, State, Listen, Element, Method, Watch } from "@stencil/core";
+import {
+  h, Component, Prop, Event, EventEmitter, State, Listen, Element, Method, Watch
+} from "@stencil/core";
 
 @Component({ tag: 'ins-table' })
 export class InsTable {
   @Element() insTableEl: HTMLElement;
 
-  @Event() paginationChange: EventEmitter;
-  @Event() tableSearch: EventEmitter;
-  @Event() tableSort: EventEmitter;
-  @Event() tableBulkAction: EventEmitter;
-  @Event() tableRowAction: EventEmitter;
-  @Event() fieldChange: EventEmitter;
+  @Event() insPaginationChange: EventEmitter;
+  @Event() insTableSearch: EventEmitter;
+  @Event() insTableSort: EventEmitter;
+  @Event() insTableBulkAction: EventEmitter;
+  @Event() insTableRowAction: EventEmitter;
+  @Event() insFieldChange: EventEmitter;
 
   @Prop({ mutable: true }) noWrap: boolean = false;
   @Prop({ mutable: true }) searchPosition: string = "right";
@@ -95,9 +97,13 @@ export class InsTable {
     }
   }
 
+  numberWithCommas(x){
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   @Listen('onSearch')
   onSearchHandler(event) {
-    this.tableSearch.emit(event.detail);
+    this.insTableSearch.emit(event.detail);
   }
 
   @Listen('onClickInsButton')
@@ -243,7 +249,7 @@ export class InsTable {
     this.pageNumber = 1;
     this.pageSize = parseInt(event.target.value);
 
-    this.paginationChange.emit({
+    this.insPaginationChange.emit({
       pageSize: this.pageSize,
       pageNumber: this.pageNumber
     });
@@ -260,7 +266,7 @@ export class InsTable {
     // this.uncheckAll();
     // this.selectedRows = [];
 
-    this.paginationChange.emit({
+    this.insPaginationChange.emit({
       pageSize: this.pageSize,
       pageNumber: this.pageNumber
     });
@@ -272,7 +278,7 @@ export class InsTable {
     let to = this.pageSize * this.pageNumber;
     to = (to > this.totalCount) ? this.totalCount : to;
 
-    this.pageInfo = from + '-' + to + ' of ' + this.totalCount;
+    this.pageInfo = from + '-' + to + ' of ' + this.numberWithCommas(this.totalCount);
   }
 
   sortTable(column){
@@ -285,7 +291,7 @@ export class InsTable {
 
     this.sortKeyword = column;
 
-    this.tableSort.emit({
+    this.insTableSort.emit({
       keyword: this.sortKeyword,
       order: this.sortOrder ? 'asc':'desc',
     })
@@ -295,7 +301,7 @@ export class InsTable {
     let bulkActionEl = this.insTableEl.querySelector('ins-select[data-type="bulk-action"]') as any;
 
     if (bulkActionEl.value){
-      this.tableBulkAction.emit({
+      this.insTableBulkAction.emit({
         action: bulkActionEl.value,
         selections: this.selectedRows,
         updated_items: this.updatedRows
@@ -304,7 +310,7 @@ export class InsTable {
   }
 
   rowActionHandler(action, data, header){
-    this.tableRowAction.emit({ action, header, data });
+    this.insTableRowAction.emit({ action, header, data });
   }
 
   @Method()
@@ -371,7 +377,7 @@ export class InsTable {
   }
 
   openBody(element) {
-    let sectionHeight = (element.scrollHeight > 400 ? 400 : element.scrollHeight) + 26;
+    let sectionHeight = element.scrollHeight + 26;
     if (element.getAttribute('data-opened') != 'true') {
       element.style.height = sectionHeight + 'px';
     }
@@ -411,17 +417,19 @@ export class InsTable {
   @Listen('oninput')
   processEvent(event){
     if (event.target.id) {
-      let dataId = event.target.attributes["data-id"].value;
-      let item = this.tableData.find(item => item.id === dataId);
-      let copy = JSON.parse(JSON.stringify(item));
-      let prop = event.target.getAttribute('data-property');
+      if (event.target.attributes["data-id"]){
+        let dataId = event.target.attributes["data-id"].value;
+        let item = this.tableData.find(item => item.id === dataId);
+        let copy = JSON.parse(JSON.stringify(item));
+        let prop = event.target.getAttribute('data-property');
 
-      copy[prop] = event.detail.value || event.detail;
+        copy[prop] = event.detail.value || event.detail;
 
-      delete copy.__editing_ins_base_table_item;
-      event.table_detail = { label: prop, rowData: copy }
-      this.fieldChange.emit(event);
-      this.updateUpdatedRows(copy, prop);
+        delete copy.__editing_ins_base_table_item;
+        event.table_detail = { label: prop, rowData: copy }
+        this.insFieldChange.emit(event);
+        this.updateUpdatedRows(copy, prop);
+      }
     }
   }
 
@@ -548,7 +556,9 @@ export class InsTable {
 
             {this.withoutSearch ? '' : // || this.loadingScreen
               <div class={`ins-searchbar-container ${this.searchPosition === 'left' ? 'left' : ''}`}>
-                <ins-input placeholder={this.searchbarPlaceholder} value={this.initialSearch}></ins-input>
+                <ins-input placeholder={this.searchbarPlaceholder}
+                  value={this.initialSearch} icon="icon-search">
+                </ins-input>
               </div>
             }
           </div>
@@ -591,7 +601,7 @@ export class InsTable {
                             ${tableHeader.sortable ? 'sortable':''}`}>
 
                           {tableHeader.label}
-                          {tableHeader.sortable ?
+                          {tableHeader.sortable || this.sortKeyword === tableHeader.label ?
                             <span class={`icon-arrow-up
                               ${this.sortKeyword === tableHeader.label ? 'active' : ''}
                               ${!this.sortOrder && this.sortKeyword === tableHeader.label ? 'go-down' : ''}`}>
@@ -631,7 +641,7 @@ export class InsTable {
                             (item[tableHeader.label] && item[tableHeader.label] !== this.emptyValue)
                           ) ? 'has-image' : ''}
 
-                        ${tableHeader.hasTag ? `tagged ${item[tableHeader.label]}` : ''}
+                        ${tableHeader.hasTag ? `tagged ${item[`${tableHeader.label}_tagClass`] ? item[`${tableHeader.label}_tagClass`] :item[tableHeader.label]}` : ''}
                         ${tableHeader.editable ? `editable` : ''}
                         ${this.rowActions.length ? 'has-row-actions' : ''}
                         ${this.textOverflow === "ellipsis" ? 'overflow-ellipsis' : ''}
@@ -765,7 +775,7 @@ export class InsTable {
                             <td class={`
                               ${tableHeader.editable ? 'editable' : ''}
                               ${tableHeader.hasLink ? 'ibta-td-has-link' : ''}
-                              ${tableHeader.hasTag ? `tagged ${item[tableHeader.label]}` : ''}`}>
+                              ${tableHeader.hasTag ? `tagged ${item[`${tableHeader.label}_tagClass`] ? item[`${tableHeader.label}_tagClass`] : item[tableHeader.label]}` : ''}`}>
                               {item[tableHeader.label] ?
                                 <div>
                                   {!this.rowActions.length && item['RowLink']
@@ -816,7 +826,9 @@ export class InsTable {
           }
 
           {/* Pagination */}
-          <div class="ibt-table-wrap__settings">
+          <div class={`ibt-table-wrap__settings
+            ${this.withoutPagination ? "no-pagination":""}`}>
+
             {this.bulkActions.length ?
             <div class="ibt-table-action-container">
               <ins-select data-type="bulk-action"

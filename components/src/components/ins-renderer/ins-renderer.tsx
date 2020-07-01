@@ -89,10 +89,6 @@ export class InsRenderer {
   }
 
   componentWillLoad() {
-    // history.listen((location, action) => {
-    //     // location is an object like window.location
-    // });
-
     if (this.link) {
       this.route = {
         label: this.label ? this.label : 'Default Page',

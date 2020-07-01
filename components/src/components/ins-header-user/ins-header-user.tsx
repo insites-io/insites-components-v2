@@ -28,7 +28,7 @@ export class InsHeaderUser {
 
     if (currentCrumbs[currentCrumbs.length - 1].label !== 'My Profile'){
       currentCrumbs.push(newRoute);
-      insRendererEl.updateRoute(currentCrumbs);
+      insRendererEl.updateRoute(currentCrumbs, true, true);
     }
   }
 
@@ -47,15 +47,14 @@ export class InsHeaderUser {
 
   routePageHandlerMobile() {
     this.routePageHandler();
-    let insHeaderEl = document.querySelector('ins-header') as any;
+    let insHeaderEl = document.querySelector('ins-header');
     insHeaderEl.toggleNav();
   }
 
   deactivateRoutes(){
     let allSidebarItems = document.querySelectorAll('ins-sidebar-item');
     for (let i = 0; i < allSidebarItems.length; i++){
-      let sidebarItem = allSidebarItems[i] as any;
-      sidebarItem.deactivate();
+      allSidebarItems[i].deactivate();
     }
   }
 

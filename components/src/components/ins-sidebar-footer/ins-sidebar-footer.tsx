@@ -1,20 +1,36 @@
-import { h, Component, Element } from "@stencil/core";
+import { h, Component, Element, Method } from "@stencil/core";
 
 @Component({ tag: 'ins-sidebar-footer' })
 export class InsSidebarFooter {
   @Element() InsSidebarFooter: HTMLElement;
 
   componentDidLoad(){
-    let items = this.InsSidebarFooter.querySelectorAll('.ins-sidebar-footer-item-wrap') as any;
+    let items = this.InsSidebarFooter
+      .querySelectorAll('.slot-wrapper .ins-sidebar-footer-item-wrap') as any;
+
     for (let i = 0; i < items.length; i++) {
       items[i].style.width = `${100 / items.length}%`;
     }
   }
 
+  @Method()
+  async toggleSidebar() {
+      let menuBar = document.querySelector("ins-header") as any;
+      if (menuBar)
+          menuBar.toggleSidebar();
+  }
+
   render() {
     return (
       <div class="ins-sidebar-footer-wrap">
-        <slot />
+        <ins-sidebar-footer-button
+          class="ins-sidebar-footer-menu-toggle"
+          icon="icon-more-vertical"
+          onClick={() => this.toggleSidebar()}>
+        </ins-sidebar-footer-button>
+        <div class="slot-wrapper">
+          <slot />
+        </div>
       </div>
     )
   }

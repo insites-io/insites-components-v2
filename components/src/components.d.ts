@@ -42,6 +42,7 @@ export namespace Components {
         "stacked": boolean;
     }
     interface InsBreadcrumbs {
+        "breadcrumbs": Array<any>;
         "updateCrumbs": (crumbs: any, noRedirect?: boolean) => Promise<void>;
     }
     interface InsButton {
@@ -304,6 +305,19 @@ export namespace Components {
         "uploadErrorNotification": () => Promise<void>;
         "value": any;
     }
+    interface InsInputMultiple {
+        "disabled": boolean;
+        "errorMessage": string;
+        "hasError": boolean;
+        "label": string;
+        "name": string;
+        "readonly": boolean;
+        "removeDuplicates": boolean;
+        "setValue": (value: any) => Promise<void>;
+        "temp": string;
+        "val": () => Promise<any>;
+        "value": any;
+    }
     interface InsInputTel {
         "areaCode": string;
         "areacodePlaceholder": string;
@@ -467,6 +481,7 @@ export namespace Components {
         "minimise": () => Promise<void>;
     }
     interface InsSidebarFooter {
+        "toggleSidebar": () => Promise<void>;
     }
     interface InsSidebarFooterButton {
         "icon": string;
@@ -819,6 +834,12 @@ declare global {
         prototype: HTMLInsInputFileElement;
         new (): HTMLInsInputFileElement;
     };
+    interface HTMLInsInputMultipleElement extends Components.InsInputMultiple, HTMLStencilElement {
+    }
+    var HTMLInsInputMultipleElement: {
+        prototype: HTMLInsInputMultipleElement;
+        new (): HTMLInsInputMultipleElement;
+    };
     interface HTMLInsInputTelElement extends Components.InsInputTel, HTMLStencilElement {
     }
     var HTMLInsInputTelElement: {
@@ -1052,6 +1073,7 @@ declare global {
         "ins-info-table": HTMLInsInfoTableElement;
         "ins-input": HTMLInsInputElement;
         "ins-input-file": HTMLInsInputFileElement;
+        "ins-input-multiple": HTMLInsInputMultipleElement;
         "ins-input-tel": HTMLInsInputTelElement;
         "ins-line-chart": HTMLInsLineChartElement;
         "ins-loader": HTMLInsLoaderElement;
@@ -1125,6 +1147,7 @@ declare namespace LocalJSX {
         "stacked"?: boolean;
     }
     interface InsBreadcrumbs {
+        "breadcrumbs"?: Array<any>;
         "onRoutePage"?: (event: CustomEvent<any>) => void;
     }
     interface InsButton {
@@ -1389,6 +1412,19 @@ declare namespace LocalJSX {
         "showNotifications"?: boolean;
         "value"?: any;
     }
+    interface InsInputMultiple {
+        "disabled"?: boolean;
+        "errorMessage"?: string;
+        "hasError"?: boolean;
+        "label"?: string;
+        "name"?: string;
+        "onInsChange"?: (event: CustomEvent<any>) => void;
+        "onInsInput"?: (event: CustomEvent<any>) => void;
+        "readonly"?: boolean;
+        "removeDuplicates"?: boolean;
+        "temp"?: string;
+        "value"?: any;
+    }
     interface InsInputTel {
         "areaCode"?: string;
         "areacodePlaceholder"?: string;
@@ -1610,12 +1646,12 @@ declare namespace LocalJSX {
         "loaderTitle"?: any;
         "loadingScreen"?: boolean;
         "noWrap"?: boolean;
-        "onFieldChange"?: (event: CustomEvent<any>) => void;
-        "onPaginationChange"?: (event: CustomEvent<any>) => void;
-        "onTableBulkAction"?: (event: CustomEvent<any>) => void;
-        "onTableRowAction"?: (event: CustomEvent<any>) => void;
-        "onTableSearch"?: (event: CustomEvent<any>) => void;
-        "onTableSort"?: (event: CustomEvent<any>) => void;
+        "onInsFieldChange"?: (event: CustomEvent<any>) => void;
+        "onInsPaginationChange"?: (event: CustomEvent<any>) => void;
+        "onInsTableBulkAction"?: (event: CustomEvent<any>) => void;
+        "onInsTableRowAction"?: (event: CustomEvent<any>) => void;
+        "onInsTableSearch"?: (event: CustomEvent<any>) => void;
+        "onInsTableSort"?: (event: CustomEvent<any>) => void;
         "pageNumber"?: number;
         "pageSize"?: number;
         "pageSizeOptions"?: any;
@@ -1754,6 +1790,7 @@ declare namespace LocalJSX {
         "ins-info-table": InsInfoTable;
         "ins-input": InsInput;
         "ins-input-file": InsInputFile;
+        "ins-input-multiple": InsInputMultiple;
         "ins-input-tel": InsInputTel;
         "ins-line-chart": InsLineChart;
         "ins-loader": InsLoader;
@@ -1822,6 +1859,7 @@ declare module "@stencil/core" {
             "ins-info-table": LocalJSX.InsInfoTable & JSXBase.HTMLAttributes<HTMLInsInfoTableElement>;
             "ins-input": LocalJSX.InsInput & JSXBase.HTMLAttributes<HTMLInsInputElement>;
             "ins-input-file": LocalJSX.InsInputFile & JSXBase.HTMLAttributes<HTMLInsInputFileElement>;
+            "ins-input-multiple": LocalJSX.InsInputMultiple & JSXBase.HTMLAttributes<HTMLInsInputMultipleElement>;
             "ins-input-tel": LocalJSX.InsInputTel & JSXBase.HTMLAttributes<HTMLInsInputTelElement>;
             "ins-line-chart": LocalJSX.InsLineChart & JSXBase.HTMLAttributes<HTMLInsLineChartElement>;
             "ins-loader": LocalJSX.InsLoader & JSXBase.HTMLAttributes<HTMLInsLoaderElement>;

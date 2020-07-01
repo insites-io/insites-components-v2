@@ -1,8 +1,8 @@
-import { h, Component, State, Method, Event, EventEmitter } from '@stencil/core';
+import { h, Component, Prop, Method, Event, EventEmitter } from '@stencil/core';
 
 @Component({ tag: 'ins-breadcrumbs' })
 export class InsBreadCrumbs {
-  @State() breadcrumbs: Array<any> = [];
+  @Prop({ mutable: true }) breadcrumbs: Array<any> = [];
   @Event() routePage: EventEmitter;
 
   routePageHandler(crumb, index){
@@ -12,7 +12,8 @@ export class InsBreadCrumbs {
       this.breadcrumbs.splice((index + 1), count);
       let newRef = JSON.parse(JSON.stringify(this.breadcrumbs));
       this.routePage.emit({
-        crumbs: newRef
+        crumbs: newRef,
+        redirect: true
       });
     }
   }
@@ -22,10 +23,11 @@ export class InsBreadCrumbs {
     this.breadcrumbs = crumbs;
     let parsedCrumbs = JSON.stringify(crumbs);
     window.localStorage.setItem('ins_breadcrumbs', parsedCrumbs);
+
     let lastCrumb = JSON.parse(parsedCrumbs).pop();
     if (!lastCrumb.app && !lastCrumb.withSubmenu){
       if (!noRedirect) {
-        window.location.assign(lastCrumb.link);
+        document.location.hash = lastCrumb.link;
       }
     }
   }
@@ -35,7 +37,6 @@ export class InsBreadCrumbs {
       return (
         <div class="ins-breadcrumbs">
           <ul>
-            {/* <li>Home <span class="icon-chevron-right"></span></li> */}
             {this.breadcrumbs.map((crumb, index) => {
               return (
                 <li>

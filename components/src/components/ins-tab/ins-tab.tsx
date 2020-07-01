@@ -84,7 +84,8 @@ export class InsTab {
     this.insTabHeaders.forEach(item => {
       item.classList.remove('active');
     });
-    this.insTabHeaders[index].classList.add('active');
+    let el = this.insTabHeaders[index];
+    if (el) el.classList.add('active');
   }
 
   setDisabledTabs() {
@@ -161,21 +162,24 @@ export class InsTab {
   @Listen('tabItemDisableToggled')
   tabItemDisableToggledHandler(event){
     let tabIndex = this.insTabItems.indexOf(event.target);
-
-    if (event.detail){
-      this.insTabHeaders[tabIndex].classList.add('disabled');
-    } else {
-      this.insTabHeaders[tabIndex].classList.remove('disabled');
+    if (this.insTabHeaders[tabIndex]) {
+      if (event.detail){
+        this.insTabHeaders[tabIndex].classList.add('disabled');
+      } else {
+        this.insTabHeaders[tabIndex].classList.remove('disabled');
+      }
     }
   }
 
   @Listen('tabItemError')
   checkForErrors(event){
     let errorIndex = this.insTabItems.indexOf(event.target);
-    if (event.detail){
-      this.insTabHeaders[errorIndex].classList.add('has-error');
-    } else {
-      this.insTabHeaders[errorIndex].classList.remove('has-error');
+    if (this.insTabHeaders[errorIndex]) {
+      if (event.detail){
+        this.insTabHeaders[errorIndex].classList.add('has-error');
+      } else {
+        this.insTabHeaders[errorIndex].classList.remove('has-error');
+      }
     }
   }
 

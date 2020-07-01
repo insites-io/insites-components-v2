@@ -57,8 +57,9 @@ export class InsHeader {
     let $this = this;
 
     if (mq.matches) {
-      if (!$this.sidebarMini) {
-        $this.toggleSidebar();
+      this.insAdminEl.classList.add('mini');
+      if (!$this.sidebarMini && this.insSidebarEl) {
+        this.insSidebarEl.minimise();
       }
     } else {
       if ($this.sidebarMini) {
@@ -66,16 +67,6 @@ export class InsHeader {
       }
     }
   }
-
-  // toggleMinimise() {
-  //     let $this = this;
-
-  //     if(window.outerWidth <= 1024 && !$this.sidebarMini) {
-  //         $this.toggleSidebar();
-  //     } else if(window.outerWidth > 1024 && $this.sidebarMini) {
-  //         $this.toggleSidebar();
-  //     }
-  // }
 
   @Method()
   async toggleSidebar(){
@@ -102,7 +93,6 @@ export class InsHeader {
         let submenuWrap = submenuWrapEls[i] as any;
         submenuWrap.hideSubMenu();
       }
-
       for (let i = 0; i < footerMenus.length; ++i) {
         let footerMenu = footerMenus[i] as any;
         footerMenu.hideMenu();
@@ -118,13 +108,10 @@ export class InsHeader {
     }
     this.insNavEl.classList.toggle('active');
     this.insHeaderEl.querySelector('.ellipsis').classList.toggle('active');
-    // console.log('fire');
   }
 
   toggleFullScreen(){
-
     let doc = document as any;
-    // // console.log('test');
 
     if (this.fullScreenState) {
       if (doc.cancelFullScreen) {
@@ -142,19 +129,6 @@ export class InsHeader {
       rfs.call(el);
     }
 
-    // if (this.fullScreenState) {
-    //   if (doc.exitFullscreen){
-    //     doc.exitFullscreen();
-    //   } else if (doc.webkitExitFullscreen){
-    //     doc.webkitExitFullscreen();
-    //   } else if (doc.mozCancelFullscreen) {
-    //     doc.mozCancelFullscreen();
-    //   }
-    // } else {
-    //   let el = doc.documentElement;
-    //   let rfs = el.requestFullscreen || el.webkitRequestFullScreen || el.mozRequestFullScreen;
-    //   rfs.call(el);
-    // }
     this.fullScreenState = !this.fullScreenState;
   }
 
