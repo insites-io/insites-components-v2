@@ -1,11 +1,13 @@
 import { h, Component, Element, Prop, Method, State, Event, EventEmitter } from "@stencil/core";
-declare var SimpleMDE;
+import "../../assets/js/simplemde.min.js";
 
-@Component({ tag: "ins-markdown-editor" })
+@Component({ 
+  tag: "ins-markdown-editor",
+  styleUrl: "../../../node_modules/simplemde/dist/simplemde.min.css"
+})
 export class InsMarkdownEditor {
   @Element() insMarkdownEditorEl: HTMLElement;
-  @Event() valueChange: EventEmitter;
-
+  @Event() insValueChange: EventEmitter;
   @State() editor: any;
 
   @Prop({ mutable: true }) label: string = "";
@@ -17,7 +19,7 @@ export class InsMarkdownEditor {
   @Prop({ mutable: true }) hasError: boolean;
 
   @Method()
-  val() {
+  async val() {
     return this.editor.value();
   }
 
@@ -46,7 +48,7 @@ export class InsMarkdownEditor {
     });
 
     this.editor.codemirror.on("change", () => {
-      this.valueChange.emit(this.editor.value());
+      this.insValueChange.emit(this.editor.value());
     });
   }
 
@@ -63,7 +65,7 @@ export class InsMarkdownEditor {
   }
 
   componentDidLoad() {
-    this.editor = new SimpleMDE({
+    this.editor = new window["SimpleMDE"]({
       element: this.insMarkdownEditorEl.querySelector('.markdown-editor'),
       spellChecker: false,
       status: false,
@@ -79,17 +81,19 @@ export class InsMarkdownEditor {
 
   render() {
     return (
-      <div class={`ins-markdown-editor ${this.hasError ? 'is-invalid' : ''}`}>
-        <label>{`${this.label}${this.required ? ' *' : ''}`}</label>
-        <textarea
-          name={this.name}
-          class="markdown-editor">
-        </textarea>
-        {this.hasError ?
-          <div class="ins-form-error">
-            {this.errorMessage ? this.errorMessage : `${this.label} field is required`}
-          </div>
-        : ''}
+      <div class={`ins-markdown-editor ins-form-field-wrap ${this.hasError ? 'is-invalid' : ''}`}>
+        <label class="ins-form-label">
+          {`${this.label}${this.required ? ' *' : ''}`}
+        </label>
+
+        <div class="markdown-editor-wrap ins-form-field">
+          <textarea name={this.name} class="markdown-editor"></textarea>
+          {this.hasError ?
+            <div class="ins-form-error">
+              {this.errorMessage ? this.errorMessage : `${this.label} field is required`}
+            </div>
+          : ''}
+        </div>
       </div>
     )
   }

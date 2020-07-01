@@ -1,6 +1,5 @@
-import { h, Component, State, Event, EventEmitter, Prop, Method } from '@stencil/core';
+import { h, Component, Event, EventEmitter, Prop, Method } from '@stencil/core';
 import Sortable from 'sortablejs';
-
 import { SortableGroup, ISortableGroup } from "./ins-sort.model";
 
 @Component({ tag: 'ins-sort' })
@@ -11,66 +10,66 @@ export class InsSort {
 
   @Prop() ignoreElements: string = null
   @Prop() disabled: boolean = false
-  @Prop() draggable: boolean = true;
+  @Prop() insDraggable: boolean = true;
   @Prop() droppable: boolean = true;
   @Prop() cloneOnDrag: boolean = false;
   @Prop() sortGroup: string = "insites-sort-group"
   @Prop() wrapperClass: string = "insites-sortable"
   @Prop() sort: boolean = true
 
-  @State() insitesSortable
-  @State() group: ISortableGroup = new SortableGroup();
+  insitesSortable
+  group: ISortableGroup = new SortableGroup();
 
-  @Event() onDragStart: EventEmitter<Object>;
+  @Event() insDragStart: EventEmitter<Object>;
   onDraggingStart(event) {
-    this.onDragStart.emit(event);
+    this.insDragStart.emit(event);
   }
 
-  @Event() onDragEnd: EventEmitter<Object>;
+  @Event() insDragEnd: EventEmitter<Object>;
   onDraggingEnd(event) {
-    this.onDragEnd.emit(event);
+    this.insDragEnd.emit(event);
   }
 
-  @Event() onChoose: EventEmitter<Object>;
+  @Event() insChoose: EventEmitter<Object>;
   onChooseElement(event) {
-    this.onChoose.emit(event);
+    this.insChoose.emit(event);
   }
 
-  @Event() onUpdate: EventEmitter<Object>;
+  @Event() insUpdate: EventEmitter<Object>;
   onUpdating(event) {
-    this.onUpdate.emit(event);
+    this.insUpdate.emit(event);
   }
 
-  @Event() onMove: EventEmitter<Object>;
+  @Event() insMove: EventEmitter<Object>;
   onMoving(event) {
-    this.onMove.emit(event);
+    this.insMove.emit(event);
   }
 
-  @Event() onAdd: EventEmitter<Object>;
+  @Event() insAdd: EventEmitter<Object>;
   onAdding(event) {
-    this.onAdd.emit(event);
+    this.insAdd.emit(event);
   }
 
-  @Event() onRemove: EventEmitter<Object>;
+  @Event() insRemove: EventEmitter<Object>;
   onRemoving(event) {
-    this.onRemove.emit(event);
+    this.insRemove.emit(event);
   }
 
-  @Event() onClone: EventEmitter<Object>;
+  @Event() insClone: EventEmitter<Object>;
   onCloning(event) {
-    this.onClone.emit(event);
+    this.insClone.emit(event);
   }
 
-  @Event() onPositionChanged: EventEmitter<Object>;
+  @Event() insPositionChanged: EventEmitter<Object>;
   onPositionChanging(event) {
-    this.onPositionChanged.emit(event);
+    this.insPositionChanged.emit(event);
   }
 
   @Method()
-  getSortOrder():Object{
+  async getSortOrder(){
     let instance = Sortable.get(this.body),
         order = instance.toArray(),
-        result:Object = {}
+        result = {}
     order.forEach((value, key) => {
       result[key] = value
     });
@@ -79,6 +78,10 @@ export class InsSort {
   }
 
   @Method()
+  async arrange(sortable){
+    this.load(sortable);
+  }
+
   load(sortable: any[] = []) {
     let order = []
     if (typeof sortable === 'string' || sortable instanceof String)
@@ -96,7 +99,7 @@ export class InsSort {
   //   return Sortable.get(this.body)
   // }
 
-  @Event() onDrop: EventEmitter<Object>;
+  @Event() insDrop: EventEmitter<Object>;
   private initSortable() {
     let
       el: HTMLDivElement = this.body,
@@ -127,8 +130,8 @@ export class InsSort {
            */
           set: (e) => {
             let order = e ? e.toArray() : [];
-            
-            _this.onDrop.emit({ e, order })
+
+            _this.insDrop.emit({ e, order })
             return order
           }
         },
@@ -155,10 +158,10 @@ export class InsSort {
   private loadSortGroupConfig() {
 
     let
-      pull: boolean | string = this.draggable,
+      pull: boolean | string = this.insDraggable,
       put: boolean = this.droppable;
 
-    if (this.cloneOnDrag && this.draggable)
+    if (this.cloneOnDrag && this.insDraggable)
       pull = "clone"
 
     this.group = new SortableGroup(this.sortGroup, pull, put)

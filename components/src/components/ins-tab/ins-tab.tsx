@@ -152,7 +152,7 @@ export class InsTab {
   }
 
   @Method()
-  activateTab(place){
+  async activateTab(place){
     let index = place - 1;
     this.setActiveTab(index);
     this.setActiveTabItem(index);

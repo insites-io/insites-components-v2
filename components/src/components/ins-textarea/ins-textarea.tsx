@@ -1,4 +1,4 @@
-import { Component, Prop, Event, State, EventEmitter, Element } from "@stencil/core";
+import { h, Component, Prop, Event, State, EventEmitter, Element } from "@stencil/core";
 
 @Component({ tag: 'ins-textarea' })
 export class InsTextarea {
@@ -47,12 +47,20 @@ export class InsTextarea {
 
   render(){
     return (
-      <div class={`ins-textarea-wrap ${this.hasError ? 'is-invalid' : ''}`}>
+      <div class={`ins-textarea-wrap ins-form-field-wrap ${this.hasError ? 'is-invalid' : ''}`}>
 
         <div class="ins-ta">
-          {this.label ? <label class={`${this.disabled ? 'disabled' : ''} ${this.activeLabel ? 'active' : ''}`}>{this.label}</label> : '' }
+          {this.label ? 
+            <label class={`ins-form-label 
+              ${this.disabled ? 'disabled' : ''} 
+              ${this.activeLabel ? 'active' : ''}`}>
+                
+              {this.label}
+            </label> 
+          : '' }
+          
           <textarea
-            class="ins-textarea-field"
+            class="ins-textarea-field ins-form-field"
             name={this.name}
             placeholder={this.placeholder}
             value={this.value}

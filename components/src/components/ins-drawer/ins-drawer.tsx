@@ -3,7 +3,7 @@ import { h, Component, Prop, Element, Method, Watch, Event, EventEmitter } from 
 @Component({ tag: 'ins-drawer' })
 export class InsDrawer {
   @Element() insDrawer: HTMLElement;
-  @Event() toggleDrawer: EventEmitter;
+  @Event() insToggle: EventEmitter;
   @Prop({ mutable: true }) isOpen: boolean = false;
   @Prop({ mutable: true }) position: string = ""; //[left, right]
   @Prop({ mutable: true }) showHeader: boolean = true;
@@ -99,14 +99,14 @@ export class InsDrawer {
   }
 
   toggleDrawerEmitter() {
-    this.toggleDrawer.emit({
+    this.insToggle.emit({
       status: this.isOpen ? "open" : "close",
       label: this.label
     })
   }
 
   @Method()
-  setDrawerState(status) {
+  async setDrawerState(status) {
     this.isOpen = status;
   }
 

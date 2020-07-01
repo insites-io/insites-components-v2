@@ -1,12 +1,15 @@
-import { Component, Prop, Element, State, Method, Event, EventEmitter } from '@stencil/core';
-declare var $
+import { h, Component, Prop, Element, Method, Event, EventEmitter } from '@stencil/core';
+import intlTelInput from "intl-tel-input";
 
-@Component({ tag: 'ins-input-tel' })
+@Component({
+  tag: 'ins-input-tel',
+  styleUrls: ["../../../node_modules/intl-tel-input/build/css/intlTelInput.min.css"]
+})
 
 export class InsInputTel {
   @Element() insInputTelEl: HTMLElement;
-  @Event() insInputTelChange: EventEmitter;
-  @Event() valueChange: EventEmitter;
+  @Event() insInput: EventEmitter;
+  @Event() insValueChange: EventEmitter;
 
   @Prop({ mutable: true }) label: string = "";
   @Prop({ mutable: true }) areacodePlaceholder: string = "";
@@ -22,52 +25,26 @@ export class InsInputTel {
   @Prop({ mutable: true }) disabled: boolean;
   @Prop({ mutable: true }) readonly: boolean;
   @Prop({ mutable: true }) noAreacode: boolean;
-  @State() responsiveView: boolean;
-  @State() activeLabel: boolean;
-  @State() dropdownIsOpen: boolean = false;
-  @State() _areaCode: any;
-  @State() _phoneNumber: any;
-  @State() _label: any;
 
-  @Method()
-  val(attr, value) {
-    let data = {
-      label: this.label,
-      areacodePlaceholder: this.areacodePlaceholder,
-      areacodeValue: this.areacodeValue,
-      phonenumPlaceholder: this.phonenumPlaceholder,
-      phonenumValue: this.phonenumValue,
-      countryCode: this.countryCode,
-      areaCode: this.areaCode,
-      phoneNumber: this.phoneNumber,
-      errorMessage: this.errorMessage,
-      required: this.required,
-      hasError: this.hasError,
-      disabled: this.disabled,
-      readonly: this.readonly
-    }
-    if (attr && typeof attr == "object" && !value) {
-      // console.log('this is json');
-    } else if (attr && !value) {
-      return this[attr];
-    } else if (attr && value) {
-      this[attr] = value;
-    } else {
-      return data;
-    }
-  }
+  responsiveView: boolean;
+  activeLabel: boolean;
+  dropdownIsOpen: boolean = false;
+  _phone: any;
+  _areaCode: any;
+  _phoneNumber: any;
+  _label: any;
+  _iti: any;
 
   componentDidLoad() {
-    if ((window as any).$) {
-      this._areaCode = this.insInputTelEl.querySelector('.area-code');
-      this._phoneNumber = this.insInputTelEl.querySelector('.phone-number');
-      this._label = this.insInputTelEl.querySelector('label');
+    this._phone = this.insInputTelEl.querySelector('.phone');
+    this._areaCode = this.insInputTelEl.querySelector('.area-code');
+    this._phoneNumber = this.insInputTelEl.querySelector('.phone-number');
+    this._label = this.insInputTelEl.querySelector('label');
 
-      this.initintTel();
-      this.initKeyUpEvents();
-      this.initFocusEvents();
-      this.initBlurEvents();
-    }
+    this.initintTel();
+    this.initKeyPressEvents();
+    this.initFocusEvents();
+    this.initBlurEvents();
 
     if (this.countryCode){
       this.setCountryCode(`+${this.countryCode}`);
@@ -75,111 +52,74 @@ export class InsInputTel {
   }
 
   initBlurEvents(){
-    let self = this;
-    $(this._phoneNumber).on('blur', () => {
-      setTimeout(() => {
-        if (!$(this._areaCode).is(':focus') && !self.dropdownIsOpen) {
-          self.deactivateLabel();
-        }
-      });
-    });
-
-    $(this._areaCode).on('blur', () => {
-      setTimeout(() => {
-        if (!$(this._phoneNumber).is(':focus') && !self.dropdownIsOpen) {
-          self.deactivateLabel();
-        }
-      });
-    });
+    this._phoneNumber.addEventListener('blur', this.deactivateLabel.bind(this));
+    this._areaCode.addEventListener('blur', this.deactivateLabel.bind(this));
   }
 
   initFocusEvents(){
-    let self = this;
-    $(this._phoneNumber).on('focus', self.activateLabel.bind(self));
-    $(this._areaCode).on('focus', self.activateLabel.bind(self));
+    this._phoneNumber.addEventListener('focus', this.activateLabel.bind(this));
+    this._areaCode.addEventListener('focus', this.activateLabel.bind(this));
+  }
+  
+  initKeyPressEvents(){
+    this._areaCode.addEventListener('keypress', e => this.validateValue(e, 5, 'area_code'));
+    this._phoneNumber.addEventListener('keypress', e => this.validateValue(e, 11, 'phone_number'));
   }
 
-  initKeyUpEvents(){
+  validateValue(event, maxChars, field){
+    let evt = event as any;
+    let value = evt.target.value;
 
-    let self = this;
-    let _input = $(".row-col-container .ins-form-field");
-
-    _input.on("keyup", function (event) {
-      $(this).val($(this).val().replace(/[^\d].+/, ""));
-
-      if ((event.which < 48 || event.which > 57)) {
+    if ((event.which < 48 || event.which > 57)
+        && (event.which !== 8 && event.which !== 9 && event.which !== 32)) {
         event.preventDefault();
-      }
-    });
+    }
 
-    $(this._areaCode).keyup(function () {
-      var maxChars = 5;
-      if ($(this).val().length > maxChars) {
-        $(this).val($(this).val().substr(0, maxChars));
-      }
+    if (value.length > maxChars) {
+      evt.target.value = value.substr(0, maxChars);
+    }
 
-      self.areacodeValue = $(this).val();
-      self.insInputTelChange.emit({
-        field: 'area_code',
-        value: $(this).val()
-      });
-      self.valueChange.emit(self.getValue());
-    });
-
-    $(this._phoneNumber).keyup(function () {
-      var maxChars = 10;
-      if ($(this).val().length > maxChars) {
-        $(this).val($(this).val().substr(0, maxChars));
-      }
-
-      self.phonenumValue = $(this).val();
-      self.insInputTelChange.emit({
-        field: 'phone_number',
-        value: $(this).val()
-      });
-      self.valueChange.emit(self.getValue());
-    });
+    this.insInput.emit({ field, value });
+    this.insValueChange.emit(this.getValue());
   }
 
   initintTel() {
-    let phone = this.insInputTelEl.querySelector('.phone');
-
-    $(phone).intlTelInput({
+    this._iti = intlTelInput(this._phone, {
       autoPlaceholder: "off",
       initialCountry: "au",
       preferredCountries: ['au'],
       separateDialCode: true
     });
 
-    $(phone).on("countrychange", () => {
-      let data = this.getCountryData();
-
+    this._phone.addEventListener("countrychange", async () => {
+      let data = await this.getCountryData();
       this.countryCode = data.dialCode;
-      this.insInputTelChange.emit({
+      this.insInput.emit({
         field: 'country_code',
         value: data
-      });
-      this.valueChange.emit(this.getValue());
+      })
+      this.insValueChange.emit(this.getValue());
     });
 
-    $(phone).on("open:countrydropdown", () => {
+    this._phone.addEventListener("open:countrydropdown", () => {
       this.activateLabel();
       this.dropdownIsOpen = true;
     });
 
-    $(phone).on("close:countrydropdown", () => {
+    this._phone.addEventListener("close:countrydropdown", () => {
       this.dropdownIsOpen = false;
 
-      if (!$(this._phoneNumber).is(':focus') && !$(this._areaCode).is(':focus')){
+      if (this._phoneNumber !== document.activeElement
+        && this._areaCode !== document.activeElement){
         this.deactivateLabel();
       }
     });
 
-    this.insInputTelEl.querySelector('.iti-arrow').className = "icon-caret-down";
+    this.insInputTelEl.querySelector('.iti__arrow').className = "icon-caret-down";
   }
 
   @Method()
-  getValue(){
+  async getValue(){
     let value = `+${this.countryCode}`
     if (!this.noAreacode){
       value += this.areacodeValue;
@@ -189,39 +129,20 @@ export class InsInputTel {
   }
 
   @Method()
-  getCountryData() {
-    if ((window as any).$) {
-      let phone = this.insInputTelEl.querySelector('.phone');
-      return $(phone).intlTelInput('getSelectedCountryData');
-    }
+  async getCountryData() {
+    return this._iti.getSelectedCountryData();
   }
 
   @Method()
-  setCountry(country) {
-    if ((window as any).$) {
-      let phone = this.insInputTelEl.querySelector('.phone');
-      $(phone).intlTelInput('setCountry', country);
-    }
+  async setCountry(country) {
+    this._iti.setCountry(country);
   }
 
   @Method()
-  setCountryCode(code) {
-    if ((window as any).$) {
-      let phone = this.insInputTelEl.querySelector('.phone');
-      $(phone).intlTelInput('setNumber', code);
-    }
+  async setCountryCode(code) {
+    this._iti.setNumber(code);
   }
-
-  isNumberOnly(event) {
-    event = (event) ? event : window.event;
-    let _charCode = (event.which) ? event.which : event.keyCode;
-
-    if (_charCode > 31 && (_charCode < 48 || _charCode > 57)) {
-      return false
-    }
-    return true;
-  }
-
+  
   activateLabel() {
     this._label.classList.add('active');
   }
@@ -232,17 +153,20 @@ export class InsInputTel {
 
   render() {
     return (
-      <div class={`ins-input-tel-wrap
+      <div class={`ins-input-tel-wrap ins-form-field-wrap
         ${this.hasError ? 'is-invalid':''}
         ${this.responsiveView ? 'responsive' : ''}
         ${this.noAreacode ? 'no-areacode' : ''}
         ${this.readonly ? 'read-only' : ''} `}>
 
-        <label>{this.label}</label>
+        <label class="ins-form-label">{this.label}</label>
 
         <div class="row-col-container clearfix">
           <div class="col-container column-1">
-            <input type="tel" class="phone" disabled={this.disabled} readonly={this.readonly} />
+            <input type="tel" class="phone ins-form-field"
+              disabled={this.disabled}
+              readonly={this.readonly} />
+
           </div>
 
           <div class="col-container column-2">
@@ -253,7 +177,6 @@ export class InsInputTel {
               name={this.areaCode}
               placeholder={this.areacodePlaceholder}
               value={this.areacodeValue}
-              onKeyPress={e => this.isNumberOnly(e)}
               required={this.required ? true : false}
               disabled={this.disabled} readonly={this.readonly} />
           </div>
@@ -265,7 +188,6 @@ export class InsInputTel {
               name={this.phoneNumber}
               placeholder={this.phonenumPlaceholder}
               value={this.phonenumValue}
-              onKeyPress={e => this.isNumberOnly(e)}
               disabled={this.disabled} readonly={this.readonly} />
           </div>
 

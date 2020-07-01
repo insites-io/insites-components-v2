@@ -21,41 +21,19 @@ export class InsSelectOption {
     }
   }
 
-  @Method()
-  val(attr, value) {
-    let data = {
-      label: this.label,
-      value: this.value,
-      disabled: this.disabled,
-      default: this.default
-    }
-    if (attr && typeof attr == "object" && !value) {
-      // console.log('this is json');
-    }
-    else if (attr && !value) {
-      return this[attr];
-    }
-    else if (attr && value) {
-      this[attr] = value;
-    }
-    else {
-      return data;
-    }
-  }
-
-  @Method() activate(){
+  @Method() async activate(){
     this.activated = true;
   }
 
-  @Method() deactivate(){
+  @Method() async deactivate(){
     this.activated = false;
   }
 
-  @Method() hideOption(){
+  @Method() async hideOption(){
     this.hidden = true;
   }
 
-  @Method() showOption(){
+  @Method() async showOption(){
     this.hidden = false;
   }
 

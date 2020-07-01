@@ -9,7 +9,7 @@ export class InsSidebar {
   // @Prop(({mutable: true})) withSidebarActions: boolean = false;
   @State() minimised: boolean;
   @State() noFooter: boolean = false;
-  @Event() sidebarAction: EventEmitter;
+  @Event() insSidebarAction: EventEmitter;
 
   @Listen('insSidebarFooterButtonEvent')
   insSidebarFooterButtonEventHandler(event: CustomEvent) {
@@ -23,33 +23,12 @@ export class InsSidebar {
   }
 
   @Method()
-  minimise(){
+  async minimise(){
     this.minimised = !this.minimised;
   }
 
-  @Method()
-  val(attr, value) {
-    let data = {
-      fullLogo: this.fullLogo,
-      iconLogo: this.iconLogo
-      // withSidebarActions: this.withSidebarActions
-    };
-    if (attr && typeof attr == "object" && !value) {
-      // console.log('this is json');
-    }
-    else if (attr && !value) {
-      return this[attr];
-    }
-    else if (attr && value) {
-      this[attr] = value;
-    }
-    else {
-      return data;
-    }
-  }
-
   sidebarActionEventHandler(event){
-    this.sidebarAction.emit(event);
+    this.insSidebarAction.emit(event);
   }
 
   componentDidLoad(){

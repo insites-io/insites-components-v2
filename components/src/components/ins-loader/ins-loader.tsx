@@ -1,4 +1,4 @@
-import { h, Component, Element, Prop, Method } from "@stencil/core";
+import { h, Component, Element, Prop } from "@stencil/core";
 
 @Component({ tag: 'ins-loader' })
 export class InsLoader {
@@ -39,28 +39,6 @@ export class InsLoader {
 
       default:
         return ''
-    }
-  }
-
-  @Method()
-  val(attr, value) {
-    let data = {
-      stateTitle: this.stateTitle,
-      stateMessage: this.stateMessage,
-      stateIcon: this.stateIcon,
-      iconColor: this.iconColor
-    }
-    if (attr && typeof attr == "object" && !value) {
-      // console.log('this is json');
-    }
-    else if (attr && !value) {
-      return this[attr];
-    }
-    else if (attr && value) {
-      this[attr] = value;
-    }
-    else {
-      return data;
     }
   }
 

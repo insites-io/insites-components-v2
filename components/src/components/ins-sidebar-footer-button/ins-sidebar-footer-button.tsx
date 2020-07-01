@@ -5,30 +5,11 @@ export class InsSidebarFooterButton {
   @Event() insSidebarFooterButtonEvent: EventEmitter;
   @Prop({ mutable: true }) icon: string = '';
   @Prop({ mutable: true }) open: string = '';
+
   @Method()
-  insSidebarFooterButtonOnClick(event){
+  async insSidebarFooterButtonOnClick(event){
     this.insSidebarFooterButtonEvent.emit(event);
   }
-
-  @Method()
-  val(attr, value) {
-    let data = {
-      icon: this.icon
-    }
-    if (attr && typeof attr == "object" && !value) {
-      // console.log('this is json');
-    }
-    else if (attr && !value) {
-      return this[attr];
-    }
-    else if (attr && value) {
-      this[attr] = value;
-    }
-    else {
-      return data;
-    }
-  }
-
 
   render() {
     if (this.icon) {

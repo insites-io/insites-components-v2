@@ -9,9 +9,13 @@ export class SortableGroup implements ISortableGroup {
     pull: string | boolean | any[]
     put: string | boolean | any[]
 
-    constructor(name: string = "insites-sort-group", pull: string | boolean | any[] = true, put: string|boolean | any[] = true){
-        this.name = name
-        this.pull = pull
-        this.put = put
+    constructor(
+      name: string = "insites-sort-group",
+      pull: string | boolean | any[] = true,
+      put: string|boolean | any[] = true
+    ){
+      this.name = name
+      this.pull = pull
+      this.put = put
     }
 }

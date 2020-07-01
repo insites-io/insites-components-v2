@@ -7,5 +7,5 @@ export const config: Config = {
     { type: 'www', serviceWorker: null }
   ],
   enableCache: true,
-  globalScript: 'src/globals/context.ts',
+  globalScript: 'src/globals/context.ts'
 };

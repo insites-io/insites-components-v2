@@ -3,14 +3,14 @@ import { h, Component, Prop, Element, Event, EventEmitter } from "@stencil/core"
 @Component({ tag: 'ins-checkbox-card' })
 export class InsCheckboxCard {
   @Element() insCardEl: HTMLElement;
-  @Event() onClickInsCheckboxCard: EventEmitter;
-  @Event() valueChange: EventEmitter;
+  @Event() insClick: EventEmitter;
+  @Event() insValueChange: EventEmitter;
 
   @Prop({mutable:true}) noPadding: boolean;
   @Prop({mutable:true}) tabOrder: string = '0';
   @Prop({mutable:true}) selected: boolean;
   @Prop({mutable:true}) disabled: boolean;
-  @Prop({mutable:true}) selectedColor: string;
+  @Prop({mutable:true}) selectedColor: string = "#1e86e3";
   @Prop({mutable:true}) value: string;
   @Prop({mutable:true}) label: string;
   @Prop({mutable:true}) name: string;
@@ -30,17 +30,17 @@ export class InsCheckboxCard {
     }
   }
 
-  onClickInsCheckboxCardHandler(){
-    this.onClickInsCheckboxCard.emit({
+  insClickHandler(){
+    this.insClick.emit({
       label: this.label,
       value: this.value
     });
-    this.valueChange.emit(this.value);
+    this.insValueChange.emit(this.value);
   }
 
   keyPressHandler(e){
     if (e.keyCode === 13){
-      this.onClickInsCheckboxCardHandler()
+      this.insClickHandler()
     }
   }
 
@@ -60,7 +60,7 @@ export class InsCheckboxCard {
         ${this.selected ? 'selected':''}
         ${this.selectedColor ? this.selectedColor : ''}`}
         tabindex={this.tabOrder}
-        onClick={() => this.onClickInsCheckboxCardHandler()}
+        onClick={() => this.insClickHandler()}
         onKeyPress={e => this.keyPressHandler(e)}>
         {this.selected ? <div class="icon-check-2 selected-wrap"></div>: ''}
 

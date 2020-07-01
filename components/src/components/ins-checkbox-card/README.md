@@ -1,25 +1,32 @@
-# Insites Card ```<ins-card>```
-
-### Versions
-1.0.4
-
-### Basic Features
-For container section with border line and box-shadow.
-
-### Configuration Options
-
-| DECORATOR | COMPONENT | TYPE | USAGE |
-| ------- | ------- | ------- | ------- |
-| @Element() | steady | boolean | remove the hover effects |
-| @Prop() | noPadding | boolean | remove the padding |
+# ins-checkbox-card
 
 
-### Usage Details
-```
-<ins-card steady noPadding></ins-card>
-```
 
-### Browser Support
-- Chrome (and all Chromium based browsers)
-- Safari
-- Firefox
+<!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property        | Attribute        | Description | Type      | Default     |
+| --------------- | ---------------- | ----------- | --------- | ----------- |
+| `disabled`      | `disabled`       |             | `boolean` | `undefined` |
+| `label`         | `label`          |             | `string`  | `undefined` |
+| `name`          | `name`           |             | `string`  | `undefined` |
+| `noPadding`     | `no-padding`     |             | `boolean` | `undefined` |
+| `selected`      | `selected`       |             | `boolean` | `undefined` |
+| `selectedColor` | `selected-color` |             | `string`  | `"#1e86e3"` |
+| `tabOrder`      | `tab-order`      |             | `string`  | `'0'`       |
+| `value`         | `value`          |             | `string`  | `undefined` |
+
+
+## Events
+
+| Event                  | Description | Type               |
+| ---------------------- | ----------- | ------------------ |
+| `changeValue`          |             | `CustomEvent<any>` |
+| `clickInsCheckboxCard` |             | `CustomEvent<any>` |
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

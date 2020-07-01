@@ -1,11 +1,10 @@
-import { h, Component, Prop, Event, EventEmitter, Element } from '@stencil/core';
+import { h, Component, Prop, Element } from '@stencil/core';
 import Tooltip from 'tooltip.js';
 
 @Component({ tag: 'ins-tooltip' })
 
 export class InsTooltip {
     @Element() insTooltipEl: HTMLElement;
-    @Event() showTooltip: EventEmitter;
     @Prop({mutable: true}) label: string = "";
     @Prop({mutable: true}) shape: string = "circle"; // circle, rectangle
     @Prop({mutable: true}) icon: any = '';
@@ -56,7 +55,6 @@ export class InsTooltip {
         });
     }
 
-    // render component
     render() {
         return (
             <div class="ins-tooltip-wrap">

@@ -1,9 +1,8 @@
-import { h, Component, Element, Prop, Event, EventEmitter } from '@stencil/core';
+import { h, Component, Element, Prop } from '@stencil/core';
 @Component({ tag: "ins-timeline" })
 
 export class InsTimeline {
   @Element() insTimeline: HTMLElement;
-  @Event() paginationChange: EventEmitter;
 
   @Prop({ mutable: true }) loadingScreen: boolean = false;
   @Prop({ mutable: true}) label: string;

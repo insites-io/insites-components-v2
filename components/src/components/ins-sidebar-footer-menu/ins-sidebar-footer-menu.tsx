@@ -8,35 +8,17 @@ export class InsSidebarFooterMenu {
   @State() menuToggled: boolean = false;
 
   @Method()
-  val(attr, value) {
-    let data = {
-      icon: this.icon,
-      label: this.label
-    }
-    // if (attr && typeof attr == "object" && !value) {
-    //   // console.log('this is json');
-    // }
-    if (attr && !value) {
-      return this[attr];
-    }
-    else if (attr && value) {
-      this[attr] = value;
-    }
-    else {
-      return data;
-    }
+  async toggleMenu(){
+    this.menuToggled = !this.menuToggled;
   }
 
   @Method()
-  toggleMenu(){
-    this.menuToggled = !this.menuToggled;
-  }
-  @Method()
-  hideMenu(){
+  async hideMenu(){
     this.menuToggled = false;
   }
+
   @Method()
-  showMenu(){
+  async showMenu(){
     this.menuToggled = true;
   }
 

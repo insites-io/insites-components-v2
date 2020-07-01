@@ -3,7 +3,7 @@ import { h, Component, Prop, Event, EventEmitter } from "@stencil/core";
 @Component({ tag: 'ins-credit-card' })
 export class InsCreditCard {
   @Event() insCreditCardClicked: EventEmitter;
-  @Event({bubbles: false}) insCreditCardClosed: EventEmitter;
+  @Event({ bubbles: false }) insCreditCardClosed: EventEmitter;
 
   @Prop({mutable: true}) lastFour: string;
   @Prop({mutable: true}) expiryMonth: string;

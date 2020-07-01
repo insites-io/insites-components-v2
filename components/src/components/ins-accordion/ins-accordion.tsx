@@ -4,7 +4,7 @@ import Accordion from "../../assets/accordion/src/accordion";
 @Component({ tag: 'ins-accordion' })
 export class InsAccordion {
   @Element() insAccordionEl: HTMLElement;
-  @Event() toggle: EventEmitter;
+  @Event() insToggle: EventEmitter;
   @Prop({ mutable: true }) defaultOpen: number = 0;
   @Prop({ mutable: true }) menu: boolean = false;
 
@@ -24,7 +24,8 @@ export class InsAccordion {
   }
 
   @Method()
-  initAccordion(){
+  async initAccordion(){
+
     let acc = this.insAccordionEl.querySelector('.ins-accordion');
     let accEls = this.insAccordionEl.querySelectorAll('.ins-accordion ins-accordion') as any;
     this.accordion = new Accordion(acc, {
@@ -39,7 +40,7 @@ export class InsAccordion {
 
   toggleHandler(menu, open){
     let action = open ? 'open' : 'close';
-    this.toggle.emit({ menu, action});
+    this.insToggle.emit({ menu, action});
   }
 
   render() {

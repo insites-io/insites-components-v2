@@ -3,7 +3,7 @@ import { h, Component, State, Prop, Element, Event, EventEmitter, Method } from 
 @Component({ tag: 'ins-modal' })
 export class InsModal {
   @Element() insModalEl: HTMLElement;
-  @Event() onInsModalClose: EventEmitter;
+  @Event() insClose: EventEmitter;
 
   @Prop({ mutable: true }) withBackdrop: boolean;
   @Prop({ mutable: true }) light: boolean;
@@ -96,7 +96,7 @@ export class InsModal {
   }
 
   closeConfirmModal(type){
-    this.onInsModalClose.emit({
+    this.insClose.emit({
       action: type,
       value: this.value
     });
@@ -108,19 +108,19 @@ export class InsModal {
   }
 
   @Method()
-  parentClosed(type){
+  async parentClosed(type){
     this.closeConfirmModal(type);
   }
 
   @Method()
-  open(){
+  async open(){
     this.parentRender && (parent.document !== document)
       ? this.openParentModal()
       : this.showModal = true;
   }
 
   @Method()
-  close(){
+  async close(){
     this.parentRender && (parent.document !== document)
       ? this.closeParentModal()
       : this.showModal = false;
@@ -179,7 +179,8 @@ export class InsModal {
                   icon={this.confirmButtonIcon}
                   color={this.confirmButtonColor}
                   solid
-                  onClick={() => this.closeConfirmModal(this.confirmation ? 'confirmed' : 'canceled')}>
+                  onClick={() => this.closeConfirmModal(
+                    this.confirmation ? 'confirmed' : 'canceled')}>
                 </ins-button>
               </div>
             }

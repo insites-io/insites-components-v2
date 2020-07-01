@@ -22,7 +22,7 @@ export class InsSidebarItem {
   @State() showTooltip: boolean = false;
 
   @Method()
-  routePageHandler(e){
+  async routePageHandler(e){
 
     if(e){
       e.preventDefault();
@@ -94,7 +94,7 @@ export class InsSidebarItem {
   }
 
   @Method()
-  showSubMenu(){
+  async showSubMenu(){
     let insAdminEl = document.querySelector('ins-admin');
 
     if (this.withSubmenu && insAdminEl.className.includes('mini')) {
@@ -105,12 +105,12 @@ export class InsSidebarItem {
   }
 
   @Method()
-  hideSubMenu(){
+  async hideSubMenu(){
     this.submenuVisible = false;
   }
 
   @Method()
-  activate(){
+  async activate(){
     this.deactivateSiblings();
     let checkIfSubMenu = this.insSidebarItemEl.closest('.submenu-wrap') as any;
     if (checkIfSubMenu) {
@@ -119,12 +119,12 @@ export class InsSidebarItem {
   }
 
   @Method()
-  activateParent(){
+  async activateParent(){
     this.isActive = true;
   }
 
   @Method()
-  deactivate(){
+  async deactivate(){
     this.isActive = false;
   }
 
@@ -146,7 +146,7 @@ export class InsSidebarItem {
   }
 
   componentWillLoad(){
-    this.formattedRoute =this.formatRoute();
+    this.formattedRoute = this.locFormatRoute();
   }
 
   componentDidLoad(){
@@ -175,7 +175,11 @@ export class InsSidebarItem {
   }
 
   @Method()
-  formatRoute() {
+  async formatRoute() {
+    return this.locFormatRoute()
+  }
+
+  locFormatRoute() {
     if (this.app) {
       let subItem = this.insSidebarItemEl.closest('ins-sidebar-item[with-submenu]') as any;
       let formattedUrl = (subItem) ? `${subItem.label}/${this.label}` : this.label;

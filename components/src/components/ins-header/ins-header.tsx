@@ -78,7 +78,7 @@ export class InsHeader {
   // }
 
   @Method()
-  toggleSidebar(){
+  async toggleSidebar(){
     if (this.hasClass(this.insNavEl, 'active')) {
       this.insNavEl.classList.remove('active');
       this.insHeaderEl.querySelector('.ellipsis').classList.remove('active');
@@ -99,17 +99,20 @@ export class InsHeader {
 
     if (insAdminEl.className.includes('mini')){
       for (let i = 0; i < submenuWrapEls.length; ++i) {
-        submenuWrapEls[i].hideSubMenu();
+        let submenuWrap = submenuWrapEls[i] as any;
+        submenuWrap.hideSubMenu();
       }
+
       for (let i = 0; i < footerMenus.length; ++i) {
-        footerMenus[i].hideMenu();
+        let footerMenu = footerMenus[i] as any;
+        footerMenu.hideMenu();
       }
     }
 
   }
 
   @Method()
-  toggleNav(){
+  async toggleNav(){
     if (!this.hasClass(this.insAdminEl, 'mini')) {
       this.toggleSidebar();
     }

@@ -2,8 +2,8 @@ import { h, Component, Prop, Event, EventEmitter} from "@stencil/core";
 
 @Component({ tag: "ins-toggle-switch" })
 export class InsToggleSwitch {
-  @Event() onCheckInsToggleSwitch: EventEmitter;
-  @Event() valueChange: EventEmitter;
+  @Event() insToggle: EventEmitter;
+  @Event() insValueChange: EventEmitter;
 
   @Prop({mutable: true}) name: string;
   @Prop({mutable: true}) checked: boolean;
@@ -15,7 +15,7 @@ export class InsToggleSwitch {
 
   onCheckHandler() {
     this.checked = !this.checked;
-    this.onCheckInsToggleSwitch.emit({
+    this.insToggle.emit({
       checked: this.checked,
       value: this.value
     });
@@ -27,7 +27,7 @@ export class InsToggleSwitch {
       toEmit = this.falseValue;
     }
 
-    this.valueChange.emit(toEmit);
+    this.insValueChange.emit(toEmit);
   }
 
   render() {

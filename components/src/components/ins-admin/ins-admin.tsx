@@ -11,25 +11,27 @@ export class InsAdmin {
 
   @Listen('routePage')
   routePageHandler(event: CustomEvent) {
-    this.updateRoute(event.detail.crumbs);
+    this.updateRoute(event.detail.crumbs, event.detail.redirect);
   }
 
-  updateRoute(crumbs) {
+  updateRoute(crumbs, redirect) {
+    let noRedirect = !redirect;
     this.insRenderer = this.insAdminEl.querySelector('ins-renderer');
-
     if (this.reroute){
       let queryStrings = window.location.hash.split("?")[1].split("&");
       queryStrings.forEach(item => {
+
         if (item.includes("reroute=")){
           crumbs[0].link = item.substring(8, item.length);
+
         } else if (item.includes("reroutelabel=")){
           crumbs[0].label = decodeURIComponent(item.substring(13, item.length));
         }
+
       });
       this.reroute = false;
     }
-
-    this.insRenderer.updateRoute(crumbs);
+    this.insRenderer.updateRoute(crumbs, noRedirect, true);
   }
 
   componentDidLoad() {
@@ -43,23 +45,21 @@ export class InsAdmin {
   }
 
   goToMyProfilePage(){
-    let insHeaderUserEl = this.insAdminEl.querySelector('ins-header-user') as any;
+    let insHeaderUserEl = this.insAdminEl.querySelector('ins-header-user');
     insHeaderUserEl.routePageHandler();
   }
 
-  checkIfRoot(){
+  checkIfRoot(show){
     let currentHash = window.location.hash;
-
     if (currentHash === "" || currentHash === "#/"){
-      this.showLandingPage();
+      if (show) this.showLandingPage();
       return false;
     }
     return currentHash;
   }
 
   checkHash(){
-    let route = this.checkIfRoot();
-
+    let route = this.checkIfRoot(true);
     if (window.location.hash === "#/app/my-profile"){
       this.goToMyProfilePage();
     } else if (route) {
@@ -68,7 +68,7 @@ export class InsAdmin {
   }
 
   activateDeepLink(){
-    if (this.checkIfRoot()){
+    if (this.checkIfRoot(false)){
       let currentCrumbs = window.localStorage.getItem('ins_breadcrumbs');
       let parsedCrumbs = JSON.parse(currentCrumbs);
       this.activateSidebarItem(parsedCrumbs);
@@ -80,7 +80,11 @@ export class InsAdmin {
     let again = true;
     reversed.forEach(item => {
       if (again) {
-        if (this.matchHash(item.app ? item.formattedRoute : item.link, true)){
+        let currentHash = item.app
+          ? item.formattedRoute
+          : item.link;
+
+        if (this.matchHash(currentHash, true)){
           again = false;
         }
       }
@@ -91,7 +95,7 @@ export class InsAdmin {
     for (let i = 0; i < this.sidebarItemEls.length; i++) {
       if (this.sidebarItemEls[i].landingPage){
         this.showSubmenu(this.sidebarItemEls[i]);
-        this.sidebarItemEls[i].routePageHandler();
+        this.sidebarItemEls[i].routePageHandler("landing");
         break;
       }
     }
@@ -104,21 +108,21 @@ export class InsAdmin {
         this.loadRoute(this.sidebarItemEls[i], deeplink);
         return true;
 
-      } else if (this.sidebarItemEls[i].formatRoute() &&
-        currentHash.includes(this.sidebarItemEls[i].formatRoute()) &&
-        currentHash.includes("?reroute=") &&
-        this.sidebarItemEls[i].app){
-
-
-          this.reroute = true;
-          this.loadRoute(this.sidebarItemEls[i], deeplink);
-          return true;
+      } else if (
+          this.sidebarItemEls[i].formatRoute()
+          && currentHash.includes(this.sidebarItemEls[i].formatRoute())
+          && currentHash.includes("?reroute=")
+          && this.sidebarItemEls[i].app
+      ){
+        this.reroute = true;
+        this.loadRoute(this.sidebarItemEls[i], deeplink);
+        return true;
       }
+
     }
   }
 
   loadRoute(sidebarItem, deeplink){
-
     if (!deeplink){
       sidebarItem.routePageHandler();
     } else {

@@ -7,7 +7,7 @@ export class InsTimelineItem {
   @Prop({ mutable: true }) icon: string;
   @Prop({ mutable: true }) color: string;
   @Prop({ mutable: true }) solid: boolean = false;
-  @Prop({ mutable: true }) title: string;
+  @Prop({ mutable: true }) heading: string;
   @Prop({ mutable: true }) datetime: string;
   @Prop({ mutable: true }) inline: boolean = true;
 
@@ -19,9 +19,9 @@ export class InsTimelineItem {
         </div>
         <div class="ins-timeline-body">
           <div class={`ins-timeline-content ${this.inline ? 'inline-content' : ''}`}>
-            {this.title ?
-              <div class="ins-timeline-title">
-                <h6>{this.title}</h6>
+            {this.heading ?
+              <div class="ins-timeline-heading">
+                <h6>{this.heading}</h6>
               </div>
               : ''}
               <slot name="content" />

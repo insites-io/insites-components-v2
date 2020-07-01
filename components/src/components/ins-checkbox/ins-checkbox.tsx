@@ -2,8 +2,8 @@ import { h, Component, Prop, Event, EventEmitter, Method } from "@stencil/core";
 
 @Component({ tag: "ins-checkbox" })
 export class InsCheckbox {
-  @Event() onCheckInsCheckbox: EventEmitter;
-  @Event() valueChange: EventEmitter;
+  @Event() insClick: EventEmitter;
+  @Event() insValueChange: EventEmitter;
 
   @Prop({mutable: true}) checked: boolean;
   @Prop({mutable: true}) disabled: boolean;
@@ -15,7 +15,7 @@ export class InsCheckbox {
 
   onCheckHandler(){
     this.checked = !this.checked;
-    this.onCheckInsCheckbox.emit({
+    this.insClick.emit({
       name: this.name,
       checked: this.checked,
       value: this.value,
@@ -31,17 +31,17 @@ export class InsCheckbox {
       toEmit = this.falseValue;
     }
 
-    this.valueChange.emit(toEmit);
+    this.insValueChange.emit(toEmit);
   }
 
   @Method()
-  updateCheckState(state){
+  async updateCheckState(state){
     this.checked = state;
   }
 
   render() {
     return (
-      <div class="ins-checkbox-wrap">
+      <div class="ins-checkbox-wrap ins-radio-checkbox">
         <label>
           <input type="checkbox"
             name={this.name ? this.name : ''}

@@ -51,59 +51,6 @@
   font-weight: 600;
   font-style: italic; }
 
-.ins-loader-wrap {
-  width: 100%;
-  text-align: center;
-  font-family: "Open Sans", sans-serif; }
-  .ins-loader-wrap--state {
-    max-width: 70px;
-    margin: 0 auto 25px; }
-    .ins-loader-wrap--state svg, .ins-loader-wrap--state img {
-      width: 100%; }
-  .ins-loader-wrap--title {
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: #24be8d;
-    margin-top: 0; }
-    .ins-loader-wrap--title.warning {
-      color: #ffa639; }
-    .ins-loader-wrap--title.help {
-      color: #ff3366; }
-    .ins-loader-wrap--title.error {
-      color: #f27474; }
-  .ins-loader-wrap--message {
-    font-size: 0.875rem;
-    font-weight: 400;
-    color: #2c3148;
-    margin-top: 16px; }
-  .ins-loader-wrap .cls-1 {
-    fill: #2c3148; }
-  .ins-loader-wrap .positive .cls-1,
-  .ins-loader-wrap .green .cls-1 {
-    fill: #24be8d; }
-  .ins-loader-wrap .warning .cls-1 {
-    fill: #ffa639; }
-  .ins-loader-wrap .negative .cls-1 {
-    fill: #f27474; }
-  .ins-loader-wrap .information-1 .cls-1 {
-    fill: #ff3366; }
-  .ins-loader-wrap .information-2 .cls-1 {
-    fill: #fdd835; }
-  .ins-loader-wrap .blue .cls-1 {
-    fill: #1e86e3; }
-  .ins-loader-wrap .turquoise .cls-1 {
-    fill: #2bbad9; }
-  .ins-loader-wrap .grey .cls-1 {
-    fill: #8c94a4; }
-
-@keyframes anim-rotate {
-  0% {
-    transform: rotate(0); }
-  100% {
-    transform: rotate(360deg); } }
-  .ins-loader-wrap .spinner {
-    animation: anim-rotate 3s infinite linear; }
-
 ins-drawer .ins-drawer-wrap {
   position: fixed;
   top: 0;
@@ -112,7 +59,7 @@ ins-drawer .ins-drawer-wrap {
   ins-drawer .ins-drawer-wrap ins-backdrop {
     display: none; }
   ins-drawer .ins-drawer-wrap .ins-content {
-    background: #ffffff;
+    background: #fff;
     position: fixed;
     z-index: 9999;
     width: 420px;
@@ -153,8 +100,7 @@ ins-drawer .ins-drawer-wrap {
 
 ins-drawer .ins-drawer-header {
   padding: 20px;
-  position: relative;
-  box-sizing: border-box; }
+  position: relative; }
   ins-drawer .ins-drawer-header.bordered {
     border-bottom: solid 1px #E4E6EC; }
   ins-drawer .ins-drawer-header.sticky {
@@ -162,13 +108,14 @@ ins-drawer .ins-drawer-header {
     top: 0;
     width: inherit;
     z-index: 5;
-    background-color: #ffffff; }
+    background-color: #ffffff;
+    box-sizing: border-box; }
     ins-drawer .ins-drawer-header.sticky + .ins-drawer-body {
       margin-top: 80px; }
   ins-drawer .ins-drawer-header h4 {
     display: inline-block;
     font-size: 24px;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 300;
     margin: 0;
     color: #2c3148;
@@ -187,3 +134,55 @@ ins-drawer .ins-drawer-header {
     font-size: 16px;
     box-sizing: border-box;
     cursor: pointer; }
+
+.ins-loader-wrap {
+  width: 100%;
+  text-align: center; }
+  .ins-loader-wrap--state {
+    max-width: 70px;
+    margin: 0 auto 25px; }
+    .ins-loader-wrap--state svg, .ins-loader-wrap--state img {
+      width: 100%; }
+  .ins-loader-wrap--title {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #24be8d;
+    margin-top: 0; }
+    .ins-loader-wrap--title.warning {
+      color: #FFA639; }
+    .ins-loader-wrap--title.help {
+      color: #FF3366; }
+    .ins-loader-wrap--title.error {
+      color: #F27474; }
+  .ins-loader-wrap--message {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #2c3148;
+    margin-top: 16px; }
+  .ins-loader-wrap .cls-1 {
+    fill: #323d53; }
+  .ins-loader-wrap .positive .cls-1,
+  .ins-loader-wrap .green .cls-1 {
+    fill: #24be8d; }
+  .ins-loader-wrap .warning .cls-1 {
+    fill: #ffa639; }
+  .ins-loader-wrap .negative .cls-1 {
+    fill: #f27474; }
+  .ins-loader-wrap .information-1 .cls-1 {
+    fill: #ff3366; }
+  .ins-loader-wrap .information-2 .cls-1 {
+    fill: #fdd836; }
+  .ins-loader-wrap .blue .cls-1 {
+    fill: #1e86e3; }
+  .ins-loader-wrap .turquoise .cls-1 {
+    fill: #2bbad9; }
+  .ins-loader-wrap .grey .cls-1 {
+    fill: #8C94A4; }
+
+@keyframes anim-rotate {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
+  .ins-loader-wrap .spinner {
+    animation: anim-rotate 3s infinite linear; }

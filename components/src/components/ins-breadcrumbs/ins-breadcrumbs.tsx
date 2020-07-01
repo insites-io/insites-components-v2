@@ -18,7 +18,7 @@ export class InsBreadCrumbs {
   }
 
   @Method()
-  updateCrumbs(crumbs, noRedirect = false){
+  async updateCrumbs(crumbs, noRedirect = false){
     this.breadcrumbs = crumbs;
     let parsedCrumbs = JSON.stringify(crumbs);
     window.localStorage.setItem('ins_breadcrumbs', parsedCrumbs);

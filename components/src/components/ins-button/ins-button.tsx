@@ -1,10 +1,10 @@
-import { h, Component, Watch, Prop, Event, EventEmitter, Element, Method, State } from "@stencil/core";
+import { h, Component, Watch, Prop, Event, EventEmitter, Element, State } from "@stencil/core";
 
 @Component({ tag: "ins-button" })
 export class InsButton {
   @Element() insButtonEl: HTMLElement;
-  @Event() onClickInsButton: EventEmitter;
-  @Event() onClickInsButtonOption: EventEmitter;
+  @Event() insClick: EventEmitter;
+  @Event() insClickOption: EventEmitter;
 
   @Prop({ mutable: true }) color: string = 'blue';
   @Prop({ mutable: true }) label: string = 'BUTTON';
@@ -33,7 +33,7 @@ export class InsButton {
       this.toggleOption = !this.toggleOption;
     } else {
       this.toggleOption = false;
-      this.onClickInsButton.emit({
+      this.insClick.emit({
         label: this.label,
         data: this.data
       });
@@ -42,7 +42,7 @@ export class InsButton {
 
   optionOnClickHandler(option) {
     this.toggleOption = false;
-    this.onClickInsButtonOption.emit({
+    this.insClickOption.emit({
       label: this.label, option
     });
   }
@@ -173,7 +173,6 @@ export class InsButton {
     } else {
 
       return (
-        // ${ this.plain ? 'ripplePlain' : '' }
         <button
           type={this.type}
           disabled={this.disabled || this.loading ? true : false}

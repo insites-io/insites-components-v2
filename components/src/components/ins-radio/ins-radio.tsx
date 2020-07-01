@@ -2,8 +2,8 @@ import { h, Component, Prop, Event, EventEmitter } from "@stencil/core";
 
 @Component({ tag: "ins-radio" })
 export class InsRadio {
-  @Event() onSelect: EventEmitter;
-  @Event() valueChange: EventEmitter;
+  @Event() insSelect: EventEmitter;
+  @Event() insValueChange: EventEmitter;
 
   @Prop({mutable:true}) checked: boolean;
   @Prop({mutable:true}) disabled: boolean;
@@ -25,19 +25,19 @@ export class InsRadio {
   }
 
   onSelectHandler(){
-    this.onSelect.emit({
+    this.insSelect.emit({
       name: this.name,
       value: this.value,
     });
     
     if (this.staticValue){
-      this.valueChange.emit(this.staticValue);
-    } else this.valueChange.emit(this.value);
+      this.insValueChange.emit(this.staticValue);
+    } else this.insValueChange.emit(this.value);
   }
 
   render() {
     return (
-      <div class="ins-radio">
+      <div class="ins-radio ins-radio-checkbox">
         <label>
           <input class="ripple-check radio"
             onChange={() => this.onSelectHandler()}

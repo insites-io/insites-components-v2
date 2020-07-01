@@ -3,11 +3,12 @@ import { h, Component, Prop, State, Listen, Element, Method, Event, EventEmitter
 @Component({ tag: 'ins-select' })
 export class InsSelect {
   @Element() insSelectEl: HTMLElement;
-  @Event() valueChange: EventEmitter;
-  @Event() onOptionSelect: EventEmitter;
-  @Event() onSearch: EventEmitter;
-  @Event() onSubmitOption: EventEmitter;
-  @Event() loadMore: EventEmitter;
+
+  @Event() insValueChange: EventEmitter;
+  @Event() insChange: EventEmitter;
+  @Event() insSearch: EventEmitter;
+  @Event() insSubmit: EventEmitter;
+  @Event() insLoadMore: EventEmitter;
 
   @Prop({mutable: true}) label: string;
   @Prop({mutable: true}) name: string;
@@ -45,15 +46,20 @@ export class InsSelect {
   tempSearch: string = "";
 
   @Method()
-  setLoadingState(state){
+  async setLoadingState(state){
     this.loading = state;
-    this.insSelectOptionsWrap.classList[state? 'add':'remove']('loading');
+
+    if (this.insSelectOptionsWrap){
+      this.insSelectOptionsWrap.classList[state? 'add':'remove']('loading');
+    } else return false
   }
 
   @Method()
-  setSearchingState(state){
+  async setSearchingState(state){
     this.searching = state;
-    this.insSelectOptionsWrap.classList[state? 'add':'remove']('searching');
+    if (this.insSelectOptionsWrap){
+      this.insSelectOptionsWrap.classList[state? 'add':'remove']('searching');
+    } else return false
   }
 
   // @Listen('onClickInsButton')
@@ -62,7 +68,7 @@ export class InsSelect {
 
     if (dynamicOption.value){
       dynamicOption.hasError = false;
-      this.onSubmitOption.emit(dynamicOption.value);
+      this.insSubmit.emit(dynamicOption.value);
       this.toggleInsSelectOptions();
       dynamicOption.value = '';
     } else {
@@ -71,9 +77,9 @@ export class InsSelect {
   }
 
   @Listen('insSelectOptionClicked')
-  InsSelectOptionClickedHandler(event: CustomEvent){
+  async InsSelectOptionClickedHandler(event: CustomEvent){
     let clickedOption = event.target as any;
-    let insSelectOptions = this.getAllOptions();
+    let insSelectOptions = await this.getAllOptions();
 
     if (this.multiple){
 
@@ -118,10 +124,10 @@ export class InsSelect {
       let detail = []
       this.value.forEach(item => detail.push(item.value));
       this.selected_values = detail;
-      this.onOptionSelect.emit({ event_type, selected: detail });
-      this.valueChange.emit(detail);
+      this.insChange.emit({ event_type, selected: detail });
+      this.insValueChange.emit(detail);
     } else {
-      this.valueChange.emit(this.value);
+      this.insValueChange.emit(this.value);
     }
   }
 
@@ -140,7 +146,7 @@ export class InsSelect {
   }
 
   @Method()
-  setValue(value){
+  async setValue(value){
     this.value = value;
     this.selected_values = value;
   }
@@ -156,9 +162,8 @@ export class InsSelect {
 
       if (this.searchable) {
         setTimeout(() => {
-          console.log('showing select options');
           let insSelectValueInput = this.insSelectEl.querySelector('.ins-select-value-input') as HTMLInputElement;
-          insSelectValueInput.focus();
+          if (insSelectValueInput) insSelectValueInput.focus();
         });
       }
     }
@@ -171,20 +176,23 @@ export class InsSelect {
   }
 
   @Method()
-  toggleInsSelectOptions(){
+  async toggleInsSelectOptions(){
     if (!this.readonly && !this.disabled){
       this.activated = !this.activated;
       this.toggleSelectOptionsWrap();
     }
   }
 
-  toggleSelectOptionsWrap(){
-
+  checkDropUp(){
     this.dropUp = false;
     let pos = this.insSelectEl.getBoundingClientRect();
     if ((window.innerHeight - pos.bottom) < 65) {
       this.dropUp = true;
     }
+  }
+
+  toggleSelectOptionsWrap(){
+    this.checkDropUp();
 
     if (this.activated) {
       this.expandSection();
@@ -194,7 +202,20 @@ export class InsSelect {
   }
 
   @Method()
-  collapseSection() {
+  async closeOptions(){
+    this.activated = false;
+    this.collapseSection();
+  }
+
+  @Method()
+  async openOptions(){
+    this.activated = true;
+    this.checkDropUp();
+    this.expandSection();
+  }
+
+  @Method()
+  async collapseSection() {
     let element = this.insSelectEl.querySelector('.ins-select-options-wrap') as any;
     let sectionHeight = (element.scrollHeight > 400 ? 400 : element.scrollHeight);
     let elementTransition = element.style.transition;
@@ -211,7 +232,7 @@ export class InsSelect {
   }
 
   @Method()
-  expandSection() {
+  async expandSection() {
     let element = this.insSelectEl.querySelector('.ins-select-options-wrap') as any;
     let sectionHeight = (element.scrollHeight > 400 ? 400 : element.scrollHeight) + 2;
     if (element.getAttribute('data-collapsed') != 'false') {
@@ -221,16 +242,20 @@ export class InsSelect {
   }
 
   @Method()
-  enableNoResult(){
-    this.insSelectOptionsWrap.classList.add('no-result');
+  async enableNoResult(){
+    if (this.insSelectOptionsWrap){
+      this.insSelectOptionsWrap.classList.add('no-result');
+    } else return false
   }
 
   @Method()
-  disableNoResult(){
-    this.insSelectOptionsWrap.classList.remove('no-result');
+  async disableNoResult(){
+    if (this.insSelectOptionsWrap){
+      this.insSelectOptionsWrap.classList.remove('no-result');
+    } else return false
   }
 
-  searchOptions(event){
+  async searchOptions(event){
     if (!this.activated){
       this.showSelectOptions();
     }
@@ -240,22 +265,24 @@ export class InsSelect {
     if (this.dynamicSearch) {
       if ((event.which === 13 || event.target.value === "") &&
          !this.searching && !this.loading) {
-        this.onSearch.emit(event.target.value.toLowerCase());
+        this.insSearch.emit(event.target.value.toLowerCase());
         this.searching = true;
         this.setSearchingState(true);
         this.disableNoResult();
       }
 
     } else {
-      let insSelectOptions = this.getAllOptions();
+      let insSelectOptions = await this.getAllOptions();
       let hasResult = false;
 
-      for (let i = 0; i < insSelectOptions.length; i++){
-        insSelectOptions[i].hideOption();
-        let result = insSelectOptions[i].label.toLowerCase().indexOf(event.target.value.toLowerCase());
-        if (result >= 0){
-          insSelectOptions[i].showOption();
-          hasResult = true;
+      if (event.target.value){
+        for (let i = 0; i < insSelectOptions.length; i++){
+          insSelectOptions[i].hideOption();
+          let result = insSelectOptions[i].label.toLowerCase().indexOf(event.target.value.toLowerCase());
+          if (result >= 0){
+            insSelectOptions[i].showOption();
+            hasResult = true;
+          }
         }
       }
 
@@ -266,7 +293,7 @@ export class InsSelect {
     }
   }
 
-  showAllOptions(){
+  async showAllOptions(){
     let insSelectOptionsWrap = this.insSelectEl.querySelector('.ins-select-options-wrap');
     insSelectOptionsWrap.classList.remove('no-result');
 
@@ -274,7 +301,7 @@ export class InsSelect {
     //   event.target.value = this.value ? this.value : '';
     // }
 
-    let insSelectOptions = this.getAllOptions();
+    let insSelectOptions = await this.getAllOptions();
     for (let i = 0; i < insSelectOptions.length; i++){
       insSelectOptions[i].showOption();
     }
@@ -305,7 +332,7 @@ export class InsSelect {
     try {
       parsed = JSON.parse(str);
     } catch (e) {
-      return false;
+      return [];
     }
     return parsed;
   }
@@ -340,10 +367,9 @@ export class InsSelect {
     let selector = this.withDynamicOption ? ".scroll-wrap" : ".ins-select-options-wrap";
     let scrollWrap = this.insSelectEl.querySelector(selector);
     scrollWrap.addEventListener('scroll', () => {
-
       if (scrollWrap.scrollTop + scrollWrap.clientHeight >= (scrollWrap.scrollHeight - 200)) {
         if (!this.loading && this.infiniteScroll){
-          this.loadMore.emit();
+          this.insLoadMore.emit();
           this.loading = true;
           this.setLoadingState(true);
           this.disableNoResult();
@@ -382,14 +408,14 @@ export class InsSelect {
   }
 
   @Method()
-  getAllOptions(){
+  async getAllOptions(){
     return this.insSelectEl.querySelectorAll('ins-select-option');
   }
 
   @Method()
-  setSelectedFromValue(value?){
+  async setSelectedFromValue(value?){
     this.value = value ? value : this.value;
-    let insSelectOptions = this.getAllOptions();
+    let insSelectOptions = await this.getAllOptions();
     let tempMultipleValue = []
 
     if (insSelectOptions.length) {
@@ -436,8 +462,8 @@ export class InsSelect {
   }
 
   @Method()
-  setInsSelectDefaultValue(){
-    let insSelectOptions = this.getAllOptions();
+  async setInsSelectDefaultValue(){
+    let insSelectOptions = await this.getAllOptions();
 
     for (let i = 0; i < insSelectOptions.length; i++) {
       if (insSelectOptions[i].default) {
@@ -468,10 +494,25 @@ export class InsSelect {
     }
   }
 
+  buttoniseClick(e){
+    e.preventDefault();
+    if (this.button){
+      let validTarget = true;
+
+      if (e.target.classList.contains('ins-select-option-wrap')){
+        validTarget = false;
+      }
+
+      this.activated && validTarget
+        ? this.hideSelectOptions()
+        : this.showSelectOptions();
+    }
+  }
+
 	render() {
     return (
       <div class={
-          `ins-select-wrap
+          `ins-select-wrap ins-form-field-wrap
           ${this.initializing ? 'initializing' : ''}
           ${this.activated ? 'activated' : ''}
           ${this.disabled ? 'disabled' : ''}
@@ -493,19 +534,25 @@ export class InsSelect {
         }
 
         {this.label ?
-        <label class={`ins-select-label-wrap ${this.button && !this.multiple && !this.disabled ? 'ripple' : ''}`}
-          onClick={() => this.showSelectOptions()}>
+        <label class={`ins-select-label-wrap ins-form-label
+          ${this.button && !this.multiple && !this.disabled ? 'ripple' : ''}`}
+          onClick={e => this.buttoniseClick(e)}>
 
           {this.label}{this.button && !this.multiple ? ':' : ''}
           {this.button && !this.multiple ?
           <span>{this.labelOfValue ? this.labelOfValue : this.placeholder}</span> : ''}
+
+          <i class="icon-caret-down"></i>
         </label> : ''}
 
         {!this.label && this.button ?
-        <div class={`ins-select-label-wrap ${this.button && !this.multiple && !this.disabled? 'ripple' : ''}`}
-          onClick={() => this.showSelectOptions()}>
+        <div class={`ins-select-label-wrap ins-form-label
+          ${this.button && !this.multiple && !this.disabled? 'ripple' : ''}`}
+          onClick={e => this.buttoniseClick(e)}>
           {this.button && !this.multiple ?
           <span>{this.labelOfValue ? this.labelOfValue : this.placeholder}</span> : ''}
+
+          <i class="icon-caret-down"></i>
         </div> : ''}
 
         {!this.button && !this.multiple ?
@@ -525,6 +572,8 @@ export class InsSelect {
         {this.multiple ?
         <div class="ins-select-value-wrap multiple"
         onClick={() => this.showSelectOptions()}>
+
+          {this.initializing ? "" : <i class="icon-caret-down"></i>}
 
           {this.value.length ? this.value.map(item => {
             return (
@@ -553,7 +602,9 @@ export class InsSelect {
           </div>
         : ''}
 
-        <div class={`ins-select-options-wrap ${this.multiple ? 'multiple' : '' }
+        <div class={`ins-select-options-wrap
+          ${this.multiple ? 'multiple' : '' }
+          ${this.noMoreOptions ? 'no-options' : ''}
           ${this.withDynamicOption ? 'with-dynamic-option' : '' }`}>
 
           <div class={`scroll-wrap`}>
@@ -588,7 +639,7 @@ export class InsSelect {
           : ''}
         </div>
 
-        { this.activated && this.multiple
+        { this.activated && !this.button
 
           ? <div class="done-wrap"
               onClick={() => this.hideSelectOptions()}>

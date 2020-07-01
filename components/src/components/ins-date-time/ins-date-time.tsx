@@ -1,11 +1,11 @@
-import { h, Component, Element, Prop, State, Event, EventEmitter } from "@stencil/core";
+import { h, Component, Element, Prop, Event, EventEmitter } from "@stencil/core";
 import flatpickr from "flatpickr";
 
 @Component({ tag: 'ins-date-time' })
 export class InsDateTime {
   @Element() insDateTimeEl: HTMLElement;
-  @Event() onpick: EventEmitter;
-  @Event() valueChange: EventEmitter;
+  @Event() insInput: EventEmitter;
+  @Event() insValueChange: EventEmitter;
 
   @Prop({mutable:true}) noMeridiem: boolean = false;
   @Prop({mutable:true}) disabled: boolean = false;
@@ -19,16 +19,48 @@ export class InsDateTime {
   @Prop({mutable:true}) placeholder: string = "";
   @Prop({mutable:true}) minDate: string = "";
   @Prop({mutable:true}) maxDate: string = "";
+  @Prop({mutable:true}) minTime: string = "";
+  @Prop({mutable:true}) maxTime: string = "";
   @Prop({mutable: true}) errorMessage: string = "";
   @Prop({ mutable: true }) icon: string = "";
+  @Prop({ mutable: true }) mode: string = "";
 
-  @State() pickerInstance: any;
+  pickerInstance: any;
+  locFormat: any;
+  locNoMeridiem: any;
+
+  componentWillLoad(){
+    this.checkFormat();
+  }
 
   componentDidLoad(){
-    this.format = this.format
-      ? this.format
-      : `Y-m-d ${this.noMeridiem ? 'H:i' : 'h:i K'}`;
     this.initInsDateTime();
+  }
+
+  componentWillUpdate(){
+    this.checkFormat();
+  }
+
+  componentDidUpdate(){
+    this.initInsDateTime();
+  }
+
+  checkFormat(){
+    this.locNoMeridiem = this.noMeridiem;
+
+    if (this.mode === "timepicker"){
+      this.locFormat = this.noMeridiem ? 'H:i' : 'h:i K';
+    } else {
+      this.locFormat = this.format
+        ? this.format
+        : `Y-m-d${this.checkTimeFormat()}`;
+    }
+  }
+
+  checkTimeFormat(){
+    return this.mode !== "datepicker"
+      ? this.locNoMeridiem ? ' H:i' : ' h:i K'
+      : "";
   }
 
   initInsDateTime(){
@@ -37,20 +69,23 @@ export class InsDateTime {
     let wrapper = this.insDateTimeEl.querySelector('.ins-date-time-wrap') as any;
 
     this.pickerInstance = flatpickr(inputEl, {
-      enableTime: true,
+      enableTime: (this.mode !== "datepicker"),
+      noCalendar: (this.mode === "timepicker"),
       dateFormat: updatedFormat,
-      time_24hr: this.noMeridiem,
+      time_24hr: this.locNoMeridiem,
       minDate: this.minDate,
       maxDate: this.maxDate,
-      onChange: this.onPickHandler.bind(this),
+      minTime: this.minTime,
+      maxTime: this.maxTime,
+      onChange: this.insInputHandler.bind(this),
       appendTo: wrapper
     });
   }
 
-  onPickHandler(selected_dates, date_string){
-    this.value = date_string;
-    this.onpick.emit({label: this.label, selected_dates, date_string});
-    this.valueChange.emit(date_string);
+  insInputHandler(selected_dates, date_string){
+    // this.value = date_string;
+    this.insInput.emit({label: this.label, selected_dates, date_string});
+    this.insValueChange.emit(date_string);
   }
 
   activateLabel(){
@@ -65,21 +100,22 @@ export class InsDateTime {
   }
 
   updateFormat(){
-    let split = this.format.split(" ");
+    let split = this.locFormat.split(" ");
     if (split[1] === "HH:mm"){
-      this.noMeridiem = true;
+      this.locNoMeridiem = true;
     }
+    if (this.mode === "timepicker") return this.locFormat;
     switch(split[0]){
-      case "MM/DD/YYYY": return `m/d/Y ${this.noMeridiem ? "H:i" : 'h:i K'}`;
-      case "DD/MM/YYYY": return `d/m/Y ${this.noMeridiem ? "H:i" : 'h:i K'}`;
-      case "YYYY/MM/DD": return `Y/m/d ${this.noMeridiem ? "H:i" : 'h:i K'}`;
-      case "MM.DD.YYYY": return `m.d.Y ${this.noMeridiem ? "H:i" : 'h:i K'}`;
-      case "DD.MM.YYYY": return `d.m.Y ${this.noMeridiem ? "H:i" : 'h:i K'}`;
-      case "YYYY.MM.DD": return `Y.m.d ${this.noMeridiem ? "H:i" : 'h:i K'}`;
-      case "MM-DD-YYYY": return `m-d-Y ${this.noMeridiem ? "H:i" : 'h:i K'}`;
-      case "DD-MM-YYYY": return `d-m-Y ${this.noMeridiem ? "H:i" : 'h:i K'}`;
-      case "YYYY-MM-DD": return `Y-m-d ${this.noMeridiem ? "H:i" : 'h:i K'}`;
-      default: return this.format
+      case "MM/DD/YYYY": return `m/d/Y${this.checkTimeFormat()}`;
+      case "DD/MM/YYYY": return `d/m/Y${this.checkTimeFormat()}`;
+      case "YYYY/MM/DD": return `Y/m/d${this.checkTimeFormat()}`;
+      case "MM.DD.YYYY": return `m.d.Y${this.checkTimeFormat()}`;
+      case "DD.MM.YYYY": return `d.m.Y${this.checkTimeFormat()}`;
+      case "YYYY.MM.DD": return `Y.m.d${this.checkTimeFormat()}`;
+      case "MM-DD-YYYY": return `m-d-Y${this.checkTimeFormat()}`;
+      case "DD-MM-YYYY": return `d-m-Y${this.checkTimeFormat()}`;
+      case "YYYY-MM-DD": return `Y-m-d${this.checkTimeFormat()}`;
+      default: return this.locFormat
     }
   }
 

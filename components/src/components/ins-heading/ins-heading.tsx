@@ -3,8 +3,9 @@ import { h, Component, Prop, State, Element, Event, EventEmitter } from "@stenci
 @Component({ tag: 'ins-heading' })
 export class InsHeading {
   @Element() insHeadingEl: HTMLElement;
-  @Event() onInsHeadingUpdate: EventEmitter;
+  @Event() insChange: EventEmitter;
 
+  @Prop({mutable: true}) change: string = "";
   @Prop({mutable: true}) label: string = "";
   @Prop({mutable: true}) name: string = "";
   @Prop({mutable: true}) backgroundColor: string = '#fff';
@@ -42,7 +43,7 @@ export class InsHeading {
 
   saveChanges(){
     if (this.tempLabel.trim()){
-      this.onInsHeadingUpdate.emit({
+      this.insChange.emit({
         name: this.name,
         old_label: this.label,
         new_label: this.tempLabel
@@ -86,13 +87,18 @@ export class InsHeading {
 
         {this.editable ?
           <div class="input-wrap">
-            <ins-input maxlength={this.maxlength} value={this.tempLabel} onValueChange={(e) => this.updateTempLabel(e)}></ins-input>
+            <ins-input maxlength={this.maxlength} value={this.tempLabel} 
+              onInsValueChange={(e) => this.updateTempLabel(e)}>
+            </ins-input>
 
             <div class="input-wrap-buttons">
               <ins-button label="CANCEL" size="small"
-                onOnClickInsButton={() => this.leaveEditMode()}></ins-button>
+                onInsClick={() => this.leaveEditMode()}>
+              </ins-button>
+
               <ins-button label="SAVE" size="small"
-                onOnClickInsButton={() => this.saveChanges()}></ins-button>
+                onInsClick={() => this.saveChanges()}>
+              </ins-button>
             </div>
           </div>
         : ''}

@@ -15,12 +15,12 @@ export class InsTabItem {
   @Prop({ mutable: true }) hasError: boolean;
 
   @Method()
-  deactivate() {
+  async deactivate() {
     this.active = false;
   }
 
   @Method()
-  activate() {
+  async activate() {
     this.active = true;
   }
 

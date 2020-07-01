@@ -4,8 +4,8 @@ import flatpickr from "flatpickr";
 @Component({ tag: 'ins-filter' })
 export class InsFilter {
     @Element() insFilterEl: HTMLElement;
-    @Event() onDateFilterApply: EventEmitter;
-    @Event() onFilterApply: EventEmitter;
+    @Event() insDateFilter: EventEmitter;
+    @Event() insFilter: EventEmitter;
 
     @Prop({ mutable: true }) withDateFilter: boolean = false;
     @Prop({ mutable: true }) dateTitle: any = "Date Period";
@@ -36,7 +36,8 @@ export class InsFilter {
     
     @State() currentFilter: any;
 
-    @Method() closeDateFilter() {
+    @Method() 
+    async closeDateFilter() {
         this.dateFilterState = false;
     }
 
@@ -50,7 +51,7 @@ export class InsFilter {
             selections[selected.name] = selected.option;
         }
 
-        this.onFilterApply.emit(selections);
+        this.insFilter.emit(selections);
     }
 
     toggleDateFilter() {

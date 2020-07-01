@@ -15,7 +15,7 @@ export class InsHeaderUser {
   }
 
   @Method()
-  renderMyProfile(){
+  async renderMyProfile(){
 
     let newRoute = {
       link: this.profileLink,
@@ -24,7 +24,7 @@ export class InsHeaderUser {
       withSubmenu: false
     }
     let currentCrumbs = JSON.parse(window.localStorage.getItem('ins_breadcrumbs'));
-    let insRendererEl = parent.document.querySelector('ins-renderer');
+    let insRendererEl = parent.document.querySelector('ins-renderer') as any;
 
     if (currentCrumbs[currentCrumbs.length - 1].label !== 'My Profile'){
       currentCrumbs.push(newRoute);
@@ -33,7 +33,7 @@ export class InsHeaderUser {
   }
 
   @Method()
-  routePageHandler(){
+  async routePageHandler(){
     this.deactivateRoutes();
     this.toggleDropDown();
 
@@ -43,22 +43,19 @@ export class InsHeaderUser {
       label: 'My Profile',
       withSubmenu: false
     }]});
-
-    // if (!this.app){
-    //   window.location.assign(this.profileLink);
-    // }
   }
 
   routePageHandlerMobile() {
     this.routePageHandler();
-    let insHeaderEl = document.querySelector('ins-header');
+    let insHeaderEl = document.querySelector('ins-header') as any;
     insHeaderEl.toggleNav();
   }
 
   deactivateRoutes(){
     let allSidebarItems = document.querySelectorAll('ins-sidebar-item');
     for (let i = 0; i < allSidebarItems.length; i++){
-      allSidebarItems[i].deactivate();
+      let sidebarItem = allSidebarItems[i] as any;
+      sidebarItem.deactivate();
     }
   }
 
@@ -72,27 +69,6 @@ export class InsHeaderUser {
 
   componentWillLoad(){
     this.formatRoute();
-  }
-
-  @Method()
-  val(attr, value) {
-    let data = {
-      name: this.name,
-      logoutLink: this.logoutLink,
-      profileLink: this.profileLink
-    }
-    if (attr && typeof attr == "object" && !value) {
-      // console.log('this is json');
-    }
-    else if (attr && !value) {
-      return this[attr];
-    }
-    else if (attr && value) {
-      this[attr] = value;
-    }
-    else {
-      return data;
-    }
   }
 
   render() {

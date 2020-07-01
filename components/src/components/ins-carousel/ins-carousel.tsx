@@ -130,7 +130,7 @@ export class InsCarousel {
   }
 
   @Method()
-  goTo(slide){
+  async goTo(slide){
     let fromSlide = this.currentIndex;
 
     switch(slide){
@@ -168,11 +168,11 @@ export class InsCarousel {
         {this.noCarouselButton ? "" :
           <div class="ins-carousel_ctrl-btns">
             <ins-button icon="icon-angle-left" outlined label=""
-              onOnClickInsButton={() => this.goTo('prev')}>
+              onInsClick={() => this.goTo('prev')}>
             </ins-button>
 
             <ins-button icon="icon-angle-right" outlined label=""
-              onOnClickInsButton={() => this.goTo('next')}>
+              onInsClick={() => this.goTo('next')}>
             </ins-button>
           </div>
         }

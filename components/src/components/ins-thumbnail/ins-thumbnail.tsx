@@ -1,14 +1,13 @@
-import { Component, Prop, State } from "@stencil/core";
+import { h, Component, Prop, State } from "@stencil/core";
 
 @Component({ tag: 'ins-thumbnail' })
 export class InsThumbnail {
 
-    @Prop() name: string;
-    @Prop() alt: string;
-    @Prop() src: string;
-    @Prop() label: string;
-    @Prop() thumbnail: string;
-    // @Prop({ mutable: true }) preview: boolean = false;
+    @Prop({ mutable: true }) name: string;
+    @Prop({ mutable: true }) alt: string;
+    @Prop({ mutable: true }) src: string;
+    @Prop({ mutable: true }) label: string;
+    @Prop({ mutable: true }) thumbnail: string;
     @State() hoverState: boolean = false;
 
     private _getSvgType(type){
@@ -84,10 +83,8 @@ export class InsThumbnail {
         let fileNameArray = fileName.split(".");
         let fileExtension = fileNameArray[fileNameArray.length - 1].toLowerCase();
         let imgFileFormats = ["jpg", "jpeg", "png", "gif", "webp", "svg", "ai"];
-        // let fileTypes = ["eps", "pdf", "psd", "ttf", "zip"];
 
         if (fileExtension) {
-            // classImg = imgFileFormats.includes(fileExtension) ? "ins-img": "ins-icon icon-small";
             if (imgFileFormats.indexOf(fileExtension) !== -1) {
               return <img class="ins-img" src={file} alt={this.alt} />
             }
@@ -104,25 +101,19 @@ export class InsThumbnail {
     render() {
         return (
             <div class="ins-thumbnail">
-                <div class="card ins-thumbnail-img">
+                <div class="ins-thumbnail-img">
                     { this.src ?
                     <div>
                         <div class="img-thumbnail-box">
                             { this.checkFileType() }
                         </div>
                         <div class="ins-thumbnail-btn">
-                            {/* {this.preview ?
-                            <div class="preview-left-btn">
-                              <a href={this.src} target="_blank">
-                                  <ins-button label="PREVIEW" color="blue" size="small"></ins-button>
-                              </a>
-                            </div> : "" } */}
 
-                            <div class={`download-right-btn`}>{/*${this.preview ? 'has-preview':''}*/}
+                            <div class={`download-right-btn`}>
                                 <a href={this.src} download={this.name}>
                                     <ins-button label="DOWNLOAD" color="blue" size="small"
                                         onMouseOver={_e => this.toggleHoverState(true)}
-                                        onMouseOut={_e => this.toggleHoverState(false)}>{/* solid={this.preview} */}
+                                        onMouseOut={_e => this.toggleHoverState(false)}>
                                     </ins-button>
                                 </a>
                             </div>
