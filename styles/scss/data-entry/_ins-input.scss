@@ -1,0 +1,34 @@
+
+.ins-form-field-wrap {
+
+  .input-wrap {
+    position: relative;
+  }
+
+  .icon-wrap {
+    font-size: 16px;
+    position: absolute;
+    right: 8px;
+    top: calc(50% - 8px);
+    color: $ink40;
+    -webkit-transition: color .25s ease-in-out;
+    transition: color .25s ease-in-out;
+
+    &.hover:hover {
+      color: #1e86e3;
+      cursor: pointer;
+    }
+  }
+
+  .ins-form-field:focus + .icon-wrap {
+    color: $primary;
+  }
+
+  .ins-form-field:focus:read-only + .icon-wrap {
+    color: $ink40;
+  }
+
+  .is-invalid .icon-wrap {
+    color: $negative;
+  }
+}

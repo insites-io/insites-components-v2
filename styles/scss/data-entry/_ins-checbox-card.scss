@@ -1,0 +1,81 @@
+@mixin border_and_bg($color){
+  border-color: $color;
+  .selected-wrap {
+    background-color: $color;
+  }
+}
+
+.ins-checkbox-card-wrap {
+  position: relative;
+  background: #fff;
+  border-radius: $border_radius;
+  border: $border_style $border_thickness $ink10;
+  box-shadow: 1px 1px 3px $ink10;
+  box-sizing: border-box;
+  margin-top: 0;
+  transition: all .15s;
+  padding: 15px;
+  box-shadow: none;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0px 4px 13px $ink10;
+  }
+
+  &:focus {
+    margin-top: -3px;
+    box-shadow: 0px 4px 13px $ink10;
+    outline: none;
+  }
+
+  &.outlined {
+    border-style: dashed;
+    box-shadow: none;
+  }
+
+  .ins-checkbox-card-input {
+    display: none;
+  }
+}
+
+.ins-checkbox-card-wrap.no-padding {
+  padding: 0;
+}
+
+.ins-checkbox-card-wrap.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.ins-checkbox-card-wrap.selected {
+  margin-top: -3px;
+  box-shadow: 0px 4px 13px $ink10;
+
+  .selected-wrap {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 28px;
+    height: 28px;
+    background-color: $ink10;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 16px;
+    padding-top: 6px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  &.ink               { @include border_and_bg($ink) }
+  &.blue              { @include border_and_bg($blue) }
+  &.ink5              { @include border_and_bg($ink5) }
+  &.ink1              { @include border_and_bg($ink1) }
+  &.ink10             { @include border_and_bg($ink10) }
+  &.ink40             { @include border_and_bg($ink40) }
+  &.warning           { @include border_and_bg($warning) }
+  &.negative          { @include border_and_bg($negative) }
+  &.turquoise         { @include border_and_bg($turquoise) }
+  &.information1      { @include border_and_bg($information1) }
+  &.information2      { @include border_and_bg($information2) }
+  &.green, &.positive { @include border_and_bg($green) }
+}

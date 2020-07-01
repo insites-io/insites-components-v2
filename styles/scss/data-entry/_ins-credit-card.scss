@@ -1,0 +1,70 @@
+.ins-credit-card-main-wrap {
+  width: 100%;
+  max-width: 410px;
+  height: 248px;
+  border-radius: 12px;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  background: #fff;
+  -webkit-transition: all .15s;
+  transition: all .15s;
+
+  -webkit-box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.1);
+  color: $ink;
+
+  .close-btn {
+    position: absolute;
+    right: 20px;
+    top: 16px;
+    font-size: 20px;
+    cursor: pointer;
+
+    &:hover {
+      color: $negative;
+    }
+  }
+
+  &.active {
+
+    background: linear-gradient(292.96deg, #2D9CDB 6.72%, #56CCF2 91.78%);
+    color: #fff;
+
+    .ins-credit-card-wrap {
+      &_expired {
+        color: #fff;
+      }
+    }
+
+    .close-btn {
+      color: $ink10;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.ins-credit-card-wrap {
+
+  &_brand {
+    width: 70px;
+  }
+
+  .insites-user-card-details {
+    font-size: 16px;
+    font-family: monospace;
+    position: absolute;
+    bottom: 40%;
+  }
+
+  &_expired {
+    font-family: 'Open Sans', sans-serif;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: $negative;
+  }
+}

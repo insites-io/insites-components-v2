@@ -1,0 +1,120 @@
+.ins-select-wrap.buttonise {
+
+  display: inline-block;
+  background: $ink10;
+  border-radius: $border_radius;
+  position: relative;
+
+  &:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $ink40;
+    display: block;
+    position: absolute;
+    right: 8px;
+    top: calc(50% - 2px);
+  }
+
+  .ins-select-label-wrap {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: top;
+    padding: 7px 7px;
+    cursor: default;
+
+    span {
+      font-size: 0.75rem;
+      font-weight: 400;
+      margin-left: 5px;
+      padding-right: 24px;
+    }
+
+    cursor: pointer;
+  }
+
+  .ins-select-value-wrap {
+    display: inline-block;
+    width: auto;
+    border: none;
+    background: none;
+    font-size: 0.75rem;
+    height: auto;
+    padding-left: 8px;
+    padding-right: 24px;
+  }
+
+  .ins-select-options-wrap {
+    opacity: 0;
+    background-color: transparent;
+    position: absolute;
+    top: calc(100% + 8px);
+    min-width: 200px;
+    width: 100%;
+    left: 0;
+    border: solid 1px transparent;
+    border-radius: 4px;
+    box-shadow: 0px 0px 0px transparent;
+    transition: height 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    overflow: hidden;
+  }
+
+  .ins-select-options-searchbar {
+    position: relative;
+    padding: 14px;
+    border-bottom: $border_style $border_thickness $border_color;
+    background-color: #fff;
+
+    i {
+      font-size: $input_field_font_size;
+      position: absolute;
+      right: 24px;
+      top: calc(50% - 8px);
+      color: $ink40;
+    }
+  }
+
+  &.activated {
+    .ins-select-label-wrap {
+      color: $ink;
+    }
+
+    .ins-select-options-wrap {
+      opacity: 1;
+      background-color: #fff;
+      border-color: $ink10;
+      box-shadow: 1px 1px 3px $ink10;
+    }
+
+    &.drop-up {
+      .ins-select-options-wrap {
+        top: inherit;
+        bottom: calc(100% + 8px);
+      }
+    }
+  }
+
+  &.small {
+    .ins-select-label-wrap,
+    .ins-select-value-wrap {
+      font-size: 0.625rem;
+    }
+    .ins-select-option-wrap {
+      font-size: 0.75rem;
+    }
+  }
+
+  &.disabled {
+    .ins-select-label-wrap {
+      cursor: not-allowed;
+    }
+  }
+
+  &.readonly {
+    .ins-select-label-wrap {
+      cursor: text;
+    }
+  }
+}

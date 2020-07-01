@@ -1,0 +1,134 @@
+ins-tab {
+  font-family: $default_font_family;
+
+  .ins-tab {
+    border-radius: $border_radius;
+    margin-top: 0;
+    box-shadow: 1px 1px 3px $ink10;
+    background: #fff;
+    transition: all 0.15s;
+
+    .ins-tab-headers {
+      padding: 0;
+      
+      overflow-x: hidden;
+      overflow-y: hidden;
+      white-space: nowrap;
+      user-select: none;
+
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+
+      position: relative;
+      list-style-type: none;
+      margin: 0;
+
+      &::before {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: " ";
+        height: 1px;
+        width: 100%;
+        background: $ink10;
+      }
+
+      &.scrollable {
+        border-bottom: none;
+
+        &::-webkit-scrollbar {
+          width: 7px;
+          height: 7px;
+        }
+
+        &::-webkit-scrollbar-track {
+          box-shadow: none;
+          -webkit-box-shadow: none;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: $ink10;
+          border-radius: 16px;
+          outline: none;
+        }
+
+        &:hover {
+          overflow-x: auto;
+          & + ins-tab-item {
+            display: block;
+            margin-top: -5px;
+          }
+        }
+        .ins-tab-header {
+          border-bottom: solid 1px $ink10;
+        }
+      }
+
+      @media screen and (max-width: 639px) {
+        &.scrollable {
+          overflow-x: auto;
+          &:hover {
+            overflow-x: auto;
+            & + ins-tab-item {
+              display: block;
+              margin-top: 0;
+            }
+          }
+        }
+      }
+      .ins-tab-header {
+        cursor: pointer;
+        display: inline-block;
+        padding: 15px 25px;
+        color: $ink40;
+        font-size: $input_field_font_size;
+        line-height: 14px;
+        position: relative;
+
+        span:nth-child(2) {
+          padding-left: 5px;
+        }
+        @media screen and (max-width: 639px) {
+          padding: 13px 20px;
+        }
+        &::before {
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          height: 2px;
+          width: 100%;
+          content: " ";
+          background: $ink10;
+        }
+        &.disabled {
+          cursor: not-allowed;
+          opacity: 0.4;
+        }
+        &.active,
+        &:hover,
+        &:focus {
+          color: $ink;
+          position: relative;
+
+          &::before {
+            content: " ";
+            background: $blue;
+            z-index: 1;
+            bottom: 0;
+          }
+        }
+
+        &.has-error {
+          &::before {
+            content: " ";
+            background: $red;
+            z-index: 1;
+            bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

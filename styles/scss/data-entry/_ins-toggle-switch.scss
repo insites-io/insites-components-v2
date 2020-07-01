@@ -1,0 +1,115 @@
+ins-toggle-switch {
+
+  .v-switch {
+    display: inline-block;
+    padding: 10px 10px 0 10px;
+
+    .ins-switch {
+      position: relative;
+      display: inline-block;
+      min-width: 60px;
+      height: 34px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .ins-switch input {
+      display: none;
+    }
+
+    .ins-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $ink10;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+
+      margin: 0;
+      height: 16px;
+      width: 40px;
+    }
+
+    .ins-slider:hover {
+      > i:before {
+        -webkit-transition: 0.4s;
+        content: "";
+        border: solid 9px $ink10 !important;
+        height: 38px;
+        width: 38px;
+        position: absolute;
+        border-radius: 50px;
+        top: calc(50% - 19px);
+        right: calc(50% - 9px);
+        opacity: .3;
+        box-sizing: border-box;
+      }
+    }
+    .ins-slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      bottom: -2px;
+      background-color: #fff;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+      box-shadow: 0 0 1px #b6b6b9;
+      box-sizing: border-box;
+    }
+
+    input:checked + .ins-slider {
+      background: lighten($blue, 44%);
+    }
+
+    input:focus + .ins-slider {
+      box-shadow: 0 0 1px $blue;
+    }
+
+    input:checked + .ins-slider:before,
+    input:checked + .ins-slider > i:before {
+      -webkit-transform: translateX(20px);
+      -ms-transform: translateX(20px);
+      transform: translateX(20px);
+
+      background-color: $blue;
+      border: none;
+    }
+
+    input:checked + .ins-slider > i:before {
+      border: solid 10px $blue !important;
+      opacity: .1 !important;
+    }
+
+    .ins-slider.round {
+      border-radius: 34px;
+    }
+
+    .ins-slider.round:before {
+      border-radius: 50%;
+      border: $border_style $border_thickness $border_color;
+    }
+
+    .ins-label {
+      font-family: $default_font_family;
+      font-size: $input_field_font_size;
+      font-weight: $input_field_font_weight;
+
+      display: block;
+      padding-left: 52px;
+      margin-top: -5px;
+      color: $ink40;
+    }
+
+    &.disabled {
+
+      input:checked + .ins-slider:hover > i:before {
+        border-color: transparent !important;
+        background: transparent;
+      }
+    }
+  }
+}

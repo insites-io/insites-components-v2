@@ -1,0 +1,300 @@
+.ins-select-wrap {
+  position: relative;
+
+  .ins-select-value-wrap {
+    min-height: 41px;
+    box-sizing: border-box;
+    border: $border_thickness $border_style $border_color;
+    border-radius: $border_radius;
+    background: #fff;
+    position: relative;
+
+    font-size: $input_field_font_size;
+    color: $ink40;
+    cursor: pointer;
+
+    transition: border-color 0.15s ease-in, border-radius 0.15s ease-in;
+
+    &:hover {
+      border-color: $ink40;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+    }
+
+    &.multiple {
+      padding: 2px 3px 0px;
+
+      .multiple-item-wrap {
+        font-family: $default_font_family;
+        display: inline-block;
+        background-color: $ink10;
+        border-radius: $border_radius;
+
+        margin: 6px 4px;
+        padding: 4px 8px;
+        position: relative;
+        padding-right: 28px;
+
+        font-size: $input_field_font_size;
+        color: $ink;
+
+        .icon-close {
+          color: $ink40;
+          font-size: 7px;
+          margin-left: 10px;
+          position: absolute;
+          top: calc(50% - 4px);
+          right: 8px;
+        }
+      }
+
+      .multiple-placeholder {
+        padding: 12px 11px 10px;
+        font-family: $default_font_family;
+      }
+    }
+
+    i.icon-caret-down {
+      color: $ink40;
+      font-size: 16px;
+      position: absolute;
+      top: calc(50% - 8px);
+      right: 11px;
+    }
+  }
+
+  .ins-select-value-input {
+    padding: $input_padding;
+    border: none;
+    background: #fff;
+
+    @include input_field;
+    @include input_placeholder($ink40);
+
+    &:focus,
+    &:hover,
+    &.active {
+      border: none;
+      outline: none;
+      box-shadow: none;
+    }
+
+    &[readonly] {
+      background-color: #fff;
+      cursor: text;
+    }
+
+    &[disabled] {
+      @include input_disabled;
+    }
+  }
+
+  .ins-select-options-wrap {
+    background-color: transparent;
+    border: $border_style $border_thickness transparent;
+    border-radius: 0px 0px 4px 4px;
+    box-sizing: border-box;
+    border-top: none;
+    overflow: hidden;
+    height: 0;
+    transition: height 0.15s ease-out, border-color 0.15s ease-out;
+    position: absolute;
+    width: 100%;
+
+    &.with-dynamic-option {
+
+      .scroll-wrap {
+        max-height: 225px;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+          width: 7px;
+          height: 7px;
+        }
+
+        &::-webkit-scrollbar-track {
+          box-shadow: none;
+          -webkit-box-shadow: none;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: $ink10;
+          border-radius: 16px;
+          outline: none;
+        }
+      }
+
+      .dynamic-option-wrap {
+        display: block;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    &::-webkit-scrollbar-track {
+      box-shadow: none;
+      -webkit-box-shadow: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $ink10;
+      border-radius: 16px;
+      outline: none;
+    }
+
+    .no-result-text,
+    .no-more-options {
+      color: $ink40;
+      font-family: $default_font_family;
+      font-size: $input_field_font_size;
+      padding: 12px 10px;
+      margin-bottom: 0;
+      display: none;
+    }
+
+    .no-more-options {
+      display: block;
+    }
+
+    &.no-result {
+      .no-result-text {
+        display: block;
+      }
+
+      .no-more-options {
+        display: none;
+      }
+    }
+
+    &.drop-up {
+      top: inherit;
+      bottom: calc(100% + 8px);
+    }
+  }
+
+  .dynamic-option-wrap {
+    padding: 16px;
+    border-top: $border_style $border_thickness $border_color;
+    display: none;
+
+    .ins-form-field {
+      display: inline-block;
+      width: calc(100% - 80px);
+      margin-right: 15px;
+
+      &.is-invalid {
+        color: $negative;
+        border-color: $negative;
+        background-color: $negative_bg;
+        @include input_placeholder($negative);
+      }
+    }
+  }
+
+  &.readonly {
+    .ins-select-value-wrap {
+      background-color: $disabled_readonly_bg;
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: $ink10 !important;
+      }
+    }
+
+    .ins-select-value-input[readonly] {
+      border-color: $ink10 !important;
+      background-color: $disabled_readonly_bg;
+      color: $ink40;
+    }
+  }
+
+  &.disabled {
+    color: $ink40;
+
+    .ins-select-value-wrap {
+      @include input_disabled;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &.activated {
+
+    label {
+      color: $primary;
+    }
+
+    &.no-options {
+      .ins-select-value-wrap {
+        border-bottom-color: $primary;
+        border-radius: 4px;
+      }
+      .ins-select-options-wrap {
+        display: none;
+      }
+    }
+    .ins-select-value-wrap {
+      color: $ink;
+      border-color: $primary;
+      border-bottom-color: transparent;
+      border-radius: 4px 4px 0px 0px;
+    }
+    &:not(.no-options) .ins-select-options-wrap {
+      background-color: #fff;
+      border-color: $primary;
+      overflow: auto;
+      z-index: 999;
+      max-height: 400px;
+      margin-top: -1px;
+    }
+
+    &.drop-up {
+      .ins-select-value-wrap {
+        border-bottom-color: $primary;
+        border-radius: 0px 0px 4px 4px;
+        border-top-color: transparent;
+      }
+
+      &:not(.no-options) .ins-select-options-wrap {
+        top: inherit;
+        bottom: calc(100% - 20px);
+        border-radius: 4px 4px 0px 0px;
+        border-bottom-color: transparent !important;
+        border-top: $border_style $border_thickness $border_color;
+      }
+    }
+  }
+  &.is-invalid {
+
+    .ins-select-value-wrap {
+      border-color: $negative;
+      color: $negative;
+      background-color: #FEF8F8;
+
+      .icon-caret-down {
+        color: $negative;
+      }
+    }
+
+    .ins-select-value-input {
+      background-color: #FEF8F8;
+      color: $negative;
+
+      @include input_placeholder($negative);
+    }
+
+    &.activated {
+      .ins-select-options-wrap {
+        top: calc(100% - 24px);
+        border-color: $negative;
+      }
+    }
+  }
+}

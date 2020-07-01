@@ -1,0 +1,161 @@
+ins-checkbox,
+ins-radio {
+  input {
+    margin: 0;
+  }
+
+  .ins-radio-checkbox {
+
+    padding: 0 10px;
+
+    label {
+      display: inline-block;
+
+      span {
+        font-family: $default_font_family;
+        font-size: $input_field_font_size;
+        font-weight: $input_field_font_weight;
+        line-height: 1.8;
+        color: $ink40;
+        display: inline-block;
+        vertical-align: top !important;
+        margin-top: -2px;
+        margin-left: 10px !important;
+      }
+    }
+
+    .ripple-check {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      appearance: none;
+
+      -webkit-transition: background 0.15s ease-out;
+      -moz-transition: background 0.15s ease-out;
+      transition: background 0.15s ease-out;
+
+      position: relative;
+      width: 16px;
+      height: 16px;
+      background: $ink10;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      outline: none;
+      z-index: 990;
+      border-radius: 1px;
+
+      &:hover {
+        background: $ink40;
+
+        @media only screen and (max-width: 425px) {
+          & {
+            background: $ink10;
+          }
+        }
+      }
+
+      &:checked {
+        background: $primary;
+      }
+
+      &:checked::before {
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        display: inline-block;
+        font-size: 8px;
+        text-align: center;
+        line-height: 16px;
+        content: "\e926";
+        font-family: "insites-20-fonticon" !important;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      &:checked::after {
+        -webkit-animation: click-wave 0.3s;
+        -moz-animation: click-wave 0.3s;
+        animation: click-wave 0.3s;
+        background: $primary;
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        width: 16px;
+        height: 16px;
+        opacity: 0;
+        border-radius: 1px;
+      }
+
+      &.radio {
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+      }
+
+      &.radio:checked::before {
+        width: 18px;
+        height: 18px;
+        line-height: 20px;
+      }
+
+      &.radio:checked::after {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+@-webkit-keyframes click-wave {
+  0% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes click-wave {
+  0% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@-o-keyframes click-wave {
+  0% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes click-wave {
+  0% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}

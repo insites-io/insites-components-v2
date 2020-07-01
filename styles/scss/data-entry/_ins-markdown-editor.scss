@@ -1,0 +1,131 @@
+ins-markdown-editor {
+    .markdown-editor-wrap.ins-form-field {
+        padding: 0;
+    }
+
+    .ins-markdown-editor {
+        &.active {
+            .editor-toolbar:not(.fullscreen) {
+                // border: $border_thickness $border_style $blue;
+                // border-bottom: none;
+                border: none;
+            }
+            .CodeMirror-wrap:not(.CodeMirror-fullscreen) {
+                // border: $border_thickness $border_style $blue;
+                // border-top: none;
+
+                border: none;
+                
+                &.CodeMirror-sided {
+                    border-right: none;
+                }
+            }
+        }
+        margin-bottom: 15px;
+        label {
+            font-size: 12px;
+            font-weight: 600;
+            color: $ink;
+            font-family: $default_font_family;
+            margin-bottom: 2px;
+
+            &.disabled {
+                color: $ink40;
+            }
+
+            &.active {
+                color: $blue;
+            }
+        }
+        .editor-toolbar {
+            opacity: 1;
+            background: $ink5;
+            padding: 16px;
+            // border: 1px solid rgba(0,0,0,.075);
+            // border-bottom: none;
+            border: none;
+
+            &:hover {
+                opacity: 1;
+            }
+            &.fullscreen {
+                z-index: 1051;
+                height: 66px;
+                padding: 16px;
+                background: $ink5;
+            }
+            &::before, &::after, .separator {
+                display: none;
+            }
+            a {
+                background: $ink10;
+                border: none;
+                margin-right: 2px;
+                font-size: $input_field_font_size;
+                border-radius: $border_radius;
+                color: $ink40 !important;
+                height: 34px;
+                width: 34px;
+                &::before {
+                    line-height: 34px;
+                }
+                &:hover, &.active {
+                    background: $blue;
+                    color: #fff !important;
+                }
+                &:focus, &:active {
+                    outline: none;
+                }
+            }
+            &.disabled-for-preview {
+                a:not(.no-disable) {
+                    opacity: 0.4;
+                    background: $ink10;
+                }
+            }
+        }
+        .CodeMirror {
+            &-fullscreen {
+                top: 66px;
+                z-index: 99999;
+                border-radius: 0;
+            }
+            // border: $border_thickness $border_style rgba(0,0,0,.1);
+            // border-top: none;
+            border: none;
+        }
+        .editor-preview-side {
+            top: 66px;
+            z-index: 99999;
+            border-radius: 0;
+            border-top: none;
+            border-left: none;
+        }
+        &.is-invalid {
+            .editor-toolbar:not(.fullscreen) {
+                border: $border_thickness $border_style $negative;
+                border-bottom: none;
+            }
+            .CodeMirror-wrap:not(.CodeMirror-fullscreen) {
+                border: $border_thickness $border_style $negative;
+                border-top: none;
+                &.CodeMirror-sided {
+                    border-right: none;
+                }
+            }
+            label {
+                color: $negative;
+            }
+
+            .ins-form-error {
+                margin-top: 8px;
+                display: block;
+                font-size: 12px;
+                font-family: $default_font_family;
+                line-height: 16px;
+                color: $red;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

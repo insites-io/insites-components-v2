@@ -1,0 +1,119 @@
+ins-filter-item { 
+  display: inline-block;
+  margin-right: 15px;
+
+  .filter-item {
+    cursor: pointer;
+    position: relative;
+
+    &__button {
+      overflow: hidden;
+      position: relative;
+      border-radius: 4px;
+      background-color: #e4e6ec;
+      padding: 7px 7px;
+      color: #2c3148;
+      cursor: default;
+
+      &--text {
+        font-weight: 600;
+      }
+      &--option {
+        font-weight: normal;
+        .fas {
+          margin-left: 8px;
+          color: #8c94a4;
+          font-size: 12px;
+        }
+      }
+    }
+    &__options {
+      font-size: 14px;
+      box-shadow: 0 2px 4px 0 rgba(15, 21, 38, 0.14), 1px 1px 3px 0 rgba(140, 148, 164, 0.2);
+      border-radius: 4px;
+      padding: 7px 0;
+      display: none;
+      position: absolute;
+      min-width: 240px;
+      cursor: default;
+      z-index: 2;
+      background-color: #fff;
+
+      &.active {
+        display: block;
+        top: 37px;
+      }
+
+      > div {
+        color: #8c94a4;
+        padding: 7px 15px;
+        margin: 5px 0;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #e4e6ec;
+          color: #1a1d2c;
+        }
+
+        &.selected {
+          color: #2c3148;
+          background-color: #fafbfc;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .ui-datepicker {
+    width: auto !important;
+  }
+
+  ins-filter-item .filter-item {
+    // float: left;
+    margin-top: 10px;
+    width: auto;
+
+    .filter-item__button--option {
+      margin-left: 5px;
+    }
+    .filter-item__button--option .fas {
+      // margin-left: 97px;
+      float: right;
+      margin-top: 5px;
+    }
+    
+    .filter-item__options {
+      min-width: 229px;
+    }
+  }
+
+  .date-filter__option {
+    margin-left: 5px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  ins-filter-item .filter-item {
+    width: 232px;
+
+    .filter-item__button--option {
+      margin-left: 5px;
+    }
+    .filter-item__button--option .fas {
+      // margin-left: 97px;
+      float: right;
+      margin-top: 5px;
+    }
+    .filter-item__button {
+      margin: 5px 0 15px;
+      font-size: 10px;
+    }
+    .filter-item__options {
+      min-width: 232px;
+    }
+    .filter-item__options > div {
+      font-size: 10px;
+    }
+  }
+}

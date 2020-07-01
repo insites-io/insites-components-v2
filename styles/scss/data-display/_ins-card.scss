@@ -1,0 +1,29 @@
+.ins-card-wrap {
+    border: $border_style $border_thickness $border_color;
+    border-radius: $border_radius;
+    margin-top: 0;
+    box-shadow: 1px 1px 3px $ink10;
+    background: #fff;
+    transition: all .15s;
+    padding: 20px;
+  
+    &:hover {
+      margin-top: -3px;
+      box-shadow: 0px 4px 13px $ink10;
+    }
+  
+    &.outlined {
+      border-style: dashed;
+      box-shadow: none;
+    }
+  }
+  
+  .ins-card-wrap.steady:hover {
+    margin-top: 0px;
+    box-shadow: 1px 1px 3px $ink10;
+  }
+  
+  .ins-card-wrap.no-padding {
+    padding: 0;
+  }
+  

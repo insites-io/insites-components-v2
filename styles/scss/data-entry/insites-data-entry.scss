@@ -1,0 +1,142 @@
+@import "../fonts";
+@import "../colors";
+@import "../spacing";
+
+@mixin input_placeholder($color){
+
+  &:-moz-placeholder,
+  &::-moz-placeholder {
+    color: $color;
+  }
+
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
+@mixin input_field {
+  color: $ink;
+  font-family: $default_font_family;
+  font-size: $input_field_font_size;
+  font-weight: $input_field_font_weight;
+
+  width: 100%;
+  box-shadow: none;
+  box-sizing: border-box;
+  border-radius: $border_radius;
+  margin: 0;
+}
+
+@mixin input_disabled {
+  border-color: $ink10 !important;
+  background-color: $disabled_readonly_bg;
+  color: $ink40;
+  cursor: not-allowed;
+}
+
+$negative_bg: #FEF8F8;
+$border_color: $ink10;
+$border_thickness: 1px;
+$border_style: solid;
+$border_radius: 4px;
+$input_field_font_size: 14px;
+$input_field_font_weight: 400;
+
+.ins-form-field-wrap {
+  font-family: $default_font_family;
+  margin-bottom: $bottom_spacing;
+
+  .ins-form-label {
+    font-family: $default_font_family;
+    font-size: 12px;
+    font-weight: 600;
+    color: $ink;
+    margin-bottom: 3px;
+    display: block;
+    line-height: 1.4;
+
+    &.disabled {
+      color: $ink40;
+    }
+
+    &.active {
+      color: $primary;
+    }
+  }
+
+  .ins-form-field {
+
+    @include input_field;
+    @include input_placeholder($ink40);
+
+    border: $border_thickness $border_style $border_color;
+    padding: $input_padding;
+    -webkit-transition: border-color .25s ease-in-out;
+    transition: border-color .25s ease-in-out;
+
+    &:hover {
+      border-color: $ink40;
+    }
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: none;
+      outline: 0;
+    }
+
+    &:disabled,
+    &:read-only:not([read-only="false"]) {
+      @include input_disabled;
+    }
+
+    &:read-only:not([read-only="false"]) {
+      cursor: text;
+    }
+  }
+
+  &.is-invalid {
+
+    .ins-form-label {
+      color: $negative;
+    }
+
+    .ins-form-field {
+      color: $negative;
+      border-color: $negative;
+      background-color: $negative_bg;
+
+      @include input_placeholder($negative);
+    }
+
+    .ins-form-error {
+      display: block;
+      margin-top: 4px;
+      font-family: $default_font_family;
+      font-size: 12px;
+      line-height: 16px;
+      color: $negative;
+    }
+  }
+}
+
+@import "./ins-button";
+@import "./ins-button-group";
+@import "./ins-input";
+@import "./ins-input-file";
+@import "./ins-select";
+@import "./ins-select-button";
+@import "./ins-select-option";
+@import "./ins-select-group";
+@import "./ins-radio-checkbox";
+@import "./ins-toggle-switch";
+@import "./ins-date-time";
+@import "./ins-input-tel";
+@import "./ins-credit-card";
+@import "./ins-checbox-card";
+@import "./ins-image-picker";
+@import "./ins-markdown-editor";
+@import "./ins-editor";
