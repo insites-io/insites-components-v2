@@ -5,7 +5,7 @@ export class InsAdmin {
   @Element() insAdminEl: Element;
   @State() insRenderer: any;
   @State() crumbs: any;
-  @State() sidebarItemEls: any;
+  sidebarItemEls: any;
 
   reroute: boolean = false;
 

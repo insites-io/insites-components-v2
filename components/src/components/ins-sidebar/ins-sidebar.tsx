@@ -31,7 +31,7 @@ export class InsSidebar {
     this.insSidebarAction.emit(event);
   }
 
-  componentDidLoad(){
+  componentWillLoad(){
     let hasFooter = this.insSidebarEl.querySelector('ins-sidebar-footer');
 
     if (!hasFooter){
@@ -44,32 +44,14 @@ export class InsSidebar {
       <div class={`sidebar ${this.noFooter ? 'no-footer':''}`}>
         <div class="insites-logo-wrap">
           {this.minimised ?
-            <img src={this.iconLogo ? this.iconLogo : 'http://ins-styleguide.s3-website-us-west-2.amazonaws.com/assets/images/insites_logo_icon.svg' }/> :
-            <img src={this.fullLogo ? this.fullLogo : 'http://ins-styleguide.s3-website-us-west-2.amazonaws.com/assets/images/Insites_logo.svg'}/>
+            <img src={this.iconLogo ? this.iconLogo : "" }/> :
+            <img src={this.fullLogo ? this.fullLogo : ""}/>
           }
-
-          {/* <div class="insites-logo"
-            style={`background-image: ${this.minimised ? this.iconLogo : this.fullLogo}`}>
-          </div> */}
-          {/* <img class="icon-img" src={this.iconLogo ? this.iconLogo : 'http://ins-styleguide.s3-website-us-west-2.amazonaws.com/assets/images/insites_logo_icon.svg'} /> */}
         </div>
+
         <div class="sidebar-items-wrap">
           <slot />
         </div>
-
-        {/* {this.withSidebarActions ?
-          <div class="sidebar-action">
-            <div>
-              <span class="icon-settings-1" onClick={event => this.sidebarActionEventHandler(event)}></span>
-            </div>
-            <div>
-              <span class="icon-lock-1" onClick={event => this.sidebarActionEventHandler(event)}></span>
-            </div>
-            <div>
-              <span class="icon-logout-1" onClick={event => this.sidebarActionEventHandler(event)}></span>
-            </div>
-          </div>
-        : ''} */}
       </div>
     )
   }

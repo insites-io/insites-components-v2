@@ -1,5 +1,5 @@
 import { h, Component, State, Prop, Element, Method } from "@stencil/core";
-declare var $;
+
 @Component({ tag: 'ins-header' })
 export class InsHeader {
   @Element() insHeaderEl: HTMLElement;
@@ -12,7 +12,8 @@ export class InsHeader {
   @State() insAdminEl: any;
   @State() insNotificationsEl: any;
   @State() insSidebarEl: any;
-  @State() insNavEl: any;
+
+  insNavEl: any;
   @State() fullScreenState: any;
 
   componentWillLoad() {
@@ -24,32 +25,14 @@ export class InsHeader {
   }
 
   componentDidLoad() {
-      let $this = this;
-      this.insNavEl = document.querySelector('.full-width-navs');
+    let $this = this;
+    this.insNavEl = document.querySelector('.full-width-navs');
 
-      window.onresize = function() {
-          $this.toggleMinimise();
-      };
+    window.onresize = function() {
+        $this.toggleMinimise();
+    };
 
-      this.toggleMinimise();
-
-      var userAgent = window.navigator.userAgent.toLowerCase();
-      var ipad = /iphone|ipod|ipad/.test(userAgent);
-
-      if (!ipad) {
-        var iconNav = $('.icon-nav');
-
-        iconNav.removeClass('displayNoneIpad');
-      } else {
-        var iconNav = $('.icon-nav');
-
-        iconNav.addClass('displayNoneIpad');
-        $('ins-filter-item').click(function () {
-          var filterOption = $('.filter-item__options');
-
-          filterOption.toggleClass('active');
-        });
-      }
+    this.toggleMinimise();
   }
 
   toggleMinimise() {
