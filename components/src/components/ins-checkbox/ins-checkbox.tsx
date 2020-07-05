@@ -2,7 +2,7 @@ import { h, Component, Prop, Event, EventEmitter, Method } from "@stencil/core";
 
 @Component({ tag: "ins-checkbox" })
 export class InsCheckbox {
-  @Event() insClick: EventEmitter;
+  @Event() insCheck: EventEmitter;
   @Event() insValueChange: EventEmitter;
 
   @Prop({mutable: true}) checked: boolean;
@@ -15,7 +15,7 @@ export class InsCheckbox {
 
   onCheckHandler(){
     this.checked = !this.checked;
-    this.insClick.emit({
+    this.insCheck.emit({
       name: this.name,
       checked: this.checked,
       value: this.value,

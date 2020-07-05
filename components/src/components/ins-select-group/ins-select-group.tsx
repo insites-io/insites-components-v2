@@ -10,6 +10,7 @@ export class InsBackdrop {
         <div class="ins-select-group_options">
           <slot />
         </div>
-      </div>);
+      </div>
+    );
   }
 }

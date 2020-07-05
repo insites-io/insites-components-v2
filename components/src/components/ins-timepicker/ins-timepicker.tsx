@@ -6,6 +6,7 @@ export class InsTimepicker {
   @Element() insTimepickerEl: HTMLElement;
   @Event() insInput: EventEmitter;
   @Event() insValueChange: EventEmitter;
+
   @Prop({mutable:true}) noMeridiem: boolean = false;
   @Prop({mutable:true}) disabled: boolean = false;
   @Prop({mutable:true}) readonly: boolean = false;

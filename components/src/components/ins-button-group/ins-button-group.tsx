@@ -4,7 +4,7 @@ import { h, Component, Prop, Event, EventEmitter, Element, State, Method, Watch 
 
 export class InsButtonGroup {
   @Element() insButtonGroupEl: HTMLElement;
-  @Event() insButtonAction: EventEmitter;
+  @Event() insClick: EventEmitter;
 
   @Prop({ mutable: true }) activeOption: string = "";
   @Prop({ mutable: true }) options: string = "";
@@ -39,10 +39,9 @@ export class InsButtonGroup {
     list[this.activeIndex].classList.add('active');
   }
 
-
   buttonActionHandler(action, label, index) {
     this.activeIndex = index;
-    this.insButtonAction.emit({ action, label, index });
+    this.insClick.emit({ action, label, index });
   }
 
   componentWillLoad() {

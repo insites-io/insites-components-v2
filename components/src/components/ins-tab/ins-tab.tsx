@@ -4,7 +4,7 @@ import { h, Component, Element, Event, Method, EventEmitter, Prop, State, Listen
 
 export class InsTab {
   @Element() insTabEl: HTMLElement;
-  @Event() onchangeTab: EventEmitter;
+  @Event() insTabChange: EventEmitter;
 
   @Prop({ mutable: true }) tabs: any = [];
 
@@ -20,7 +20,7 @@ export class InsTab {
     ) {
       this.setActiveTab(index);
       this.setActiveTabItem(index);
-      this.onchangeTab.emit({
+      this.insTabChange.emit({
         event: event,
         index: index,
         label: this.insTabHeaders[index].innerText.trim()

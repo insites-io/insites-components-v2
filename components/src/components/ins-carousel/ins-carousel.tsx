@@ -4,7 +4,7 @@ import Siema from "siema";
 @Component({ tag: 'ins-carousel' })
 export class InsCarousel {
   @Element() insCarouselEl: HTMLElement;
-  @Event() slide: EventEmitter;
+  @Event() insSlide: EventEmitter;
 
   @Prop({ mutable: true }) heading: string = "";
   @Prop({ mutable: true }) subHeading: string = "";

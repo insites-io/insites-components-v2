@@ -4,6 +4,7 @@ import { h, Component, Prop, Element, Method, Watch, Event, EventEmitter } from 
 export class InsDrawer {
   @Element() insDrawer: HTMLElement;
   @Event() insToggle: EventEmitter;
+
   @Prop({ mutable: true }) isOpen: boolean = false;
   @Prop({ mutable: true }) position: string = ""; //[left, right]
   @Prop({ mutable: true }) showHeader: boolean = true;

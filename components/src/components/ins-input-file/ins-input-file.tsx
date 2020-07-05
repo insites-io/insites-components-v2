@@ -6,9 +6,9 @@ import DropZone from "dropzone";
 })
 export class InsInputFile {
   @Element() insInputFile: HTMLElement;
-  @Event() fileAdded: EventEmitter;
-  @Event() fileError: EventEmitter;
-  @Event() fileRemoved: EventEmitter;
+  @Event() insFileAdded: EventEmitter;
+  @Event() insFileError: EventEmitter;
+  @Event() insFileRemoved: EventEmitter;
 
   @Prop({ mutable: true}) label: string = "Attachment(s)";
   @Prop({ mutable: true }) name: string = "file";
@@ -161,16 +161,16 @@ export class InsInputFile {
 
   emitFileError(file, errorMessage) {
     file.errorMessage = errorMessage;
-    this.fileError.emit(file);
+    this.insFileError.emit(file);
   }
   emitFileAdded(file) {
     this.value.push(file);
-    this.fileAdded.emit(file);
+    this.insFileAdded.emit(file);
   }
 
   emitFileRemoved(file) {
     if (file.status !== 'error')
-      this.fileRemoved.emit(file);
+      this.insFileRemoved.emit(file);
     else
       this.emitFileError(file, file.errorMessage);
   }

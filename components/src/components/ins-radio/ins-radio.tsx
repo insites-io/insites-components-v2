@@ -2,7 +2,7 @@ import { h, Component, Prop, Event, EventEmitter } from "@stencil/core";
 
 @Component({ tag: "ins-radio" })
 export class InsRadio {
-  @Event() insSelect: EventEmitter;
+  @Event() insCheck: EventEmitter;
   @Event() insValueChange: EventEmitter;
 
   @Prop({mutable:true}) checked: boolean;
@@ -25,11 +25,11 @@ export class InsRadio {
   }
 
   onSelectHandler(){
-    this.insSelect.emit({
+    this.insCheck.emit({
       name: this.name,
       value: this.value,
     });
-    
+
     if (this.staticValue){
       this.insValueChange.emit(this.staticValue);
     } else this.insValueChange.emit(this.value);

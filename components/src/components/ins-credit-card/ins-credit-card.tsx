@@ -2,8 +2,8 @@ import { h, Component, Prop, Event, EventEmitter } from "@stencil/core";
 
 @Component({ tag: 'ins-credit-card' })
 export class InsCreditCard {
-  @Event() insCreditCardClicked: EventEmitter;
-  @Event({ bubbles: false }) insCreditCardClosed: EventEmitter;
+  @Event() insClick: EventEmitter;
+  @Event({ bubbles: false }) insClose: EventEmitter;
 
   @Prop({mutable: true}) lastFour: string;
   @Prop({mutable: true}) expiryMonth: string;
@@ -194,11 +194,11 @@ export class InsCreditCard {
   }
 
   triggerClickEvent(){
-    this.insCreditCardClicked.emit(this.getCompAttrs());
+    this.insClick.emit(this.getCompAttrs());
   }
 
   triggerCloseEvent(){
-    this.insCreditCardClosed.emit(this.getCompAttrs())
+    this.insClose.emit(this.getCompAttrs())
   }
 
   getCompAttrs(){

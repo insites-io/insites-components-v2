@@ -87,7 +87,7 @@ export class InsHeading {
 
         {this.editable ?
           <div class="input-wrap">
-            <ins-input maxlength={this.maxlength} value={this.tempLabel} 
+            <ins-input maxlength={this.maxlength} value={this.tempLabel}
               onInsValueChange={(e) => this.updateTempLabel(e)}>
             </ins-input>
 

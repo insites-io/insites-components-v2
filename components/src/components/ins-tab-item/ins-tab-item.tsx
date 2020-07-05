@@ -4,8 +4,9 @@ import { h, Component, Element, Method, Prop, Event, EventEmitter, Watch } from 
 export class InsTabItem {
 
   @Element() InsTabItemEl: HTMLElement;
-  @Event() tabItemError: EventEmitter;
-  @Event() tabItemDisableToggled: EventEmitter;
+
+  @Event() insTabError: EventEmitter;
+  @Event() insTabDisableToggle: EventEmitter;
 
   @Prop({ mutable: true }) active: boolean;
   @Prop({ mutable: true }) label: string = "";
@@ -26,12 +27,12 @@ export class InsTabItem {
 
   @Watch('hasError')
   watchHandler() {
-    this.tabItemError.emit(this.hasError);
+    this.insTabError.emit(this.hasError);
   }
 
   @Watch('disabled')
   disabledWatcher() {
-    this.tabItemDisableToggled.emit(this.disabled);
+    this.insTabDisableToggle.emit(this.disabled);
   }
 
   render() {

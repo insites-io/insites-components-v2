@@ -4,8 +4,8 @@ import { h, Component, Prop, Event, State, EventEmitter, Element } from "@stenci
 export class InsTextarea {
   @Element() insTextareaEl: HTMLElement;
 
-  @Event() oninput: EventEmitter;
-  @Event() valueChange: EventEmitter;
+  @Event() insInput: EventEmitter;
+  @Event() insValueChange: EventEmitter;
 
   @Prop({mutable: true}) placeholder: string;
   @Prop({mutable: true}) name: string;
@@ -22,12 +22,12 @@ export class InsTextarea {
   onTextareaHandler(event){
     let x = event.which || event.keyCode;
 
-    this.oninput.emit({
+    this.insInput.emit({
       value: event.target.value,
       keyCode: x
     });
 
-    this.valueChange.emit(event.target.value);
+    this.insValueChange.emit(event.target.value);
   }
 
   activateLabel() {
@@ -50,15 +50,15 @@ export class InsTextarea {
       <div class={`ins-textarea-wrap ins-form-field-wrap ${this.hasError ? 'is-invalid' : ''}`}>
 
         <div class="ins-ta">
-          {this.label ? 
-            <label class={`ins-form-label 
-              ${this.disabled ? 'disabled' : ''} 
+          {this.label ?
+            <label class={`ins-form-label
+              ${this.disabled ? 'disabled' : ''}
               ${this.activeLabel ? 'active' : ''}`}>
-                
+
               {this.label}
-            </label> 
+            </label>
           : '' }
-          
+
           <textarea
             class="ins-textarea-field ins-form-field"
             name={this.name}

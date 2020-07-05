@@ -4,11 +4,12 @@ import { h, Component, Prop, Event, EventEmitter, Method, State } from "@stencil
 
 export class InsSelectOption {
   @Event() insSelectOptionClicked: EventEmitter;
-  @Event() defaultEvent: EventEmitter;
+
   @Prop({mutable: true}) label: string = 'Option';
   @Prop({mutable: true}) value: string = '';
   @Prop({mutable: true}) disabled: boolean = false;
   @Prop({mutable: true}) default: boolean = false;
+
   @State() activated: boolean;
   @State() hidden: boolean;
 
