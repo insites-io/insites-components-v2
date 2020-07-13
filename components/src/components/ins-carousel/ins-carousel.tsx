@@ -141,7 +141,7 @@ export class InsCarousel {
 
     this.resumeAutoPlay();
     let toSlide = this.currentIndex;
-    this.slide.emit({ slide, fromSlide, toSlide });
+    this.insSlide.emit({ slide, fromSlide, toSlide });
   }
 
   renderHead(){

@@ -108,7 +108,7 @@ export class InsSparkline {
 
   render() {
     return (
-      <div class="sparkline">
+      <div class="ins-sparkline">
         <i class={`far ${this.icon}`}></i>
         <h3>{this.name}</h3>
         <span class="value">{this.value}</span>

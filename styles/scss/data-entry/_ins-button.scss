@@ -1,19 +1,18 @@
-@mixin colorize($color, $lighten: 44%){
+@mixin colorize($color){
 
   background-color: transparent;
-  color: $color;
+  color: var(--ins-color-#{$color});
 
   &.solid {
     background-color: $color;
-    color: #ffffff;
+    color: var(--ins-color-ink1);
 
     &:not([disabled]):hover {
 
-      background: darken($color, 5%);
-
+      background: var(--ins-color-#{$color}2);
       @media only screen and (max-width: 425px) {
         & {
-          background: $color;
+          background-color: $color;
         }
       }
     }
@@ -21,23 +20,23 @@
 
   &.outlined, &:not(.solid) {
     .ripple-wave {
-      background: rgba(30, 134, 227,.25);
+      background-color: rgba(30, 134, 227,.25);
     }
   }
 
   &.outlined {
-    border: 1px solid $color;
+    border: 1px solid var(--ins-color-#{$color});
     background-color: transparent;
 
     &.is-loading {
-      background-color: $color;
+      background-color: var(--ins-color-#{$color});
     }
   }
 
   &:not([disabled]):hover,
   &:not([disabled]):active {
 
-    background: lighten($color, $lighten);
+    background-color: var(--ins-color-#{$color}-10p);
 
     @media only screen and (max-width: 425px) {
       & {
@@ -50,17 +49,11 @@
     &:hover, &:active {
       background-color: $color !important;
     }
-
-    .spinner {
-      border-top: 3px solid lighten($color, 15%);
-      border-right: 3px solid lighten($color, 15%);
-      border-bottom: 3px solid lighten($color, 15%);
-    }
   }
 }
 
 @mixin caretColor($color){
-  color: $color;
+  color: var(--ins-color-#{$color});
   border-left: $border_thickness $border_style $border_color;
 }
 
@@ -77,75 +70,42 @@ ins-button {
 
     &.blue,
     &.primary {
-      @include colorize($blue);
+      @include colorize("blue");
     }
 
     &.positive,
     &.green {
-      @include colorize($green);
+      @include colorize("green");
     }
 
     &.warning,
     &.orange {
-      @include colorize($orange, 34%);
+      @include colorize("orange");
     }
 
     &.negative,
     &.red {
-      @include colorize($red, 24%);
+      @include colorize("red");
     }
 
     &.information-1,
     &.pink {
-      @include colorize($pink, 34%);
+      @include colorize("pink");
     }
 
     &.information-2,
     &.yellow {
-      @include colorize($yellow, 35%);
+      @include colorize("yellow");
     }
 
     &.turquoise {
-      @include colorize($turquoise);
+      @include colorize("turquoise");
     }
 
     &.grey,
     &.secondary {
-      @include colorize($ink40, 30%);
-
-      &:not(.round) {
-
-        &.solid {
-          background-color: $ink10;
-          color: $ink40;
-          &:not([disabled]):hover {
-            background: darken($ink10, 5%);
-            @media only screen and (max-width: 425px) {
-
-              & {
-                background: $ink10;
-              }
-            }
-          }
-        }
-
-        &.outlined {
-          border: 1px solid $ink10;
-          background-color: transparent;
-        }
-
-        &:not([disabled]):hover, &:not([disabled]):active{
-          background: lighten($ink10, 3%);
-          @media only screen and (max-width: 425px) {
-            & {
-              background: transparent;
-            }
-          }
-        }
-      }
+      @include colorize("grey");
     }
-
-
 
     position: relative;
 
@@ -153,7 +113,7 @@ ins-button {
     -webkit-appearance: none;
     overflow: hidden;
 
-    font-family: $default_font_family;
+    font-family: var(--ins-font-family);
     font-weight: 600 !important;
     font-size: 12px;
     text-transform: uppercase;
@@ -163,7 +123,7 @@ ins-button {
 
     height: 36px;
     border: none;
-    border-radius: $border_radius;
+    border-radius: var(--ins-border-radius);
     padding: 0 16px;
 
     transition: background 0.3s;
@@ -253,7 +213,8 @@ ins-button {
 
       .spinner {
         position: relative;
-        border-left: 3px solid #ffffff;
+        border: 3px solid rgba(255, 255, 255, 0.2);
+        border-left-color: #ffffff;
         -webkit-transform: translateZ(0);
         -ms-transform: translateZ(0);
         transform: translateZ(0);
@@ -374,45 +335,45 @@ html [type=button] {
 
     &.blue,
     &.primary {
-      @include caretColor($blue)
+      @include caretColor("blue")
     }
 
     &.positive,
     &.green {
-      @include caretColor($green)
+      @include caretColor("green")
     }
 
     &.warning,
     &.orange {
-      @include caretColor($orange)
+      @include caretColor("orange")
     }
 
     &.negative,
     &.red {
-      @include caretColor($red)
+      @include caretColor("red")
     }
 
     &.information-1,
     &.pink {
-      @include caretColor($pink)
+      @include caretColor("pink")
     }
 
     &.information-2,
     &.yellow {
-      @include caretColor($yellow)
+      @include caretColor("yellow")
     }
 
     &.secondary,
     &.grey {
-      @include caretColor($ink40)
+      @include caretColor("grey")
     }
 
     &.turquoise {
-      @include caretColor($turquoise)
+      @include caretColor("turquoise")
     }
 
     &.solid {
-      @include caretColor(white)
+      @include caretColor("white")
     }
 
     &.loading {
@@ -445,13 +406,13 @@ html [type=button] {
     }
 
     ul.option-wrap {
-      font-family: $default_font_family;
-      background: #fff;
+      font-family: var(--ins-font-family);
+      background: var(--ins-bg-color);
       list-style: none;
       padding: 0;
       margin: 0;
       border: 1px solid $ink10;
-      border-radius: 4px;
+      border-radius: var(--ins-border-radius);
       box-shadow: 0 2px 4px 0 rgba(15,21,38,.14), 1px 1px 3px 0 rgba(140,148,164,.2);
     }
 
@@ -464,7 +425,7 @@ html [type=button] {
 
       &:hover {
         color: $ink;
-        background-color: $ink10;
+        background-color: var(--ins-bg-color2);
       }
 
     }

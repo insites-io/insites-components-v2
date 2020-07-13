@@ -124,7 +124,7 @@ $spacing--mamoth: 128px;
 }
 
 @media only screen and (max-width: 639px) {
-  .cell.padding-right--x-small, .cell.padding-right--small, 
+  .cell.padding-right--x-small, .cell.padding-right--small,
   .cell.padding-left--x-small, .cell.padding-left--small {
     padding-left: 0;
     padding-right: 0;
@@ -143,10 +143,10 @@ $spacing--mamoth: 128px;
   }
 }
 
-.height-full { 
+.height-full {
   height: 100%;
 }
-.height-auto { 
+.height-auto {
   height: auto;
 }
 
@@ -168,9 +168,9 @@ ins-editor {
 	.ins-form-error {
 		font-size: 12px;
 		display: none;
-		font-family: $default_font_family;
+		font-family: var(--ins-font-family);
 		line-height: 16px;
-		color: $red;
+		color: var(--ins-color-red);
 		margin-top: 8px;
 		margin-bottom: 0;
 	}
@@ -194,32 +194,38 @@ ins-editor {
     background: #282a3c;
 	}
 
-	font-family: $default_font_family;
+	font-family: var(--ins-font-family);
 	margin-bottom: 20px;
 
 	label {
 		font-size: 12px;
 		font-weight: 600;
 		color: $ink;
-		font-family: "Open Sans", sans-serif;
+		font-family: var(--ins-font-family);
 		margin-bottom: 2px;
 	}
 
 	.active {
 		label {
-			color: $blue;
+			color: var(--ins-color-blue);
 		}
 		.redactor-box {
-			border: 1px solid $blue !important;
+      border:
+        var(--ins-border-style)
+        var(--ins-border-thickness)
+        var(--ins-color-blue) !important;
 		}
 	}
 
 	.has-error {
 		label {
-			color: $red;
+			color: var(--ins-color-red);
 		}
 		.redactor-box {
-			border: 1px solid $red !important;
+      border:
+        var(--ins-border-style)
+        var(--ins-border-thickness)
+        var(--ins-color-red) !important;
 		}
 		.ins-form-error {
 			display: block;
@@ -228,18 +234,21 @@ ins-editor {
 
 	.disabled {
 		label {
-			color: $ink40;
+			color: var(--ins-color-ink40);
 		}
 		.redactor-box {
-			border: 1px solid $ink40 !important;
+      border:
+        var(--ins-border-style)
+        var(--ins-border-thickness)
+        var(--ins-color-ink40) !important;
 		}
 	}
-	
+
 	&-dropdown {
 		a:hover, a:focus {
 			outline: none;
-			color: $ink1 !important;
-			background-color: $blue !important;
+			color: var(--ins-color-ink1) !important;
+			background-color: var(--ins-color-blue) !important;
 		}
 		& a.redactor-dropdown-item-disabled {
 			display: none;
@@ -248,7 +257,7 @@ ins-editor {
 	}
 	&-focus {
 		&.redactor-styles-on{
-			border-color: $blue !important;
+			border-color: var(--ins-color-blue) !important;
 		}
 	}
 
@@ -271,7 +280,7 @@ ins-editor {
 
 		// .redactor-modal-header
 		&-header {
-			font-family: $default_font_family;
+			font-family: var(--ins-font-family);
 			font-size: 18px;
 			letter-spacing: 0.14px;
 			line-height: 24px;
@@ -285,20 +294,24 @@ ins-editor {
 			line-height: 18px;
 
 			span.error {
-				color: $red;
+				color: var(--ins-color-red);
 				letter-spacing: 0.2px;
 				display: none;
 			}
 
 			input {
 				&:focus {
-					border-color: $blue;
+					border-color: var(--ins-color-blue);
 					box-shadow: none;
 					transition: all ease-in-out .5s;
 				}
 				&.error {
-					border: 1px solid $red;
-					background-color: #fef8f8;
+					border:
+            var(--ins-border-style)
+            var(--ins-border-thickness)
+            var(--ins-color-red);
+
+					background-color: var(--ins-bg-color5);
 
 					& + span.error {
 						display: block;
@@ -318,37 +331,45 @@ ins-editor {
 			flex-direction: row-reverse;
 
 			& button {
-				color: $ink1;
-				background-color: $blue;
-				font-family: $default_font_family;
+				color: var(--ins-color-ink1);
+				background-color: var(--ins-color-blue);
+				font-family: var(--ins-font-family);
 				font-size: 12px;
 				font-weight: 600;
 				text-transform: uppercase;
 				border: none;
 				letter-spacing: 1px;
-				border-radius: 4px;
+				border-radius: var(--ins-border-radius);
 
 				&:last-child {
 					margin-right: 15px;
 				}
 
 				&:hover, &:focus {
-					background: #1a79ce;
-					color: $ink1;
+					background: var(--ins-color-blue2);
+					color: var(--ins-color-ink1);
 				}
 				&.redactor-button-unstyled {
 					float: none;
 					letter-spacing: 1px;
-					border: 1px solid $blue;
-					color: $blue;
+					border:
+            var(--ins-border-style)
+            var(--ins-border-thickness)
+            var(--ins-color-blue);
+
+					color: var(--ins-color-blue);
 					background-color: transparent;
 
 					&:hover, &:focus {
 						text-decoration: none !important;
 						text-transform: uppercase !important;
-						color: $blue;
-						border: 1px solid $blue;
-						background: #e6f1fc;
+						color: var(--ins-color-blue);
+						background: var(--ins-bg-color2);
+						border:
+              var(--ins-border-style)
+              var(--ins-border-thickness)
+              var(--ins-color-blue);
+
 					}
 				}
 			}
@@ -361,13 +382,13 @@ ins-editor {
 			padding: 0 16px;
 			font-size: 28px;
 			font-weight: 300;
-			font-family: $default_font_family;
+			font-family: var(--ins-font-family);
 			color: $ink;
 			vertical-align: text-top;
 
 			&::before {
 				content: '\D7';
-				font-family: $default_font_family;
+				font-family: var(--ins-font-family);
 				font-weight: 300;
 			}
 		}
@@ -390,7 +411,7 @@ ins-editor {
 		background-color: $ink5;
 		.re-button-icon, .re-fullscreen {
 			position: relative;
-			background-color: $ink10;
+			background-color: var(--ins-color-ink1)0;
 			width: 34px;
 			height: 34px;
 			color: $ink40;
@@ -404,11 +425,11 @@ ins-editor {
 		}
 
 		.re-fullscreen:hover, .re-button-icon:hover {
-			background-color: $blue;
-			color: #fff;
+			background-color: var(--ins-color-blue);
+			color: var(--ins-color-white);
 		}
 	}
-	
+
 	.redactor-box.redactor-styles-on {
 		border-color: rgba(0, 0, 0, 0.075);
 	}
@@ -440,10 +461,10 @@ ins-editor {
 	}
 	&.has-error {
 		.redactor-label {
-			color: $red;
+			color: var(--ins-color-red);
 		}
 		.redactor-box.redactor-styles-on {
-			border-color: $red !important;
+			border-color: var(--ins-color-red) !important;
 		}
 		.CodeMirror-wrap {
 				border-left: solid 1px#F27474 !important;
@@ -451,7 +472,7 @@ ins-editor {
 				border-bottom: solid 1px#F27474 !important;
 		}
 	}
-	
+
 	// Code Mirror Theme - default
 	.cm-s-default.CodeMirror {
 		background: #1a1d2c;
@@ -492,7 +513,10 @@ ins-editor {
 	}
 
 	.cm-s-default .CodeMirror-cursor {
-		border-left: 1px solid #f8f8f0;
+		border-left:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-color-ink5);
 	}
 
 	.cm-s-default span.cm-comment {
@@ -584,7 +608,7 @@ ins-editor {
 
 	.cm-s-default .CodeMirror-matchingbracket {
 		text-decoration: underline;
-		color: white !important;
+		color: var(--ins-color-white) !important;
 	}
 
 	.CodeMirror-fullscreen {
@@ -592,4 +616,3 @@ ins-editor {
 		margin-bottom: 0;
 	}
 }
-  

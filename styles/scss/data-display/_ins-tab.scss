@@ -1,16 +1,22 @@
 ins-tab {
-  font-family: $default_font_family;
+  font-family: var(--ins-font-family);
 
   .ins-tab {
-    border-radius: $border_radius;
+    border-radius: var(--ins-border-radius);
     margin-top: 0;
-    box-shadow: 1px 1px 3px $ink10;
-    background: #fff;
+
+    box-shadow:
+      var(--ins-shadow-x)
+      var(--ins-shadow-y)
+      var(--ins-shadow-blur)
+      var(--ins-shadow-color);
+
+    background: var(--ins-bg-color);
     transition: all 0.15s;
 
     .ins-tab-headers {
       padding: 0;
-      
+
       overflow-x: hidden;
       overflow-y: hidden;
       white-space: nowrap;
@@ -32,7 +38,7 @@ ins-tab {
         content: " ";
         height: 1px;
         width: 100%;
-        background: $ink10;
+        background: var(ins-color-ink10);
       }
 
       &.scrollable {
@@ -49,7 +55,7 @@ ins-tab {
         }
 
         &::-webkit-scrollbar-thumb {
-          background-color: $ink10;
+          background-color: var(ins-color-ink10);
           border-radius: 16px;
           outline: none;
         }
@@ -62,7 +68,10 @@ ins-tab {
           }
         }
         .ins-tab-header {
-          border-bottom: solid 1px $ink10;
+          border-bottom:
+            var(--ins-border-style)
+            var(--ins-border-thickness)
+            var(--ins-border-color);
         }
       }
 
@@ -82,7 +91,7 @@ ins-tab {
         cursor: pointer;
         display: inline-block;
         padding: 15px 25px;
-        color: $ink40;
+        color: var(--ins-color-ink40);
         font-size: $input_field_font_size;
         line-height: 14px;
         position: relative;
@@ -100,7 +109,7 @@ ins-tab {
           height: 2px;
           width: 100%;
           content: " ";
-          background: $ink10;
+          background: var(--ins-border-color2);
         }
         &.disabled {
           cursor: not-allowed;
@@ -109,12 +118,12 @@ ins-tab {
         &.active,
         &:hover,
         &:focus {
-          color: $ink;
+          color: var(--ins-border-ink);
           position: relative;
 
           &::before {
             content: " ";
-            background: $blue;
+            background: var(--ins-color-blue);
             z-index: 1;
             bottom: 0;
           }
@@ -123,7 +132,7 @@ ins-tab {
         &.has-error {
           &::before {
             content: " ";
-            background: $red;
+            background: var(--ins-color-red);
             z-index: 1;
             bottom: 0;
           }

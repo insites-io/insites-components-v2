@@ -12,11 +12,11 @@ ins-radio {
       display: inline-block;
 
       span {
-        font-family: $default_font_family;
+        font-family: var(--ins-font-family);
         font-size: $input_field_font_size;
         font-weight: $input_field_font_weight;
         line-height: 1.8;
-        color: $ink40;
+        color: var(--ins-color-ink40);
         display: inline-block;
         vertical-align: top !important;
         margin-top: -2px;
@@ -38,9 +38,9 @@ ins-radio {
       position: relative;
       width: 16px;
       height: 16px;
-      background: $ink10;
+      background: var(--ins-bg-color2);
       border: none;
-      color: #fff;
+      color: var(--ins-color-white);
       cursor: pointer;
       display: inline-block;
       outline: none;
@@ -48,7 +48,7 @@ ins-radio {
       border-radius: 1px;
 
       &:hover {
-        background: $ink40;
+        background: var(--ins-bg-color3);
 
         @media only screen and (max-width: 425px) {
           & {
@@ -58,7 +58,7 @@ ins-radio {
       }
 
       &:checked {
-        background: $primary;
+        background: var(--ins-color-primary);
       }
 
       &:checked::before {

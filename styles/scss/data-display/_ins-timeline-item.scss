@@ -1,44 +1,30 @@
-// color pallete
-$black: #2c3148;
-$red: #f27474;
-$orange: #ffa639;
-$yellow: #fdd835;
-$pink: #ff3366;
-$turquoise: #2bbad9;
-$blue: #1e86e3;
-$green: #24be8d;
-$dark-grey: #8c94a4;
-$medium-grey: #e4e6ec;
-$light-grey: #f2f4f8;
-$wash-white: #fafbfc;
-$white: #ffffff;
-$purple: #694FCD;
-$fushcia: #C65BBB;
-
-$border-color: #eeeeee;
-
 .ins-timeline-item-wrap {
   padding: 10px 20px;
   position: relative;
-  color: $black;
+  color: var(--ins-color-ink);
 
   .ins-icon-wrap {
     width: 31px;
     height: 31px;
-    border: solid 1px $black;
+
+    border:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-color-ink);
+
     border-radius: 50%;
     text-align: center;
     padding-top: 6px;
     position: absolute;
     left: 20px;
     top: calc(50% - 16px);
-    background-color: $white;
+    background-color: var(--ins-bg-color);
     font-size: 13px;
     box-sizing: border-box;
 
     &.solid {
-      background-color: $black;
-      color: $white;
+      background-color: var(--ins-color-ink);
+      color: var(--ins-color-white);
     }
 
     &.no-icon {
@@ -48,93 +34,117 @@ $border-color: #eeeeee;
       top: calc(50% - 6px);
       padding: 0;
     }
+
     &.grey {
-      border-color: $dark-grey;
-      color: $dark-grey;
+      border-color: var(--ins-color-ink40);
+      color: var(--ins-color-ink40);
 
       &.solid {
-        background-color: $dark-grey;
-        color: $white;
+        background-color: var(--ins-color-ink40);
+        color: var(--ins-color-white);
       }
     }
+
     &.pink {
-      border-color: $pink;
-      color: $pink;
+      border-color: var(--ins-color-pink);
+      color: var(--ins-color-pink);
 
       &.solid {
-        background-color: $pink;
-        color: $white;
+        background-color: var(--ins-color-pink);
+        color: var(--ins-color-white);
       }
     }
+
     &.red {
-      border-color: $red; color: $red;
+      border-color: var(--ins-color-red);
+      color: var(--ins-color-red);
+
       &.solid {
-        background-color: $red;
-        color: $white;
+        background-color: var(--ins-color-red);
+        color: var(--ins-color-white);
       }
     }
-    &.blue { border-color: $blue; color: $blue;
+
+    &.blue {
+      border-color: var(--ins-color-blue);
+      color: var(--ins-color-blue);
+
       &.solid {
-        background-color: $blue;
-        color: $white;
+        background-color: var(--ins-color-blue);
+        color: var(--ins-color-white);
       }
     }
-    &.green { border-color: $green; color: $green;
+
+    &.green {
+      border-color: var(--ins-color-green);
+      color: var(--ins-color-green);
+
       &.solid {
-        background-color: $green;
-        color: $white;
+        background-color: var(--ins-color-green);
+        color: var(--ins-color-white);
       }
     }
+
     &.turquoise {
-      border-color: $turquoise;
-      color: $turquoise;
+      border-color: var(--ins-color-turquoise);
+      color: var(--ins-color-turquoise);
 
       &.solid {
-        background-color: $turquoise;
-        color: $white;
+        background-color: var(--ins-color-turquoise);
+        color: var(--ins-color-white);
       }
     }
+
     &.purple {
-      border-color: $purple;
-      color: $purple;
+      border-color: var(--ins-color-purple);
+      color: var(--ins-color-purple);
 
       &.solid {
-        background-color: $purple;
-        color: $white;
+        background-color: var(--ins-color-purple);
+        color: var(--ins-color-white);
       }
     }
+
     &.fushcia {
-      border-color: $fushcia;
-      color: $fushcia;
+      border-color: var(--ins-color-purple);
+      color: var(--ins-color-purple);
 
       &.solid {
-        background-color: $fushcia;
-        color: $white;
+        background-color: var(--ins-color-purple);
+        color: var(--ins-color-white);
       }
     }
-    &.yellow { border-color: $yellow; color: $yellow;
+
+    &.yellow {
+      border-color: var(--ins-color-yellow);
+      color: var(--ins-color-yellow);
+
       &.solid {
-        background-color: $yellow;
-        color: $white;
+        background-color: var(--ins-color-yellow);
+        color: var(--ins-color-white);
       }
     }
-    &.orange { border-color: $orange; color: $orange;
+
+    &.orange {
+      border-color: var(--ins-color-orange);
+      color: var(--ins-color-orange);
+
       &.solid {
-        background-color: $orange;
-        color: $white;
+        background-color: var(--ins-color-orange);
+        color: var(--ins-color-white);
       }
     }
   }
 
   .ins-timeline-body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--ins-font-family);
     font-size: 14px;
     width: calc(100% - 50px);
     margin-left: 50px;
     box-sizing: border-box;
     padding: 15px;
-    background: $wash-white;
-    border-radius: 4px;
+    background: var(--ins-bg-color5);
+    border-radius: var(--ins-border-radius);
     position: relative;
     white-space: no-wrap;
     display: table;
@@ -155,7 +165,7 @@ $border-color: #eeeeee;
         font-size: 10px;
         line-height: 15px;
         margin-bottom: 0;
-        color: $dark-grey;
+        color: var(--ins-color-ink40);
       }
     }
 

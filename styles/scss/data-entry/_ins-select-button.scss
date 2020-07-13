@@ -2,7 +2,7 @@
 
   display: inline-block;
   background: $ink10;
-  border-radius: $border_radius;
+  border-radius: var(--ins-border-radius);
   position: relative;
 
   &:before {
@@ -11,7 +11,7 @@
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 5px solid $ink40;
+    border-top: 5px solid  var(--ins-color-ink40);
     display: block;
     position: absolute;
     right: 8px;
@@ -55,7 +55,7 @@
     width: 100%;
     left: 0;
     border: solid 1px transparent;
-    border-radius: 4px;
+    border-radius: var(--ins-border-radius);
     box-shadow: 0px 0px 0px transparent;
     transition: height 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     overflow: hidden;
@@ -64,28 +64,35 @@
   .ins-select-options-searchbar {
     position: relative;
     padding: 14px;
-    border-bottom: $border_style $border_thickness $border_color;
-    background-color: #fff;
+    border-bottom:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-border-color);
+
+    background-color: var(--ins-bg-color);
 
     i {
       font-size: $input_field_font_size;
       position: absolute;
       right: 24px;
       top: calc(50% - 8px);
-      color: $ink40;
+      color:  var(--ins-color-ink40);
     }
   }
 
   &.activated {
     .ins-select-label-wrap {
-      color: $ink;
+      color: var(--ins-color-ink)
     }
 
     .ins-select-options-wrap {
       opacity: 1;
-      background-color: #fff;
-      border-color: $ink10;
-      box-shadow: 1px 1px 3px $ink10;
+      background-color: var(--ins-bg-color);
+      border-color: var(--ins-color-ink10);
+      box-shadow:
+        var(--ins-shadow-x)
+        var(--ins-shadow-y)
+        var(--ins-shadow-blur) $ink10;
     }
 
     &.drop-up {

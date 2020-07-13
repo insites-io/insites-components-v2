@@ -8,14 +8,14 @@
     width: 100%;
     font-size: 14px;
     padding: 20px 0 18px;
-    color: #2C3148;
+    color: var(--ins-color-ink);
     outline: none;
     cursor: pointer;
 
     &:hover,
     &:active, {
       background: #2C3148;
-      color: #fff;
+      color: var(--ins-color-white);
     }
   }
 }

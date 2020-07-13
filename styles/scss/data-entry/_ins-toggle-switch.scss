@@ -24,7 +24,7 @@ ins-toggle-switch {
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: $ink10;
+      background-color: var(--ins-bg-color2);
       -webkit-transition: 0.4s;
       transition: 0.4s;
 
@@ -36,8 +36,9 @@ ins-toggle-switch {
     .ins-slider:hover {
       > i:before {
         -webkit-transition: 0.4s;
+        transition: 0.4s;
         content: "";
-        border: solid 9px $ink10 !important;
+        border: solid 9px var(--ins-color-ink10) !important;
         height: 38px;
         width: 38px;
         position: absolute;
@@ -54,7 +55,7 @@ ins-toggle-switch {
       height: 20px;
       width: 20px;
       bottom: -2px;
-      background-color: #fff;
+      background-color: var(--ins-bg-color);
       -webkit-transition: 0.4s;
       transition: 0.4s;
       box-shadow: 0 0 1px #b6b6b9;
@@ -62,11 +63,11 @@ ins-toggle-switch {
     }
 
     input:checked + .ins-slider {
-      background: lighten($blue, 44%);
+      background: var(--ins-color-blue-20p);
     }
 
     input:focus + .ins-slider {
-      box-shadow: 0 0 1px $blue;
+      box-shadow: 0 0 1px var(--ins-color-blue);
     }
 
     input:checked + .ins-slider:before,
@@ -75,12 +76,12 @@ ins-toggle-switch {
       -ms-transform: translateX(20px);
       transform: translateX(20px);
 
-      background-color: $blue;
+      background-color: var(--ins-color-blue);
       border: none;
     }
 
     input:checked + .ins-slider > i:before {
-      border: solid 10px $blue !important;
+      border: solid 10px var(--ins-color-blue) !important;
       opacity: .1 !important;
     }
 
@@ -90,18 +91,21 @@ ins-toggle-switch {
 
     .ins-slider.round:before {
       border-radius: 50%;
-      border: $border_style $border_thickness $border_color;
-    }
+      border:
+        var(--ins-border-style)
+        var(--ins-border-thickness)
+        var(--ins-border-color)
+      }
 
     .ins-label {
-      font-family: $default_font_family;
+      font-family: var(--ins-font-family);
       font-size: $input_field_font_size;
       font-weight: $input_field_font_weight;
 
       display: block;
       padding-left: 52px;
       margin-top: -5px;
-      color: $ink40;
+      color: var(--ins-color-ink40);
     }
 
     &.disabled {

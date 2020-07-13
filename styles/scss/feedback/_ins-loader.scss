@@ -4,10 +4,10 @@
 
   &--state {
     max-width: 70px;
-    // margin: 0 auto 30px;
     margin: 0 auto 25px;
 
-    svg, img {
+    svg,
+    img {
       width: 100%;
     }
   }
@@ -15,56 +15,55 @@
   &--title {
     font-size: 1.5rem;
     font-weight: 300;
-    color: #24be8d;
-    // margin-top: 48px;
+    color: var(--ins-color-green);
     margin-top: 0;
 
     &.warning {
-      color: #FFA639;
+      color: var(--ins-color-warning);
     }
     &.help {
-      color: #FF3366;
+      color: var(--ins-color-information1);
     }
     &.error {
-      color: #F27474;
+      color: var(--ins-color-negative);
     }
   }
 
   &--message {
     font-size: 0.875rem;
     font-weight: 400;
-    color: #2c3148;
+    color: var(--ins-color-ink);
     margin-top: 16px;
   }
 
   .cls-1 {
-    fill:#323d53;
+    fill: #323d53;
   }
 
   .positive .cls-1,
   .green .cls-1 {
-    fill: #24be8d;
+    fill: var(--ins-color-success);
   }
   .warning .cls-1 {
-    fill: #ffa639;
+    fill: var(--ins-color-warning);
   }
   .negative .cls-1 {
-    fill: #f27474;
+    fill: var(--ins-color-negative);
   }
   .information-1 .cls-1 {
-    fill: #ff3366;
+    fill: var(--ins-color-information1);
   }
   .information-2 .cls-1 {
-    fill: #fdd836;
+    fill: var(--ins-color-information2);
   }
   .blue .cls-1 {
-    fill: #1e86e3;
+    fill: var(--ins-color-blue);
   }
   .turquoise .cls-1 {
-    fill: #2bbad9;
+    fill: var(--ins-color-turquoise);
   }
   .grey .cls-1 {
-    fill: #8C94A4;
+    fill: var(--ins-color-grey);
   }
 
   @keyframes anim-rotate {
@@ -79,5 +78,4 @@
   .spinner {
     animation: anim-rotate 3s infinite linear;
   }
-
 }

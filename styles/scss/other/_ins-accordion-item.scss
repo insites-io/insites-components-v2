@@ -1,17 +1,21 @@
 .ins-accordion-item {
-  background-color: #fff;
+  background-color: var(--ins-bg-color);
 
   &_header {
     padding-top: 14px;
     outline: none !important;
 
     & > .inner-head {
-      background-color: #fff;
+      background-color: var(--ins-bg-color);
+      border:
+        var(--ins-border-style)
+        var(--ins-border-thickness)
+        var(--ins-border-color);
+
       font-size: 14px;
       line-height: 14px;
       padding: 14px;
       box-sizing: border-box;
-      border: solid 1px $ink10;
       border-radius: 2px;
       color: $ink;
       position: relative;
@@ -27,7 +31,7 @@
       }
 
       &:hover {
-        border-color: $blue;
+        border-color: var(--ins-color-primary);
       }
 
     }
@@ -38,8 +42,8 @@
 
 
       & > .inner-head {
-        border-color: $ink5;
-        color: $ink10;
+        border-color: var(--ins-color-ink5);
+        color: var(--ins-color-ink10);
       }
     }
 
@@ -65,7 +69,11 @@
     .inner-content {
       padding: 14px;
       font-size: 14px;
-      border: solid 1px $ink10;
+
+    border:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-border-color);
     }
   }
 
@@ -83,14 +91,14 @@
     }
 
     & > .ins-accordion-item_header > .inner-head {
-      border-color: $blue;
-      background-color: $blue;
-      color: #fff;
+      border-color: var(--ins-color-primary);
+      background-color: var(--ins-color-primary);
+      color: var(--ins-color-white);
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
 
       a {
-        color: #fff;
+        color: var(--ins-color-white);
       }
     }
   }

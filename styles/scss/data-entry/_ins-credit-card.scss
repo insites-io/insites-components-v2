@@ -6,13 +6,14 @@
   padding: 20px;
   box-sizing: border-box;
   position: relative;
-  background: #fff;
+  background: var(--ins-bg-color);
   -webkit-transition: all .15s;
   transition: all .15s;
 
   -webkit-box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.1);
-  color: $ink;
+
+  color: var(--ins-color-ink);
 
   .close-btn {
     position: absolute;
@@ -22,26 +23,26 @@
     cursor: pointer;
 
     &:hover {
-      color: $negative;
+      color: var(--ins-color-red);
     }
   }
 
   &.active {
 
     background: linear-gradient(292.96deg, #2D9CDB 6.72%, #56CCF2 91.78%);
-    color: #fff;
+    color: var(--ins-color-white);
 
     .ins-credit-card-wrap {
       &_expired {
-        color: #fff;
+        color: var(--ins-color-white);
       }
     }
 
     .close-btn {
-      color: $ink10;
+      color: var(--ins-color-ink10);
 
       &:hover {
-        color: #fff;
+        color: var(--ins-color-white);
       }
     }
   }
@@ -61,10 +62,10 @@
   }
 
   &_expired {
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--ins-font-family);
+    color: var(--ins-color-red);
     position: absolute;
     bottom: 20px;
     right: 20px;
-    color: $negative;
   }
 }

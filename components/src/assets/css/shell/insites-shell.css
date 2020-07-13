@@ -51,6 +51,65 @@
   font-weight: 600;
   font-style: italic; }
 
+:root {
+  --ins-color-ink: #2c3148;
+  --ins-color-ink40: #8c94a4;
+  --ins-color-ink10: #E4E6EC;
+  --ins-color-ink5: #f2f4f8;
+  --ins-color-ink1: #ffffff;
+  --ins-color-white: #fff;
+  --ins-color-blue: #1e86e3;
+  --ins-color-blue2: #1A78CB;
+  --ins-color-blue-20p: #CEE2F6;
+  --ins-color-blue-10p: #e8f3fc;
+  --ins-color-green: #24be8d;
+  --ins-color-green2: #20AA7E;
+  --ins-color-green-10p: #E9F8F4;
+  --ins-color-orange: #ffa639;
+  --ins-color-orange2: #ff9b20;
+  --ins-color-orange-10p: #FFF6EB;
+  --ins-color-red: #f27474;
+  --ins-color-red2: #f05d5d;
+  --ins-color-red-10p: #F8EDEE;
+  --ins-color-pink: #ff3366;
+  --ins-color-pink2: #ff1a53;
+  --ins-color-pink-10p: #FEEBF0;
+  --ins-color-yellow: #fdd835;
+  --ins-color-yellow2: #fdd31c;
+  --ins-color-yellow-10p: #FFFBEB;
+  --ins-color-turquoise: #2bbad9;
+  --ins-color-turquoise2: #24aac7;
+  --ins-color-turquoise-10p: #EAF8FB;
+  --ins-color-purple: #694FCD;
+  --ins-color-fushcia: #C65BBB;
+  --ins-color-grey: #e4e6ec;
+  --ins-color-grey2: #d5d8e1;
+  --ins-color-grey-10p: #edeef2;
+  --ins-color-primary: #1e86e3;
+  --ins-color-success: #24be8d;
+  --ins-color-warning: #ffa639;
+  --ins-color-negative: #f27474;
+  --ins-color-information1: #ff3366;
+  --ins-color-information2: #fdd835;
+  --ins-color-table-odd: #FFF;
+  --ins-color-table-even: #FAFBFC;
+  --ins-color-disabled_readonly_bg: #FAFBFC;
+  --ins-bg-color: #ffffff;
+  --ins-bg-color2: #E4E6EC;
+  --ins-bg-color3: #8c94a4;
+  --ins-bg-color4: #f2f4f8;
+  --ins-bg-color5: #FAFBFC;
+  --ins-border-radius: 4px;
+  --ins-border-thickness: 1px;
+  --ins-border-style: solid;
+  --ins-border-color: #E4E6EC;
+  --ins-shadow-x: 1px;
+  --ins-shadow-y: 1px;
+  --ins-shadow-blur: 3px;
+  --ins-shadow-color: #E4E6EC;
+  --ins-font-family: 'Open Sans', sans-serif
+; }
+
 .sidebar {
   width: 240px;
   height: 100vh;
@@ -101,8 +160,8 @@
       padding: 13px;
       text-align: center; }
       .sidebar .sidebar-action > div:hover {
-        color: #fff;
-        background-color: #2C3148;
+        color: var(--ins-color-white);
+        background-color: var(--ins-color-ink);
         cursor: pointer; }
 
 ins-sidebar-item div.ins-sidebar-item-wrap {
@@ -110,7 +169,7 @@ ins-sidebar-item div.ins-sidebar-item-wrap {
   box-sizing: border-box;
   width: 240px; }
   ins-sidebar-item div.ins-sidebar-item-wrap a {
-    color: #8C94A4;
+    color: var(--ins-color-ink40);
     text-decoration: none;
     font-size: 14px;
     display: block;
@@ -131,8 +190,8 @@ ins-sidebar-item div.ins-sidebar-item-wrap {
       top: 4px;
       vertical-align: top; }
     ins-sidebar-item div.ins-sidebar-item-wrap a:hover {
-      color: #2C3148;
-      font-family: "Open Sans", sans-serif;
+      color: var(--ins-color-ink);
+      font-family: var(--ins-font-family);
       font-size: 14px;
       background-color: #e4e6ec; }
     ins-sidebar-item div.ins-sidebar-item-wrap a .ins-sidebar-item-label {
@@ -142,7 +201,7 @@ ins-sidebar-item div.ins-sidebar-item-wrap {
       width: 83%; }
   ins-sidebar-item div.ins-sidebar-item-wrap .fas.icon-chevron-right {
     font-size: 10px;
-    color: #8C94A4;
+    color: var(--ins-color-ink40);
     position: absolute;
     top: calc(50% - 5px);
     right: 0;
@@ -183,7 +242,7 @@ ins-sidebar-item div.ins-sidebar-item-wrap {
     display: none; }
   ins-sidebar-item div.ins-sidebar-item-wrap.active > .ins-ripple-button > a {
     background-color: #e4e6ec;
-    color: #2C3148;
+    color: var(--ins-color-ink);
     font-weight: 600;
     border-left: solid 3px #1E86E3;
     box-sizing: border-box;
@@ -285,7 +344,7 @@ html {
   opacity: 1;
   transition-delay: 1s;
   background: #2c3148;
-  color: #fff;
+  color: var(--ins-color-white);
   padding: 7px 10px;
   font-size: 12px;
   border-radius: 2px;
@@ -323,12 +382,12 @@ html {
     width: 100%;
     font-size: 14px;
     padding: 20px 0 18px;
-    color: #2C3148;
+    color: var(--ins-color-ink);
     outline: none;
     cursor: pointer; }
     .ins-sidebar-footer-item-wrap .ins-sfiw-button:hover, .ins-sidebar-footer-item-wrap .ins-sfiw-button:active {
       background: #2C3148;
-      color: #fff; }
+      color: var(--ins-color-white); }
 
 .ins-sidebar-footer-item-wrap {
   float: left;
@@ -338,12 +397,12 @@ html {
     width: 100%;
     font-size: 14px;
     padding: 20px 0 18px;
-    color: #2C3148;
+    color: var(--ins-color-ink);
     outline: none;
     cursor: pointer; }
     .ins-sidebar-footer-item-wrap .ins-sfiw-button:hover, .ins-sidebar-footer-item-wrap .ins-sfiw-button:active {
       background: #2C3148;
-      color: #fff; }
+      color: var(--ins-color-white); }
   .ins-sidebar-footer-item-wrap .ins-sfiw-button-back {
     background: none;
     border: none;
@@ -376,12 +435,12 @@ ins-admin {
   /* End Globals */ }
   ins-admin .ins-form-field {
     font-size: 16px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--ins-font-family);
     padding: 8px 16px;
     box-sizing: border-box;
     border-radius: 2px;
     border: solid 1px #e4e6ec;
-    background: #fff;
+    background: var(--ins-bg-color);
     width: 100%;
     display: block; }
   ins-admin .off-canvas-content {
@@ -522,12 +581,12 @@ ins-admin {
       padding-right: 0; } }
   .ins-renderer-wrap__title {
     opacity: 0.87;
-    color: #2c3148;
+    color: var(--ins-color-ink);
     font-size: 32px;
     font-weight: 300;
     margin-top: 10px;
     padding: 0 0.9375rem;
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--ins-font-family);
     position: relative;
     min-height: 44px; }
     @media only screen and (max-width: 768px) {
@@ -561,7 +620,7 @@ ins-admin {
       .ins-breadcrumbs ul li .crumb-label {
         font-size: 12px;
         font-weight: 400;
-        color: #2c3148; }
+        color: var(--ins-color-ink); }
         .ins-breadcrumbs ul li .crumb-label.has-link:hover {
           cursor: pointer;
           color: #1e86e3; }
@@ -579,19 +638,19 @@ ins-admin {
           color: #C9CDD4; }
         .ins-breadcrumbs ul li:last-of-type .crumb-label {
           font-size: 12px;
-          color: #8c94a4; }
+          color: var(--ins-color-ink40); }
           .ins-breadcrumbs ul li:last-of-type .crumb-label.has-link:hover {
             cursor: text;
-            color: #8c94a4; }
+            color: var(--ins-color-ink40); }
         .ins-breadcrumbs ul li:last-of-type .arrow-right {
           display: none; }
       .ins-breadcrumbs ul li a {
-        color: #8C94A4; }
+        color: var(--ins-color-ink40); }
 
 ins-header .ins-header-wrap {
   width: 100%;
   height: 56px;
-  background-color: #2C3148;
+  background-color: var(--ins-color-ink);
   text-align: right;
   padding-right: 20px;
   box-sizing: border-box;
@@ -604,7 +663,7 @@ ins-header .ins-header-wrap {
     background: transparent;
     border: none;
     padding: 0 10px;
-    color: #fff;
+    color: var(--ins-color-white);
     margin-left: 14px;
     font-size: 16px;
     cursor: pointer;
@@ -644,7 +703,7 @@ ins-header .minified-navs {
   .ellipsis span {
     width: 3px;
     height: 3px;
-    background-color: #ffffff;
+    background: var(--ins-bg-color);
     display: block;
     margin: 5px auto;
     -webkit-transition: all 0.3s ease-in-out;
@@ -694,7 +753,7 @@ ins-header .minified-navs {
     height: 2px;
     margin: 10px 0;
     top: 6px;
-    background: #fff;
+    background: var(--ins-bg-color);
     transition: 0.75s;
     width: 16px;
     transform: translate(0px, 0px); }
@@ -755,14 +814,14 @@ ins-header .minified-navs {
     margin: 0;
     padding: 10px;
     font-size: 14px;
-    color: #fff;
+    color: var(--ins-color-white);
     border: none;
     background: none;
     position: relative;
     padding-right: 30px;
     outline: none;
     cursor: pointer;
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--ins-font-family);
     display: block;
     height: 56px;
     opacity: 0.5; }
@@ -789,7 +848,7 @@ ins-header .minified-navs {
         padding: 10px 20px; }
         .ins-header-user-wrap .ins-header-user-options ul li a {
           text-decoration: none;
-          color: #8C94A4; }
+          color: var(--ins-color-ink40); }
           .ins-header-user-wrap .ins-header-user-options ul li a [class^="icon-"] {
             margin-right: 15px; }
         .ins-header-user-wrap .ins-header-user-options ul li:hover {
@@ -822,7 +881,7 @@ ins-header .minified-navs {
     .ins-header-mobile-view .ins-header-mobile-view__logout i {
       color: #ffffff;
       font-size: 14px;
-      font-family: "Open Sans", sans-serif;
+      font-family: var(--ins-font-family);
       display: inline-block;
       vertical-align: middle; }
     .ins-header-mobile-view .ins-header-mobile-view__user i,

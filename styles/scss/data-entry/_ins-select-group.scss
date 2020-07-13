@@ -3,11 +3,11 @@
   margin-bottom: 20px;
 
   &_label {
-    font-family: $default_font_family;
+    font-family: var(--ins-font-family);
     font-size: .875rem;
     padding: 12px 10px;
-    background-color: $ink5;
-    color: $ink;
+    background-color: var(--ins-bg-color4);
+    color: var(--ins-color-ink);
   }
 
   &_options {

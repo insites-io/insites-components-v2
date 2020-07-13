@@ -39,13 +39,16 @@
   .ins-modal-head {
     position: relative;
     padding: 18px 56px 14px 20px;
-    border-bottom: solid 1px $ink10;
+    border-bottom:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-border-color);
 
     h1 {
-      color: $ink;
+      color: var(--ins-color-ink);
       font-size: 24px;
       font-weight: 300;
-      font-family: $default_font_family;
+      font-family: var(--ins-font-family);
       margin-bottom: 20px;
       margin: 0;
     }
@@ -83,7 +86,10 @@
     width: 100%;
     left: 0;
     padding: 15px 12px;
-    border-top: solid 1px $ink10;
+    border-top:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-border-color);
 
     button {
       min-width: 82px;

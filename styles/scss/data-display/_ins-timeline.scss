@@ -1,22 +1,5 @@
-// color pallete
-$black: #2c3148;
-$red: #f27474;
-$orange: #ffa639;
-$yellow: #fdd835;
-$pink: #ff3366;
-$turquoise: #2bbad9;
-$blue: #1e86e3;
-$green: #24be8d;
-$dark-grey: #8c94a4;
-$medium-grey: #e4e6ec;
-$light-grey: #f2f4f8;
-$wash-white: #fafbfc;
-$white: #ffffff;
-
-$border-color: #eeeeee;
-
 .ins-timeline-wrap {
-  background-color: $white;
+  background-color: var(--ins-bg-color);
 
   .ins-timeline-body {
     word-break: break-word;
@@ -24,13 +7,16 @@ $border-color: #eeeeee;
 
   .ins-timeline-header {
     padding: 20px;
-    border-bottom: solid 1px #E4E6EC;
+    border-bottom:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-border-color);
 
     h3 {
-      font-family: 'Open Sans', sans-serif;
+      font-family: var(--ins-font-family);
       font-size: 18px;
       margin-bottom: 0;
-      color: #2c3148;
+      color: var(--ins-color-ink);
     }
   }
   .ins-timeline-list {
@@ -46,11 +32,10 @@ $border-color: #eeeeee;
       display: block;
       width: 1px;
       height: calc(100% + 0px);
-      background: #E4E6EC;
+      background: var(--ins-color2);
       position: absolute;
       left: 36px;
       top: 0;
     }
-
   }
 }

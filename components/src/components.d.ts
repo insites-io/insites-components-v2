@@ -1173,7 +1173,7 @@ declare namespace LocalJSX {
         "activeOption"?: string;
         "color"?: string;
         "disabled"?: boolean;
-        "onInsButtonAction"?: (event: CustomEvent<any>) => void;
+        "onInsClick"?: (event: CustomEvent<any>) => void;
         "options"?: string;
         "size"?: string;
     }
@@ -1198,7 +1198,7 @@ declare namespace LocalJSX {
         "loop"?: boolean;
         "noCarouselButton"?: boolean;
         "noPagination"?: boolean;
-        "onSlide"?: (event: CustomEvent<any>) => void;
+        "onInsSlide"?: (event: CustomEvent<any>) => void;
         "perPage"?: number;
         "startIndex"?: number;
         "subHeading"?: string;
@@ -1213,7 +1213,7 @@ declare namespace LocalJSX {
         "falseValue"?: string;
         "label"?: string;
         "name"?: string;
-        "onInsClick"?: (event: CustomEvent<any>) => void;
+        "onInsCheck"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "trueValue"?: string;
         "value"?: string;
@@ -1240,8 +1240,8 @@ declare namespace LocalJSX {
         "expiryYear"?: string;
         "fullYear"?: boolean;
         "lastFour"?: string;
-        "onInsCreditCardClicked"?: (event: CustomEvent<any>) => void;
-        "onInsCreditCardClosed"?: (event: CustomEvent<any>) => void;
+        "onInsClick"?: (event: CustomEvent<any>) => void;
+        "onInsClose"?: (event: CustomEvent<any>) => void;
         "value"?: string;
     }
     interface InsDateTime {
@@ -1402,9 +1402,9 @@ declare namespace LocalJSX {
         "maxFiles"?: number;
         "maxFilesLabel"?: string;
         "name"?: string;
-        "onFileAdded"?: (event: CustomEvent<any>) => void;
-        "onFileError"?: (event: CustomEvent<any>) => void;
-        "onFileRemoved"?: (event: CustomEvent<any>) => void;
+        "onInsFileAdded"?: (event: CustomEvent<any>) => void;
+        "onInsFileError"?: (event: CustomEvent<any>) => void;
+        "onInsFileRemoved"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
         "required"?: boolean;
         "s3Data"?: object;
@@ -1516,7 +1516,7 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "label"?: any;
         "name"?: any;
-        "onInsSelect"?: (event: CustomEvent<any>) => void;
+        "onInsCheck"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "staticValue"?: any;
         "value"?: any;
@@ -1561,7 +1561,6 @@ declare namespace LocalJSX {
         "default"?: boolean;
         "disabled"?: boolean;
         "label"?: string;
-        "onDefaultEvent"?: (event: CustomEvent<any>) => void;
         "onInsSelectOptionClicked"?: (event: CustomEvent<any>) => void;
         "value"?: string;
     }
@@ -1621,7 +1620,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface InsTab {
-        "onOnchangeTab"?: (event: CustomEvent<any>) => void;
+        "onInsTabChange"?: (event: CustomEvent<any>) => void;
         "tabs"?: any;
     }
     interface InsTabItem {
@@ -1631,8 +1630,8 @@ declare namespace LocalJSX {
         "icon"?: string;
         "label"?: string;
         "noPadding"?: boolean;
-        "onTabItemDisableToggled"?: (event: CustomEvent<any>) => void;
-        "onTabItemError"?: (event: CustomEvent<any>) => void;
+        "onInsTabDisableToggle"?: (event: CustomEvent<any>) => void;
+        "onInsTabError"?: (event: CustomEvent<any>) => void;
     }
     interface InsTable {
         "bulkActions"?: any;
@@ -1693,8 +1692,8 @@ declare namespace LocalJSX {
         "label"?: string;
         "maxlength"?: string;
         "name"?: string;
-        "onOninput"?: (event: CustomEvent<any>) => void;
-        "onValueChange"?: (event: CustomEvent<any>) => void;
+        "onInsInput"?: (event: CustomEvent<any>) => void;
+        "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
         "readonly"?: boolean;
         "required"?: boolean;

@@ -17,14 +17,14 @@
     margin: 0;
     padding: 10px;
     font-size: 14px;
-    color: #fff;
+    color: var(--ins-color-white);
     border: none;
     background: none;
     position: relative;
     padding-right: 30px;
     outline: none;
     cursor: pointer;
-    font-family: 'Open Sans', sans-serif; 
+    font-family: var(--ins-font-family);
     display: block;
     height: 56px;
     opacity: 0.5;
@@ -58,7 +58,7 @@
 
         a {
           text-decoration: none;
-          color: #8C94A4;
+          color: var(--ins-color-ink40);
 
           [class^="icon-"] {
             margin-right: 15px;
@@ -110,7 +110,7 @@
       color: #ffffff;
       // opacity: 0.5;
       font-size: 14px;
-      font-family: "Open Sans", sans-serif;
+      font-family: var(--ins-font-family);
       display: inline-block;
       vertical-align: middle;
     }

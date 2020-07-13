@@ -8,7 +8,7 @@ ins-drawer {
 
       ins-backdrop { display: none; }
       .ins-content {
-        background: #fff;
+        background: var(--ins-bg-color);
         position: fixed;
         z-index: 9999;
         width: 420px;
@@ -65,16 +65,19 @@ ins-drawer {
     position: relative;
 
     &.bordered {
-      border-bottom: solid 1px #E4E6EC;
+      border-bottom:
+        var(--ins-border-style)
+        var(--ins-border-thickness)
+        var(--ins-border-color);
     }
     &.sticky {
       position: fixed;
       top: 0;
       width: inherit;
       z-index: 5;
-      background-color: #ffffff;
+      background: var(--ins-bg-color);
       box-sizing: border-box;
-      
+
       & + .ins-drawer-body {
         margin-top: 80px;
       }
@@ -82,10 +85,10 @@ ins-drawer {
     h4 {
         display: inline-block;
         font-size: 24px;
-        font-family: 'Open Sans', sans-serif;
+        font-family: var(--ins-font-family);
         font-weight: 300;
         margin: 0;
-        color: #2c3148;
+        color: var(--ins-color-ink);
         padding-right: 20px;
 
         span { margin-right: 5px; }
@@ -95,7 +98,7 @@ ins-drawer {
         outline: none;
         top: calc(50% - 8px);
         right: 20px;
-        color: #8c94a4;
+        color: var(--ins-color-ink40);
         border: none;
         background: transparent;
         padding: 0;

@@ -11,7 +11,7 @@ $input_field_font_size: 14px;
 $input_field_font_weight: 400;
 
 .ins-form-label {
-  font-family: $default_font_family;
+  font-family: var(--ins-font-family);
   font-size: 12px;
   font-weight: 600;
   color: $ink;

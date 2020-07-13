@@ -1,44 +1,42 @@
 @import "../dependencies/accordion";
 
 .ins-accordion.menu {
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  
-    ins-accordion-item:first-of-type {
-      .ins-accordion-item_header {
-        border-top: solid 1px $ink10;
-      }
-    }
-  
-    .ins-accordion-item {
-  
-      .ins-accordion-item_header {
-        padding-top: 0;
-      }
-  
-      .inner-head {
-        border-radius: 0;
-        border-top: 0;
-  
-        &:hover {
-          border-color: $ink10;
-          background-color: #f2f4f8;
-        }
-      }
-  
-      &.open > .ins-accordion-item_header > .inner-head:hover {
-        border-color: $blue;
-        background-color: $blue;
-      }
-  
-      &.arrow-activated {
-        .inner-head:hover {
-          background-color: #fff;
-        }
-      }
-    }
-  
-    .ins-accordion-item_content .inner-content {
-      padding: 0;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+
+  ins-accordion-item:first-of-type {
+    .ins-accordion-item_header {
+      border-top: solid 1px $ink10;
     }
   }
-  
+
+  .ins-accordion-item {
+    .ins-accordion-item_header {
+      padding-top: 0;
+    }
+
+    .inner-head {
+      border-radius: 0;
+      border-top: 0;
+
+      &:hover {
+        border-color: $ink10;
+        background-color: var(--ins-bg-color4);
+      }
+    }
+
+    &.open > .ins-accordion-item_header > .inner-head:hover {
+      border-color: var(--ins-color-primary);
+      background-color: var(--ins-color-primary);
+    }
+
+    &.arrow-activated {
+      .inner-head:hover {
+        background-color: var(--ins-bg-color);
+      }
+    }
+  }
+
+  .ins-accordion-item_content .inner-content {
+    padding: 0;
+  }
+}

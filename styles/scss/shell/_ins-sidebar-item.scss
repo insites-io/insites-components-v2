@@ -8,7 +8,7 @@ ins-sidebar-item {
     width: 240px;
 
     a {
-      color: #8C94A4;
+      color: var(--ins-color-ink40);
       text-decoration: none;
       font-size: 14px;
       display: block;
@@ -32,8 +32,8 @@ ins-sidebar-item {
       }
 
       &:hover {
-        color: #2C3148;
-        font-family: "Open Sans", sans-serif;
+        color: var(--ins-color-ink);
+        font-family: var(--ins-font-family);
         font-size: 14px;
         // font-weight: 600;
         background-color: #e4e6ec;
@@ -50,7 +50,7 @@ ins-sidebar-item {
     }
     .fas.icon-chevron-right {
       font-size: 10px;
-      color: #8C94A4;
+      color: var(--ins-color-ink40);
       position: absolute;
       top: calc(50% - 5px);
       right: 0;
@@ -105,7 +105,7 @@ ins-sidebar-item {
 
     &.active > .ins-ripple-button > a {
       background-color: #e4e6ec;
-      color: #2C3148;
+      color: var(--ins-color-ink);
       font-weight: 600;
       border-left: solid 3px #1E86E3;
       box-sizing: border-box;
@@ -225,7 +225,7 @@ html {
   transition-delay: 1s;
 
   background: #2c3148;
-  color: #fff;
+  color: var(--ins-color-white);
   padding: 7px 10px;
   font-size: 12px;
   border-radius: 2px;

@@ -21,7 +21,7 @@ ins-code-editor {
 	.ins-form-error {
 		display: none;
 		font-size: 12px;
-		font-family: "Open Sans", sans-serif;
+		font-family: var(--ins-font-family);
 		line-height: 16px;
 		color: #F27474;
 		margin-bottom: 20px;
@@ -31,7 +31,7 @@ ins-code-editor {
 		font-size: 12px;
 		font-weight: 600;
 		color: $black;
-		font-family: "Open Sans", sans-serif;
+		font-family: var(--ins-font-family);
 		margin-bottom: 2px;
 
 		&.disabled {
@@ -48,7 +48,7 @@ ins-code-editor {
 			border: 1px solid $blue;
 		}
 	}
-	
+
 	.CodeMirror-wrap {
 		padding: 0;
 
@@ -87,7 +87,7 @@ ins-code-editor {
 			display: block;
 		}
 	}
-	
+
 	.CodeMirror {
     	margin-bottom: 8px;
 		border: 1px solid $medium-grey;
@@ -288,5 +288,5 @@ ins-code-editor {
 		&.CodeMirror-wrap {
 			border: none;
 		}
-	}	
+	}
 }
