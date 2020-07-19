@@ -3,9 +3,11 @@ import { h, Component, Element, Prop, Method, Event, EventEmitter } from "@stenc
 @Component({ tag: 'ins-input-multiple' })
 
 export class InsInputMultiple {
-	@Element() insInputMultiple: HTMLElement;
+	@Element() insInputMultipleEl: HTMLElement;
 	@Event() insInput: EventEmitter;
   @Event() insChange: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
 	@Prop({mutable: true}) label: string;
 	@Prop({mutable: true}) name: string;
@@ -16,7 +18,15 @@ export class InsInputMultiple {
 	@Prop({mutable: true}) removeDuplicates: boolean = false;
 
 	@Prop({mutable: true}) hasError: boolean = false;
-	@Prop({mutable: true}) errorMessage: string = "";
+  @Prop({mutable: true}) errorMessage: string = "";
+
+  componentDidLoad(){
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insInputMultipleEl);
+    }
+  }
 
 	@Method() // Discuss with mark re this as this is a redundant feature of component.value
 	async val() {
@@ -29,11 +39,11 @@ export class InsInputMultiple {
 	}
 
 	onfocusHandler() {
-		this.insInputMultiple.querySelector('.ins-input-multiple').classList.add('active');
+		this.insInputMultipleEl.querySelector('.ins-input-multiple').classList.add('active');
 	}
 
 	onblurHandler() {
-		this.insInputMultiple.querySelector('.ins-input-multiple').classList.remove('active');
+		this.insInputMultipleEl.querySelector('.ins-input-multiple').classList.remove('active');
 	}
 
 	onremoveHandler(index) {
@@ -72,7 +82,7 @@ export class InsInputMultiple {
 		this.insChange.emit({
 			value: this.value
 		});
-		this.insInputMultiple.querySelector('input').focus();
+		this.insInputMultipleEl.querySelector('input').focus();
 	}
 
 	render() {

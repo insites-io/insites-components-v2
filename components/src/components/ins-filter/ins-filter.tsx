@@ -6,6 +6,8 @@ export class InsFilter {
     @Element() insFilterEl: HTMLElement;
     @Event() insDateFilter: EventEmitter;
     @Event() insFilter: EventEmitter;
+    @Event() didLoad: EventEmitter;
+    @Prop() hasLoad: string;
 
     @Prop({ mutable: true }) withDateFilter: boolean = false;
     @Prop({ mutable: true }) dateTitle: any = "Date Period";
@@ -33,10 +35,10 @@ export class InsFilter {
 
     @State() fromPickerInstance: any;
     @State() toPickerInstance: any;
-    
+
     @State() currentFilter: any;
 
-    @Method() 
+    @Method()
     async closeDateFilter() {
         this.dateFilterState = false;
     }
@@ -164,6 +166,11 @@ export class InsFilter {
         this.initInsFilterDatePicker('from');
         this.initInsFilterDatePicker('to');
         this.setDefaultDate();
+        this.didLoad.emit();
+        if (this.hasLoad && window["Insites"]){
+          let func = window["Insites"].methods[this.hasLoad];
+          if (func) func(this.insFilterEl);
+        }
     }
 
     initInsFilterDatePicker(prop) {

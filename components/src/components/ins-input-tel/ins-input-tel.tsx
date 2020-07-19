@@ -10,6 +10,8 @@ export class InsInputTel {
   @Element() insInputTelEl: HTMLElement;
   @Event() insInput: EventEmitter;
   @Event() insValueChange: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({ mutable: true }) label: string = "";
   @Prop({ mutable: true }) areacodePlaceholder: string = "";
@@ -49,6 +51,12 @@ export class InsInputTel {
     if (this.countryCode){
       this.setCountryCode(`+${this.countryCode}`);
     }
+
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insInputTelEl);
+    }
   }
 
   initBlurEvents(){
@@ -60,7 +68,7 @@ export class InsInputTel {
     this._phoneNumber.addEventListener('focus', this.activateLabel.bind(this));
     this._areaCode.addEventListener('focus', this.activateLabel.bind(this));
   }
-  
+
   initKeyPressEvents(){
     this._areaCode.addEventListener('keypress', e => this.validateValue(e, 5, 'area_code'));
     this._phoneNumber.addEventListener('keypress', e => this.validateValue(e, 11, 'phone_number'));
@@ -142,7 +150,7 @@ export class InsInputTel {
   async setCountryCode(code) {
     this._iti.setNumber(code);
   }
-  
+
   activateLabel() {
     this._label.classList.add('active');
   }

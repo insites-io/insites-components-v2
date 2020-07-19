@@ -6,6 +6,8 @@ export class InsTextarea {
 
   @Event() insInput: EventEmitter;
   @Event() insValueChange: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({mutable: true}) placeholder: string;
   @Prop({mutable: true}) name: string;
@@ -43,6 +45,11 @@ export class InsTextarea {
     textarea.addEventListener('keyup', e => {this.onTextareaHandler(e)});
     textarea.addEventListener('focus', () => {this.activateLabel()});
     textarea.addEventListener('blur', () => {this.deactivateLabel()});
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insTextareaEl);
+    }
   }
 
   render(){

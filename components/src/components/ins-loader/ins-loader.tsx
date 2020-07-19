@@ -1,8 +1,10 @@
-import { h, Component, Element, Prop } from "@stencil/core";
+import { h, Component, Element, Prop, Event, EventEmitter } from "@stencil/core";
 
 @Component({ tag: 'ins-loader' })
 export class InsLoader {
-  @Element() InsLoader: HTMLElement;
+  @Element() insLoaderEl: HTMLElement;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
   @Prop({ mutable: true }) stateTitle: string = "";
   @Prop({ mutable: true }) stateMessage: string = "";
   @Prop({ mutable: true }) stateIcon: string = "";
@@ -10,6 +12,14 @@ export class InsLoader {
 
   @Prop({ mutable: true }) imageSource: string = "https://ins-styleguide.s3-us-west-2.amazonaws.com/assets/images/loading-loop-2x.gif";
   @Prop({ mutable: true }) useImage: boolean = true;
+
+  componentDidLoad(){
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insLoaderEl);
+    }
+  }
 
   getState (){
     switch (this.stateIcon) {

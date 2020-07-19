@@ -1,8 +1,10 @@
-import { h, Component, Prop, Element } from '@stencil/core';
+import { h, Component, Prop, Element, Event, EventEmitter } from '@stencil/core';
 
 @Component({ tag: 'ins-line-chart' })
 export class InsLineChart {
   @Element() insLineChartEl: HTMLElement;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
   @Prop({ mutable: true }) name: string = "";
   @Prop({ mutable: true }) categories: any = [];
   @Prop({ mutable: true }) chartData: any = [];
@@ -14,6 +16,11 @@ export class InsLineChart {
     this.insChartEl = this.insLineChartEl.querySelector('ins-chart');
     this.chartContainerEl = this.insChartEl.querySelector('.chart-container');
     this.renderChart();
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insLineChartEl);
+    }
   }
 
   componentWillLoad() {

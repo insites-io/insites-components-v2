@@ -1,8 +1,10 @@
-import { h, Component, Prop, Element } from "@stencil/core";
+import { h, Component, Prop, Element, Event, EventEmitter } from "@stencil/core";
 
 @Component({ tag: 'ins-progress-bar' })
 export class InsProgressBar {
   @Element() el: HTMLElement;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({mutable: true}) text: string = "";
   @Prop({mutable: true}) progress: number = 0;
@@ -14,6 +16,11 @@ export class InsProgressBar {
   componentDidLoad(){
     this.progressEl = this.el.querySelector('.progress')
     this.calculateProgress()
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.el);
+    }
   }
 
   componentDidUpdate(){

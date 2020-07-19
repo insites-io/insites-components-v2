@@ -1,8 +1,10 @@
-import { h, Component, Prop, Element } from '@stencil/core';
+import { h, Component, Prop, Element, Event, EventEmitter } from '@stencil/core';
 
 @Component({ tag: 'ins-sparkline' })
 export class InsSparkline {
   @Element() insSparklineEl: HTMLElement;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
   @Prop({ mutable: true }) icon: string = "";
   @Prop({ mutable: true }) name: string = "";
   @Prop({ mutable: true }) value: string = "";
@@ -22,6 +24,11 @@ export class InsSparkline {
     this.insChartEl = this.insSparklineEl.querySelector('ins-chart');
     this.chartContainerEl = this.insChartEl.querySelector('.chart-container');
     this.renderChart();
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insSparklineEl);
+    }
   }
 
   componentWillUpdate(){

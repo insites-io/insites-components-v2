@@ -1,9 +1,11 @@
-import { h, Component, Element, Prop } from "@stencil/core";
+import { h, Component, Element, Prop, Event, EventEmitter } from "@stencil/core";
 import marked from "marked";
 
 @Component({ tag: "ins-markdown" })
 export class InsMarkdown {
   @Element() insMarkdownEl: HTMLElement;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
   @Prop({ mutable: true }) label: string = "";
   @Prop({ mutable: true }) value: string = "";
 
@@ -13,6 +15,11 @@ export class InsMarkdown {
 
   componentDidLoad() {
     this.setMarkdownValue();
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insMarkdownEl);
+    }
   }
 
   componentDidUpdate() {

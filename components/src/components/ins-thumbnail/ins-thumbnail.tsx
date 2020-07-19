@@ -1,7 +1,10 @@
-import { h, Component, Prop, State } from "@stencil/core";
+import { h, Component, Prop, State, Event, EventEmitter, Element } from "@stencil/core";
 
 @Component({ tag: 'ins-thumbnail' })
 export class InsThumbnail {
+  @Element() insThumbnailEl: HTMLElement
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
     @Prop({ mutable: true }) name: string;
     @Prop({ mutable: true }) alt: string;
@@ -9,6 +12,14 @@ export class InsThumbnail {
     @Prop({ mutable: true }) label: string;
     @Prop({ mutable: true }) thumbnail: string;
     @State() hoverState: boolean = false;
+
+    componentDidLoad(){
+      this.didLoad.emit();
+      if (this.hasLoad && window["Insites"]){
+        let func = window["Insites"].methods[this.hasLoad];
+        if (func) func(this.insThumbnailEl);
+      }
+    }
 
     private _getSvgType(type){
       switch(type){

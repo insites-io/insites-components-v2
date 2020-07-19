@@ -4,6 +4,8 @@ import { h, Component, Prop, State, Element, Event, EventEmitter } from "@stenci
 export class InsHeading {
   @Element() insHeadingEl: HTMLElement;
   @Event() insChange: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({mutable: true}) change: string = "";
   @Prop({mutable: true}) label: string = "";
@@ -64,6 +66,11 @@ export class InsHeading {
         let inputWrapEl = this.insHeadingEl.querySelector('.input-wrap') as HTMLElement;
         inputWrapEl.style.backgroundColor = this.backgroundColor;
       }
+    }
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insHeadingEl);
     }
   }
 

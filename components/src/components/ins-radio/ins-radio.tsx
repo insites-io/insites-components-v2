@@ -1,9 +1,12 @@
-import { h, Component, Prop, Event, EventEmitter } from "@stencil/core";
+import { h, Component, Prop, Event, EventEmitter, Element } from "@stencil/core";
 
 @Component({ tag: "ins-radio" })
 export class InsRadio {
+  @Element() insRadioEl: HTMLElement;
   @Event() insCheck: EventEmitter;
   @Event() insValueChange: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({mutable:true}) checked: boolean;
   @Prop({mutable:true}) disabled: boolean;
@@ -16,6 +19,14 @@ export class InsRadio {
 
   componentWillLoad(){
     if (this.checked) this.localChecked = true;
+  }
+
+  componentDidLoad(){
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insRadioEl);
+    }
   }
 
   componentWillUpdate(){

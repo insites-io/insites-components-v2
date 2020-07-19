@@ -5,6 +5,8 @@ export class InsDatePicker {
   @Element() insDatepickerEl: HTMLElement;
   @Event() insInput: EventEmitter;
   @Event() insValueChange: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({mutable:true}) disabled: boolean = false;
   @Prop({mutable:true}) readonly: boolean = false;
@@ -18,6 +20,14 @@ export class InsDatePicker {
   @Prop({mutable:true}) maxDate: string = "";
   @Prop({mutable:true}) icon: string = "";
   @Prop({mutable: true}) errorMessage: string = "";
+
+  componentDidLoad(){
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insDatepickerEl);
+    }
+  }
 
 	render() {
     return (

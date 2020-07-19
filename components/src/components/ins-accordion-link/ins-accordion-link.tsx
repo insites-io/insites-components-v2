@@ -1,8 +1,11 @@
-import { h, Component, Prop, Element } from "@stencil/core";
+import { h, Component, Prop, Element, Event, EventEmitter } from "@stencil/core";
 
 @Component({ tag: 'ins-accordion-link' })
 export class InsAccordionLink {
   @Element() insAccLinkEl: HTMLElement;
+
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({ mutable: true }) link: string = "";
   @Prop({ mutable: true }) linkTitle: string = "";
@@ -14,6 +17,11 @@ export class InsAccordionLink {
 
   componentDidLoad(){
     this.checkSiblings();
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insAccLinkEl);
+    }
   }
 
   componentDidUpdate(){
