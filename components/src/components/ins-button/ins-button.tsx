@@ -30,7 +30,7 @@ export class InsButton {
 
   btnOnClickHandler() {
     if (this.dropdown && this.buttonOptions.length){
-      this.toggleOption = !this.toggleOption;
+      this.toggleOptions();
     } else {
       this.toggleOption = false;
       this.insClick.emit({
@@ -52,7 +52,7 @@ export class InsButton {
     if(!this.loading) {
       let existingLabel = this.label;
       this.label = '';
-      
+
       setTimeout(() => {
         this.label = existingLabel;
       }, 300);
@@ -97,7 +97,7 @@ export class InsButton {
 
       if (closestEl !== this.insButtonEl){
         if (this.toggleOption) {
-          this.toggleOptions();
+          this.toggleOption = false;
         }
       }
     })

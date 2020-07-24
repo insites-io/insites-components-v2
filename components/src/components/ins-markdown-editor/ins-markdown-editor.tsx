@@ -1,14 +1,14 @@
-import { h, Component, Element, Prop, Method, State, Event, EventEmitter } from "@stencil/core";
+import { h, Component, Element, Prop, Method, Event, EventEmitter } from "@stencil/core";
 import "../../assets/js/simplemde.min.js";
 
-@Component({ 
+@Component({
   tag: "ins-markdown-editor",
   styleUrl: "../../../node_modules/simplemde/dist/simplemde.min.css"
 })
 export class InsMarkdownEditor {
   @Element() insMarkdownEditorEl: HTMLElement;
   @Event() insValueChange: EventEmitter;
-  @State() editor: any;
+  editor: any;
 
   @Prop({ mutable: true }) label: string = "";
   @Prop({ mutable: true }) value: string = "";
@@ -22,6 +22,12 @@ export class InsMarkdownEditor {
   async val() {
     return this.editor.value();
   }
+
+  @Method()
+  async reset(){
+     this.value = "";
+     this.editor.value("");
+   }
 
   activeState() {
     this.insMarkdownEditorEl.querySelector('label').classList.add('active');

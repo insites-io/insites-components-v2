@@ -123,6 +123,22 @@ export namespace Components {
         "tabOrder": string;
         "value": string;
     }
+    interface InsCodeEditor {
+        "beautify": () => Promise<void>;
+        "disableLineNumbers": boolean;
+        "errorMessage": string;
+        "hasError": boolean;
+        "label": string;
+        "mode": string;
+        "name": string;
+        "readonly": boolean;
+        "refresh": () => Promise<void>;
+        "reset": () => Promise<void>;
+        "setValue": (value: any) => Promise<void>;
+        "theme": string;
+        "val": () => Promise<any>;
+        "value": string;
+    }
     interface InsContent {
     }
     interface InsCreditCard {
@@ -180,6 +196,24 @@ export namespace Components {
         "showCloseButton": boolean;
         "showHeader": boolean;
         "stickyHeader": boolean;
+    }
+    interface InsEditor {
+        "classId": string;
+        "disableLineNumbers": boolean;
+        "errorMessage": string;
+        "hasCodeEditor": boolean;
+        "hasError": boolean;
+        "imageUpload": boolean;
+        "images": string;
+        "label": string;
+        "mode": string;
+        "name": string;
+        "pluginsList": any;
+        "readonly": boolean;
+        "showSource": boolean;
+        "theme": string;
+        "val": () => Promise<any>;
+        "value": string;
     }
     interface InsFilter {
         "closeDateFilter": () => Promise<void>;
@@ -312,9 +346,7 @@ export namespace Components {
         "label": string;
         "name": string;
         "readonly": boolean;
-        "removeDuplicates": boolean;
         "setValue": (value: any) => Promise<void>;
-        "temp": string;
         "val": () => Promise<any>;
         "value": any;
     }
@@ -362,6 +394,7 @@ export namespace Components {
         "name": string;
         "readonly": boolean;
         "required": boolean;
+        "reset": () => Promise<void>;
         "val": () => Promise<any>;
         "value": string;
     }
@@ -750,6 +783,12 @@ declare global {
         prototype: HTMLInsCheckboxCardElement;
         new (): HTMLInsCheckboxCardElement;
     };
+    interface HTMLInsCodeEditorElement extends Components.InsCodeEditor, HTMLStencilElement {
+    }
+    var HTMLInsCodeEditorElement: {
+        prototype: HTMLInsCodeEditorElement;
+        new (): HTMLInsCodeEditorElement;
+    };
     interface HTMLInsContentElement extends Components.InsContent, HTMLStencilElement {
     }
     var HTMLInsContentElement: {
@@ -779,6 +818,12 @@ declare global {
     var HTMLInsDrawerElement: {
         prototype: HTMLInsDrawerElement;
         new (): HTMLInsDrawerElement;
+    };
+    interface HTMLInsEditorElement extends Components.InsEditor, HTMLStencilElement {
+    }
+    var HTMLInsEditorElement: {
+        prototype: HTMLInsEditorElement;
+        new (): HTMLInsEditorElement;
     };
     interface HTMLInsFilterElement extends Components.InsFilter, HTMLStencilElement {
     }
@@ -1059,11 +1104,13 @@ declare global {
         "ins-chart": HTMLInsChartElement;
         "ins-checkbox": HTMLInsCheckboxElement;
         "ins-checkbox-card": HTMLInsCheckboxCardElement;
+        "ins-code-editor": HTMLInsCodeEditorElement;
         "ins-content": HTMLInsContentElement;
         "ins-credit-card": HTMLInsCreditCardElement;
         "ins-date-time": HTMLInsDateTimeElement;
         "ins-datepicker": HTMLInsDatepickerElement;
         "ins-drawer": HTMLInsDrawerElement;
+        "ins-editor": HTMLInsEditorElement;
         "ins-filter": HTMLInsFilterElement;
         "ins-filter-item": HTMLInsFilterItemElement;
         "ins-header": HTMLInsHeaderElement;
@@ -1173,7 +1220,7 @@ declare namespace LocalJSX {
         "activeOption"?: string;
         "color"?: string;
         "disabled"?: boolean;
-        "onInsButtonAction"?: (event: CustomEvent<any>) => void;
+        "onInsClick"?: (event: CustomEvent<any>) => void;
         "options"?: string;
         "size"?: string;
     }
@@ -1198,7 +1245,7 @@ declare namespace LocalJSX {
         "loop"?: boolean;
         "noCarouselButton"?: boolean;
         "noPagination"?: boolean;
-        "onSlide"?: (event: CustomEvent<any>) => void;
+        "onInsSlide"?: (event: CustomEvent<any>) => void;
         "perPage"?: number;
         "startIndex"?: number;
         "subHeading"?: string;
@@ -1213,7 +1260,7 @@ declare namespace LocalJSX {
         "falseValue"?: string;
         "label"?: string;
         "name"?: string;
-        "onInsClick"?: (event: CustomEvent<any>) => void;
+        "onInsCheck"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "trueValue"?: string;
         "value"?: string;
@@ -1230,6 +1277,19 @@ declare namespace LocalJSX {
         "tabOrder"?: string;
         "value"?: string;
     }
+    interface InsCodeEditor {
+        "disableLineNumbers"?: boolean;
+        "errorMessage"?: string;
+        "hasError"?: boolean;
+        "label"?: string;
+        "mode"?: string;
+        "name"?: string;
+        "onOnblur"?: (event: CustomEvent<any>) => void;
+        "onOninput"?: (event: CustomEvent<any>) => void;
+        "readonly"?: boolean;
+        "theme"?: string;
+        "value"?: string;
+    }
     interface InsContent {
     }
     interface InsCreditCard {
@@ -1240,8 +1300,8 @@ declare namespace LocalJSX {
         "expiryYear"?: string;
         "fullYear"?: boolean;
         "lastFour"?: string;
-        "onInsCreditCardClicked"?: (event: CustomEvent<any>) => void;
-        "onInsCreditCardClosed"?: (event: CustomEvent<any>) => void;
+        "onInsClick"?: (event: CustomEvent<any>) => void;
+        "onInsClose"?: (event: CustomEvent<any>) => void;
         "value"?: string;
     }
     interface InsDateTime {
@@ -1293,6 +1353,27 @@ declare namespace LocalJSX {
         "showCloseButton"?: boolean;
         "showHeader"?: boolean;
         "stickyHeader"?: boolean;
+    }
+    interface InsEditor {
+        "classId"?: string;
+        "disableLineNumbers"?: boolean;
+        "errorMessage"?: string;
+        "hasCodeEditor"?: boolean;
+        "hasError"?: boolean;
+        "imageUpload"?: boolean;
+        "images"?: string;
+        "label"?: string;
+        "mode"?: string;
+        "name"?: string;
+        "onOnblur"?: (event: CustomEvent<any>) => void;
+        "onOninput"?: (event: CustomEvent<any>) => void;
+        "onOnupload"?: (event: CustomEvent<any>) => void;
+        "onValueChange"?: (event: CustomEvent<any>) => void;
+        "pluginsList"?: any;
+        "readonly"?: boolean;
+        "showSource"?: boolean;
+        "theme"?: string;
+        "value"?: string;
     }
     interface InsFilter {
         "dateFrom"?: string;
@@ -1402,9 +1483,9 @@ declare namespace LocalJSX {
         "maxFiles"?: number;
         "maxFilesLabel"?: string;
         "name"?: string;
-        "onFileAdded"?: (event: CustomEvent<any>) => void;
-        "onFileError"?: (event: CustomEvent<any>) => void;
-        "onFileRemoved"?: (event: CustomEvent<any>) => void;
+        "onInsFileAdded"?: (event: CustomEvent<any>) => void;
+        "onInsFileError"?: (event: CustomEvent<any>) => void;
+        "onInsFileRemoved"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
         "required"?: boolean;
         "s3Data"?: object;
@@ -1421,8 +1502,6 @@ declare namespace LocalJSX {
         "onInsChange"?: (event: CustomEvent<any>) => void;
         "onInsInput"?: (event: CustomEvent<any>) => void;
         "readonly"?: boolean;
-        "removeDuplicates"?: boolean;
-        "temp"?: string;
         "value"?: any;
     }
     interface InsInputTel {
@@ -1516,7 +1595,7 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "label"?: any;
         "name"?: any;
-        "onInsSelect"?: (event: CustomEvent<any>) => void;
+        "onInsCheck"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "staticValue"?: any;
         "value"?: any;
@@ -1561,7 +1640,6 @@ declare namespace LocalJSX {
         "default"?: boolean;
         "disabled"?: boolean;
         "label"?: string;
-        "onDefaultEvent"?: (event: CustomEvent<any>) => void;
         "onInsSelectOptionClicked"?: (event: CustomEvent<any>) => void;
         "value"?: string;
     }
@@ -1621,7 +1699,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface InsTab {
-        "onOnchangeTab"?: (event: CustomEvent<any>) => void;
+        "onInsTabChange"?: (event: CustomEvent<any>) => void;
         "tabs"?: any;
     }
     interface InsTabItem {
@@ -1631,8 +1709,8 @@ declare namespace LocalJSX {
         "icon"?: string;
         "label"?: string;
         "noPadding"?: boolean;
-        "onTabItemDisableToggled"?: (event: CustomEvent<any>) => void;
-        "onTabItemError"?: (event: CustomEvent<any>) => void;
+        "onInsTabDisableToggle"?: (event: CustomEvent<any>) => void;
+        "onInsTabError"?: (event: CustomEvent<any>) => void;
     }
     interface InsTable {
         "bulkActions"?: any;
@@ -1693,8 +1771,8 @@ declare namespace LocalJSX {
         "label"?: string;
         "maxlength"?: string;
         "name"?: string;
-        "onOninput"?: (event: CustomEvent<any>) => void;
-        "onValueChange"?: (event: CustomEvent<any>) => void;
+        "onInsInput"?: (event: CustomEvent<any>) => void;
+        "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
         "readonly"?: boolean;
         "required"?: boolean;
@@ -1776,11 +1854,13 @@ declare namespace LocalJSX {
         "ins-chart": InsChart;
         "ins-checkbox": InsCheckbox;
         "ins-checkbox-card": InsCheckboxCard;
+        "ins-code-editor": InsCodeEditor;
         "ins-content": InsContent;
         "ins-credit-card": InsCreditCard;
         "ins-date-time": InsDateTime;
         "ins-datepicker": InsDatepicker;
         "ins-drawer": InsDrawer;
+        "ins-editor": InsEditor;
         "ins-filter": InsFilter;
         "ins-filter-item": InsFilterItem;
         "ins-header": InsHeader;
@@ -1845,11 +1925,13 @@ declare module "@stencil/core" {
             "ins-chart": LocalJSX.InsChart & JSXBase.HTMLAttributes<HTMLInsChartElement>;
             "ins-checkbox": LocalJSX.InsCheckbox & JSXBase.HTMLAttributes<HTMLInsCheckboxElement>;
             "ins-checkbox-card": LocalJSX.InsCheckboxCard & JSXBase.HTMLAttributes<HTMLInsCheckboxCardElement>;
+            "ins-code-editor": LocalJSX.InsCodeEditor & JSXBase.HTMLAttributes<HTMLInsCodeEditorElement>;
             "ins-content": LocalJSX.InsContent & JSXBase.HTMLAttributes<HTMLInsContentElement>;
             "ins-credit-card": LocalJSX.InsCreditCard & JSXBase.HTMLAttributes<HTMLInsCreditCardElement>;
             "ins-date-time": LocalJSX.InsDateTime & JSXBase.HTMLAttributes<HTMLInsDateTimeElement>;
             "ins-datepicker": LocalJSX.InsDatepicker & JSXBase.HTMLAttributes<HTMLInsDatepickerElement>;
             "ins-drawer": LocalJSX.InsDrawer & JSXBase.HTMLAttributes<HTMLInsDrawerElement>;
+            "ins-editor": LocalJSX.InsEditor & JSXBase.HTMLAttributes<HTMLInsEditorElement>;
             "ins-filter": LocalJSX.InsFilter & JSXBase.HTMLAttributes<HTMLInsFilterElement>;
             "ins-filter-item": LocalJSX.InsFilterItem & JSXBase.HTMLAttributes<HTMLInsFilterItemElement>;
             "ins-header": LocalJSX.InsHeader & JSXBase.HTMLAttributes<HTMLInsHeaderElement>;

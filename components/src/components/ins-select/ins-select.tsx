@@ -434,6 +434,8 @@ export class InsSelect {
               if (tempMultipleValue.length === insSelectOptions.length){
                 this.noMoreOptions = true;
               }
+            } else {
+              insSelectOptions[i].deactivate();
             }
           });
 

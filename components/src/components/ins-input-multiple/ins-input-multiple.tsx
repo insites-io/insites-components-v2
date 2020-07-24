@@ -12,8 +12,6 @@ export class InsInputMultiple {
 	@Prop({mutable: true}) disabled: boolean = false;
 	@Prop({mutable: true}) readonly: boolean = false;
 	@Prop({mutable: true}) value: any = [];
-	@Prop({mutable: true}) temp: string;
-	@Prop({mutable: true}) removeDuplicates: boolean = false;
 
 	@Prop({mutable: true}) hasError: boolean = false;
 	@Prop({mutable: true}) errorMessage: string = "";
@@ -51,18 +49,34 @@ export class InsInputMultiple {
 
 	oninputHandler(event) {
 		let value = this.value;
-		let eventValue = event.target.value;
-		if (event.keyCode === 13 && eventValue.trim() && !this.readonly) {
-			this.value = [];
-			this.value = value;
-			this.value.push(eventValue);
-			eventValue = "";
+    let eventValue = event.target.value;
 
-			this.insInput.emit({
-				value: this.value
-			});
+		if (event.keyCode === 13 && eventValue.trim() && !this.readonly) {
+			this.updateValue(value, eventValue);
+		}
+  }
+
+  onaddHandler(event) {
+		let value = this.value;
+		let eventValue = event.target.previousSibling.value;
+
+		if (eventValue.trim() && !this.readonly) {
+			this.updateValue(value, eventValue);
 		}
 	}
+
+	updateValue(value, eventValue) {
+		this.value = [];
+		this.value = value;
+		this.value.push(eventValue);
+		eventValue = "";
+
+		this.insInput.emit({
+			value: this.value
+    });
+  }
+
+
 
 	componentDidUpdate() {
 		if (!Array.isArray(this.value)) {
@@ -77,9 +91,16 @@ export class InsInputMultiple {
 
 	render() {
 		return (
-			<div class={`ins-input-multiple ${this.disabled ? 'disabled' : ''} ${this.readonly ? 'readonly' : ''} ${this.hasError ? 'has-error' : ''}`}>
-				<label>{this.label}</label>
-				<div class="ins-input-multiple-container" onClick={event => this.onclickContainer(event)}>
+      <div class={`ins-form-field-wrap ins-input-multiple
+        ${this.disabled ? 'disabled' : ''}
+        ${this.readonly ? 'readonly' : ''}
+        ${this.hasError ? 'has-error' : ''}`}>
+
+				<label class="ins-form-label">{this.label}</label>
+
+        <div class="ins-input-multiple-container ins-form-field"
+          onClick={event => this.onclickContainer(event)}>
+
 					{	Array.isArray(this.value) ?
 						this.value.map((item, index) => {
 							return (
@@ -104,9 +125,17 @@ export class InsInputMultiple {
 							onBlur={() => this.onblurHandler()}
 							onKeyUp={event => this.oninputHandler(event)}>
 						</input>
+						<span
+							class="icon-add"
+							title="Click to add or press enter"
+							onClick={event => this.onaddHandler(event)}>
+						</span>
 					</div>
 				</div>
-				<span class="error-message">{this.errorMessage}</span>
+
+				<span class="error-message">
+          {this.errorMessage}
+        </span>
 			</div>
 		)
 	}

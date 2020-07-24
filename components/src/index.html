@@ -11,6 +11,12 @@
   <script type="module" src="/build/insites-components.esm.js"></script>
   <script nomodule src="/build/insites-components.js"></script>
 
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous">
+  </script>
+  <script src="/assets/redactor.min.js"></script>
+
   <link rel="stylesheet" href="/assets/css/reset.css" />
   <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
   <link rel="stylesheet" href="/assets/css/insites-components.css" />
@@ -24,17 +30,7 @@
 </head>
 
 <body>
-  <ins-select label="Select Field">
-
-    <ins-select-option label="Option 1" value="Option 1">
-    </ins-select-option>
-
-    <ins-select-option label="Option 2" value="Option 2">
-    </ins-select-option>
-
-    <ins-select-option label="Option 3" value="Option 3">
-    </ins-select-option>
-  </ins-select>
+  <ins-editor label="Editor"></ins-editor>
 </body>
 
 </html>
