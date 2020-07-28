@@ -6,20 +6,20 @@
 
   &:-moz-placeholder,
   &::-moz-placeholder {
-    color: $color;
+    color: var(--ins-color-#{$color});
   }
 
   &:-ms-input-placeholder {
-    color: $color;
+    color: var(--ins-color-#{$color});
   }
 
   &::-webkit-input-placeholder {
-    color: $color;
+    color: var(--ins-color-#{$color});
   }
 }
 
 @mixin input_field {
-  color: $ink;
+  color: var(--ins-color-ink);
   font-family: var(--ins-font-family);
   font-size: $input_field_font_size;
   font-weight: $input_field_font_weight;
@@ -32,17 +32,12 @@
 }
 
 @mixin input_disabled {
-  border-color: $ink10 !important;
-  background-color: $disabled_readonly_bg;
-  color: $ink40;
+  border-color:  var(--ins-color-ink10);
+  background-color: var(--ins-color-disabled_readonly_bg);
+  color: var(--ins-color-ink40);
   cursor: not-allowed;
 }
 
-$negative_bg: #FEF8F8;
-$border_color: $ink10;
-$border_thickness: 1px;
-$border_style: solid;
-$border_radius: 4px;
 $input_field_font_size: 14px;
 $input_field_font_weight: 400;
 
@@ -54,24 +49,24 @@ $input_field_font_weight: 400;
     font-family: var(--ins-font-family);
     font-size: 12px;
     font-weight: 600;
-    color: $ink;
+    color: var(--ins-color-ink);
     margin-bottom: 3px;
     display: block;
     line-height: 1.4;
 
     &.disabled {
-      color: $ink40;
+      color: var(--ins-color-ink40);
     }
 
     &.active {
-      color: $primary;
+      color: var(--ins-color-primary);
     }
   }
 
   .ins-form-field {
 
     @include input_field;
-    @include input_placeholder($ink40);
+    @include input_placeholder("ink40");
 
     border:
       var(--ins-border-style)
@@ -83,11 +78,11 @@ $input_field_font_weight: 400;
     transition: border-color .25s ease-in-out;
 
     &:hover {
-      border-color: $ink40;
+      border-color: var(--ins-color-ink40);
     }
 
     &:focus {
-      border-color: $primary;
+      border-color: var(--ins-color-ink-primary);
       box-shadow: none;
       outline: 0;
     }
@@ -105,15 +100,14 @@ $input_field_font_weight: 400;
   &.is-invalid {
 
     .ins-form-label {
-      color: $negative;
+      color: var(--ins-color-negative);
     }
 
     .ins-form-field {
-      color: $negative;
-      border-color: $negative;
-      background-color: $negative_bg;
-
-      @include input_placeholder($negative);
+      color: var(--ins-color-negative);
+      border-color: var(--ins-color-negative);
+      background-color: var(--ins-color-red-10p);
+      @include input_placeholder("negative");
     }
 
     .ins-form-error {
@@ -122,7 +116,7 @@ $input_field_font_weight: 400;
       font-family: var(--ins-font-family);
       font-size: 12px;
       line-height: 16px;
-      color: $negative;
+      color: var(--ins-color-negative);
     }
   }
 }
