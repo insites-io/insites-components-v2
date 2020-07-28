@@ -4,6 +4,8 @@ import { h, Component, State, Prop, Element, Event, EventEmitter, Method } from 
 export class InsModal {
   @Element() insModalEl: HTMLElement;
   @Event() insClose: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({ mutable: true }) withBackdrop: boolean;
   @Prop({ mutable: true }) light: boolean;
@@ -34,6 +36,11 @@ export class InsModal {
 
   componentDidLoad() {
     this.adjustPosition();
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insModalEl);
+    }
   }
 
   componentDidUpdate() {

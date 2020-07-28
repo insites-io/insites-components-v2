@@ -4,6 +4,8 @@ import { h, Component, Prop, Element, Method, Watch, Event, EventEmitter } from 
 export class InsDrawer {
   @Element() insDrawer: HTMLElement;
   @Event() insToggle: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({ mutable: true }) isOpen: boolean = false;
   @Prop({ mutable: true }) position: string = ""; //[left, right]
@@ -94,6 +96,11 @@ export class InsDrawer {
     this.customWidth ? this.setStyleWidth() : '';
     this.setBodyCSS();
     this.rebindHeaderCSS();
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insDrawer);
+    }
   }
   componentDidUpdate() {
     this.backdropCanClose ? this.backDropClickHandler() : '';

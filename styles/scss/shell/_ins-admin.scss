@@ -2,12 +2,12 @@ ins-admin {
   /* Globals */
   .ins-form-field {
     font-size: 16px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--ins-font-family);
     padding: 8px 16px;
     box-sizing: border-box;
     border-radius: 2px;
     border: solid 1px #e4e6ec;
-    background: #fff;
+    background: var(--ins-bg-color);
     width: 100%;
     display: block;
   }

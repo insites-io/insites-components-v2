@@ -24,12 +24,12 @@
 
   &__title {
     opacity: 0.87;
-    color: #2c3148;
+    color: var(--ins-color-ink);
     font-size: 32px;
     font-weight: 300;
     margin-top: 10px;
     padding: 0 0.9375rem;
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--ins-font-family);
     position: relative;
     min-height: 44px;
 

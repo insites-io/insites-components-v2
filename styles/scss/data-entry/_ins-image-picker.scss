@@ -20,17 +20,27 @@
 }
 
 .ins-card-wrap {
-  border: $border_thickness $border_style $border_color;
+  border:
+    var(--ins-border-style)
+    var(--ins-border-thickness)
+    var(--ins-border-color);
+
   border-radius: 3px;
   margin-top: 0;
-  box-shadow: 1px 1px 3px $ink10;
-  background: #fff;
+
+  box-shadow:
+    var(--ins-shadow-x)
+    var(--ins-shadow-y)
+    var(--ins-shadow-blur)
+    var(--ins-shadow-color);
+
+  background: var(--ins-color-bg) ;
   transition: all .15s;
   padding: 20px;
 
   &:hover {
     margin-top: -3px;
-    box-shadow: 0px 4px 13px $ink10;
+    box-shadow: 0px 4px 13px var(--ins-shadow-color);
   }
 
   &.outlined {
@@ -41,7 +51,12 @@
 
 .ins-card-wrap.steady:hover {
   margin-top: 0px;
-  box-shadow: 1px 1px 3px $ink10;
+
+    box-shadow:
+      var(--ins-shadow-x)
+      var(--ins-shadow-y)
+      var(--ins-shadow-blur)
+      var(--ins-shadow-color);
 }
 
 .ins-card-wrap.no-padding {
@@ -51,7 +66,7 @@
 
 .image-picker {
   margin-bottom: 30px;
-  font-family: $default_font_family;
+  font-family: var(--ins-font-family);
   line-height: 1.4;
 
   .img-placeholder {
@@ -79,7 +94,7 @@
       width: 100%;
       top: calc(50% - 16px);
       position: absolute;
-      color: $ink10;
+      color: var(--ins-color-ink10);
       text-align: center;
       font-size: 32px;
     }
@@ -87,7 +102,11 @@
 
   .img-container {
     margin: 0 20px 10px 0;
-    border: 1px solid $ink10;
+    border:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-border-color);
+
     border-radius: 50%;
     position: relative;
     width: 120px;
@@ -105,13 +124,13 @@
   }
 
   .texts_image {
-    color: $ink40;
+    color: var(--ins-color-ink40);
     display: block;
     font-size: 12px;
   }
 
   .texts_uploadinfo {
-    color: $ink40;
+    color: var(--ins-color-ink40);
     display: block;
     font-size: 12px;
     margin-bottom: 12px;
@@ -180,7 +199,7 @@
 
         h3 {
           font-size: 18px;
-          color: $ink;
+          color: var(--ins-color-ink);
           margin-bottom: 20px;
         }
 
@@ -188,7 +207,7 @@
           position: absolute;
           right: 0;
           top: 0;
-          color: $ink40;
+          color: var(--ins-color-ink40);
           cursor: pointer;
         }
       }
@@ -196,27 +215,31 @@
       .error-wrap {
         display: none;
         font-size: 12px;
-        font-family: "Open Sans",sans-serif;
+        font-family: var(--ins-font-family);
         line-height: 16px;
-        color: $negative;
+        color: var(--ins-color-negative);
         margin-bottom: 20px;
         margin-top: 10px;
         height: auto;
       }
 
       .image-preview {
-        border: $border_thickness dashed $border_color;
+        border-radius: var(--ins-border-radius);
+        border:
+          var(--ins-border-thickness)
+          dashed
+          var(--ins-border-color);
+
         margin: 0 0 20px;
         min-height: 200px;
         max-height: 300px;
         width: 100%;
         z-index: 1;
-        border-radius: $border_radius;
         text-align: center;
         position: relative;
 
         .placeholder-text {
-          color: $ink40;
+          color: var(--ins-color-ink40);
           font-size: 14px;
           margin-bottom: 0;
           position: absolute;
@@ -226,13 +249,13 @@
         }
 
         .label-content {
-          color: $ink40;
+          color: var(--ins-color-ink40);
           position: absolute;
           z-index: 0;
           width: 100%;
 
             h4 {
-              font-family: $default_font_family;
+              font-family: var(--ins-font-family);
               font-size: 16px;
               margin-top: 20px;
             }
@@ -272,11 +295,11 @@
         }
 
         .placeholder-text {
-          color: $negative;
+          color: var(--ins-color-negative);
         }
 
         .image-preview {
-          border-color: $negative;
+          border-color: var(--ins-color-negative);
           margin-bottom: 0;
         }
       }
@@ -301,7 +324,10 @@
 
   .img-container {
     border-radius: 0;
-    border: $border_thickness $border_style $border_color;
+    border:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-border-color);
     position: relative;
     width: 360px;
     height: 120px;
@@ -338,7 +364,11 @@
   .img-container {
     margin-right: 20px;
     border-radius: 0;
-    border: $border_thickness $border_style $border_color;
+    border:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-border-color);
+
     position: relative;
     width: 120px;
     height: 120px;

@@ -5,9 +5,9 @@ import { h, Component, Element, Event, Method, EventEmitter, Prop, State, Listen
 export class InsTab {
   @Element() insTabEl: HTMLElement;
   @Event() insTabChange: EventEmitter;
-
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
   @Prop({ mutable: true }) tabs: any = [];
-
   @State() activeTab: string = "";
   @State() activeTabIndex: number = 0;
   @State() insTabItems: any = [];
@@ -150,6 +150,11 @@ export class InsTab {
     this.setDisabledTabs();
     this.setActiveTabItem(this.activeTabIndex);
     this.setScrollableHeaders();
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insTabEl);
+    }
   }
 
   @Method()

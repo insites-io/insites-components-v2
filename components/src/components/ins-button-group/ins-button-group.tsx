@@ -5,6 +5,8 @@ import { h, Component, Prop, Event, EventEmitter, Element, State, Method, Watch 
 export class InsButtonGroup {
   @Element() insButtonGroupEl: HTMLElement;
   @Event() insClick: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({ mutable: true }) activeOption: string = "";
   @Prop({ mutable: true }) options: string = "";
@@ -14,6 +16,14 @@ export class InsButtonGroup {
   @Prop({ mutable: true }) activeIndex: number = 0;
 
   @State() buttonOptions = []
+
+  componentDidLoad(){
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insButtonGroupEl);
+    }
+  }
 
   @Method()
   async getActiveOption() {

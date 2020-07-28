@@ -1,31 +1,26 @@
-ins-line-chart {
-    .ins-line-chart {
-        background-color: #ffffff;
-        position: relative;
-        min-height: 60px;
-    }
-    h2 {
-        margin-top: 0;
-        font-size: 24px;
-        font-weight: 300;
-        font-family: 'Open Sans', sans-serif;
-        // color: #1A1D2C;
-        // position: absolute;
-        // top: 0;
-        // left: 0;
-        // z-index: 1;
-    }
+.ins-line-chart {
+  background-color: var(--ins-bg-color);
+  position: relative;
+  min-height: 60px;
+
+  h2 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: 300;
+    font-family: var(--ins-font-family);
+  }
+
   svg.highcharts-root {
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--ins-font-family);
   }
 }
 @media only screen and (max-width: 736px) {
-    ins-line-chart h2{
-        position: relative;
-    }
+  .ins-line-chart h2 {
+    position: relative;
+  }
 }
 @media only screen and (max-width: 320px) {
-    ins-line-chart h2{
-        position: relative;
-    }
+  .ins-line-chart h2 {
+    position: relative;
+  }
 }

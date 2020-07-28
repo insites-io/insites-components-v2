@@ -8,6 +8,9 @@ import "../../assets/js/simplemde.min.js";
 export class InsMarkdownEditor {
   @Element() insMarkdownEditorEl: HTMLElement;
   @Event() insValueChange: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
+
   editor: any;
 
   @Prop({ mutable: true }) label: string = "";
@@ -82,6 +85,12 @@ export class InsMarkdownEditor {
     this.editor.codemirror.options.readOnly = this.readonly;
     if (this.value) {
       this.editor.value(this.value);
+    }
+
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insMarkdownEditorEl);
     }
   }
 

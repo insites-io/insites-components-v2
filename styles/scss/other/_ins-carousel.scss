@@ -1,5 +1,5 @@
 .ins-carousel {
-  font-family: $default_font_family;
+  font-family: var(--ins-font-family);
   color: $ink;
 
   img { width: 100%;}
@@ -20,7 +20,7 @@
 
   &_slides {
     overflow: auto;
-    background-color: $ink10;
+    background-color: var(--ins-bg-color2);
   }
 
   &_ctrl-btns {
@@ -67,12 +67,12 @@
       display: inline-block;
       width: 30px;
       height: 4px;
-      background-color: $ink40;
+      background-color: var(--ins-bg-color3);
       margin: 0 5px;
       cursor: pointer;
 
       &.active {
-        background-color: $blue;
+        background-color: var(--ins-color-primary);
       }
     }
   }

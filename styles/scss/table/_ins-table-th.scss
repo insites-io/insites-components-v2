@@ -1,8 +1,11 @@
 ins-base-table-th {
   display: table-cell;
   padding: 11px 10px;
-  border-bottom: 1px solid #e4e6ec;
-  color: #2c3148;
+  border-bottom:
+    var(--ins-border-style)
+    var(--ins-border-thickness)
+    var(--ins-border-color);
+  color: var(--ins-color-ink);
   font-size: 14px;
   font-weight: 600;
 }

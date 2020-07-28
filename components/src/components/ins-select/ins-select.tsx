@@ -9,6 +9,8 @@ export class InsSelect {
   @Event() insSearch: EventEmitter;
   @Event() insSubmit: EventEmitter;
   @Event() insLoadMore: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({mutable: true}) label: string;
   @Prop({mutable: true}) name: string;
@@ -405,6 +407,11 @@ export class InsSelect {
     this.insSelectOptionsWrap = this.insSelectEl.querySelector('.ins-select-options-wrap');
 
     this.initElObserver();
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insSelectEl);
+    }
   }
 
   @Method()

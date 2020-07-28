@@ -1,8 +1,10 @@
-import { h, Component, Prop, Element, Method } from '@stencil/core'
+import { h, Component, Prop, Element, Method, Event, EventEmitter } from '@stencil/core'
 
 @Component({ tag: 'ins-pie-chart' })
 export class InsPieChart {
   @Element() InsPieChartEl: HTMLElement;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
   @Prop({ mutable: true }) chartData: Array<any> = [];
   @Prop({ mutable: true }) size: string;
   @Prop({ mutable: true }) innerSize: string;
@@ -30,6 +32,11 @@ export class InsPieChart {
     this.chartContainerEl = this.insChartEl.querySelector('.chart-container');
     this.checkColors();
     this.checkProps();
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.InsPieChartEl);
+    }
   }
 
   checkProps() {

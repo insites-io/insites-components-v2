@@ -5,6 +5,8 @@ import Siema from "siema";
 export class InsCarousel {
   @Element() insCarouselEl: HTMLElement;
   @Event() insSlide: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({ mutable: true }) heading: string = "";
   @Prop({ mutable: true }) subHeading: string = "";
@@ -40,6 +42,11 @@ export class InsCarousel {
 
   componentDidLoad(){
     this.initSiema();
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insCarouselEl);
+    }
   }
 
   initSiema(){

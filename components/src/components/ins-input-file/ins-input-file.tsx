@@ -5,10 +5,12 @@ import DropZone from "dropzone";
   tag: 'ins-input-file'
 })
 export class InsInputFile {
-  @Element() insInputFile: HTMLElement;
+  @Element() insInputFileEl: HTMLElement;
   @Event() insFileAdded: EventEmitter;
   @Event() insFileError: EventEmitter;
   @Event() insFileRemoved: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({ mutable: true}) label: string = "Attachment(s)";
   @Prop({ mutable: true }) name: string = "file";
@@ -47,6 +49,11 @@ export class InsInputFile {
 
   componentDidLoad() {
     this.initDropZone();
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insInputFileEl);
+    }
   }
   componentDidUpdate() {
     this.initDropZone();
@@ -99,7 +106,7 @@ export class InsInputFile {
   }
 
   setFileIcon(file) {
-    let inputEl = this.insInputFile.querySelector('.ins-dropzone');
+    let inputEl = this.insInputFileEl.querySelector('.ins-dropzone');
     let isImage = !file.type && file.type !== '' ? true : file.type.indexOf('image/') >= 0 ? true : false;
     let thumbnail = inputEl.querySelector('.ins-dropzone .dz-preview:last-of-type .dz-image');
     if (!isImage) {
@@ -108,7 +115,7 @@ export class InsInputFile {
   }
 
   checkFileSizeDisplay(file) {
-    let inputEl = this.insInputFile.querySelector('.ins-dropzone');
+    let inputEl = this.insInputFileEl.querySelector('.ins-dropzone');
     let sizeEl = inputEl.querySelector('.ins-dropzone .dz-preview:last-of-type .dz-size');
     if (!file.size || file.size < 0) {
       sizeEl.setAttribute("style", "opacity: 0;");
@@ -260,7 +267,7 @@ export class InsInputFile {
     if (!this.dropZone) {
       let self = this;
 
-      let inputEl = self.insInputFile.querySelector('.ins-dropzone');
+      let inputEl = self.insInputFileEl.querySelector('.ins-dropzone');
       self.dropZone = new DropZone(inputEl, {
         "autoProcessQueue": false,
         "autoQueue": false,

@@ -19,7 +19,7 @@ ins-datepicker {
       &.noCalendar.showTimeInput.hasTime {
         padding: 7px;
         width: auto;
-        border-radius: 4px;
+        border-radius: var(--ins-border-radius);
 
         .flatpickr-time {
           border: 0;
@@ -29,8 +29,8 @@ ins-datepicker {
 
       border-radius: 0;
       margin-top: 4px;
-      background-color: #fff;
-      font-family: Arial,Helvetica,sans-serif;
+      background-color: var(--ins-bg-color);
+      font-family: var(--ins-font-family);
       font-size: 12px;
       font-weight: 400;
       -webkit-box-shadow: 0 2px 4px 0 rgba(15, 21, 38, 0.14), 1px 1px 3px 0 rgba(140, 148, 164, 0.2);
@@ -47,8 +47,8 @@ ins-datepicker {
       }
 
       .flatpickr-months {
-        background: #fafbfc;
-        color: #2C3148;
+        background: var(--ins-bg-color5);
+        color: var(--ins-color-ink);
         padding: 4px;
         position: relative;
         padding-top: 6px;
@@ -61,8 +61,8 @@ ins-datepicker {
           &:before {
             content: " ";
             display: block;
-            border-left: 2px solid #8C94A4;
-            border-top: 2px solid #8C94A4;
+            border-left: 2px solid var(--ins-bg-color3);
+            border-top: 2px solid var(--ins-bg-color3);
             -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
             cursor: pointer;
@@ -94,7 +94,12 @@ ins-datepicker {
           padding: 0;
 
           select {
-            background-color: #fff;
+            background-color: var(--ins-bg-color);
+            border:
+              var(--ins-border-style)
+              var(--ins-border-thickness)
+              var(--ins-border-color);
+
             font-size: 14px;
             box-shadow: none;
             outline: none;
@@ -104,10 +109,10 @@ ins-datepicker {
             padding: 5px;
             width: auto;
             height: auto;
-            border: 1px solid #E4E6EC;
             margin-right: 5px;
             border-radius: 3px;
           }
+
           .numInputWrapper {
             width: 8ch;
 
@@ -120,13 +125,17 @@ ins-datepicker {
             }
 
             input {
-              background-color: #fff;
+              background-color: var(--ins-bg-color);
+              border-radius: var(--ins-border-radius);
+              border:
+                var(--ins-border-style)
+                var(--ins-border-thickness)
+                var(--ins-border-color);
+
               font-size: 14px;
               padding: 4px 12px 4px 6px;
               box-shadow: none;
-              border: 1px solid #E4E6EC;
               box-sizing: border-box;
-              border-radius: 4px;
             }
           }
         }
@@ -138,19 +147,22 @@ ins-datepicker {
         .flatpickr-weekdays,
         .dayContainer {
           padding: 0 7px;
-          background-color: #fafbfc;
+          background-color: var(--ins-bg-color5);
           height: auto;
         }
 
         .flatpickr-weekdaycontainer {
           padding: 10px 0;
-          border-bottom: 1px solid #e4e6ec;
+          border-bottom:
+            var(--ins-border-style)
+            var(--ins-border-thickness)
+            var(--ins-border-color);
         }
 
         .flatpickr-weekday {
           font-size: 12px;
           font-weight: 400;
-          color: #8c94a4;
+          color: var(--ins-color-ink40);
         }
 
         .flatpickr-days {
@@ -161,11 +173,11 @@ ins-datepicker {
           border-radius: 0;
           line-height: 30px;
           height: 32px;
-          color: #2C3148;
+          color: var(--ins-color-ink);
 
           &.prevMonthDay,
           &.nextMonthDay {
-            color: #e4e6ec;
+            color: var(--ins-color-ink10);
           }
         }
 
@@ -174,9 +186,12 @@ ins-datepicker {
         }
 
         .flatpickr-day.selected {
-          border: 1px solid #1f86e3;
-          background: #1f86e3;
-          color: #fff;
+          color: var(--ins-color-white);
+          background: var(--ins-color-blue);
+          border:
+            var(--ins-border-style)
+            var(--ins-border-thickness)
+            var(--ins-color-blue);
         }
       }
 
@@ -188,7 +203,11 @@ ins-datepicker {
 
     .flatpickr-calendar.showTimeInput.hasTime .flatpickr-time {
       height: auto;
-      border-top: 1px solid #e4e6ec;
+      border-top:
+        var(--ins-border-style)
+        var(--ins-border-thickness)
+        var(--ins-border-color);
+
       display: block;
       padding-top: 5px;
 
@@ -200,17 +219,21 @@ ins-datepicker {
         margin: 0 5px;
 
         input {
+          color: var(--ins-bg-ink);
+          background-color: var(--ins-bg-color);
+          border-radius: var(--ins-border-radius);
+          border:
+            var(--ins-border-style)
+            var(--ins-border-thickness)
+            var(--ins-border-color);
+
           padding: 0 17px 0 5px;
           box-sizing: border-box;
           display: block;
           text-align: left;
-          border: 1px solid #E4E6EC;
-          border-radius: 4px;
           height: 26px;
           font-weight: 400;
           font-size: 14px;
-          color: #2C3148;
-          background-color: #fff;
           box-shadow: none;
           box-sizing: border-box;
         }
@@ -222,7 +245,7 @@ ins-datepicker {
         width: auto;
         height: auto;
         display: inline-block;
-        color: #2C3148;
+        color: var(--ins-bg-ink);
       }
 
       .flatpickr-am-pm {

@@ -20,14 +20,14 @@
 
 @mixin input_field {
   color: $ink;
-  font-family: $default_font_family;
+  font-family: var(--ins-font-family);
   font-size: $input_field_font_size;
   font-weight: $input_field_font_weight;
 
   width: 100%;
   box-shadow: none;
   box-sizing: border-box;
-  border-radius: $border_radius;
+  border-radius: var(--ins-border-radius);
   margin: 0;
 }
 
@@ -47,11 +47,11 @@ $input_field_font_size: 14px;
 $input_field_font_weight: 400;
 
 .ins-form-field-wrap {
-  font-family: $default_font_family;
+  font-family: var(--ins-font-family);
   margin-bottom: $bottom_spacing;
 
   .ins-form-label {
-    font-family: $default_font_family;
+    font-family: var(--ins-font-family);
     font-size: 12px;
     font-weight: 600;
     color: $ink;
@@ -73,7 +73,11 @@ $input_field_font_weight: 400;
     @include input_field;
     @include input_placeholder($ink40);
 
-    border: $border_thickness $border_style $border_color;
+    border:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-border-color);
+
     padding: $input_padding;
     -webkit-transition: border-color .25s ease-in-out;
     transition: border-color .25s ease-in-out;
@@ -115,7 +119,7 @@ $input_field_font_weight: 400;
     .ins-form-error {
       display: block;
       margin-top: 4px;
-      font-family: $default_font_family;
+      font-family: var(--ins-font-family);
       font-size: 12px;
       line-height: 16px;
       color: $negative;

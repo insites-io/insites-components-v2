@@ -2,9 +2,11 @@ import { h, Component, Prop, Element, Event, EventEmitter } from "@stencil/core"
 
 @Component({ tag: 'ins-checkbox-card' })
 export class InsCheckboxCard {
-  @Element() insCardEl: HTMLElement;
+  @Element() insCheckboxCardEl: HTMLElement;
   @Event() insClick: EventEmitter;
   @Event() insValueChange: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({mutable:true}) noPadding: boolean;
   @Prop({mutable:true}) tabOrder: string = '0';
@@ -16,7 +18,7 @@ export class InsCheckboxCard {
   @Prop({mutable:true}) name: string;
 
   addColorStyles(){
-    let insCardWrap = this.insCardEl.querySelector('.ins-checkbox-card-wrap');
+    let insCardWrap = this.insCheckboxCardEl.querySelector('.ins-checkbox-card-wrap');
     if (this.selected && this.selectedColor[0] === '#'){
 
       if (insCardWrap){
@@ -46,6 +48,11 @@ export class InsCheckboxCard {
 
   componentDidLoad(){
     this.addColorStyles()
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insCheckboxCardEl);
+    }
   }
 
   componentDidUpdate(){

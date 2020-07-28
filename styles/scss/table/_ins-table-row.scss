@@ -4,9 +4,9 @@ ins-base-table-row {
 	width: 100%;
 
 	&:nth-child(even) {
-		background-color: #fafbfc;
+		background-color: var(--ins-color-table-event);
 	}
 	&:hover:nth-child(odd) {
-		background-color: unset;
+		background-color: var(--ins-color-table-odd);
 	}
 }

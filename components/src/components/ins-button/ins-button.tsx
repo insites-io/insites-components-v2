@@ -5,6 +5,8 @@ export class InsButton {
   @Element() insButtonEl: HTMLElement;
   @Event() insClick: EventEmitter;
   @Event() insClickOption: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({ mutable: true }) color: string = 'blue';
   @Prop({ mutable: true }) label: string = 'BUTTON';
@@ -75,6 +77,11 @@ export class InsButton {
     });
 
     this.closeMenu();
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insButtonEl);
+    }
   }
 
   toggleOptions(){

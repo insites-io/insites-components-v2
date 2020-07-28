@@ -1,4 +1,4 @@
-import { h, Component, Event, EventEmitter, Prop, Method } from '@stencil/core';
+import { h, Component, Event, EventEmitter, Prop, Method, Element } from '@stencil/core';
 import Sortable from 'sortablejs';
 import { SortableGroup, ISortableGroup } from "./ins-sort.model";
 
@@ -7,7 +7,9 @@ import { SortableGroup, ISortableGroup } from "./ins-sort.model";
 export class InsSort {
 
   private body: HTMLDivElement
-
+  @Element() insSortEl: HTMLElement;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
   @Prop() ignoreElements: string = null
   @Prop() disabled: boolean = false
   @Prop() insDraggable: boolean = true;
@@ -170,6 +172,11 @@ export class InsSort {
   componentDidLoad() {
     this.loadSortGroupConfig()
     this.initSortable()
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insSortEl);
+    }
   }
 
   render() {

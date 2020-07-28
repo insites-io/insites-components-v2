@@ -1,4 +1,4 @@
-import { h, Component, Prop, State, Method, Element } from "@stencil/core";
+import { h, Component, Prop, State, Method, Element, Event, EventEmitter } from "@stencil/core";
 import { createBrowserHistory } from 'history'
 import { find } from 'lodash';
 
@@ -7,6 +7,9 @@ const history = createBrowserHistory();
 @Component({ tag: 'ins-renderer' })
 export class InsRenderer {
   @Element() insRendererEl: HTMLElement;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
+
   @State() insBreadCrumbsEl: any;
   @Prop({ mutable: true }) link: string;
   @Prop({ mutable: true }) app: boolean = false;
@@ -115,6 +118,11 @@ export class InsRenderer {
 
   componentDidLoad() {
     this.bindIframeListener();
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insRendererEl);
+    }
   }
 
   bindIframeListener() {

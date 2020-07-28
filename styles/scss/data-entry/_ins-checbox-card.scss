@@ -1,16 +1,25 @@
 @mixin border_and_bg($color){
-  border-color: $color;
+  border-color: var(--ins-color-#{$color});
   .selected-wrap {
-    background-color: $color;
+    background-color: var(--ins-color-#{$color});
   }
 }
 
 .ins-checkbox-card-wrap {
   position: relative;
-  background: #fff;
-  border-radius: $border_radius;
-  border: $border_style $border_thickness $ink10;
-  box-shadow: 1px 1px 3px $ink10;
+  background: var(--ins-bg-color);
+  border-radius: var(--ins-border-radius);
+  border:
+    var(--ins-border-style)
+    var(--ins-border-thickness)
+    var(--ins-border-color);
+
+  box-shadow:
+    var(--ins-shadow-x)
+    var(--ins-shadow-y)
+    var(--ins-shadow-blur)
+    var(--ins-shadow-color);
+
   box-sizing: border-box;
   margin-top: 0;
   transition: all .15s;
@@ -19,12 +28,12 @@
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0px 4px 13px $ink10;
+    box-shadow: 0px 4px 13px var(--ins-shadow-color);
   }
 
   &:focus {
     margin-top: -3px;
-    box-shadow: 0px 4px 13px $ink10;
+    box-shadow: 0px 4px 13px var(--ins-shadow-color);
     outline: none;
   }
 
@@ -49,7 +58,7 @@
 
 .ins-checkbox-card-wrap.selected {
   margin-top: -3px;
-  box-shadow: 0px 4px 13px $ink10;
+  box-shadow: 0px 4px 13px var(--ins-shadow-color);
 
   .selected-wrap {
     position: absolute;
@@ -57,8 +66,8 @@
     top: -10px;
     width: 28px;
     height: 28px;
-    background-color: $ink10;
-    color: #fff;
+    background-color: var(--ins-bg-color2);
+    color: var(--ins-color-white);
     border-radius: 50%;
     font-size: 16px;
     padding-top: 6px;
@@ -66,16 +75,16 @@
     box-sizing: border-box;
   }
 
-  &.ink               { @include border_and_bg($ink) }
-  &.blue              { @include border_and_bg($blue) }
-  &.ink5              { @include border_and_bg($ink5) }
-  &.ink1              { @include border_and_bg($ink1) }
-  &.ink10             { @include border_and_bg($ink10) }
-  &.ink40             { @include border_and_bg($ink40) }
-  &.warning           { @include border_and_bg($warning) }
-  &.negative          { @include border_and_bg($negative) }
-  &.turquoise         { @include border_and_bg($turquoise) }
-  &.information1      { @include border_and_bg($information1) }
-  &.information2      { @include border_and_bg($information2) }
-  &.green, &.positive { @include border_and_bg($green) }
+  &.ink               { @include border_and_bg("ink") }
+  &.blue              { @include border_and_bg("blue") }
+  &.ink5              { @include border_and_bg("ink5") }
+  &.ink1              { @include border_and_bg("ink1") }
+  &.ink10             { @include border_and_bg("ink10") }
+  &.ink40             { @include border_and_bg("ink40") }
+  &.warning           { @include border_and_bg("warning") }
+  &.negative          { @include border_and_bg("negative") }
+  &.turquoise         { @include border_and_bg("turquoise") }
+  &.information1      { @include border_and_bg("information1") }
+  &.information2      { @include border_and_bg("information2") }
+  &.green, &.positive { @include border_and_bg("green") }
 }

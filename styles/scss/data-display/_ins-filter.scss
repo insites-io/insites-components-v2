@@ -1,7 +1,7 @@
 ins-filter {
   .filter {
     font-size: 12px;
-    font-family: $default_font_family;
+    font-family: var(--ins-font-family);
     display: inline-block;
     position: relative;
 
@@ -23,11 +23,11 @@ ins-filter {
   }
 
   .date-filter {
-    border-radius: 4px;
-    background-color: #e4e6ec;
+    border-radius: var(--ins-border-radius);
+    background-color: var(--ins-bg-color2);
     display: inline-block;
     padding: 7px 7px;
-    color: #2c3148;
+    color: var(--ins-color-ink);
     cursor: default;
     overflow: hidden;
     position: relative;
@@ -37,18 +37,20 @@ ins-filter {
     }
     .fas {
       margin-left: 8px;
-      color: #8c94a4;
+      color: var(--ins-color-ink40);
       font-size: 12px;
     }
   }
-  
+
   .date-range {
 
-    background-color: #ffffff;
+    background-color: var(--ins-bg-color);
     font-size: 14px;
-    box-shadow: 0 2px 4px 0 rgba(15, 21, 38, 0.14),
-    1px 1px 3px 0 rgba(140, 148, 164, 0.2);
-    border-radius: 4px;
+    box-shadow:
+      0 2px 4px 0 var(--ins-color-shadow),
+      1px 1px 3px 0 var(--ins-color-shadow);
+
+    border-radius: var(--ins-border-radius);
     display: none;
     position: absolute;
     min-width: 575px;
@@ -68,17 +70,17 @@ ins-filter {
       > div {
         display: inline-block;
         font-size: 11px;
-        color: #8c94a4;
+        color: var(--ins-color-ink40);
         cursor: pointer;
         margin: 6px 0;
 
         > div {
           display: inline-block;
           padding: 5px;
-          border-radius: 4px;
+          border-radius: var(--ins-border-radius);
           &:hover {
             background-color: #e4e6ec;
-            color: #2c3148;
+            color: var(--ins-color-ink);
             font-weight: 600;
           }
         }
@@ -87,23 +89,23 @@ ins-filter {
 
     &__action {
       display: block;
-      color: #8c94a4;
+      color: var(--ins-color-ink40);
       padding: 15px 0 0;
       width: 535px;
 
       input[type="text"],
       input[type="date"] {
         font-size: 12px;
-        font-family: "Open Sans", sans-serif;
+        font-family: var(--ins-font-family);
         padding: 5px 0;
         padding-left: 10px;
         width: 104px;
         text-align: center;
         border-radius: 2px;
         border: solid 1px #e4e6ec;
-        color: #2c3148;
+        color: var(--ins-color-ink);
         display: inline-block;
-        background-color: #fff;
+        background-color: var(--ins-bg-color);
         box-shadow: none;
         margin: 0;
         height: 24px;
@@ -136,7 +138,7 @@ ins-filter {
 
 .active-tab {
   background-color: #e4e6ec;
-  color: #2c3148;
+  color: var(--ins-color-ink);
   font-weight: 600;
 }
 
@@ -164,7 +166,7 @@ ins-filter {
       &.noCalendar.showTimeInput.hasTime {
         padding: 7px;
         width: auto;
-        border-radius: 4px;
+        border-radius: var(--ins-border-radius);
 
         .flatpickr-time {
           border: 0;
@@ -174,7 +176,7 @@ ins-filter {
 
       border-radius: 0;
       margin-top: 4px;
-      background-color: #fff;
+      background-color: var(--ins-bg-color);
       font-family: Arial,Helvetica,sans-serif;
       font-size: 12px;
       font-weight: 400;
@@ -193,7 +195,7 @@ ins-filter {
 
       .flatpickr-months {
         background: #fafbfc;
-        color: #2C3148;
+        color: var(--ins-color-ink);
         padding: 4px;
         position: relative;
         padding-top: 6px;
@@ -239,7 +241,7 @@ ins-filter {
           padding: 0;
 
           select {
-            background-color: #fff;
+            background-color: var(--ins-bg-color);
             font-size: 14px;
             box-shadow: none;
             outline: none;
@@ -265,13 +267,13 @@ ins-filter {
             }
 
             input {
-              background-color: #fff;
+              background-color: var(--ins-bg-color);
               font-size: 14px;
               padding: 4px 12px 4px 6px;
               box-shadow: none;
               border: 1px solid #E4E6EC;
               box-sizing: border-box;
-              border-radius: 4px;
+              border-radius: var(--ins-border-radius);
             }
           }
         }
@@ -295,7 +297,7 @@ ins-filter {
         .flatpickr-weekday {
           font-size: 12px;
           font-weight: 400;
-          color: #8c94a4;
+          color: var(--ins-color-ink40);
         }
 
         .flatpickr-days {
@@ -306,7 +308,7 @@ ins-filter {
           border-radius: 0;
           line-height: 30px;
           height: 32px;
-          color: #2C3148;
+          color: var(--ins-color-ink);
 
           &.prevMonthDay,
           &.nextMonthDay {
@@ -321,7 +323,7 @@ ins-filter {
         .flatpickr-day.selected {
           border: 1px solid #1f86e3;
           background: #1f86e3;
-          color: #fff;
+          color: var(--ins-color-white);
         }
       }
 
@@ -350,12 +352,12 @@ ins-filter {
           display: block;
           text-align: left;
           border: 1px solid #E4E6EC;
-          border-radius: 4px;
+          border-radius: var(--ins-border-radius);
           height: 26px;
           font-weight: 400;
           font-size: 14px;
-          color: #2C3148;
-          background-color: #fff;
+          color: var(--ins-color-ink);
+          background-color: var(--ins-bg-color);
           box-shadow: none;
           box-sizing: border-box;
         }
@@ -367,7 +369,7 @@ ins-filter {
         width: auto;
         height: auto;
         display: inline-block;
-        color: #2C3148;
+        color: var(--ins-color-ink);
       }
 
       .flatpickr-am-pm {

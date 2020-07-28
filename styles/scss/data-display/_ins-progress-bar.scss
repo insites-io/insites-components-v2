@@ -1,13 +1,18 @@
 .ins-progress-bar {
+  font-family: var(--ins-font-family);
+  color: var(--ins-border-ink);
+
+  border-bottom:
+    var(--ins-border-style)
+    var(--ins-border-thickness)
+    var(--ins-border-color);
+
   width: 100%;
   background: transparent;
   text-align: center;
   padding: 4px 15px;
   box-sizing: border-box;
   font-size: 12px;
-  font-family: $default_font_family;
-  border-bottom: solid 1px $ink10;
-  color: $ink;
   transition: width 0.75s;
   position: relative;
 
@@ -16,8 +21,8 @@
   }
 
   .progress {
+    background-color: var(--ins-color-blue);
     margin: 0;
-    background-color: $blue;
     height: 3px;
     position: absolute;
     bottom: 0;

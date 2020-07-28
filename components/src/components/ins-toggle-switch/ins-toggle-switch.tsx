@@ -1,9 +1,12 @@
-import { h, Component, Prop, Event, EventEmitter} from "@stencil/core";
+import { h, Component, Prop, Event, EventEmitter, Element } from "@stencil/core";
 
 @Component({ tag: "ins-toggle-switch" })
 export class InsToggleSwitch {
+  @Element() insToggleSwitchEl: HTMLElement
   @Event() insToggle: EventEmitter;
   @Event() insValueChange: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({mutable: true}) name: string;
   @Prop({mutable: true}) checked: boolean;
@@ -12,6 +15,14 @@ export class InsToggleSwitch {
   @Prop({mutable: true}) falseValue: string = "";
   @Prop({mutable: true}) label: string;
   @Prop({mutable: true}) disabled: boolean;
+
+  componentDidLoad(){
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insToggleSwitchEl);
+    }
+  }
 
   onCheckHandler() {
     this.checked = !this.checked;

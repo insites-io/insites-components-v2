@@ -3,13 +3,22 @@ import { h, Component, Prop, Event, EventEmitter, State, Method, Listen, Element
 @Component({ tag: 'ins-sidebar' })
 export class InsSidebar {
   @Element() insSidebarEl: HTMLElement;
-
+  @Event() insSidebarAction: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
   @Prop({mutable: true}) fullLogo: string = "";
   @Prop(({mutable: true})) iconLogo: string = "";
   // @Prop(({mutable: true})) withSidebarActions: boolean = false;
   @State() minimised: boolean;
   @State() noFooter: boolean = false;
-  @Event() insSidebarAction: EventEmitter;
+
+  componentDidLoad(){
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insSidebarEl);
+    }
+  }
 
   @Listen('insSidebarFooterButtonEvent')
   insSidebarFooterButtonEventHandler(event: CustomEvent) {

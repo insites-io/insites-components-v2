@@ -1,9 +1,12 @@
-import { h, Component, Prop, Event, EventEmitter } from "@stencil/core";
+import { h, Component, Prop, Event, EventEmitter, Element } from "@stencil/core";
 
 @Component({ tag: 'ins-credit-card' })
 export class InsCreditCard {
+  @Element() insCreditCardEl: HTMLElement;
   @Event() insClick: EventEmitter;
   @Event({ bubbles: false }) insClose: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({mutable: true}) lastFour: string;
   @Prop({mutable: true}) expiryMonth: string;
@@ -13,6 +16,14 @@ export class InsCreditCard {
   @Prop({mutable: true}) active: boolean;
   @Prop({mutable: true}) expired: boolean;
   @Prop({mutable: true}) fullYear: boolean;
+
+  componentDidLoad(){
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insCreditCardEl);
+    }
+  }
 
   renderBrand(){
     let type = this.brand ? this.brand.toLowerCase().trim() : "";

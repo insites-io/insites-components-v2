@@ -1,13 +1,23 @@
-import { h, Component, Element, Prop } from '@stencil/core';
+import { h, Component, Element, Prop, Event, EventEmitter } from '@stencil/core';
 @Component({ tag: "ins-timeline" })
 
 export class InsTimeline {
   @Element() insTimeline: HTMLElement;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({ mutable: true }) loadingScreen: boolean = false;
   @Prop({ mutable: true}) label: string;
   @Prop({ mutable: true }) staticTimeline: boolean = false;
   @Prop({ mutable: true }) timelineData: any = [] // sample [{ color: "red", icon: "icon-star", content: "<h1>Hello World</h1> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>", actions: '<ins-button solid size="small" label="Save"></ins-button>', datetime: "New" }, { content: "test", solid: true }, { color: "blue", solid: true, content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore." }];
+
+  componentDidLoad(){
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insTimeline);
+    }
+  }
 
   buildTimelineItem(item) {
     return (

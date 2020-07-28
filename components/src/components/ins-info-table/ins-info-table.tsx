@@ -1,8 +1,10 @@
-import { h, Component, Prop, Element } from "@stencil/core";
+import { h, Component, Prop, Element, Event, EventEmitter } from "@stencil/core";
 
 @Component({ tag: 'ins-info-table' })
 export class InsInfoTable {
   @Element() insInfoTableEl: HTMLElement;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({ mutable: true }) noWrap: boolean = false;
   @Prop({ mutable: true }) heading: string;
@@ -14,6 +16,14 @@ export class InsInfoTable {
   @Prop({ mutable: true }) emptyValue: string = '-';
   @Prop({ mutable: true }) textOverflow: string = 'ellipsis';
   @Prop({ mutable: true }) renderHtml: boolean = false;
+
+  componentDidLoad(){
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insInfoTableEl);
+    }
+  }
 
   renderTableItems(item){
     let myValue, myKey;

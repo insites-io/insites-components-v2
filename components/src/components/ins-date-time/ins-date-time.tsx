@@ -6,6 +6,8 @@ export class InsDateTime {
   @Element() insDateTimeEl: HTMLElement;
   @Event() insInput: EventEmitter;
   @Event() insValueChange: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({mutable:true}) noMeridiem: boolean = false;
   @Prop({mutable:true}) disabled: boolean = false;
@@ -35,6 +37,11 @@ export class InsDateTime {
 
   componentDidLoad(){
     this.initInsDateTime();
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insDateTimeEl);
+    }
   }
 
   componentWillUpdate(){

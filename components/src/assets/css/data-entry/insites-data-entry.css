@@ -51,11 +51,70 @@
   font-weight: 600;
   font-style: italic; }
 
+:root {
+  --ins-color-ink: #2c3148;
+  --ins-color-ink40: #8c94a4;
+  --ins-color-ink10: #E4E6EC;
+  --ins-color-ink5: #f2f4f8;
+  --ins-color-ink1: #ffffff;
+  --ins-color-white: #fff;
+  --ins-color-blue: #1e86e3;
+  --ins-color-blue2: #1A78CB;
+  --ins-color-blue-20p: #CEE2F6;
+  --ins-color-blue-10p: #e8f3fc;
+  --ins-color-green: #24be8d;
+  --ins-color-green2: #20AA7E;
+  --ins-color-green-10p: #E9F8F4;
+  --ins-color-orange: #ffa639;
+  --ins-color-orange2: #ff9b20;
+  --ins-color-orange-10p: #FFF6EB;
+  --ins-color-red: #f27474;
+  --ins-color-red2: #f05d5d;
+  --ins-color-red-10p: #F8EDEE;
+  --ins-color-pink: #ff3366;
+  --ins-color-pink2: #ff1a53;
+  --ins-color-pink-10p: #FEEBF0;
+  --ins-color-yellow: #fdd835;
+  --ins-color-yellow2: #fdd31c;
+  --ins-color-yellow-10p: #FFFBEB;
+  --ins-color-turquoise: #2bbad9;
+  --ins-color-turquoise2: #24aac7;
+  --ins-color-turquoise-10p: #EAF8FB;
+  --ins-color-purple: #694FCD;
+  --ins-color-fushcia: #C65BBB;
+  --ins-color-grey: #e4e6ec;
+  --ins-color-grey2: #d5d8e1;
+  --ins-color-grey-10p: #edeef2;
+  --ins-color-primary: #1e86e3;
+  --ins-color-success: #24be8d;
+  --ins-color-warning: #ffa639;
+  --ins-color-negative: #f27474;
+  --ins-color-information1: #ff3366;
+  --ins-color-information2: #fdd835;
+  --ins-color-table-odd: #FFF;
+  --ins-color-table-even: #FAFBFC;
+  --ins-color-disabled_readonly_bg: #FAFBFC;
+  --ins-bg-color: #ffffff;
+  --ins-bg-color2: #E4E6EC;
+  --ins-bg-color3: #8c94a4;
+  --ins-bg-color4: #f2f4f8;
+  --ins-bg-color5: #FAFBFC;
+  --ins-border-radius: 4px;
+  --ins-border-thickness: 1px;
+  --ins-border-style: solid;
+  --ins-border-color: #E4E6EC;
+  --ins-shadow-x: 1px;
+  --ins-shadow-y: 1px;
+  --ins-shadow-blur: 3px;
+  --ins-shadow-color: #E4E6EC;
+  --ins-font-family: 'Open Sans', sans-serif
+; }
+
 .ins-form-field-wrap {
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--ins-font-family);
   margin-bottom: 20px; }
   .ins-form-field-wrap .ins-form-label {
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--ins-font-family);
     font-size: 12px;
     font-weight: 600;
     color: #2c3148;
@@ -68,15 +127,15 @@
       color: #1e86e3; }
   .ins-form-field-wrap .ins-form-field {
     color: #2c3148;
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--ins-font-family);
     font-size: 14px;
     font-weight: 400;
     width: 100%;
     box-shadow: none;
     box-sizing: border-box;
-    border-radius: 4px;
+    border-radius: var(--ins-border-radius);
     margin: 0;
-    border: 1px solid #E4E6EC;
+    border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
     padding: 10px;
     -webkit-transition: border-color .25s ease-in-out;
     transition: border-color .25s ease-in-out; }
@@ -114,7 +173,7 @@
   .ins-form-field-wrap.is-invalid .ins-form-error {
     display: block;
     margin-top: 4px;
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--ins-font-family);
     font-size: 12px;
     line-height: 16px;
     color: #f27474; }
@@ -130,7 +189,7 @@ ins-button button {
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: none;
   overflow: hidden;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--ins-font-family);
   font-weight: 600 !important;
   font-size: 12px;
   text-transform: uppercase;
@@ -139,7 +198,7 @@ ins-button button {
   vertical-align: top;
   height: 36px;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--ins-border-radius);
   padding: 0 16px;
   transition: background 0.3s;
   transition: width .25s;
@@ -152,7 +211,7 @@ ins-button button {
   ins-button button.blue,
   ins-button button.primary {
     background-color: transparent;
-    color: #1e86e3; }
+    color: var(--ins-color-blue); }
     ins-button button[type=reset].blue.solid, ins-button button[type=reset].primary.solid,
     ins-button button[type=submit].blue.solid,
     ins-button button[type=submit].primary.solid,
@@ -160,8 +219,8 @@ ins-button button {
     ins-button button[type=button].primary.solid,
     ins-button button.blue.solid,
     ins-button button.primary.solid {
-      background-color: #1e86e3;
-      color: #ffffff; }
+      background-color: "blue";
+      color: var(--ins-color-ink1); }
       ins-button button[type=reset].blue.solid:not([disabled]):hover, ins-button button[type=reset].primary.solid:not([disabled]):hover,
       ins-button button[type=submit].blue.solid:not([disabled]):hover,
       ins-button button[type=submit].primary.solid:not([disabled]):hover,
@@ -169,7 +228,7 @@ ins-button button {
       ins-button button[type=button].primary.solid:not([disabled]):hover,
       ins-button button.blue.solid:not([disabled]):hover,
       ins-button button.primary.solid:not([disabled]):hover {
-        background: #1a79ce; }
+        background: var(--ins-color-blue2); }
         @media only screen and (max-width: 425px) {
           ins-button button[type=reset].blue.solid:not([disabled]):hover, ins-button button[type=reset].primary.solid:not([disabled]):hover,
           ins-button button[type=submit].blue.solid:not([disabled]):hover,
@@ -178,7 +237,7 @@ ins-button button {
           ins-button button[type=button].primary.solid:not([disabled]):hover,
           ins-button button.blue.solid:not([disabled]):hover,
           ins-button button.primary.solid:not([disabled]):hover {
-            background: #1e86e3; } }
+            background-color: "blue"; } }
     ins-button button[type=reset].blue.outlined .ripple-wave, ins-button button[type=reset].blue:not(.solid) .ripple-wave, ins-button button[type=reset].primary.outlined .ripple-wave, ins-button button[type=reset].primary:not(.solid) .ripple-wave,
     ins-button button[type=submit].blue.outlined .ripple-wave,
     ins-button button[type=submit].blue:not(.solid) .ripple-wave,
@@ -192,7 +251,7 @@ ins-button button {
     ins-button button.blue:not(.solid) .ripple-wave,
     ins-button button.primary.outlined .ripple-wave,
     ins-button button.primary:not(.solid) .ripple-wave {
-      background: rgba(30, 134, 227, 0.25); }
+      background-color: rgba(30, 134, 227, 0.25); }
     ins-button button[type=reset].blue.outlined, ins-button button[type=reset].primary.outlined,
     ins-button button[type=submit].blue.outlined,
     ins-button button[type=submit].primary.outlined,
@@ -200,7 +259,7 @@ ins-button button {
     ins-button button[type=button].primary.outlined,
     ins-button button.blue.outlined,
     ins-button button.primary.outlined {
-      border: 1px solid #1e86e3;
+      border: 1px solid var(--ins-color-blue);
       background-color: transparent; }
       ins-button button[type=reset].blue.outlined.is-loading, ins-button button[type=reset].primary.outlined.is-loading,
       ins-button button[type=submit].blue.outlined.is-loading,
@@ -209,7 +268,7 @@ ins-button button {
       ins-button button[type=button].primary.outlined.is-loading,
       ins-button button.blue.outlined.is-loading,
       ins-button button.primary.outlined.is-loading {
-        background-color: #1e86e3; }
+        background-color: var(--ins-color-blue); }
     ins-button button[type=reset].blue:not([disabled]):hover, ins-button button[type=reset].blue:not([disabled]):active, ins-button button[type=reset].primary:not([disabled]):hover, ins-button button[type=reset].primary:not([disabled]):active,
     ins-button button[type=submit].blue:not([disabled]):hover,
     ins-button button[type=submit].blue:not([disabled]):active,
@@ -223,7 +282,7 @@ ins-button button {
     ins-button button.blue:not([disabled]):active,
     ins-button button.primary:not([disabled]):hover,
     ins-button button.primary:not([disabled]):active {
-      background: #e6f1fc; }
+      background-color: var(--ins-color-blue-10p); }
       @media only screen and (max-width: 425px) {
         ins-button button[type=reset].blue:not([disabled]):hover, ins-button button[type=reset].blue:not([disabled]):active, ins-button button[type=reset].primary:not([disabled]):hover, ins-button button[type=reset].primary:not([disabled]):active,
         ins-button button[type=submit].blue:not([disabled]):hover,
@@ -252,17 +311,7 @@ ins-button button {
     ins-button button.blue.is-loading:active,
     ins-button button.primary.is-loading:hover,
     ins-button button.primary.is-loading:active {
-      background-color: #1e86e3 !important; }
-    ins-button button[type=reset].blue.is-loading .spinner, ins-button button[type=reset].primary.is-loading .spinner,
-    ins-button button[type=submit].blue.is-loading .spinner,
-    ins-button button[type=submit].primary.is-loading .spinner,
-    ins-button button[type=button].blue.is-loading .spinner,
-    ins-button button[type=button].primary.is-loading .spinner,
-    ins-button button.blue.is-loading .spinner,
-    ins-button button.primary.is-loading .spinner {
-      border-top: 3px solid #62abeb;
-      border-right: 3px solid #62abeb;
-      border-bottom: 3px solid #62abeb; }
+      background-color: "blue" !important; }
   ins-button button[type=reset].positive, ins-button button[type=reset].green,
   ins-button button[type=submit].positive,
   ins-button button[type=submit].green,
@@ -271,7 +320,7 @@ ins-button button {
   ins-button button.positive,
   ins-button button.green {
     background-color: transparent;
-    color: #24be8d; }
+    color: var(--ins-color-green); }
     ins-button button[type=reset].positive.solid, ins-button button[type=reset].green.solid,
     ins-button button[type=submit].positive.solid,
     ins-button button[type=submit].green.solid,
@@ -279,8 +328,8 @@ ins-button button {
     ins-button button[type=button].green.solid,
     ins-button button.positive.solid,
     ins-button button.green.solid {
-      background-color: #24be8d;
-      color: #ffffff; }
+      background-color: "green";
+      color: var(--ins-color-ink1); }
       ins-button button[type=reset].positive.solid:not([disabled]):hover, ins-button button[type=reset].green.solid:not([disabled]):hover,
       ins-button button[type=submit].positive.solid:not([disabled]):hover,
       ins-button button[type=submit].green.solid:not([disabled]):hover,
@@ -288,7 +337,7 @@ ins-button button {
       ins-button button[type=button].green.solid:not([disabled]):hover,
       ins-button button.positive.solid:not([disabled]):hover,
       ins-button button.green.solid:not([disabled]):hover {
-        background: #20a97d; }
+        background: var(--ins-color-green2); }
         @media only screen and (max-width: 425px) {
           ins-button button[type=reset].positive.solid:not([disabled]):hover, ins-button button[type=reset].green.solid:not([disabled]):hover,
           ins-button button[type=submit].positive.solid:not([disabled]):hover,
@@ -297,7 +346,7 @@ ins-button button {
           ins-button button[type=button].green.solid:not([disabled]):hover,
           ins-button button.positive.solid:not([disabled]):hover,
           ins-button button.green.solid:not([disabled]):hover {
-            background: #24be8d; } }
+            background-color: "green"; } }
     ins-button button[type=reset].positive.outlined .ripple-wave, ins-button button[type=reset].positive:not(.solid) .ripple-wave, ins-button button[type=reset].green.outlined .ripple-wave, ins-button button[type=reset].green:not(.solid) .ripple-wave,
     ins-button button[type=submit].positive.outlined .ripple-wave,
     ins-button button[type=submit].positive:not(.solid) .ripple-wave,
@@ -311,7 +360,7 @@ ins-button button {
     ins-button button.positive:not(.solid) .ripple-wave,
     ins-button button.green.outlined .ripple-wave,
     ins-button button.green:not(.solid) .ripple-wave {
-      background: rgba(30, 134, 227, 0.25); }
+      background-color: rgba(30, 134, 227, 0.25); }
     ins-button button[type=reset].positive.outlined, ins-button button[type=reset].green.outlined,
     ins-button button[type=submit].positive.outlined,
     ins-button button[type=submit].green.outlined,
@@ -319,7 +368,7 @@ ins-button button {
     ins-button button[type=button].green.outlined,
     ins-button button.positive.outlined,
     ins-button button.green.outlined {
-      border: 1px solid #24be8d;
+      border: 1px solid var(--ins-color-green);
       background-color: transparent; }
       ins-button button[type=reset].positive.outlined.is-loading, ins-button button[type=reset].green.outlined.is-loading,
       ins-button button[type=submit].positive.outlined.is-loading,
@@ -328,7 +377,7 @@ ins-button button {
       ins-button button[type=button].green.outlined.is-loading,
       ins-button button.positive.outlined.is-loading,
       ins-button button.green.outlined.is-loading {
-        background-color: #24be8d; }
+        background-color: var(--ins-color-green); }
     ins-button button[type=reset].positive:not([disabled]):hover, ins-button button[type=reset].positive:not([disabled]):active, ins-button button[type=reset].green:not([disabled]):hover, ins-button button[type=reset].green:not([disabled]):active,
     ins-button button[type=submit].positive:not([disabled]):hover,
     ins-button button[type=submit].positive:not([disabled]):active,
@@ -342,7 +391,7 @@ ins-button button {
     ins-button button.positive:not([disabled]):active,
     ins-button button.green:not([disabled]):hover,
     ins-button button.green:not([disabled]):active {
-      background: #cdf6e9; }
+      background-color: var(--ins-color-green-10p); }
       @media only screen and (max-width: 425px) {
         ins-button button[type=reset].positive:not([disabled]):hover, ins-button button[type=reset].positive:not([disabled]):active, ins-button button[type=reset].green:not([disabled]):hover, ins-button button[type=reset].green:not([disabled]):active,
         ins-button button[type=submit].positive:not([disabled]):hover,
@@ -371,17 +420,7 @@ ins-button button {
     ins-button button.positive.is-loading:active,
     ins-button button.green.is-loading:hover,
     ins-button button.green.is-loading:active {
-      background-color: #24be8d !important; }
-    ins-button button[type=reset].positive.is-loading .spinner, ins-button button[type=reset].green.is-loading .spinner,
-    ins-button button[type=submit].positive.is-loading .spinner,
-    ins-button button[type=submit].green.is-loading .spinner,
-    ins-button button[type=button].positive.is-loading .spinner,
-    ins-button button[type=button].green.is-loading .spinner,
-    ins-button button.positive.is-loading .spinner,
-    ins-button button.green.is-loading .spinner {
-      border-top: 3px solid #51deb1;
-      border-right: 3px solid #51deb1;
-      border-bottom: 3px solid #51deb1; }
+      background-color: "green" !important; }
   ins-button button[type=reset].warning, ins-button button[type=reset].orange,
   ins-button button[type=submit].warning,
   ins-button button[type=submit].orange,
@@ -390,7 +429,7 @@ ins-button button {
   ins-button button.warning,
   ins-button button.orange {
     background-color: transparent;
-    color: #ffa639; }
+    color: var(--ins-color-orange); }
     ins-button button[type=reset].warning.solid, ins-button button[type=reset].orange.solid,
     ins-button button[type=submit].warning.solid,
     ins-button button[type=submit].orange.solid,
@@ -398,8 +437,8 @@ ins-button button {
     ins-button button[type=button].orange.solid,
     ins-button button.warning.solid,
     ins-button button.orange.solid {
-      background-color: #ffa639;
-      color: #ffffff; }
+      background-color: "orange";
+      color: var(--ins-color-ink1); }
       ins-button button[type=reset].warning.solid:not([disabled]):hover, ins-button button[type=reset].orange.solid:not([disabled]):hover,
       ins-button button[type=submit].warning.solid:not([disabled]):hover,
       ins-button button[type=submit].orange.solid:not([disabled]):hover,
@@ -407,7 +446,7 @@ ins-button button {
       ins-button button[type=button].orange.solid:not([disabled]):hover,
       ins-button button.warning.solid:not([disabled]):hover,
       ins-button button.orange.solid:not([disabled]):hover {
-        background: #ff9b20; }
+        background: var(--ins-color-orange2); }
         @media only screen and (max-width: 425px) {
           ins-button button[type=reset].warning.solid:not([disabled]):hover, ins-button button[type=reset].orange.solid:not([disabled]):hover,
           ins-button button[type=submit].warning.solid:not([disabled]):hover,
@@ -416,7 +455,7 @@ ins-button button {
           ins-button button[type=button].orange.solid:not([disabled]):hover,
           ins-button button.warning.solid:not([disabled]):hover,
           ins-button button.orange.solid:not([disabled]):hover {
-            background: #ffa639; } }
+            background-color: "orange"; } }
     ins-button button[type=reset].warning.outlined .ripple-wave, ins-button button[type=reset].warning:not(.solid) .ripple-wave, ins-button button[type=reset].orange.outlined .ripple-wave, ins-button button[type=reset].orange:not(.solid) .ripple-wave,
     ins-button button[type=submit].warning.outlined .ripple-wave,
     ins-button button[type=submit].warning:not(.solid) .ripple-wave,
@@ -430,7 +469,7 @@ ins-button button {
     ins-button button.warning:not(.solid) .ripple-wave,
     ins-button button.orange.outlined .ripple-wave,
     ins-button button.orange:not(.solid) .ripple-wave {
-      background: rgba(30, 134, 227, 0.25); }
+      background-color: rgba(30, 134, 227, 0.25); }
     ins-button button[type=reset].warning.outlined, ins-button button[type=reset].orange.outlined,
     ins-button button[type=submit].warning.outlined,
     ins-button button[type=submit].orange.outlined,
@@ -438,7 +477,7 @@ ins-button button {
     ins-button button[type=button].orange.outlined,
     ins-button button.warning.outlined,
     ins-button button.orange.outlined {
-      border: 1px solid #ffa639;
+      border: 1px solid var(--ins-color-orange);
       background-color: transparent; }
       ins-button button[type=reset].warning.outlined.is-loading, ins-button button[type=reset].orange.outlined.is-loading,
       ins-button button[type=submit].warning.outlined.is-loading,
@@ -447,7 +486,7 @@ ins-button button {
       ins-button button[type=button].orange.outlined.is-loading,
       ins-button button.warning.outlined.is-loading,
       ins-button button.orange.outlined.is-loading {
-        background-color: #ffa639; }
+        background-color: var(--ins-color-orange); }
     ins-button button[type=reset].warning:not([disabled]):hover, ins-button button[type=reset].warning:not([disabled]):active, ins-button button[type=reset].orange:not([disabled]):hover, ins-button button[type=reset].orange:not([disabled]):active,
     ins-button button[type=submit].warning:not([disabled]):hover,
     ins-button button[type=submit].warning:not([disabled]):active,
@@ -461,7 +500,7 @@ ins-button button {
     ins-button button.warning:not([disabled]):active,
     ins-button button.orange:not([disabled]):hover,
     ins-button button.orange:not([disabled]):active {
-      background: #fff4e6; }
+      background-color: var(--ins-color-orange-10p); }
       @media only screen and (max-width: 425px) {
         ins-button button[type=reset].warning:not([disabled]):hover, ins-button button[type=reset].warning:not([disabled]):active, ins-button button[type=reset].orange:not([disabled]):hover, ins-button button[type=reset].orange:not([disabled]):active,
         ins-button button[type=submit].warning:not([disabled]):hover,
@@ -490,17 +529,7 @@ ins-button button {
     ins-button button.warning.is-loading:active,
     ins-button button.orange.is-loading:hover,
     ins-button button.orange.is-loading:active {
-      background-color: #ffa639 !important; }
-    ins-button button[type=reset].warning.is-loading .spinner, ins-button button[type=reset].orange.is-loading .spinner,
-    ins-button button[type=submit].warning.is-loading .spinner,
-    ins-button button[type=submit].orange.is-loading .spinner,
-    ins-button button[type=button].warning.is-loading .spinner,
-    ins-button button[type=button].orange.is-loading .spinner,
-    ins-button button.warning.is-loading .spinner,
-    ins-button button.orange.is-loading .spinner {
-      border-top: 3px solid #ffc886;
-      border-right: 3px solid #ffc886;
-      border-bottom: 3px solid #ffc886; }
+      background-color: "orange" !important; }
   ins-button button[type=reset].negative, ins-button button[type=reset].red,
   ins-button button[type=submit].negative,
   ins-button button[type=submit].red,
@@ -509,7 +538,7 @@ ins-button button {
   ins-button button.negative,
   ins-button button.red {
     background-color: transparent;
-    color: #f27474; }
+    color: var(--ins-color-red); }
     ins-button button[type=reset].negative.solid, ins-button button[type=reset].red.solid,
     ins-button button[type=submit].negative.solid,
     ins-button button[type=submit].red.solid,
@@ -517,8 +546,8 @@ ins-button button {
     ins-button button[type=button].red.solid,
     ins-button button.negative.solid,
     ins-button button.red.solid {
-      background-color: #f27474;
-      color: #ffffff; }
+      background-color: "red";
+      color: var(--ins-color-ink1); }
       ins-button button[type=reset].negative.solid:not([disabled]):hover, ins-button button[type=reset].red.solid:not([disabled]):hover,
       ins-button button[type=submit].negative.solid:not([disabled]):hover,
       ins-button button[type=submit].red.solid:not([disabled]):hover,
@@ -526,7 +555,7 @@ ins-button button {
       ins-button button[type=button].red.solid:not([disabled]):hover,
       ins-button button.negative.solid:not([disabled]):hover,
       ins-button button.red.solid:not([disabled]):hover {
-        background: #f05d5d; }
+        background: var(--ins-color-red2); }
         @media only screen and (max-width: 425px) {
           ins-button button[type=reset].negative.solid:not([disabled]):hover, ins-button button[type=reset].red.solid:not([disabled]):hover,
           ins-button button[type=submit].negative.solid:not([disabled]):hover,
@@ -535,7 +564,7 @@ ins-button button {
           ins-button button[type=button].red.solid:not([disabled]):hover,
           ins-button button.negative.solid:not([disabled]):hover,
           ins-button button.red.solid:not([disabled]):hover {
-            background: #f27474; } }
+            background-color: "red"; } }
     ins-button button[type=reset].negative.outlined .ripple-wave, ins-button button[type=reset].negative:not(.solid) .ripple-wave, ins-button button[type=reset].red.outlined .ripple-wave, ins-button button[type=reset].red:not(.solid) .ripple-wave,
     ins-button button[type=submit].negative.outlined .ripple-wave,
     ins-button button[type=submit].negative:not(.solid) .ripple-wave,
@@ -549,7 +578,7 @@ ins-button button {
     ins-button button.negative:not(.solid) .ripple-wave,
     ins-button button.red.outlined .ripple-wave,
     ins-button button.red:not(.solid) .ripple-wave {
-      background: rgba(30, 134, 227, 0.25); }
+      background-color: rgba(30, 134, 227, 0.25); }
     ins-button button[type=reset].negative.outlined, ins-button button[type=reset].red.outlined,
     ins-button button[type=submit].negative.outlined,
     ins-button button[type=submit].red.outlined,
@@ -557,7 +586,7 @@ ins-button button {
     ins-button button[type=button].red.outlined,
     ins-button button.negative.outlined,
     ins-button button.red.outlined {
-      border: 1px solid #f27474;
+      border: 1px solid var(--ins-color-red);
       background-color: transparent; }
       ins-button button[type=reset].negative.outlined.is-loading, ins-button button[type=reset].red.outlined.is-loading,
       ins-button button[type=submit].negative.outlined.is-loading,
@@ -566,7 +595,7 @@ ins-button button {
       ins-button button[type=button].red.outlined.is-loading,
       ins-button button.negative.outlined.is-loading,
       ins-button button.red.outlined.is-loading {
-        background-color: #f27474; }
+        background-color: var(--ins-color-red); }
     ins-button button[type=reset].negative:not([disabled]):hover, ins-button button[type=reset].negative:not([disabled]):active, ins-button button[type=reset].red:not([disabled]):hover, ins-button button[type=reset].red:not([disabled]):active,
     ins-button button[type=submit].negative:not([disabled]):hover,
     ins-button button[type=submit].negative:not([disabled]):active,
@@ -580,7 +609,7 @@ ins-button button {
     ins-button button.negative:not([disabled]):active,
     ins-button button.red:not([disabled]):hover,
     ins-button button.red:not([disabled]):active {
-      background: #fce4e4; }
+      background-color: var(--ins-color-red-10p); }
       @media only screen and (max-width: 425px) {
         ins-button button[type=reset].negative:not([disabled]):hover, ins-button button[type=reset].negative:not([disabled]):active, ins-button button[type=reset].red:not([disabled]):hover, ins-button button[type=reset].red:not([disabled]):active,
         ins-button button[type=submit].negative:not([disabled]):hover,
@@ -609,17 +638,7 @@ ins-button button {
     ins-button button.negative.is-loading:active,
     ins-button button.red.is-loading:hover,
     ins-button button.red.is-loading:active {
-      background-color: #f27474 !important; }
-    ins-button button[type=reset].negative.is-loading .spinner, ins-button button[type=reset].red.is-loading .spinner,
-    ins-button button[type=submit].negative.is-loading .spinner,
-    ins-button button[type=submit].red.is-loading .spinner,
-    ins-button button[type=button].negative.is-loading .spinner,
-    ins-button button[type=button].red.is-loading .spinner,
-    ins-button button.negative.is-loading .spinner,
-    ins-button button.red.is-loading .spinner {
-      border-top: 3px solid #f9baba;
-      border-right: 3px solid #f9baba;
-      border-bottom: 3px solid #f9baba; }
+      background-color: "red" !important; }
   ins-button button[type=reset].information-1, ins-button button[type=reset].pink,
   ins-button button[type=submit].information-1,
   ins-button button[type=submit].pink,
@@ -628,7 +647,7 @@ ins-button button {
   ins-button button.information-1,
   ins-button button.pink {
     background-color: transparent;
-    color: #ff3366; }
+    color: var(--ins-color-pink); }
     ins-button button[type=reset].information-1.solid, ins-button button[type=reset].pink.solid,
     ins-button button[type=submit].information-1.solid,
     ins-button button[type=submit].pink.solid,
@@ -636,8 +655,8 @@ ins-button button {
     ins-button button[type=button].pink.solid,
     ins-button button.information-1.solid,
     ins-button button.pink.solid {
-      background-color: #ff3366;
-      color: #ffffff; }
+      background-color: "pink";
+      color: var(--ins-color-ink1); }
       ins-button button[type=reset].information-1.solid:not([disabled]):hover, ins-button button[type=reset].pink.solid:not([disabled]):hover,
       ins-button button[type=submit].information-1.solid:not([disabled]):hover,
       ins-button button[type=submit].pink.solid:not([disabled]):hover,
@@ -645,7 +664,7 @@ ins-button button {
       ins-button button[type=button].pink.solid:not([disabled]):hover,
       ins-button button.information-1.solid:not([disabled]):hover,
       ins-button button.pink.solid:not([disabled]):hover {
-        background: #ff1a53; }
+        background: var(--ins-color-pink2); }
         @media only screen and (max-width: 425px) {
           ins-button button[type=reset].information-1.solid:not([disabled]):hover, ins-button button[type=reset].pink.solid:not([disabled]):hover,
           ins-button button[type=submit].information-1.solid:not([disabled]):hover,
@@ -654,7 +673,7 @@ ins-button button {
           ins-button button[type=button].pink.solid:not([disabled]):hover,
           ins-button button.information-1.solid:not([disabled]):hover,
           ins-button button.pink.solid:not([disabled]):hover {
-            background: #ff3366; } }
+            background-color: "pink"; } }
     ins-button button[type=reset].information-1.outlined .ripple-wave, ins-button button[type=reset].information-1:not(.solid) .ripple-wave, ins-button button[type=reset].pink.outlined .ripple-wave, ins-button button[type=reset].pink:not(.solid) .ripple-wave,
     ins-button button[type=submit].information-1.outlined .ripple-wave,
     ins-button button[type=submit].information-1:not(.solid) .ripple-wave,
@@ -668,7 +687,7 @@ ins-button button {
     ins-button button.information-1:not(.solid) .ripple-wave,
     ins-button button.pink.outlined .ripple-wave,
     ins-button button.pink:not(.solid) .ripple-wave {
-      background: rgba(30, 134, 227, 0.25); }
+      background-color: rgba(30, 134, 227, 0.25); }
     ins-button button[type=reset].information-1.outlined, ins-button button[type=reset].pink.outlined,
     ins-button button[type=submit].information-1.outlined,
     ins-button button[type=submit].pink.outlined,
@@ -676,7 +695,7 @@ ins-button button {
     ins-button button[type=button].pink.outlined,
     ins-button button.information-1.outlined,
     ins-button button.pink.outlined {
-      border: 1px solid #ff3366;
+      border: 1px solid var(--ins-color-pink);
       background-color: transparent; }
       ins-button button[type=reset].information-1.outlined.is-loading, ins-button button[type=reset].pink.outlined.is-loading,
       ins-button button[type=submit].information-1.outlined.is-loading,
@@ -685,7 +704,7 @@ ins-button button {
       ins-button button[type=button].pink.outlined.is-loading,
       ins-button button.information-1.outlined.is-loading,
       ins-button button.pink.outlined.is-loading {
-        background-color: #ff3366; }
+        background-color: var(--ins-color-pink); }
     ins-button button[type=reset].information-1:not([disabled]):hover, ins-button button[type=reset].information-1:not([disabled]):active, ins-button button[type=reset].pink:not([disabled]):hover, ins-button button[type=reset].pink:not([disabled]):active,
     ins-button button[type=submit].information-1:not([disabled]):hover,
     ins-button button[type=submit].information-1:not([disabled]):active,
@@ -699,7 +718,7 @@ ins-button button {
     ins-button button.information-1:not([disabled]):active,
     ins-button button.pink:not([disabled]):hover,
     ins-button button.pink:not([disabled]):active {
-      background: #ffe0e8; }
+      background-color: var(--ins-color-pink-10p); }
       @media only screen and (max-width: 425px) {
         ins-button button[type=reset].information-1:not([disabled]):hover, ins-button button[type=reset].information-1:not([disabled]):active, ins-button button[type=reset].pink:not([disabled]):hover, ins-button button[type=reset].pink:not([disabled]):active,
         ins-button button[type=submit].information-1:not([disabled]):hover,
@@ -728,17 +747,7 @@ ins-button button {
     ins-button button.information-1.is-loading:active,
     ins-button button.pink.is-loading:hover,
     ins-button button.pink.is-loading:active {
-      background-color: #ff3366 !important; }
-    ins-button button[type=reset].information-1.is-loading .spinner, ins-button button[type=reset].pink.is-loading .spinner,
-    ins-button button[type=submit].information-1.is-loading .spinner,
-    ins-button button[type=submit].pink.is-loading .spinner,
-    ins-button button[type=button].information-1.is-loading .spinner,
-    ins-button button[type=button].pink.is-loading .spinner,
-    ins-button button.information-1.is-loading .spinner,
-    ins-button button.pink.is-loading .spinner {
-      border-top: 3px solid #ff809f;
-      border-right: 3px solid #ff809f;
-      border-bottom: 3px solid #ff809f; }
+      background-color: "pink" !important; }
   ins-button button[type=reset].information-2, ins-button button[type=reset].yellow,
   ins-button button[type=submit].information-2,
   ins-button button[type=submit].yellow,
@@ -747,7 +756,7 @@ ins-button button {
   ins-button button.information-2,
   ins-button button.yellow {
     background-color: transparent;
-    color: #fdd835; }
+    color: var(--ins-color-yellow); }
     ins-button button[type=reset].information-2.solid, ins-button button[type=reset].yellow.solid,
     ins-button button[type=submit].information-2.solid,
     ins-button button[type=submit].yellow.solid,
@@ -755,8 +764,8 @@ ins-button button {
     ins-button button[type=button].yellow.solid,
     ins-button button.information-2.solid,
     ins-button button.yellow.solid {
-      background-color: #fdd835;
-      color: #ffffff; }
+      background-color: "yellow";
+      color: var(--ins-color-ink1); }
       ins-button button[type=reset].information-2.solid:not([disabled]):hover, ins-button button[type=reset].yellow.solid:not([disabled]):hover,
       ins-button button[type=submit].information-2.solid:not([disabled]):hover,
       ins-button button[type=submit].yellow.solid:not([disabled]):hover,
@@ -764,7 +773,7 @@ ins-button button {
       ins-button button[type=button].yellow.solid:not([disabled]):hover,
       ins-button button.information-2.solid:not([disabled]):hover,
       ins-button button.yellow.solid:not([disabled]):hover {
-        background: #fdd31c; }
+        background: var(--ins-color-yellow2); }
         @media only screen and (max-width: 425px) {
           ins-button button[type=reset].information-2.solid:not([disabled]):hover, ins-button button[type=reset].yellow.solid:not([disabled]):hover,
           ins-button button[type=submit].information-2.solid:not([disabled]):hover,
@@ -773,7 +782,7 @@ ins-button button {
           ins-button button[type=button].yellow.solid:not([disabled]):hover,
           ins-button button.information-2.solid:not([disabled]):hover,
           ins-button button.yellow.solid:not([disabled]):hover {
-            background: #fdd835; } }
+            background-color: "yellow"; } }
     ins-button button[type=reset].information-2.outlined .ripple-wave, ins-button button[type=reset].information-2:not(.solid) .ripple-wave, ins-button button[type=reset].yellow.outlined .ripple-wave, ins-button button[type=reset].yellow:not(.solid) .ripple-wave,
     ins-button button[type=submit].information-2.outlined .ripple-wave,
     ins-button button[type=submit].information-2:not(.solid) .ripple-wave,
@@ -787,7 +796,7 @@ ins-button button {
     ins-button button.information-2:not(.solid) .ripple-wave,
     ins-button button.yellow.outlined .ripple-wave,
     ins-button button.yellow:not(.solid) .ripple-wave {
-      background: rgba(30, 134, 227, 0.25); }
+      background-color: rgba(30, 134, 227, 0.25); }
     ins-button button[type=reset].information-2.outlined, ins-button button[type=reset].yellow.outlined,
     ins-button button[type=submit].information-2.outlined,
     ins-button button[type=submit].yellow.outlined,
@@ -795,7 +804,7 @@ ins-button button {
     ins-button button[type=button].yellow.outlined,
     ins-button button.information-2.outlined,
     ins-button button.yellow.outlined {
-      border: 1px solid #fdd835;
+      border: 1px solid var(--ins-color-yellow);
       background-color: transparent; }
       ins-button button[type=reset].information-2.outlined.is-loading, ins-button button[type=reset].yellow.outlined.is-loading,
       ins-button button[type=submit].information-2.outlined.is-loading,
@@ -804,7 +813,7 @@ ins-button button {
       ins-button button[type=button].yellow.outlined.is-loading,
       ins-button button.information-2.outlined.is-loading,
       ins-button button.yellow.outlined.is-loading {
-        background-color: #fdd835; }
+        background-color: var(--ins-color-yellow); }
     ins-button button[type=reset].information-2:not([disabled]):hover, ins-button button[type=reset].information-2:not([disabled]):active, ins-button button[type=reset].yellow:not([disabled]):hover, ins-button button[type=reset].yellow:not([disabled]):active,
     ins-button button[type=submit].information-2:not([disabled]):hover,
     ins-button button[type=submit].information-2:not([disabled]):active,
@@ -818,7 +827,7 @@ ins-button button {
     ins-button button.information-2:not([disabled]):active,
     ins-button button.yellow:not([disabled]):hover,
     ins-button button.yellow:not([disabled]):active {
-      background: #fffae6; }
+      background-color: var(--ins-color-yellow-10p); }
       @media only screen and (max-width: 425px) {
         ins-button button[type=reset].information-2:not([disabled]):hover, ins-button button[type=reset].information-2:not([disabled]):active, ins-button button[type=reset].yellow:not([disabled]):hover, ins-button button[type=reset].yellow:not([disabled]):active,
         ins-button button[type=submit].information-2:not([disabled]):hover,
@@ -847,40 +856,30 @@ ins-button button {
     ins-button button.information-2.is-loading:active,
     ins-button button.yellow.is-loading:hover,
     ins-button button.yellow.is-loading:active {
-      background-color: #fdd835 !important; }
-    ins-button button[type=reset].information-2.is-loading .spinner, ins-button button[type=reset].yellow.is-loading .spinner,
-    ins-button button[type=submit].information-2.is-loading .spinner,
-    ins-button button[type=submit].yellow.is-loading .spinner,
-    ins-button button[type=button].information-2.is-loading .spinner,
-    ins-button button[type=button].yellow.is-loading .spinner,
-    ins-button button.information-2.is-loading .spinner,
-    ins-button button.yellow.is-loading .spinner {
-      border-top: 3px solid #fee781;
-      border-right: 3px solid #fee781;
-      border-bottom: 3px solid #fee781; }
+      background-color: "yellow" !important; }
   ins-button button[type=reset].turquoise,
   ins-button button[type=submit].turquoise,
   ins-button button[type=button].turquoise,
   ins-button button.turquoise {
     background-color: transparent;
-    color: #2bbad9; }
+    color: var(--ins-color-turquoise); }
     ins-button button[type=reset].turquoise.solid,
     ins-button button[type=submit].turquoise.solid,
     ins-button button[type=button].turquoise.solid,
     ins-button button.turquoise.solid {
-      background-color: #2bbad9;
-      color: #ffffff; }
+      background-color: "turquoise";
+      color: var(--ins-color-ink1); }
       ins-button button[type=reset].turquoise.solid:not([disabled]):hover,
       ins-button button[type=submit].turquoise.solid:not([disabled]):hover,
       ins-button button[type=button].turquoise.solid:not([disabled]):hover,
       ins-button button.turquoise.solid:not([disabled]):hover {
-        background: #24aac7; }
+        background: var(--ins-color-turquoise2); }
         @media only screen and (max-width: 425px) {
           ins-button button[type=reset].turquoise.solid:not([disabled]):hover,
           ins-button button[type=submit].turquoise.solid:not([disabled]):hover,
           ins-button button[type=button].turquoise.solid:not([disabled]):hover,
           ins-button button.turquoise.solid:not([disabled]):hover {
-            background: #2bbad9; } }
+            background-color: "turquoise"; } }
     ins-button button[type=reset].turquoise.outlined .ripple-wave, ins-button button[type=reset].turquoise:not(.solid) .ripple-wave,
     ins-button button[type=submit].turquoise.outlined .ripple-wave,
     ins-button button[type=submit].turquoise:not(.solid) .ripple-wave,
@@ -888,18 +887,18 @@ ins-button button {
     ins-button button[type=button].turquoise:not(.solid) .ripple-wave,
     ins-button button.turquoise.outlined .ripple-wave,
     ins-button button.turquoise:not(.solid) .ripple-wave {
-      background: rgba(30, 134, 227, 0.25); }
+      background-color: rgba(30, 134, 227, 0.25); }
     ins-button button[type=reset].turquoise.outlined,
     ins-button button[type=submit].turquoise.outlined,
     ins-button button[type=button].turquoise.outlined,
     ins-button button.turquoise.outlined {
-      border: 1px solid #2bbad9;
+      border: 1px solid var(--ins-color-turquoise);
       background-color: transparent; }
       ins-button button[type=reset].turquoise.outlined.is-loading,
       ins-button button[type=submit].turquoise.outlined.is-loading,
       ins-button button[type=button].turquoise.outlined.is-loading,
       ins-button button.turquoise.outlined.is-loading {
-        background-color: #2bbad9; }
+        background-color: var(--ins-color-turquoise); }
     ins-button button[type=reset].turquoise:not([disabled]):hover, ins-button button[type=reset].turquoise:not([disabled]):active,
     ins-button button[type=submit].turquoise:not([disabled]):hover,
     ins-button button[type=submit].turquoise:not([disabled]):active,
@@ -907,7 +906,7 @@ ins-button button {
     ins-button button[type=button].turquoise:not([disabled]):active,
     ins-button button.turquoise:not([disabled]):hover,
     ins-button button.turquoise:not([disabled]):active {
-      background: #e9f8fb; }
+      background-color: var(--ins-color-turquoise-10p); }
       @media only screen and (max-width: 425px) {
         ins-button button[type=reset].turquoise:not([disabled]):hover, ins-button button[type=reset].turquoise:not([disabled]):active,
         ins-button button[type=submit].turquoise:not([disabled]):hover,
@@ -924,14 +923,7 @@ ins-button button {
     ins-button button[type=button].turquoise.is-loading:active,
     ins-button button.turquoise.is-loading:hover,
     ins-button button.turquoise.is-loading:active {
-      background-color: #2bbad9 !important; }
-    ins-button button[type=reset].turquoise.is-loading .spinner,
-    ins-button button[type=submit].turquoise.is-loading .spinner,
-    ins-button button[type=button].turquoise.is-loading .spinner,
-    ins-button button.turquoise.is-loading .spinner {
-      border-top: 3px solid #6ccfe5;
-      border-right: 3px solid #6ccfe5;
-      border-bottom: 3px solid #6ccfe5; }
+      background-color: "turquoise" !important; }
   ins-button button[type=reset].grey, ins-button button[type=reset].secondary,
   ins-button button[type=submit].grey,
   ins-button button[type=submit].secondary,
@@ -940,7 +932,7 @@ ins-button button {
   ins-button button.grey,
   ins-button button.secondary {
     background-color: transparent;
-    color: #8c94a4; }
+    color: var(--ins-color-grey); }
     ins-button button[type=reset].grey.solid, ins-button button[type=reset].secondary.solid,
     ins-button button[type=submit].grey.solid,
     ins-button button[type=submit].secondary.solid,
@@ -948,8 +940,8 @@ ins-button button {
     ins-button button[type=button].secondary.solid,
     ins-button button.grey.solid,
     ins-button button.secondary.solid {
-      background-color: #8c94a4;
-      color: #ffffff; }
+      background-color: "grey";
+      color: var(--ins-color-ink1); }
       ins-button button[type=reset].grey.solid:not([disabled]):hover, ins-button button[type=reset].secondary.solid:not([disabled]):hover,
       ins-button button[type=submit].grey.solid:not([disabled]):hover,
       ins-button button[type=submit].secondary.solid:not([disabled]):hover,
@@ -957,7 +949,7 @@ ins-button button {
       ins-button button[type=button].secondary.solid:not([disabled]):hover,
       ins-button button.grey.solid:not([disabled]):hover,
       ins-button button.secondary.solid:not([disabled]):hover {
-        background: #7e8799; }
+        background: var(--ins-color-grey2); }
         @media only screen and (max-width: 425px) {
           ins-button button[type=reset].grey.solid:not([disabled]):hover, ins-button button[type=reset].secondary.solid:not([disabled]):hover,
           ins-button button[type=submit].grey.solid:not([disabled]):hover,
@@ -966,7 +958,7 @@ ins-button button {
           ins-button button[type=button].secondary.solid:not([disabled]):hover,
           ins-button button.grey.solid:not([disabled]):hover,
           ins-button button.secondary.solid:not([disabled]):hover {
-            background: #8c94a4; } }
+            background-color: "grey"; } }
     ins-button button[type=reset].grey.outlined .ripple-wave, ins-button button[type=reset].grey:not(.solid) .ripple-wave, ins-button button[type=reset].secondary.outlined .ripple-wave, ins-button button[type=reset].secondary:not(.solid) .ripple-wave,
     ins-button button[type=submit].grey.outlined .ripple-wave,
     ins-button button[type=submit].grey:not(.solid) .ripple-wave,
@@ -980,7 +972,7 @@ ins-button button {
     ins-button button.grey:not(.solid) .ripple-wave,
     ins-button button.secondary.outlined .ripple-wave,
     ins-button button.secondary:not(.solid) .ripple-wave {
-      background: rgba(30, 134, 227, 0.25); }
+      background-color: rgba(30, 134, 227, 0.25); }
     ins-button button[type=reset].grey.outlined, ins-button button[type=reset].secondary.outlined,
     ins-button button[type=submit].grey.outlined,
     ins-button button[type=submit].secondary.outlined,
@@ -988,7 +980,7 @@ ins-button button {
     ins-button button[type=button].secondary.outlined,
     ins-button button.grey.outlined,
     ins-button button.secondary.outlined {
-      border: 1px solid #8c94a4;
+      border: 1px solid var(--ins-color-grey);
       background-color: transparent; }
       ins-button button[type=reset].grey.outlined.is-loading, ins-button button[type=reset].secondary.outlined.is-loading,
       ins-button button[type=submit].grey.outlined.is-loading,
@@ -997,7 +989,7 @@ ins-button button {
       ins-button button[type=button].secondary.outlined.is-loading,
       ins-button button.grey.outlined.is-loading,
       ins-button button.secondary.outlined.is-loading {
-        background-color: #8c94a4; }
+        background-color: var(--ins-color-grey); }
     ins-button button[type=reset].grey:not([disabled]):hover, ins-button button[type=reset].grey:not([disabled]):active, ins-button button[type=reset].secondary:not([disabled]):hover, ins-button button[type=reset].secondary:not([disabled]):active,
     ins-button button[type=submit].grey:not([disabled]):hover,
     ins-button button[type=submit].grey:not([disabled]):active,
@@ -1011,7 +1003,7 @@ ins-button button {
     ins-button button.grey:not([disabled]):active,
     ins-button button.secondary:not([disabled]):hover,
     ins-button button.secondary:not([disabled]):active {
-      background: #e1e3e8; }
+      background-color: var(--ins-color-grey-10p); }
       @media only screen and (max-width: 425px) {
         ins-button button[type=reset].grey:not([disabled]):hover, ins-button button[type=reset].grey:not([disabled]):active, ins-button button[type=reset].secondary:not([disabled]):hover, ins-button button[type=reset].secondary:not([disabled]):active,
         ins-button button[type=submit].grey:not([disabled]):hover,
@@ -1040,81 +1032,7 @@ ins-button button {
     ins-button button.grey.is-loading:active,
     ins-button button.secondary.is-loading:hover,
     ins-button button.secondary.is-loading:active {
-      background-color: #8c94a4 !important; }
-    ins-button button[type=reset].grey.is-loading .spinner, ins-button button[type=reset].secondary.is-loading .spinner,
-    ins-button button[type=submit].grey.is-loading .spinner,
-    ins-button button[type=submit].secondary.is-loading .spinner,
-    ins-button button[type=button].grey.is-loading .spinner,
-    ins-button button[type=button].secondary.is-loading .spinner,
-    ins-button button.grey.is-loading .spinner,
-    ins-button button.secondary.is-loading .spinner {
-      border-top: 3px solid #b7bcc6;
-      border-right: 3px solid #b7bcc6;
-      border-bottom: 3px solid #b7bcc6; }
-    ins-button button[type=reset].grey:not(.round).solid, ins-button button[type=reset].secondary:not(.round).solid,
-    ins-button button[type=submit].grey:not(.round).solid,
-    ins-button button[type=submit].secondary:not(.round).solid,
-    ins-button button[type=button].grey:not(.round).solid,
-    ins-button button[type=button].secondary:not(.round).solid,
-    ins-button button.grey:not(.round).solid,
-    ins-button button.secondary:not(.round).solid {
-      background-color: #E4E6EC;
-      color: #8c94a4; }
-      ins-button button[type=reset].grey:not(.round).solid:not([disabled]):hover, ins-button button[type=reset].secondary:not(.round).solid:not([disabled]):hover,
-      ins-button button[type=submit].grey:not(.round).solid:not([disabled]):hover,
-      ins-button button[type=submit].secondary:not(.round).solid:not([disabled]):hover,
-      ins-button button[type=button].grey:not(.round).solid:not([disabled]):hover,
-      ins-button button[type=button].secondary:not(.round).solid:not([disabled]):hover,
-      ins-button button.grey:not(.round).solid:not([disabled]):hover,
-      ins-button button.secondary:not(.round).solid:not([disabled]):hover {
-        background: #d5d8e1; }
-        @media only screen and (max-width: 425px) {
-          ins-button button[type=reset].grey:not(.round).solid:not([disabled]):hover, ins-button button[type=reset].secondary:not(.round).solid:not([disabled]):hover,
-          ins-button button[type=submit].grey:not(.round).solid:not([disabled]):hover,
-          ins-button button[type=submit].secondary:not(.round).solid:not([disabled]):hover,
-          ins-button button[type=button].grey:not(.round).solid:not([disabled]):hover,
-          ins-button button[type=button].secondary:not(.round).solid:not([disabled]):hover,
-          ins-button button.grey:not(.round).solid:not([disabled]):hover,
-          ins-button button.secondary:not(.round).solid:not([disabled]):hover {
-            background: #E4E6EC; } }
-    ins-button button[type=reset].grey:not(.round).outlined, ins-button button[type=reset].secondary:not(.round).outlined,
-    ins-button button[type=submit].grey:not(.round).outlined,
-    ins-button button[type=submit].secondary:not(.round).outlined,
-    ins-button button[type=button].grey:not(.round).outlined,
-    ins-button button[type=button].secondary:not(.round).outlined,
-    ins-button button.grey:not(.round).outlined,
-    ins-button button.secondary:not(.round).outlined {
-      border: 1px solid #E4E6EC;
-      background-color: transparent; }
-    ins-button button[type=reset].grey:not(.round):not([disabled]):hover, ins-button button[type=reset].grey:not(.round):not([disabled]):active, ins-button button[type=reset].secondary:not(.round):not([disabled]):hover, ins-button button[type=reset].secondary:not(.round):not([disabled]):active,
-    ins-button button[type=submit].grey:not(.round):not([disabled]):hover,
-    ins-button button[type=submit].grey:not(.round):not([disabled]):active,
-    ins-button button[type=submit].secondary:not(.round):not([disabled]):hover,
-    ins-button button[type=submit].secondary:not(.round):not([disabled]):active,
-    ins-button button[type=button].grey:not(.round):not([disabled]):hover,
-    ins-button button[type=button].grey:not(.round):not([disabled]):active,
-    ins-button button[type=button].secondary:not(.round):not([disabled]):hover,
-    ins-button button[type=button].secondary:not(.round):not([disabled]):active,
-    ins-button button.grey:not(.round):not([disabled]):hover,
-    ins-button button.grey:not(.round):not([disabled]):active,
-    ins-button button.secondary:not(.round):not([disabled]):hover,
-    ins-button button.secondary:not(.round):not([disabled]):active {
-      background: #edeef2; }
-      @media only screen and (max-width: 425px) {
-        ins-button button[type=reset].grey:not(.round):not([disabled]):hover, ins-button button[type=reset].grey:not(.round):not([disabled]):active, ins-button button[type=reset].secondary:not(.round):not([disabled]):hover, ins-button button[type=reset].secondary:not(.round):not([disabled]):active,
-        ins-button button[type=submit].grey:not(.round):not([disabled]):hover,
-        ins-button button[type=submit].grey:not(.round):not([disabled]):active,
-        ins-button button[type=submit].secondary:not(.round):not([disabled]):hover,
-        ins-button button[type=submit].secondary:not(.round):not([disabled]):active,
-        ins-button button[type=button].grey:not(.round):not([disabled]):hover,
-        ins-button button[type=button].grey:not(.round):not([disabled]):active,
-        ins-button button[type=button].secondary:not(.round):not([disabled]):hover,
-        ins-button button[type=button].secondary:not(.round):not([disabled]):active,
-        ins-button button.grey:not(.round):not([disabled]):hover,
-        ins-button button.grey:not(.round):not([disabled]):active,
-        ins-button button.secondary:not(.round):not([disabled]):hover,
-        ins-button button.secondary:not(.round):not([disabled]):active {
-          background: transparent; } }
+      background-color: "grey" !important; }
   ins-button button[type=reset]:focus,
   ins-button button[type=submit]:focus,
   ins-button button[type=button]:focus,
@@ -1216,7 +1134,8 @@ ins-button button {
     ins-button button[type=button].is-loading .spinner,
     ins-button button.is-loading .spinner {
       position: relative;
-      border-left: 3px solid #ffffff;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      border-left-color: #ffffff;
       -webkit-transform: translateZ(0);
       -ms-transform: translateZ(0);
       transform: translateZ(0);
@@ -1315,31 +1234,31 @@ html [type=button] {
     top: 0;
     cursor: pointer; }
     .ins-button-options-wrap .carets.blue, .ins-button-options-wrap .carets.primary {
-      color: #1e86e3;
+      color: var(--ins-color-blue);
       border-left: 1px solid #E4E6EC; }
     .ins-button-options-wrap .carets.positive, .ins-button-options-wrap .carets.green {
-      color: #24be8d;
+      color: var(--ins-color-green);
       border-left: 1px solid #E4E6EC; }
     .ins-button-options-wrap .carets.warning, .ins-button-options-wrap .carets.orange {
-      color: #ffa639;
+      color: var(--ins-color-orange);
       border-left: 1px solid #E4E6EC; }
     .ins-button-options-wrap .carets.negative, .ins-button-options-wrap .carets.red {
-      color: #f27474;
+      color: var(--ins-color-red);
       border-left: 1px solid #E4E6EC; }
     .ins-button-options-wrap .carets.information-1, .ins-button-options-wrap .carets.pink {
-      color: #ff3366;
+      color: var(--ins-color-pink);
       border-left: 1px solid #E4E6EC; }
     .ins-button-options-wrap .carets.information-2, .ins-button-options-wrap .carets.yellow {
-      color: #fdd835;
+      color: var(--ins-color-yellow);
       border-left: 1px solid #E4E6EC; }
     .ins-button-options-wrap .carets.secondary, .ins-button-options-wrap .carets.grey {
-      color: #8c94a4;
+      color: var(--ins-color-grey);
       border-left: 1px solid #E4E6EC; }
     .ins-button-options-wrap .carets.turquoise {
-      color: #2bbad9;
+      color: var(--ins-color-turquoise);
       border-left: 1px solid #E4E6EC; }
     .ins-button-options-wrap .carets.solid {
-      color: white;
+      color: var(--ins-color-white);
       border-left: 1px solid #E4E6EC; }
     .ins-button-options-wrap .carets.loading {
       display: none; }
@@ -1361,13 +1280,13 @@ html [type=button] {
       top: auto;
       bottom: calc(100% + 8px); }
     .ins-button-options-wrap .options-wrap ul.option-wrap {
-      font-family: "Open Sans", sans-serif;
-      background: #fff;
+      font-family: var(--ins-font-family);
+      background: var(--ins-bg-color);
       list-style: none;
       padding: 0;
       margin: 0;
       border: 1px solid #E4E6EC;
-      border-radius: 4px;
+      border-radius: var(--ins-border-radius);
       box-shadow: 0 2px 4px 0 rgba(15, 21, 38, 0.14), 1px 1px 3px 0 rgba(140, 148, 164, 0.2); }
     .ins-button-options-wrap .options-wrap .option {
       padding: 8px 15px;
@@ -1377,7 +1296,7 @@ html [type=button] {
       line-height: 1.6; }
       .ins-button-options-wrap .options-wrap .option:hover {
         color: #2c3148;
-        background-color: #E4E6EC; }
+        background-color: var(--ins-bg-color2); }
     .ins-button-options-wrap .options-wrap.show {
       display: block; }
 
@@ -1385,14 +1304,14 @@ html [type=button] {
   pointer-events: none; }
 
 .ins-button-group button {
-  background: #ffffff;
+  background: var(--ins-bg-color);
   font-size: 12px;
   line-height: 34px;
   padding: 0 16px;
-  border: 1px #1e86e3 solid;
+  border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-blue);
   outline: none;
   border-right: none;
-  color: #1e86e3;
+  color: var(--ins-color-blue);
   font-weight: 400;
   transition: background-color 0.3s;
   -webkit-transition: background-color 0.3s; }
@@ -1402,24 +1321,26 @@ html [type=button] {
     cursor: pointer;
     background: #e6f1fc; }
   .ins-button-group button:first-child {
-    border-radius: 4px 0 0 4px; }
+    border-top-left-radius: var(--ins-border-radius);
+    border-bottom-left-radius: var(--ins-border-radius); }
   .ins-button-group button:last-child {
-    border-radius: 0 4px 4px 0;
-    border-right: 1px #1e86e3 solid; }
+    border-top-right-radius: var(--ins-border-radius);
+    border-bottom-right-radius: var(--ins-border-radius);
+    border-right: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-blue); }
   .ins-button-group button.active {
-    background: #1e86e3;
-    color: #ffffff; }
+    background: var(--ins-color-blue);
+    color: var(--ins-bg-color); }
   .ins-button-group button.grey {
-    border-color: #8c94a4;
-    color: #8c94a4; }
+    border-color: var(--ins-color-ink40);
+    color: var(--ins-color-ink40); }
     .ins-button-group button.grey:last-child {
-      border-color: #8c94a4; }
+      border-color: var(--ins-color-ink40); }
     .ins-button-group button.grey:hover {
       cursor: pointer;
-      background: #f2f4f8; }
+      background: var(--ins-bg-color4); }
     .ins-button-group button.grey.active {
-      background: #8c94a4;
-      color: #ffffff; }
+      background: var(--ins-color-ink40);
+      color: var(--ins-bg-color); }
 
 .ins-button-group.small button {
   font-size: 10px;
@@ -1437,21 +1358,21 @@ html [type=button] {
   position: absolute;
   right: 8px;
   top: calc(50% - 8px);
-  color: #8c94a4;
+  color: var(--ins-color-ink40);
   -webkit-transition: color .25s ease-in-out;
   transition: color .25s ease-in-out; }
   .ins-form-field-wrap .icon-wrap.hover:hover {
-    color: #1e86e3;
+    color: var(--ins-color-blue);
     cursor: pointer; }
 
 .ins-form-field-wrap .ins-form-field:focus + .icon-wrap {
-  color: #1e86e3; }
+  color: var(--ins-color-primary); }
 
 .ins-form-field-wrap .ins-form-field:focus:read-only + .icon-wrap {
-  color: #8c94a4; }
+  color: var(--ins-color-ink40); }
 
 .ins-form-field-wrap .is-invalid .icon-wrap {
-  color: #f27474; }
+  color: var(--ins-color-negative); }
 
 .ins-dropzone, .ins-dropzone * {
   box-sizing: border-box; }
@@ -1934,9 +1855,9 @@ ins-input-file[disabled] {
   pointer-events: none;
   cursor: not-allowed; }
   ins-input-file[disabled] .ins-dropzone {
-    border-color: #f2f4f8; }
+    border-color: var(--ins-bg-color4); }
     ins-input-file[disabled] .ins-dropzone .dz-message {
-      color: #8c94a4;
+      color: var(--ins-color-ink40);
       opacity: 0.5; }
     ins-input-file[disabled] .ins-dropzone .dz-clickable {
       cursor: not-allowed; }
@@ -1947,16 +1868,19 @@ ins-input-file[disabled] {
       min-height: 70px; }
     ins-input-file[disabled] .ins-dropzone .dz-remove {
       display: none; }
-  ins-input-file[disabled] .ins-input-file-wrapper label, ins-input-file[disabled] .ins-input-file-wrapper .file-restrictions {
-    color: #8c94a4; }
+  ins-input-file[disabled] .ins-input-file-wrapper label,
+  ins-input-file[disabled] .ins-input-file-wrapper .file-restrictions {
+    color: var(--ins-color-ink40); }
 
 ins-input-file[has-error] .ins-dropzone {
-  border-color: #f27474;
-  background-color: #fef8f8; }
+  border-color: var(--ins-color-negative);
+  background-color: var(--ins-color-red-10p); }
 
-ins-input-file[has-error] label, ins-input-file[has-error] .dz-message, ins-input-file[has-error] .ins-input-file-wrapper.is-invalid .ins-form-error,
+ins-input-file[has-error] label,
+ins-input-file[has-error] .dz-message,
+ins-input-file[has-error] .ins-input-file-wrapper.is-invalid .ins-form-error,
 ins-input-file[has-error] .ins-input-file-wrapper.is-invalid .file-restrictions {
-  color: #f27474; }
+  color: var(--ins-color-negative); }
 
 ins-input-file[has-error] .ins-input-file-wrapper.is-invalid .ins-form-error {
   display: block;
@@ -1965,8 +1889,8 @@ ins-input-file[has-error] .ins-input-file-wrapper.is-invalid .ins-form-error {
 ins-input-file .file-restrictions {
   font-size: 12px;
   font-weight: 600;
-  color: #2C3148;
-  font-family: "Open Sans", sans-serif;
+  color: var(--ins-color-ink);
+  font-family: var(--ins-font-family);
   margin-bottom: 2px; }
 
 ins-input-file .file-restrictions span {
@@ -1976,12 +1900,12 @@ ins-input-file .file-restrictions span {
 .ins-input-file-wrapper .ins-form-error {
   display: none;
   font-size: 12px;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--ins-font-family);
   line-height: 16px; }
 
 .ins-dropzone {
   border: 2px dashed;
-  border-color: #e4e6ec;
+  border-color: var(--ins-color-ink10);
   margin-top: 4px;
   margin-bottom: 8px;
   border-radius: 5px;
@@ -1989,9 +1913,9 @@ ins-input-file .file-restrictions span {
   min-height: 80px;
   padding: 10px;
   background: none;
-  font-family: 'Open Sans', sans-serif; }
+  font-family: var(--ins-font-family); }
   .ins-dropzone .dz-message {
-    color: #8c94a4;
+    color: var(--ins-color-ink40);
     font-style: italic;
     font-size: 14px; }
   .ins-dropzone .dz-preview {
@@ -2006,16 +1930,16 @@ ins-input-file .file-restrictions span {
     .ins-dropzone .dz-preview .dz-remove {
       margin-top: 2px;
       font-size: 10px;
-      color: #1e86e3; }
+      color: var(--ins-color-blue); }
     .ins-dropzone .dz-preview .dz-image {
-      border-radius: 4px;
+      border-radius: var(--ins-border-radius);
       width: 100%;
       height: initial;
       min-height: 85px;
       max-height: 85px; }
       .ins-dropzone .dz-preview .dz-image[class*="icon-"] {
         font-size: 46px;
-        color: #e4e6ec;
+        color: var(--ins-color-ink10);
         background: none;
         text-align: center;
         position: relative; }
@@ -2037,51 +1961,51 @@ ins-input-file .file-restrictions span {
   .ins-dropzone.auto-upload .dz-preview .dz-error-mark {
     top: 40%; }
   .ins-dropzone.auto-upload .dz-preview .dz-success-mark {
-    color: #24be8d; }
+    color: var(--ins-color-green); }
   .ins-dropzone.auto-upload .dz-preview .dz-error-mark {
-    color: #f27474; }
+    color: var(--ins-color-negative); }
 
 ins-input-multiple .ins-input-multiple {
   margin-bottom: 15px; }
   ins-input-multiple .ins-input-multiple label {
     font-size: 12px;
     font-weight: 600;
-    color: #2c3148;
+    color: var(--ins-color-ink);
     margin-bottom: 2px; }
   ins-input-multiple .ins-input-multiple .error-message {
     display: none;
     font-size: 12px;
     line-height: 16px;
-    color: #f27474; }
+    color: var(--ins-color-red); }
   ins-input-multiple .ins-input-multiple-container {
     padding: 6px 4px;
     padding-bottom: 0;
     width: 100%;
-    background: #ffffff;
-    border: 1px solid #e4e6ec;
-    border-radius: 4px;
+    background: var(--ins-bg-color);
+    border-radius: var(--ins-border-radius);
+    border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
     margin-bottom: 4px;
-    font-size: .875rem;
+    font-size: 0.875rem;
     position: relative;
-    color: #8c94a4;
+    color: var(--ins-color-ink40);
     cursor: pointer;
-    -webkit-transition: border-color .15s ease-in,border-radius .15s ease-in;
-    transition: border-color .15s ease-in,border-radius .15s ease-in; }
+    -webkit-transition: border-color 0.15s ease-in, border-radius 0.15s ease-in;
+    transition: border-color 0.15s ease-in, border-radius 0.15s ease-in; }
   ins-input-multiple .ins-input-multiple.active label {
-    color: #1e86e3; }
+    color: var(--ins-color-blue); }
   ins-input-multiple .ins-input-multiple.active .ins-input-multiple-container {
-    border: 1px solid #1e86e3; }
+    border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-blue); }
   ins-input-multiple .ins-input-multiple.has-error label {
-    color: #f27474; }
+    color: var(--ins-color-red); }
   ins-input-multiple .ins-input-multiple.has-error .error-message {
     display: block; }
   ins-input-multiple .ins-input-multiple.has-error .ins-input-multiple-container {
-    border: 1px solid #f27474; }
+    border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-red); }
   ins-input-multiple .ins-input-multiple.disabled label {
-    color: #8c94a4; }
+    color: var(--ins-color-ink40); }
   ins-input-multiple .ins-input-multiple-choice {
     display: inline-block;
-    background: #e4e6ec;
+    background: var(--ins-bg-color2);
     padding: 2px 8px;
     border-radius: 5px;
     position: relative;
@@ -2090,9 +2014,9 @@ ins-input-multiple .ins-input-multiple {
     cursor: pointer; }
     ins-input-multiple .ins-input-multiple-choice span {
       font-size: 14px;
-      color: #2c3148; }
+      color: var(--ins-color-ink); }
     ins-input-multiple .ins-input-multiple-choice .icon-close {
-      color: #8c94a4;
+      color: var(--ins-color-ink40);
       font-size: 7px;
       margin-left: 10px;
       position: absolute;
@@ -2102,7 +2026,9 @@ ins-input-multiple .ins-input-multiple {
     min-width: 200px;
     display: block;
     margin-bottom: 6px; }
-    ins-input-multiple .ins-input-multiple-text input, ins-input-multiple .ins-input-multiple-text input:focus, ins-input-multiple .ins-input-multiple-text input:active {
+    ins-input-multiple .ins-input-multiple-text input,
+    ins-input-multiple .ins-input-multiple-text input:focus,
+    ins-input-multiple .ins-input-multiple-text input:active {
       border: none;
       outline: none;
       box-shadow: none;
@@ -2114,11 +2040,11 @@ ins-input-multiple .ins-input-multiple {
   ins-input-multiple .ins-input-multiple.readonly .has-value-readonly, ins-input-multiple .ins-input-multiple.disabled .has-value-readonly {
     display: none; }
   ins-input-multiple .ins-input-multiple.readonly input, ins-input-multiple .ins-input-multiple.disabled input {
-    background: #ffffff; }
+    background: var(--ins-bg-color); }
 
 .ins-select-wrap {
-  font-family: 'Open Sans', sans-serif;
-  color: #2c3148;
+  font-family: var(--ins-font-family);
+  color: var(--ins-color-ink);
   position: relative;
   margin-bottom: 20px; }
   .ins-select-wrap .main-spinner-wrap {
@@ -2135,10 +2061,8 @@ ins-input-multiple .ins-input-multiple {
   .ins-select-wrap .spinner {
     border-width: 2px;
     position: absolute;
-    border-top: 3px solid #8c94a4;
-    border-right: 3px solid #8c94a4;
-    border-bottom: 3px solid #8c94a4;
-    border-left: 3px solid #ffffff;
+    border: 3px solid var(--ins-color-ink40);
+    border-left: 3px solid var(--ins-bg-color);
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0);
@@ -2170,45 +2094,41 @@ ins-input-multiple .ins-input-multiple {
     font-size: .75rem;
     font-weight: 600;
     margin-bottom: 2px;
-    color: #2C3148;
+    color: var(--ins-color-ink);
     display: block; }
     .ins-select-wrap .ins-select-label-wrap i.icon-caret-down {
       display: none; }
   .ins-select-wrap .ins-select-value-wrap {
-    background: #fff;
-    border: solid 1px #e4e6ec;
-    border-radius: 4px;
+    background: var(--ins-bg-color);
+    border-radius: var(--ins-border-radius);
+    border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
     font-size: .875rem;
     position: relative;
-    color: #8C94A4;
+    color: var(--ins-color-ink40);
     cursor: pointer;
-    transition: border-color 0.15s ease-in, border-radius 0.15s ease-in;
-    /* display: block;
-    width: 100%;
-    text-align: left;
-    box-shadow: none; */ }
+    transition: border-color 0.15s ease-in, border-radius 0.15s ease-in; }
     .ins-select-wrap .ins-select-value-wrap:hover {
-      border-color: #8C94A4; }
+      border-color: var(--ins-color-ink40); }
     .ins-select-wrap .ins-select-value-wrap:focus {
       outline: none;
-      border-color: #1e86e3; }
+      border-color: var(--ins-color-blue); }
     .ins-select-wrap .ins-select-value-wrap.multiple .multiple-item-wrap {
       display: inline-block;
-      background-color: #e4e6ec;
-      border-radius: 4px;
+      background-color: var(--ins-bg-color2);
+      border-radius: var(--ins-border-radius);
       margin: 6px 4px;
       font-size: 14px;
       padding: 2px 8px;
       position: relative;
       padding-right: 28px;
-      color: #2c3148; }
+      color: var(--ins-color-ink); }
       .ins-select-wrap .ins-select-value-wrap.multiple .multiple-item-wrap .icon-close {
         font-size: 7px;
         margin-left: 10px;
         position: absolute;
         right: 8px;
         top: calc(50% - 4px);
-        color: #8c94a4; }
+        color: var(--ins-color-ink40); }
     .ins-select-wrap .ins-select-value-wrap.multiple .multiple-placeholder {
       padding: 10px; }
     .ins-select-wrap .ins-select-value-wrap i.icon-caret-down {
@@ -2216,7 +2136,7 @@ ins-input-multiple .ins-input-multiple {
       position: absolute;
       right: 11px;
       top: calc(50% - 8px);
-      color: #8c94a4; }
+      color: var(--ins-color-ink40); }
   .ins-select-wrap .ins-select-value-input {
     display: block;
     width: 100%;
@@ -2224,56 +2144,56 @@ ins-input-multiple .ins-input-multiple {
     border: none;
     box-shadow: none;
     box-sizing: border-box;
-    border-radius: 4px;
+    border-radius: var(--ins-border-radius);
     font-size: .875rem;
-    background: #fff;
-    color: #2c3148; }
+    background: var(--ins-bg-color);
+    color: var(--ins-color-ink); }
     .ins-select-wrap .ins-select-value-input::-webkit-input-placeholder {
-      color: #8C94A4; }
+      color: var(--ins-color-ink40); }
     .ins-select-wrap .ins-select-value-input::-moz-placeholder {
-      color: #8C94A4; }
+      color: var(--ins-color-ink40); }
     .ins-select-wrap .ins-select-value-input:-ms-input-placeholder {
-      color: #8C94A4; }
+      color: var(--ins-color-ink40); }
     .ins-select-wrap .ins-select-value-input:-moz-placeholder {
-      color: #8C94A4; }
+      color: var(--ins-color-ink40); }
     .ins-select-wrap .ins-select-value-input:focus, .ins-select-wrap .ins-select-value-input:hover, .ins-select-wrap .ins-select-value-input.active {
       border: none;
       outline: none;
       box-shadow: none; }
     .ins-select-wrap .ins-select-value-input[readonly] {
-      background-color: #fff;
+      background-color: var(--ins-bg-color);
       cursor: text; }
     .ins-select-wrap .ins-select-value-input[disabled] {
-      background-color: #FAFBFC;
-      color: #8C94A4;
+      background-color: var(--ins-bg-color5);
+      color: var(--ins-color-ink40);
       cursor: not-allowed; }
   .ins-select-wrap.is-invalid .done-wrap {
-    border-color: #f27474;
+    border-color: var(--ins-color-negative);
     top: 38px; }
   .ins-select-wrap.is-invalid label ~ .done-wrap {
-    border-color: #f27474;
+    border-color: var(--ins-color-negative);
     top: 63px; }
   .ins-select-wrap.is-invalid.no-options .done-wrap {
     top: 60px; }
   .ins-select-wrap .done-wrap {
     position: absolute;
     z-index: 1000;
-    background-color: #FAFBFC;
-    font-family: 'Open Sans', sans-serif;
+    background-color: var(--ins-bg-color5);
+    font-family: var(--ins-font-family);
     font-size: .875rem;
     padding: 12px 10px;
-    color: #8C94A4;
+    color: var(--ins-color-ink40);
     cursor: pointer;
     text-align: center;
     width: 100%;
     margin-top: -2px;
-    border-left: solid 1px #1e87e3;
-    border-right: solid 1px #1e87e3;
+    border-left: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-blue);
+    border-right: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-blue);
     box-sizing: border-box;
     cursor: pointer; }
     .ins-select-wrap .done-wrap:hover {
-      color: #2c3148;
-      background-color: #e4e6ec; }
+      color: var(--ins-color-ink);
+      background-color: var(--ins-bg-color2); }
   .ins-select-wrap .ins-select-options-wrap {
     background-color: transparent;
     border: solid 1px transparent;
@@ -2295,7 +2215,7 @@ ins-input-multiple .ins-input-multiple {
         box-shadow: none;
         -webkit-box-shadow: none; }
       .ins-select-wrap .ins-select-options-wrap.with-dynamic-option .scroll-wrap::-webkit-scrollbar-thumb {
-        background-color: #e4e6ec;
+        background-color: var(--ins-bg-color2);
         border-radius: 16px;
         outline: none; }
     .ins-select-wrap .ins-select-options-wrap.with-dynamic-option .dynamic-option-wrap {
@@ -2314,7 +2234,7 @@ ins-input-multiple .ins-input-multiple {
       box-shadow: none;
       -webkit-box-shadow: none; }
     .ins-select-wrap .ins-select-options-wrap::-webkit-scrollbar-thumb {
-      background-color: #e4e6ec;
+      background-color: var(--ins-bg-color2);
       border-radius: 16px;
       outline: none; }
     .ins-select-wrap .ins-select-options-wrap .no-result-text,
@@ -2334,7 +2254,7 @@ ins-input-multiple .ins-input-multiple {
       bottom: calc(100% + 8px); }
   .ins-select-wrap .dynamic-option-wrap {
     padding: 16px;
-    border-top: solid 1px #e4e6ec;
+    border-top: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
     display: none; }
     .ins-select-wrap .dynamic-option-wrap .ins-input-wrap {
       display: inline-block;
@@ -2346,53 +2266,53 @@ ins-input-multiple .ins-input-multiple {
         box-shadow: none;
         box-sizing: border-box;
         font-size: .875rem;
-        color: #2C3148; }
+        color: var(--ins-color-ink); }
       .ins-select-wrap .dynamic-option-wrap .ins-input-wrap .ins-form-error {
         display: none; }
   .ins-select-wrap.readonly .ins-select-value-wrap {
-    background-color: #FAFBFC;
+    background-color: var(--ins-bg-color5);
     cursor: not-allowed; }
     .ins-select-wrap.readonly .ins-select-value-wrap:hover {
-      border-color: #E4E6EC !important; }
+      border-color: var(--ins-color-ink10) !important; }
   .ins-select-wrap.readonly .ins-select-value-input[readonly] {
-    border-color: #E4E6EC !important;
-    background-color: #FAFBFC;
-    color: #8C94A4; }
+    border-color: var(--ins-color-ink10) !important;
+    background-color: var(--ins-bg-color5);
+    color: var(--ins-color-ink40); }
   .ins-select-wrap.disabled {
-    color: #8C94A4; }
+    color: var(--ins-color-ink40); }
     .ins-select-wrap.disabled .ins-select-label-wrap {
-      color: #8C94A4; }
+      color: var(--ins-color-ink40); }
     .ins-select-wrap.disabled .ins-select-value-wrap {
-      background-color: #FAFBFC;
-      color: #8C94A4;
+      background-color: var(--ins-bg-color5);
+      color: var(--ins-color-ink40);
       cursor: not-allowed; }
       .ins-select-wrap.disabled .ins-select-value-wrap:hover {
-        border: solid 1px #e4e6ec; }
+        border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color); }
       .ins-select-wrap.disabled .ins-select-value-wrap:focus {
         outline: none;
         border-color: #e4e6ec; }
   .ins-select-wrap.activated label {
-    color: #1e86e3; }
+    color: var(--ins-color-primary); }
   .ins-select-wrap.activated.no-options .ins-select-value-wrap {
-    border-bottom-color: #1e86e3;
-    border-radius: 4px; }
+    border-bottom-color: var(--ins-color-primary);
+    border-radius: var(--ins-border-radius); }
   .ins-select-wrap.activated.no-options .ins-select-options-wrap {
     display: none; }
   .ins-select-wrap.activated .ins-select-value-wrap {
-    color: #2C3148;
-    border-color: #1e86e3;
+    color: var(--ins-color-ink);
+    border-color: var(--ins-color-blue);
     border-bottom-color: transparent;
     border-radius: 4px 4px 0px 0px; }
   .ins-select-wrap.activated:not(.no-options) .ins-select-options-wrap {
-    background-color: #fff;
-    border-color: #1e86e3;
+    background-color: var(--ins-bg-color);
+    border-color: var(--ins-color-blue);
     overflow: auto;
     z-index: 999;
     max-height: 300px;
     margin-top: -1px;
     margin-top: 38px; }
   .ins-select-wrap.activated.drop-up .ins-select-value-wrap {
-    border-bottom-color: #1e86e3;
+    border-bottom-color: var(--ins-color-primary);
     border-radius: 0px 0px 4px 4px;
     border-top-color: transparent; }
   .ins-select-wrap.activated.drop-up:not(.no-options) .ins-select-options-wrap {
@@ -2400,32 +2320,32 @@ ins-input-multiple .ins-input-multiple {
     bottom: calc(100% - 20px);
     border-radius: 4px 4px 0px 0px;
     border-bottom-color: transparent !important;
-    border-top: solid 1px #e4e6ec; }
+    border-top: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color); }
   .ins-select-wrap.is-invalid label {
-    color: #F27474; }
+    color: var(--ins-color-negative); }
   .ins-select-wrap.is-invalid .ins-form-error {
     display: block;
     font-size: 12px;
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--ins-font-family);
     line-height: 16px;
-    color: #F27474;
+    color: var(--ins-color-negative);
     margin-bottom: 20px;
     margin-top: 8px;
     height: 16px !important; }
   .ins-select-wrap.is-invalid .ins-select-value-wrap {
-    border-color: #F27474;
-    color: #F27474;
-    background-color: #FEF8F8; }
+    border-color: var(--ins-color-negative);
+    color: var(--ins-color-negative);
+    background-color: var(--ins-color-red-10p); }
   .ins-select-wrap.is-invalid .ins-select-value-input {
-    background-color: #FEF8F8; }
+    background-color: var(--ins-color-red-10p); }
   .ins-select-wrap.is-invalid.activated .ins-select-options-wrap {
     top: calc(100% - 24px);
-    border-color: #F27474; }
+    border-color: var(--ins-color-negative); }
 
 .ins-select-wrap.buttonise {
   display: inline-block;
-  background: #e4e6ec;
-  border-radius: 4px;
+  background: var(--ins-bg-color2);
+  border-radius: var(--ins-border-radius);
   position: relative; }
   .ins-select-wrap.buttonise .ins-select-label-wrap {
     margin-bottom: 0;
@@ -2438,7 +2358,7 @@ ins-input-multiple .ins-input-multiple {
     .ins-select-wrap.buttonise .ins-select-label-wrap.ripple {
       background-position: center;
       transition: background 0.8s;
-      border-radius: 4px; }
+      border-radius: var(--ins-border-radius); }
       .ins-select-wrap.buttonise .ins-select-label-wrap.ripple:hover {
         background: #e4e6ec radial-gradient(circle, transparent 1%, #e4e6ec 1%) center/15000%; }
       .ins-select-wrap.buttonise .ins-select-label-wrap.ripple:active {
@@ -2451,7 +2371,7 @@ ins-input-multiple .ins-input-multiple {
       margin-left: 5px;
       padding-right: 24px; }
     .ins-select-wrap.buttonise .ins-select-label-wrap i.icon-caret-down {
-      color: #8c94a4;
+      color: var(--ins-color-ink40);
       font-size: 14px;
       line-height: 5px;
       width: 10px;
@@ -2478,32 +2398,32 @@ ins-input-multiple .ins-input-multiple {
     width: 100%;
     left: 0;
     border: solid 1px transparent;
-    border-radius: 4px;
+    border-radius: var(--ins-border-radius);
     box-shadow: 0px 0px 0px transparent;
     transition: height 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     overflow: hidden; }
   .ins-select-wrap.buttonise .ins-select-options-searchbar {
     position: relative;
     padding: 14px;
-    border-bottom: solid 1px #e4e6ec;
-    background-color: #fff; }
+    border-bottom: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
+    background-color: var(--ins-bg-color); }
     .ins-select-wrap.buttonise .ins-select-options-searchbar .ins-select-value-input {
-      border: solid 1px #e4e6ec;
+      border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
       padding: 10px 12px; }
     .ins-select-wrap.buttonise .ins-select-options-searchbar .icon-search {
       position: absolute;
       right: 24px;
       top: calc(50% - 8px);
-      color: #8c94a4; }
+      color: var(--ins-color-ink40); }
   .ins-select-wrap.buttonise .no-result-text {
     margin-top: 16px; }
   .ins-select-wrap.buttonise.activated .ins-select-label-wrap {
-    color: #2C3148; }
+    color: var(--ins-color-ink); }
   .ins-select-wrap.buttonise.activated .ins-select-options-wrap {
     opacity: 1;
-    background-color: #fff;
-    border-color: #e4e6ec;
-    box-shadow: 1px 1px 3px #E4E6ED;
+    background-color: var(--ins-bg-color);
+    border-color: var(--ins-color-ink10);
+    box-shadow: var(--ins-shadow-x) var(--ins-shadow-y) var(--ins-shadow-blur) var(--ins-shadow-color);
     margin-top: 0; }
   .ins-select-wrap.buttonise.activated.drop-up .ins-select-options-wrap {
     top: inherit;
@@ -2519,7 +2439,7 @@ ins-input-multiple .ins-input-multiple {
 .ins-select-wrap.buttonise {
   display: inline-block;
   background: #E4E6EC;
-  border-radius: 4px;
+  border-radius: var(--ins-border-radius);
   position: relative; }
   .ins-select-wrap.buttonise:before {
     content: '';
@@ -2527,7 +2447,7 @@ ins-input-multiple .ins-input-multiple {
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 5px solid #8c94a4;
+    border-top: 5px solid var(--ins-color-ink40);
     display: block;
     position: absolute;
     right: 8px;
@@ -2562,28 +2482,28 @@ ins-input-multiple .ins-input-multiple {
     width: 100%;
     left: 0;
     border: solid 1px transparent;
-    border-radius: 4px;
+    border-radius: var(--ins-border-radius);
     box-shadow: 0px 0px 0px transparent;
     transition: height 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     overflow: hidden; }
   .ins-select-wrap.buttonise .ins-select-options-searchbar {
     position: relative;
     padding: 14px;
-    border-bottom: solid 1px #E4E6EC;
-    background-color: #fff; }
+    border-bottom: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
+    background-color: var(--ins-bg-color); }
     .ins-select-wrap.buttonise .ins-select-options-searchbar i {
       font-size: 14px;
       position: absolute;
       right: 24px;
       top: calc(50% - 8px);
-      color: #8c94a4; }
+      color: var(--ins-color-ink40); }
   .ins-select-wrap.buttonise.activated .ins-select-label-wrap {
-    color: #2c3148; }
+    color: var(--ins-color-ink); }
   .ins-select-wrap.buttonise.activated .ins-select-options-wrap {
     opacity: 1;
-    background-color: #fff;
-    border-color: #E4E6EC;
-    box-shadow: 1px 1px 3px #E4E6EC; }
+    background-color: var(--ins-bg-color);
+    border-color: var(--ins-color-ink10);
+    box-shadow: var(--ins-shadow-x) var(--ins-shadow-y) var(--ins-shadow-blur) #E4E6EC; }
   .ins-select-wrap.buttonise.activated.drop-up .ins-select-options-wrap {
     top: inherit;
     bottom: calc(100% + 8px); }
@@ -2599,24 +2519,24 @@ ins-input-multiple .ins-input-multiple {
 
 .ins-select-option-wrap {
   opacity: 0;
-  background-color: #fff;
-  font-family: 'Open Sans', sans-serif;
+  background-color: var(--ins-bg-color);
+  font-family: var(--ins-font-family);
   font-size: .875rem;
   padding: 12px 10px;
-  color: #8C94A4;
+  color: var(--ins-color-ink40);
   cursor: pointer; }
   .ins-select-option-wrap:hover {
-    color: #2C3148;
-    background-color: #E4E6EC; }
+    color: var(--ins-color-ink);
+    background-color: var(--ins-bg-color2); }
   .ins-select-option-wrap.selected {
-    color: #2C3148;
-    background-color: #FAFBFC;
+    color: var(--ins-color-ink);
+    background-color: var(--ins-bg-color5);
     display: none; }
   .ins-select-option-wrap.disabled {
     color: #e4e6ec;
     cursor: initial; }
   .ins-select-option-wrap.disabled:hover {
-    background-color: #fff; }
+    background-color: var(--ins-bg-color); }
   .ins-select-option-wrap.hidden {
     display: none; }
 
@@ -2626,11 +2546,11 @@ ins-input-multiple .ins-input-multiple {
 .ins-select-group {
   margin-bottom: 20px; }
   .ins-select-group_label {
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--ins-font-family);
     font-size: .875rem;
     padding: 12px 10px;
-    background-color: #f2f4f8;
-    color: #2c3148; }
+    background-color: var(--ins-bg-color4);
+    color: var(--ins-color-ink); }
   .ins-select-group_options .ins-select-option-wrap {
     padding-left: 30px; }
 
@@ -2649,11 +2569,11 @@ ins-radio .ins-radio-checkbox {
     display: inline-block; }
     ins-checkbox .ins-radio-checkbox label span,
     ins-radio .ins-radio-checkbox label span {
-      font-family: "Open Sans", sans-serif;
+      font-family: var(--ins-font-family);
       font-size: 14px;
       font-weight: 400;
       line-height: 1.8;
-      color: #8c94a4;
+      color: var(--ins-color-ink40);
       display: inline-block;
       vertical-align: top !important;
       margin-top: -2px;
@@ -2671,9 +2591,9 @@ ins-radio .ins-radio-checkbox {
     position: relative;
     width: 16px;
     height: 16px;
-    background: #E4E6EC;
+    background: var(--ins-bg-color2);
     border: none;
-    color: #fff;
+    color: var(--ins-color-white);
     cursor: pointer;
     display: inline-block;
     outline: none;
@@ -2681,14 +2601,14 @@ ins-radio .ins-radio-checkbox {
     border-radius: 1px; }
     ins-checkbox .ins-radio-checkbox .ripple-check:hover,
     ins-radio .ins-radio-checkbox .ripple-check:hover {
-      background: #8c94a4; }
+      background: var(--ins-bg-color3); }
       @media only screen and (max-width: 425px) {
         ins-checkbox .ins-radio-checkbox .ripple-check:hover,
         ins-radio .ins-radio-checkbox .ripple-check:hover {
           background: #E4E6EC; } }
     ins-checkbox .ins-radio-checkbox .ripple-check:checked,
     ins-radio .ins-radio-checkbox .ripple-check:checked {
-      background: #1e86e3; }
+      background: var(--ins-color-primary); }
     ins-checkbox .ins-radio-checkbox .ripple-check:checked::before,
     ins-radio .ins-radio-checkbox .ripple-check:checked::before {
       width: 16px;
@@ -2788,7 +2708,7 @@ ins-toggle-switch .v-switch {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #E4E6EC;
+    background-color: var(--ins-bg-color2);
     -webkit-transition: 0.4s;
     transition: 0.4s;
     margin: 0;
@@ -2796,8 +2716,9 @@ ins-toggle-switch .v-switch {
     width: 40px; }
   ins-toggle-switch .v-switch .ins-slider:hover > i:before {
     -webkit-transition: 0.4s;
+    transition: 0.4s;
     content: "";
-    border: solid 9px #E4E6EC !important;
+    border: solid 9px var(--ins-color-ink10) !important;
     height: 38px;
     width: 38px;
     position: absolute;
@@ -2812,38 +2733,38 @@ ins-toggle-switch .v-switch {
     height: 20px;
     width: 20px;
     bottom: -2px;
-    background-color: #fff;
+    background-color: var(--ins-bg-color);
     -webkit-transition: 0.4s;
     transition: 0.4s;
     box-shadow: 0 0 1px #b6b6b9;
     box-sizing: border-box; }
   ins-toggle-switch .v-switch input:checked + .ins-slider {
-    background: #e6f1fc; }
+    background: var(--ins-color-blue-20p); }
   ins-toggle-switch .v-switch input:focus + .ins-slider {
-    box-shadow: 0 0 1px #1e86e3; }
+    box-shadow: 0 0 1px var(--ins-color-blue); }
   ins-toggle-switch .v-switch input:checked + .ins-slider:before,
   ins-toggle-switch .v-switch input:checked + .ins-slider > i:before {
     -webkit-transform: translateX(20px);
     -ms-transform: translateX(20px);
     transform: translateX(20px);
-    background-color: #1e86e3;
+    background-color: var(--ins-color-blue);
     border: none; }
   ins-toggle-switch .v-switch input:checked + .ins-slider > i:before {
-    border: solid 10px #1e86e3 !important;
+    border: solid 10px var(--ins-color-blue) !important;
     opacity: .1 !important; }
   ins-toggle-switch .v-switch .ins-slider.round {
     border-radius: 34px; }
   ins-toggle-switch .v-switch .ins-slider.round:before {
     border-radius: 50%;
-    border: solid 1px #E4E6EC; }
+    border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color); }
   ins-toggle-switch .v-switch .ins-label {
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--ins-font-family);
     font-size: 14px;
     font-weight: 400;
     display: block;
     padding-left: 52px;
     margin-top: -5px;
-    color: #8c94a4; }
+    color: var(--ins-color-ink40); }
   ins-toggle-switch .v-switch.disabled input:checked + .ins-slider:hover > i:before {
     border-color: transparent !important;
     background: transparent; }
@@ -3571,8 +3492,8 @@ ins-datepicker .ins-datepicker-wrap {
   ins-datepicker .ins-datepicker-wrap .flatpickr-calendar {
     border-radius: 0;
     margin-top: 4px;
-    background-color: #fff;
-    font-family: Arial,Helvetica,sans-serif;
+    background-color: var(--ins-bg-color);
+    font-family: var(--ins-font-family);
     font-size: 12px;
     font-weight: 400;
     -webkit-box-shadow: 0 2px 4px 0 rgba(15, 21, 38, 0.14), 1px 1px 3px 0 rgba(140, 148, 164, 0.2);
@@ -3589,7 +3510,7 @@ ins-datepicker .ins-datepicker-wrap {
     ins-datepicker .ins-datepicker-wrap .flatpickr-calendar.noCalendar.showTimeInput.hasTime {
       padding: 7px;
       width: auto;
-      border-radius: 4px; }
+      border-radius: var(--ins-border-radius); }
       ins-date-time .ins-date-time-wrap .flatpickr-calendar.noCalendar.showTimeInput.hasTime .flatpickr-time,
       ins-date-time .ins-datepicker-wrap .flatpickr-calendar.noCalendar.showTimeInput.hasTime .flatpickr-time,
       ins-timepicker .ins-date-time-wrap .flatpickr-calendar.noCalendar.showTimeInput.hasTime .flatpickr-time,
@@ -3617,8 +3538,8 @@ ins-datepicker .ins-datepicker-wrap {
     ins-timepicker .ins-datepicker-wrap .flatpickr-calendar .flatpickr-months,
     ins-datepicker .ins-date-time-wrap .flatpickr-calendar .flatpickr-months,
     ins-datepicker .ins-datepicker-wrap .flatpickr-calendar .flatpickr-months {
-      background: #fafbfc;
-      color: #2C3148;
+      background: var(--ins-bg-color5);
+      color: var(--ins-color-ink);
       padding: 4px;
       position: relative;
       padding-top: 6px; }
@@ -3649,8 +3570,8 @@ ins-datepicker .ins-datepicker-wrap {
         ins-datepicker .ins-datepicker-wrap .flatpickr-calendar .flatpickr-months .flatpickr-next-month:before {
           content: " ";
           display: block;
-          border-left: 2px solid #8C94A4;
-          border-top: 2px solid #8C94A4;
+          border-left: 2px solid var(--ins-bg-color3);
+          border-top: 2px solid var(--ins-bg-color3);
           -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
           cursor: pointer;
@@ -3706,7 +3627,8 @@ ins-datepicker .ins-datepicker-wrap {
         ins-timepicker .ins-datepicker-wrap .flatpickr-calendar .flatpickr-months .flatpickr-current-month select,
         ins-datepicker .ins-date-time-wrap .flatpickr-calendar .flatpickr-months .flatpickr-current-month select,
         ins-datepicker .ins-datepicker-wrap .flatpickr-calendar .flatpickr-months .flatpickr-current-month select {
-          background-color: #fff;
+          background-color: var(--ins-bg-color);
+          border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
           font-size: 14px;
           box-shadow: none;
           outline: none;
@@ -3716,7 +3638,6 @@ ins-datepicker .ins-datepicker-wrap {
           padding: 5px;
           width: auto;
           height: auto;
-          border: 1px solid #E4E6EC;
           margin-right: 5px;
           border-radius: 3px; }
         ins-date-time .ins-date-time-wrap .flatpickr-calendar .flatpickr-months .flatpickr-current-month .numInputWrapper,
@@ -3746,13 +3667,13 @@ ins-datepicker .ins-datepicker-wrap {
           ins-timepicker .ins-datepicker-wrap .flatpickr-calendar .flatpickr-months .flatpickr-current-month .numInputWrapper input,
           ins-datepicker .ins-date-time-wrap .flatpickr-calendar .flatpickr-months .flatpickr-current-month .numInputWrapper input,
           ins-datepicker .ins-datepicker-wrap .flatpickr-calendar .flatpickr-months .flatpickr-current-month .numInputWrapper input {
-            background-color: #fff;
+            background-color: var(--ins-bg-color);
+            border-radius: var(--ins-border-radius);
+            border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
             font-size: 14px;
             padding: 4px 12px 4px 6px;
             box-shadow: none;
-            border: 1px solid #E4E6EC;
-            box-sizing: border-box;
-            border-radius: 4px; }
+            box-sizing: border-box; }
     ins-date-time .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer,
     ins-date-time .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer,
     ins-timepicker .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer,
@@ -3773,7 +3694,7 @@ ins-datepicker .ins-datepicker-wrap {
       ins-datepicker .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-weekdays,
       ins-datepicker .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .dayContainer {
         padding: 0 7px;
-        background-color: #fafbfc;
+        background-color: var(--ins-bg-color5);
         height: auto; }
       ins-date-time .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-weekdaycontainer,
       ins-date-time .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-weekdaycontainer,
@@ -3782,7 +3703,7 @@ ins-datepicker .ins-datepicker-wrap {
       ins-datepicker .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-weekdaycontainer,
       ins-datepicker .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-weekdaycontainer {
         padding: 10px 0;
-        border-bottom: 1px solid #e4e6ec; }
+        border-bottom: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color); }
       ins-date-time .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-weekday,
       ins-date-time .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-weekday,
       ins-timepicker .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-weekday,
@@ -3791,7 +3712,7 @@ ins-datepicker .ins-datepicker-wrap {
       ins-datepicker .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-weekday {
         font-size: 12px;
         font-weight: 400;
-        color: #8c94a4; }
+        color: var(--ins-color-ink40); }
       ins-date-time .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-days,
       ins-date-time .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-days,
       ins-timepicker .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-days,
@@ -3808,7 +3729,7 @@ ins-datepicker .ins-datepicker-wrap {
         border-radius: 0;
         line-height: 30px;
         height: 32px;
-        color: #2C3148; }
+        color: var(--ins-color-ink); }
         ins-date-time .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.prevMonthDay, ins-date-time .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.nextMonthDay,
         ins-date-time .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.prevMonthDay,
         ins-date-time .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.nextMonthDay,
@@ -3820,7 +3741,7 @@ ins-datepicker .ins-datepicker-wrap {
         ins-datepicker .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.nextMonthDay,
         ins-datepicker .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.prevMonthDay,
         ins-datepicker .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.nextMonthDay {
-          color: #e4e6ec; }
+          color: var(--ins-color-ink10); }
       ins-date-time .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.today,
       ins-date-time .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.today,
       ins-timepicker .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.today,
@@ -3834,9 +3755,9 @@ ins-datepicker .ins-datepicker-wrap {
       ins-timepicker .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.selected,
       ins-datepicker .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.selected,
       ins-datepicker .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.selected {
-        border: 1px solid #1f86e3;
-        background: #1f86e3;
-        color: #fff; }
+        color: var(--ins-color-white);
+        background: var(--ins-color-blue);
+        border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-blue); }
   ins-date-time .ins-date-time-wrap .flatpickr-calendar.arrowTop:before,
   ins-date-time .ins-date-time-wrap .flatpickr-calendar.arrowTop:after,
   ins-date-time .ins-datepicker-wrap .flatpickr-calendar.arrowTop:before,
@@ -3857,7 +3778,7 @@ ins-datepicker .ins-datepicker-wrap {
   ins-datepicker .ins-date-time-wrap .flatpickr-calendar.showTimeInput.hasTime .flatpickr-time,
   ins-datepicker .ins-datepicker-wrap .flatpickr-calendar.showTimeInput.hasTime .flatpickr-time {
     height: auto;
-    border-top: 1px solid #e4e6ec;
+    border-top: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
     display: block;
     padding-top: 5px; }
     ins-date-time .ins-date-time-wrap .flatpickr-calendar.showTimeInput.hasTime .flatpickr-time .numInputWrapper,
@@ -3877,17 +3798,17 @@ ins-datepicker .ins-datepicker-wrap {
       ins-timepicker .ins-datepicker-wrap .flatpickr-calendar.showTimeInput.hasTime .flatpickr-time .numInputWrapper input,
       ins-datepicker .ins-date-time-wrap .flatpickr-calendar.showTimeInput.hasTime .flatpickr-time .numInputWrapper input,
       ins-datepicker .ins-datepicker-wrap .flatpickr-calendar.showTimeInput.hasTime .flatpickr-time .numInputWrapper input {
+        color: var(--ins-bg-ink);
+        background-color: var(--ins-bg-color);
+        border-radius: var(--ins-border-radius);
+        border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
         padding: 0 17px 0 5px;
         box-sizing: border-box;
         display: block;
         text-align: left;
-        border: 1px solid #E4E6EC;
-        border-radius: 4px;
         height: 26px;
         font-weight: 400;
         font-size: 14px;
-        color: #2C3148;
-        background-color: #fff;
         box-shadow: none;
         box-sizing: border-box; }
     ins-date-time .ins-date-time-wrap .flatpickr-calendar.showTimeInput.hasTime .flatpickr-time .flatpickr-time-separator,
@@ -3906,7 +3827,7 @@ ins-datepicker .ins-datepicker-wrap {
       width: auto;
       height: auto;
       display: inline-block;
-      color: #2C3148; }
+      color: var(--ins-bg-ink); }
     ins-date-time .ins-date-time-wrap .flatpickr-calendar.showTimeInput.hasTime .flatpickr-time .flatpickr-am-pm,
     ins-date-time .ins-datepicker-wrap .flatpickr-calendar.showTimeInput.hasTime .flatpickr-time .flatpickr-am-pm,
     ins-timepicker .ins-date-time-wrap .flatpickr-calendar.showTimeInput.hasTime .flatpickr-time .flatpickr-am-pm,
@@ -3943,23 +3864,23 @@ ins-datepicker .ins-datepicker-wrap {
   .ins-input-tel-wrap .iti .iti__flag-container .iti__selected-flag {
     min-height: 41px;
     font-size: 14px;
-    background: #fff;
-    border: solid 1px #E4E6EC;
+    border-radius: var(--ins-border-radius);
+    background: var(--ins-bg-color);
+    border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
     height: auto;
     padding: 8px 6px;
-    border-radius: 4px;
     outline: none;
     width: 94px !important;
-    -webkit-transition: border-color .25s ease-in-out,-webkit-box-shadow .5s;
-    transition: border-color .25s ease-in-out,-webkit-box-shadow .5s;
-    transition: box-shadow .5s,border-color .25s ease-in-out; }
+    -webkit-transition: var(--ins-border-color) 0.25s ease-in-out, -webkit-box-shadow 0.5s;
+    transition: var(--ins-border-color) 0.25s ease-in-out, -webkit-box-shadow 0.5s;
+    transition: box-shadow 0.5s, var(--ins-border-color) 0.25s ease-in-out; }
     .ins-input-tel-wrap .iti .iti__flag-container .iti__selected-flag:hover {
-      border-color: #8c94a4; }
+      border-color: var(--ins-color-ink40); }
     .ins-input-tel-wrap .iti .iti__flag-container .iti__selected-flag:focus {
-      border-color: #1e86e3;
+      border-color: var(--ins-color-blue);
       box-shadow: none; }
   .ins-input-tel-wrap .iti .iti__flag-container:hover .selected-flag {
-    background-color: #fff; }
+    background-color: var(--ins-bg-color); }
 
 .ins-input-tel-wrap .iti .selected-dial-code {
   padding-left: 25px; }
@@ -3968,12 +3889,12 @@ ins-datepicker .ins-datepicker-wrap {
   font-size: 14px;
   margin-left: 0;
   margin-top: 6px;
-  border-radius: 4px;
-  border-color: #E4E6EC; }
+  border-radius: var(--ins-border-radius);
+  border-color: var(--ins-color-ink10); }
   .ins-input-tel-wrap .iti .iti__country-list .iti__divider {
     padding: 0;
     margin: 0;
-    border-color: #eee; }
+    border-color: var(--ins-border-color); }
   .ins-input-tel-wrap .iti .iti__country-list .iti__country {
     line-height: 1.6; }
 
@@ -3985,17 +3906,17 @@ ins-datepicker .ins-datepicker-wrap {
   .ins-input-tel-wrap .col-container.column-3 {
     width: calc(100% - 162px); }
   .ins-input-tel-wrap .col-container .iti-arrow {
-    border-top: 4px solid #E4E6EC !important; }
+    border-top: 4px solid var(--ins-color-ink10) !important; }
 
 .ins-input-tel-wrap .icon-caret-down {
-  color: #8c94a4;
+  color: var(--ins-color-ink40);
   font-size: 16px;
   position: absolute;
   top: calc(50% - 8px);
   right: 10px; }
 
 .ins-input-tel-wrap.read-only .intl-tel-input.separate-dial-code.allow-dropdown.iti-sdc-3 .selected-flag {
-  background-color: #fafbfc;
+  background-color: var(--ins-bg-color5);
   cursor: not-allowed; }
 
 .ins-input-tel-wrap.no-areacode .column-2 {
@@ -4025,12 +3946,12 @@ ins-datepicker .ins-datepicker-wrap {
   padding: 20px;
   box-sizing: border-box;
   position: relative;
-  background: #fff;
+  background: var(--ins-bg-color);
   -webkit-transition: all .15s;
   transition: all .15s;
   -webkit-box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.1);
-  color: #2c3148; }
+  color: var(--ins-color-ink); }
   .ins-credit-card-main-wrap .close-btn {
     position: absolute;
     right: 20px;
@@ -4038,16 +3959,16 @@ ins-datepicker .ins-datepicker-wrap {
     font-size: 20px;
     cursor: pointer; }
     .ins-credit-card-main-wrap .close-btn:hover {
-      color: #f27474; }
+      color: var(--ins-color-red); }
   .ins-credit-card-main-wrap.active {
     background: linear-gradient(292.96deg, #2D9CDB 6.72%, #56CCF2 91.78%);
-    color: #fff; }
+    color: var(--ins-color-white); }
     .ins-credit-card-main-wrap.active .ins-credit-card-wrap_expired {
-      color: #fff; }
+      color: var(--ins-color-white); }
     .ins-credit-card-main-wrap.active .close-btn {
-      color: #E4E6EC; }
+      color: var(--ins-color-ink10); }
       .ins-credit-card-main-wrap.active .close-btn:hover {
-        color: #fff; }
+        color: var(--ins-color-white); }
 
 .ins-credit-card-wrap_brand {
   width: 70px; }
@@ -4059,18 +3980,18 @@ ins-datepicker .ins-datepicker-wrap {
   bottom: 40%; }
 
 .ins-credit-card-wrap_expired {
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--ins-font-family);
+  color: var(--ins-color-red);
   position: absolute;
   bottom: 20px;
-  right: 20px;
-  color: #f27474; }
+  right: 20px; }
 
 .ins-checkbox-card-wrap {
   position: relative;
-  background: #fff;
-  border-radius: 4px;
-  border: solid 1px #E4E6EC;
-  box-shadow: 1px 1px 3px #E4E6EC;
+  background: var(--ins-bg-color);
+  border-radius: var(--ins-border-radius);
+  border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
+  box-shadow: var(--ins-shadow-x) var(--ins-shadow-y) var(--ins-shadow-blur) var(--ins-shadow-color);
   box-sizing: border-box;
   margin-top: 0;
   transition: all .15s;
@@ -4078,10 +3999,10 @@ ins-datepicker .ins-datepicker-wrap {
   box-shadow: none;
   cursor: pointer; }
   .ins-checkbox-card-wrap:hover {
-    box-shadow: 0px 4px 13px #E4E6EC; }
+    box-shadow: 0px 4px 13px var(--ins-shadow-color); }
   .ins-checkbox-card-wrap:focus {
     margin-top: -3px;
-    box-shadow: 0px 4px 13px #E4E6EC;
+    box-shadow: 0px 4px 13px var(--ins-shadow-color);
     outline: none; }
   .ins-checkbox-card-wrap.outlined {
     border-style: dashed;
@@ -4098,68 +4019,68 @@ ins-datepicker .ins-datepicker-wrap {
 
 .ins-checkbox-card-wrap.selected {
   margin-top: -3px;
-  box-shadow: 0px 4px 13px #E4E6EC; }
+  box-shadow: 0px 4px 13px var(--ins-shadow-color); }
   .ins-checkbox-card-wrap.selected .selected-wrap {
     position: absolute;
     right: -10px;
     top: -10px;
     width: 28px;
     height: 28px;
-    background-color: #E4E6EC;
-    color: #fff;
+    background-color: var(--ins-bg-color2);
+    color: var(--ins-color-white);
     border-radius: 50%;
     font-size: 16px;
     padding-top: 6px;
     text-align: center;
     box-sizing: border-box; }
   .ins-checkbox-card-wrap.selected.ink {
-    border-color: #2c3148; }
+    border-color: var(--ins-color-ink); }
     .ins-checkbox-card-wrap.selected.ink .selected-wrap {
-      background-color: #2c3148; }
+      background-color: var(--ins-color-ink); }
   .ins-checkbox-card-wrap.selected.blue {
-    border-color: #1e86e3; }
+    border-color: var(--ins-color-blue); }
     .ins-checkbox-card-wrap.selected.blue .selected-wrap {
-      background-color: #1e86e3; }
+      background-color: var(--ins-color-blue); }
   .ins-checkbox-card-wrap.selected.ink5 {
-    border-color: #f2f4f8; }
+    border-color: var(--ins-color-ink5); }
     .ins-checkbox-card-wrap.selected.ink5 .selected-wrap {
-      background-color: #f2f4f8; }
+      background-color: var(--ins-color-ink5); }
   .ins-checkbox-card-wrap.selected.ink1 {
-    border-color: #ffffff; }
+    border-color: var(--ins-color-ink1); }
     .ins-checkbox-card-wrap.selected.ink1 .selected-wrap {
-      background-color: #ffffff; }
+      background-color: var(--ins-color-ink1); }
   .ins-checkbox-card-wrap.selected.ink10 {
-    border-color: #E4E6EC; }
+    border-color: var(--ins-color-ink10); }
     .ins-checkbox-card-wrap.selected.ink10 .selected-wrap {
-      background-color: #E4E6EC; }
+      background-color: var(--ins-color-ink10); }
   .ins-checkbox-card-wrap.selected.ink40 {
-    border-color: #8c94a4; }
+    border-color: var(--ins-color-ink40); }
     .ins-checkbox-card-wrap.selected.ink40 .selected-wrap {
-      background-color: #8c94a4; }
+      background-color: var(--ins-color-ink40); }
   .ins-checkbox-card-wrap.selected.warning {
-    border-color: #ffa639; }
+    border-color: var(--ins-color-warning); }
     .ins-checkbox-card-wrap.selected.warning .selected-wrap {
-      background-color: #ffa639; }
+      background-color: var(--ins-color-warning); }
   .ins-checkbox-card-wrap.selected.negative {
-    border-color: #f27474; }
+    border-color: var(--ins-color-negative); }
     .ins-checkbox-card-wrap.selected.negative .selected-wrap {
-      background-color: #f27474; }
+      background-color: var(--ins-color-negative); }
   .ins-checkbox-card-wrap.selected.turquoise {
-    border-color: #2bbad9; }
+    border-color: var(--ins-color-turquoise); }
     .ins-checkbox-card-wrap.selected.turquoise .selected-wrap {
-      background-color: #2bbad9; }
+      background-color: var(--ins-color-turquoise); }
   .ins-checkbox-card-wrap.selected.information1 {
-    border-color: #ff3366; }
+    border-color: var(--ins-color-information1); }
     .ins-checkbox-card-wrap.selected.information1 .selected-wrap {
-      background-color: #ff3366; }
+      background-color: var(--ins-color-information1); }
   .ins-checkbox-card-wrap.selected.information2 {
-    border-color: #fdd835; }
+    border-color: var(--ins-color-information2); }
     .ins-checkbox-card-wrap.selected.information2 .selected-wrap {
-      background-color: #fdd835; }
+      background-color: var(--ins-color-information2); }
   .ins-checkbox-card-wrap.selected.green, .ins-checkbox-card-wrap.selected.positive {
-    border-color: #24be8d; }
+    border-color: var(--ins-color-green); }
     .ins-checkbox-card-wrap.selected.green .selected-wrap, .ins-checkbox-card-wrap.selected.positive .selected-wrap {
-      background-color: #24be8d; }
+      background-color: var(--ins-color-green); }
 
 .image-picker .img-placeholder span, .image-picker .img-container img, .image-picker.rectangle .img-preview-holder .texts_image, .image-picker.rectangle .img-container img, .image-picker.square .img-preview-holder .texts_image, .image-picker.square .img-container img, ins-editor .redactor-toolbar .re-button-icon i, ins-editor .redactor-toolbar .re-fullscreen i {
   position: absolute;
@@ -4179,30 +4100,30 @@ ins-datepicker .ins-datepicker-wrap {
     background: rgba(255, 255, 255, 0.9); }
 
 .ins-card-wrap {
-  border: 1px solid #E4E6EC;
+  border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
   border-radius: 3px;
   margin-top: 0;
-  box-shadow: 1px 1px 3px #E4E6EC;
-  background: #fff;
+  box-shadow: var(--ins-shadow-x) var(--ins-shadow-y) var(--ins-shadow-blur) var(--ins-shadow-color);
+  background: var(--ins-color-bg);
   transition: all .15s;
   padding: 20px; }
   .ins-card-wrap:hover {
     margin-top: -3px;
-    box-shadow: 0px 4px 13px #E4E6EC; }
+    box-shadow: 0px 4px 13px var(--ins-shadow-color); }
   .ins-card-wrap.outlined {
     border-style: dashed;
     box-shadow: none; }
 
 .ins-card-wrap.steady:hover {
   margin-top: 0px;
-  box-shadow: 1px 1px 3px #E4E6EC; }
+  box-shadow: var(--ins-shadow-x) var(--ins-shadow-y) var(--ins-shadow-blur) var(--ins-shadow-color); }
 
 .ins-card-wrap.no-padding {
   padding: 0; }
 
 .image-picker {
   margin-bottom: 30px;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--ins-font-family);
   line-height: 1.4; }
   .image-picker .img-placeholder {
     margin-bottom: 0;
@@ -4225,12 +4146,12 @@ ins-datepicker .ins-datepicker-wrap {
       width: 100%;
       top: calc(50% - 16px);
       position: absolute;
-      color: #E4E6EC;
+      color: var(--ins-color-ink10);
       text-align: center;
       font-size: 32px; }
   .image-picker .img-container {
     margin: 0 20px 10px 0;
-    border: 1px solid #E4E6EC;
+    border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
     border-radius: 50%;
     position: relative;
     width: 120px;
@@ -4241,11 +4162,11 @@ ins-datepicker .ins-datepicker-wrap {
   .image-picker .profile {
     border-radius: 50%; }
   .image-picker .texts_image {
-    color: #8c94a4;
+    color: var(--ins-color-ink40);
     display: block;
     font-size: 12px; }
   .image-picker .texts_uploadinfo {
-    color: #8c94a4;
+    color: var(--ins-color-ink40);
     display: block;
     font-size: 12px;
     margin-bottom: 12px; }
@@ -4297,35 +4218,35 @@ ins-datepicker .ins-datepicker-wrap {
         position: relative; }
         .image-picker .modal .ins-card-wrap.steady .modal-header h3 {
           font-size: 18px;
-          color: #2c3148;
+          color: var(--ins-color-ink);
           margin-bottom: 20px; }
         .image-picker .modal .ins-card-wrap.steady .modal-header .icon-close-1 {
           position: absolute;
           right: 0;
           top: 0;
-          color: #8c94a4;
+          color: var(--ins-color-ink40);
           cursor: pointer; }
       .image-picker .modal .ins-card-wrap.steady .error-wrap {
         display: none;
         font-size: 12px;
-        font-family: "Open Sans",sans-serif;
+        font-family: var(--ins-font-family);
         line-height: 16px;
-        color: #f27474;
+        color: var(--ins-color-negative);
         margin-bottom: 20px;
         margin-top: 10px;
         height: auto; }
       .image-picker .modal .ins-card-wrap.steady .image-preview {
-        border: 1px dashed #E4E6EC;
+        border-radius: var(--ins-border-radius);
+        border: var(--ins-border-thickness) dashed var(--ins-border-color);
         margin: 0 0 20px;
         min-height: 200px;
         max-height: 300px;
         width: 100%;
         z-index: 1;
-        border-radius: 4px;
         text-align: center;
         position: relative; }
         .image-picker .modal .ins-card-wrap.steady .image-preview .placeholder-text {
-          color: #8c94a4;
+          color: var(--ins-color-ink40);
           font-size: 14px;
           margin-bottom: 0;
           position: absolute;
@@ -4333,12 +4254,12 @@ ins-datepicker .ins-datepicker-wrap {
           text-align: center;
           top: calc(50% - 14px); }
         .image-picker .modal .ins-card-wrap.steady .image-preview .label-content {
-          color: #8c94a4;
+          color: var(--ins-color-ink40);
           position: absolute;
           z-index: 0;
           width: 100%; }
           .image-picker .modal .ins-card-wrap.steady .image-preview .label-content h4 {
-            font-family: "Open Sans", sans-serif;
+            font-family: var(--ins-font-family);
             font-size: 16px;
             margin-top: 20px; }
           .image-picker .modal .ins-card-wrap.steady .image-preview .label-content i {
@@ -4359,9 +4280,9 @@ ins-datepicker .ins-datepicker-wrap {
     .image-picker .modal.show.has-error .ins-card-wrap .error-wrap {
       display: block; }
     .image-picker .modal.show.has-error .ins-card-wrap .placeholder-text {
-      color: #f27474; }
+      color: var(--ins-color-negative); }
     .image-picker .modal.show.has-error .ins-card-wrap .image-preview {
-      border-color: #f27474;
+      border-color: var(--ins-color-negative);
       margin-bottom: 0; }
 
 .image-picker.rectangle .img-preview-holder {
@@ -4375,7 +4296,7 @@ ins-datepicker .ins-datepicker-wrap {
 
 .image-picker.rectangle .img-container {
   border-radius: 0;
-  border: 1px solid #E4E6EC;
+  border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
   position: relative;
   width: 360px;
   height: 120px; }
@@ -4401,7 +4322,7 @@ ins-datepicker .ins-datepicker-wrap {
 .image-picker.square .img-container {
   margin-right: 20px;
   border-radius: 0;
-  border: 1px solid #E4E6EC;
+  border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
   position: relative;
   width: 120px;
   height: 120px; }
@@ -4432,16 +4353,16 @@ ins-markdown-editor .ins-markdown-editor {
   ins-markdown-editor .ins-markdown-editor label {
     font-size: 12px;
     font-weight: 600;
-    color: #2c3148;
-    font-family: "Open Sans", sans-serif;
+    color: var(--ins-color-ink);
+    font-family: var(--ins-font-family);
     margin-bottom: 2px; }
     ins-markdown-editor .ins-markdown-editor label.disabled {
-      color: #8c94a4; }
+      color: var(--ins-color-ink40); }
     ins-markdown-editor .ins-markdown-editor label.active {
-      color: #1e86e3; }
+      color: var(--ins-color-blue); }
   ins-markdown-editor .ins-markdown-editor .editor-toolbar {
     opacity: 1;
-    background: #f2f4f8;
+    background: var(--ins-bg-color4);
     padding: 16px;
     border: none; }
     ins-markdown-editor .ins-markdown-editor .editor-toolbar:hover {
@@ -4450,28 +4371,29 @@ ins-markdown-editor .ins-markdown-editor {
       z-index: 1051;
       height: 66px;
       padding: 16px;
-      background: #f2f4f8; }
-    ins-markdown-editor .ins-markdown-editor .editor-toolbar::before, ins-markdown-editor .ins-markdown-editor .editor-toolbar::after, ins-markdown-editor .ins-markdown-editor .editor-toolbar .separator {
+      background: var(--ins-bg-color4); }
+    ins-markdown-editor .ins-markdown-editor .editor-toolbar::before, ins-markdown-editor .ins-markdown-editor .editor-toolbar::after,
+    ins-markdown-editor .ins-markdown-editor .editor-toolbar .separator {
       display: none; }
     ins-markdown-editor .ins-markdown-editor .editor-toolbar a {
-      background: #E4E6EC;
+      background: var(--ins-bg-color2);
       border: none;
       margin-right: 2px;
       font-size: 14px;
-      border-radius: 4px;
+      border-radius: var(--ins-border-radius);
       color: #8c94a4 !important;
       height: 34px;
       width: 34px; }
       ins-markdown-editor .ins-markdown-editor .editor-toolbar a::before {
         line-height: 34px; }
       ins-markdown-editor .ins-markdown-editor .editor-toolbar a:hover, ins-markdown-editor .ins-markdown-editor .editor-toolbar a.active {
-        background: #1e86e3;
-        color: #fff !important; }
+        background: var(--ins-color-blue);
+        color: var(--ins-color-white) !important; }
       ins-markdown-editor .ins-markdown-editor .editor-toolbar a:focus, ins-markdown-editor .ins-markdown-editor .editor-toolbar a:active {
         outline: none; }
     ins-markdown-editor .ins-markdown-editor .editor-toolbar.disabled-for-preview a:not(.no-disable) {
       opacity: 0.4;
-      background: #E4E6EC; }
+      background: var(--ins-bg-color2); }
   ins-markdown-editor .ins-markdown-editor .CodeMirror {
     border: none; }
     ins-markdown-editor .ins-markdown-editor .CodeMirror-fullscreen {
@@ -4488,17 +4410,17 @@ ins-markdown-editor .ins-markdown-editor {
     border: 1px solid #f27474;
     border-bottom: none; }
   ins-markdown-editor .ins-markdown-editor.is-invalid .CodeMirror-wrap:not(.CodeMirror-fullscreen) {
-    border: 1px solid #f27474;
-    border-top: none; }
+    border-top: none;
+    border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-negative); }
     ins-markdown-editor .ins-markdown-editor.is-invalid .CodeMirror-wrap:not(.CodeMirror-fullscreen).CodeMirror-sided {
       border-right: none; }
   ins-markdown-editor .ins-markdown-editor.is-invalid label {
-    color: #f27474; }
+    color: var(--ins-color-negative); }
   ins-markdown-editor .ins-markdown-editor.is-invalid .ins-form-error {
     margin-top: 8px;
     display: block;
     font-size: 12px;
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--ins-font-family);
     line-height: 16px;
     color: #f27474;
     margin-bottom: 20px; }
@@ -4600,7 +4522,7 @@ ins-editor button {
   height: auto; }
 
 ins-editor {
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--ins-font-family);
   margin-bottom: 20px; }
   ins-editor .ins-editor {
     margin-bottom: 20px; }
@@ -4614,9 +4536,9 @@ ins-editor {
   ins-editor .ins-form-error {
     font-size: 12px;
     display: none;
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--ins-font-family);
     line-height: 16px;
-    color: #f27474;
+    color: var(--ins-color-red);
     margin-top: 8px;
     margin-bottom: 0; }
   ins-editor ins-button {
@@ -4633,31 +4555,31 @@ ins-editor {
     font-size: 12px;
     font-weight: 600;
     color: #2c3148;
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--ins-font-family);
     margin-bottom: 2px; }
   ins-editor .active label {
-    color: #1e86e3; }
+    color: var(--ins-color-blue); }
   ins-editor .active .redactor-box {
-    border: 1px solid #1e86e3 !important; }
+    border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-blue) !important; }
   ins-editor .has-error label {
-    color: #f27474; }
+    color: var(--ins-color-red); }
   ins-editor .has-error .redactor-box {
-    border: 1px solid #f27474 !important; }
+    border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-red) !important; }
   ins-editor .has-error .ins-form-error {
     display: block; }
   ins-editor .disabled label {
-    color: #8c94a4; }
+    color: var(--ins-color-ink40); }
   ins-editor .disabled .redactor-box {
-    border: 1px solid #8c94a4 !important; }
+    border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-ink40) !important; }
   ins-editor-dropdown a:hover, ins-editor-dropdown a:focus {
     outline: none;
-    color: #ffffff !important;
-    background-color: #1e86e3 !important; }
+    color: var(--ins-color-ink1) !important;
+    background-color: var(--ins-color-blue) !important; }
   ins-editor-dropdown a.redactor-dropdown-item-disabled {
     display: none;
     visibility: hidden; }
   ins-editor-focus.redactor-styles-on {
-    border-color: #1e86e3 !important; }
+    border-color: var(--ins-color-blue) !important; }
   ins-editor .CodeMirror-dialog input {
     font-size: 13px;
     border: none !important;
@@ -4673,7 +4595,7 @@ ins-editor {
     padding: 0;
     height: 25px; }
   ins-editor-modal-header {
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--ins-font-family);
     font-size: 18px;
     letter-spacing: 0.14px;
     line-height: 24px;
@@ -4683,16 +4605,16 @@ ins-editor {
     font-size: 14px;
     line-height: 18px; }
     ins-editor-modal-body span.error {
-      color: #f27474;
+      color: var(--ins-color-red);
       letter-spacing: 0.2px;
       display: none; }
     ins-editor-modal-body input:focus {
-      border-color: #1e86e3;
+      border-color: var(--ins-color-blue);
       box-shadow: none;
       transition: all ease-in-out .5s; }
     ins-editor-modal-body input.error {
-      border: 1px solid #f27474;
-      background-color: #fef8f8; }
+      border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-red);
+      background-color: var(--ins-bg-color5); }
       ins-editor-modal-body input.error + span.error {
         display: block; }
     ins-editor-modal-body #modal-link-url {
@@ -4705,32 +4627,32 @@ ins-editor {
     flex-wrap: nowrap;
     flex-direction: row-reverse; }
     ins-editor-modal-footer button {
-      color: #ffffff;
-      background-color: #1e86e3;
-      font-family: "Open Sans", sans-serif;
+      color: var(--ins-color-ink1);
+      background-color: var(--ins-color-blue);
+      font-family: var(--ins-font-family);
       font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
       border: none;
       letter-spacing: 1px;
-      border-radius: 4px; }
+      border-radius: var(--ins-border-radius); }
       ins-editor-modal-footer button:last-child {
         margin-right: 15px; }
       ins-editor-modal-footer button:hover, ins-editor-modal-footer button:focus {
-        background: #1a79ce;
-        color: #ffffff; }
+        background: var(--ins-color-blue2);
+        color: var(--ins-color-ink1); }
       ins-editor-modal-footer button.redactor-button-unstyled {
         float: none;
         letter-spacing: 1px;
-        border: 1px solid #1e86e3;
-        color: #1e86e3;
+        border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-blue);
+        color: var(--ins-color-blue);
         background-color: transparent; }
         ins-editor-modal-footer button.redactor-button-unstyled:hover, ins-editor-modal-footer button.redactor-button-unstyled:focus {
           text-decoration: none !important;
           text-transform: uppercase !important;
-          color: #1e86e3;
-          border: 1px solid #1e86e3;
-          background: #e6f1fc; }
+          color: var(--ins-color-blue);
+          background: var(--ins-bg-color2);
+          border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-blue); }
   ins-editor-modal .redactor-close {
     opacity: 1;
     outline: 0;
@@ -4738,12 +4660,12 @@ ins-editor {
     padding: 0 16px;
     font-size: 28px;
     font-weight: 300;
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--ins-font-family);
     color: #2c3148;
     vertical-align: text-top; }
     ins-editor-modal .redactor-close::before {
       content: '\D7';
-      font-family: "Open Sans", sans-serif;
+      font-family: var(--ins-font-family);
       font-weight: 300; }
   ins-editor .redactor-box.redactor-styles-on .redactor-toolbar {
     padding: 16px;
@@ -4754,7 +4676,7 @@ ins-editor {
     background-color: #f2f4f8; }
     ins-editor .redactor-toolbar .re-button-icon, ins-editor .redactor-toolbar .re-fullscreen {
       position: relative;
-      background-color: #E4E6EC;
+      background-color: var(--ins-color-ink1) 0;
       width: 34px;
       height: 34px;
       color: #8c94a4;
@@ -4762,8 +4684,8 @@ ins-editor {
       margin-right: 2px;
       margin-bottom: 2px; }
     ins-editor .redactor-toolbar .re-fullscreen:hover, ins-editor .redactor-toolbar .re-button-icon:hover {
-      background-color: #1e86e3;
-      color: #fff; }
+      background-color: var(--ins-color-blue);
+      color: var(--ins-color-white); }
   ins-editor .redactor-box.redactor-styles-on {
     border-color: rgba(0, 0, 0, 0.075); }
   ins-editor .CodeMirror-wrap {
@@ -4789,9 +4711,9 @@ ins-editor {
     ins-editor .CodeMirror-wrap.fullscreen-help::before {
       opacity: 1; }
   ins-editor.has-error .redactor-label {
-    color: #f27474; }
+    color: var(--ins-color-red); }
   ins-editor.has-error .redactor-box.redactor-styles-on {
-    border-color: #f27474 !important; }
+    border-color: var(--ins-color-red) !important; }
   ins-editor.has-error .CodeMirror-wrap {
     border-left: solid 1px #F27474 !important;
     border-right: solid 1px #F27474 !important;
@@ -4819,7 +4741,7 @@ ins-editor {
   ins-editor .cm-s-default .CodeMirror-linenumber {
     color: #d0d0d0; }
   ins-editor .cm-s-default .CodeMirror-cursor {
-    border-left: 1px solid #f8f8f0; }
+    border-left: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-ink5); }
   ins-editor .cm-s-default span.cm-comment {
     color: #75715e; }
   ins-editor .cm-s-default span.cm-atom {
@@ -4867,7 +4789,7 @@ ins-editor {
     background: #373831; }
   ins-editor .cm-s-default .CodeMirror-matchingbracket {
     text-decoration: underline;
-    color: white !important; }
+    color: var(--ins-color-white) !important; }
   ins-editor .CodeMirror-fullscreen {
     z-index: 32000;
     margin-bottom: 0; }
@@ -4878,7 +4800,7 @@ ins-code-editor textarea.codemirror {
 ins-code-editor .ins-form-error {
   display: none;
   font-size: 12px;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--ins-font-family);
   line-height: 16px;
   color: #F27474;
   margin-bottom: 20px; }
@@ -4887,7 +4809,7 @@ ins-code-editor label {
   font-size: 12px;
   font-weight: 600;
   color: #2c3148;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--ins-font-family);
   margin-bottom: 2px; }
   ins-code-editor label.disabled {
     color: #8c94a4; }

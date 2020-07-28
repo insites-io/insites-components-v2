@@ -8,6 +8,8 @@ import Cropper from 'cropperjs';
 export class Insimagepicker {
   @Element() insImagePickerEl: HTMLElement;
   @Event() insValueChange: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({mutable: true}) imgType: string = 'picture';
   @Prop({mutable: true}) label: string = 'CHANGE PICTURE';
@@ -33,6 +35,11 @@ export class Insimagepicker {
   componentDidLoad () {
     this.modal = this.insImagePickerEl.querySelector('.modal');
     this.hiddeninput = this.insImagePickerEl.querySelector('.hidden-input');
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insImagePickerEl);
+    }
   }
 
   displayImage(evt) {

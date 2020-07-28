@@ -7,6 +7,8 @@ export class InsInput {
   @Event() insBlur: EventEmitter;
   @Event() insIconClick: EventEmitter;
   @Event() insValueChange: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({mutable: true}) placeholder: string = "";
   @Prop({mutable: true}) value: string = "";
@@ -27,6 +29,14 @@ export class InsInput {
   @Prop({mutable: true}) readonly: boolean = false;
   @Prop({mutable: true}) hasError: boolean = false;
   @Prop({mutable: true}) activated: boolean = false;
+
+  componentDidLoad(){
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.el);
+    }
+  }
 
   onInputHandler(event){
     let x = event.which || event.keyCode;

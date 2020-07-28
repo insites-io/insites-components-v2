@@ -12,6 +12,8 @@ export class InsTable {
   @Event() insTableBulkAction: EventEmitter;
   @Event() insTableRowAction: EventEmitter;
   @Event() insFieldChange: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({ mutable: true }) noWrap: boolean = false;
   @Prop({ mutable: true }) searchPosition: string = "right";
@@ -58,6 +60,14 @@ export class InsTable {
   }
   componentWillLoad(){
     this.updatePageInfo();
+  }
+
+  componentDidLoad(){
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insTableEl);
+    }
   }
 
   componentDidUpdate(){

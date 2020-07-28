@@ -5,6 +5,10 @@ import Accordion from "../../assets/accordion/src/accordion";
 export class InsAccordion {
   @Element() insAccordionEl: HTMLElement;
   @Event() insToggle: EventEmitter;
+
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
+
   @Prop({ mutable: true }) defaultOpen: number = 0;
   @Prop({ mutable: true }) menu: boolean = false;
 
@@ -12,6 +16,12 @@ export class InsAccordion {
   componentDidLoad(){
     let nested = this.isNested();
     if (!nested) this.initAccordion();
+
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insAccordionEl);
+    }
   }
 
   componentDidUpdate(){

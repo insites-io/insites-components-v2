@@ -1,9 +1,20 @@
-import { h, Component, Prop, Method, Event, EventEmitter } from '@stencil/core';
+import { h, Component, Prop, Method, Event, EventEmitter, Element } from '@stencil/core';
 
 @Component({ tag: 'ins-breadcrumbs' })
 export class InsBreadCrumbs {
+  @Element() insBreadCrumbsEl: HTMLElement;
   @Prop({ mutable: true }) breadcrumbs: Array<any> = [];
   @Event() routePage: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
+
+  componentDidLoad(){
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insBreadCrumbsEl);
+    }
+  }
 
   routePageHandler(crumb, index){
     let count = this.breadcrumbs.length;

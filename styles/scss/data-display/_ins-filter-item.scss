@@ -1,4 +1,4 @@
-ins-filter-item { 
+ins-filter-item {
   display: inline-block;
   margin-right: 15px;
 
@@ -9,10 +9,10 @@ ins-filter-item {
     &__button {
       overflow: hidden;
       position: relative;
-      border-radius: 4px;
+      border-radius: var(--ins-border-radius);
       background-color: #e4e6ec;
       padding: 7px 7px;
-      color: #2c3148;
+      color: var(--ins-color-ink);
       cursor: default;
 
       &--text {
@@ -22,7 +22,7 @@ ins-filter-item {
         font-weight: normal;
         .fas {
           margin-left: 8px;
-          color: #8c94a4;
+          color: var(--ins-color-ink40);
           font-size: 12px;
         }
       }
@@ -30,14 +30,14 @@ ins-filter-item {
     &__options {
       font-size: 14px;
       box-shadow: 0 2px 4px 0 rgba(15, 21, 38, 0.14), 1px 1px 3px 0 rgba(140, 148, 164, 0.2);
-      border-radius: 4px;
+      border-radius: var(--ins-border-radius);
       padding: 7px 0;
       display: none;
       position: absolute;
       min-width: 240px;
       cursor: default;
       z-index: 2;
-      background-color: #fff;
+      background-color: var(--ins-bg-color);
 
       &.active {
         display: block;
@@ -45,7 +45,7 @@ ins-filter-item {
       }
 
       > div {
-        color: #8c94a4;
+        color: var(--ins-color-ink40);
         padding: 7px 15px;
         margin: 5px 0;
         cursor: pointer;
@@ -56,7 +56,7 @@ ins-filter-item {
         }
 
         &.selected {
-          color: #2c3148;
+          color: var(--ins-color-ink);
           background-color: #fafbfc;
         }
       }
@@ -82,7 +82,7 @@ ins-filter-item {
       float: right;
       margin-top: 5px;
     }
-    
+
     .filter-item__options {
       min-width: 229px;
     }

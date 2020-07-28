@@ -1,9 +1,12 @@
-import { h, Component, Prop, Event, EventEmitter, Method } from "@stencil/core";
+import { h, Component, Prop, Event, EventEmitter, Method, Element } from "@stencil/core";
 
 @Component({ tag: "ins-checkbox" })
 export class InsCheckbox {
+  @Element() insCheckboxEl: HTMLElement;
   @Event() insCheck: EventEmitter;
   @Event() insValueChange: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({mutable: true}) checked: boolean;
   @Prop({mutable: true}) disabled: boolean;
@@ -12,6 +15,14 @@ export class InsCheckbox {
   @Prop({mutable: true}) falseValue: string = "";
   @Prop({mutable: true}) label: string;
   @Prop({mutable: true}) name: string = "";
+
+  componentDidLoad(){
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insCheckboxEl);
+    }
+  }
 
   onCheckHandler(){
     this.checked = !this.checked;
