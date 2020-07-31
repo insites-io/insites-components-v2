@@ -1,1 +1,0 @@
-import{r as s,h as r}from"./p-a1ad09d7.js";class t{constructor(r){s(this,r),this.label="Options Group"}render(){return r("div",{class:"ins-select-group"},r("div",{class:"ins-select-group_label"},this.label),r("div",{class:"ins-select-group_options"},r("slot",null)))}}export{t as ins_select_group}

@@ -1,5 +1,5 @@
 {
-  "name": "insites-components-loader",
+  "name": "insites-loader",
   "typings": "./index.d.ts",
   "module": "./index.mjs",
   "main": "./index.cjs.js",
