@@ -1,9 +1,9 @@
 .ins-header-user-wrap {
   display: inline-block;
-  // margin-top: 17px;
   padding: 0 30px;
   position: relative;
   text-align: left;
+  min-height: 22px;
 
   .ins-card-wrap {
     padding: 0;
@@ -15,7 +15,7 @@
 
   .btn-nav.ins-huw-toggle {
     margin: 0;
-    padding: 10px;
+    padding: 0 10px;
     font-size: 14px;
     color: var(--ins-color-white);
     border: none;
@@ -26,7 +26,6 @@
     cursor: pointer;
     font-family: var(--ins-font-family);
     display: block;
-    height: 56px;
     opacity: 0.5;
 
     .toggle-icon {
@@ -42,9 +41,10 @@
     min-width: 174px;
     position: absolute;
     right: 26px;
-    top: 56px;
+    top: 21px;
     box-sizing: border-box;
     padding: 10px;
+    padding-top: 30px;
     display: none;
     z-index: 9999;
 

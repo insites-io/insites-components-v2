@@ -13,15 +13,17 @@
 | `activeOption` | `active-option` |             | `string`  | `""`        |
 | `color`        | `color`         |             | `string`  | `'blue'`    |
 | `disabled`     | `disabled`      |             | `boolean` | `undefined` |
+| `hasLoad`      | `has-load`      |             | `string`  | `undefined` |
 | `options`      | `options`       |             | `string`  | `""`        |
 | `size`         | `size`          |             | `string`  | `'normal'`  |
 
 
 ## Events
 
-| Event             | Description | Type               |
-| ----------------- | ----------- | ------------------ |
-| `insButtonAction` |             | `CustomEvent<any>` |
+| Event      | Description | Type               |
+| ---------- | ----------- | ------------------ |
+| `didLoad`  |             | `CustomEvent<any>` |
+| `insClick` |             | `CustomEvent<any>` |
 
 
 ## Methods

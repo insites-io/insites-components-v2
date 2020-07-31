@@ -1,0 +1,51 @@
+.ins-notifications-wrap {
+  position: fixed;
+  width: 380px;
+  right: 0;
+  height: 100vh;
+  top: 0;
+  z-index: 9999;
+  background-color: var(--ins-bg-color);
+  box-sizing: border-box;
+
+  .ins-nw-header {
+
+    padding: 22px;
+    position: relative;
+    border-bottom:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-border-color);
+
+    box-sizing: border-box;
+
+    h1 {
+      font-size: 24px;
+      font-family: var(--ins-font-family);
+      font-weight: 300;
+      margin: 0;
+      color: var(--ins-color-ink);
+    }
+
+    .ins-nwh-close {
+      position: absolute;
+      top: calc(50% - 8px);
+      right: 20px;
+      color: var(--ins-color-ink40);
+      border: none;
+      background: transparent;
+      padding: 0;
+      font-size: 16px;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+  }
+
+  .ins-nw-items-wrap {
+    padding: 20px;
+  }
+}
+
+.hide-slot {
+  display: none;
+}

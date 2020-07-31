@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Phone</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+
+  <script type="module" src="/build/insites-components.esm.js"></script>
+  <script nomodule src="/build/insites-components.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+</head>
+
+<body>
+  <!-- ins-input-tel -->
+  <div>
+    <!-- ins-input-tel header -->
+    <div>
+      <h2 class="section-title">Insites Input Telephone <code>&lt;ins-input-tel&gt;</code></h2>
+      <p>Defines an input field where user can enter phone number data.</p>
+    </div>
+
+    <!-- ins-input-tel complete example -->
+    <div>
+      <h2 class="section-title">Complete Example</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input-tel label="Phone" areacode-placeholder="Area Code" areacode-value="1300" phonenum-placeholder="Phone Number" phonenum-value="12345">
+            </ins-input-tel>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input-tel label="Phone"
+  areacode-placeholder="Area Code"
+  areacode-value="1300"
+  phonenum-placeholder="Phone Number"
+  phonenum-value="12345">
+</ins-input-tel>
+                </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/66/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ins-input-tel no-areacode example -->
+    <div>
+      <h2 class="section-title">No Area Code Example</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input-tel label="Phone" no-areacode phonenum-placeholder="Phone Number" phonenum-value="12345">
+            </ins-input-tel>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input-tel label="Phone"
+  no-areacode
+  phonenum-placeholder="Phone Number"
+  phonenum-value="12345">
+</ins-input-tel>
+                    </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/185/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ins-input-tel attribute table -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>label</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines label of input field</td>
+          </tr>
+          <tr>
+            <td>areacode-placeholder</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines the short hint that describes the expected value in the area code input field</td>
+          </tr>
+          <tr>
+            <td>areacode-value</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines the value of an area code input element</td>
+          </tr>
+          <tr>
+            <td>phonenum-placeholder</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines the short hint that describes the expected value in the phone number input field</td>
+          </tr>
+          <tr>
+            <td>phonenum-value</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines phone number value</td>
+          </tr>
+          <tr>
+            <td>country-code</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines countryCode value</td>
+          </tr>
+          <tr>
+            <td>area-code</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines name of area code input field</td>
+          </tr>
+          <tr>
+            <td>phone-number</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines name of phone number input field</td>
+          </tr>
+          <tr>
+            <td>error-message</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines the error message when input element is wrong</td>
+          </tr>
+          <tr>
+            <td>required</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Specifies that the input field must be filled out before submitting the form</td>
+          </tr>
+          <tr>
+            <td>has-error</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Specifies validation or mandatory input for the input field</td>
+          </tr>
+          <tr>
+            <td>disabled</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Disables input field</td>
+          </tr>
+          <tr>
+            <td>readonly</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Specifies that the input field is read-only</td>
+          </tr>
+          <tr>
+            <td>no-areacode</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Removes the area code field</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ins-input-tel event table -->
+    <div>
+      <h2 class="section-title">Events</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>EVENT</th>
+            <th>OBJECT</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>insInput</td>
+            <td>field, value</td>
+            <td>Returns value when an element gets user areacode or phone number input</td>
+          </tr>
+          <tr>
+            <td>insValueChange</td>
+            <td>value</td>
+            <td>Emits the value on change</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div>
+        <h2 class="section-title">Methods</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>METHOD</th>
+              <th>PARAMETERS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>getValue</td>
+              <td>None</td>
+              <td>Returns the formatted value of the field</td>
+            </tr>
+            <tr>
+              <td>getCountryData</td>
+              <td>None</td>
+              <td>Returns the data of the selected country</td>
+            </tr>
+            <tr>
+              <td>setCountryData</td>
+              <td>countryCode: String</td>
+              <td>Programmatically set the country code of the field.</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    <!-- ins-input-tel States -->
+    <div>
+      <h2 class="section-title">States</h2>
+      <!-- default field -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Default Field</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-input-tel label="Phone" areacode-placeholder="Area Code" areacode-value="1300" phonenum-placeholder="Phone Number" phonenum-value="12345">
+              </ins-input-tel>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-input-tel
+  label="Phone"
+  areacode-placeholder="Area Code"
+  areacode-value="1300"
+  phonenum-placeholder="Phone Number"
+  phonenum-value="12345">
+</ins-input-tel>
+              </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/84/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <div>
+      <!-- default state -->
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Default State</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-input-tel></ins-input-tel>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-input-tel></ins-input-tel>
+              </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/85/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+
+        <!-- error state -->
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Error State</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-input-tel has-error error-message="This is a required field"></ins-input-tel>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-input-tel has-error error-message="This is a required field"></ins-input-tel>
+              </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/194/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- direct set data -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Direct Set Data</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-input-tel id="directSetDataInputtel"></ins-input-tel>
+              <script>
+                var label = 'Telephone',
+                    areaCode = '130',
+                    phoneNum = '636991';
+
+                var phoneField = document.getElementById('directSetDataInputtel');
+                phoneField.addEventListener('didLoad', function(e){
+                  phoneField.setAttribute('label', label);
+                  phoneField.setCountryCode('+1');
+                  phoneField.setAttribute('areacode-value', areaCode);
+                  phoneField.setAttribute('phonenum-value', phoneNum);
+                });
+              </script>
+            </div>
+
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-input-tel id="directSetDataInputtel"></ins-input-tel>
+
+<script>
+  var label_inputtel = 'Telephone',
+      areaCode = '130',
+      phoneNum = '636991';
+
+  var phoneField = document.getElementById('directSetDataInputtel');
+  phoneField.addEventListener('didLoad', function(e){
+    // Update `label` attribute of the element
+    phoneField.setAttribute('label', label);
+
+    // Update `countryCode` attribute of the element
+    phoneField.setCountryCode('+1');
+
+    // Update `areacodeValue` attribute of the element
+    phoneField.setAttribute('areacode-value', areaCode);
+
+    // Update `phonenumValue` attribute of the element
+    phoneField.setAttribute('phonenum-value', phoneNum);
+  });
+&lt;/script&gt;
+              </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/187/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- static data source -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Static Data Source</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-input-tel label="Phone" areacode-value="1300" phonenum-value="12345"></ins-input-tel>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-input-tel label="Phone" areacode-value="1300" phonenum-value="12345"></ins-input-tel>
+              </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/87/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- label attribute -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Label Attribute</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-input-tel label="Phone"></ins-input-tel>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-input-tel label="Phone"></ins-input-tel>
+              </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/88/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- area code attribute -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Area Code Attribute</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-input-tel areacode-value="1300"></ins-input-tel>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-input-tel areacode-value="1300"></ins-input-tel>
+              </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/89/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone Number Attribute -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Phone Number Attribute</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-input-tel phonenum-value="12345"></ins-input-tel>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-input-tel phonenum-value="12345"></ins-input-tel>
+              </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/90/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ins-input-tel events -->
+    <div>
+      <h2 class="section-title">Events</h2>
+      <!-- insInputTelChange -->
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">insInputTelChange</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input-tel id="insInputTelChange" label="Phone" areacode-placeholder="Area Code" phonenum-placeholder="Phone Number">
+            </ins-input-tel>
+            <p id="demo1"></p>
+            <p id="demo2"></p>
+            <script>
+              const insInputTelChange = document.getElementById('insInputTelChange')
+              insInputTelChange.addEventListener('insInputTelChange', event => {
+                console.log(event);
+                console.log(event.detail.field);
+                console.log(event.detail.value);
+                if (event.detail.field == "area_code") {
+                  document.getElementById("demo1").innerHTML = event.detail.field + event.detail.value;
+                } else {
+                  document.getElementById("demo2").innerHTML = event.detail.field + event.detail.value;
+                }
+
+              });
+            </script>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input-tel
+  id="insInputTelChange"
+  label="Phone"
+  areacode-placeholder="Area Code"
+  phonenum-placeholder="Phone Number">
+</ins-input-tel>
+<p id="demo"></p>
+<p id="demo1"></p>
+<script>
+const insInputTelChange = document.getElementById('insInputTelChange')
+insInputTelChange.addEventListener('insInputTelChange', event => {
+  console.log(event);
+  console.log(event.detail.field);
+  console.log(event.detail.value);
+  if (event.detail.field == "area_code") {
+    document.getElementById("demo").innerHTML = event.detail.field + event.detail.value;
+  } else {
+    document.getElementById("demo1").innerHTML = event.detail.field + event.detail.value;
+  }
+});
+&lt;/script&gt;
+              </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/160/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

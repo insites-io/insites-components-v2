@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Markdown</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+
+  <script type="module" src="/build/insites-components.esm.js"></script>
+  <script nomodule src="/build/insites-components.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+
+  <style>
+    ins-styleguide .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap {
+      overflow: initial;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ins-markdown -->
+  <div>
+    <h2 class="section-title">Insites Markdown
+      <code>&lt;ins-markdown&gt;</code>
+    </h2>
+    <p>Defines a markdown viewer/renderer.</p>
+    <p>Here's a sytax guide about markdown. <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">link</a></p>
+    <div>
+
+      <!-- content -->
+      <div>
+        <h2 class="section-title">Complete Example</h2>
+        <ins-styleguide>
+          <div class="has-css" slot="actual">
+            <ins-markdown
+            label="Markdown Content"
+            value="
+# H1 heading
+## H2 heading
+### H3 heading">
+            </ins-markdown>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-markdown
+  label="Markdown Content"
+  value="
+# H1 heading
+## H2 heading
+### H3 heading">
+</ins-markdown>
+            </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Attributes -->
+      <div>
+        <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>FIELD ATTRIBUTE</th>
+              <th>TYPE</th>
+              <th>DEFAULT</th>
+              <th>OPTIONS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>label</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Label shown for the field</td>
+            </tr>
+            <tr>
+              <td>value</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines the field value</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Direct Set Value -->
+      <div>
+        <h2 class="section-title">Direct Value Set</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-markdown id="directFieldEl"></ins-markdown>
+            <script>
+              var label = "Change logs - Sample";
+              var value = `
+# H1 heading
+## H2 heading
+### H3 heading`;
+
+                var field = document.getElementById('directFieldEl');
+                directFieldEl.addEventListener('didLoad', function(e){
+                  field.label = label;
+                  field.value = value;
+                });
+            </script>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-markdown id="directFieldEl"></ins-markdown>
+<script>
+  var label = "Change logs - Sample";
+  var value = `
+# H1 heading
+## H2 heading
+### H3 heading`;
+
+  var field = document.getElementById('directFieldEl');
+  directFieldEl.addEventListener('didLoad', function(e){
+    field.label = label;
+    field.value = value;
+  });
+&lt;/script&gt;
+          </script>
+          </div>
+        </ins-styleguide>
+      </div>
+</body>
+
+</html>

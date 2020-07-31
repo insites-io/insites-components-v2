@@ -10,6 +10,7 @@
 | Property        | Attribute        | Description | Type      | Default                            |
 | --------------- | ---------------- | ----------- | --------- | ---------------------------------- |
 | `emptyValue`    | `empty-value`    |             | `string`  | `'-'`                              |
+| `hasLoad`       | `has-load`       |             | `string`  | `undefined`                        |
 | `heading`       | `heading`        |             | `string`  | `undefined`                        |
 | `loaderIcon`    | `loader-icon`    |             | `any`     | `"processing"`                     |
 | `loaderMessage` | `loader-message` |             | `any`     | `"We are processing your request"` |
@@ -19,6 +20,13 @@
 | `renderHtml`    | `render-html`    |             | `boolean` | `false`                            |
 | `tableData`     | `table-data`     |             | `any`     | `[]`                               |
 | `textOverflow`  | `text-overflow`  |             | `string`  | `'ellipsis'`                       |
+
+
+## Events
+
+| Event     | Description | Type               |
+| --------- | ----------- | ------------------ |
+| `didLoad` |             | `CustomEvent<any>` |
 
 
 ## Dependencies

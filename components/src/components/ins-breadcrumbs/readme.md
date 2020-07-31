@@ -7,15 +7,17 @@
 
 ## Properties
 
-| Property      | Attribute | Description | Type    | Default |
-| ------------- | --------- | ----------- | ------- | ------- |
-| `breadcrumbs` | --        |             | `any[]` | `[]`    |
+| Property      | Attribute  | Description | Type     | Default     |
+| ------------- | ---------- | ----------- | -------- | ----------- |
+| `breadcrumbs` | --         |             | `any[]`  | `[]`        |
+| `hasLoad`     | `has-load` |             | `string` | `undefined` |
 
 
 ## Events
 
 | Event       | Description | Type               |
 | ----------- | ----------- | ------------------ |
+| `didLoad`   |             | `CustomEvent<any>` |
 | `routePage` |             | `CustomEvent<any>` |
 
 

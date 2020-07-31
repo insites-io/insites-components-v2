@@ -30,7 +30,7 @@ ins-header {
 
         &:before {
           position: absolute;
-          top: 3px;
+          top: 2px;
           left: 0;
         }
       }
@@ -44,13 +44,18 @@ ins-header {
     position: absolute;
     top: 0;
     right: 0;
+  }
 
-    // .fa-ellipsis-v {
-    //   font-size: 18px;
-    //   color: var(--ins-color-white);
-    //   margin-top: 24px;
-    //   margin-right: 14px;
-    // }
+  .ins-header-buttons {
+    display: inline-block;
+    min-height: 22px;
+  }
+
+  .full-width-navs {
+    display: flex;
+    height: 56px;
+    align-items: center;
+    justify-content: flex-end;
   }
 }
 
@@ -152,9 +157,11 @@ ins-header {
     }
   }
 }
+
 .displayNoneIpad {
   display: none;
 }
+
 @media only screen and (max-width: 630px) {
   ins-header {
     .ins-header-wrap {
@@ -172,6 +179,7 @@ ins-header {
     }
 
     .full-width-navs {
+      display: block;
       padding-top: 56px;
       margin-left: 50px;
       width: 100%;
@@ -180,9 +188,11 @@ ins-header {
       position: relative;
       right: -100vw;
       transition: right 0.75s;
+
       .icon-nav {
         display: none;
       }
+
       &.active {
         right: 0;
       }

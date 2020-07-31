@@ -9,12 +9,20 @@
 
 | Property       | Attribute       | Description | Type      | Default                                                                                 |
 | -------------- | --------------- | ----------- | --------- | --------------------------------------------------------------------------------------- |
+| `hasLoad`      | `has-load`      |             | `string`  | `undefined`                                                                             |
 | `iconColor`    | `icon-color`    |             | `string`  | `""`                                                                                    |
 | `imageSource`  | `image-source`  |             | `string`  | `"https://ins-styleguide.s3-us-west-2.amazonaws.com/assets/images/loading-loop-2x.gif"` |
 | `stateIcon`    | `state-icon`    |             | `string`  | `""`                                                                                    |
 | `stateMessage` | `state-message` |             | `string`  | `""`                                                                                    |
 | `stateTitle`   | `state-title`   |             | `string`  | `""`                                                                                    |
 | `useImage`     | `use-image`     |             | `boolean` | `true`                                                                                  |
+
+
+## Events
+
+| Event     | Description | Type               |
+| --------- | ----------- | ------------------ |
+| `didLoad` |             | `CustomEvent<any>` |
 
 
 ## Dependencies

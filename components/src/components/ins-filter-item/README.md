@@ -9,6 +9,7 @@
 
 | Property   | Attribute  | Description | Type     | Default                                      |
 | ---------- | ---------- | ----------- | -------- | -------------------------------------------- |
+| `hasLoad`  | `has-load` |             | `string` | `undefined`                                  |
 | `name`     | `name`     |             | `string` | `'Category Label'`                           |
 | `options`  | `options`  |             | `any`    | `["Category 1", "Category 2", "Category 3"]` |
 | `selected` | `selected` |             | `any`    | `undefined`                                  |
@@ -18,6 +19,7 @@
 
 | Event       | Description | Type               |
 | ----------- | ----------- | ------------------ |
+| `didLoad`   |             | `CustomEvent<any>` |
 | `insSelect` |             | `CustomEvent<any>` |
 
 

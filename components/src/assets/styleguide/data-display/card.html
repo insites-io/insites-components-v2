@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Card</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+
+  <script type="module" src="/build/insites-components.esm.js"></script>
+  <script nomodule src="/build/insites-components.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+</head>
+
+<body>
+  <div>
+    <h2 class="section-title">Insites Card <code>&lt;ins-card&gt;</code></h2>
+    <p>Creates a card / wrapper element.</p>
+    <!-- Complete Example -->
+    <div>
+      <h2 class="section-title">Complete Example</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-card steady no-padding>
+              <ins-heading label="Hello World"></ins-heading>
+              <p>This is a sample card without padding and set to steady.</p>
+            </ins-card>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-card steady no-padding>
+  <ins-heading label="Hello World"></ins-heading>
+  <p>This is a sample card without padding and set to steady.</p>
+</ins-card>
+            </script>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-bottom: 30px;padding: 0 0.9375em;">
+        <ins-card steady no-padding>
+          <style>
+            .padding-wrap {
+              padding: 20px;
+            }
+          </style>
+          <div class="padding-wrap">
+            <ins-heading label="Hello World"></ins-heading>
+            <p>This is a sample card without padding and set to steady.</p>
+            <p>Wrappers set the inner padding to fully extend
+              <code>hr</code>
+            </p>
+          </div>
+          <hr>
+          <div class="grid-x grid-padding-x grid-padding-y">
+            <div class="cell large-6 small-12">
+              <p>Additional content here</p>
+            </div>
+            <div class="cell large-6 small-12 text-right">
+              <ins-button solid label="Button"></ins-button>
+            </div>
+          </div>
+        </ins-card>
+      </div>
+      <div class="padding-wrap">
+        <script type="text/plain" class="language-markup">
+<ins-card steady no-padding>
+  <style>
+    .padding-wrap { padding: 20px; }
+  </style>
+  <div class="padding-wrap">
+    <ins-heading label="Hello World"></ins-heading>
+    <p>This is a sample card without padding and set to steady.</p>
+    <p>Wrappers set the inner padding to fully extend <code>hr</code></p>
+  </div>
+  <hr>
+  <div class="grid-x grid-padding-x grid-padding-y">
+    <div class="cell large-6 small-12">
+      <p>Additional content here</p>
+    </div>
+    <div class="cell large-6 small-12 text-right">
+      <ins-button solid label="Button"></ins-button>
+    </div>
+  </div>
+</ins-card>
+          </script>
+        </div>
+    </div>
+
+    <!-- Default State -->
+    <div>
+      <h2 class="section-title">Default State</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-card></ins-card>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-card></ins-card>
+                </script>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Steady State -->
+    <div>
+      <h2 class="section-title">Steady State</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-card steady>
+              <ins-heading label="Hello World"></ins-heading>
+              <p>This is a sample steady card.</p>
+            </ins-card>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-card steady>
+  <ins-heading label="Hello World"></ins-heading>
+  <p>This is a sample steady card.</p>
+  <p>No hover animations</p>
+</ins-card>
+            </script>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Attributes -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>steady</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Disables the card hover animation</td>
+          </tr>
+          <tr>
+            <td>no-padding</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Removes left and right padding</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- -->
+  </div>
+
+</body>
+
+</html>

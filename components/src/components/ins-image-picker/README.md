@@ -11,6 +11,7 @@
 | ---------------------- | -------------------------- | ----------- | --------- | ------------------------------------------ |
 | `buttonColor`          | `button-color`             |             | `string`  | `'blue'`                                   |
 | `fileName`             | `file-name`                |             | `any`     | `undefined`                                |
+| `hasLoad`              | `has-load`                 |             | `string`  | `undefined`                                |
 | `imgType`              | `img-type`                 |             | `string`  | `'picture'`                                |
 | `label`                | `label`                    |             | `string`  | `'CHANGE PICTURE'`                         |
 | `name`                 | `name`                     |             | `string`  | `undefined`                                |
@@ -27,6 +28,7 @@
 
 | Event            | Description | Type               |
 | ---------------- | ----------- | ------------------ |
+| `didLoad`        |             | `CustomEvent<any>` |
 | `insValueChange` |             | `CustomEvent<any>` |
 
 

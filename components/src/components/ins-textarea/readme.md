@@ -12,6 +12,7 @@
 | `disabled`     | `disabled`      |             | `boolean` | `false`     |
 | `errorMessage` | `error-message` |             | `string`  | `undefined` |
 | `hasError`     | `has-error`     |             | `boolean` | `false`     |
+| `hasLoad`      | `has-load`      |             | `string`  | `undefined` |
 | `label`        | `label`         |             | `string`  | `undefined` |
 | `maxlength`    | `maxlength`     |             | `string`  | `""`        |
 | `name`         | `name`          |             | `string`  | `undefined` |
@@ -23,10 +24,11 @@
 
 ## Events
 
-| Event         | Description | Type               |
-| ------------- | ----------- | ------------------ |
-| `oninput`     |             | `CustomEvent<any>` |
-| `valueChange` |             | `CustomEvent<any>` |
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `didLoad`        |             | `CustomEvent<any>` |
+| `insInput`       |             | `CustomEvent<any>` |
+| `insValueChange` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------

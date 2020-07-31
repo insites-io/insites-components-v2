@@ -14,6 +14,7 @@
 | `dateTitle`      | `date-title`       |             | `any`     | `"Date Period"`                                                                                                                                                                            |
 | `dateTo`         | `date-to`          |             | `string`  | `""`                                                                                                                                                                                       |
 | `defaultDate`    | `default-date`     |             | `string`  | `""`                                                                                                                                                                                       |
+| `hasLoad`        | `has-load`         |             | `string`  | `undefined`                                                                                                                                                                                |
 | `withDateFilter` | `with-date-filter` |             | `boolean` | `false`                                                                                                                                                                                    |
 
 
@@ -21,6 +22,7 @@
 
 | Event           | Description | Type               |
 | --------------- | ----------- | ------------------ |
+| `didLoad`       |             | `CustomEvent<any>` |
 | `insDateFilter` |             | `CustomEvent<any>` |
 | `insFilter`     |             | `CustomEvent<any>` |
 

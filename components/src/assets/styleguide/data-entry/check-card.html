@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Check Card</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+
+  <script type="module" src="/build/insites-components.esm.js"></script>
+  <script nomodule src="/build/insites-components.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+</head>
+
+<body>
+  <!-- ins-button header -->
+  <div>
+    <h2 class="section-title">Insites Checkbox Card Tag</h2>
+    <p>Defines a checbox like card container.</p>
+    <p><strong>Important Note:</strong><br />
+    All elements to be put inside the card should be inside a div tag to avoid misrendering.</p>
+  </div>
+  <!-- ins-button Complete Example -->
+  <div>
+      <h2 class="section-title">Complete Example</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+              <ins-checkbox-card id="myCardEl" tab-order="1" selected selected-color="positive" label="Card Label" value="Lorem Ipsum Dolor">
+                <div>
+                  <h4>Lorem Ipsum Dolor</h4>
+                  <p>Lorem praesentium modi sapiente placeat tempora ipsam, consectetur beatae reiciendis sint impedit architecto corporis, suscipit fugiat vero dolore doloremque temporibus.</p>
+                </div>
+              </ins-checkbox-card>
+              <script>
+                var myCardEl = document.getElementById('myCardEl');
+                myCardEl.addEventListener('onClickInsCheckboxCard', function(event){
+                  alert(event.detail.label + ' ' + event.detail.value);
+                });
+              </script>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-checkbox-card id="myCardEl"
+  tab-order="1"
+  selected
+  selected-color="positive"
+  label="Card Label"
+  value="Lorem Ipsum Dolor">
+
+  <div>
+    <h4>Lorem Ipsum Dolor</h4>
+    <p>Lorem praesentium modi sapiente placeat tempora ipsam, consectetur beatae reiciendis sint impedit architecto corporis, suscipit fugiat vero dolore doloremque temporibus.</p>
+  </div>
+</ins-checkbox-card>
+<script>
+  var myCardEl = document.getElementById('myCardEl');
+  myCardEl.addEventListener('onClickInsCheckboxCard', function(event){
+    alert(event.detail.label + ' ' + event.detail.value);
+  });
+&lt;/script&gt;
+            </script>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- ins-button attribute table -->
+  <div>
+    <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th width="160">FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>type</td>
+            <td>string</td>
+            <td>-</td>
+            <td>radio, checkbox</td>
+            <td>Defines the type of the checkbox-card</td>
+          </tr>
+          <tr>
+            <td>name</td>
+            <td>string</td>
+            <td>-</td>
+            <td>-</td>
+            <td>Defines the name of the checkbox-card</td>
+          </tr>
+          <tr>
+            <td>no-padding</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>-</td>
+            <td>Defines if the checkbox card should have a padding or not</td>
+          </tr>
+          <tr>
+              <td>selected</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>-</td>
+              <td>Defines the selected state of the checkbox card</td>
+          </tr>
+          <tr>
+              <td>selected-color</td>
+              <td>string</td>
+              <td>-</td>
+              <td>Insites color theme(ink, ink1, ink5, ink10, ink40, blue, green, turquoise, positive, warning, negative, information1, information2) or Hex Code RGB </td>
+              <td>Defines color of the selected state</td>
+          </tr>
+          <tr>
+              <td>tab-order</td>
+              <td>string</td>
+              <td>-</td>
+              <td>-</td>
+              <td>Defines the tabindex of the checkbox card</td>
+          </tr>
+          <tr>
+              <td>value</td>
+              <td>string/object</td>
+              <td>-</td>
+              <td>-</td>
+              <td>Defines the value of the checkbox card</td>
+          </tr>
+          <tr>
+              <td>label</td>
+              <td>string</td>
+              <td>-</td>
+              <td>-</td>
+              <td>Defines the label of the checkbox card</td>
+          </tr>
+          <tr>
+              <td>disabled</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>-</td>
+              <td>Defines the disabled state of the checkbox card</td>
+          </tr>
+        </table>
+    </div>
+  </div>
+
+  <!-- ins-button event table -->
+  <div>
+    <div class="table-style">
+          <table>
+            <tr>
+              <th>EVENT</th>
+              <th>OBJECT</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>insClick</td>
+              <td>label, value</td>
+              <td>Emits the label and value of the card when clicked or enter key is pressed</td>
+            </tr>
+            <tr>
+              <td>insValueChange</td>
+              <td>value</td>
+              <td>Emits checkbox card value on change</td>
+            </tr>
+          </table>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="section-title">States</h2>
+
+    <!-- Default State -->
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Default State</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-checkbox-card></ins-checkbox-card>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-checkbox-card></ins-checkbox-card>
+          </script>
+        </div>
+      </div>
+    </div>
+
+    <!-- Direct Set Data -->
+    <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">
+            Direct Set Data
+          </div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-checkbox-card id="myCheckboxCardEl">
+                <div>Sample Content</div>
+              </ins-checkbox-card>
+              <script>
+                var myCheckboxCardEl = document.getElementById('myCheckboxCardEl');
+                myCheckboxCardEl.label = "My Card";
+                myCheckboxCardEl.value = {
+                  myCheckboxCard: "test-value"
+                }
+                myCheckboxCardEl.selectedColor = "positive";
+                myCheckboxCardEl.selected = true;
+              </script>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-checkbox-card id="myCheckboxCardEl">
+  <div>Sample Content</div>
+</ins-checkbox-card>
+
+<script>
+    var myCheckboxCardEl = document.getElementById('myCheckboxCardEl');
+    myCheckboxCardEl.label = "My Card";
+    myCheckboxCardEl.value = {
+      myCheckboxCard: "test-value"
+    }
+    myCheckboxCardEl.selectedColor = "positive";
+    myCheckboxCardEl.selected = true;
+&lt;/script&gt;
+              </script>
+            </div>
+          </div>
+        </div>
+    </div>
+
+  <!-- Static Data Source -->
+  <div>
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Static Data Source</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-checkbox-card
+            label="My Checkbox Card"
+            value="Test"
+            selected
+
+            selected-color="blue">
+
+            <div>Sample Content</div>
+          </ins-checkbox-card>
+
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-checkbox-card
+  label="My Checkbox Card"
+  value="Test"
+  selected
+  selected-color="blue">
+
+  <div>Sample Content</div>
+</ins-checkbox-card>
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disabled State -->
+  <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Disabled State</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-checkbox-card
+              label="My Checkbox Card"
+              value="Test"
+              selected
+              disabled
+              selected-color="blue">
+
+              <div>Sample Content</div>
+            </ins-checkbox-card>
+
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+  <ins-checkbox-card
+    label="My Checkbox Card"
+    value="Test"
+    selected
+    disabled
+    selected-color="blue">
+
+    <div>Sample Content</div>
+  </ins-checkbox-card>
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div style='padding: 30px;'></div>
+</body>
+</html>

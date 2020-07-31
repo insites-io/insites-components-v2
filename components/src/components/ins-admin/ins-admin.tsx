@@ -5,8 +5,8 @@ export class InsAdmin {
   @Element() insAdminEl: Element;
   @State() insRenderer: any;
   @State() crumbs: any;
-  sidebarItemEls: any;
 
+  sidebarItemEls: any;
   reroute: boolean = false;
 
   @Listen('routePage')
@@ -101,39 +101,40 @@ export class InsAdmin {
     }
   }
 
-  matchHash(currentHash, deeplink){
+  async matchHash(currentHash, deeplink){
     for (let i = 0; i < this.sidebarItemEls.length; i++) {
+      let formattedRoute = await this.sidebarItemEls[i].formatRoute();
 
-      if (currentHash === this.sidebarItemEls[i].formatRoute()){
-        this.loadRoute(this.sidebarItemEls[i], deeplink);
+      if (currentHash === formattedRoute){
+        await this.loadRoute(this.sidebarItemEls[i], deeplink);
         return true;
 
-      } else if (
-          this.sidebarItemEls[i].formatRoute()
-          && currentHash.includes(this.sidebarItemEls[i].formatRoute())
-          && currentHash.includes("?reroute=")
-          && this.sidebarItemEls[i].app
+      } else if (formattedRoute
+        && currentHash.includes(formattedRoute)
+        && currentHash.includes("?reroute=")
+        && this.sidebarItemEls[i].app
       ){
         this.reroute = true;
-        this.loadRoute(this.sidebarItemEls[i], deeplink);
+        await this.loadRoute(this.sidebarItemEls[i], deeplink);
         return true;
       }
-
     }
   }
 
-  loadRoute(sidebarItem, deeplink){
+  async loadRoute(sidebarItem, deeplink){
     if (!deeplink){
       sidebarItem.routePageHandler();
     } else {
       sidebarItem.activate();
     }
 
-    this.hideSubmenus(sidebarItem);
+    await this.hideSubmenus(sidebarItem);
 
     if (!this.insAdminEl.className.includes('mini')){
       this.showSubmenu(sidebarItem);
     }
+
+    return true;
   }
 
   showSubmenu(e) {
@@ -143,7 +144,7 @@ export class InsAdmin {
     }
   }
 
-  hideSubmenus(e){
+  async hideSubmenus(e){
     let selectedSidebarItemParent = e.closest('ins-sidebar-item[with-submenu]');
 
     for (let i = 0; i < this.sidebarItemEls.length; i++) {
@@ -151,17 +152,13 @@ export class InsAdmin {
 
       if (selectedSidebarItemParent !== sidebarItemParent) {
         if (sidebarItemParent){
-          sidebarItemParent.hideSubMenu();
+          await sidebarItemParent.hideSubMenu();
         }
       }
     }
   }
 
   render() {
-    return (
-      <div>
-        <slot />
-      </div>
-    )
+    return <div><slot /></div>
   }
 }

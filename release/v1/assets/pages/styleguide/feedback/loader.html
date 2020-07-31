@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide - Loader</title>
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/v1/assets/css/insites-plugins.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <script src="/v1/assets/js/insites-plugins.js"></script>
+  <script src="/v1/build/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/prism.css">
+  <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+  <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+  <script src="/v1/assets/js/prism.js"></script>
+</head>
+
+<body>
+  <div>
+    <!-- ins-loader header -->
+    <div>
+      <h2 class="section-title">Insites loader
+        <code>&lt;ins-loader&gt;</code>
+      </h2>
+      <p>Defines a simplified preloader.</p>
+    </div>
+
+    <!-- ins-loader complete example -->
+    <div>
+      <h2 class="section-title">Complete Example</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-loader state-title="Success!" state-message="Your order has been placed and is being processed."
+              state-icon="success"></ins-loader>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-loader
+  state-title="Success!"
+  state-message="Your order has been placed and is being processed."
+  state-icon="success">
+</ins-loader>
+									</script>
+          </div>
+
+        </div>
+
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/91/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- attribute table -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>state-title</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines title of loader</td>
+          </tr>
+          <tr>
+            <td>state-message</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines message of loader</td>
+          </tr>
+          <tr>
+            <td>state-icon</td>
+            <td>string</td>
+            <td>""</td>
+            <td>processing, warning, Help, Error, Success, downloading, uploading</td>
+            <td>Defines icon of loader</td>
+          </tr>
+          <tr>
+            <td>icon-color</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines icon color of loader</td>
+          </tr>
+          <tr>
+            <td>use-image</td>
+            <td>boolean</td>
+            <td>true</td>
+            <td>true,false</td>
+            <td>Toggle use image for 'processing' state</td>
+          </tr>
+          <tr>
+            <td>image-source</td>
+            <td>string</td>
+            <td>loading-loop.gif</td>
+            <td>any</td>
+            <td>Defines image path to used for 'processing' state loader</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- States -->
+    <div>
+      <h2 class="section-title">States</h2>
+
+      <!-- ins-loader Direct set data -->
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Direct Set Data</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-loader id="directSetDataLoader"></ins-loader>
+          </div>
+          <script>
+            var loader = document.getElementById('directSetDataLoader');
+            loader.addEventListener('didLoad', function(e){
+              loader.stateTitle = 'Error!';
+              loader.stateMessage = 'A problem has occurred while submitting your data.';
+              loader.stateIcon = 'error';
+            });
+          </script>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-loader id="directSetDataLoader"></ins-loader>
+<script src="/v1/assets/js/ins.js">&lt;/script&gt;
+<script>
+  var loader = document.getElementById('directSetDataLoader');
+  loader.addEventListener('didLoad', function(e){
+    loader.stateTitle = 'Error!';
+    loader.stateMessage = 'A problem has occurred while submitting your data.';
+    loader.stateIcon = 'error';
+  });
+&lt;/script&gt;
+						</script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/92/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+
+      <!-- ins-loader Static Data Source-->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Static Data Source</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-loader state-title="Success!" state-message="Your message has been sent successfully." state-icon="success"></ins-loader>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-loader
+	state-title="Success!"
+	state-message="Your message has been sent successfully."
+	state-icon="success">
+</ins-loader>
+								</script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/93/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Types -->
+    <div>
+      <h2 class="section-title">Types</h2>
+
+      <!-- ins-loader Processing-->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Processing - default</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-loader state-title="Processing" state-message="Please wait, we're processing your data." state-icon="processing"></ins-loader>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-loader
+	state-title="Processing"
+	state-message="Please wait, we're processing your data."
+	state-icon="processing">
+</ins-loader>
+								</script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/94/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ins-loader Processing-->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Processing - animated SVG</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-loader use-image=false state-title="Processing" state-message="Please wait, we're processing your data." state-icon="processing"></ins-loader>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+      <ins-loader
+        use-image=false
+      	state-title="Processing"
+      	state-message="Please wait, we're processing your data."
+      	state-icon="processing">
+      </ins-loader>
+      								</script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/213/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ins-loader Warning-->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Warning</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-loader state-title="Warning!" state-message="There was a problem with your network connection." state-icon="warning"></ins-loader>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-loader
+	state-title="Warning!"
+	state-message="There was a problem with your network connection."
+	state-icon="warning">
+</ins-loader>
+								</script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/95/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ins-loader Help-->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Help</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-loader state-title="Need help?" state-message="Please contact our online support team." state-icon="help"></ins-loader>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-loader
+	state-title="Need help?"
+	state-message="Please contact our online support team."
+	state-icon="help">
+</ins-loader>
+								</script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/96/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ins-loader Error-->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Error</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-loader state-title="Error!" state-message="A problem has occurred while submitting your data." state-icon="error"></ins-loader>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-loader
+	state-title="Error!"
+	state-message="A problem has occurred while submitting your data."
+	state-icon="error">
+</ins-loader>
+								</script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/97/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ins-loader Success-->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Success</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-loader state-title="Success!" state-message="You message has been sent succesfully." state-icon="success"></ins-loader>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-loader
+	state-title="Success!"
+	state-message="You message has been sent succesfully."
+	state-icon="success">
+</ins-loader>
+								</script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/98/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ins-loader Downloading-->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Downloading</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-loader state-title="Downloading" state-message="Your file/s are being downloaded." state-icon="downloading"></ins-loader>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-loader
+	state-title="Downloading"
+	state-message="Your file/s are being downloaded."
+	state-icon="downloading">
+</ins-loader>
+								</script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/99/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ins-loader Uploading-->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Uploading</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-loader state-title="Uploading" state-message="Your file/s are being uploaded." state-icon="uploading"></ins-loader>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-loader
+	state-title="Uploading"
+	state-message="Your file/s are being uploaded."
+	state-icon="uploading">
+</ins-loader>
+								</script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/100/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div style='padding: 35px;'></div>
+  <script src="../../../../assets/js/ins.js"></script>
+</body>
+
+</html>

@@ -19,6 +19,7 @@
 | `fieldType`         | `field-type`          |             | `string`  | `"image"`                             |
 | `fileIcon`          | `file-icon`           |             | `string`  | `"icon-notepad"`                      |
 | `hasError`          | `has-error`           |             | `boolean` | `false`                               |
+| `hasLoad`           | `has-load`            |             | `string`  | `undefined`                           |
 | `label`             | `label`               |             | `string`  | `"Attachment(s)"`                     |
 | `maxFileSize`       | `max-file-size`       |             | `number`  | `10`                                  |
 | `maxFileSizeLabel`  | `max-file-size-label` |             | `string`  | `"Max file size"`                     |
@@ -35,11 +36,12 @@
 
 ## Events
 
-| Event         | Description | Type               |
-| ------------- | ----------- | ------------------ |
-| `fileAdded`   |             | `CustomEvent<any>` |
-| `fileError`   |             | `CustomEvent<any>` |
-| `fileRemoved` |             | `CustomEvent<any>` |
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `didLoad`        |             | `CustomEvent<any>` |
+| `insFileAdded`   |             | `CustomEvent<any>` |
+| `insFileError`   |             | `CustomEvent<any>` |
+| `insFileRemoved` |             | `CustomEvent<any>` |
 
 
 ## Methods

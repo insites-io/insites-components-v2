@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Checkbox</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+
+  <script type="module" src="/build/insites-components.esm.js"></script>
+  <script nomodule src="/build/insites-components.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+</head>
+
+<body>
+  <!-- ins-checkbox header -->
+  <div>
+    <h2 class="section-title">Insites Checkbox
+      <code>&lt;ins-checkbox&gt;</code>
+    </h2>
+    <p>Defines a checkbox field.</p>
+    <div>
+
+      <!-- content -->
+      <div>
+        <h2 class="section-title">Complete Example</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-checkbox name="sample" label="Checkbox" value="Checkbox Value"></ins-checkbox>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-checkbox name="sample" label="Checkbox" value="Checkbox Value"></ins-checkbox>
+            </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Attributes -->
+      <div>
+        <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>FIELD ATTRIBUTE</th>
+              <th>TYPE</th>
+              <th>DEFAULT</th>
+              <th>OPTIONS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Disables the field</td>
+            </tr>
+            <tr>
+              <td>checked</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Make the field checked</td>
+            </tr>
+            <tr>
+              <td>label</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Label shown for the field</td>
+            </tr>
+            <tr>
+              <td>name</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines the field name</td>
+            </tr>
+            <tr>
+              <td>value</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines the field value</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Event -->
+      <div>
+        <h2 class="section-title">Events</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>EVENT</th>
+              <th>OBJECT</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>insCheck</td>
+              <td>name, checked, value, trueValue, falseValue</td>
+              <td>Emits checkbox properties on change</td>
+            </tr>
+            <tr>
+              <td>insValueChange</td>
+              <td>value</td>
+              <td>Emits checkbox value on change</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Method -->
+      <div>
+        <h2 class="section-title">Methods</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>FUNCTION</th>
+              <th>PARAMETERS</th>
+              <th>RETURN</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>updateCheckState</td>
+              <td>state (boolean)</td>
+              <td>n/a</td>
+              <td>Toggles the checkbox 'checked' property</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Default State -->
+      <div>
+        <h2 class="section-title">Default State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-checkbox></ins-checkbox>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-checkbox></ins-checkbox>
+            </script>
+          </div>
+        </ins-styleguide>
+
+        <!-- Selected state-->
+        <h2 class="section-title">Selected State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-checkbox label="Selected Field" checked></ins-checkbox>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-checkbox label="Selected Field" checked></ins-checkbox>
+                    </script>
+          </div>
+        </ins-styleguide>
+
+        <!-- Disabled state-->
+        <h2 class="section-title">Disabled State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-checkbox label="Disabled Field" disabled></ins-checkbox>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-checkbox label="Disabled Field" disabled></ins-checkbox>
+            </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Direct Set Value -->
+      <div>
+        <h2 class="section-title">Direct Value Set</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-checkbox id="directFieldEl"></ins-checkbox>
+            <script>
+              var label = "Set Data";
+              var name = "sample";
+              var value = "Data";
+
+              var field = document.getElementById('directFieldEl');
+              field.addEventListener('didLoad', function(e){
+                field.name = name;
+                field.label = label;
+                field.value = value;
+                field.updateCheckState(true);
+              });
+            </script>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-checkbox id="directFieldEl"></ins-checkbox>
+<script>
+  var label = "Set Data";
+  var name = "sample";
+  var value = "Data";
+
+  var field = document.getElementById('directFieldEl');
+  field.addEventListener('didLoad', function(e){
+    field.name = name;
+    field.label = label;
+    field.value = value;
+    field.updateCheckState(true);
+  });
+&lt;/script&gt;
+          </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Event -->
+      <div>
+        <h2 class="section-title">Events</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-checkbox id="eventFieldEl" name="sample" label="Checkbox" value="Checkbox Value"></ins-checkbox>
+            <script>
+              let field = document.getElementById('eventFieldEl');
+              field.addEventListener('onCheckInsCheckbox', event => {
+                var event = event.detail;
+                console.log("Checkbox event", event);
+                alert("Check console log for event data");
+              });
+            </script>
+          </div>
+
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-checkbox id="eventFieldEl" name="sample" label="Checkbox" value="Checkbox Value"></ins-checkbox>
+<script>
+  let field = document.getElementById('eventFieldEl');
+  field.addEventListener('onCheckInsCheckbox', event => {
+    var event = event.detail;
+    console.log("Checkbox event", event);
+    alert("Check console log for event data");
+  });
+&lt;/script&gt;
+          </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Group -->
+      <div>
+        <h2 class="section-title">Checkbox Group</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-checkbox name="vehicle" label="Car" value="Car"></ins-checkbox>
+            <ins-checkbox name="vehicle" label="Van" value="Van"></ins-checkbox>
+            <ins-checkbox name="vehicle" label="Truck" value="Truck"></ins-checkbox>
+            <script>
+              var group = document.getElementsByName('vehicle');
+              var selected = [];
+              // add event listener to each checkbox
+              group.forEach(field => {
+                field.addEventListener('onCheckInsCheckbox', event => {
+                  var event = event.detail;
+                  // if checkbox is checked, push value to array
+                  if (event.checked) {
+                    selected.push(event.value);
+                  } else {
+                    // else, remove item from array
+                    selected.splice(selected.indexOf(event.value), 1);
+                  }
+                  alert("Selected items:" + selected.join(', '));
+                });
+              });
+            </script>
+          </div>
+
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-checkbox name="vehicle" label="Car" value="Car"></ins-checkbox>
+<ins-checkbox name="vehicle" label="Van" value="Van"></ins-checkbox>
+<ins-checkbox name="vehicle" label="Truck" value="Truck"></ins-checkbox>
+
+<script>
+  var group = document.getElementsByName('vehicle');
+  var selected = [];
+  // add event listener to each checkbox
+  group.forEach(field => {
+    field.addEventListener('onCheckInsCheckbox', event => {
+      var event = event.detail;
+      // if checkbox is checked, push value to array
+      if(event.checked) {
+        selected.push(event.value);
+      } else {
+      // else, remove item from array
+        selected.splice(selected.indexOf(event.value), 1);
+      }
+      alert("Selected items:" + selected.join(', '));
+    });
+  });
+                </script>
+          </div>
+        </ins-styleguide>
+      </div>
+</body>
+
+</html>

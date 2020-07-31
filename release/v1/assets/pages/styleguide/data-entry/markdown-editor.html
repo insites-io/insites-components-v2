@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide - Markdown Editor</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/v1/assets/css/insites-plugins.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <script src="/v1/assets/js/insites-plugins.js"></script>
+  <script src="/v1/build/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/prism.css">
+  <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+  <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+  <script src="/v1/assets/js/prism.js"></script>
+
+  <style>
+    ins-styleguide .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap {
+      overflow: initial;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ins-markdown -->
+  <div>
+    <h2 class="section-title">Insites Markdown Editor
+      <code>&lt;ins-markdown-editor&gt;</code>
+    </h2>
+    <p>Defines a markdown editor.</p>
+    <p>Here's a sytax guide about markdown.
+      <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">link</a>
+    </p>
+  <div>
+
+      <!-- content -->
+      <div>
+        <h2 class="section-title">Complete Example</h2>
+        <ins-styleguide>
+          <div class="has-css" slot="actual">
+            <ins-markdown-editor label="Markdown Content"></ins-markdown-editor>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-markdown-editor label="Markdown Content"></ins-markdown-editor>
+            </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Attributes -->
+      <div>
+        <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>FIELD ATTRIBUTE</th>
+              <th>TYPE</th>
+              <th>DEFAULT</th>
+              <th>OPTIONS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>label</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Label shown for the field</td>
+            </tr>
+            <tr>
+              <td>value</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines the field value</td>
+            </tr>
+            <tr>
+              <td>name</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines the field name</td>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Disables the field</td>
+            </tr>
+            <tr>
+              <td>readonly</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Make the field readonly</td>
+            </tr>
+            <tr>
+              <td>has-error</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Defines if the field is invalid / error</td>
+            </tr>
+            <tr>
+              <td>error-message</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Message shown when field has error</td>
+            </tr>
+            <tr>
+              <td>required</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Specifies that the input field must be filled out before submitting the form</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <!-- Error state-->
+        <h2 class="section-title">Error State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-markdown-editor label="Error Field" has-error error-message="This is a required field"></ins-markdown-editor>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-markdown-editor label="Error Field" has-error error-message="This is a required field"></ins-markdown-editor>
+            </script>
+          </div>
+        </ins-styleguide>
+
+        <!-- Readonly state-->
+        <h2 class="section-title">Readonly State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-markdown-editor label="Readonly Field" value="You cannot edit this value" readonly></ins-markdown-editor>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-markdown-editor label="Readonly Field" value="You cannot edit this value" readonly></ins-markdown-editor>
+            </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Direct Set Value -->
+      <div>
+        <h2 class="section-title">Direct Value Set</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-markdown-editor id="directFieldEl"></ins-markdown-editor>
+            <script>
+              var label = "Change logs - Sample";
+              var value = `# H1 heading
+## H2 heading
+### H3 heading`;
+
+              var field = document.getElementById('directFieldEl');
+              field.addEventListener('didLoad', function(e) {
+                field.label = label;
+                field.setValue(value);
+              });
+            </script>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-markdown-editor id="directFieldEl"></ins-markdown-editor>
+<script>
+  var label = "Change logs - Sample";
+  var value = `# H1 heading
+## H2 heading
+### H3 heading`;
+
+  var field = document.getElementById('directFieldEl');
+  field.addEventListener('didLoad', function(e) {
+    field.label = label;
+    field.setValue(value);
+  });
+&lt;/script&gt;
+          </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Get Markdown Value -->
+      <div>
+        <h2 class="section-title">Get Markdown Value</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-markdown-editor label="Content" id="myMarkdownEl"></ins-markdown-editor>
+            <ins-button solid label="Get Value" id="getMDBtn"></ins-button>
+            <script>
+              var button = document.getElementById('getMDBtn');
+              var markdownEl = document.getElementById('myMarkdownEl');
+              markdownEl.addEventListener('didLoad', function(e) {
+                button.addEventListener('click', function() {
+                  console.log("Markdown field value below:");
+                  console.log(markdownEl.val());
+                  alert('check console to see the value');
+                });
+              });
+            </script>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-markdown-editor label="Content" id="myMarkdownEl"></ins-markdown-editor>
+<ins-button solid label="Get Value" id="getMDBtn"></ins-button>
+<script>
+  var button = document.getElementById('getMDBtn');
+  var markdownEl = document.getElementById('myMarkdownEl');
+  markdownEl.addEventListener('didLoad', function(e) {
+    button.addEventListener('click', function() {
+      console.log("Markdown field value below:");
+      console.log(markdownEl.val());
+      alert('check console to see the value');
+    });
+  });
+&lt;/script&gt;
+                </script>
+          </div>
+        </ins-styleguide>
+      </div>
+</body>
+
+</html>

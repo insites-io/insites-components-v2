@@ -1,10 +1,21 @@
-import { h, Component, Prop, Method, Event, EventEmitter } from "@stencil/core";
+import { h, Component, Prop, Method, Event, EventEmitter, Element } from "@stencil/core";
 
 @Component({ tag: 'ins-sidebar-footer-button' })
 export class InsSidebarFooterButton {
+  @Element() insSidebarFooterButtonEl: HTMLElement;
   @Event() insSidebarFooterButtonEvent: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
   @Prop({ mutable: true }) icon: string = '';
   @Prop({ mutable: true }) open: string = '';
+
+  componentDidLoad(){
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insSidebarFooterButtonEl);
+    }
+  }
 
   @Method()
   async insSidebarFooterButtonOnClick(event){

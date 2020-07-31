@@ -11,6 +11,7 @@
 | -------------- | --------------- | ----------- | --------- | ----------- |
 | `errorMessage` | `error-message` |             | `string`  | `""`        |
 | `hasError`     | `has-error`     |             | `boolean` | `undefined` |
+| `hasLoad`      | `has-load`      |             | `string`  | `undefined` |
 | `label`        | `label`         |             | `string`  | `""`        |
 | `name`         | `name`          |             | `string`  | `""`        |
 | `readonly`     | `readonly`      |             | `boolean` | `undefined` |
@@ -22,10 +23,31 @@
 
 | Event            | Description | Type               |
 | ---------------- | ----------- | ------------------ |
+| `didLoad`        |             | `CustomEvent<any>` |
 | `insValueChange` |             | `CustomEvent<any>` |
 
 
 ## Methods
+
+### `reset() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setValue(value: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 ### `val() => Promise<any>`
 

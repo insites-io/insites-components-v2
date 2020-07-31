@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Filters</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/v2.0.0/insites-font-icons.min.css" />
+  <link rel="stylesheet" href="/v2.0.0/insites.min.css" />
+
+  <script type="module" src="/v2.0.0/insites.esm.js"></script>
+  <script nomodule src="/v2.0.0/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+
+  <style>
+    ins-styleguide .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap,
+    .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap, .ins-styleguide-wrap .ins-styleguide-code-slot-wrap {
+      overflow: initial;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ins-filter header -->
+  <div>
+    <h2 class="section-title">Insites Filter <code>&lt;ins-filter&gt;</code></h2>
+    <p>Renders container for filter items.</p>
+  <div>
+
+  <!-- ins-filter Complete Example -->
+  <div>
+    <h2 class="section-title">Complete Example</h2>
+    <div class='ins-styleguide-wrap'>
+      <div class='ins-styleguide-cont'>
+        <ins-styleguide label="Default State" class="equal-width">
+
+            <div slot="actual" style="height: 460px; display: block;">
+              <ins-filter
+                with-date-filter
+                date-title="Date Period"
+                date-from="2019-06-15"
+                date-to="2019-06-16">
+              </ins-filter>
+            </div>
+
+            <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-filter with-date-filter date-title="Date Period"></ins-filter>
+              </script>
+            </div>
+
+        </ins-styleguide>
+      </div>
+    </div>
+  </div>
+
+  <!-- ins-filter attribute table -->
+  <div>
+    <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+            <tr>
+              <th>FIELD ATTRIBUTE</th>
+              <th>TYPE</th>
+              <th>DEFAULT</th>
+              <th>OPTIONS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>with-date-filter</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Displays date filter</td>
+            </tr>
+            <tr>
+              <td>date-title</td>
+              <td>any</td>
+              <td>"Date Period"</td>
+              <td>any</td>
+              <td>Displays date filter title</td>
+            </tr>
+            <tr>
+              <td>default-date</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Displays default date displayed</td>
+            </tr>
+            <tr>
+              <td>date-from</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Displays starting date of date filter</td>
+            </tr>
+            <tr>
+              <td>date-to</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Displays end date of date filter</td>
+            </tr>
+          </table>
+        </div>
+  </div>
+
+  <!-- ins-filter event table -->
+  <div>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>EVENT</th>
+            <th>OBJECT</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>onFilterApply</td>
+          <td>stateFrom, stateTo</td>
+          <td>Execute a script when a date filter has been selected</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- insites filter states -->
+  <div>
+    <h2 class="section-title">States</h2>
+    <!-- Default State-->
+    <div>
+        <div class="ins-styleguide-wrap">
+            <div class="ins-styleguide-label-wrap">Default State</div>
+            <div class="ins-styleguide-cont">
+              <div class="ins-styleguide-actual-slot-wrap">
+                <ins-filter></ins-filter>
+              </div>
+              <div class="ins-styleguide-code-slot-wrap">
+                <script type="text/plain" class="language-markup">
+<ins-filter></ins-filter>
+                </script>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Direct Set Data -->
+    <div>
+        <div class="ins-styleguide-wrap">
+            <div class="ins-styleguide-label-wrap">Direct Set Data</div>
+            <div class="ins-styleguide-cont">
+              <div class="ins-styleguide-actual-slot-wrap">
+                <ins-filter id="directDataSourceFilter"></ins-filter>
+                <script>
+                    var filter = document.getElementById('directDataSourceFilter');
+                    filter.withDateFilter = true;
+                    filter.dateTitle = 'Direct Set Value';
+                    filter.dateFrom = '2018-08-04';
+                    filter.dateTo = '2018-08-31';
+                </script>
+              </div>
+              <div class="ins-styleguide-code-slot-wrap">
+                <script type="text/plain" class="language-markup">
+<ins-filter id="directDataSourceFilter"></ins-filter>
+
+<script>
+    // Update `withDataFilter`, `defaultData` and `dateTitle` attribute of the component
+    var filter = document.getElementById('directDataSourceFilter');
+    filter.withDateFilter = true;
+    filter.dateTitle = 'Direct Set Value';
+    filter.dateFrom = '2018-08-04';
+    filter.dateTo = '2018-08-31';
+&lt;/script&gt;
+                </script>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Static Data Source -->
+    <div>
+      <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Static Data Source</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-filter with-date-filter date-title="Custom Date Filter Title"
+              default-date="Last Year">
+              </ins-filter>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-filter with-date-filter
+  date-title="Custom Date Filter Title"
+  default-date="Last Year">
+</ins-filter>
+              </script>
+            </div>
+          </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ins-filter events -->
+  <div>
+    <h2 class="section-title">Events</h2>
+    <!-- valueChange -->
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">onFilterApply</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-filter id="date-filter" with-date-filter date-from="05-26-2018" date-to="05-27-2018"></ins-filter>
+          <script>
+            const onFilterApply = document.getElementById('date-filter')
+            onFilterApply.addEventListener('onFilterApply', event => {
+              console.log(event.detail["Date Period"]);
+              console.log(event.detail["Date Period"].from);
+              console.log(event.detail["Date Period"].to);
+              alert("Date From: " + event.detail["Date Period"].from + " Date to: " + event.detail["Date Period"].to);
+            });
+          </script>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-filter id="date-filter" with-date-filter date-from="05-26-2018" date-to="05-27-2018"></ins-filter>
+<script>
+  const onFilterApply = document.getElementById('date-filter')
+  onFilterApply.addEventListener('onFilterApply', event => {
+    console.log(event.detail["Date Period"]);
+    console.log(event.detail["Date Period"].from);
+    console.log(event.detail["Date Period"].to);
+    alert("Date From: " + event.detail["Date Period"].from + " Date to: " + event.detail["Date Period"].to);
+  });
+&lt;/script&gt;
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ins-filter-item -->
+  <div>
+    <!-- ins-filter item header -->
+    <div>
+      <h2 class="section-title">Insites Filter Item <code>&lt;ins-filter-item&gt;</code></h2>
+      <p>Displays dropdown items of ins-filter.</p>
+    </div>
+
+    <!-- Complete Example -->
+    <div>
+			<div class="ins-styleguide-wrap">
+					<div class="ins-styleguide-label-wrap">Complete Example</div>
+					<div class="ins-styleguide-cont">
+						<div class="ins-styleguide-actual-slot-wrap">
+							<ins-filter with-date-filter date-title="Date Period">
+								<ins-filter-item name="Operating System" options='["Windows", "macOS", "Linux"]'></ins-filter-item>
+							</ins-filter>
+						</div>
+						<div class="ins-styleguide-code-slot-wrap">
+							<script type="text/plain" class="language-markup">
+<ins-filter with-date-filter date-title="Date Period">
+	<ins-filter-item
+	name="Operating System"
+	options='["Windows", "macOS", "Linux"]'>
+	</ins-filter-item>
+</ins-filter>
+							</script>
+						</div>
+					</div>
+			</div>
+		</div>
+
+      <!-- ins-filter-item attribute table -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+              <tr>
+                <th>FIELD ATTRIBUTE</th>
+                <th>TYPE</th>
+                <th>DEFAULT</th>
+                <th>OPTIONS</th>
+                <th>DESCRIPTION</th>
+              </tr>
+              <tr>
+                <td>name</td>
+                <td>string</td>
+                <td>"Category Label"</td>
+                <td>any</td>
+                <td>Defines name of filter items</td>
+              </tr>
+              <tr>
+                <td>options</td>
+                <td>string/array</td>
+                <td>["Category 1", "Category 2", "Category 3"]</td>
+                <td>any</td>
+                <td>Defines item options</td>
+              </tr>
+              <tr>
+                <td>selected</td>
+                <td>string</td>
+                <td>any</td>
+                <td>any</td>
+                <td>Defines selected option</td>
+              </tr>
+            </table>
+          </div>
+    </div>
+
+    <!-- ins-filter event table -->
+    <div>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>EVENT</th>
+              <th>OBJECT</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>onFilter</td>
+            <td>stateFrom, stateTo</td>
+            <td>Execute a script when a filter item has been selected</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ins-filter item states -->
+    <div>
+      <h2 class="section-title">States</h2>
+      <!-- ins-filter-item Default State-->
+      <div>
+        <div class="ins-styleguide-wrap">
+            <div class="ins-styleguide-label-wrap">Default State</div>
+            <div class="ins-styleguide-cont">
+              <div class="ins-styleguide-actual-slot-wrap">
+                <ins-filter>
+                  <ins-filter-item></ins-filter-item>
+                </ins-filter>
+              </div>
+              <div class="ins-styleguide-code-slot-wrap">
+                <script type="text/plain" class="language-markup">
+<ins-filter>
+  <ins-filter-item></ins-filter-item>
+</ins-filter>
+                </script>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <!-- ins-filter-item Direct Set Data-->
+      <div>
+        <div class="ins-styleguide-wrap">
+            <div class="ins-styleguide-label-wrap">Direct Set Data</div>
+            <div class="ins-styleguide-cont">
+              <div class="ins-styleguide-actual-slot-wrap">
+                <ins-filter>
+                  <ins-filter-item id="directSetDataFilterItem"></ins-filter-item>
+                </ins-filter>
+
+                <script>
+                  var filter = document.getElementById('directSetDataFilterItem');
+                  filter.addEventListener('didLoad', function(e) {
+                    console.log('directSetDataFilterItem didLoad')
+                    var options = ["CEO", "Manager"];
+                    filter.name = 'Position';
+                    filter.options = options;
+                  });
+                </script>
+              </div>
+              <div class="ins-styleguide-code-slot-wrap">
+                <script type="text/plain" class="language-markup">
+  <ins-filter>
+    <ins-filter-item id="directSetDataFilterItem"></ins-filter-item>
+  </ins-filter>
+  <script>
+    var filter = document.getElementById('directSetDataFilterItem');
+    filter.addEventListener('didLoad', function(e) {
+      var options = ["CEO", "Manager"];
+      filter.name = 'Position';
+      filter.options = options;
+    });
+  &lt;/script&gt;
+                </script>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <!-- ins-filter-item Static Data Source-->
+      <div>
+        <div class="ins-styleguide-wrap">
+            <div class="ins-styleguide-label-wrap">Static Data Source</div>
+            <div class="ins-styleguide-cont">
+              <div class="ins-styleguide-actual-slot-wrap">
+                <ins-filter>
+                  <ins-filter-item name="Operating System" options='["Windows", "macOS", "Linux"]'></ins-filter-item>
+                </ins-filter>
+              </div>
+              <div class="ins-styleguide-code-slot-wrap">
+                <script type="text/plain" class="language-markup">
+<ins-filter>
+  <ins-filter-item
+    name="Operating System"
+    options='["Windows", "macOS", "Linux"]'>
+  </ins-filter-item>
+</ins-filter>
+                </script>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ins-filter-item events -->
+		<div>
+			<h2 class="section-title">Events</h2>
+			<!-- onFilter -->
+      <div>
+        <div class="ins-styleguide-wrap">
+            <div class="ins-styleguide-label-wrap">Static Data Source</div>
+            <div class="ins-styleguide-cont">
+              <div class="ins-styleguide-actual-slot-wrap">
+                <ins-filter>
+                    <ins-filter-item
+                      name="Operating System"
+                      id = "onFilter"
+                      options='["Windows", "macOS", "Linux"]'>
+                    </ins-filter-item>
+                  </ins-filter>
+                  <script>
+                    const onFilter = document.getElementById('onFilter')
+                    onFilter.addEventListener('onFilter', event => {
+                      console.log(event.detail.name);
+                      console.log(event.detail.option);
+                        alert("Hello! I am an alert box!!");
+                    });
+                  </script>
+              </div>
+              <div class="ins-styleguide-code-slot-wrap">
+                <script type="text/plain" class="language-markup">
+<ins-filter>
+  <ins-filter-item
+    name="Operating System"
+    id="onFilter"
+    options='["Windows", "macOS", "Linux"]'>
+  </ins-filter-item>
+</ins-filter>
+<script>
+  const onFilter = document.getElementById('onFilter')
+  onFilter.addEventListener('onFilter', event => {
+  console.log(event.detail.name);
+  console.log(event.detail.option);
+  alert("Hello! I am an alert box!!");
+  });
+&lt;/script&gt;
+                </script>
+              </div>
+            </div>
+        </div>
+      </div>
+		</div>
+
+  </div>
+
+
+  </body>
+
+
+</html>

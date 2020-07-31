@@ -11,9 +11,10 @@
     color: var(--ins-color-ink);
     outline: none;
     cursor: pointer;
+    border: none;
 
     &:hover,
-    &:active, {
+    &:active {
       background: #2C3148;
       color: var(--ins-color-white);
     }

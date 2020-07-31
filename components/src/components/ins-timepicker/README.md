@@ -12,6 +12,7 @@
 | `disabled`     | `disabled`      |             | `boolean` | `false`     |
 | `errorMessage` | `error-message` |             | `string`  | `""`        |
 | `hasError`     | `has-error`     |             | `boolean` | `false`     |
+| `hasLoad`      | `has-load`      |             | `string`  | `undefined` |
 | `icon`         | `icon`          |             | `string`  | `""`        |
 | `label`        | `label`         |             | `string`  | `undefined` |
 | `maxTime`      | `max-time`      |             | `string`  | `""`        |
@@ -27,6 +28,7 @@
 
 | Event            | Description | Type               |
 | ---------------- | ----------- | ------------------ |
+| `didLoad`        |             | `CustomEvent<any>` |
 | `insInput`       |             | `CustomEvent<any>` |
 | `insValueChange` |             | `CustomEvent<any>` |
 

@@ -5,6 +5,20 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property  | Attribute  | Description | Type     | Default     |
+| --------- | ---------- | ----------- | -------- | ----------- |
+| `hasLoad` | `has-load` |             | `string` | `undefined` |
+
+
+## Events
+
+| Event     | Description | Type               |
+| --------- | ----------- | ------------------ |
+| `didLoad` |             | `CustomEvent<any>` |
+
+
 ## Methods
 
 ### `toggleSidebar() => Promise<void>`

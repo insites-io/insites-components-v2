@@ -12,6 +12,7 @@
 | `cloneOnDrag`    | `clone-on-drag`   |             | `boolean` | `false`                |
 | `disabled`       | `disabled`        |             | `boolean` | `false`                |
 | `droppable`      | `droppable`       |             | `boolean` | `true`                 |
+| `hasLoad`        | `has-load`        |             | `string`  | `undefined`            |
 | `ignoreElements` | `ignore-elements` |             | `string`  | `null`                 |
 | `insDraggable`   | `ins-draggable`   |             | `boolean` | `true`                 |
 | `sort`           | `sort`            |             | `boolean` | `true`                 |
@@ -23,6 +24,7 @@
 
 | Event                | Description | Type                  |
 | -------------------- | ----------- | --------------------- |
+| `didLoad`            |             | `CustomEvent<any>`    |
 | `insAdd`             |             | `CustomEvent<Object>` |
 | `insChoose`          |             | `CustomEvent<Object>` |
 | `insClone`           |             | `CustomEvent<Object>` |

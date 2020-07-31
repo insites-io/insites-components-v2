@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Lifecycle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+
+  <script type="module" src="/build/insites-components.esm.js"></script>
+  <script nomodule src="/build/insites-components.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+
+  <!-- Page Dependencies -->
+  <script src="/assets/js/insites-config.min.js"></script>
+</head>
+<body>
+  <div>
+    <h2 class="section-title">Lifecycle</h2>
+    <p>There are two ways to handle Insites component lifecycle by Event or by Property.</p>
+  </div>
+
+  <!-- Event -->
+  <div>
+    <h2 class="section-title">Event</h2>
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-button id="myBtn" label="Event Lifecycle" solid></ins-button>
+          <script>
+            myBtn.addEventListener('didLoad', function(e){
+              console.log('myBtn did load', e);
+            })
+          </script>
+        </div>
+
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-button id="myBtn"
+  label="Event Lifecycle" solid>
+</ins-button>
+
+<script>
+  myBtn.addEventListener('didLoad', function(e){
+    console.log('myBtn did load', e);
+  })
+&lt;/script&gt;
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="section-title">Property</h2>
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-button has-load="doSomething" label="Event Lifecycle" solid></ins-button>
+          <script>
+            Insites.addMethods({
+              doSomething: function(e) {
+                console.log('ins-button has loaded', e);
+              }
+            });
+          </script>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-button has-load="doSomething"
+  label="Event Lifecycle" solid>
+</ins-button>
+
+<script src="https://components.insites.io/insites-config.min.js">&lt;/script&gt;
+<script>
+  Insites.addMethods({
+    doSomething: function(e) {
+      console.log('ins-button has loaded', e);
+    }
+  });
+&lt;/script&gt;
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+</body>
+</html>

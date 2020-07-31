@@ -9,10 +9,18 @@
 
 | Property         | Attribute         | Description | Type      | Default     |
 | ---------------- | ----------------- | ----------- | --------- | ----------- |
+| `hasLoad`        | `has-load`        |             | `string`  | `undefined` |
 | `label`          | `label`           |             | `string`  | `undefined` |
 | `loadingScreen`  | `loading-screen`  |             | `boolean` | `false`     |
 | `staticTimeline` | `static-timeline` |             | `boolean` | `false`     |
 | `timelineData`   | `timeline-data`   |             | `any`     | `[]`        |
+
+
+## Events
+
+| Event     | Description | Type               |
+| --------- | ----------- | ------------------ |
+| `didLoad` |             | `CustomEvent<any>` |
 
 
 ## Dependencies

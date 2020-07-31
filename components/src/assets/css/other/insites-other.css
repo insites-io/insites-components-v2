@@ -326,6 +326,8 @@
 .ins-carousel {
   font-family: var(--ins-font-family);
   color: #2c3148; }
+  .ins-carousel div {
+    box-sizing: border-box; }
   .ins-carousel img {
     width: 100%; }
   .ins-carousel_heading {

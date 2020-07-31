@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <title>Insites 2.0 Frontend Styleguide - Divider</title>
+
+    <!-- Insites Essentials -->
+    <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+    <script src="/v1/assets/js/insites-plugins.js"></script>
+    <script src="/v1/build/insites.js"></script>
+
+    <!-- Documention Styleguide CSS -->
+    <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+    <link rel="stylesheet" href="/v1/assets/css/prism.css">
+    <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+    <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+    <script src="/v1/assets/js/prism.js"></script>
+  </head>
+
+  <body>
+    <!-- ins-heading -->
+    <div>
+      <h2 class="section-title">Insites Heading
+        <code>&lt;ins-heading&gt;</code>
+      </h2>
+      <p>Defines a divider element with text label option.</p>
+    <div>
+
+    <!-- content -->
+    <div>
+      <h2 class="section-title">Complete Example</h2>
+      <ins-styleguide>
+        <div slot="actual">
+          <ins-heading
+            label="Label"
+            level=6
+            background-color="#ffffff"
+            max-length="20"
+            editable></ins-heading>
+        </div>
+        <div slot="code">
+          <script type="text/plain" class="language-markup">
+<ins-heading label="Label" level=6 max-length="20" background-color="#ffffff" editable></ins-heading>
+          </script>
+        </div>
+      </ins-styleguide>
+    </div>
+
+    <!-- ins-button attribute table -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th width="160">FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>label</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines the label of the checkbox card</td>
+          </tr>
+          <tr>
+            <td>name</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines the name of the edit input field</td>
+          </tr>
+          <tr>
+            <td>level</td>
+            <td>integer</td>
+            <td>6</td>
+            <td>1 - 6</td>
+            <td>Defines the html "h-tag" to be used for the label (ie. h1, h2, ...)</td>
+          </tr>
+          <tr>
+            <td>background-color</td>
+            <td>string</td>
+            <td>#ffffff</td>
+            <td>Any CSS color sytax</td>
+            <td>Shows the edit icon on hover & allow edit functionality</td>
+          </tr>
+          <tr>
+            <td>without-line</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true,false</td>
+            <td>Disabled the line display / border</td>
+          </tr>
+          <tr>
+            <td>editable</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true,false</td>
+            <td>Shows the edit icon on hover & allow edit functionality</td>
+          </tr>
+          <tr>
+            <td>max-length</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines the edit input field's character max-length</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ins-heading event table -->
+    <div>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>EVENT</th>
+            <th>OBJECT</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>onInsHeadingUpdate</td>
+            <td>name,old_label,new_label</td>
+            <td>Emits the label name, old and new value</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="section-title">Default State</h2>
+      <ins-styleguide>
+        <div slot="actual">
+<ins-heading></ins-heading>
+        </div>
+        <div slot="code">
+          <script type="text/plain" class="language-markup">
+<ins-heading></ins-heading>
+          </script>
+        </div>
+      </ins-styleguide>
+
+      <ins-styleguide>
+        <div slot="actual">
+<ins-heading label="Sample Label" background-color="#f1f1f1"></ins-heading>
+        </div>
+        <div slot="code">
+          <script type="text/plain" class="language-markup">
+<ins-heading label="Sample Label" background-color="#f1f1f1"></ins-heading>
+          </script>
+        </div>
+      </ins-styleguide>
+    </div>
+
+    <!-- Event -->
+    <div>
+      <h2 class="section-title">Events</h2>
+      <ins-styleguide>
+        <div slot="actual">
+          <ins-heading id="eventEl" name="Sample Heading" label="Label" level=6 max-length="20" background-color="#ffffff" editable></ins-heading>
+          <script>
+            var field = document.getElementById('eventEl');
+            field.addEventListener('onInsHeadingUpdate', event => {
+              var event = event.detail;
+              console.log("Heading field event", event);
+              alert("Heading field name: " + event.name + "\nOld Value: " + event.old_label + "\nNew Value: " +  event.new_label);
+            });
+          </script>
+        </div>
+
+        <div slot="code">
+          <script type="text/plain" class="language-markup">
+<ins-heading id="eventEl" name="Sample Heading" label="Label" level=6 max-length="20" background-color="#ffffff" editable></ins-heading>
+<script>
+  var field = document.getElementById('eventEl');
+  field.addEventListener('onInsHeadingUpdate', event => {
+    var event = event.detail;
+    console.log("Heading field event", event);
+    alert("Heading field name: " + event.name + "\nOld Value: " + event.old_label + "\nNew Value: " +  event.new_label);
+  });
+&lt;/script&gt;
+              </script>
+        </div>
+      </ins-styleguide>
+    </div>
+  </body>
+</html>

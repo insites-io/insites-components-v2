@@ -19,7 +19,6 @@
 
 | Event                    | Description | Type               |
 | ------------------------ | ----------- | ------------------ |
-| `defaultEvent`           |             | `CustomEvent<any>` |
 | `insSelectOptionClicked` |             | `CustomEvent<any>` |
 
 

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide - Progress bar</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/v1/assets/css/insites-plugins.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <script src="/v1/assets/js/insites-plugins.js"></script>
+  <script src="/v1/build/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/prism.css">
+  <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+  <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+  <script src="/v1/assets/js/prism.js"></script>
+</head>
+
+<body>
+  <div>
+    <h2 class="section-title">Insites Progress Bar <code>&lt;ins-progress-bar&gt;</code></h2>
+    <p>Creates a progress bar UI that automatically calculates the progress count</p>
+    <!-- Complete Example -->
+    <div>
+      <h2 class="section-title">Complete Example</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-progress-bar
+              text="Exported 100 of 1,000 items"
+              total="1000"
+              progress="100">
+            </ins-progress-bar>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-progress-bar
+  text="Exported 100 of 1000 items"
+  total="1000"
+  progress="100">
+</ins-progress-bar>
+            </script>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Default State -->
+    <div>
+      <h2 class="section-title">Default State</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-progress-bar></ins-progress-bar>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-progress-bar></ins-progress-bar>
+                </script>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- No Text State -->
+    <div>
+      <h2 class="section-title">No Text State</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-progress-bar
+              total="1000"
+              progress="100">
+            </ins-progress-bar>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-progress-bar
+  total="1000"
+  progress="100">
+</ins-progress-bar>
+            </script>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Attributes -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>text</td>
+            <td>string</td>
+            <td>-</td>
+            <td>any</td>
+            <td>Defines the text to be displayed during progress</td>
+          </tr>
+          <tr>
+            <td>total</td>
+            <td>number</td>
+            <td>-</td>
+            <td>any</td>
+            <td>Defines the total count of the progress</td>
+          </tr>
+          <tr>
+            <td>progress</td>
+            <td>number</td>
+            <td>-</td>
+            <td>any</td>
+            <td>Defines the progress count of the progress bar</td>
+          </tr>
+          <tr>
+            <td>hidden</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Defines if the progress bar should be hidden or not</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- -->
+  </div>
+  <script src="../../../../assets/js/ins.js"></script>
+</body>
+
+</html>

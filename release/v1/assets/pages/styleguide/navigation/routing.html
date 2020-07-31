@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide - Routing</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/v1/assets/css/insites-plugins.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <script src="/v1/assets/js/insites-plugins.js"></script>
+  <script src="/v1/build/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/prism.css">
+  <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+  <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+  <script src="/v1/assets/js/prism.js"></script>
+  <style>
+    ins-sidebar .sidebar ins-sidebar-footer-menu .menu-item-wrap {
+      top: calc(-250px + 110px) !important;
+      height: calc(250px - 110px) !important;
+    }
+
+    ins-sidebar .sidebar {
+      position: relative;
+      height: 250px;
+      z-index: 105;
+    }
+
+    .complete-example ins-sidebar .sidebar {
+      height: 550px;
+    }
+
+    .complete-example ins-sidebar ins-sidebar-footer-menu .menu-item-wrap {
+      top: calc(-550px + 110px) !important;
+      height: calc(550px - 110px) !important;
+    }
+  </style>
+</head>
+<body>
+
+    <div>
+        <h2 class="section-title">Inside an iframe</h2>
+        <p>Routing inside an iframe are the same as a normal page.</p>
+
+        <h2 class="section-title">New Tab</h2>
+        <p>If your links can be opened in a new tab from an iframe, its going to be different.</p>
+        <p>It requires three things for the url:</p>
+        <ul>
+            <li>The formatted url from the admin, e.g. <img width="500" src="https://cdn-std.droplr.net/files/acc_490241/8ER5yk" alt="formatted url image" /></li>
+            <li><strong>reroute</strong> (Query String) - the route/link you want the page to go to, must be first on the query string</li>
+            <li><strong>reroutelabel</strong> (Query String) - the label you want the page to display.</li>
+        </ul>
+
+        <div>
+            <h2 class="section-title">Sample</h2>
+<script type="text/plain" class="language-markup"><a href="/#/app/navigation/routing?reroute=%2Fassets%2Fpages%2Fstyleguide%2Fnavigation%2Frerouted.html&reroutelabel=Rerouted">Reroute</a></script>
+<br />
+            <p>
+                <a title="Try it here" href="/#/app/navigation/routing?reroute=%2Fassets%2Fpages%2Fstyleguide%2Fnavigation%2Frerouted.html&reroutelabel=Rerouted">Try it here</a>
+            </p>
+        </div>
+
+
+        <h2 class="section-title">SPA applications</h2>
+        <p>Most of the SPA Frameworks have or manage their own routing, you can use them normally with Insites Admin.</p>
+    </div>
+</body>
+</html>

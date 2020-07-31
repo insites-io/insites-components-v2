@@ -10,10 +10,18 @@
 | Property    | Attribute   | Description | Type     | Default     |
 | ----------- | ----------- | ----------- | -------- | ----------- |
 | `alt`       | `alt`       |             | `string` | `undefined` |
+| `hasLoad`   | `has-load`  |             | `string` | `undefined` |
 | `label`     | `label`     |             | `string` | `undefined` |
 | `name`      | `name`      |             | `string` | `undefined` |
 | `src`       | `src`       |             | `string` | `undefined` |
 | `thumbnail` | `thumbnail` |             | `string` | `undefined` |
+
+
+## Events
+
+| Event     | Description | Type               |
+| --------- | ----------- | ------------------ |
+| `didLoad` |             | `CustomEvent<any>` |
 
 
 ## Dependencies

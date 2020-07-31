@@ -7,13 +7,21 @@
 
 ## Properties
 
-| Property     | Attribute    | Description | Type      | Default |
-| ------------ | ------------ | ----------- | --------- | ------- |
-| `categories` | --           |             | `any[]`   | `[]`    |
-| `chartData`  | --           |             | `any[]`   | `[]`    |
-| `horizontal` | `horizontal` |             | `boolean` | `false` |
-| `name`       | `name`       |             | `string`  | `""`    |
-| `stacked`    | `stacked`    |             | `boolean` | `false` |
+| Property     | Attribute    | Description | Type      | Default     |
+| ------------ | ------------ | ----------- | --------- | ----------- |
+| `categories` | --           |             | `any[]`   | `[]`        |
+| `chartData`  | --           |             | `any[]`   | `[]`        |
+| `hasLoad`    | `has-load`   |             | `string`  | `undefined` |
+| `horizontal` | `horizontal` |             | `boolean` | `false`     |
+| `name`       | `name`       |             | `string`  | `""`        |
+| `stacked`    | `stacked`    |             | `boolean` | `false`     |
+
+
+## Events
+
+| Event     | Description | Type               |
+| --------- | ----------- | ------------------ |
+| `didLoad` |             | `CustomEvent<any>` |
 
 
 ## Dependencies

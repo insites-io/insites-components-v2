@@ -1,0 +1,1 @@
+const e=window.insites.h;class t{render(){return e("slot",null)}static get is(){return"ins-base-table-row"}static get style(){return"ins-base-table-row{display:table-row;height:64px;width:100%}ins-base-table-row:nth-child(2n){background-color:#fafbfc}ins-base-table-row:hover:nth-child(odd){background-color:unset}"}}export{t as InsBaseTableRow};

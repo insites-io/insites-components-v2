@@ -52,6 +52,7 @@
     width: 50%;
     float: left;
     padding: 15px 20px;
+    box-sizing: border-box;
   }
 
   .pagination-wrap.full {
@@ -69,6 +70,7 @@
       .ins-select-label-wrap {
         padding: 1px 5px;
         width: 100%;
+        box-sizing: border-box;
 
         span {
           float: left;
@@ -99,14 +101,8 @@
   }
 
   &__tablePage,
-  &__pagination {
-    color: var(--ins-color-ink40);
-    font-size: 12px;
-  }
-
-  &__page,
   &__pagination,
-  &__prev-next {
+  &__page {
     color: var(--ins-color-ink40);
     font-size: 12px;
   }
@@ -122,6 +118,9 @@
       cursor: default;
       color: var(--ins-color-ink40);
       outline: none;
+      background-color: transparent;
+      border: none;
+      font-size: 12px;
 
       &:disabled {
         cursor: not-allowed;
@@ -220,6 +219,7 @@
       &.checkbox {
         width: 50px;
         position: relative;
+        box-sizing: border-box;
 
         .ins-checkbox-wrap {
           padding: 0;
@@ -730,6 +730,7 @@
       width: 100%;
       float: none;
       padding: 20px 20px;
+      box-sizing: border-box;
     }
 
     .ibt-table-action-container {

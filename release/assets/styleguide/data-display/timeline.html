@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Timeline</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/v2.0.0/insites-font-icons.min.css" />
+  <link rel="stylesheet" href="/v2.0.0/insites.min.css" />
+
+  <script type="module" src="/v2.0.0/insites.esm.js"></script>
+  <script nomodule src="/v2.0.0/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+
+  <style>
+    ins-styleguide .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap {
+      overflow: initial;
+    }
+    .example h1, .example h2, .example h3, .example h4, .example h5, .example p {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h2 class="section-title">Insites Timeline
+      <code>&lt;ins-timeline&gt;</code>
+    </h2>
+    <p>Creates a timeline container.</p>
+  </div>
+
+  <!-- ins-timeline attributes -->
+  <div>
+    <h2 class="section-title">Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>static-timeline</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Allows rendering of html content for the timeline. <br>
+            You still need to use <code>&lt;ins-timeline-item&gt; to wrap things.</code>
+          </td>
+        </tr>
+        <tr>
+          <td>label</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines timeline heading</td>
+        </tr>
+        <tr>
+          <td>timeline-data</td>
+          <td>array</td>
+          <td>[]</td>
+          <td>any (valid timeline object data)<br>
+            ex. [{ color: "red", icon: "icon-star", content: "html code here", actions: "html code here", datetime: "Text conent" }]
+          </td>
+          <td>Defines timeline data. For more info, check <code>&lt;ins-timeline-item&gt;</code> attributes.
+          </td>
+        </tr>
+        <tr>
+          <td>total-count</td>
+          <td>number</td>
+          <td>0</td>
+          <td>any</td>
+          <td>Specify number of items in the timeline</td>
+        </tr>
+        <tr>
+          <td>without-pagination</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Removes table pagination display</td>
+        </tr>
+        <tr>
+          <td>page-number</td>
+          <td>number</td>
+          <td>1</td>
+          <td>any</td>
+          <td>Defines number of pages in timeline</td>
+        </tr>
+        <tr>
+          <td>page-size</td>
+          <td>number</td>
+          <td>10</td>
+          <td>any</td>
+          <td>Defines size of pages in timeline</td>
+        </tr>
+        <tr>
+          <td>page-size-options</td>
+          <td>number</td>
+          <td>[10, 20, 50]</td>
+          <td>any</td>
+          <td>Defines size of pages in the timeline</td>
+        </tr>
+        <tr>
+          <td>loading-screen</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Enables loader in timeline</td>
+        </tr>
+        <tr>
+          <td>loader-title</td>
+          <td>string</td>
+          <td>Just a moment</td>
+          <td>any</td>
+          <td>Defines title of loader</td>
+        </tr>
+        <tr>
+          <td>loader-message</td>
+          <td>string</td>
+          <td>We are processing your request</td>
+          <td>any</td>
+          <td>Defines message of loader</td>
+        </tr>
+        <tr>
+          <td>loader-icon</td>
+          <td>string</td>
+          <td>processing</td>
+          <td>processing, warning, help, error, success, downloading, uploading</td>
+          <td>Defines icon of loader</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ins-timeline-item -->
+  <div>
+    <h2 class="section-title">Insites Timeline Item
+      <code>&lt;ins-timeline-item&gt;</code>
+    </h2>
+    <p>Creates a timeline item.</p>
+    <b>NOTE:</b>
+    <ul>
+      <li>You can use this only when the ins-timeline attribute <code>static-timeline</code> is set to 'true'.</li>
+      <li>Wrap your HTML elements in <code>div</code> with atribute <code>slot="content"</code> and <code>slot="action"</code> respectively to specify where they will be displayed.</li>
+    </ul>
+
+  </div>
+
+  <!-- ins-timeline attributes -->
+  <div>
+    <h2 class="section-title">Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>icon</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Specify CSS icon class used for the timeline item</td>
+        </tr>
+        <tr>
+          <td>color</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any / [green, red, blue, yellow, orange, grey]</td>
+          <td>Specify CSS color class used for the timeline item</td>
+        </tr>
+        <tr>
+          <td>solid</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Makes the timeline marker have background color</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>string</td>
+          <td>"1"</td>
+          <td>any</td>
+          <td>Specify a title / text shown on top of the timeline content </td>
+        </tr>
+        <tr>
+          <td>datetime</td>
+          <td>string</td>
+          <td>"1"</td>
+          <td>any</td>
+          <td>Specify datetime / text shown on bottom of the timeline content</td>
+        </tr>
+        <tr>
+          <td>inline</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true, false</td>
+          <td>Makes the timeline content and action display 'inline-block'</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- Complete Example -->
+  <div>
+    <h2 class="section-title">Complete Example</h2>
+    <div>
+      <div class="has-css example" slot="actual">
+        <ins-timeline label="Sample Heading" static-timeline total-count="4">
+          <ins-timeline-item title="This is a sample title" color="yellow" icon="icon-star" datetime="2019-01-30 10:22:39 UTC, by: John Doe">
+            <div slot="content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat..</p>
+            </div>
+            <div slot="actions">
+              <ins-button label="" icon="icon-log-out" color="blue"></ins-button>
+            </div>
+          </ins-timeline-item>
+          <ins-timeline-item>
+            <div slot="content">
+              <p>This is the default styling of a timeline content without actions.</p>
+            </div>
+          </ins-timeline-item>
+          <ins-timeline-item solid>
+            <div slot="content">
+              <p>This uses timeline item 'solid' attribute. This can use along with 'color' attribute as well.</p>
+            </div>
+          </ins-timeline-item>
+          <ins-timeline-item datetime="6 days ago" inline="false" icon="icon-email-1" color="green" solid>
+            <div slot="content">
+              <p>This timeline item uses `inline` property `false`, thus the action options are positioned 'bottom-right'.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat..</p>
+            </div>
+            <div slot="actions">
+              <ins-button size="small" color="blue" solid label="Accept"></ins-button>
+            </div>
+          </ins-timeline-item>
+        </ins-timeline>
+      </div>
+      <div slot="code">
+        <script type="text/plain" class="language-markup">
+  <ins-timeline label="Sample Heading" static-timeline total-count="4">
+    <!-- Each timeline entry is wrapped within <ins-timeline-item> -->
+    <ins-timeline-item title="This is a sample title" color="yellow" icon="icon-star" datetime="2019-01-30 10:22:39 UTC, by: John Doe">
+      <!-- Add 'slot="content"' to div to identify that it is the timeline content -->
+      <div slot="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat..</p>
+      </div>
+      <!-- Add 'slot="actions"' to div to identify that it is the action content -->
+      <div slot="actions">
+        <ins-button label="" icon="icon-log-out" color="blue"></ins-button>
+      </div>
+    </ins-timeline-item>
+
+    <!-- timeline item 2 -->
+    <ins-timeline-item>
+      <div slot="content">
+        <p>This is the default styling of a timeline content without actions.</p>
+      </div>
+    </ins-timeline-item>
+
+    <!-- timeline item 3 -->
+    <ins-timeline-item solid>
+      <div slot="content">
+        <p>This uses timeline item 'solid' attribute. This can use along with 'color' attribute as well.</p>
+      </div>
+    </ins-timeline-item>
+
+    <!-- timeline item 4 -->
+    <ins-timeline-item datetime="6 days ago" inline="false" icon="icon-email-1" color="green" solid>
+      <div slot="content">
+        <p>This timeline item uses `inline` property `false`, thus the action options are positioned 'bottom-right'.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat..</p>
+      </div>
+      <div slot="actions">
+        <ins-button size="small" color="blue" solid label="Accept"></ins-button>
+      </div>
+    </ins-timeline-item>
+
+  </ins-timeline>
+          </script>
+      </div>
+    </div>
+  </div>
+
+  <!-- State -->
+  <div>
+    <h2 class="section-title">Loading State</h2>
+    <ins-styleguide>
+      <div class="has-css" slot="actual">
+        <ins-timeline label="Sample" loading-screen static-timeline>
+          <ins-timeline-item>
+            <div slot="content">
+              <p>This content won't show because timeline is 'loading'.</p>
+            </div>
+          </ins-timeline-item>
+        </ins-timeline>
+      </div>
+      <div slot="code">
+        <script type="text/plain" class="language-markup">
+<ins-timeline label="Sample" loading-screen static-timeline>
+  <ins-timeline-item>
+    <div slot="content">
+      <p>This content won't show because timeline is 'loading'.</p>
+    </div>
+  </ins-timeline-item>
+</ins-timeline>
+          </script>
+      </div>
+    </ins-styleguide>
+  </div>
+
+  <!-- Direct Set Value -->
+  <div>
+    <h2 class="section-title">Direct Set Value</h2>
+    <ins-styleguide>
+      <div class="has-css" slot="actual">
+        <ins-timeline id="directSetEl">
+        </ins-timeline>
+        <script>
+          var sampleData = [{ color: "red", icon: "icon-star", content: "<h4>Hello World</h4> <p>Lorem ipsum dolor sit amet..</p>", actions: '<ins-button solid size="small" label="Action"></ins-button>', datetime: "1 month ago" }, { content: "sample content" }, { color: "blue", solid: true, content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore." }];
+          var timelineEl = document.getElementById('directSetEl');
+              timelineEl.label = "Timeine data by script";
+              timelineEl.timelineData = sampleData;
+              timelineEl.totalCount = 3;
+        </script>
+      </div>
+      <div slot="code">
+        <script type="text/plain" class="language-markup">
+<ins-timeline id="directSetEl">
+</ins-timeline>
+<script>
+  var sampleData = [{ color: "red", icon: "icon-star", content: "<h4>Hello World</h4> <p>Lorem ipsum dolor sit amet..</p>", actions: '<ins-button solid size="small" label="Action"></ins-button>', datetime: "1 month ago" }, { content: "sample content" }, { color: "blue", solid: true, content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore." }];
+  var timelineEl = document.getElementById('directSetEl');
+      timelineEl.label = "Timeine data by script";
+      timelineEl.timelineData = sampleData;
+      timelineEl.totalCount = 3;
+&lt;/script&gt;
+        </script>
+      </div>
+    </ins-styleguide>
+  </div>
+
+</body>
+
+</html>

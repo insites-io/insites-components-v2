@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Sidebar</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+
+  <script type="module" src="/build/insites-components.esm.js"></script>
+  <script nomodule src="/build/insites-components.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+  <style>
+    ins-sidebar .sidebar ins-sidebar-footer-menu .menu-item-wrap {
+      top: calc(-250px + 110px) !important;
+      height: calc(250px - 110px) !important;
+    }
+
+    ins-sidebar .sidebar {
+      position: relative;
+      height: 250px;
+      z-index: 105;
+    }
+
+    .complete-example ins-sidebar .sidebar {
+      height: 550px;
+    }
+
+    .complete-example ins-sidebar ins-sidebar-footer-menu .menu-item-wrap {
+      top: calc(-550px + 110px) !important;
+      height: calc(550px - 110px) !important;
+    }
+
+    .ins-sidebar-footer-wrap {
+      position: absolute;
+      bottom: 33px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ins-sidebar -->
+  <div>
+      <!-- ins-sidebar-header -->
+    <div>
+      <h2 class="section-title">Insites Sidebar Tag</h2>
+      <p>Renders container for sidebar items.</p>
+    </div>
+
+    <!-- ins-sidebar complete example -->
+    <div>
+      <h2 class="section-title">Complete Example</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-sidebar full-logo="/assets/images/Insites_logo.svg" icon-logo="/assets/images/insites_logo_icon.svg"></ins-sidebar>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-sidebar
+  full-logo="/assets/images/Insites_logo.svg"
+  icon-logo="/assets/images/insites_logo_icon.svg">
+</ins-sidebar>
+              </script>
+            </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/120/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ins-sidebar attribute table -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>full-lkogo</td>
+            <td>string</td>
+            <td>Insites_logo</td>
+            <td>any</td>
+            <td>Defines icon of sidebar in full screen</td>
+          </tr>
+          <tr>
+            <td>icon-logo</td>
+            <td>string</td>
+            <td>insites_logo_icon</td>
+            <td>any</td>
+            <td>Defines icon of sidebar when sidebar is minimized</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ins-sidebar states -->
+    <div>
+      <h2 class="section-title">States</h2>
+      <!-- ins-sidebar-item  Default State -->
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Default State</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-sidebar class="style-guide"></ins-sidebar>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-sidebar></ins-sidebar>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+
+      <!-- ins-sidebar-item  Direct Set Data -->
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Direct Set Data</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+
+            <ins-sidebar id="sidebarID"
+              icon-logo="/assets/images/Insites_logo_icon.svg"
+              class="style-guide">
+            </ins-sidebar>
+
+            <script>
+              var logo = "/assets/images/Insites_logo.svg";
+              var insSidebar = document.getElementById('sidebarID')
+              insSidebar.addEventListener('didLoad', function(e){
+                insSidebar.fullLogo = logo;
+              });
+            </script>
+
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-sidebar id="sidebarID"
+  icon-logo="/assets/images/Insites_logo_icon.svg"
+  class="style-guide">
+</ins-sidebar>
+
+<script>
+  var logo = "/assets/images/Insites_logo.svg";
+  var insSidebar = document.getElementById('sidebarID')
+  insSidebar.addEventListener('didLoad', function(e){
+    insSidebar.fullLogo = logo;
+  });
+&lt;/script&gt;
+              </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+
+      <!-- ins-sidebar-item  Static Data Source -->
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Static Data Source</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-sidebar full-logo="/assets/images/Insites_logo.svg" icon-logo="/assets/images/Insites_logo_icon.svg"
+              class="style-guide"></ins-sidebar>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-sidebar
+  full-logo="/assets/images/Insites_logo.svg"
+  icon-logo="/assets/images/Insites_logo_icon.svg">
+</ins-sidebar>
+              </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ins-sidebar-item -->
+  <div>
+    <div>
+      <h2 class="section-title">Insites Sidebar Item Tag</h2>
+      <p>Defines a sidebar item.</p>
+    </div>
+
+    <!-- ins-sidebar-item complete example-->
+    <div>
+      <h2 class="section-title">Complete Example</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-sidebar>
+                <ins-sidebar-item
+                  link="/assets/pages/styleguide/buttons.html"
+                  icon="icon-buttons"
+                  label="Buttons" app>
+                </ins-sidebar-item>
+              </ins-sidebar>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-sidebar>
+  <ins-sidebar-item
+    link="/assets/pages/styleguide/buttons.html"
+    icon="icon-buttons"
+    label="Buttons" app>
+  </ins-sidebar-item>
+</ins-sidebar>
+              </script>
+            </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/vnpdj6x5/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ins-sidebar-item attribute table -->
+    <div>
+        <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+              <tr>
+                <th>FIELD ATTRIBUTE</th>
+                <th>TYPE</th>
+                <th>DEFAULT</th>
+                <th>OPTIONS</th>
+                <th>DESCRIPTION</th>
+              </tr>
+              <tr>
+                <td>link</td>
+                <td>any</td>
+                <td>""</td>
+                <td>any</td>
+                <td>Defines link of sidebar item</td>
+              </tr>
+              <tr>
+                <td>footer-link</td>
+                <td>string</td>
+                <td>""</td>
+                <td>any</td>
+                <td>N/A</td>
+              </tr>
+              <tr>
+                <td>icon</td>
+                <td>any</td>
+                <td>"no-icon"</td>
+                <td>icon-close-1, icon-utilities, icon-lock-1 ...</td>
+                <td>Defines icon of sidebar item</td>
+              </tr>
+              <tr>
+                <td>app</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>true, false</td>
+                <td>Renders iframe</td>
+              </tr>
+              <tr>
+                <td>with-submenu</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>true, false</td>
+                <td>Renders submenu for sidebar item</td>
+              </tr>
+              <tr>
+                <td>label</td>
+                <td>string</td>
+                <td>Label</td>
+                <td>any</td>
+                <td>Defines label for sidebar item</td>
+              </tr>
+              <tr>
+                <td>landing-page</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>true, false</td>
+                <td>N/A</td>
+              </tr>
+          </table>
+        </div>
+    </div>
+
+    <h2 class="section-title">States</h2>
+    <!-- Default state -->
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Default</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-sidebar class="style-guide">
+            <ins-sidebar-item></ins-sidebar-item>
+            <!-- <ins-sidebar-item icon="icon-settings-1" label="Test"></ins-sidebar-item> -->
+          </ins-sidebar>
+        </div>
+
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-sidebar>
+  <ins-sidebar-item></ins-sidebar-item>
+</ins-sidebar>
+            </script>
+        </div>
+      </div>
+      <div class="ins-styleguide-actual-slot-wrap">
+        <!-- <a href='' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+      </div>
+    </div>
+    <!-- Static Data source -->
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Static Data Source</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-sidebar class="style-guide">
+            <ins-sidebar-item icon="icon-settings-1" label="Settings" app></ins-sidebar-item>
+          </ins-sidebar>
+        </div>
+
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-sidebar>
+  <ins-sidebar-item icon="icon-settings-1" label="Settings" app></ins-sidebar-item>
+</ins-sidebar>
+            </script>
+        </div>
+      </div>
+      <div class="ins-styleguide-actual-slot-wrap">
+        <!-- <a href='' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+      </div>
+    </div>
+    <!-- Direct data source -->
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Direct Data Source</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-sidebar class="style-guide">
+            <ins-sidebar-item id="sidebarItemID"></ins-sidebar-item>
+          </ins-sidebar>
+          <script>
+            var sidebarItemID = document.getElementById('sidebarItemID');
+            sidebarItemID.addEventListener('didLoad', function(e){
+              sidebarItemID.icon = "icon-dashboard";
+              sidebarItemID.label = "Dashboard";
+            });
+          </script>
+        </div>
+
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-sidebar>
+  <ins-sidebar-item id="sidebarItemID"></ins-sidebar-item>
+</ins-sidebar>
+
+<script>
+  var sidebarItemID = document.getElementById('sidebarItemID');
+  sidebarItemID.addEventListener('didLoad', function(e){
+    sidebarItemID.icon = "icon-dashboard";
+    sidebarItemID.label = "Dashboard";
+  });
+&lt;/script&gt;
+            </script>
+        </div>
+      </div>
+      <div class="ins-styleguide-actual-slot-wrap">
+        <!-- <a href='' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ins-sidebar-footer-menu -->
+  <div>
+
+    <!-- ins-sidebar-footer-menu header -->
+    <div>
+      <h2 class="section-title">Insites Sidebar Footer Menu Tag</h2>
+      <p>Defines a sidebar footer menu.</p>
+    </div>
+
+    <!-- ins-sidebar-footer-menu Complete Example -->
+    <div>
+        <h2 class="section-title">Complete Example</h2>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-cont">
+              <div class="ins-styleguide-actual-slot-wrap">
+                <ins-sidebar>
+                    <ins-sidebar-footer>
+                      <ins-sidebar-footer-menu label="Settings"></ins-sidebar-footer-menu>
+                    </ins-sidebar-footer>
+                  </ins-sidebar>
+              </div>
+              <div class="ins-styleguide-code-slot-wrap">
+                <!-- <div class="ins-styleguide-label-wrap">HTML</div> -->
+                <script type="text/plain" class="language-markup">
+<ins-sidebar>
+  <ins-sidebar-footer>
+    <ins-sidebar-footer-menu label="Settings"></ins-sidebar-footer-menu>
+  </ins-sidebar-footer>
+</ins-sidebar>
+                </script>
+              </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+              <!-- <a href='https://jsfiddle.net/insites/nzas10yk/121/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+    </div>
+
+    <!-- ins-sidebar-footer-menu attribute table -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>icon</td>
+            <td>string</td>
+            <td>"icon-settings-1"</td>
+            <td>icon-close-1, icon-utilities, icon-lock-1 ...</td>
+            <td>Defines icon of sidebar footer menu</td>
+          </tr>
+          <tr>
+            <td>label</td>
+            <td>string</td>
+            <td>"Settings"</td>
+            <td>any</td>
+            <td>Defines label of sidebar footer menu</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- default state -->
+    <!-- <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Default State</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-sidebar class="style-guide">
+            <ins-sidebar-footer>
+              <ins-sidebar-footer-menu>
+                <ins-sidebar-item link="/admin/settings/colour-themes" label="System Fields"
+                  app></ins-sidebar-item>
+              </ins-sidebar-footer-menu>
+            </ins-sidebar-footer>
+          </ins-sidebar>
+        </div>
+
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-sidebar>
+  <ins-sidebar-footer>
+    <ins-sidebar-footer-menu>
+
+      <ins-sidebar-item
+        link="/admin/settings/colour-themes"
+        label="System Fields" app>
+      </ins-sidebar-item>
+
+    </ins-sidebar-footer-menu>
+  </ins-sidebar-footer>
+</ins-sidebar>
+            </script>
+        </div>
+      </div>
+    </div> -->
+
+    <h2 class="section-title">States</h2>
+    <!-- Direct Data Source -->
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Direct Data Source</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-sidebar class="style-guide">
+            <ins-sidebar-footer>
+              <ins-sidebar-footer-menu id="directDataSourceFooterMenu">
+              </ins-sidebar-footer-menu>
+            </ins-sidebar-footer>
+          </ins-sidebar>
+          <script>
+            var directDataSourceFooterMenu = document.getElementById('directDataSourceFooterMenu')
+            directDataSourceFooterMenu.addEventListener('didLoad', function(e){
+              directDataSourceFooterMenu.icon = 'icon-logout-1';
+              directDataSourceFooterMenu.label = 'Power';
+            });
+          </script>
+        </div>
+
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-sidebar>
+  <ins-sidebar-footer>
+    <ins-sidebar-footer-menu id="directDataSourceFooterMenu">
+    </ins-sidebar-footer-menu>
+  </ins-sidebar-footer>
+</ins-sidebar>
+<script>
+  var directDataSourceFooterMenu = document.getElementById('directDataSourceFooterMenu')
+  directDataSourceFooterMenu.addEventListener('didLoad', function(e){
+    directDataSourceFooterMenu.icon = 'icon-logout-1';
+    directDataSourceFooterMenu.label = 'Power';
+  });
+&lt;/script&gt;
+            </script>
+        </div>
+      </div>
+      <div class="ins-styleguide-actual-slot-wrap">
+        <!-- <a href='' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+      </div>
+    </div>
+
+    <!-- ins-sidebar-footer-menu Static Data Source -->
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Static Data Source</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-sidebar class="style-guide">
+            <ins-sidebar-footer>
+              <ins-sidebar-footer-menu icon="icon-dashboard" label="Dashboard">
+              </ins-sidebar-footer-menu>
+            </ins-sidebar-footer>
+          </ins-sidebar>
+        </div>
+
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-sidebar-footer>
+  <ins-sidebar-footer-menu icon="icon-dashboard" label="Dashboard"></ins-sidebar-footer-menu>
+</ins-sidebar-footer>
+          </script>
+        </div>
+      </div>
+      <div class="ins-styleguide-actual-slot-wrap">
+        <!-- <a href='' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+      </div>
+    </div>
+
+    <!-- ins-sidebar-footer-menu Static Data Source -->
+    <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Sidebar Footer Item</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+<ins-sidebar with-sidebar-actions>
+  <ins-sidebar-footer>
+    <ins-sidebar-footer-menu icon="icon-settings-1" label="Settings">
+      <ins-sidebar-item link="/admin/settings/colour-themes" label="Color Themes" app>
+      </ins-sidebar-item>
+    </ins-sidebar-footer-menu>
+  </ins-sidebar-footer>
+</ins-sidebar>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-sidebar with-sidebar-actions>
+  <ins-sidebar-footer>
+    <ins-sidebar-footer-menu icon="icon-settings-1" label="Settings">
+      <ins-sidebar-item link="/admin/settings/colour-themes" label="Color Themes" app>
+      </ins-sidebar-item>
+    </ins-sidebar-footer-menu>
+  </ins-sidebar-footer>
+</ins-sidebar>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+    </div>
+
+
+  </div>
+
+  <!-- ins-sidebar-footer-button -->
+  <div>
+    <!-- ins-sidebar-footer-button header -->
+    <div>
+      <h2 class="section-title">Insites Sidebar Footer Button tag</h2>
+      <p>Defines a clickable button in sidebar footer.</p>
+    </div>
+
+    <!-- ins-sidebar-footer-button complete example -->
+    <div>
+        <h2 class="section-title">Complete Example</h2>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-cont">
+              <div class="ins-styleguide-actual-slot-wrap">
+                <ins-sidebar>
+                    <ins-sidebar-footer>
+                      <ins-sidebar-footer-button icon="icon-lock-1"></ins-sidebar-footer-button>
+                      <ins-sidebar-footer-button icon="icon-logout-1"></ins-sidebar-footer-button>
+                    </ins-sidebar-footer>
+                </ins-sidebar>
+              </div>
+              <div class="ins-styleguide-code-slot-wrap">
+                <script type="text/plain" class="language-markup">
+<ins-sidebar>
+    <ins-sidebar-footer>
+      <ins-sidebar-footer-button icon="icon-lock-1"></ins-sidebar-footer-button>
+      <ins-sidebar-footer-button icon="icon-logout-1"></ins-sidebar-footer-button>
+    </ins-sidebar-footer>
+</ins-sidebar>
+                </script>
+              </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+              <!-- <a href='https://jsfiddle.net/jepto/Le6k5vo3/39/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+    </div>
+
+    <!-- ins-sidebar-footer-button attribute table -->
+    <div>
+        <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>FIELD ATTRIBUTE</th>
+              <th>TYPE</th>
+              <th>DEFAULT</th>
+              <th>OPTIONS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>icon</td>
+              <td>string</td>
+              <td>""</td>
+              <td>icon-close-1, icon-utilities, icon-lock-1 ...</td>
+              <td>Defines icon of sidebar footer button</td>
+            </tr>
+          </table>
+        </div>
+    </div>
+
+    <!-- ins-sidebar-footer-button event table -->
+		<div>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>EVENT</th>
+              <th>OBJECT</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>insSidebarFooterButtonEvent</td>
+              <td>mouseevent</td>
+              <td>Execute a script when a foter button is clicked</td>
+            </tr>
+          </table>
+        </div>
+    </div>
+
+    <!-- states -->
+    <div>
+      <h2 class="section-title">States</h2>
+      <!-- Default State -->
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Default State</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-sidebar>
+              <ins-sidebar-footer>
+                <ins-sidebar-footer-button></ins-sidebar-footer-button>
+              </ins-sidebar-footer>
+            </ins-sidebar>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+  <ins-sidebar>
+    <ins-sidebar-footer>
+      <ins-sidebar-footer-button></ins-sidebar-footer-button>
+    </ins-sidebar-footer>
+  </ins-sidebar>
+              </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/123/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+
+      <!-- Direct Data Source -->
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Direct Data Source</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-sidebar class="style-guide">
+              <ins-sidebar-footer>
+                <ins-sidebar-footer-button id="directDataSourceFooterBtn"></ins-sidebar-footer-button>
+              </ins-sidebar-footer>
+            </ins-sidebar>
+            <script>
+              var directDataSourceFooterBtn = document.getElementById('directDataSourceFooterBtn')
+              directDataSourceFooterBtn.addEventListener('didLoad', function(e){
+                console.log('directDataSourceFooterBtn', directDataSourceFooterBtn);
+                directDataSourceFooterBtn = iconBtn = 'icon-notification-1';
+              });
+              </script>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+  <ins-sidebar>
+    <ins-sidebar-footer>
+      <ins-sidebar-footer-button id="directDataSourceFooterBtn"></ins-sidebar-footer-button>
+    </ins-sidebar-footer>
+  </ins-sidebar>
+
+  <script>
+    var iconBtn = 'icon-notification-1';
+    var directDataSourceFooterBtn = document.getElementById('directDataSourceFooterBtn')
+    directDataSourceFooterBtn.addEventListener('didLoad', function(e){
+      directDataSourceFooterBtn = iconBtn = 'icon-notification-1';
+    });
+  &lt;/script&gt;
+              </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/124/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ins-sidebar-footer-button events-->
+		<div>
+      <h2 class="section-title">Events</h2>
+      <!-- insSidebarFooterButtonEvent -->
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">insSidebarFooterButtonEvent</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-sidebar>
+              <ins-sidebar-footer>
+                <ins-sidebar-footer-button id="footer-btn" icon="icon-lock-1"></ins-sidebar-footer-button>
+                <ins-sidebar-footer-button id="footer-btn" icon="icon-logout-1"></ins-sidebar-footer-button>
+              </ins-sidebar-footer>
+            </ins-sidebar>
+            <script>
+            var sel = document.querySelectorAll('ins-sidebar-footer-button[id="footer-btn"]');
+            for (var i = 0; i < sel.length; i++){
+              sel[i].addEventListener('insSidebarFooterButtonEvent', function(event){
+                alert("Hello! I am an alert box!!");
+              });
+            };
+           </script>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-sidebar>
+  <ins-sidebar-footer>
+    <ins-sidebar-footer-button id="footer-btn" icon="icon-lock-1"></ins-sidebar-footer-button>
+    <ins-sidebar-footer-button id="footer-btn" icon="icon-logout-1"></ins-sidebar-footer-button>
+  </ins-sidebar-footer>
+</ins-sidebar>
+<script>
+var sel = document.querySelectorAll('ins-sidebar-footer-button[id="footer-btn"]');
+for (var i = 0; i < sel.length; i++){
+  sel[i].addEventListener('insSidebarFooterButtonEvent', function(event){
+    alert("Hello! I am an alert box!!");
+  });
+};
+&lt;/script&gt;
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/177/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

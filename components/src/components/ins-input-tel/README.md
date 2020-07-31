@@ -16,6 +16,7 @@
 | `disabled`            | `disabled`             |             | `boolean` | `undefined` |
 | `errorMessage`        | `error-message`        |             | `string`  | `""`        |
 | `hasError`            | `has-error`            |             | `boolean` | `undefined` |
+| `hasLoad`             | `has-load`             |             | `string`  | `undefined` |
 | `label`               | `label`                |             | `string`  | `""`        |
 | `noAreacode`          | `no-areacode`          |             | `boolean` | `undefined` |
 | `phoneNumber`         | `phone-number`         |             | `string`  | `""`        |
@@ -29,6 +30,7 @@
 
 | Event            | Description | Type               |
 | ---------------- | ----------- | ------------------ |
+| `didLoad`        |             | `CustomEvent<any>` |
 | `insInput`       |             | `CustomEvent<any>` |
 | `insValueChange` |             | `CustomEvent<any>` |
 

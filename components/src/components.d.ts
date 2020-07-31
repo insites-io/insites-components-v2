@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface InsAccordion {
         "defaultOpen": number;
+        "hasLoad": string;
         "initAccordion": () => Promise<void>;
         "menu": boolean;
     }
@@ -23,6 +24,7 @@ export namespace Components {
     interface InsAccordionLink {
         "active": boolean;
         "disabled": boolean;
+        "hasLoad": string;
         "icon": string;
         "label": string;
         "link": string;
@@ -37,12 +39,14 @@ export namespace Components {
     interface InsBarChart {
         "categories": Array<any>;
         "chartData": Array<any>;
+        "hasLoad": string;
         "horizontal": boolean;
         "name": string;
         "stacked": boolean;
     }
     interface InsBreadcrumbs {
         "breadcrumbs": Array<any>;
+        "hasLoad": string;
         "updateCrumbs": (crumbs: any, noRedirect?: boolean) => Promise<void>;
     }
     interface InsButton {
@@ -51,6 +55,7 @@ export namespace Components {
         "data": string;
         "disabled": boolean;
         "dropdown": boolean;
+        "hasLoad": string;
         "icon": string;
         "label": string;
         "loading": boolean;
@@ -67,6 +72,7 @@ export namespace Components {
         "color": string;
         "disabled": boolean;
         "getActiveOption": () => Promise<{ index: number; label: any; }>;
+        "hasLoad": string;
         "options": string;
         "setActiveOption": (option: any) => Promise<void>;
         "size": string;
@@ -87,6 +93,7 @@ export namespace Components {
         "ctaLinkTarget": string;
         "duration": number;
         "goTo": (slide: any) => Promise<void>;
+        "hasLoad": string;
         "heading": string;
         "height": string;
         "layout": number;
@@ -107,6 +114,7 @@ export namespace Components {
         "checked": boolean;
         "disabled": boolean;
         "falseValue": string;
+        "hasLoad": string;
         "label": string;
         "name": string;
         "trueValue": string;
@@ -115,6 +123,7 @@ export namespace Components {
     }
     interface InsCheckboxCard {
         "disabled": boolean;
+        "hasLoad": string;
         "label": string;
         "name": string;
         "noPadding": boolean;
@@ -128,6 +137,7 @@ export namespace Components {
         "disableLineNumbers": boolean;
         "errorMessage": string;
         "hasError": boolean;
+        "hasLoad": string;
         "label": string;
         "mode": string;
         "name": string;
@@ -148,6 +158,7 @@ export namespace Components {
         "expiryMonth": string;
         "expiryYear": string;
         "fullYear": boolean;
+        "hasLoad": string;
         "lastFour": string;
         "value": string;
     }
@@ -156,6 +167,7 @@ export namespace Components {
         "errorMessage": string;
         "format": string;
         "hasError": boolean;
+        "hasLoad": string;
         "icon": string;
         "label": string;
         "maxDate": string;
@@ -174,6 +186,7 @@ export namespace Components {
         "errorMessage": string;
         "format": string;
         "hasError": boolean;
+        "hasLoad": string;
         "icon": string;
         "label": string;
         "maxDate": string;
@@ -187,6 +200,7 @@ export namespace Components {
         "backdropCanClose": boolean;
         "bordered": boolean;
         "customWidth": string;
+        "hasLoad": string;
         "icon": string;
         "isOpen": boolean;
         "label": string;
@@ -223,16 +237,19 @@ export namespace Components {
         "dateTo": string;
         "defaultDate": string;
         "getDate": () => Promise<"All" | { from: string; to: string; }>;
+        "hasLoad": string;
         "withDateFilter": boolean;
     }
     interface InsFilterItem {
         "closeFilter": () => Promise<void>;
         "getSelected": () => Promise<any>;
+        "hasLoad": string;
         "name": string;
         "options": any;
         "selected": any;
     }
     interface InsHeader {
+        "hasLoad": string;
         "hasMenuToggle": boolean;
         "supportLink": string;
         "toggleNav": () => Promise<void>;
@@ -251,6 +268,7 @@ export namespace Components {
         "backgroundColor": string;
         "change": string;
         "editable": boolean;
+        "hasLoad": string;
         "label": string;
         "level": number;
         "maxlength": string;
@@ -260,6 +278,7 @@ export namespace Components {
     interface InsImagePicker {
         "buttonColor": string;
         "fileName": any;
+        "hasLoad": string;
         "imgType": string;
         "label": string;
         "name": string;
@@ -273,6 +292,7 @@ export namespace Components {
     }
     interface InsInfoTable {
         "emptyValue": string;
+        "hasLoad": string;
         "heading": string;
         "loaderIcon": any;
         "loaderMessage": any;
@@ -290,6 +310,7 @@ export namespace Components {
         "field": string;
         "fieldId": string;
         "hasError": boolean;
+        "hasLoad": string;
         "icon": string;
         "iconEvent": boolean;
         "iconTitle": string;
@@ -320,6 +341,7 @@ export namespace Components {
         "getS3Credentials": () => Promise<unknown>;
         "getUploadingFiles": () => Promise<any>;
         "hasError": boolean;
+        "hasLoad": string;
         "label": string;
         "maxFileSize": number;
         "maxFileSizeLabel": string;
@@ -343,11 +365,26 @@ export namespace Components {
         "disabled": boolean;
         "errorMessage": string;
         "hasError": boolean;
+        "hasLoad": string;
         "label": string;
         "name": string;
         "readonly": boolean;
         "setValue": (value: any) => Promise<void>;
         "val": () => Promise<any>;
+        "value": any;
+    }
+    interface InsInputSlider {
+        "disabled": boolean;
+        "errorMessage": string;
+        "hasError": boolean;
+        "hasLoad": string;
+        "label": string;
+        "max": number;
+        "min": number;
+        "name": string;
+        "position": string;
+        "sliderOnly": boolean;
+        "step": number;
         "value": any;
     }
     interface InsInputTel {
@@ -360,6 +397,7 @@ export namespace Components {
         "getCountryData": () => Promise<any>;
         "getValue": () => Promise<string>;
         "hasError": boolean;
+        "hasLoad": string;
         "label": string;
         "noAreacode": boolean;
         "phoneNumber": string;
@@ -370,12 +408,31 @@ export namespace Components {
         "setCountry": (country: any) => Promise<void>;
         "setCountryCode": (code: any) => Promise<void>;
     }
+    interface InsInstances {
+        "hasLoad": string;
+        "instance": string;
+        "instanceLink": string;
+        "logoLink": string;
+        "newTab": boolean;
+    }
+    interface InsInstancesItem {
+        "instance": string;
+        "instanceLink": string;
+        "logoLink": string;
+        "withSubItem": boolean;
+    }
+    interface InsInstancesSubItem {
+        "instance": string;
+        "link": string;
+    }
     interface InsLineChart {
         "categories": any;
         "chartData": any;
+        "hasLoad": string;
         "name": string;
     }
     interface InsLoader {
+        "hasLoad": string;
         "iconColor": string;
         "imageSource": string;
         "stateIcon": string;
@@ -384,17 +441,20 @@ export namespace Components {
         "useImage": boolean;
     }
     interface InsMarkdown {
+        "hasLoad": string;
         "label": string;
         "value": string;
     }
     interface InsMarkdownEditor {
         "errorMessage": string;
         "hasError": boolean;
+        "hasLoad": string;
         "label": string;
         "name": string;
         "readonly": boolean;
         "required": boolean;
         "reset": () => Promise<void>;
+        "setValue": (value: any) => Promise<void>;
         "val": () => Promise<any>;
         "value": string;
     }
@@ -409,6 +469,7 @@ export namespace Components {
         "confirmButtonIcon": string;
         "confirmButtonLabel": string;
         "confirmation": boolean;
+        "hasLoad": string;
         "heading": string;
         "height": string;
         "light": boolean;
@@ -421,12 +482,26 @@ export namespace Components {
         "width": string;
         "withBackdrop": boolean;
     }
+    interface InsNotifications {
+        "toggleNotificationshandler": () => Promise<void>;
+    }
+    interface InsNotificationsItem {
+        "desc": string;
+        "duration": string;
+        "eventType": string;
+        "heading": string;
+        "icon": string;
+        "link": string;
+        "linkLabel": string;
+        "status": string;
+    }
     interface InsPieChart {
         "chartData": Array<any>;
         "colors": Array<any>;
         "dataLabels": boolean;
         "endAngle": number;
         "fillColor": string;
+        "hasLoad": string;
         "heading": string;
         "innerSize": string;
         "innerTitle": boolean;
@@ -437,6 +512,7 @@ export namespace Components {
         "titleOffset": number;
     }
     interface InsProgressBar {
+        "hasLoad": string;
         "hidden": boolean;
         "progress": number;
         "text": string;
@@ -445,6 +521,7 @@ export namespace Components {
     interface InsRadio {
         "checked": boolean;
         "disabled": boolean;
+        "hasLoad": string;
         "label": any;
         "name": any;
         "staticValue": any;
@@ -452,6 +529,7 @@ export namespace Components {
     }
     interface InsRenderer {
         "app": boolean;
+        "hasLoad": string;
         "label": string;
         "link": string;
         "pushHistory": (title: any, childPage?: boolean) => Promise<void>;
@@ -475,6 +553,7 @@ export namespace Components {
         "expandSection": () => Promise<void>;
         "getAllOptions": () => Promise<NodeListOf<HTMLInsSelectOptionElement>>;
         "hasError": boolean;
+        "hasLoad": string;
         "infiniteScroll": boolean;
         "initializing": boolean;
         "label": string;
@@ -510,13 +589,16 @@ export namespace Components {
     }
     interface InsSidebar {
         "fullLogo": string;
+        "hasLoad": string;
         "iconLogo": string;
         "minimise": () => Promise<void>;
     }
     interface InsSidebarFooter {
+        "hasLoad": string;
         "toggleSidebar": () => Promise<void>;
     }
     interface InsSidebarFooterButton {
+        "hasLoad": string;
         "icon": string;
         "insSidebarFooterButtonOnClick": (event: any) => Promise<void>;
         "open": string;
@@ -529,19 +611,20 @@ export namespace Components {
         "toggleMenu": () => Promise<void>;
     }
     interface InsSidebarItem {
-        "activate": () => Promise<void>;
-        "activateParent": () => Promise<void>;
+        "activate": () => Promise<boolean>;
+        "activateParent": () => Promise<boolean>;
         "app": boolean;
-        "deactivate": () => Promise<void>;
+        "deactivate": () => Promise<boolean>;
         "footerLink": string;
         "formatRoute": () => Promise<any>;
-        "hideSubMenu": () => Promise<void>;
+        "hasLoad": string;
+        "hideSubMenu": () => Promise<boolean>;
         "icon": any;
         "label": string;
         "landingPage": boolean;
         "link": any;
         "routePageHandler": (e: any) => Promise<{ crumbs: any[]; }>;
-        "showSubMenu": () => Promise<void>;
+        "showSubMenu": () => Promise<boolean>;
         "withSubmenu": boolean;
     }
     interface InsSort {
@@ -550,6 +633,7 @@ export namespace Components {
         "disabled": boolean;
         "droppable": boolean;
         "getSortOrder": () => Promise<{}>;
+        "hasLoad": string;
         "ignoreElements": string;
         "insDraggable": boolean;
         "sort": boolean;
@@ -559,14 +643,19 @@ export namespace Components {
     interface InsSparkline {
         "chartData": any;
         "description": string;
+        "hasLoad": string;
         "icon": string;
         "movement": any;
         "name": string;
         "percentage": any;
         "value": string;
     }
+    interface InsStyleguide {
+        "label": string;
+    }
     interface InsTab {
         "activateTab": (place: any) => Promise<void>;
+        "hasLoad": string;
         "tabs": any;
     }
     interface InsTabItem {
@@ -584,6 +673,7 @@ export namespace Components {
         "currency": string;
         "defaultBulkAction": string;
         "emptyValue": string;
+        "hasLoad": string;
         "heading": string;
         "initialSearch": string;
         "loaderIcon": any;
@@ -632,6 +722,7 @@ export namespace Components {
         "disabled": boolean;
         "errorMessage": string;
         "hasError": boolean;
+        "hasLoad": string;
         "label": string;
         "maxlength": string;
         "name": string;
@@ -642,12 +733,14 @@ export namespace Components {
     }
     interface InsThumbnail {
         "alt": string;
+        "hasLoad": string;
         "label": string;
         "name": string;
         "src": string;
         "thumbnail": string;
     }
     interface InsTimeline {
+        "hasLoad": string;
         "label": string;
         "loadingScreen": boolean;
         "staticTimeline": boolean;
@@ -665,6 +758,7 @@ export namespace Components {
         "disabled": boolean;
         "errorMessage": string;
         "hasError": boolean;
+        "hasLoad": string;
         "icon": string;
         "label": string;
         "maxTime": string;
@@ -679,6 +773,7 @@ export namespace Components {
         "checked": boolean;
         "disabled": boolean;
         "falseValue": string;
+        "hasLoad": string;
         "label": string;
         "name": string;
         "trueValue": string;
@@ -885,11 +980,35 @@ declare global {
         prototype: HTMLInsInputMultipleElement;
         new (): HTMLInsInputMultipleElement;
     };
+    interface HTMLInsInputSliderElement extends Components.InsInputSlider, HTMLStencilElement {
+    }
+    var HTMLInsInputSliderElement: {
+        prototype: HTMLInsInputSliderElement;
+        new (): HTMLInsInputSliderElement;
+    };
     interface HTMLInsInputTelElement extends Components.InsInputTel, HTMLStencilElement {
     }
     var HTMLInsInputTelElement: {
         prototype: HTMLInsInputTelElement;
         new (): HTMLInsInputTelElement;
+    };
+    interface HTMLInsInstancesElement extends Components.InsInstances, HTMLStencilElement {
+    }
+    var HTMLInsInstancesElement: {
+        prototype: HTMLInsInstancesElement;
+        new (): HTMLInsInstancesElement;
+    };
+    interface HTMLInsInstancesItemElement extends Components.InsInstancesItem, HTMLStencilElement {
+    }
+    var HTMLInsInstancesItemElement: {
+        prototype: HTMLInsInstancesItemElement;
+        new (): HTMLInsInstancesItemElement;
+    };
+    interface HTMLInsInstancesSubItemElement extends Components.InsInstancesSubItem, HTMLStencilElement {
+    }
+    var HTMLInsInstancesSubItemElement: {
+        prototype: HTMLInsInstancesSubItemElement;
+        new (): HTMLInsInstancesSubItemElement;
     };
     interface HTMLInsLineChartElement extends Components.InsLineChart, HTMLStencilElement {
     }
@@ -920,6 +1039,18 @@ declare global {
     var HTMLInsModalElement: {
         prototype: HTMLInsModalElement;
         new (): HTMLInsModalElement;
+    };
+    interface HTMLInsNotificationsElement extends Components.InsNotifications, HTMLStencilElement {
+    }
+    var HTMLInsNotificationsElement: {
+        prototype: HTMLInsNotificationsElement;
+        new (): HTMLInsNotificationsElement;
+    };
+    interface HTMLInsNotificationsItemElement extends Components.InsNotificationsItem, HTMLStencilElement {
+    }
+    var HTMLInsNotificationsItemElement: {
+        prototype: HTMLInsNotificationsItemElement;
+        new (): HTMLInsNotificationsItemElement;
     };
     interface HTMLInsPieChartElement extends Components.InsPieChart, HTMLStencilElement {
     }
@@ -1004,6 +1135,12 @@ declare global {
     var HTMLInsSparklineElement: {
         prototype: HTMLInsSparklineElement;
         new (): HTMLInsSparklineElement;
+    };
+    interface HTMLInsStyleguideElement extends Components.InsStyleguide, HTMLStencilElement {
+    }
+    var HTMLInsStyleguideElement: {
+        prototype: HTMLInsStyleguideElement;
+        new (): HTMLInsStyleguideElement;
     };
     interface HTMLInsTabElement extends Components.InsTab, HTMLStencilElement {
     }
@@ -1121,12 +1258,18 @@ declare global {
         "ins-input": HTMLInsInputElement;
         "ins-input-file": HTMLInsInputFileElement;
         "ins-input-multiple": HTMLInsInputMultipleElement;
+        "ins-input-slider": HTMLInsInputSliderElement;
         "ins-input-tel": HTMLInsInputTelElement;
+        "ins-instances": HTMLInsInstancesElement;
+        "ins-instances-item": HTMLInsInstancesItemElement;
+        "ins-instances-sub-item": HTMLInsInstancesSubItemElement;
         "ins-line-chart": HTMLInsLineChartElement;
         "ins-loader": HTMLInsLoaderElement;
         "ins-markdown": HTMLInsMarkdownElement;
         "ins-markdown-editor": HTMLInsMarkdownEditorElement;
         "ins-modal": HTMLInsModalElement;
+        "ins-notifications": HTMLInsNotificationsElement;
+        "ins-notifications-item": HTMLInsNotificationsItemElement;
         "ins-pie-chart": HTMLInsPieChartElement;
         "ins-progress-bar": HTMLInsProgressBarElement;
         "ins-radio": HTMLInsRadioElement;
@@ -1141,6 +1284,7 @@ declare global {
         "ins-sidebar-item": HTMLInsSidebarItemElement;
         "ins-sort": HTMLInsSortElement;
         "ins-sparkline": HTMLInsSparklineElement;
+        "ins-styleguide": HTMLInsStyleguideElement;
         "ins-tab": HTMLInsTabElement;
         "ins-tab-item": HTMLInsTabItemElement;
         "ins-table": HTMLInsTableElement;
@@ -1160,7 +1304,9 @@ declare global {
 declare namespace LocalJSX {
     interface InsAccordion {
         "defaultOpen"?: number;
+        "hasLoad"?: string;
         "menu"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsToggle"?: (event: CustomEvent<any>) => void;
     }
     interface InsAccordionItem {
@@ -1175,11 +1321,13 @@ declare namespace LocalJSX {
     interface InsAccordionLink {
         "active"?: boolean;
         "disabled"?: boolean;
+        "hasLoad"?: string;
         "icon"?: string;
         "label"?: string;
         "link"?: string;
         "linkTarget"?: string;
         "linkTitle"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
     }
     interface InsAdmin {
     }
@@ -1189,12 +1337,16 @@ declare namespace LocalJSX {
     interface InsBarChart {
         "categories"?: Array<any>;
         "chartData"?: Array<any>;
+        "hasLoad"?: string;
         "horizontal"?: boolean;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "stacked"?: boolean;
     }
     interface InsBreadcrumbs {
         "breadcrumbs"?: Array<any>;
+        "hasLoad"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onRoutePage"?: (event: CustomEvent<any>) => void;
     }
     interface InsButton {
@@ -1203,9 +1355,11 @@ declare namespace LocalJSX {
         "data"?: string;
         "disabled"?: boolean;
         "dropdown"?: boolean;
+        "hasLoad"?: string;
         "icon"?: string;
         "label"?: string;
         "loading"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsClick"?: (event: CustomEvent<any>) => void;
         "onInsClickOption"?: (event: CustomEvent<any>) => void;
         "options"?: string;
@@ -1220,6 +1374,8 @@ declare namespace LocalJSX {
         "activeOption"?: string;
         "color"?: string;
         "disabled"?: boolean;
+        "hasLoad"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsClick"?: (event: CustomEvent<any>) => void;
         "options"?: string;
         "size"?: string;
@@ -1239,12 +1395,14 @@ declare namespace LocalJSX {
         "ctaLink"?: string;
         "ctaLinkTarget"?: string;
         "duration"?: number;
+        "hasLoad"?: string;
         "heading"?: string;
         "height"?: string;
         "layout"?: number;
         "loop"?: boolean;
         "noCarouselButton"?: boolean;
         "noPagination"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsSlide"?: (event: CustomEvent<any>) => void;
         "perPage"?: number;
         "startIndex"?: number;
@@ -1258,8 +1416,10 @@ declare namespace LocalJSX {
         "checked"?: boolean;
         "disabled"?: boolean;
         "falseValue"?: string;
+        "hasLoad"?: string;
         "label"?: string;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsCheck"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "trueValue"?: string;
@@ -1267,9 +1427,11 @@ declare namespace LocalJSX {
     }
     interface InsCheckboxCard {
         "disabled"?: boolean;
+        "hasLoad"?: string;
         "label"?: string;
         "name"?: string;
         "noPadding"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsClick"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "selected"?: boolean;
@@ -1281,9 +1443,11 @@ declare namespace LocalJSX {
         "disableLineNumbers"?: boolean;
         "errorMessage"?: string;
         "hasError"?: boolean;
+        "hasLoad"?: string;
         "label"?: string;
         "mode"?: string;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onOnblur"?: (event: CustomEvent<any>) => void;
         "onOninput"?: (event: CustomEvent<any>) => void;
         "readonly"?: boolean;
@@ -1299,7 +1463,9 @@ declare namespace LocalJSX {
         "expiryMonth"?: string;
         "expiryYear"?: string;
         "fullYear"?: boolean;
+        "hasLoad"?: string;
         "lastFour"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsClick"?: (event: CustomEvent<any>) => void;
         "onInsClose"?: (event: CustomEvent<any>) => void;
         "value"?: string;
@@ -1309,6 +1475,7 @@ declare namespace LocalJSX {
         "errorMessage"?: string;
         "format"?: string;
         "hasError"?: boolean;
+        "hasLoad"?: string;
         "icon"?: string;
         "label"?: string;
         "maxDate"?: string;
@@ -1318,6 +1485,7 @@ declare namespace LocalJSX {
         "mode"?: string;
         "name"?: string;
         "noMeridiem"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsInput"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
@@ -1329,11 +1497,13 @@ declare namespace LocalJSX {
         "errorMessage"?: string;
         "format"?: string;
         "hasError"?: boolean;
+        "hasLoad"?: string;
         "icon"?: string;
         "label"?: string;
         "maxDate"?: string;
         "minDate"?: string;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsInput"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
@@ -1344,10 +1514,12 @@ declare namespace LocalJSX {
         "backdropCanClose"?: boolean;
         "bordered"?: boolean;
         "customWidth"?: string;
+        "hasLoad"?: string;
         "icon"?: string;
         "isOpen"?: boolean;
         "label"?: string;
         "noPadding"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsToggle"?: (event: CustomEvent<any>) => void;
         "position"?: string;
         "showCloseButton"?: boolean;
@@ -1381,18 +1553,24 @@ declare namespace LocalJSX {
         "dateTitle"?: any;
         "dateTo"?: string;
         "defaultDate"?: string;
+        "hasLoad"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsDateFilter"?: (event: CustomEvent<any>) => void;
         "onInsFilter"?: (event: CustomEvent<any>) => void;
         "withDateFilter"?: boolean;
     }
     interface InsFilterItem {
+        "hasLoad"?: string;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsSelect"?: (event: CustomEvent<any>) => void;
         "options"?: any;
         "selected"?: any;
     }
     interface InsHeader {
+        "hasLoad"?: string;
         "hasMenuToggle"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "supportLink"?: string;
     }
     interface InsHeaderUser {
@@ -1407,20 +1585,24 @@ declare namespace LocalJSX {
         "backgroundColor"?: string;
         "change"?: string;
         "editable"?: boolean;
+        "hasLoad"?: string;
         "label"?: string;
         "level"?: number;
         "maxlength"?: string;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsChange"?: (event: CustomEvent<any>) => void;
         "withoutLine"?: boolean;
     }
     interface InsImagePicker {
         "buttonColor"?: string;
         "fileName"?: any;
+        "hasLoad"?: string;
         "imgType"?: string;
         "label"?: string;
         "name"?: string;
         "notImageFile"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
         "uploadImgContainer"?: string;
@@ -1431,12 +1613,14 @@ declare namespace LocalJSX {
     }
     interface InsInfoTable {
         "emptyValue"?: string;
+        "hasLoad"?: string;
         "heading"?: string;
         "loaderIcon"?: any;
         "loaderMessage"?: any;
         "loaderTitle"?: any;
         "loadingScreen"?: boolean;
         "noWrap"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "renderHtml"?: boolean;
         "tableData"?: any;
         "textOverflow"?: string;
@@ -1448,6 +1632,7 @@ declare namespace LocalJSX {
         "field"?: string;
         "fieldId"?: string;
         "hasError"?: boolean;
+        "hasLoad"?: string;
         "icon"?: string;
         "iconEvent"?: boolean;
         "iconTitle"?: string;
@@ -1456,6 +1641,7 @@ declare namespace LocalJSX {
         "maxlength"?: string;
         "min"?: string;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsBlur"?: (event: CustomEvent<any>) => void;
         "onInsIconClick"?: (event: CustomEvent<any>) => void;
         "onInsInput"?: (event: CustomEvent<any>) => void;
@@ -1477,12 +1663,14 @@ declare namespace LocalJSX {
         "fieldType"?: string;
         "fileIcon"?: string;
         "hasError"?: boolean;
+        "hasLoad"?: string;
         "label"?: string;
         "maxFileSize"?: number;
         "maxFileSizeLabel"?: string;
         "maxFiles"?: number;
         "maxFilesLabel"?: string;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsFileAdded"?: (event: CustomEvent<any>) => void;
         "onInsFileError"?: (event: CustomEvent<any>) => void;
         "onInsFileRemoved"?: (event: CustomEvent<any>) => void;
@@ -1497,11 +1685,32 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "errorMessage"?: string;
         "hasError"?: boolean;
+        "hasLoad"?: string;
         "label"?: string;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsChange"?: (event: CustomEvent<any>) => void;
         "onInsInput"?: (event: CustomEvent<any>) => void;
         "readonly"?: boolean;
+        "value"?: any;
+    }
+    interface InsInputSlider {
+        "disabled"?: boolean;
+        "errorMessage"?: string;
+        "hasError"?: boolean;
+        "hasLoad"?: string;
+        "label"?: string;
+        "max"?: number;
+        "min"?: number;
+        "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onInsSlide"?: (event: CustomEvent<any>) => void;
+        "onInsSlideEnd"?: (event: CustomEvent<any>) => void;
+        "onInsSlideStart"?: (event: CustomEvent<any>) => void;
+        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "position"?: string;
+        "sliderOnly"?: boolean;
+        "step"?: number;
         "value"?: any;
     }
     interface InsInputTel {
@@ -1512,8 +1721,10 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "errorMessage"?: string;
         "hasError"?: boolean;
+        "hasLoad"?: string;
         "label"?: string;
         "noAreacode"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsInput"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "phoneNumber"?: string;
@@ -1522,28 +1733,57 @@ declare namespace LocalJSX {
         "readonly"?: boolean;
         "required"?: boolean;
     }
+    interface InsInstances {
+        "hasLoad"?: string;
+        "instance"?: string;
+        "instanceLink"?: string;
+        "logoLink"?: string;
+        "newTab"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
+    }
+    interface InsInstancesItem {
+        "instance"?: string;
+        "instanceLink"?: string;
+        "logoLink"?: string;
+        "onActiveSubItem"?: (event: CustomEvent<any>) => void;
+        "onRouteInstance"?: (event: CustomEvent<any>) => void;
+        "withSubItem"?: boolean;
+    }
+    interface InsInstancesSubItem {
+        "instance"?: string;
+        "link"?: string;
+        "onRouteInstanceSubItem"?: (event: CustomEvent<any>) => void;
+    }
     interface InsLineChart {
         "categories"?: any;
         "chartData"?: any;
+        "hasLoad"?: string;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
     }
     interface InsLoader {
+        "hasLoad"?: string;
         "iconColor"?: string;
         "imageSource"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "stateIcon"?: string;
         "stateMessage"?: string;
         "stateTitle"?: string;
         "useImage"?: boolean;
     }
     interface InsMarkdown {
+        "hasLoad"?: string;
         "label"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "value"?: string;
     }
     interface InsMarkdownEditor {
         "errorMessage"?: string;
         "hasError"?: boolean;
+        "hasLoad"?: string;
         "label"?: string;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "readonly"?: boolean;
         "required"?: boolean;
@@ -1559,10 +1799,12 @@ declare namespace LocalJSX {
         "confirmButtonIcon"?: string;
         "confirmButtonLabel"?: string;
         "confirmation"?: boolean;
+        "hasLoad"?: string;
         "heading"?: string;
         "height"?: string;
         "light"?: boolean;
         "noButton"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsClose"?: (event: CustomEvent<any>) => void;
         "parentRender"?: string;
         "preventClickOutside"?: boolean;
@@ -1570,22 +1812,38 @@ declare namespace LocalJSX {
         "width"?: string;
         "withBackdrop"?: boolean;
     }
+    interface InsNotifications {
+    }
+    interface InsNotificationsItem {
+        "desc"?: string;
+        "duration"?: string;
+        "eventType"?: string;
+        "heading"?: string;
+        "icon"?: string;
+        "link"?: string;
+        "linkLabel"?: string;
+        "status"?: string;
+    }
     interface InsPieChart {
         "chartData"?: Array<any>;
         "colors"?: Array<any>;
         "dataLabels"?: boolean;
         "endAngle"?: number;
         "fillColor"?: string;
+        "hasLoad"?: string;
         "heading"?: string;
         "innerSize"?: string;
         "innerTitle"?: boolean;
         "legends"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "size"?: string;
         "startAngle"?: number;
         "titleOffset"?: number;
     }
     interface InsProgressBar {
+        "hasLoad"?: string;
         "hidden"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "progress"?: number;
         "text"?: string;
         "total"?: number;
@@ -1593,8 +1851,10 @@ declare namespace LocalJSX {
     interface InsRadio {
         "checked"?: boolean;
         "disabled"?: boolean;
+        "hasLoad"?: string;
         "label"?: any;
         "name"?: any;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsCheck"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "staticValue"?: any;
@@ -1602,8 +1862,10 @@ declare namespace LocalJSX {
     }
     interface InsRenderer {
         "app"?: boolean;
+        "hasLoad"?: string;
         "label"?: string;
         "link"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "route"?: any;
     }
     interface InsSelect {
@@ -1615,11 +1877,13 @@ declare namespace LocalJSX {
         "dynamicSearch"?: boolean;
         "errorMessage"?: string;
         "hasError"?: boolean;
+        "hasLoad"?: string;
         "infiniteScroll"?: boolean;
         "initializing"?: boolean;
         "label"?: string;
         "multiple"?: boolean;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsChange"?: (event: CustomEvent<any>) => void;
         "onInsLoadMore"?: (event: CustomEvent<any>) => void;
         "onInsSearch"?: (event: CustomEvent<any>) => void;
@@ -1645,13 +1909,19 @@ declare namespace LocalJSX {
     }
     interface InsSidebar {
         "fullLogo"?: string;
+        "hasLoad"?: string;
         "iconLogo"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsSidebarAction"?: (event: CustomEvent<any>) => void;
     }
     interface InsSidebarFooter {
+        "hasLoad"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
     }
     interface InsSidebarFooterButton {
+        "hasLoad"?: string;
         "icon"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsSidebarFooterButtonEvent"?: (event: CustomEvent<any>) => void;
         "open"?: string;
     }
@@ -1662,10 +1932,12 @@ declare namespace LocalJSX {
     interface InsSidebarItem {
         "app"?: boolean;
         "footerLink"?: string;
+        "hasLoad"?: string;
         "icon"?: any;
         "label"?: string;
         "landingPage"?: boolean;
         "link"?: any;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onRoutePage"?: (event: CustomEvent<any>) => void;
         "withSubmenu"?: boolean;
     }
@@ -1673,8 +1945,10 @@ declare namespace LocalJSX {
         "cloneOnDrag"?: boolean;
         "disabled"?: boolean;
         "droppable"?: boolean;
+        "hasLoad"?: string;
         "ignoreElements"?: string;
         "insDraggable"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsAdd"?: (event: CustomEvent<Object>) => void;
         "onInsChoose"?: (event: CustomEvent<Object>) => void;
         "onInsClone"?: (event: CustomEvent<Object>) => void;
@@ -1692,13 +1966,20 @@ declare namespace LocalJSX {
     interface InsSparkline {
         "chartData"?: any;
         "description"?: string;
+        "hasLoad"?: string;
         "icon"?: string;
         "movement"?: any;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "percentage"?: any;
         "value"?: string;
     }
+    interface InsStyleguide {
+        "label"?: string;
+    }
     interface InsTab {
+        "hasLoad"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsTabChange"?: (event: CustomEvent<any>) => void;
         "tabs"?: any;
     }
@@ -1717,6 +1998,7 @@ declare namespace LocalJSX {
         "currency"?: string;
         "defaultBulkAction"?: string;
         "emptyValue"?: string;
+        "hasLoad"?: string;
         "heading"?: string;
         "initialSearch"?: string;
         "loaderIcon"?: any;
@@ -1724,6 +2006,7 @@ declare namespace LocalJSX {
         "loaderTitle"?: any;
         "loadingScreen"?: boolean;
         "noWrap"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsFieldChange"?: (event: CustomEvent<any>) => void;
         "onInsPaginationChange"?: (event: CustomEvent<any>) => void;
         "onInsTableBulkAction"?: (event: CustomEvent<any>) => void;
@@ -1768,9 +2051,11 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "errorMessage"?: string;
         "hasError"?: boolean;
+        "hasLoad"?: string;
         "label"?: string;
         "maxlength"?: string;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsInput"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
@@ -1780,14 +2065,18 @@ declare namespace LocalJSX {
     }
     interface InsThumbnail {
         "alt"?: string;
+        "hasLoad"?: string;
         "label"?: string;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "src"?: string;
         "thumbnail"?: string;
     }
     interface InsTimeline {
+        "hasLoad"?: string;
         "label"?: string;
         "loadingScreen"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "staticTimeline"?: boolean;
         "timelineData"?: any;
     }
@@ -1803,12 +2092,14 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "errorMessage"?: string;
         "hasError"?: boolean;
+        "hasLoad"?: string;
         "icon"?: string;
         "label"?: string;
         "maxTime"?: string;
         "minTime"?: string;
         "name"?: string;
         "noMeridiem"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsInput"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
@@ -1819,8 +2110,10 @@ declare namespace LocalJSX {
         "checked"?: boolean;
         "disabled"?: boolean;
         "falseValue"?: string;
+        "hasLoad"?: string;
         "label"?: string;
         "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsToggle"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "trueValue"?: string;
@@ -1871,12 +2164,18 @@ declare namespace LocalJSX {
         "ins-input": InsInput;
         "ins-input-file": InsInputFile;
         "ins-input-multiple": InsInputMultiple;
+        "ins-input-slider": InsInputSlider;
         "ins-input-tel": InsInputTel;
+        "ins-instances": InsInstances;
+        "ins-instances-item": InsInstancesItem;
+        "ins-instances-sub-item": InsInstancesSubItem;
         "ins-line-chart": InsLineChart;
         "ins-loader": InsLoader;
         "ins-markdown": InsMarkdown;
         "ins-markdown-editor": InsMarkdownEditor;
         "ins-modal": InsModal;
+        "ins-notifications": InsNotifications;
+        "ins-notifications-item": InsNotificationsItem;
         "ins-pie-chart": InsPieChart;
         "ins-progress-bar": InsProgressBar;
         "ins-radio": InsRadio;
@@ -1891,6 +2190,7 @@ declare namespace LocalJSX {
         "ins-sidebar-item": InsSidebarItem;
         "ins-sort": InsSort;
         "ins-sparkline": InsSparkline;
+        "ins-styleguide": InsStyleguide;
         "ins-tab": InsTab;
         "ins-tab-item": InsTabItem;
         "ins-table": InsTable;
@@ -1942,12 +2242,18 @@ declare module "@stencil/core" {
             "ins-input": LocalJSX.InsInput & JSXBase.HTMLAttributes<HTMLInsInputElement>;
             "ins-input-file": LocalJSX.InsInputFile & JSXBase.HTMLAttributes<HTMLInsInputFileElement>;
             "ins-input-multiple": LocalJSX.InsInputMultiple & JSXBase.HTMLAttributes<HTMLInsInputMultipleElement>;
+            "ins-input-slider": LocalJSX.InsInputSlider & JSXBase.HTMLAttributes<HTMLInsInputSliderElement>;
             "ins-input-tel": LocalJSX.InsInputTel & JSXBase.HTMLAttributes<HTMLInsInputTelElement>;
+            "ins-instances": LocalJSX.InsInstances & JSXBase.HTMLAttributes<HTMLInsInstancesElement>;
+            "ins-instances-item": LocalJSX.InsInstancesItem & JSXBase.HTMLAttributes<HTMLInsInstancesItemElement>;
+            "ins-instances-sub-item": LocalJSX.InsInstancesSubItem & JSXBase.HTMLAttributes<HTMLInsInstancesSubItemElement>;
             "ins-line-chart": LocalJSX.InsLineChart & JSXBase.HTMLAttributes<HTMLInsLineChartElement>;
             "ins-loader": LocalJSX.InsLoader & JSXBase.HTMLAttributes<HTMLInsLoaderElement>;
             "ins-markdown": LocalJSX.InsMarkdown & JSXBase.HTMLAttributes<HTMLInsMarkdownElement>;
             "ins-markdown-editor": LocalJSX.InsMarkdownEditor & JSXBase.HTMLAttributes<HTMLInsMarkdownEditorElement>;
             "ins-modal": LocalJSX.InsModal & JSXBase.HTMLAttributes<HTMLInsModalElement>;
+            "ins-notifications": LocalJSX.InsNotifications & JSXBase.HTMLAttributes<HTMLInsNotificationsElement>;
+            "ins-notifications-item": LocalJSX.InsNotificationsItem & JSXBase.HTMLAttributes<HTMLInsNotificationsItemElement>;
             "ins-pie-chart": LocalJSX.InsPieChart & JSXBase.HTMLAttributes<HTMLInsPieChartElement>;
             "ins-progress-bar": LocalJSX.InsProgressBar & JSXBase.HTMLAttributes<HTMLInsProgressBarElement>;
             "ins-radio": LocalJSX.InsRadio & JSXBase.HTMLAttributes<HTMLInsRadioElement>;
@@ -1962,6 +2268,7 @@ declare module "@stencil/core" {
             "ins-sidebar-item": LocalJSX.InsSidebarItem & JSXBase.HTMLAttributes<HTMLInsSidebarItemElement>;
             "ins-sort": LocalJSX.InsSort & JSXBase.HTMLAttributes<HTMLInsSortElement>;
             "ins-sparkline": LocalJSX.InsSparkline & JSXBase.HTMLAttributes<HTMLInsSparklineElement>;
+            "ins-styleguide": LocalJSX.InsStyleguide & JSXBase.HTMLAttributes<HTMLInsStyleguideElement>;
             "ins-tab": LocalJSX.InsTab & JSXBase.HTMLAttributes<HTMLInsTabElement>;
             "ins-tab-item": LocalJSX.InsTabItem & JSXBase.HTMLAttributes<HTMLInsTabItemElement>;
             "ins-table": LocalJSX.InsTable & JSXBase.HTMLAttributes<HTMLInsTableElement>;

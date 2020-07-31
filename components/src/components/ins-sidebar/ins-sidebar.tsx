@@ -6,9 +6,8 @@ export class InsSidebar {
   @Event() insSidebarAction: EventEmitter;
   @Event() didLoad: EventEmitter;
   @Prop() hasLoad: string;
-  @Prop({mutable: true}) fullLogo: string = "";
-  @Prop(({mutable: true})) iconLogo: string = "";
-  // @Prop(({mutable: true})) withSidebarActions: boolean = false;
+  @Prop({ mutable: true }) fullLogo: string;
+  @Prop({ mutable: true }) iconLogo: string;
   @State() minimised: boolean;
   @State() noFooter: boolean = false;
 
@@ -25,8 +24,9 @@ export class InsSidebar {
     let tgt = event.target as any;
     if(tgt.attributes.open) {
       let open = tgt.attributes.open.value;
-      let insSidebarItem = this.insSidebarEl.querySelector(`ins-sidebar-item[footer-link="${open}"]`) as any;
-      // insSidebarItem.activate();
+      let insSidebarItem = this.insSidebarEl
+        .querySelector(`ins-sidebar-item[footer-link="${open}"]`) as any;
+
       insSidebarItem.showSubMenu();
     }
   }

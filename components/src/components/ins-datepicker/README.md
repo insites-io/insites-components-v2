@@ -13,6 +13,7 @@
 | `errorMessage` | `error-message` |             | `string`  | `""`        |
 | `format`       | `format`        |             | `string`  | `undefined` |
 | `hasError`     | `has-error`     |             | `boolean` | `false`     |
+| `hasLoad`      | `has-load`      |             | `string`  | `undefined` |
 | `icon`         | `icon`          |             | `string`  | `""`        |
 | `label`        | `label`         |             | `string`  | `undefined` |
 | `maxDate`      | `max-date`      |             | `string`  | `""`        |
@@ -27,6 +28,7 @@
 
 | Event            | Description | Type               |
 | ---------------- | ----------- | ------------------ |
+| `didLoad`        |             | `CustomEvent<any>` |
 | `insInput`       |             | `CustomEvent<any>` |
 | `insValueChange` |             | `CustomEvent<any>` |
 

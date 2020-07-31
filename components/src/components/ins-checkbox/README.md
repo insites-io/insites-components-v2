@@ -12,6 +12,7 @@
 | `checked`    | `checked`     |             | `boolean` | `undefined` |
 | `disabled`   | `disabled`    |             | `boolean` | `undefined` |
 | `falseValue` | `false-value` |             | `string`  | `""`        |
+| `hasLoad`    | `has-load`    |             | `string`  | `undefined` |
 | `label`      | `label`       |             | `string`  | `undefined` |
 | `name`       | `name`        |             | `string`  | `""`        |
 | `trueValue`  | `true-value`  |             | `string`  | `""`        |
@@ -22,7 +23,8 @@
 
 | Event            | Description | Type               |
 | ---------------- | ----------- | ------------------ |
-| `insClick`       |             | `CustomEvent<any>` |
+| `didLoad`        |             | `CustomEvent<any>` |
+| `insCheck`       |             | `CustomEvent<any>` |
 | `insValueChange` |             | `CustomEvent<any>` |
 
 

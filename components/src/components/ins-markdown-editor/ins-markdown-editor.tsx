@@ -32,6 +32,12 @@ export class InsMarkdownEditor {
      this.editor.value("");
    }
 
+  @Method()
+  async setValue(value) {
+    this.value = value;
+    this.editor.value(value);
+  }
+
   activeState() {
     this.insMarkdownEditorEl.querySelector('label').classList.add('active');
     this.insMarkdownEditorEl.querySelector('.ins-markdown-editor').classList.add('active');

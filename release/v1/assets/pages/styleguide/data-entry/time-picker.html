@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide - Time Picker</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/v1/assets/css/insites-plugins.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <script src="/v1/assets/js/insites-plugins.js"></script>
+  <script src="/v1/build/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/prism.css">
+  <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+  <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+  <script src="/v1/assets/js/prism.js"></script>
+
+  <style>
+    ins-styleguide .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap {
+      overflow: initial;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ins-timepicker header -->
+  <div>
+    <h2 class="section-title">Insites Time Picker
+      <code>&lt;ins-timepicker&gt;</code>
+    </h2>
+    <p>Defines a timepicker dropdown field. Time selection has a fix `30mins` interval.</p>
+    <div>
+
+      <!-- content -->
+      <div>
+        <h2 class="section-title">Complete Example</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-timepicker
+              icon="icon-clock"
+              label="Sample"
+              name="sample"
+              format="H:i"
+              placeholder="23:30">
+            </ins-timepicker>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<!-- 24hrs time format -->
+<ins-timepicker
+  icon="icon-clock"
+  label="Sample"
+  name="sample"
+  format="H:i"
+  placeholder="23:30">
+</ins-timepicker>
+            </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Attributes -->
+      <div>
+        <div class="table-style">
+        <h2 class="section-title">Time Format</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td colspan="4"></td>
+            </tr>
+            <tr>
+              <td>
+                <code>h</code>
+              </td>
+              <td>12 hour without leading 0.</td>
+              <td>
+                <code>hh</code>
+              </td>
+              <td>12 hour with leading 0.</td>
+            </tr>
+            <tr>
+              <td>
+                <code>H</code>
+              </td>
+              <td>24 hour without leading 0.</td>
+              <td>
+                <code>HH</code>
+              </td>
+              <td>24 hour with leading 0.</td>
+            </tr>
+            <tr>
+              <td>
+                <code>m</code>
+              </td>
+              <td>minutes without leading 0.</td>
+              <td>
+                <code>mm</code>
+              </td>
+              <td>minutes with leading 0.</td>
+            </tr>
+            <tr>
+              <td>
+                <code>s</code>
+              </td>
+              <td>seconds without leading 0.</td>
+              <td>
+                <code>ss</code>
+              </td>
+              <td>seconds with leading 0.</td>
+            </tr>
+            <tr>
+              <td>
+                <code>p</code>
+              </td>
+              <td>AM or PM</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>FIELD ATTRIBUTE</th>
+              <th>TYPE</th>
+              <th>DEFAULT</th>
+              <th>OPTIONS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>label</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines the field label</td>
+            </tr>
+            <tr>
+              <td>name</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines the field name</td>
+            </tr>
+            <tr>
+              <td>format</td>
+              <td>string</td>
+              <td>"h:i A"</td>
+              <td>&lt;valid time format&gt;</td>
+              <td>Defines time format to use</td>
+            </tr>
+            <tr>
+              <td>placeholder</td>
+              <td>string</td>
+              <td>"h:i A"</td>
+              <td>any</td>
+              <td>Defines the field placeholder</td>
+            </tr>
+            <tr>
+              <td>required</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Specifies that the input field must be filled out before submitting the form</td>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Disables input field</td>
+            </tr>
+            <tr>
+              <td>readonly</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Specifies that the input field is read-only</td>
+            </tr>
+            <tr>
+              <td>error-message</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines the error message when input element is wrong</td>
+            </tr>
+            <tr>
+              <td>has-error</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Specifies validation or mandatory input for the input field</td>
+            </tr>
+            <tr>
+              <td>value</td>
+              <td>any</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines the field image value</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Event -->
+      <div>
+        <h2 class="section-title">Events</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>EVENT</th>
+              <th>OBJECT</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>valueChange</td>
+              <td>value, hasError, errorMessage</td>
+              <td>Emits field value & error details on value change</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Default State -->
+      <div>
+        <h2 class="section-title">Default State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-timepicker></ins-timepicker>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-timepicker></ins-timepicker>
+            </script>
+          </div>
+        </ins-styleguide>
+
+        <!-- Error state-->
+        <h2 class="section-title">Error State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-timepicker label="Time" icon="icon-clock" has-error error-message="This is a required field"></ins-timepicker>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-timepicker label="Time" has-error error-message="This is a required field"></ins-timepicker>
+                    </script>
+          </div>
+        </ins-styleguide>
+
+        <!-- Disabled state-->
+        <h2 class="section-title">Disabled State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-timepicker label="Disabled Field" disabled></ins-timepicker>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-timepicker label="Disabled Field" disabled></ins-timepicker>
+            </script>
+          </div>
+        </ins-styleguide>
+
+        <!-- Readonly state-->
+        <h2 class="section-title">Readonly State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-timepicker label="Read-only Field" readonly></ins-timepicker>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-timepicker label="Read-only Field" readonly></ins-timepicker>
+                            </script>
+          </div>
+        </ins-styleguide>
+
+      </div>
+
+      <!-- Direct Set Value -->
+      <div>
+        <h2 class="section-title">Direct Value Set</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-timepicker id="directSetValue"></ins-timepicker>
+            <script>
+              var directSetValue = document.getElementById('directSetValue');
+              directSetValue.addEventListener('didLoad', function(e){
+                directSetValue.icon = "icon-clock";
+                directSetValue.label = "Direct Set Time";
+                directSetValue.placeholder = "Select time";
+                directSetValue.value = "12:30 AM";
+              });
+            </script>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-timepicker id="directSetValue"></ins-timepicker>
+<script>
+  var directSetValue = document.getElementById('directSetValue');
+  directSetValue.addEventListener('didLoad', function(e){
+    directSetValue.icon = "icon-clock";
+    directSetValue.label = "Direct Set Time";
+    directSetValue.placeholder = "Select time";
+    directSetValue.value = "12:30 AM";
+  });
+&lt;/script&gt;
+          </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Event -->
+      <div>
+        <h2 class="section-title">Events</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-timepicker id="eventField"></ins-timepicker>
+            <script>
+              var field = document.getElementById('eventField');
+              field.addEventListener('valueChange', event => {
+                console.log("Time field event", event.detail);
+                alert("check console logs for event data");
+              });
+            </script>
+          </div>
+
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-timepicker id="eventField"></ins-timepicker>
+<script>
+  var field = document.getElementById('eventField');
+      field.addEventListener('valueChange', event => {
+        console.log("Time field event", event.detail);
+        alert("check console logs for event data");
+      });
+&lt;/script&gt;
+          </script>
+          </div>
+        </ins-styleguide>
+      </div>
+</body>
+
+</html>

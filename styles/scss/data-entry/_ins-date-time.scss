@@ -1,8 +1,20 @@
 @import "../dependencies/flafpickr.scss";
 
-ins-date-time,
-ins-timepicker,
-ins-datepicker {
+ins-date-time {
+
+  i[class^="icon-"] {
+    font-size: 16px;
+    position: absolute;
+    right: 8px;
+    top: calc(50% - 8px);
+    color: #8c94a4;
+    -webkit-transition: color .25s ease-in-out;
+    transition: color .25s ease-in-out;
+  }
+
+  i.with-label {
+    top: calc(50% + 1px);
+  }
 
   &[disabled] {
     input {
@@ -40,6 +52,10 @@ ins-datepicker {
       top: 60px !important;
       right: initial !important;
       left: 0 !important;
+
+      .flatpickr-month {
+        height: 30px;
+      }
 
       .flatpickr-months .flatpickr-prev-month svg,
       .flatpickr-months .flatpickr-next-month svg {
@@ -92,6 +108,7 @@ ins-datepicker {
         .flatpickr-current-month {
           font-size: 14px;
           padding: 0;
+          height: 30px;
 
           select {
             background-color: var(--ins-bg-color);
@@ -111,6 +128,7 @@ ins-datepicker {
             height: auto;
             margin-right: 5px;
             border-radius: 3px;
+            line-height: 18px;
           }
 
           .numInputWrapper {
@@ -133,7 +151,7 @@ ins-datepicker {
                 var(--ins-border-color);
 
               font-size: 14px;
-              padding: 4px 12px 4px 6px;
+              padding: 4px 12px 5px 6px;
               box-shadow: none;
               box-sizing: border-box;
             }

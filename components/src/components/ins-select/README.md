@@ -17,6 +17,7 @@
 | `dynamicSearch`      | `dynamic-search`      |             | `boolean` | `false`     |
 | `errorMessage`       | `error-message`       |             | `string`  | `""`        |
 | `hasError`           | `has-error`           |             | `boolean` | `false`     |
+| `hasLoad`            | `has-load`            |             | `string`  | `undefined` |
 | `infiniteScroll`     | `infinite-scroll`     |             | `boolean` | `false`     |
 | `initializing`       | `initializing`        |             | `boolean` | `false`     |
 | `label`              | `label`               |             | `string`  | `undefined` |
@@ -35,6 +36,7 @@
 
 | Event            | Description | Type               |
 | ---------------- | ----------- | ------------------ |
+| `didLoad`        |             | `CustomEvent<any>` |
 | `insChange`      |             | `CustomEvent<any>` |
 | `insLoadMore`    |             | `CustomEvent<any>` |
 | `insSearch`      |             | `CustomEvent<any>` |

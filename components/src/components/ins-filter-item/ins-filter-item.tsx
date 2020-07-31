@@ -4,7 +4,8 @@ import { h, Watch, Component, Element, Event, EventEmitter, Method, Prop, State 
 export class InsFilterItem {
     @Element() el: HTMLElement;
     @Event() insSelect: EventEmitter;
-
+    @Event() didLoad: EventEmitter;
+    @Prop() hasLoad: string;
     @Prop({ mutable: true }) name: string = 'Category Label';
     @Prop({ mutable: true }) options: any = ["Category 1", "Category 2", "Category 3"];
     @Prop({ mutable: true }) selected: any;
@@ -54,16 +55,22 @@ export class InsFilterItem {
     }
 
     componentDidLoad() {
-        window.addEventListener("click", e => {
-            let target = e.target as any;
-            let parent = target.closest(".filter-item__button")
+      window.addEventListener("click", e => {
+          let target = e.target as any;
+          let parent = target.closest(".filter-item__button")
 
-            if (!parent) {
-                this.closeFilter();
-            }
-        });
+          if (!parent) {
+              this.closeFilter();
+          }
+      });
+
+      this.didLoad.emit();
+      if (this.hasLoad && window["Insites"]){
+        let func = window["Insites"].methods[this.hasLoad];
+        if (func) func(this.el);
+      }
     }
-    
+
     setOptions() {
         if (typeof this.options === 'string') {
 

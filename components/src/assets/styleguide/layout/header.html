@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Header</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+
+  <script type="module" src="/build/insites-components.esm.js"></script>
+  <script nomodule src="/build/insites-components.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+
+  <style>
+    ins-header .ins-header-wrap {
+      position: relative;
+      min-width: 420px;
+    }
+
+    @media only screen and (max-width: 630px) {
+      ins-header .ins-header-wrap {
+        min-width: auto;
+      }
+
+      ins-header .ins-header-wrap .full-width-navs {
+        display: none;
+      }
+
+      ins-header .ins-header-wrap #insSidebarToggler {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h2 class="section-title">Insites Header <code>&lt;ins-header&gt;</code></h2>
+    <p>Renders a header container.</p>
+
+    <p><b>IMPORTANT: </b><code>&lt;ins-header&gt;</code> is dependent to other Insites components below:</p>
+    <ul>
+      <li>ins-admin</li>
+      <li>ins-sidebar</li>
+      <li>ins-content</li>
+      <li>ins-renderer</li>
+    </ul>
+    <p>More info can be seen on <a href="/#/app/layout/wrappers" target="_blank">here</a>.</p>
+  </div>
+
+  <div>
+    <h2 class="section-title">Complete Example</h2>
+    <div class='ins-styleguide-wrap'>
+
+      <div class="actual">
+        <ins-header></ins-header>
+      </div>
+
+      <div class="code">
+        <script type="text/plain" class="language-markup"><ins-header></ins-header></script>
+      </div>
+
+    </div>
+  </div>
+
+  <div>
+    <h2 class="section-title">Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>support-link</td>
+          <td>string</td>
+          <td></td>
+          <td>any</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>has-menu-toggle</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true, false</td>
+          <td>Shows/Hide the menu toggle on the header bar.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="section-title">Insites Header User <code>&lt;ins-header-user&gt;</code></h2>
+    <p>Displays header items.</p>
+  </div>
+
+  <div>
+    <h2 class="section-title">Complete Example</h2>
+    <div class='ins-styleguide-wrap'>
+      <div class="actual">
+        <ins-header>
+          <ins-header-user name="John Smith" profile-link="/assets/pages/my-profile.html">
+          </ins-header-user>
+        </ins-header>
+      </div>
+
+      <div class="code">
+        <script type="text/plain" class="language-markup"><ins-header>
+  <ins-header-user name="John Smith" profile-link="/assets/pages/my-profile.html"></ins-header-user>
+</ins-header></script>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="section-title">Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>"User"</td>
+          <td>any</td>
+          <td>Defines name of dropdown feature in header</td>
+        </tr>
+        <tr>
+          <td>logout-link</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines link of "logout" selection</td>
+        </tr>
+        <tr>
+          <td>profile-link</td>
+          <td>string</td>
+          <td>"#/my-profile"</td>
+          <td>any</td>
+          <td>Defines link of "MyProfile" selection</td>
+        </tr>
+        <tr>
+          <td>app</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Renders iframe</td>
+        </tr>
+        <tr>
+          <td>formatted-route</td>
+          <td>string</td>
+          <td></td>
+          <td>any</td>
+          <td>N/A</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <h2 class="section-title">States</h2>
+  <div class='ins-styleguide-wrap'>
+    <div class="label">Default State</div>
+    <div class="actual">
+      <ins-header>
+        <ins-header-user></ins-header-user>
+      </ins-header>
+    </div>
+    <div class="code">
+      <script type="text/plain" class="language-markup"><ins-header>
+  <ins-header-user></ins-header-user>
+</ins-header></script>
+    </div>
+  </div>
+
+  <div class='ins-styleguide-wrap'>
+    <div class="label">Direct Set Data</div>
+    <div class="actual">
+      <ins-header>
+        <ins-header-user id="directSetDataHeaderUser"></ins-header-user>
+      </ins-header>
+
+      <script>
+        var directSetDataHeaderUser = document.getElementById('directSetDataHeaderUser');
+        directSetDataHeaderUser.addEventListener('didLoad', function (e) {
+          directSetDataHeaderUser.name = 'Jane Doe';
+          directSetDataHeaderUser.logoutLink = '/sign-out';
+          directSetDataHeaderUser.profileLink = '/my-account';
+        });
+      </script>
+    </div>
+    <div class="code">
+      <script type="text/plain" class="language-markup"><ins-header>
+  <ins-header-user id="directSetDataHeaderUser"></ins-header-user>
+</ins-header>
+
+<script>
+  var directSetDataHeaderUser = document.getElementById('directSetDataHeaderUser');
+  directSetDataHeaderUser.addEventListener('didLoad', function(e){
+    directSetDataHeaderUser.name = 'Jane Doe';
+    directSetDataHeaderUser.logoutLink = '/sign-out';
+    directSetDataHeaderUser.profileLink = '/my-account';
+  });
+&lt;/script&gt;</script>
+    </div>
+  </div>
+
+  <!-- ins-header-user Static Data Source -->
+  <div class='ins-styleguide-wrap'>
+    <div class="label">Static Data Source</div>
+    <div class="actual">
+      <ins-header>
+        <ins-header-user name="John Smith" logout-link="/logout" profile-link="/my-profile">
+        </ins-header-user>
+      </ins-header>
+    </div>
+
+    <div class="code">
+      <script type="text/plain" class="language-markup"><ins-header>
+  <ins-header-user name="John Smith" logout-link="/logout" profile-link="/my-profile"></ins-header-user>
+</ins-header></script>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="section-title">Insites Instances <code>&lt;ins-instances&gt;</code></h2>
+    <p>Displays dropdown feature with logo inside header container.</p>
+  </div>
+
+  <h2 class="section-title">Complete Example</h2>
+  <div class='ins-styleguide-wrap'>
+    <div class="actual">
+      <ins-header>
+        <ins-header-user name="John Smith"
+          profile-link="/assets/pages/my-profile.html">
+        </ins-header-user>
+
+        <ins-instances logo-link="/assets/images/logo-3@2x.png" instance="Final Sprint">
+          <ins-instances-item instance="Instance Item 1"></ins-instances-item>
+          <ins-instances-item instance="Instance Item 2"></ins-instances-item>
+        </ins-instances>
+      </ins-header>
+    </div>
+    <div class="code">
+      <script type="text/plain" class="language-markup"><ins-header>
+  <ins-header-user name="John Smith" profile-link="/assets/pages/my-profile.html"></ins-header-user>
+
+  <ins-instances logo-link="/assets/images/logo-3@2x.png" instance="Final Sprint">
+    <ins-instances-item instance="Instance Item 1"></ins-instances-item>
+    <ins-instances-item instance="Instance Item 2"></ins-instances-item>
+  </ins-instances>
+</ins-header></script>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="section-title">Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>logo-link</td>
+          <td>string</td>
+          <td>""</td>
+          <td>icon-close-1, icon-utilities, icon-lock-1 ...</td>
+          <td>Defines logo link of the dropdown feature in the header</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines label of dropdown feature in the header</td>
+        </tr>
+        <tr>
+          <td>instance-link</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines link of of instance prop</td>
+        </tr>
+        <tr>
+          <td>new-tab</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Defines new link</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class='ins-styleguide-wrap'>
+    <div class="label">Default State</div>
+    <div class="actual">
+      <ins-header>
+        <ins-instances></ins-instances>
+      </ins-header>
+    </div>
+    <div class="code">
+      <script type="text/plain" class="language-markup"><ins-header>
+  <ins-instances></ins-instances>
+</ins-header></script>
+    </div>
+  </div>
+
+  <div class='ins-styleguide-wrap'>
+    <div class="label">Direct Set Data</div>
+    <div class="actual">
+      <ins-header>
+        <ins-instances id="directSetDataInstances"></ins-instances>
+      </ins-header>
+      <script>
+        var directSetDataInstances = document.getElementById('directSetDataInstances');
+        directSetDataInstances.addEventListener('didLoad', function (e) {
+          directSetDataInstances.instance = 'Codehow';
+          directSetDataInstances.instanceLink = '/codehow-dashboard';
+          directSetDataInstances.logoLink = '/assets/images/logo-2@2x.png';
+          directSetDataInstances.newTab = true;
+        });
+      </script>
+    </div>
+    <div class="code">
+      <script type="text/plain" class="language-markup"><ins-header>
+  <ins-instances id="directSetDataInstances"></ins-instances>
+</ins-header>
+
+
+<script>
+  var directSetDataInstances = document.getElementById('directSetDataInstances');
+  directSetDataInstances.addEventListener('didLoad', function(e){
+    directSetDataInstances.instance = 'Codehow';
+    directSetDataInstances.instanceLink = '/codehow-dashboard';
+    directSetDataInstances.logoLink = '/assets/images/logo-2@2x.png';
+    directSetDataInstances.newTab = true;
+  });
+&lt;/script&gt;</script>
+    </div>
+  </div>
+
+  <div class='ins-styleguide-wrap'>
+    <div class="label">Static Data Source</div>
+    <div class="actual">
+      <ins-header>
+        <ins-instances
+          logo-link="/assets/images/logo-3@2x.png"
+          instance="Final Sprint"
+          instance-link="/dashboard"
+          new-tab>
+        </ins-instances>
+      </ins-header>
+    </div>
+
+    <div class="code">
+      <script type="text/plain" class="language-markup"><ins-header>
+  <ins-instances new-tab
+        logo-link="/assets/images/logo-3@2x.png"
+        instance="Final Sprint"
+        instance-link="/dashboard">
+  </ins-instances>
+</ins-header></script>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="section-title">Insites Instances Item <code>&lt;ins-instances-item&gt;</code></h2>
+    <p>Displays dropdown feature with logo inside instance container.</p>
+  </div>
+
+  <h2 class="section-title">Complete Example</h2>
+  <div class='ins-styleguide-wrap'>
+    <div class="actual">
+      <ins-header>
+        <ins-instances logo-link="/assets/images/logo-3@2x.png" instance="Final Sprint">
+
+          <ins-instances-item instance="Instance Item 1"></ins-instances-item>
+          <ins-instances-item instance="Instance Item 2"></ins-instances-item>
+        </ins-instances>
+      </ins-header>
+    </div>
+
+    <div class="code">
+      <script type="text/plain" class="language-markup"><ins-header>
+  <ins-instances logo-link="/assets/images/logo-3@2x.png" instance="Final Sprint">
+    <ins-instances-item instance="Instance Item 1"></ins-instances-item>
+    <ins-instances-item instance="Instance Item 2"></ins-instances-item>
+  </ins-instances>
+</ins-header></script>
+    </div>
+  </div>
+
+  <h2 class="section-title">Attributes</h2>
+  <div class="table-style">
+    <table>
+      <tr>
+        <th>FIELD ATTRIBUTE</th>
+        <th>TYPE</th>
+        <th>DEFAULT</th>
+        <th>OPTIONS</th>
+        <th>DESCRIPTION</th>
+      </tr>
+      <tr>
+        <td>logoLink</td>
+        <td>string</td>
+        <td>""</td>
+        <td>any</td>
+        <td>Defines logo link of the instance items</td>
+      </tr>
+      <tr>
+        <td>instance</td>
+        <td>string</td>
+        <td>""</td>
+        <td>any</td>
+        <td>Defines name of instance item selections</td>
+      </tr>
+      <tr>
+        <td>instanceLink</td>
+        <td>string</td>
+        <td>""</td>
+        <td>any</td>
+        <td>Defines link of instance item selections</td>
+      </tr>
+      <tr>
+        <td>withSubItem</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>true, false</td>
+        <td>Enables the specific instance item to have subitems</td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>

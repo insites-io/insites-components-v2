@@ -18,6 +18,7 @@
 | `confirmButtonIcon`   | `confirm-button-icon`   |             | `string`  | `undefined` |
 | `confirmButtonLabel`  | `confirm-button-label`  |             | `string`  | `'OK'`      |
 | `confirmation`        | `confirmation`          |             | `boolean` | `undefined` |
+| `hasLoad`             | `has-load`              |             | `string`  | `undefined` |
 | `heading`             | `heading`               |             | `string`  | `undefined` |
 | `height`              | `height`                |             | `string`  | `"80%"`     |
 | `light`               | `light`                 |             | `boolean` | `undefined` |
@@ -33,6 +34,7 @@
 
 | Event      | Description | Type               |
 | ---------- | ----------- | ------------------ |
+| `didLoad`  |             | `CustomEvent<any>` |
 | `insClose` |             | `CustomEvent<any>` |
 
 

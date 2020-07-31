@@ -7,22 +7,24 @@
 
 ## Properties
 
-| Property          | Attribute          | Description | Type      | Default  |
-| ----------------- | ------------------ | ----------- | --------- | -------- |
-| `backgroundColor` | `background-color` |             | `string`  | `'#fff'` |
-| `change`          | `change`           |             | `string`  | `""`     |
-| `editable`        | `editable`         |             | `boolean` | `false`  |
-| `label`           | `label`            |             | `string`  | `""`     |
-| `level`           | `level`            |             | `number`  | `6`      |
-| `maxlength`       | `maxlength`        |             | `string`  | `""`     |
-| `name`            | `name`             |             | `string`  | `""`     |
-| `withoutLine`     | `without-line`     |             | `boolean` | `false`  |
+| Property          | Attribute          | Description | Type      | Default     |
+| ----------------- | ------------------ | ----------- | --------- | ----------- |
+| `backgroundColor` | `background-color` |             | `string`  | `'#fff'`    |
+| `change`          | `change`           |             | `string`  | `""`        |
+| `editable`        | `editable`         |             | `boolean` | `false`     |
+| `hasLoad`         | `has-load`         |             | `string`  | `undefined` |
+| `label`           | `label`            |             | `string`  | `""`        |
+| `level`           | `level`            |             | `number`  | `6`         |
+| `maxlength`       | `maxlength`        |             | `string`  | `""`        |
+| `name`            | `name`             |             | `string`  | `""`        |
+| `withoutLine`     | `without-line`     |             | `boolean` | `false`     |
 
 
 ## Events
 
 | Event       | Description | Type               |
 | ----------- | ----------- | ------------------ |
+| `didLoad`   |             | `CustomEvent<any>` |
 | `insChange` |             | `CustomEvent<any>` |
 
 

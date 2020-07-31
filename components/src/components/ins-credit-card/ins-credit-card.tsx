@@ -233,7 +233,7 @@ export class InsCreditCard {
 
   checkLastFour(){
     let isValid = true;
-    if (this.lastFour.length === 4){
+    if (this.lastFour && this.lastFour.length === 4){
       for (var i = 0; i < this.lastFour.length; i++){
         let num = Number(this.lastFour[i]);
         if (isNaN(num)){

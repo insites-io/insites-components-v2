@@ -70,7 +70,7 @@ export class InsTable {
     }
   }
 
-  componentDidUpdate(){
+  componentWillUpdate(){
     if (this.tableUpdated){
       let tdCheckboxes = this.insTableEl.querySelectorAll('ins-checkbox') as any;
       let insCheckboxAll = this.insTableEl.querySelector('#checkAll') as any;
@@ -79,7 +79,6 @@ export class InsTable {
       let counter = 0;
       this.uncheckAll();
 
-      // [...tdCheckboxes].forEach(checkbox => {
 
       for (let i = 0; i < tdCheckboxes.length; i++){
         let selectionIndex = this.selectedRows.findIndex(selected => {
@@ -96,7 +95,6 @@ export class InsTable {
         insCheckboxAll.updateCheckState(true);
         insCheckboxAllAccordion.updateCheckState(true);
       }
-      // });
       this.hasImage = false;
       this.tableHeaders.forEach(header => {
         if (header.hasImage){
@@ -105,25 +103,29 @@ export class InsTable {
       });
       this.tableUpdated = false;
     }
+    this.updatePageInfo();
   }
 
   numberWithCommas(x){
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  @Listen('onSearch')
+  @Listen('insInput')
   onSearchHandler(event) {
-    this.insTableSearch.emit(event.detail);
+    if (event.target.icon === "icon-search"){
+      console.log('emitting tableSearch')
+      this.insTableSearch.emit(event.detail);
+    }
   }
 
-  @Listen('onClickInsButton')
+  @Listen('insClick')
   onClickInsButtonHandler(event){
     if (event.target.id === 'insTableBulkButton'){
       this.bulkActionHandler()
     }
   }
 
-  @Listen('onCheckInsCheckbox')
+  @Listen('insCheck')
   onCheckInsCheckbox(event){
     let self = this;
     if (event.detail.value === 'checkAll'){
@@ -251,9 +253,9 @@ export class InsTable {
     }
   }
 
-  componentWillUpdate(){
-    this.updatePageInfo();
-  }
+  // componentWillUpdate(){
+  //   this.updatePageInfo();
+  // }
 
   pageSizeChangeHandler(event){
     this.pageNumber = 1;
@@ -339,7 +341,6 @@ export class InsTable {
 
   toggleSelectOptionsWrap(event){
 
-
     let section;
     let parent = event.target.parentNode;
     let classes = parent.className;
@@ -423,8 +424,8 @@ export class InsTable {
     }
   }
 
-  @Listen('valueChange')
-  @Listen('oninput')
+  @Listen('insValueChange')
+  @Listen('insInput')
   processEvent(event){
     if (event.target.id) {
       if (event.target.attributes["data-id"]){

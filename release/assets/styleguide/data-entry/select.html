@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Select</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/v2.0.0/insites-font-icons.min.css" />
+  <link rel="stylesheet" href="/v2.0.0/insites.min.css" />
+
+  <script type="module" src="/v2.0.0/insites.esm.js"></script>
+  <script nomodule src="/v2.0.0/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+
+</head>
+
+<body>
+  <div>
+    <!-- ins-select -->
+    <div>
+      <!-- ins-select header -->
+      <div>
+        <h2 class="section-title">Insites Select
+          <code>&lt;ins-select&gt;</code>
+        </h2>
+        <p>Renders Container for drop-down list.</p>
+      </div>
+
+      <!-- ins-select complete example -->
+      <div>
+        <h2 class="section-title">Complete Example</h2>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-select label="Operating System"></ins-select>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-select label="Operating System"></ins-select>
+                  </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/101/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ins-select attribute table -->
+      <div>
+        <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>FIELD ATTRIBUTE</th>
+              <th>TYPE</th>
+              <th>DEFAULT</th>
+              <th>OPTIONS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>label</td>
+              <td>string</td>
+              <td></td>
+              <td>any</td>
+              <td>Defines label of dropdown</td>
+            </tr>
+            <tr>
+              <td>placeholder</td>
+              <td>string</td>
+              <td>"Select or type"</td>
+              <td>any</td>
+              <td>Defines the short hint that describes the expected value in the input field</td>
+            </tr>
+            <tr>
+              <td>button-label</td>
+              <td>string</td>
+              <td>"Add"</td>
+              <td>any</td>
+              <td>Defines label of dropdown button</td>
+            </tr>
+            <tr>
+              <td>dynamic-placeholder</td>
+              <td>string</td>
+              <td></td>
+              <td>any</td>
+              <td>N/A</td>
+            </tr>
+            <tr>
+              <td>dynamic-search</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Defines if the searchbar will rely on a dynamic option (triggers insSearch event).</td>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Disables dropdown field</td>
+            </tr>
+            <tr>
+              <td>readonly</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Specifies that the dropdown field is read-only</td>
+            </tr>
+            <tr>
+              <td>button</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Merges label and placeholder into a single button dropdown</td>
+            </tr>
+            <tr>
+              <td>small</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Renders drop-down to be small in size</td>
+            </tr>
+            <tr>
+              <td>searchable</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Enables drop-down to have searchable feature</td>
+            </tr>
+            <tr>
+              <td>multiple</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Enables multiple selection</td>
+            </tr>
+            <tr>
+              <td>value</td>
+              <td>any</td>
+              <td></td>
+              <td>any</td>
+              <td>Defines value of dropdown list</td>
+            </tr>
+            <tr>
+              <td>drop-up</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Show options on top when field is near bottom of the screen</td>
+            </tr>
+            <tr>
+              <td>with-dynamic-option</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Creates input field on the dropdown option</td>
+            </tr>
+            <tr>
+              <td>has-error</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Specifies validation or mandatory input for the input field</td>
+            </tr>
+            <tr>
+              <td>error-message</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines the error message when input element is wrong</td>
+            </tr>
+            <tr>
+              <td>infinite-scroll</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Define if the select will enable infinite scrolling</td>
+            </tr>
+            <tr>
+              <td>initializing</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Define if the select will render as initializing</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- EVENTS -->
+      <div>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>EVENT</th>
+              <th>OBJECT</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>insValueChange</td>
+              <td>value</td>
+              <td>Returns value when an element gets user input</td>
+            </tr>
+            <tr>
+              <td>insChange</td>
+              <td>value, keycode</td>
+              <td>Emit field value and keycode on input blur event</td>
+            </tr>
+            <tr>
+              <td>insSubmit</td>
+              <td>value</td>
+              <td>Emit field value and keycode on input blur event</td>
+            </tr>
+            <tr>
+              <td>insSearch</td>
+              <td>keyword</td>
+              <td>Emits the search keyword. This event is only triggered when dynamic-search is true.</td>
+            </tr>
+            <tr>
+              <td>insLoadMore</td>
+              <td>-</td>
+              <td>Emits when scroll hits the last option. This event is only triggered when infinite-scroll is true.</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ins-select states -->
+      <div>
+        <h2 class="section-title">States</h2>
+        <!-- ins-select default state -->
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Default State</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+              <ins-select></ins-select>
+            </div>
+            <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-select></ins-select>
+          </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/103/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+
+        <!-- ins-select error state -->
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Error State</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+              <ins-select label="Select*" has-error error-message="This is a required field"></ins-select>
+            </div>
+            <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-select label="Select*" has-error error-message="This is a required field"></ins-select>
+                  </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/192/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+
+        <!-- ins-select Direct Set Data -->
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Direct Set Data</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+              <ins-select id="dsv" label="name"></ins-select>
+              <script>
+                var dsv = document.getElementById('dsv')
+                dsv.addEventListener('didLoad', function(e){
+                  dsv.label = 'Direct Set Value';
+                });
+              </script>
+            </div>
+            <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-select id="dsv"></ins-select>
+
+<script>
+  var dsv = document.getElementById('dsv')
+  dsv.addEventListener('didLoad', function(e){
+    dsv.label = 'Direct Set Value';
+  });
+&lt;/script&gt;
+      </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/189/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+        <!-- ins-select Static Data -->
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Static Data Source</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+              <ins-select label="select" searchable></ins-select>
+              </ins-select>
+            </div>
+            <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-select label="select" searchable></ins-select>
+            </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/105/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ins-select Attributes -->
+      <div>
+        <h2 class="section-title">Attributes</h2>
+        <!-- Placeholder Attribute -->
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Placeholder Attribute</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+              <ins-select placeholder="Value Change"></ins-select>
+            </div>
+            <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-select placeholder="Value Change"></ins-select>
+            </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/107/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+
+        <!-- Disabled Attribute -->
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Disabled Attribute</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+              <ins-select disabled></ins-select>
+            </div>
+            <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-select disabled></ins-select>
+            </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/108/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+
+        <!-- ReadOnly Attribute -->
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">ReadOnly Attribute</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+              <ins-select readonly></ins-select>
+            </div>
+            <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-select readonly></ins-select>
+            </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/109/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+
+        <!-- Button Attribute -->
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Button Attribute</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+              <ins-select button label="Operating System" placeholder=" Select ">
+                <ins-select-option label="macOS" value="macOS"></ins-select-option>
+                <ins-select-option label="Windows" value="Windows"></ins-select-option>
+              </ins-select>
+            </div>
+            <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-select button label="Sample" placeholder=" Select ">
+  <ins-select-option label="macOS" value="macOS"></ins-select-option>
+  <ins-select-option label="Windows" value="Windows"></ins-select-option>
+</ins-select>
+            </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/110/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+
+        <!-- Small Attribute -->
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Small Attribute</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+              <ins-select small button label="Operating System" placeholder=" Select ">
+                <ins-select-option label="macOS" value="macOS"></ins-select-option>
+                <ins-select-option label="Windows" value="Windows"></ins-select-option>
+              </ins-select>
+            </div>
+            <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-select small button label="Operating System" placeholder=" Select ">
+  <ins-select-option label="macOS" value="macOS"></ins-select-option>
+  <ins-select-option label="Windows" value="Windows"></ins-select-option>
+</ins-select>
+            </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/111/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ins-select-option -->
+    <div>
+      <!-- ins-select-option header -->
+      <div>
+        <h2 class="section-title">Insites Select Option
+          <code>&lt;ins-select-option&gt;</code>
+        </h2>
+        <p>Defines a drop-down list item.</p>
+      </div>
+      <!-- ins-select-option complete example -->
+      <div>
+        <h2 class="section-title">Complete Example</h2>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+              <ins-select label="Operating System">
+                <ins-select-option label="Windows" value="Windows" default></ins-select-option>
+                <ins-select-option label="MacOS" value="macOS"></ins-select-option>
+                <ins-select-option label="Linux" value="Linux"></ins-select-option>
+              </ins-select>
+            </div>
+            <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-select label="Operating System">
+  <ins-select-option label="Windows" value="Windows" default></ins-select-option>
+  <ins-select-option label="macOS" value="macOS"></ins-select-option>
+  <ins-select-option label="Linux" value="Linux"></ins-select-option>
+</ins-select>
+                </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/102/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ins-select-option attribute table -->
+      <div>
+        <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>FIELD ATTRIBUTE</th>
+              <th>TYPE</th>
+              <th>DEFAULT</th>
+              <th>OPTIONS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>label</td>
+              <td>string</td>
+              <td>"Option"</td>
+              <td>any</td>
+              <td>Defines label of option</td>
+            </tr>
+            <tr>
+              <td>value</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines value of option</td>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Disables option dropdown</td>
+            </tr>
+            <tr>
+              <td>default</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Makes specific option default value of dropdown</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ins-select-option event table -->
+      <div>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>EVENT</th>
+                <th>OBJECT</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>insSelectOptionClicked</td>
+              <td>label, value</td>
+              <td>Execute a script when a select option is clicked</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <h2 class="section-title">Types</h2>
+      <!-- Searchable Dropdown -->
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Searchable Dropdown</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+            <ins-select label="Operating System" searchable>
+              <ins-select-option label="Windows" value="Windows" default></ins-select-option>
+              <ins-select-option label="Linux" value="Linux"></ins-select-option>
+              <ins-select-option label="macOS" value="macOS"></ins-select-option>
+            </ins-select>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-select label="Operating System" searchable>
+  <ins-select-option label="Windows" value="Windows" default></ins-select-option>
+  <ins-select-option label="Linux" value="Linux"></ins-select-option>
+  <ins-select-option label="macOS" value="macOS"></ins-select-option>
+</ins-select>
+              </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/112/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+
+      <!-- Multiselect Dropdown -->
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Multiselect Dropdown</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+            <ins-select label="Operating System" multiple>
+              <ins-select-option label="Windows" value="Windows" default></ins-select-option>
+              <ins-select-option label="Linux" value="Linux"></ins-select-option>
+              <ins-select-option label="macOS" value="macOS"></ins-select-option>
+            </ins-select>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-select label="Operating System" multiple>
+  <ins-select-option label="Windows" value="Windows" default></ins-select-option>
+  <ins-select-option label="Linux" value="Linux"></ins-select-option>
+  <ins-select-option label="macOS" value="macOS"></ins-select-option>
+</ins-select>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/113/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+
+      <!-- Dropdown Button with Search Bar -->
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Dropdown Button with Search Bar</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+            <ins-select label="Operating System" searchable button>
+              <ins-select-option label="Windows" value="Windows" default></ins-select-option>
+              <ins-select-option label="Linux" value="Linux"></ins-select-option>
+              <ins-select-option label="macOS" value="macOS"></ins-select-option>
+            </ins-select>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-select label="Operating System" searchable button>
+  <ins-select-option label="Windows" value="Windows" default></ins-select-option>
+  <ins-select-option label="Linux" value="Linux"></ins-select-option>
+  <ins-select-option label="macOS" value="macOS"></ins-select-option>
+</ins-select>
+          </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/114/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+
+      <!-- Small Dropdown Button -->
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Small Dropdown Button</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+            <ins-select label="Operating System" small button>
+              <ins-select-option label="Windows" value="Windows" default></ins-select-option>
+              <ins-select-option label="Linux" value="Linux"></ins-select-option>
+              <ins-select-option label="macOS" value="macOS"></ins-select-option>
+            </ins-select>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-select label="Operating System" small button>
+  <ins-select-option label="Windows" value="Windows" default></ins-select-option>
+  <ins-select-option label="Linux" value="Linux"></ins-select-option>
+  <ins-select-option label="macOS" value="macOS"></ins-select-option>
+</ins-select>
+        </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/115/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+
+      <!-- ins-select-option states -->
+      <div>
+        <h2 class="section-title">States</h2>
+        <!-- Default State -->
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Default State</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+              <ins-select>
+                <ins-select-option></ins-select-option>
+              </ins-select>
+            </div>
+            <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-select>
+  <ins-select-option></ins-select-option>
+</ins-select>
+  </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/116/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+
+        <!-- Direct Set Data -->
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Direct Set Data</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap" style="height: 500px;">
+              <ins-select id="directSetDataSelect"></ins-select>
+            </div>
+            <script>
+              var insSelectOptionEl = document.createElement("ins-select-option");
+              function setInsSelectOptions(id, options) {
+                var insSelectEl = document.getElementById(id);
+                var newInsSelectEl = document.createElement('ins-select');
+                var insSelectElParent = insSelectEl.parentElement;
+
+                options.forEach(function(option, index){
+                  // generate ins-select-option tags
+                  var insSelectOptionEl = document.createElement("ins-select-option");
+                  insSelectOptionEl.label = option.label;
+                  insSelectOptionEl.value = option.value;
+
+                  // add the newly generated ins-select-option to the new ins-select element
+                  newInsSelectEl.appendChild(insSelectOptionEl);
+                });
+                // set the id of the new ins-select element to the old ins-select's id name
+                newInsSelectEl.setAttribute('id', id);
+                // remove the old ins-select element
+                insSelectElParent.removeChild(insSelectEl);
+                // add the new ins-select element
+                insSelectElParent.appendChild(newInsSelectEl);
+              }
+
+              function successHandler(response) {
+                var options = JSON.parse(response);
+                setInsSelectOptions('directSetDataSelect', options);
+              }
+
+              function errorHandler(error) {
+                // console.log(error);
+              }
+
+              var xmlhttp = new XMLHttpRequest();
+              // javascript ajax call
+              xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+                  if (xmlhttp.status == 200) {
+                    successHandler(JSON.parse(this.responseText));
+                  }
+                  else if (xmlhttp.status == 400) {
+                    errorHandler();
+                  }
+                  else {
+                    // console.log('something else other than 200 was returned');
+                  }
+                }
+              };
+
+              xmlhttp.open("GET", "https://gngyishvwl.execute-api.ap-southeast-2.amazonaws.com/insitesDummyStage/insites-dummy-api", true);
+              xmlhttp.send();
+            </script>
+            <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-select id="directSetDataSelect"></ins-select>
+
+<script>
+  var insSelectOptionEl = document.createElement("ins-select-option");
+
+  function setInsSelectOptions(id, options){
+    var insSelectEl = document.getElementById(id);
+    var newInsSelectEl = document.createElement('ins-select');
+    var insSelectElParent = insSelectEl.parentElement;
+
+    options.forEach(function(option, index){
+    // generate ins-select-option tags
+    var insSelectOptionEl = document.createElement("ins-select-option");
+
+    // generate ins-select-option tags
+    var insSelectOptionEl = document.createElement("ins-select-option");
+    insSelectOptionEl.label = option.label;
+    insSelectOptionEl.value = option.value;
+
+    // Add the newly generated ins-select-option element to the new ins-select element
+    newInsSelectEl.appendChild(insSelectOptionEl);
+    });
+
+    // Set the id of the new ins-select element to the old ins-select's id name
+    newInsSelectEl.setAttribute('id', id);
+
+    // Remove the old ins-select element
+    insSelectElParent.removeChild(insSelectEl);
+
+    // Add the new ins-select element
+    insSelectElParent.appendChild(newInsSelectEl);
+  }
+
+  function successHandler (response) {
+    var options = JSON.parse(response);
+    setInsSelectOptions('directSetDataSelect', options);
+  }
+
+  function errorHandler (error) {
+    console.log(error);
+  }
+
+  var xmlhttp = new XMLHttpRequest();
+  // Javascript ajax call
+  xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+      if (xmlhttp.status == 200) {
+        successHandler(JSON.parse(this.responseText));
+      } else if (xmlhttp.status == 400) {
+        errorHandler();
+      } else console.log('something else other than 200 was returned');
+    }
+  };
+
+  xmlhttp.open("GET", "https://gngyishvwl.execute-api.ap-southeast-2.amazonaws.com/insitesDummyStage/insites-dummy-api", true);
+  xmlhttp.send();
+&lt;/script&gt;
+              </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/190/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+
+        <!-- Static Data Source -->
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Static Data Source</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+              <ins-select>
+                <ins-select-option label="Android" value="Android" default></ins-select-option>
+                <ins-select-option label="iOS" value="iOS"></ins-select-option>
+                <ins-select-option label="Windows" value="Windows"></ins-select-option>
+              </ins-select>
+            </div>
+            <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-select>
+  <ins-select-option label="Android" value="Android" default></ins-select-option>
+  <ins-select-option label="iOS" value="iOS"></ins-select-option>
+  <ins-select-option label="Windows" value="Windows"></ins-select-option>
+</ins-select>
+              </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/118/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ins-select-option events-->
+      <div>
+        <h2 class="section-title">Events</h2>
+        <!-- insSelectOptionClicked -->
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">insSelectOptionClicked</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-select label="Operating System">
+                <ins-select-option id="select-option" label="macOS" value="macOS"></ins-select-option>
+                <ins-select-option id="select-option" label="Linux" value="Linux"></ins-select-option>
+              </ins-select>
+              <script>
+                var sel = document.querySelectorAll('ins-select-option[id="select-option"]');
+                for (var i = 0; i < sel.length; i++) {
+                  sel[i].addEventListener('insSelectOptionClicked', function (event) {
+                    console.log(event.detail.value);
+                    alert(event.detail.label);
+                  });
+                };
+              </script>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-select label="Operating System">
+  <ins-select-option id="select-option" label="macOS" value="macOS"></ins-select-option>
+  <ins-select-option id="select-option" label="Linux" value="Linux"></ins-select-option>
+</ins-select>
+<script>
+  var sel = document.querySelectorAll('ins-select-option[id="select-option"]');
+  for (var i = 0; i < sel.length; i++){
+    sel[i].addEventListener('insSelectOptionClicked', function(event){
+      console.log(event.detail.value);
+      alert(event.detail.label);
+    });
+  };
+&lt;/script&gt;
+            </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/175/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div>
+      <!-- ins-select-group header -->
+      <div>
+        <h2 class="section-title">Insites Select Group
+          <code>&lt;ins-select-group&gt;</code>
+        </h2>
+        <p>Defines a drop-down list item.</p>
+      </div>
+      <!-- ins-select-group complete example -->
+      <div>
+        <h2 class="section-title">Complete Example</h2>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap" style="height: 300px;">
+
+              <ins-select label="Cars" placeholder="Please select a car">
+
+                <ins-select-group label="Swedish Cars">
+                  <ins-select-option value="volvo" label="Volvo"></ins-select-option>
+                  <ins-select-option value="saab" label="Saab"></ins-select-option>
+                </ins-select-group>
+
+                <ins-select-group label="German Cars">
+                  <ins-select-option value="mercedes" label="Mercedes"></ins-select-option>
+                  <ins-select-option value="audi" label="Audi"></ins-select-option>
+                </ins-select-group>
+
+              </ins-select>
+
+            </div>
+            <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-select label="Cars" placeholder="Please select a car">
+
+  <ins-select-group label="Swedish Cars">
+    <ins-select-option value="volvo" label="Volvo"></ins-select-option>
+    <ins-select-option value="saab" label="Saab"></ins-select-option>
+  </ins-select-group>
+
+  <ins-select-group label="German Cars">
+    <ins-select-option value="mercedes" label="Mercedes"></ins-select-option>
+    <ins-select-option value="audi" label="Audi"></ins-select-option>
+  </ins-select-group>
+
+</ins-select>
+                </script>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ins-select-group attribute table -->
+      <div>
+        <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>FIELD ATTRIBUTE</th>
+              <th>TYPE</th>
+              <th>DEFAULT</th>
+              <th>OPTIONS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>label</td>
+              <td>string</td>
+              <td>"Options Group"</td>
+              <td>any</td>
+              <td>Defines label of the group</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

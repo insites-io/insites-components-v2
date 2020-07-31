@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Date Picker</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+
+  <script type="module" src="/build/insites-components.esm.js"></script>
+  <script nomodule src="/build/insites-components.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+
+  <style>
+    ins-styleguide .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap {
+      overflow: initial;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ins-Image Picker header -->
+  <div>
+    <h2 class="section-title">Insites Image Picker
+      <code>&lt;ins-datepicker&gt;</code>
+    </h2>
+    <p>Defines a datepicker field.</p>
+  <div>
+
+      <!-- content -->
+      <div>
+        <h2 class="section-title">Complete Example</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-datepicker
+              label="Birthday"
+              name="birthday"
+              icon="icon-clock"
+              placeholder="Select a valid date"
+              format="YYYY.MM.DD"
+              min-date="2010.01.01"
+              max-date="2020.01.01">
+            </ins-datepicker>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-datepicker
+  label="Birthday"
+  name="birthday"
+  icon="icon-clock"
+  placeholder="Select a valid date"
+  format="YYYY.MM.DD"
+  min-date="2010.01.01"
+  max-date="2020.01.01">
+</ins-datepicker>
+        </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Attributes -->
+      <div>
+        <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>FIELD ATTRIBUTE</th>
+              <th>TYPE</th>
+              <th>DEFAULT</th>
+              <th>OPTIONS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>icon</td>
+              <td>string</td>
+              <td>""</td>
+              <td>icon-close-1, icon-utilities, icon-lock-1 ...</td>
+              <td>Defines icon of input field</td>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Disables the field</td>
+            </tr>
+            <tr>
+              <td>readonly</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Make the field readonly</td>
+            </tr>
+            <tr>
+              <td>has-error</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Defines if the field is invalid / error</td>
+            </tr>
+            <tr>
+              <td>error-message</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Message shown when field has error</td>
+            </tr>
+            <tr>
+              <td>label</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Label shown above the field</td>
+            </tr>
+            <tr>
+              <td>name</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines the field name</td>
+            </tr>
+            <tr>
+              <td>placeholder</td>
+              <td>string</td>
+              <td>"h:i A"</td>
+              <td>any</td>
+              <td>Defines the field placeholder</td>
+            </tr>
+            <tr>
+              <td>format</td>
+              <td>string</td>
+              <td>""</td>
+              <td>YYYY-MM-DD, DD.MM.YYYY, MM/DD/YYYY, ...</td>
+              <td>Date format to be used by the datepicker</td>
+            </tr>
+            <tr>
+              <td>min-date</td>
+              <td>string</td>
+              <td>""</td>
+              <td>&lt;date format&gt;</td>
+              <td>Defines the field minimum date allowed</td>
+            </tr>
+            <tr>
+              <td>max-date</td>
+              <td>string</td>
+              <td>""</td>
+              <td>&lt;date format&gt;</td>
+              <td>Defines the field maximum date allowed</td>
+            </tr>
+            <tr>
+              <td>value</td>
+              <td>string</td>
+              <td>""</td>
+              <td>&lt;date format&gt;</td>
+              <td>Defines the field value</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Event -->
+      <div>
+        <h2 class="section-title">Events</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>EVENT</th>
+              <th>OBJECT</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>onDateChange</td>
+              <td>label, selected_dates, value</td>
+              <td>Emits field value on change</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Default State -->
+      <div>
+        <h2 class="section-title">Default State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-datepicker></ins-datepicker>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-datepicker></ins-datepicker>
+            </script>
+          </div>
+        </ins-styleguide>
+
+        <!-- Error state-->
+        <h2 class="section-title">Error State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-datepicker label="Date" has-error error-message="This is a required field"></ins-datepicker>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-datepicker label="Date" has-error error-message="This is a required field"></ins-datepicker>
+            </script>
+          </div>
+        </ins-styleguide>
+
+        <!-- Disabled state-->
+        <h2 class="section-title">Disabled State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-datepicker label="Disabled Field" disabled></ins-datepicker>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-datepicker label="Disabled Field" disabled></ins-datepicker>
+            </script>
+          </div>
+        </ins-styleguide>
+
+        <!-- Readonly state-->
+        <h2 class="section-title">Readonly State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-datepicker label="Read-only Field" readonly></ins-datepicker>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-datepicker label="Read-only Field" readonly></ins-datepicker>
+                    </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Direct Set Value -->
+      <div>
+        <h2 class="section-title">Direct Value Set</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-datepicker id="directDateEl"></ins-datepicker>
+            <script>
+              var label = "Set Date";
+              var minDate = "01-01-2001";
+              var dateFormat = "MM-DD-YYYY";
+              var today = new Date();
+              var now = today.getMonth() + 1 + '-' + today.getDate() + '-' + today.getFullYear();
+              var dateField = document.getElementById('directDateEl');
+              dateField.addEventListener('didLoad', function(e){
+                dateField.label = label;
+                dateField.minDate = minDate;
+                dateField.format = dateFormat;
+                dateField.value = now;
+              });
+            </script>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-datepicker id="directDateEl"></ins-datepicker>
+<script>
+  var label = "Set Date";
+  var minDate = "01-01-2001";
+  var dateFormat = "MM-DD-YYYY";
+  var today = new Date();
+  var now = today.getMonth() + 1 + '-' + today.getDate() + '-' + today.getFullYear();
+  var dateField = document.getElementById('directDateEl');
+  dateField.addEventListener('didLoad', function(e){
+    dateField.label = label;
+    dateField.minDate = minDate;
+    dateField.format = dateFormat;
+    dateField.value = now;
+  });
+&lt;/script&gt;
+          </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Event -->
+      <div>
+        <h2 class="section-title">Events</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-datepicker label="Set Date" placeholder="Select date" id="eventDateEl"></ins-datepicker>
+            <script>
+              var field = document.getElementById('eventDateEl');
+              field.addEventListener('onDateChange', event => {
+                var event = event.detail;
+                console.log("Date picker event", event);
+                alert("Check console log for event data");
+              });
+            </script>
+          </div>
+
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-datepicker label="Set Date" placeholder="Select date" id="eventDateEl"></ins-datepicker>
+<script>
+  var field = document.getElementById('eventDateEl');
+      field.addEventListener('onDateChange', event => {
+        var event = event.detail;
+        console.log("Date picker event", event);
+        alert("Check console log for event data");
+      });
+&lt;/script&gt;
+          </script>
+          </div>
+        </ins-styleguide>
+      </div>
+</body>
+
+</html>

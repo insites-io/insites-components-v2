@@ -32,6 +32,8 @@ export class InsRadio {
   componentWillUpdate(){
     if (this.value === this.staticValue){
       this.localChecked = true;
+    } else if (this.checked){
+      this.localChecked = true;
     } else this.localChecked = false;
   }
 

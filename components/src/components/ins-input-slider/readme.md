@@ -1,0 +1,39 @@
+# ins-input-slider
+
+
+
+<!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property       | Attribute       | Description | Type      | Default     |
+| -------------- | --------------- | ----------- | --------- | ----------- |
+| `disabled`     | `disabled`      |             | `boolean` | `false`     |
+| `errorMessage` | `error-message` |             | `string`  | `undefined` |
+| `hasError`     | `has-error`     |             | `boolean` | `false`     |
+| `hasLoad`      | `has-load`      |             | `string`  | `undefined` |
+| `label`        | `label`         |             | `string`  | `undefined` |
+| `max`          | `max`           |             | `number`  | `undefined` |
+| `min`          | `min`           |             | `number`  | `0`         |
+| `name`         | `name`          |             | `string`  | `undefined` |
+| `position`     | `position`      |             | `string`  | `"right"`   |
+| `sliderOnly`   | `slider-only`   |             | `boolean` | `false`     |
+| `step`         | `step`          |             | `number`  | `1`         |
+| `value`        | `value`         |             | `any`     | `0`         |
+
+
+## Events
+
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `didLoad`        |             | `CustomEvent<any>` |
+| `insSlide`       |             | `CustomEvent<any>` |
+| `insSlideEnd`    |             | `CustomEvent<any>` |
+| `insSlideStart`  |             | `CustomEvent<any>` |
+| `insValueChange` |             | `CustomEvent<any>` |
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

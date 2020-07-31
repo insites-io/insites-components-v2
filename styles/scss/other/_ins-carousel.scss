@@ -2,6 +2,10 @@
   font-family: var(--ins-font-family);
   color: $ink;
 
+  div {
+    box-sizing: border-box;
+  }
+
   img { width: 100%;}
 
   &_heading {

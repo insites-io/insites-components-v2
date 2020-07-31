@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide - Vue QA</title>
+
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <script src="/v1/build/insites.js"></script>
+  <style>body{ font-family: 'Open Sans', Arial, Helvetica, sans-serif; padding:20px }</style>
+</head>
+
+<body>
+  <div id="app">
+    <insites-textarea label="textarea" v-model="message"></insites-textarea>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="/v1/assets/js/insites-components-vue-wrapper.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message:"Hello World!"
+      },
+      methods: {},
+      mounted(){}
+    });
+  </script>
+</body>
+
+</html>

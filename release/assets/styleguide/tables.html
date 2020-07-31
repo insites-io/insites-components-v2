@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Tables</title>
+  <script src="/build/insites.js"></script>
+
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/assets/css/insites-admin-font.css"/>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/admin.css">
+  <link rel="stylesheet" href="/assets/css/prism.css">
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+
+  <script src="/assets/vendor/js/jquery-1.12.4.min.js"></script>
+  <script src="/assets/js/prism.js"></script> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/assets/css/insites-admin-font.css" />
+  <link rel="stylesheet" href="/assets/vendor/css/font-face.css">
+  <link rel="stylesheet" href="/assets/vendor/css/jquery-ui.css">
+  <link rel="stylesheet" href="/assets/vendor/css/cropper.min.css">
+  <link rel="stylesheet" href="/assets/css/intlTelInput.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/admin.css">
+  <link rel="stylesheet" href="/assets/css/prism.css">
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+
+  <script src="/assets/vendor/js/cropper.js"></script>
+  <script src="/assets/vendor/js/jquery-1.12.4.min.js"></script>
+  <script src="/assets/vendor/js/jquery-ui.js"></script>
+  <script src="/assets/vendor/js/foundation.min.js"></script>
+  <script src="/assets/vendor/js/highcharts.js"></script>
+  <script src="/assets/vendor/js/jquery.timepicker.js"></script>
+  <script src="/assets/intl-tel-scripts/utils.js"></script>
+  <script src="/assets/intl-tel-scripts/intlTelInput.min.js"></script>
+  <script src="/assets/js/prism.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.11/sweetalert2.all.min.js"></script>
+
+  <style>
+    body {
+      padding-right: 20px;
+    }
+    h2.section-title {
+       border-bottom: none;
+    }
+
+    .padding-1 {
+      padding: 1em 0;
+    }
+
+    .label-wrap {
+      padding-top: 0.9rem;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* DASHBOARD SWAL STYLES */
+    .swal2-container.swal2-shown {
+      background-color: transparent;
+    }
+
+    .swal2-show {
+      box-shadow: 0px 6px 20px #aaa;
+      border-radius: 1px;
+      top: -120px;
+      width: 21em;
+    }
+
+    .swal2-popup #swal2-content {
+      font-size: .85rem;
+      margin-bottom: 20px;
+    }
+
+    .swal2-popup .swal2-actions {
+      margin-top: 0;
+      display: block !important;
+    }
+
+    .swal2-popup .swal2-styled.swal2-cancel,
+    .swal2-popup .swal2-styled.swal2-confirm {
+      background-color: transparent;
+      border: 1px solid #1e86e3 !important;
+      color: #1e86e3;
+      width: auto;
+      height: auto;
+      margin: 0 10px;
+      padding: 8px 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 14px;
+      font-weight: 400;
+      font-family: 'Open Sans', sans-serif;
+      float: left;
+      box-sizing: border-box;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+
+    .swal2-popup .swal2-styled.swal2-confirm {
+      float: right;
+      background-color: #1e86e3;
+      color: #fff;
+    }
+
+    .swal2-popup .swal2-styled.swal2-cancel:hover {/*,
+    .swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled:hover {*/
+      background-image: none !important;
+      background-color: #e3eef9;
+    }
+
+    /* ripple sweet alert */
+    .swal2-popup .swal2-styled.swal2-confirm,
+    .swal2-popup .swal2-styled.swal2-cancel {
+      position: relative;
+      overflow: hidden;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .swal2-popup .swal2-styled.swal2-confirm:after,
+    .swal2-popup .swal2-styled.swal2-cancel:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      background-image: radial-gradient(circle, #000 10%, transparent 5.01%);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      transform: scale(10, 10);
+      opacity: 0;
+      transition: transform .5s, opacity 1s;
+    }
+
+    .swal2-popup .swal2-styled.swal2-confirm:active:after,
+    .swal2-popup .swal2-styled.swal2-cancel:active::after {
+      transform: scale(0, 0);
+      opacity: .2;
+      transition: 0s;
+    }
+
+    .swal2-popup .ins-loader-wrap .ins-loader-title-wrap {
+      margin-top: 18px;
+      color: #2c3148;
+    }
+
+    .swal2-popup .ins-loader-wrap .ins-loader-message-wrap {
+      margin-top: 10px;
+      margin-bottom: 32px;
+      color: #8694a4;
+    }
+  </style>
+</head>
+
+<body>
+<div>
+  <!-- ins-button header -->
+  <div>
+    <h2 class="section-title">Insites Base Table Tag</h2>
+    <p>Defines a searchable table.</p>
+  </div>
+
+  <h2 class="section-title">Complete Example</h2>
+ <ins-table
+    id="insBaseTable"
+    searchbar-placeholder="Search...">
+  </ins-table>
+
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<ins-table
+id="insBaseTable"
+heading="Table"
+searchbar-placeholder="Search...">
+</ins-table>
+    </script>
+  </div>
+
+  <h3 class="label-wrap">Set Initial Properties</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+var insBaseTable = document.getElementById('insBaseTable');
+var rawData = [];
+var filteredData = [];
+var displayedData = [];
+var tableHeaders = [];
+var totalCount = 0;
+var pageNumber = 1;
+var pageSize = 10;
+var searchKeyword = '';
+var sortedKeyword = '';
+
+insBaseTable.loadingScreen = true;
+insBaseTable.bulkActions = ['Archive'];
+insBaseTable.rowActions = ['Archive'];
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h3 class="label-wrap">Add Event Listener</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+insBaseTable.addEventListener('onPaginationChange', tablePaginationHandler);
+insBaseTable.addEventListener('onTableSearch', tableSearchHandler);
+insBaseTable.addEventListener('onTableSort', tableSortHandler);
+insBaseTable.addEventListener('onTableBulkAction', tableBulkActionHandler);
+insBaseTable.addEventListener('onTableRowAction', tableRowActionHandler);
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h3 class="label-wrap">Table Pagination Handler</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+function tablePaginationHandler(event){
+  insBaseTable.loadingScreen = true;
+  pageSize = event.detail.pageSize;
+  pageNumber = event.detail.pageNumber;
+  processTableData()
+}
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h3 class="label-wrap">Table Search Handler</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+function tableSearchHandler(event){
+  insBaseTable.loadingScreen = true;
+  searchKeyword = event.detail.value;
+
+  if (!searchKeyword) {
+    processTableData();
+    return;
+  }
+
+  filteredData = [];
+  rawData.forEach((value) => {
+    Object.keys(value).forEach((key) => {
+      if (key === 'Default Column'){
+        var match = value[key];
+        if (match.toLowerCase().includes(searchKeyword.toLowerCase())) {
+          filteredData.push(value);
+        }
+      }
+    });
+  });
+
+  if (sortedKeyword && filteredData.length > 1) {
+    filteredData.sort(dynamicKeySort(sortedKeyword));
+  }
+  insBaseTable.pageNumber = 1;
+  processTableData();
+
+  if (!filteredData.length) {
+    insBaseTable.loadingScreen = true;
+    insBaseTable.loaderTitle = '';
+    insBaseTable.loaderMessage = 'No result found for "' + searchKeyword + '"';
+    insBaseTable.loaderIcon = '';
+  }
+}
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h3 class="label-wrap">Table Sort Handler</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+function tableSortHandler(event){
+  sortedKeyword = event.detail.order === 'asc' ? event.detail.keyword : `-${event.detail.keyword}`;
+  if (searchKeyword){
+    filteredData.sort(dynamicKeySort(sortedKeyword));
+  } else {
+    rawData.sort(dynamicKeySort(sortedKeyword));
+  }
+  processTableData();
+}
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h3 class="label-wrap">Table Bulk Action Handler</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+function tableBulkActionHandler(event){
+  if (event.detail.action === 'Archive'){
+    archiveSelection(event.detail.selections);
+  }
+}
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h3 class="label-wrap">Table Row Action Handler</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+function tableRowActionHandler(event){
+  if (event.detail.action === 'Archive'){
+    archiveItem(event.detail.data);
+  }
+}
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h3 class="label-wrap">Process Table Data</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+function processTableData(){
+  var last_index = pageNumber * pageSize;
+  var first_index = (last_index - pageSize) + 1;
+
+  displayedData = [];
+
+  if (searchKeyword) {
+
+    filteredData.forEach((value, index) => {
+      if (index >= first_index && index <= last_index) {
+        displayedData.push(value);
+      } else if (filteredData.length < pageSize){
+        displayedData.push(value);
+      }
+    });
+    insBaseTable.totalCount = filteredData.length;
+
+  } else {
+
+    rawData.forEach((value, index) => {
+      if (index >= first_index && index <= last_index) {
+        displayedData.push(value);
+      }
+    });
+    insBaseTable.totalCount = rawData.length;
+
+  }
+
+  insBaseTable.tableData = displayedData;
+  insBaseTable.loadingScreen = false;
+}
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h3 class="label-wrap">Fetch Data From Src</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+function fetchDataFromSrc () {
+
+  insBaseTable.loadingScreen = true;
+
+  insBaseTable.loaderTitle = "Processing Your Data";
+  insBaseTable.loaderMessage = "Just a moment, we're fetching and processing your data.";
+  insBaseTable.loaderIcon = "processing";
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+
+      var tableData = JSON.parse(this.responseText);
+      rawData = tableData.list.map(function(data){
+        data["Default Column_Img"] = '';
+        return data;
+      });
+      insBaseTable.totalCount = tableData.count;
+      insBaseTable.tableHeaders = [
+        { label: "Default Column", type: 'string', sortable: true, hasLink: true, hasImage: true}, //
+        { label: "Date Column", type: 'string', sortable: true },
+        { label: "Number Column", type: 'number', sortable: true },
+        { label: "Currency Column", type: 'currency', sortable: true }
+      ];
+
+      processTableData();
+    }
+  };
+  xhttp.open("GET", 'https://ag64gmtsc0.execute-api.us-east-2.amazonaws.com/insites-dummy-deployment/insites-dummy-get-table', true);
+  xhttp.send();
+}
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h3 class="label-wrap">Dynamic Key Sort</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+function dynamicKeySort(key) {
+  var OrderSortIndex = 1;
+
+  if (key[0] === "-") {
+    OrderSortIndex = -1;
+    key = key.substr(1);
+  }
+
+  return function (a, b) {
+    var num = (a[key] < b[key]) ? -1 : (a[key] > b[key]) ? 1 : 0;
+    return num * OrderSortIndex;
+  }
+}
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <!-- attribute table -->
+  <div class="padding-1">
+    <h2 class="section-title">Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>without-search</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Removes searchable input field</td>
+        </tr>
+        <tr>
+          <td>static-table</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Enables table accept static data</td>
+        </tr>
+        <tr>
+          <td>loading-screen</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Enables loader in table</td>
+        </tr>
+        <tr>
+          <td>loader-title</td>
+          <td>any</td>
+          <td></td>
+          <td>any</td>
+          <td>Defines title of loader</td>
+        </tr>
+        <tr>
+          <td>loader-message</td>
+          <td>any</td>
+          <td></td>
+          <td>any</td>
+          <td>Defines message of loader</td>
+        </tr>
+        <tr>
+          <td>loader-icon</td>
+          <td>any</td>
+          <td></td>
+          <td>any</td>
+          <td>Defines icon of loader</td>
+        </tr>
+        <tr>
+          <td>searchbar-placeholder</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines the short hint that describes the expected value in the input field</td>
+        </tr>
+        <tr>
+          <td>heading</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines header of table</td>
+        </tr>
+        <tr>
+          <td>currency</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines currency in table</td>
+        </tr>
+        <tr>
+          <td>table-headers</td>
+          <td>Array of InsBaseTableHeader</td>
+          <td>[]</td>
+          <td>any</td>
+          <td>Defines header of data columns in table</td>
+        </tr>
+        <tr>
+          <td>table-data</td>
+          <td>Array</td>
+          <td>[]</td>
+          <td>any</td>
+          <td>Defines data in table (Property keys should match the column header)</td>
+        </tr>
+        <tr>
+          <td>page-number</td>
+          <td>number</td>
+          <td>1</td>
+          <td>any</td>
+          <td>Defines number of pages in table</td>
+        </tr>
+        <tr>
+          <td>page-size</td>
+          <td>number</td>
+          <td>10</td>
+          <td>any</td>
+          <td>Defines size of pages in table</td>
+        </tr>
+        <tr>
+          <td>page-size-options</td>
+          <td>number</td>
+          <td>10</td>
+          <td>any</td>
+          <td>Defines size options of pages in table</td>
+        </tr>
+        <tr>
+          <td>total-count</td>
+          <td>any</td>
+          <td>0</td>
+          <td>any</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>bulk-actions</td>
+          <td>any</td>
+          <td>[]</td>
+          <td>any</td>
+          <td>Defines options of Bulk actions dropdown</td>
+        </tr>
+        <tr>
+          <td>row-actions</td>
+          <td>any</td>
+          <td>[]</td>
+          <td>any</td>
+          <td>Defines options of rows actions</td>
+        </tr>
+        <tr>
+          <td>selected-rows</td>
+          <td>any</td>
+          <td>[]</td>
+          <td>any</td>
+          <td>Defines options of selected rows</td>
+        </tr>
+        <tr>
+          <td>empty-value</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>sort-order</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Enables sorting by order of data tables</td>
+        </tr>
+        <tr>
+          <td>sort-keyword</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines keyword to be sorted</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ins-sidebar-footer-button event table -->
+  <div>
+      <h2 class="section-title">pointer-events</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>EVENT</th>
+            <th>OBJECT</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>onPaginationChange</td>
+            <td></td>
+            <td>Gets triggered when paginations are clicked</td>
+          </tr>
+          <tr>
+            <td>onTableSearch</td>
+            <td></td>
+            <td>Gets triggered when an element gets user search input</td>
+          </tr>
+          <tr>
+            <td>onTableSort</td>
+            <td></td>
+            <td>Gets triggered when a table header is clicked</td>
+          </tr>
+          <tr>
+            <td>onTableBulkAction</td>
+            <td></td>
+            <td>Gets triggered when bulk action button is clicked</td>
+          </tr>
+          <tr>
+            <td>onTableRowAction</td>
+            <td></td>
+            <td>Gets triggered when a row action button is clicked</td>
+          </tr>
+        </table>
+      </div>
+  </div>
+  <div>
+      <h2 class="section-title">InsBaseTableHeader Properties</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>KEY</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>label</td>
+            <td>""</td>
+            <td></td>
+            <td>Defines a label to display on the table</td>
+          </tr>
+          <tr>
+            <td>type</td>
+            <td>string</td>
+            <td>string,number,currency</td>
+            <td>Defines the type of data the column will display</td>
+          </tr>
+          <tr>
+            <td>sortable</td>
+            <td>false</td>
+            <td>true/false</td>
+            <td>Defines if the column is sortable</td>
+          </tr>
+          <tr>
+            <td>hasTag</td>
+            <td>false</td>
+            <td>true/false</td>
+            <td>Defines if the column data is a tag</td>
+          </tr>
+          <tr>
+            <td>hasColumnAction</td>
+            <td>false</td>
+            <td>true/false</td>
+            <td>Defines if the column should also have the row actions on itself</td>
+          </tr>
+          <tr>
+            <td>hasImage</td>
+            <td>false</td>
+            <td>true/false</td>
+            <td>Defines if the column will have an image to display, if set to true and column does not have an image it will use the column data's initials</td>
+          </tr>
+        </table>
+      </div>
+  </div>
+
+  <h2 class="section-title">InsBaseTableHeader Demo</h2>
+  <ins-table
+    id="insBaseTableHeaders"
+    searchbar-placeholder="Search...">
+   </ins-table>
+
+   <div class="padding-1">
+     <script type="text/plain" class="language-markup">
+ <script>
+  window.addEventListener('load', () => {
+    var table = document.getElementById('insBaseTableHeaders');
+
+    table.totalCount = 1;
+    table.tableHeaders = [
+      { label: "String", type: 'string' },
+      { label: "Number", type: 'number' },
+      { label: "Currency", type: 'currency' }
+    ];
+
+    table.tableData = [
+      { id: 1, "String": "John Doe", "Number":  100, "Currency": 99.99 }
+    ]
+  });
+&lt;/script&gt;
+     </script>
+   </div>
+</div>
+
+<div style='padding: 15px;'></div>
+
+<script>
+  window.addEventListener('load', () => {
+    var table = document.getElementById('insBaseTableHeaders');
+
+    table.totalCount = 1;
+    table.tableHeaders = [
+      { label: "String", type: 'string' },
+      { label: "Number", type: 'number' },
+      { label: "Currency", type: 'currency' }
+    ];
+
+    table.tableData = [
+      { id: 1, "String": "John Doe", "Number":  100, "Currency": 99.99 }
+    ]
+  });
+
+
+  var insBaseTable = document.getElementById('insBaseTable');
+  var rawData = [];
+  var filteredData = [];
+  var displayedData = [];
+  var tableHeaders = [];
+  var totalCount = 0;
+  var pageNumber = 1;
+  var pageSize = 10;
+  var searchKeyword = '';
+  var sortedKeyword = '';
+
+  insBaseTable.loadingScreen = true;
+  insBaseTable.bulkActions = ['Archive'];
+  insBaseTable.rowActions = ['Archive'];
+  insBaseTable.addEventListener('onPaginationChange', tablePaginationHandler);
+  insBaseTable.addEventListener('onTableSearch', tableSearchHandler);
+  insBaseTable.addEventListener('onTableSort', tableSortHandler);
+  insBaseTable.addEventListener('onTableBulkAction', tableBulkActionHandler);
+  insBaseTable.addEventListener('onTableRowAction', tableRowActionHandler);
+
+  function tablePaginationHandler(event){
+    insBaseTable.loadingScreen = true;
+    pageSize = event.detail.pageSize;
+    pageNumber = event.detail.pageNumber;
+    processTableData()
+  }
+  function tableSearchHandler(event){
+    insBaseTable.loadingScreen = true;
+    searchKeyword = event.detail.value;
+
+    if (!searchKeyword) {
+      processTableData();
+      return;
+    }
+
+    filteredData = [];
+    rawData.forEach((value) => {
+      Object.keys(value).forEach((key) => {
+        if (key === 'Default Column'){
+          var match = value[key];
+          if (match.toLowerCase().includes(searchKeyword.toLowerCase())) {
+            filteredData.push(value);
+          }
+        }
+      });
+    });
+
+    if (sortedKeyword && filteredData.length > 1) {
+      filteredData.sort(dynamicKeySort(sortedKeyword));
+    }
+    insBaseTable.pageNumber = 1;
+    processTableData();
+
+    if (!filteredData.length) {
+      insBaseTable.loadingScreen = true;
+      insBaseTable.loaderTitle = '';
+      insBaseTable.loaderMessage = 'No result found for "' + searchKeyword + '"';
+      insBaseTable.loaderIcon = '';
+    }
+  }
+  function tableSortHandler(event){
+    sortedKeyword = event.detail.order === 'asc' ? event.detail.keyword : `-${event.detail.keyword}`;
+    if (searchKeyword){
+      filteredData.sort(dynamicKeySort(sortedKeyword));
+    } else {
+      rawData.sort(dynamicKeySort(sortedKeyword));
+    }
+    processTableData();
+  }
+  function tableBulkActionHandler(event){
+    if (event.detail.action === 'Archive'){
+      archiveSelection(event.detail.selections);
+    }
+  }
+  function tableRowActionHandler(event){
+    console.log('tableRowActionHandler', event);
+    if (event.detail.action === 'Archive'){
+      archiveItem(event.detail.data);
+    }
+  }
+  function archiveItem(value){
+    swal({
+      title: '',
+      // text: "Are you sure you want to delete these items",
+      html: `
+        <ins-loader
+          state-icon="warning"
+          icon-color="warning"
+          state-message="Are you sure you want to archive this item?">
+        </ins-loader>`,
+      type: '',
+      showCancelButton: true,
+      confirmButtonText: 'Archive'
+    }).then((result) => {
+      deleteItem(value);
+      processTableData();
+    });
+  }
+  function archiveSelection(selections) {
+    swal({
+      title: '',
+      html: `
+      <ins-loader
+        state-icon="warning"
+        icon-color="warning"
+        state-message="Are you sure you want to archive these items?">
+      </ins-loader>`,
+      type: '',
+      showCancelButton: true,
+      confirmButtonText: 'Archive'
+    }).then((result) => {
+      if (result.value) {
+          let counter = 0;
+          selections.forEach(value => {
+
+            this.deleteItem(value);
+            counter++;
+
+            if (selections.length === counter){
+              insBaseTable.resetSelections();
+              processTableData()
+            }
+          });
+        }
+    });
+  }
+
+  function deleteItem(value) {
+    var selectionIndex;
+    var searchSelectionIndex;
+
+    if (rawData) {
+      selectionIndex = rawData.findIndex(item => {
+        return item.Id === value;
+      });
+    }
+
+    if (filteredData) {
+      searchSelectionIndex = filteredData.findIndex(item => {
+        return item.Id === value;
+      });
+    }
+
+    if (selectionIndex > -1){
+      rawData.splice(selectionIndex, 1);
+    }
+
+    if (searchSelectionIndex > -1){
+      filteredData.splice(searchSelectionIndex, 1);
+    }
+  }
+
+  function processTableData(){
+    var last_index = pageNumber * pageSize;
+    var first_index = (last_index - pageSize);// + 1;
+
+    displayedData = [];
+
+    if (searchKeyword) {
+
+      filteredData.forEach((value, index) => {
+        if (index >= first_index && index <= last_index) {
+          displayedData.push(value);
+        } else if (filteredData.length < pageSize){
+          displayedData.push(value);
+        }
+      });
+      insBaseTable.totalCount = filteredData.length;
+
+    } else {
+
+      rawData.forEach((value, index) => {
+        if (index >= first_index && index <= last_index) {
+          displayedData.push(value);
+        }
+      });
+      insBaseTable.totalCount = rawData.length;
+
+    }
+
+    insBaseTable.tableData = displayedData;
+    insBaseTable.loadingScreen = false;
+  }
+  function dynamicKeySort(key) {
+    var OrderSortIndex = 1;
+
+    if (key[0] === "-") {
+      OrderSortIndex = -1;
+      key = key.substr(1);
+    }
+
+    return function (a, b) {
+      var num = (a[key] < b[key]) ? -1 : (a[key] > b[key]) ? 1 : 0;
+      return num * OrderSortIndex;
+    }
+  }
+  function fetchDataFromSrc () {
+
+    insBaseTable.loadingScreen = true;
+
+    insBaseTable.loaderTitle = "Processing Your Data";
+    insBaseTable.loaderMessage = "Just a moment, we're fetching and processing your data.";
+    insBaseTable.loaderIcon = "processing";
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        var tableData = JSON.parse(this.responseText);
+        rawData = tableData.list.map(function(data){
+          data["Default Column_Img"] = '';
+          return data;
+        });
+        insBaseTable.totalCount = tableData.count;
+        insBaseTable.tableHeaders = [
+          { label: "Default Column", type: 'string', sortable: true, hasLink: true, hasImage: true}, //
+          { label: "Date Column", type: 'string', sortable: true },
+          { label: "Number Column", type: 'number', sortable: true },
+          { label: "Currency Column", type: 'currency', sortable: true }
+        ];
+
+        processTableData();
+      }
+    };
+    xhttp.open("GET", 'https://ag64gmtsc0.execute-api.us-east-2.amazonaws.com/insites-dummy-deployment/insites-dummy-get-table', true);
+    xhttp.send();
+  }
+
+  fetchDataFromSrc();
+</script>
+
+</body>
+</html>

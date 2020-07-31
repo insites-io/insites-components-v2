@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide - Upload</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/v1/assets/css/insites-plugins.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <script src="/v1/assets/js/insites-plugins.js"></script>
+  <script src="/v1/build/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/prism.css">
+  <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+  <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+  <script src="/v1/assets/js/prism.js"></script>
+
+  <style>
+    ins-styleguide .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap {
+      overflow: initial;
+    }
+    ins-styleguide .ins-styleguide-wrap, ins-styleguide .ins-styleguide-wrap:hover { background-color: #ffffff !important; }
+  </style>
+</head>
+
+<body>
+  <!-- ins-markdown -->
+  <div>
+    <h2 class="section-title">Insites Input File
+      <code>&lt;ins-input-file&gt;</code>
+    </h2>
+    <p>Defines a input file field.</p>
+    <p><strong>NOTE:</strong> This component does not handle file upload process. It only serve as an 'input' field.</p>
+    <div>
+
+      <!-- content -->
+      <div>
+        <h2 class="section-title">Complete Example</h2>
+        <ins-styleguide>
+          <div class="has-css" slot="actual">
+            <ins-input-file label="Sample Attachment" max-files="3" max-file-size="2" accepted-files="image/*,.pdf,.csv"></ins-input-file>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-input-file label="Sample Attachment" max-files="3" max-file-size="2" accepted-files="image/*,.pdf,.csv"></ins-input-file>
+            </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Attributes -->
+      <div>
+        <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>FIELD ATTRIBUTE</th>
+              <th>TYPE</th>
+              <th>DEFAULT</th>
+              <th>OPTIONS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>label</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Label shown for the field</td>
+            </tr>
+            <tr>
+              <td>name</td>
+              <td>string</td>
+              <td>file</td>
+              <td>any</td>
+              <td>Specify the field name</td>
+            </tr>
+            <tr>
+              <td>value</td>
+              <td>array object</td>
+              <td>""</td>
+              <td>
+                [{name: string!, url: string!, size: int, type: sting}] <br/>
+                ie. [{name: "sample.jpg", url: "https://example.com/assets/sample.jpg", size: 1231, type: "image/jpg"}]
+              </td>
+              <td>Specify field value</td>
+            </tr>
+            <tr>
+              <td>placeholder</td>
+              <td>string</td>
+              <td>"Drop file here or click to upload"</td>
+              <td>any</td>
+              <td>Text display when field is empty</td>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Disables the field</td>
+            </tr>
+            <tr>
+              <td>capture</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any (ie. camera)</td>
+              <td>Add the attribute 'capture' to the field. Commonly used for device integrations (ie. mobile apps)</td>
+            </tr>
+            <tr>
+              <td>show-notifications</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>true, false</td>
+              <td>Display an alerts/notifications/errors when an event happen to file. <br>
+                (ie. invalid file type, exceeded file size, exceeded max file count, canceled upload, etc.) </td>
+            </tr>
+            <tr>
+              <td>has-error</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Defines if the field is invalid / error</td>
+            </tr>
+            <tr>
+              <td>error-message</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Message shown when field has error</td>
+            </tr>
+            <tr>
+              <td>required</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Specifies that the field must be filled out before submitting the form</td>
+            </tr>
+            <tr>
+              <td>file-icon</td>
+              <td>string</td>
+              <td>"icon-notepad"</td>
+              <td>any</td>
+              <td>CSS class used to for icon display for 'not image' files</td>
+            </tr>
+            <tr>
+              <td>accepted-files</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Define file types accepted, comma separated to allow 'multiple' types. <br>
+                  ei. image/*, application/pdf, .svg, .zip
+              </td>
+            </tr>
+            <tr>
+              <td>max-files</td>
+              <td>number</td>
+              <td>1</td>
+              <td>integer > 0</td>
+              <td>Specify maximum file(s) can be attached </td>
+            </tr>
+            <tr>
+              <td>max-file-size</td>
+              <td>number</td>
+              <td>10</td>
+              <td>integer > 0</td>
+              <td>Specify maximum bytes/size (per file) that can be attached </td>
+            </tr>
+            <tr>
+              <td>show-limit</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>true, false</td>
+              <td>Specify if the file restirction limit is shown or hidden</td>
+            </tr>
+            <tr>
+              <td>max-files-label</td>
+              <td>string</td>
+              <td>"Up to"</td>
+              <td>any</td>
+              <td>Specify the text label for max file count </td>
+            </tr>
+            <tr>
+              <td>max-file-size-label</td>
+              <td>string</td>
+              <td>"Max file size"</td>
+              <td>any</td>
+              <td>Specify the text label for max file size </td>
+            </tr>
+            <tr>
+              <td>auto-upload</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Automatically upload file(s) to S3 and binds the uploaded URL to the file data as 'upload_url'.
+                <br><strong>NOTE:</strong> Only supports platformOS - S3 upload.</td>
+            </tr>
+            <tr>
+              <td>credentials-url</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any valid URL</td>
+              <td>API source to get upload credentials.</td>
+            </tr>
+            <tr>
+              <td>field-type</td>
+              <td>string</td>
+              <td>"image"</td>
+              <td>pOS fields: ["image", "file"]</td>
+              <td>platformOS field type to reference for the credentials. (case sensitive)</td>
+            </tr>
+            <tr>
+              <td>field-name</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Field name to reference for the credentials. (case sensitive)</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ins-input-file event table -->
+      <div>
+        <h2 class="section-title">Events</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>EVENT</th>
+              <th>OBJECT</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>fileAdded</td>
+              <td>file</td>
+              <td>Emit file details when a file is successfully accepted/added on the field.</td>
+            </tr>
+            <tr>
+              <td>fileRemoved</td>
+              <td>file</td>
+              <td>Emit file details when a file is removed from the field.</td>
+            </tr>
+            <tr>
+              <td>fileError</td>
+              <td>file</td>
+              <td>Emit file details when a file is rejected/invalid.</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+
+      <div>
+        <!-- Error state-->
+        <h2 class="section-title">Error State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-input-file label="Error Field" has-error error-message="This is a required field"></ins-input-file>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-input-file label="Error Field" has-error error-message="This is a required field"></ins-input-file>
+            </script>
+          </div>
+        </ins-styleguide>
+
+        <!-- Disabled state-->
+        <h2 class="section-title">Disabled State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-input-file label="Disabled Field" placeholder="This field is disabled" disabled></ins-input-file>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-input-file label="Disabled Field" placeholder="This field is disabled" disabled></ins-input-file>
+            </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Method -->
+      <div>
+        <h2 class="section-title">Methods</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>FUNCTION</th>
+              <th>PARAMETERS</th>
+              <th>RETURN</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>getFilesList</td>
+              <td>n/a</td>
+              <td>array object</td>
+              <td>Return all files on the field</td>
+            </tr>
+            <tr>
+              <td>getUploadingFiles</td>
+              <td>n/a</td>
+              <td>array object</td>
+              <td>Return all files being uploaded</td>
+            </tr>
+            <tr>
+              <td>setFiles</td>
+              <td>array</td>
+              <td>n/a</td>
+              <td>Set value to the file field programatically. See limitations below.</td>
+            </tr>
+            <tr>
+              <td>removeFiles</td>
+              <td>n/a</td>
+              <td>n/a</td>
+              <td>Remove all files on field</td>
+            </tr>
+          </table>
+          <p><code>setFiles()</code></p>
+          <ul><strong>Limitations: </strong>
+            <li>Does not validate file size.</li>
+            <li>Reads and validates file type via the `URL` passed.</li>
+            <li>Files set programatically are NOT auto uploaded.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Direct Set Value -->
+      <div>
+        <h2 class="section-title">Direct Value Set</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-input-file id="directFieldEl"></ins-input-file>
+            <script>
+              var label = "Upload Image(s)";
+              var value = [
+                {
+                  name: "sample-image.jpg",
+                  size: 12412, type:"image/jpg",
+                  url: "https://uploads.staging.oregon.platform-os.com/instances/2182/uploads/images/custom_image/image/194/thumb_aromatic-beverage-caffeine-2074122.jpg"
+                }
+              ]
+
+              var field = document.getElementById('directFieldEl');
+              field.addEventListener('didLoad', function(e){
+                field.label = label;
+                field.setFiles(value);
+              });
+            </script>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-input-file id="directFieldEl"></ins-input-file>
+<script>
+  var label = "Upload Image(s)";
+  var value = [{
+    name: "sample-image.jpg",
+    size: 12412,
+    type:"image/jpg",
+    url: "https://uploads.staging.oregon.platform-os.com/instances/2182/uploads/images/custom_image/image/194/thumb_aromatic-beverage-caffeine-2074122.jpg"
+  }]
+
+  var field = document.getElementById('directFieldEl');
+  field.addEventListener('didLoad', function(e){
+    field.label = label;
+    field.setFiles(value);
+  });
+&lt;/script&gt;
+          </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Event Complete Example -->
+      <div>
+        <h2 class="section-title">Event Complete Example</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-input-file accepted-files="image/*" label="Sample Attachment" id="insFileEl" max-files="10" max-file-size="5"></ins-input-file>
+            <p id="errors" style="font-size: 12px; color:#f27474; "></p>
+
+            <ins-button solid label="get files" id="getFiles"></ins-button>
+            <ins-button color="green" solid label="Add File Programatically" id="addFiles"></ins-button>
+            <ins-button color="negative" solid label="Clear" id="clearFiles"></ins-button>
+
+            <script>
+              let insFileEl = document.getElementById("insFileEl");
+              let errorMessage =  "";
+              // Event for when a file has been 'added'
+              insFileEl.addEventListener("fileAdded", (file) => {
+                console.log('Event: fileAdded', file.detail);
+              });
+              // Event for when a file has been 'removed'
+              insFileEl.addEventListener("fileRemoved", (file) => {
+                console.log('Event: fileRemoved', file.detail);
+              });
+              //  Event when an 'error' encounted on attach / upload
+              // (ie. file size too big or file type not allowed)
+              insFileEl.addEventListener("fileError", (file) => {
+                // Display error message on an HTML element
+                document.getElementById('errors').innerHTML = "*"+file.detail.errorMessage;
+                // Remove error message after 5sec
+                setTimeout(() => {
+                  document.getElementById('errors').innerHTML = "";
+                }, 5000);
+              });
+
+              // Button trigger to get files list
+              document.getElementById('getFiles').addEventListener("onClickInsButton", () => {
+                console.log("File(s) Attached", insFileEl.getFilesList());
+                alert("Check console log for data");
+              });
+
+              // Button trigger to add files programatically from URL
+              document.getElementById('addFiles').addEventListener("onClickInsButton", () => {
+                insFileEl.setFiles(
+                  [{
+                    name: "sample-image.jpg",
+                    size: 32343,
+                    type: "image/jpg",
+                    url: "https://uploads.staging.oregon.platform-os.com/instances/2182/uploads/images/custom_image/image/194/thumb_aromatic-beverage-caffeine-2074122.jpg"
+                  }]
+                );
+              });
+
+              // Button trigger to clear files list
+              document.getElementById('clearFiles').addEventListener("onClickInsButton", () => {
+                insFileEl.removeFiles();
+                console.log("Files Removed", insFileEl.getFilesList());
+              });
+            </script>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-input-file label="Sample Attachment" id="insFileEl" max-files="10" max-file-size="5"></ins-input-file>
+<p id="errors" style="font-size: 12px; color:#f27474; "></p>
+
+<ins-button solid label="get files" id="getFiles"></ins-button>
+<ins-button color="green" solid label="Add File Programatically" id="addFiles"></ins-button>
+<ins-button color="negative" solid label="Clear" id="clearFiles"></ins-button>
+
+<script>
+  let insFileEl = document.getElementById("insFileEl");
+  let errorMessage =  "";
+  // Event for when a file has been 'added'
+  insFileEl.addEventListener("fileAdded", (file) => {
+    console.log('Event: fileAdded', file.detail);
+  });
+
+  // Event for when a file has been 'removed'
+  insFileEl.addEventListener("fileRemoved", (file) => {
+    console.log('Event: fileRemoved', file.detail);
+  });
+
+  //  Event when an 'error' encounted on attach / upload
+  // (ie. file size too big or file type not allowed)
+  insFileEl.addEventListener("fileError", (file) => {
+    // Display error message on an HTML element
+    document.getElementById('errors').innerHTML = "*"+file.detail.errorMessage;
+    // Remove error message after 5sec
+    setTimeout(() => {
+      document.getElementById('errors').innerHTML = "";
+    }, 5000);
+  });
+
+  // Button trigger to get files list
+  document.getElementById('getFiles').addEventListener("onClickInsButton", () => {
+    console.log("File(s) Attached", insFileEl.getFilesList());
+    alert("Check console log for data");
+  });
+
+  // Button trigger to add files programatically from URL
+  document.getElementById('addFiles').addEventListener("onClickInsButton", () => {
+    insFileEl.setFiles([
+      // Example file object
+      {
+        name: "sample-image.jpg",
+        size: 32343,
+        type: "image/jpg",
+        url: "https://uploads.staging.oregon.platform-os.com/instances/2182/uploads/images/custom_image/image/194/thumb_aromatic-beverage-caffeine-2074122.jpg"
+      }
+    ]);
+  });
+
+  // Button trigger to clear files list
+  document.getElementById('clearFiles').addEventListener("onClickInsButton", () => {
+    insFileEl.removeFiles();
+    console.log("Files Removed", insFileEl.getFilesList());
+  });
+&lt;/script&gt;
+                </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+
+      <!-- Auto Upload -->
+      <div>
+        <h2 class="section-title">Auto Upload Example</h2>
+        <p>*Example does not actually upload. Use only for code reference*</p>
+
+        <ins-styleguide>
+          <div class="has-css" slot="actual">
+            <ins-input-file
+                id="autoUploadEl"
+                max-files=3
+                auto-upload
+                accepted-files="image/*"
+                label="Example Auto Upload"
+                field-name="image_attachment"
+                field-type="image"
+                credentials-url="/v1/assets/public/get-s3-credentials.json">
+            </ins-input-file>
+          </div>
+          <div slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-input-file
+    id="autoUploadEl"
+    max-files=3
+    auto-upload
+    accepted-files="image/*"
+    label="Example Auto Upload"
+    field-name="image_attachment"
+    field-type="image"
+    credentials-url="/api/reports/get-s3-credentials.json">
+</ins-input-file>
+              </script>
+          </div>
+        </ins-styleguide>
+
+        <h4>How to make an S3 credentials API in platformOS</h4>
+        <h2 class="section-title">Step 1: Create a form that reference your model / user data field.</h2>
+        <p>On this example, we're using models with field type `image` and field name `image_attachment`.</p>
+          <script type="text/plain" class="language-markup">---
+name: s3_report_attachments
+resource: modules/<%= portal_folder_name =%>/report_attachments
+fields:
+  properties:
+    report_id:
+  custom_images:
+    image_attachment:
+        image:
+authorization_policies:
+  - modules/<%= portal_folder_name =%>/only_allowed_if_logged_in
+---
+
+{{ form_builder.fields.custom_images | json }}
+          </script>
+
+          <h2 class="section-title">Step 2: Create an API page that includes your platformOS form.</h2>
+          <p>Use this API URL and assign it to your <code>&lt;ins-input-file&gt;</code> property `credentials-url`.</p>
+          <p>Make sure you assigned your authorization policies as needed.</p>
+          <script type="text/plain" class="language-markup">---
+slug: <%= &portal_slug =%>/api/reports/s3-report-attachments
+format: json
+searchable: false
+metadata: {
+  page_title: "<%= portal_title =%> Create Report Attachment",
+  meta_title: "<%= portal_title =%> Create Report Attachment",
+  description: "<%= portal_title =%> API",
+  canonical_url: "",
+  status: "published",
+  search_engine_visibility: "false"
+}
+authorization_policies:
+  - modules/<%= portal_folder_name =%>/only_allowed_if_logged_in
+  - modules/<%= portal_folder_name =%>/only_allow_if_valid_session
+---
+
+{% include_form 'modules/<%= portal_folder_name =%>/s3_report_attachments' %}
+          </script>
+      </div>
+</body>
+
+</html>

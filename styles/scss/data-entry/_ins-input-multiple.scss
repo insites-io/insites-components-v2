@@ -29,6 +29,10 @@ ins-input-multiple {
       cursor: pointer;
       -webkit-transition: border-color 0.15s ease-in, border-radius 0.15s ease-in;
       transition: border-color 0.15s ease-in, border-radius 0.15s ease-in;
+
+      &.ins-form-field {
+        padding: 6px 8px;
+      }
     }
     &.active {
       label {
@@ -77,9 +81,11 @@ ins-input-multiple {
       }
     }
     &-text {
-      min-width: 200px;
+      width: 100%;
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 0;
+      position: relative;
+
       input,
       input:focus,
       input:active {
@@ -90,7 +96,19 @@ ins-input-multiple {
         padding: 0 5px;
         height: 25px;
       }
+
+      .icon-add {
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 12px;
+        padding: 7px;
+        padding-right: 2px;
+        border-radius: 4px;
+        color: var(ins-color-ink40);
+      }
     }
+
     &.readonly,
     &.disabled {
       .ins-input-multiple-choice {

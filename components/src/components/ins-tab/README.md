@@ -7,16 +7,18 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type  | Default |
-| -------- | --------- | ----------- | ----- | ------- |
-| `tabs`   | `tabs`    |             | `any` | `[]`    |
+| Property  | Attribute  | Description | Type     | Default     |
+| --------- | ---------- | ----------- | -------- | ----------- |
+| `hasLoad` | `has-load` |             | `string` | `undefined` |
+| `tabs`    | `tabs`     |             | `any`    | `[]`        |
 
 
 ## Events
 
-| Event         | Description | Type               |
-| ------------- | ----------- | ------------------ |
-| `onchangeTab` |             | `CustomEvent<any>` |
+| Event          | Description | Type               |
+| -------------- | ----------- | ------------------ |
+| `didLoad`      |             | `CustomEvent<any>` |
+| `insTabChange` |             | `CustomEvent<any>` |
 
 
 ## Methods

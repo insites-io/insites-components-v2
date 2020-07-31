@@ -13,6 +13,7 @@
 | `currency`             | `currency`              |             | `string`  | `''`               |
 | `defaultBulkAction`    | `default-bulk-action`   |             | `string`  | `''`               |
 | `emptyValue`           | `empty-value`           |             | `string`  | `'-'`              |
+| `hasLoad`              | `has-load`              |             | `string`  | `undefined`        |
 | `heading`              | `heading`               |             | `string`  | `''`               |
 | `initialSearch`        | `initial-search`        |             | `string`  | `''`               |
 | `loaderIcon`           | `loader-icon`           |             | `any`     | `undefined`        |
@@ -44,6 +45,7 @@
 
 | Event                 | Description | Type               |
 | --------------------- | ----------- | ------------------ |
+| `didLoad`             |             | `CustomEvent<any>` |
 | `insFieldChange`      |             | `CustomEvent<any>` |
 | `insPaginationChange` |             | `CustomEvent<any>` |
 | `insTableBulkAction`  |             | `CustomEvent<any>` |

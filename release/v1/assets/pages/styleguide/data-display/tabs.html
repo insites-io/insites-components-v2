@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide - Tabs</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/v1/assets/css/insites-plugins.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <script src="/v1/assets/js/insites-plugins.js"></script>
+  <script src="/v1/build/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/prism.css">
+  <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+  <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+  <script src="/v1/assets/js/prism.js"></script>
+</head>
+
+<body>
+  <div>
+    <h2 class="section-title">Insites Tab
+      <code>&lt;ins-tab&gt;</code>
+    </h2>
+    <p>Creates a tab container to hold
+      <code>&lt;ins-tab-item&gt;</code>
+    </p>
+  </div>
+  <!-- EVENT -->
+  <div>
+    <h2 class="section-title">Event</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>EVENT</th>
+          <th>OBJECT</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>onchangeTab</td>
+          <td>event,index,label</td>
+          <td>Emits tab data on change 'active' state.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="section-title">Insites Tab Item
+      <code>&lt;ins-tab-item&gt;</code>
+    </h2>
+    <p>Contains the tab content</p>
+    <p>
+      <b>Important:</b> Wrap your tab-item content within a
+      <code>&lt;div&gt;</code>
+    </p>
+  </div>
+  <!-- content -->
+  <div>
+    <h2 class="section-title">Complete Example</h2>
+    <div class="ins-styleguide-wrap">
+      <ins-tab>
+        <ins-tab-item active label="Tab 1" icon="icon-image">
+          <div>
+            <p>Tab 1 with nested <code>&lt;ins-tab&gt;</code> example</p>
+            <ins-tab>
+              <ins-tab-item>
+                <div>Inner 1</div>
+              </ins-tab-item>
+              <ins-tab-item active>
+                <div>Inner 2</div>
+              </ins-tab-item>
+            </ins-tab>
+          </div>
+        </ins-tab-item>
+        <ins-tab-item disabled icon="icon-image">
+          <div>
+            <p>Tab 2</p>
+          </div>
+        </ins-tab-item>
+        <ins-tab-item label="Entries" icon="icon-entries">
+          <div>
+            <p>Tab 3</p>
+          </div>
+        </ins-tab-item>
+        <ins-tab-item no-padding>
+          <p>Tab 4 - no padding</p>
+        </ins-tab-item>
+        <ins-tab-item has-error>
+          <p>Tab 5 - has error</p>
+        </ins-tab-item>
+      </ins-tab>
+      <script type="text/plain" class="language-markup">
+<ins-tab>
+  <ins-tab-item active label="Tab 1" icon="icon-image">
+    <div>
+      <p>Tab 1 with nested ins-tab example</p>
+        <!-- Inner Tab Component -->
+        <ins-tab>
+          <ins-tab-item>
+            <div>Inner 1</div>
+          </ins-tab-item>
+          <ins-tab-item active>
+            <div>Inner 2</div>
+          </ins-tab-item>
+        </ins-tab>
+        <!-- Inner Tab Component -->
+    </div>
+  </ins-tab-item>
+  <ins-tab-item disabled icon="icon-image">
+    <div>
+      <p>Tab 2</p>
+    </div>
+  </ins-tab-item>
+  <ins-tab-item label="Entries" icon="icon-entries">
+    <div>
+      <p>Tab 3</p>
+    </div>
+  </ins-tab-item>
+  <ins-tab-item no-padding>
+    <p>Tab 4 - no padding</p>
+  </ins-tab-item>
+  <ins-tab-item has-error>
+    <p>Tab 5 - has error</p>
+  </ins-tab-item>
+</ins-tab>
+            </script>
+    </div>
+  </div>
+
+  <!-- Properties -->
+  <div>
+    <h2 class="section-title">Properties</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>active</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Set tab to 'active' state</td>
+        </tr>
+        <tr>
+          <td>label</td>
+          <td>string</td>
+          <td>Tab &lt;count&gt;</td>
+          <td>any</td>
+          <td>Defines tab heading</td>
+        </tr>
+        <tr>
+          <td>icon</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines the icon class to be used</td>
+        </tr>
+        <tr>
+          <td>no-padding</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Removes tab item's left and right padding.</td>
+        </tr>
+        <tr>
+          <td>disabled</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Disables a tab</td>
+        </tr>
+        <tr>
+          <td>has-error</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Set a tab heading to show 'error indicator' (bottom red line)</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- EVENT -->
+  <div>
+    <h2 class="section-title">Event</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>EVENT</th>
+          <th>OBJECT</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>tabItemError</td>
+          <td>boolean</td>
+          <td>Emits value when a tab 'has-error' property changes</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <script src="../../../../assets/js/ins.js"></script>
+</body>
+
+</html>

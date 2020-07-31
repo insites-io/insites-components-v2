@@ -20,6 +20,7 @@
 
  - [ins-header-user](../ins-header-user)
  - [ins-image-picker](../ins-image-picker)
+ - [ins-instances](../ins-instances)
  - [ins-modal](../ins-modal)
 
 ### Graph
@@ -27,6 +28,7 @@
 graph TD;
   ins-header-user --> ins-card
   ins-image-picker --> ins-card
+  ins-instances --> ins-card
   ins-modal --> ins-card
   style ins-card fill:#f9f,stroke:#333,stroke-width:4px
 ```

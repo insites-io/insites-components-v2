@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Charts</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+
+  <script type="module" src="/build/insites-components.esm.js"></script>
+  <script nomodule src="/build/insites-components.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+</head>
+
+<body>
+  <!-- Pie -->
+  <div>
+    <div>
+      <h2 class="section-title">Insites Pie Chart<code>&lt;ins-pie-chart&gt;</code></h2>
+      <p>Defines a Pie Chart.</p>
+    </div>
+    <!-- Pie Complete example -->
+    <div>
+      <h2 class="section-title">Complete Example</h2>
+      <div class='ins-styleguide-wrap'>
+        <!-- Actual -->
+        <ins-styleguide label="Pie Chart">
+          <ins-styleguide-actual slot="actual">
+            <ins-card steady>
+              <ins-pie-chart id="pieChart" title="Viewers" legends="true" data-labels="false">
+              </ins-pie-chart>
+            </ins-card>
+
+            <script>
+              window.addEventListener('load', function () {
+                var pieChartEl = document.getElementById('pieChart');
+                var pieChartSample = [
+                  { name: 'Unboxing Videos', y: 10, sliced: true, selected: true },
+                  { name: 'Tag or Challenge Videos', y: 20 },
+                  { name: 'Comedy/Skit Videos', y: 30 },
+                  { name: 'Gaming Videos', y: 40 },
+                ]
+                pieChartEl.chartData = pieChartSample;
+              });
+            </script>
+          </ins-styleguide-actual>
+
+          <!-- Code -->
+          <ins-styleguide-code slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-card steady>
+  <ins-pie-chart
+    id="pieChart"
+    title="Viewers"
+    legends="true"
+    data-labels="false">
+  </ins-pie-chart>
+</ins-card>
+
+<script>
+  window.addEventListener('load', function () {
+    var pieChartEl = document.getElementById('pieChart');
+    var pieChartSample = [
+      { name: 'Unboxing Videos', y: 10, sliced: true, selected: true },
+      { name: 'Tag or Challenge Videos', y: 20 },
+      { name: 'Comedy/Skit Videos', y: 30 },
+      { name: 'Gaming Videos', y: 40 },
+    ]
+    pieChartEl.chartData = pieChartSample;
+  });
+&lt;/script&gt;
+
+              </script>
+          </ins-styleguide-code>
+        </ins-styleguide>
+      </div>
+    </div>
+  </div>
+  <!-- Pie attribute table  -->
+  <div>
+    <h2 class="section-title">Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>chart-data</td>
+          <td>array</td>
+          <td>[]</td>
+          <td>-</td>
+          <td>
+            An array of data object. <br />
+            Data objects are consist of a name (string), y (number), sliced (boolean) and selected (boolean)
+          </td>
+        </tr>
+        <tr>
+          <td>size</td>
+          <td>string</td>
+          <td>100%</td>
+          <td>Can be a percentage or pixels(px)</td>
+          <td>Defines the size of the pie chart</td>
+        </tr>
+        <tr>
+          <td>inner-size</td>
+          <td>string</td>
+          <td>0%</td>
+          <td>Can be a percentage or pixels(px)</td>
+          <td>Defines the hole inside the pie chart</td>
+        </tr>
+        <tr>
+          <td>colors</td>
+          <td>array of hex colors</td>
+          <td>[]</td>
+          <td>Hex Colors only</td>
+          <td>Defines the colors of the pies in the chart</td>
+        </tr>
+        <tr>
+          <td>data-labels</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true / false</td>
+          <td>Enable/Disable pie labels in the chart</td>
+        </tr>
+        <tr>
+          <td>legends</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true / false</td>
+          <td>Enable/Disable pie legends of the chart</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>string</td>
+          <td>"Pie Chart"</td>
+          <td>-</td>
+          <td>Defines title of chart</td>
+        </tr>
+        <tr>
+          <td>inner-title</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true / false</td>
+          <td>Defines if the title should be inside or outside the chart</td>
+        </tr>
+        <tr>
+          <td>title-offset</td>
+          <td>number</td>
+          <td>0</td>
+          <td>
+            Positive numbers will move the title Downward <br />
+            Negative numbers will move the title Upward
+          </td>
+          <td>Defines the position of the title</td>
+        </tr>
+        <tr>
+          <td>start-angle</td>
+          <td>number</td>
+          <td>0</td>
+          <td>360 degree angle</td>
+          <td>Defines the start angle of the pie</td>
+        </tr>
+        <tr>
+          <td>end-angle</td>
+          <td>number</td>
+          <td>0</td>
+          <td>360 degree angle</td>
+          <td>Defines the end angle of the pie</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <!-- END Pie -->
+
+  <div>
+    <div>
+      <h2 class="section-title">Insites Sparkline <code>&lt;ins-sparkline&gt;</code></h2>
+      <p>Defines a Sparkline Chart.</p>
+    </div>
+    <!-- Sparkline Complete example -->
+    <div>
+      <h2 class="section-title">Complete Example</h2>
+      <div class='ins-styleguide-wrap'>
+        <div class='ins-styleguide-cont'>
+          <!-- Actual -->
+          <ins-styleguide label="Sparkline Chart">
+            <ins-styleguide-actual slot="actual">
+              <ins-card steady>
+                <ins-sparkline id="sparkLineChartID" icon="icon-analytic-1" name="Profits" value="370" percentage="26"
+                  description="From previous year" movement="0">
+                </ins-sparkline>
+              </ins-card>
+              <script>
+                var data = [["2017-12-18", 13], ["2017-12-25", 0], ["2018-01-01", 6], ["2018-01-08", 8], ["2018-03-12", 4], ["2018-06-01", 2], ["2018-08-08", 0]]
+                var sparklineChartEl = document.getElementById('sparkLineChartID');
+                sparklineChartEl.addEventListener('didLoad', function (e) {
+                  sparklineChartEl.chartData = data;
+                });
+              </script>
+
+            </ins-styleguide-actual>
+            <!-- Code -->
+            <ins-styleguide-code slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-sparkline id="sparkLineChartID" icon="icon-analytic-1" name="Profits" value="370"
+percentage="26" description="From previous year" movement="0">
+
+<script>
+  var data = [
+    ["2017-12-18", 13],
+    ["2017-12-25", 0],
+    ["2018-01-01", 6],
+    ["2018-01-08", 8],
+    ["2018-03-12", 4],
+    ["2018-06-01", 2],
+    ["2018-08-08", 0]
+  ]
+
+  var sparklineChartEl = document.getElementById('sparkLineChartID');
+  sparklineChartEl.addEventListener('didLoad', function(e){
+    sparklineChartEl.chartData = data;
+  });
+&lt;/script&gt;
+                  </script>
+            </ins-styleguide-code>
+          </ins-styleguide>
+        </div>
+      </div>
+    </div>
+    <!-- Sparkline attribute table  -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>icon</td>
+            <td>string</td>
+            <td>"icon-user-1"</td>
+            <td>icon-close-1, icon-utilities, icon-lock-1 ...</td>
+            <td>Defines icon of chart</td>
+          </tr>
+          <tr>
+            <td>name</td>
+            <td>string</td>
+            <td>"Sparkline"</td>
+            <td>any</td>
+            <td>Defines name of chart</td>
+          </tr>
+          <tr>
+            <td>value</td>
+            <td>string</td>
+            <td>"0"</td>
+            <td>any</td>
+            <td>Defines value of chart</td>
+          </tr>
+          <tr>
+            <td>chart-data</td>
+            <td>any</td>
+            <td></td>
+            <td>any value separated by comma</td>
+            <td>Defines chart data</td>
+          </tr>
+          <tr>
+            <td>percentage</td>
+            <td>any</td>
+            <td>"0"</td>
+            <td>any</td>
+            <td>Defines percentage of chart data</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            <td>string</td>
+            <td>"N/A"</td>
+            <td>any</td>
+            <td>Defines description of chart</td>
+          </tr>
+          <tr>
+            <td>movement</td>
+            <td>any</td>
+            <td>"none"</td>
+            <td>increase, decrease, none</td>
+            <td>Defines movement of chartdata either up or down</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <h2 class="section-title">States</h2>
+
+    <!-- Default State -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Default State</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-sparkline></ins-sparkline>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-sparkline></ins-sparkline>
+              </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Direct Set Data -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Direct Set Data</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-sparkline id="directDataSourceSpark" icon="icon-user-1" name="Direct Data Source" value="720"
+              percentage="7" description="From previous year" movement="1"></ins-sparkline>
+            <script>
+              var directDataSourceSpark = document.getElementById('directDataSourceSpark');
+              var data = [
+                ["2017-12-18", 13],
+                ["2017-12-25", 0],
+                ["2018-01-01", 0],
+                ["2018-01-08", 8]
+              ]
+              directDataSourceSpark.addEventListener('didLoad', function (e) {
+                directDataSourceSpark.chartData = data;
+              });
+            </script>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+  <ins-sparkline id="directDataSourceSpark"
+    name="Direct Data Source"
+    icon="icon-user-1"
+    value="720"
+    percentage="7"
+    description="From previous year"
+    movement="1">
+  </ins-sparkline>
+
+  <script>
+    var data = [
+      ["2017-12-18", 13],
+      ["2017-12-25", 0],
+      ["2018-01-01", 0],
+      ["2018-01-08", 8]
+    ]
+
+    var directDataSourceSpark = document.getElementById('directDataSourceSpark');
+    directDataSourceSpark.addEventListener('didLoad', function(e){
+      directDataSourceSpark.chartData = data;
+    });
+
+  &lt;/script&gt;
+              </script>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Static Data Source -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Static Data Source</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-sparkline id="staticDataSource" icon="icon-analytic-1" name="Static Data Source" value="720"
+              percentage="7" description="From previous year" movement="increase">
+            </ins-sparkline>
+
+            <script>
+              var data = [
+                ["2017-12-18", 13],
+                ["2017-12-25", 0],
+                ["2018-01-01", 0],
+                ["2018-01-08", 8]
+              ]
+
+              var staticDataSource = document.getElementById('staticDataSource');
+              staticDataSource.addEventListener('didLoad', function (e) {
+                staticDataSource.chartData = data;
+              });
+
+            </script>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-sparkline
+  id="staticDataSource"
+  icon="icon-analytic-1"
+  name="Static Data Source"
+  value="720"
+  percentage="7"
+  description="From previous year"
+  movement="increase">
+</ins-sparkline>
+
+<script>
+  var data = [
+    ["2017-12-18", 13],
+    ["2017-12-25", 0],
+    ["2018-01-01", 0],
+    ["2018-01-08", 8]
+  ]
+
+  var staticDataSource = document.getElementById('staticDataSource');
+  staticDataSource.addEventListener('didLoad', function(e){
+    staticDataSource.chartData = data;
+  });
+&lt;/script&gt;
+              </script>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barchart -->
+  <div>
+    <!-- Barchart header -->
+    <div>
+      <h2 class="section-title">Insites Bar Chart <code>&lt;ins-bar-chart&gt;</code></h2>
+      <p>Defines a Bar Chart.</p>
+    </div>
+
+    <!-- BarChart Complete Example -->
+    <div>
+      <h2 class="section-title">Complete Examples</h2>
+      <div class='ins-styleguide-wrap'>
+        <div class='ins-styleguide-cont'>
+          <ins-styleguide label="Bar Chart">
+            <ins-styleguide-actual slot="actual">
+              <ins-card steady>
+                <ins-bar-chart id="barChartID"></ins-bar-chart>
+              </ins-card>
+
+              <script>
+                var name = 'Sessions';
+                var barChartSample = [{
+                  name: "Direct Set Column 1",
+                  data: [["2018-01-10", 8], ["2018-01-11", 14], ["2018-01-12", 18], ["2018-01-13", 35]],
+                  color: "#3EB98C"
+                },
+                {
+                  name: "Direct Set Column 2",
+                  data: [["2017-05-29", 55], ["2017-06-05", 12], ["2017-06-12", 8], ["2017-06-19", 3]],
+                  color: "#2BBAD9"
+                }]
+                var barChartCat = ["Jan - Apr 18", "May - Jul 18", "Aug - Oct 18", "Sept - Dec 18"]
+                var barChartID = document.getElementById('barChartID');
+                barChartID.addEventListener('didLoad', function (e) {
+                  barChartID.name = name;
+                  barChartID.chartData = barChartSample;
+                  barChartID.categories = barChartCat;
+                });
+              </script>
+            </ins-styleguide-actual>
+            <ins-styleguide-code slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-bar-chart id="barChartID"></ins-bar-chart>
+
+<script>
+  var name = 'Sessions';
+  var barChartSample = [{
+    name: "Direct Set Column 1",
+    data: [["2018-01-10", 8], ["2018-01-11", 14], ["2018-01-12", 18], ["2018-01-13", 35]],
+    color: "#3EB98C"
+  },
+  {
+    name: "Direct Set Column 2",
+    data: [["2017-05-29", 55], ["2017-06-05", 12], ["2017-06-12", 8], ["2017-06-19", 3]],
+    color: "#2BBAD9"
+  }]
+  var barChartCat = ["Jan - Apr 18", "May - Jul 18", "Aug - Oct 18", "Sept - Dec 18"]
+  var barChartID = document.getElementById('barChartID');
+  barChartID.addEventListener('didLoad', function(e){
+    barChartID.name = name;
+    barChartID.chartData = barChartSample;
+    barChartID.categories = barChartCat;
+  });
+&lt;/script&gt;
+                    </script>
+            </ins-styleguide-code>
+          </ins-styleguide>
+        </div>
+      </div>
+    </div>
+
+    <!-- BarChart attribute table -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>name</td>
+            <td>string</td>
+            <td>"Bar Chart"</td>
+            <td>any</td>
+            <td>Defines name of chart</td>
+          </tr>
+          <tr>
+            <td>chart-data</td>
+            <td>Array</td>
+            <td>[]</td>
+            <td>any value separated by comma</td>
+            <td>Defines chart data</td>
+          </tr>
+          <tr>
+            <td>categories</td>
+            <td>Array</td>
+            <td>[]</td>
+            <td>any value separated by comma</td>
+            <td>Defines chart categories</td>
+          </tr>
+          <tr>
+            <td>horizontal</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>True / False</td>
+            <td>Defines the direction of the bar</td>
+          </tr>
+          <tr>
+            <td>stacked</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>True / False</td>
+            <td>Defines if the bar should stack to each other</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Default State -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Default State</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-bar-chart></ins-bar-chart>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-bar-chart></ins-bar-chart>
+								</script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Direct Set Data -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Direct Set Data</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-bar-chart id="barChartDS"></ins-bar-chart>
+            <script>
+              var name = 'Direct Set Data';
+              var barChartSampledata = [{
+                name: "Direct Set Column 1",
+                data: [
+                  ["2018-01-10", 8],
+                  ["2018-01-11", 14],
+                  ["2018-01-12", 18],
+                  ["2018-01-13", 35]
+                ],
+                color: "#3EB98C"
+              },
+              {
+                name: "Direct Set Column 2",
+                data: [
+                  ["2017-05-29", 55],
+                  ["2017-06-05", 12],
+                  ["2017-06-12", 8],
+                  ["2017-06-19", 3]
+                ],
+                color: "#2BBAD9"
+              }
+              ]
+              var barChartCategories = ["Jan - Apr 18", "May - Jul 18", "Aug - Oct 18", "Sept - Dec 18"]
+              var barChartDS = document.getElementById('barChartDS');
+              barChartDS.addEventListener('didLoad', function (e) {
+                barChartDS.name = name;
+                barChartDS.chartData = barChartSampledata;
+                barChartDS.categories = barChartCategories;
+              });
+            </script>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-bar-chart id="barChartDS"></ins-bar-chart>
+
+<script>
+  var name = 'Direct Set Data';
+  var barChartSampledata = [
+    {
+      name: "Direct Set Column 1",
+      data: [
+        ["2018-01-10", 8],
+        ["2018-01-11", 14],
+        ["2018-01-12", 18],
+        ["2018-01-13", 35]
+      ],
+      color: "#3EB98C"
+    },
+    {
+      name: "Direct Set Column 2",
+      data: [
+        ["2017-05-29", 55],
+        ["2017-06-05", 12],
+        ["2017-06-12", 8],
+        ["2017-06-19", 3]
+      ],
+      color: "#2BBAD9"
+    }
+  ]
+  var barChartCategories = ["Jan - Apr 18", "May - Jul 18", "Aug - Oct 18", "Sept - Dec 18"]var barChartDS = document.getElementById('barChartDS');
+  var barChartDS = document.getElementById('barChartDS');
+  barChartDS.addEventListener('didLoad', function(e){
+    barChartDS.name = name;
+    barChartDS.chartData = barChartSampledata;
+    barChartDS.categories = barChartCategories;
+  });
+&lt;/script&gt;
+                </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bar Chart Static Data NEED TO FIX THIS-->
+    <!-- <div>
+      <ins-styleguide label="Static Data Source">
+        <ins-styleguide-actual slot="actual">
+          <ins-card steady>
+            <ins-bar-chart
+              id="barChart"
+              name="Bar Chart"
+              chart-data='{"name":"John", "age":30, "city":"New York"}'
+              categories='{ "name", "age", "city"}'>
+            </ins-bar-chart>
+          </ins-card>
+        </ins-styleguide-actual>
+        <ins-styleguide-code slot="code">
+          <script type="text/plain" class="language-markup">
+<ins-bar-chart
+  id="barChart"
+  name="Bar Chart"
+  chart-data='{"name":"John", "age":30, "city":"New York"}'
+  categories='{ "name", "age", "city"}'>
+</ins-bar-chart>
+          </script>
+        </ins-styleguide-code>
+      </ins-styleguide>
+    </div> -->
+
+  </div>
+
+  <!-- linechart -->
+  <div>
+    <!-- Linechart header -->
+    <div>
+      <h2 class="section-title">Insites Line Chart <code>&lt;ins-line-chart&gt;</code></h2>
+      <p>Defines a Line Chart.</p>
+    </div>
+
+    <!-- Line Chart Complete Example -->
+    <div>
+      <h2 class="section-title">Complete Examples</h2>
+      <div class='ins-styleguide-wrap'>
+        <div class='ins-styleguide-cont'>
+          <ins-styleguide label="Line Chart">
+            <ins-styleguide-actual slot="actual">
+              <ins-card steady>
+                <ins-line-chart id="lineChartID"></ins-line-chart>
+              </ins-card>
+              <script>
+                var chartTitle = 'Monthly Average Temperature';
+                var lineChartSample = [{
+                  name: "Australia",
+                  data: [
+                    ["2018-01-10", 23],
+                    ["2018-01-11", 4],
+                    ["2018-01-12", 11],
+                    ["2018-01-13", 8],
+                    ["2018-01-14", 18],
+                    ["2018-01-15", 5],
+                    ["2018-01-16", 12],
+                    ["2018-01-17", 0],
+                    ["2018-01-18", 2],
+                    ["2018-03-29", 12],
+                    ["2018-03-30", 4],
+                    ["2018-03-31", 2]
+                  ],
+                  color: "#3EB98C"
+                },
+                {
+                  name: "Philippines",
+                  data: [
+                    ["2018-05-29", 5],
+                    ["2018-06-05", 22],
+                    ["2018-06-12", 18],
+                    ["2018-06-19", 3],
+                    ["2018-06-26", 15],
+                    ["2018-07-03", 03],
+                    ["2018-07-10", 8],
+                    ["2018-07-24", 45],
+                    ["2018-07-31", 10],
+                    ["2018-08-07", 14],
+                    ["2018-08-14", 27],
+                    ["2018-09-07", 14]
+                  ],
+                  color: "#2BBAD9"
+                }
+                ]
+                var lineChartCat = ['Jaaan 18', 'Feb 18', 'Mar 18', 'Apr 18', 'May 18',
+                  'Jun 18', 'Jul 18', 'Aug 18', 'Sep 18', 'Oct 18', 'Nov 18', 'Dec 18'
+                ]
+                var lineChartID = document.getElementById('lineChartID');
+                lineChartID.addEventListener('didLoad', function (e) {
+                  lineChartID.name = chartTitle;
+                  lineChartID.chartData = lineChartSample;
+                  lineChartID.categories = lineChartCat;
+                });
+              </script>
+            </ins-styleguide-actual>
+
+            <ins-styleguide-code slot="code">
+              <script type="text/plain" class="language-markup">
+<ins-line-chart id="lineChartID"></ins-line-chart>
+
+<script>
+  var name = 'Monthly Average Temperature';
+  var lineChartSample = [{
+      // sets the Name of the Line
+      name: "Australia",
+
+      // sets the data of the Line Chart
+      data: [
+        ["2018-01-10", 23],
+        ["2018-01-11", 4],
+        ["2018-01-12", 11],
+        ["2018-01-13", 8],
+        ["2018-01-14", 18],
+        ["2018-01-15", 5],
+        ["2018-01-16", 12],
+        ["2018-01-17", 0],
+        ["2018-01-18", 2],
+        ["2018-03-29", 12],
+        ["2018-03-30", 4],
+        ["2018-03-31", 2]
+      ],
+      // sets the Color of the Line
+      color: "#3EB98C"
+    },
+    {
+      name: "Philippines",
+      data: [
+        ["2018-05-29", 5],
+        ["2018-06-05", 22],
+        ["2018-06-12", 18],
+        ["2018-06-19", 3],
+        ["2018-06-26", 15],
+        ["2018-07-03", 03],
+        ["2018-07-10", 8],
+        ["2018-07-24", 45],
+        ["2018-07-31", 10],
+        ["2018-08-07", 14],
+        ["2018-08-14", 27],
+        ["2018-09-07", 14]
+      ],
+      color: "#2BBAD9"
+    }
+  ]
+  // sets the categories for the chart
+  var lineChartCat = [
+    'Jan 18', 'Feb 18', 'Mar 18', 'Apr 18', 'May 18', 'Jun 18',
+    'Jul 18', 'Aug 18', 'Sep 18', 'Oct 18', 'Nov 18', 'Dec 18'
+  ]
+
+  var lineChartID = document.getElementById('lineChartID');
+  lineChartID.addEventListener('didLoad', function(e){
+    lineChartID.name = chartTitle;
+    lineChartID.chartData = lineChartSample;
+    lineChartID.categories = lineChartCat;
+  });
+&lt;/script&gt;
+                      </script>
+            </ins-styleguide-code>
+          </ins-styleguide>
+        </div>
+      </div>
+    </div>
+    <!-- Line Chart attribute table -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>name</td>
+            <td>string</td>
+            <td>"Line Chart"</td>
+            <td>any</td>
+            <td>Defines name of chart</td>
+          </tr>
+          <tr>
+            <td>chart-data</td>
+            <td>any</td>
+            <td>[]</td>
+            <td>any value separated by comma</td>
+            <td>Defines chart data</td>
+          </tr>
+          <tr>
+            <td>categories</td>
+            <td>any</td>
+            <td>[]</td>
+            <td>any value separated by comma</td>
+            <td>Defines chart categories</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <h2 class="section-title">States</h2>
+    <!-- Line Chart Default State -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Default State</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-card steady>
+              <ins-line-chart></ins-line-chart>
+            </ins-card>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-line-chart></ins-line-chart>
+              </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Line Chart Direct Set Data -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Direct Set Data</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-card steady>
+              <ins-line-chart id="directSetDataLine"></ins-line-chart>
+            </ins-card>
+            <script>
+              var name = 'Direct Set Data';
+              var lineChartData = [{
+                name: "Visitor Sessions",
+                data: [
+                  ["2018-01-10", 23],
+                  ["2018-01-11", 4],
+                  ["2018-01-12", 11],
+                  ["2018-01-13", 8],
+                  ["2018-01-14", 18],
+                  ["2018-01-15", 5],
+                  ["2018-01-16", 12],
+                  ["2018-01-17", 0],
+                  ["2018-01-18", 2],
+                  ["2018-03-29", 12],
+                  ["2018-03-30", 4],
+                  ["2018-03-31", 2]
+                ],
+                color: "#3EB98C"
+              },
+              {
+                name: "Events",
+                data: [
+                  ["2018-05-29", 5],
+                  ["2018-06-05", 22],
+                  ["2018-06-12", 18],
+                  ["2018-06-19", 3],
+                  ["2018-06-26", 15],
+                  ["2018-07-03", 03],
+                  ["2018-07-10", 8],
+                  ["2018-07-24", 45],
+                  ["2018-07-31", 10],
+                  ["2018-08-07", 14],
+                  ["2018-08-14", 27],
+                  ["2018-09-07", 14]
+                ],
+                color: "#2BBAD9"
+              }
+              ]
+              var lineChartCategories = ['Jan 18', 'Feb 18', 'Mar 18', 'Apr 18', 'May 18', 'Jun 18', 'Jul 18', 'Aug 18', 'Sep 18', 'Oct 18', 'Nov 18', 'Dec 18']
+              var directSetDataLine = document.getElementById('directSetDataLine');
+              directSetDataLine.addEventListener('didLoad', function (e) {
+                directSetDataLine.name = name;
+                directSetDataLine.chartData = lineChartData;
+                directSetDataLine.categories = lineChartCategories;
+              });
+            </script>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-line-chart id="directSetDataLine"></ins-line-chart>
+
+<script>
+var name = 'Direct Set Data';
+var lineChartData = [{
+  name: "Visitor Sessions",
+  data: [
+    ["2018-01-10", 23],
+    ["2018-01-11", 4],
+    ["2018-01-12", 11],
+    ["2018-01-13", 8],
+    ["2018-01-14", 18],
+    ["2018-01-15", 5],
+    ["2018-01-16", 12],
+    ["2018-01-17", 0],
+    ["2018-01-18", 2],
+    ["2018-03-29", 12],
+    ["2018-03-30", 4],
+    ["2018-03-31", 2]
+  ],
+  color: "#3EB98C"
+},
+{
+  name: "Events",
+  data: [
+    ["2018-05-29", 5],
+    ["2018-06-05", 22],
+    ["2018-06-12", 18],
+    ["2018-06-19", 3],
+    ["2018-06-26", 15],
+    ["2018-07-03", 03],
+    ["2018-07-10", 8],
+    ["2018-07-24", 45],
+    ["2018-07-31", 10],
+    ["2018-08-07", 14],
+    ["2018-08-14", 27],
+    ["2018-09-07", 14]
+  ],
+  color: "#2BBAD9"
+}
+]
+var lineChartCategories = ['Jan 18', 'Feb 18', 'Mar 18', 'Apr 18', 'May 18', 'Jun 18', 'Jul 18', 'Aug 18', 'Sep 18', 'Oct 18', 'Nov 18', 'Dec 18']
+var directSetDataLine = document.getElementById('directSetDataLine');
+directSetDataLine.addEventListener('didLoad', function(e){
+  directSetDataLine.name = name;
+  directSetDataLine.chartData = lineChartData;
+  directSetDataLine.categories = lineChartCategories;
+});
+&lt;/script&gt;
+              </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- line Chart Static Data NEED TO FIX-->
+    <!-- <div>
+      <ins-styleguide label="Static Data Source">
+          <ins-styleguide-actual slot="actual">
+            <ins-card steady>
+              <ins-line-chart
+                id="lineChart"
+                name="Column Chart"
+                chart-data='{"name":"John", "age":30, "city":"New York"}'
+                categories='{ "name", "age", "city"}'>
+              </ins-line-chart>
+            </ins-card>
+          </ins-styleguide-actual>
+          <ins-styleguide-code slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-line-chart
+  id="lineChart"
+  name="Line Chart"
+  chart-data='{"name":"John", "age":30, "city":"New York"}'
+  categories='{ "name", "age", "city"}'>
+</ins-line-chart>
+            </script>
+          </ins-styleguide-code>
+      </ins-styleguide>
+    </div> -->
+
+  </div>
+  <div style='padding: 15px;'></div>
+
+
+</body>
+
+</html>

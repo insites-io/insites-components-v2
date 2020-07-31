@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide - Input</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/v1/assets/css/insites-plugins.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <script src="/v1/assets/js/insites-plugins.js"></script>
+  <script src="/v1/build/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/prism.css">
+  <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+  <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+  <script src="/v1/assets/js/prism.js"></script>
+</head>
+
+<body>
+  <!-- ins-input -->
+  <div>
+    <!-- ins-input header -->
+    <div>
+      <h2 class="section-title">Insites Input <code>&lt;ins-input&gt;</code></h2>
+      <p>Defines an input field where user can enter data.</p>
+    </div>
+    <!-- ins-input Complete Example -->
+    <div>
+        <h2 class="section-title">Complete Example</h2>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-input
+                placeholder="Email"
+                value="john@gmail.com"
+                label="Email"
+                field="email"
+                icon="icon-mail">
+              </ins-input>
+            </div>
+
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-input
+  placeholder="Email"
+  value="john@gmail.com"
+  label="Email"
+  field="email"
+  icon="icon-mail">
+</ins-input>
+              </script>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- ins-input attribute table -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>placeholder</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines the short hint that describes the expected value in the input field</td>
+          </tr>
+          <tr>
+            <td>value</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines value of input field</td>
+          </tr>
+          <tr>
+            <td>label</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines label of input field</td>
+          </tr>
+          <tr>
+            <td>name</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines name of input field</td>
+          </tr>
+          <tr>
+            <td>field</td>
+            <td>string</td>
+            <td>"text"</td>
+            <td>email, number, password, text, search</td>
+            <td>Defines the type input element to display</td>
+          </tr>
+          <tr>
+            <td>field-id</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines field id of input field</td>
+          </tr>
+          <tr>
+            <td>error-message</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines the error message when input element is wrong</td>
+          </tr>
+          <tr>
+            <td>maxlength</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines max length of characters accepted in input field</td>
+          </tr>
+          <tr>
+            <td>min</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines min attribute value of the input field (for field type number)</td>
+          </tr>
+          <tr>
+            <td>max</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines max attribute value of the input field (for field type number)</td>
+          </tr>
+          <tr>
+            <td>step</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines increment value of the input field (for field type number)</td>
+          </tr>
+          <tr>
+            <td>required</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Specifies that the input field must be filled out before submitting the form</td>
+          </tr>
+          <tr>
+            <td>icon</td>
+            <td>string</td>
+            <td>""</td>
+            <td>icon-close-1, icon-utilities, icon-lock-1 ...</td>
+            <td>Defines icon of input field</td>
+          </tr>
+          <tr>
+            <td>icon-event</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true/false</td>
+            <td>Defines if field icon has mouse event.</td>
+          </tr>
+          <tr>
+            <td>icon-title</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines title of the field icon. Shown when icon is hovered.</td>
+          </tr>
+          <tr>
+            <td>disabled</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Disables input field</td>
+          </tr>
+          <tr>
+            <td>readonly</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Specifies that the input field is read-only</td>
+          </tr>
+          <tr>
+            <td>has-error</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Specifies validation or mandatory input for the input field</td>
+          </tr>
+          <tr>
+            <td>activated</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Displays activated state of input field</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ins-input event table -->
+    <div>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>EVENT</th>
+              <th>OBJECT</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>oninput</td>
+            <td>value, keycode</td>
+            <td>Execute a script when an element gets user input</td>
+          </tr>
+          <tr>
+            <td>valueChange</td>
+            <td>value</td>
+            <td>Returns value when an element gets user input</td>
+          </tr>
+          <tr>
+            <td>onblur</td>
+            <td>value, keycode</td>
+            <td>Emit field value and keycode on input blur event</td>
+          </tr>
+          <tr>
+            <td>onIconClick</td>
+            <td>target, value</td>
+            <td>Emit the field and value when field icon is clicked</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ins-input States -->
+    <div>
+      <h2 class="section-title">States</h2>
+
+      <!-- Default State -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Default State</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input></ins-input>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup"><ins-input></ins-input></script>
+          </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Direct Set Data -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Direct Set Data</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input id="dsv"></ins-input>
+            <script>
+              var dsv = document.getElementById('dsv');
+              dsv.addEventListener('didLoad', function(e){
+                dsv.placeholder = 'Direct Set Value';
+              });
+            </script>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input id="dsv"></ins-input>
+<script>
+  var dsv = document.getElementById('dsv');
+  dsv.addEventListener('didLoad', function(e){
+    dsv.placeholder = 'Direct Set Value';
+  });
+&lt;/script&gt;
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- Static Data Source -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Static Data Source</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input
+              value="John Smith"
+              label="Name">
+            </ins-input>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input
+  value="John Smith"
+  label="Name">
+</ins-input>
+            </script>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Disabled State -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Disabled State</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input
+              value="samplepassword123"
+              label="Password"
+              field="password"
+              disabled>
+            </ins-input>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input
+  value="samplepassword123"
+  label="Password"
+  field="password"
+  disabled>
+</ins-input>
+            </script>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Read Only State -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Read Only State</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input
+              value="samplepassword123"
+              label="Password"
+              field="password"
+              readonly>
+            </ins-input>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input
+  value="samplepassword123"
+  label="Password"
+  field="password"
+  readonly>
+</ins-input>
+            </script>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error State -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Error State</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input
+              placeholder="Email"
+              value="a sample text"
+              label="Email"
+              field="email"
+              error-message="Please provide valid email address."
+              has-error>
+            </ins-input>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input
+  placeholder="Email"
+  value="a sample text"
+  label="Email"
+  field="email"
+  error-message="Please provide valid email address."
+  has-error>
+</ins-input>
+            </script>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div>
+        <div class="ins-styleguide-wrap">
+            <div class="ins-styleguide-label-wrap">Password</div>
+            <div class="ins-styleguide-cont">
+              <div class="ins-styleguide-actual-slot-wrap">
+              <ins-input
+                placeholder="Password"
+                label="Password"
+                field="password"
+                icon="icon-lock">
+              </ins-input>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-input
+  placeholder="Password"
+  label="Password"
+  field="password"
+  icon="icon-lock">
+</ins-input>
+              </script>
+            </div>
+            </div>
+        </div>
+      </div>
+
+      <!-- Number -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Number</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-input placeholder="Enter Number" label="Number" field="number" min="1" max="100" step="5">
+              </ins-input>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-input
+  placeholder="Enter Number"
+  label="Number"
+  field="number"
+  min="1"
+  max="100"
+  step="5">
+</ins-input>
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ins-input Attributes -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+
+      <!-- Value Attribute -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Value Attribute</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input value="Value Change"></ins-input>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input value="Value Change"></ins-input>
+            </script>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placeholder Attribute -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Placeholder Attribute</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input placeholder="Placeholder Attribute"></ins-input>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input placeholder="Placeholder Attribute"></ins-input>
+            </script>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Icon Attribute -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Icon Attribute</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input icon="icon-mail"></ins-input>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input icon="icon-mail"></ins-input>
+            </script>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Label Attribute -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Label Attribute</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input label="Name"></ins-input>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input label="Name"></ins-input>
+            </script>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Field Attribute -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Field Attribute</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input field="password"></ins-input>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input field="password"></ins-input>
+            </script>
+          </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ins-input events -->
+		<div>
+      <h2 class="section-title">Events</h2>
+      <!-- oninput -->
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">oninput</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input
+              id="oninput"
+              placeholder="Email"
+              label="Email"
+              field="email"
+              icon="icon-mail">
+            </ins-input>
+            <p id="demo"></p>
+            <script>
+            const oninput = document.getElementById('oninput')
+            oninput.addEventListener('oninput', event => {
+              console.log(event.detail.value);
+              console.log(event.detail.keyCode);
+              document.getElementById("demo").innerHTML = event.detail.value;
+            });
+            </script>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input
+  id="oninput"
+  placeholder="Email"
+  label="Email"
+  field="email"
+  icon="icon-mail">
+</ins-input>
+<p id="demo"></p>
+<script>
+  const oninput = document.getElementById('oninput')
+  oninput.addEventListener('oninput', event => {
+  console.log(event.detail.value);
+  console.log(event.detail.keyCode);
+  document.getElementById("demo").innerHTML = event.detail.value;
+  });
+&lt;/script&gt;
+            </script>
+          </div>
+        </div>
+      </div>
+
+        <!-- valueChange -->
+			<div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">valueChange</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-input
+              id="valueChange"
+              placeholder="Email"
+              label="Email"
+              field="email"
+              icon="icon-mail">
+            </ins-input>
+            <p id="el"></p>
+            <script>
+              const valueChange = document.getElementById('valueChange')
+              valueChange.addEventListener('valueChange', event => {
+                console.log(event.detail);
+                document.getElementById("el").innerHTML = event.detail;
+              });
+              </script>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-input
+  id="valueChange"
+  placeholder="Email"
+  label="Email"
+  field="email"
+  icon="icon-mail">
+</ins-input>
+<p id="demo"></p>
+<script>
+  const valueChange = document.getElementById('valueChange')
+  valueChange.addEventListener('valueChange', event => {
+    console.log(event.detail);
+    document.getElementById("demo").innerHTML = event.detail;
+  });
+&lt;/script&gt;
+              </script>
+            </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ins-searchbar -->
+  <div>
+    <!-- Insites searchbar header -->
+    <div>
+      <h2 class="section-title">Insites Search Bar Tag</h2>
+      <p>Defines an input field for a query input or search term where user can search and retrieve related information from the database.</p>
+    </div>
+    <!-- ins-searchbar complete example -->
+    <div>
+      <h2 class="section-title">Complete Example</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+          <ins-searchbar placeholder="Search..."></ins-searchbar>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-searchbar placeholder="Search..."></ins-searchbar>
+          </script>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ins-searchbar attribute table -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+            <tr>
+              <th>FIELD ATTRIBUTE</th>
+              <th>TYPE</th>
+              <th>DEFAULT</th>
+              <th>OPTIONS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>placeholder</td>
+              <td>string</td>
+              <td></td>
+              <td>any</td>
+              <td>Defines the short hint that describes the expected value in the input field</td>
+            </tr>
+            <tr>
+              <td>value</td>
+              <td>string</td>
+              <td></td>
+              <td>any</td>
+              <td>Defines value of input field</td>
+            </tr>
+            <tr>
+              <td>is-searching</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>any</td>
+              <td>Defines loading feature of searchbar</td>
+            </tr>
+          </table>
+      </div>
+    </div>
+
+    <!-- ins-searchbar event table -->
+		<div>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>EVENT</th>
+              <th>OBJECT</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>onSearch</td>
+            <td>value, keyCode</td>
+            <td>Execute a script when an element gets user search input</td>
+          </tr>
+        </table>
+      </div>
+		</div>
+
+    <!-- ins-searchbar states -->
+    <div>
+        <h2 class="section-title">States</h2>
+        <!-- Default State -->
+        <div>
+          <div class="ins-styleguide-wrap">
+            <div class="ins-styleguide-label-wrap">Default State</div>
+            <div class="ins-styleguide-cont">
+              <div class="ins-styleguide-actual-slot-wrap">
+              <ins-searchbar></ins-searchbar>
+              </div>
+              <div class="ins-styleguide-code-slot-wrap">
+                <script type="text/plain" class="language-markup">
+<ins-searchbar></ins-searchbar>
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct Set Data -->
+        <div>
+          <div class="ins-styleguide-wrap">
+            <div class="ins-styleguide-label-wrap">Direct Set Data</div>
+            <div class="ins-styleguide-cont">
+              <div class="ins-styleguide-actual-slot-wrap">
+              <ins-searchbar id="directSetDataSearch"></ins-searchbar>
+              <script>
+                var placeholder_search = 'Type anything...';
+                var directSetDataSearch = document.getElementById('directSetDataSearch');
+                directSetDataSearch.addEventListener('didLoad', function(e){
+                  directSetDataSearch.placeholder = placeholder_search;
+                });
+              </script>
+              </div>
+              <div class="ins-styleguide-code-slot-wrap">
+                <script type="text/plain" class="language-markup">
+<ins-searchbar id="directSetDataSearch"></ins-searchbar>
+
+<script>
+  var placeholder_search = 'Type anything...';
+  var directSetDataSearch = document.getElementById('directSetDataSearch');
+  directSetDataSearch.addEventListener('didLoad', function(e){
+    directSetDataSearch.placeholder = placeholder_search;
+  });
+&lt;/script&gt;
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Static Data Source -->
+        <div>
+          <div class="ins-styleguide-wrap">
+              <div class="ins-styleguide-label-wrap">Static Data Source</div>
+              <div class="ins-styleguide-cont">
+                <div class="ins-styleguide-actual-slot-wrap">
+                <ins-searchbar placeholder="Search here..."></ins-searchbar>
+                </div>
+                <div class="ins-styleguide-code-slot-wrap">
+                  <script type="text/plain" class="language-markup">
+<ins-searchbar placeholder="Search here..."></ins-searchbar>
+                  </script>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- Searching State -->
+        <div>
+          <div class="ins-styleguide-wrap">
+            <div class="ins-styleguide-label-wrap">Searching State</div>
+            <div class="ins-styleguide-cont">
+              <div class="ins-styleguide-actual-slot-wrap">
+              <ins-searchbar placeholder="Search here..." is-searching value="Australia"></ins-searchbar>
+              </div>
+              <div class="ins-styleguide-code-slot-wrap">
+                <script type="text/plain" class="language-markup">
+<ins-searchbar placeholder="Search here..."
+  value="Australia"
+  is-searching>
+</ins-searchbar>
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- ins-searchbar events -->
+		<div>
+      <h2 class="section-title">Events</h2>
+      <!-- onSearch -->
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">onSearch</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-searchbar id="onSearch" placeholder="Search..."></ins-searchbar>
+            <p id="demo-onSearch"></p>
+            <script>
+            const onSearch = document.getElementById('onSearch')
+            onSearch.addEventListener('onSearch', event => {
+              console.log(event.detail.value);
+              console.log(event.detail.keyCode);
+              document.getElementById("demo-onSearch").innerHTML = event.detail.value;
+            });
+            </script>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-searchbar id="onSearch" placeholder="Search..."></ins-searchbar>
+<p id="demo"></p>
+<script>
+const onSearch = document.getElementById('onSearch')
+onSearch.addEventListener('onSearch', event => {
+  console.log(event.detail.value);
+  console.log(event.detail.keyCode);
+  document.getElementById("demo").innerHTML = event.detail.value;
+});
+&lt;/script&gt;
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div style='padding: 35px;'></div>
+  <script src="../../../../assets/js/ins.js"></script>
+</body>
+
+</html>

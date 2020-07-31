@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide - Radio</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/v1/assets/css/insites-plugins.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <script src="/v1/assets/js/insites-plugins.js"></script>
+  <script src="/v1/build/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/prism.css">
+  <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+  <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+  <script src="/v1/assets/js/prism.js"></script>
+
+  <style>
+    ins-styleguide .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap {
+      overflow: initial;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ins-radio header -->
+  <div>
+    <h2 class="section-title">Insites Radio
+      <code>&lt;ins-radio&gt;</code>
+    </h2>
+    <p>Defines a radio field.</p>
+    <div>
+
+      <!-- content -->
+      <div>
+        <h2 class="section-title">Complete Example</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-radio name="sample" label="Radio" value="Radio Value"></ins-radio>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-radio name="sample" label="Radio" value="Radio Value"></ins-radio>
+            </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Attributes -->
+      <div>
+        <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>FIELD ATTRIBUTE</th>
+              <th>TYPE</th>
+              <th>DEFAULT</th>
+              <th>OPTIONS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Disables the field</td>
+            </tr>
+            <tr>
+              <td>checked</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Make the field checked</td>
+            </tr>
+            <tr>
+              <td>label</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Label shown for the field</td>
+            </tr>
+            <tr>
+              <td>name</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines the field name</td>
+            </tr>
+            <tr>
+              <td>value</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines the field value</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Event -->
+      <div>
+        <h2 class="section-title">Events</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>EVENT</th>
+              <th>OBJECT</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>onSelect</td>
+              <td>name, value</td>
+              <td>Emits radio properties on change</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Default State -->
+      <div>
+        <h2 class="section-title">Default State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-radio></ins-radio>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-radio></ins-radio>
+            </script>
+          </div>
+        </ins-styleguide>
+
+        <!-- Selected state-->
+        <h2 class="section-title">Selected State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-radio label="Selected Field" checked></ins-radio>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-radio label="Selected Field" checked></ins-radio>
+            </script>
+          </div>
+        </ins-styleguide>
+
+        <!-- Disabled state-->
+        <h2 class="section-title">Disabled State</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-radio label="Disabled Field" disabled></ins-radio>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-radio label="Disabled Field" disabled></ins-radio>
+            </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Direct Set Value -->
+      <div>
+        <h2 class="section-title">Direct Value Set</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-radio id="directFieldEl"></ins-radio>
+            <script>
+              var label = "Set Data";
+              var name = "sample";
+              var value = "Data";
+              var field = document.getElementById('directFieldEl');
+              directFieldEl.addEventListener('didLoad', function(e){
+                field.name = name;
+                field.label = label;
+                field.value = value;
+                field.checked = true;
+              });
+            </script>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-radio id="directFieldEl"></ins-radio>
+<script>
+  var label = "Set Data";
+  var name = "sample";
+  var value = "Data";
+  var field = document.getElementById('directFieldEl');
+  directFieldEl.addEventListener('didLoad', function(e){
+    field.name = name;
+    field.label = label;
+    field.value = value;
+    field.checked = true;
+  });
+&lt;/script&gt;
+          </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Event -->
+      <div>
+        <h2 class="section-title">Events</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-radio id="eventFieldEl" name="sample" label="Radio" value="Radio Value"></ins-radio>
+            <script>
+              var eventFieldEl = document.getElementById('eventFieldEl');
+              eventFieldEl.addEventListener('onSelect', event => {
+                var event = event.detail;
+                console.log("Radio event", event);
+                alert("Check console log for event data");
+              });
+            </script>
+          </div>
+
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-radio id="eventFieldEl" name="sample" label="Radio" value="Radio Value"></ins-radio>
+<script>
+  var eventFieldEl = document.getElementById('eventFieldEl');
+  eventFieldEl.addEventListener('onSelect', event => {
+    var event = event.detail;
+    console.log("Radio event", event);
+    alert("Check console log for event data");
+  });
+&lt;/script&gt;
+          </script>
+          </div>
+        </ins-styleguide>
+      </div>
+
+      <!-- Group -->
+      <div>
+        <h2 class="section-title">Radio Group</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-radio name="gender" label="Male" value="Male"></ins-radio>
+            <ins-radio name="gender" label="Female" value="Female"></ins-radio>
+          </div>
+
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-radio name="gender" label="Male" value="Male"></ins-radio>
+<ins-radio name="gender" label="Female" value="Female"></ins-radio>
+                </script>
+          </div>
+        </ins-styleguide>
+      </div>
+</body>
+
+</html>

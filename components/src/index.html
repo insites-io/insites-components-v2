@@ -6,33 +6,166 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
 
-  <title>Stencil Component Starter</title>
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/assets/images/favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/images/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/images/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/images/favicons/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-128.png" sizes="128x128">
+
+  <title>Insites Components Documentation</title>
 
   <script type="module" src="/build/insites-components.esm.js"></script>
   <script nomodule src="/build/insites-components.js"></script>
 
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-    crossorigin="anonymous">
-  </script>
-  <script src="/assets/redactor.min.js"></script>
-
   <link rel="stylesheet" href="/assets/css/reset.css" />
-  <link rel="stylesheet" href="/assets/redactor.min.css" />
   <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
   <link rel="stylesheet" href="/assets/css/insites-components.css" />
-
-  <style>
-    body {
-      background-color: #eee;
-      padding: 20px;
-    }
-  </style>
-
 </head>
 
 <body>
-  <ins-toggle-switch label="test"></ins-toggle-switch>
+  <ins-modal id="parentModal"></ins-modal>
+  <ins-admin>
+    <ins-sidebar full-logo="/assets/images/Insites_logo.svg" icon-logo="/assets/images/insites_logo_icon.svg" with-sidebar-actions>
+      <ins-sidebar-item link="/assets/styleguide/introduction.html" icon="icon-header" label="Insites Framework" landing-page app></ins-sidebar-item>
+      <!-- <ins-sidebar-item link="/assets/styleguide/essentials.html" icon="icon-header" label="Essentials" app></ins-sidebar-item> -->
+      <ins-sidebar-item link="/assets/styleguide/migration.html" icon="icon-chevrons-up" label="Migrating from v1" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/lifecycle.html" icon="icon-rotate-cw" label="Lifecycle" app></ins-sidebar-item>
+
+      <!-- General -->
+      <ins-sidebar-item with-submenu icon="icon-globals" label="General">
+        <ins-sidebar-item link="/assets/styleguide/general/buttons.html" label="Buttons" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/general/font-icons.html" label="Font Icons" app></ins-sidebar-item>
+      </ins-sidebar-item>
+
+      <!-- Layout -->
+      <ins-sidebar-item with-submenu icon="icon-entries" label="Layout">
+        <ins-sidebar-item link="/assets/styleguide/layout/wrappers.html" label="Wrappers" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/layout/header.html" label="Header" app></ins-sidebar-item>
+      </ins-sidebar-item>
+
+      <!-- Navigation -->
+      <ins-sidebar-item with-submenu icon="icon-select" label="Navigation">
+        <ins-sidebar-item link="/assets/styleguide/navigation/sidebar.html" label="Sidebar" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/navigation/routing.html" label="Routing" app></ins-sidebar-item>
+      </ins-sidebar-item>
+
+      <!-- Data Entry -->
+      <ins-sidebar-item with-submenu icon="icon-input" label="Data Entry">
+        <ins-sidebar-item link="/assets/styleguide/data-entry/checkbox.html" label="Checkbox" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/check-card.html" label="Check Card" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/code-editor.html" label="Code Editor" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/credit-card.html" label="Credit Card" app></ins-sidebar-item>
+        <!-- <ins-sidebar-item link="/assets/styleguide/data-entry/date-picker.html" label="Date Picker" app></ins-sidebar-item> -->
+        <ins-sidebar-item link="/assets/styleguide/data-entry/date-time-picker.html" label="Date and Time" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/filters.html" label="Filters" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/image-picker.html" label="Image Picker" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/input.html" label="Input" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/input-multiple.html" label="Input - Multiple" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/markdown-editor.html" label="Markdown Editor" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/phone.html" label="Phone" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/radio.html" label="Radio" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/select.html" label="Select" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/slider.html" label="Slider" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/switch.html" label="Switch" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/textarea.html" label="Textarea" app></ins-sidebar-item>
+        <!-- <ins-sidebar-item link="/assets/styleguide/data-entry/time-picker.html" label="Time Picker" app></ins-sidebar-item> -->
+        <ins-sidebar-item link="/assets/styleguide/data-entry/upload.html" label="Upload" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/wysiwyg-editor.html" label="WYSIWYG Editor" app></ins-sidebar-item>
+      </ins-sidebar-item>
+
+      <!-- Data Display -->
+      <ins-sidebar-item with-submenu icon="icon-tables" label="Data Display">
+        <ins-sidebar-item link="/assets/styleguide/data-display/card.html" label="Card" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-display/charts.html" label="Charts" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-display/markdown.html" label="Markdown" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-display/progress-bar.html" label="Progress Bar" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-display/sort.html" label="Sort" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-display/tables.html" label="Tables" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-display/tabs.html" label="Tabs" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-display/tag.html" label="Tag" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-display/thumbnails.html" label="Thumbnails" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-display/timeline.html" label="Timeline" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-display/tooltip.html" label="Tooltip" app></ins-sidebar-item>
+      </ins-sidebar-item>
+
+      <!-- Feedback -->
+      <ins-sidebar-item with-submenu icon="icon-completed-outcomes" label="Feedback">
+        <ins-sidebar-item link="/assets/styleguide/feedback/drawer.html" label="Drawer" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/feedback/loader.html" label="Loaders" app></ins-sidebar-item>
+      </ins-sidebar-item>
+
+      <!-- Other -->
+      <ins-sidebar-item with-submenu icon="icon-support-1" label="Other">
+        <ins-sidebar-item link="/assets/styleguide/accordion.html" label="Accordion" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/other/backdrop.html" label="Backdrop" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/carousel.html" label="Carousel" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/other/divider.html" label="Divider" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/modal.html" label="Modal" app></ins-sidebar-item>
+      </ins-sidebar-item>
+
+      <!-- Custom -->
+      <!-- <ins-sidebar-item with-submenu icon="icon-site-manager" label="Custom"></ins-sidebar-item> -->
+    </ins-sidebar>
+    <ins-content>
+
+      <ins-header support-link="www.google.com">
+        <ins-header-user name="John Smith" logout-link="/" profile-link="#/my-profile"></ins-header-user>
+        <ins-instances logo-link="/assets/images/logo-3@2x.png" instance="Final Sprint">
+          <ins-instances-item logo-link="/assets/images/logo-2@2x.png" instance-link="/" instance="Codehow">
+          </ins-instances-item>
+          <ins-instances-item logo-link="/assets/images/logo-3@2x.png" instance-link="#" instance="Final Sprint"
+            with-sub-item>
+            <ins-instances-sub-item link="/" instance="Production"></ins-instances-sub-item>
+            <ins-instances-sub-item link="/" instance="Staging"></ins-instances-sub-item>
+          </ins-instances-item>
+          <ins-instances-item logo-link="/assets/images/logo-4@2x.png" instance-link="/" instance="Sharkfinetworks">
+          </ins-instances-item>
+          <ins-instances-item logo-link="/assets/images/logo-1@2x.png" instance-link="/"
+            instance="Family Day Care Australia"></ins-instances-item>
+          <ins-instances-item logo-link="/assets/images/logo-2@2x.png" instance-link="/" instance="ABC Corp">
+          </ins-instances-item>
+        </ins-instances>
+      </ins-header>
+
+      <ins-renderer>
+      </ins-renderer>
+    </ins-content>
+  </ins-admin>
+
+  <ins-notifications>
+    <ins-notifications-item event-type="Task Completed" heading="Heading" duration="5 mins ago"
+      desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      link="/" link-label="View Task" icon="icon-check" status="green">
+    </ins-notifications-item>
+
+    <ins-notifications-item event-type="Event Started" heading="Heading" duration="1 hr ago"
+      desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      link="/" link-label="View Event" icon="icon-today" status="blue">
+    </ins-notifications-item>
+
+    <ins-notifications-item event-type="Event Started" duration="1 hr ago" icon="icon-settings" status="red"></ins-notifications-item>
+  </ins-notifications>
+
+  <!-- Example of ins-drawer OUTSIDE iframe -->
+  <ins-drawer label="Outer Drawer" id="drawerOutsideEl">
+    <h4>This drawer is outside</h4>
+    <p>Drawer element is placed outside the <code>&lt;iframe&gt;</code></p>
+    <hr>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+      dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+      non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+  </ins-drawer>
 </body>
 
 </html>

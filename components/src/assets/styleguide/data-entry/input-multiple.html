@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Input - Multiple</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+
+  <script type="module" src="/build/insites-components.esm.js"></script>
+  <script nomodule src="/build/insites-components.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+</head>
+
+<body>
+
+  <div>
+    <!-- ins-input-multiple header -->
+    <div>
+      <h2 class="section-title">Insites Input - Multiple <code>&lt;ins-input-multiple&gt;</code></h2>
+      <p>Defines an input field where user can enter an array of data.</p>
+    </div>
+    <!-- ins-input-multiple Complete Example -->
+    <div>
+      <h2 class="section-title">Complete Example</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input-multiple label="Input - Multiple">
+            </ins-input-multiple>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input-multiple
+	label="Input - Multiple">
+</ins-input-multiple>
+								</script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ins-input-multiple attribute table -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>label</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines label of input field</td>
+          </tr>
+          <tr>
+            <td>disabled</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Disables input field</td>
+          </tr>
+          <tr>
+            <td>readonly</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Specifies that the input field is read-only</td>
+          </tr>
+          <tr>
+            <td>has-error</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Specifies validation or mandatory input for the input field</td>
+          </tr>
+          <tr>
+            <td>error-message</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines the error message when input element is wrong</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Disabled State  -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Disabled State</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input-multiple label="Input - Multiple" disabled>
+            </ins-input-multiple>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input-multiple
+	label="Input - Multiple"
+	disabled>
+</ins-input-multiple>
+							</script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Read Only State  -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Read Only State</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input-multiple label="Input - Multiple" readonly>
+            </ins-input-multiple>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input-multiple
+	label="Input - Multiple"
+	readonly>
+</ins-input-multiple>
+							</script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Read Only State  -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Error State</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input-multiple label="Input - Multiple" has-error error-message="This field is required.">
+            </ins-input-multiple>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input-multiple
+	label="Input - Multiple"
+	has-error
+	error-message="This field is required.">
+</ins-input-multiple>
+							</script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ins-input-multiple event table -->
+    <div>
+      <h2 class="section-title">Events</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>EVENT</th>
+            <th>OBJECT</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>didLoad</td>
+            <td>n/a</td>
+            <td>Returns if the component is rendered</td>
+          </tr>
+          <tr>
+            <td>oninput</td>
+            <td>detail</td>
+            <td>Returns the component value if the user input data</td>
+          </tr>
+          <tr>
+            <td>onchange</td>
+            <td>detail</td>
+            <td>Returns the component value if the current values have changed</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ins-input-multiple method table -->
+    <div>
+      <h2 class="section-title">Methods</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FUNCTION</th>
+            <th>PARAMETER</th>
+            <th>RETURN</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>setValue</td>
+            <td>array</td>
+            <td>n/a</td>
+            <td>Used for setting default and changing the value of the component</td>
+          </tr>
+          <tr>
+            <td>val</td>
+            <td>n/a</td>
+            <td>array</td>
+            <td>Returns the current value of component</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Direct Set Data -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Set Default Value</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input-multiple label="Input - Multiple" id="set-default">
+            </ins-input-multiple>
+            <script>
+              // Note: Event didLoad must be used before setting
+              //       the default value to avoid race conditions
+              document.getElementById('set-default').addEventListener('didLoad', function () {
+                this.setValue(["Test 1", "Test 2", "Test 3"]);
+              });
+            </script>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input-multiple
+	label="Input - Multiple"
+	id="set-default">
+</ins-input-multiple>
+<script>
+	// Note: Event didLoad must be used before setting
+	//       the default value to avoid race conditions
+	document.getElementById('set-default').addEventListener('didLoad', function() {
+		this.setValue(["Test 1", "Test 2", "Test 3"]);
+	});
+&lt;/script&gt;
+							</script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Get Value -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Get Value</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-input-multiple label="Input - Multiple" id="get-value">
+            </ins-input-multiple>
+            <ins-button solid blue id="button-get" label="Get Value">
+            </ins-button>
+            <script>
+              var inputMultiple = document.getElementById('get-value');
+              inputMultiple.addEventListener('didLoad', function () {
+                this.setValue(["Test 1", "Test 2"]);
+              });
+              document.getElementById('button-get').addEventListener('insClick', function (event) {
+                console.log(inputMultiple.val());
+                alert("Check console log for event data");
+              });
+            </script>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-input-multiple
+	label="Input - Multiple"
+	id="get-value">
+</ins-input-multiple>
+<ins-button
+	solid
+	blue
+	id="button-get"
+	label="Get Value">
+</ins-button>
+<script>
+	var inputMultiple = document.getElementById('get-value');
+	inputMultiple.addEventListener('didLoad', function() {
+		this.setValue(["Test 1", "Test 2"]);
+	});
+	document.getElementById('button-get').addEventListener('insClick', function(event) {
+		console.log(inputMultiple.val());
+		alert("Check console log for event data");
+	});
+&lt;/script&gt;
+							</script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style='padding: 35px;'></div>
+
+</body>
+
+</html>

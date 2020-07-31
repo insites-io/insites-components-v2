@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Migration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/v2.0.0/insites-font-icons.min.css" />
+  <link rel="stylesheet" href="/v2.0.0/insites.min.css" />
+
+  <script type="module" src="/v2.0.0/insites.esm.js"></script>
+  <script nomodule src="/v2.0.0/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+</head>
+<body>
+  <div class="spacer"></div>
+  <h2 class="section-title">Step 1: Update dependencies</h2>
+  <div class="ins-styleguide-wrap">
+    <h2 class="section-title">Remove this</h2>
+    <div class="ins-styleguide-code-slot-wrap full">
+        <script type="text/plain" class="language-markup">
+<!-- Font Icons -->
+<link rel="preload" href="https://components.insites.io/assets/css/insites-font-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://components.insites.io/assets/css/insites-font-icons.css"></noscript>
+
+<!-- Plugin Assets -->
+<link rel="preload" href="https://components.insites.io/assets/css/insites-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://components.insites.io/assets/css/insites-plugins.css"></noscript>
+<script src="https://components.insites.io/assets/js/insites-plugins.js" defer>&lt;/script&gt;
+
+<!-- Components -->
+<script src="https://components.insites.io/build/insites.js">&lt;/script&gt;
+      </script>
+    </div>
+  </div>
+
+  <div class="ins-styleguide-wrap">
+    <h2 class="section-title">Replace with</h2>
+    <div class="ins-styleguide-code-slot-wrap full">
+      <script type="text/plain" class="language-markup"><!-- Font Icons -->
+<link rel="preload" href="https://components.insites.io/assets/css/insites-font-icons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://components.insites.io/assets/css/insites-font-icons.min.css"></noscript>
+
+<!-- Components -->
+<link rel="stylesheet" href="https://components.insites.io/v2.0.0/insites.min.css" />
+<script type="module" src="https://components.insites.io/v2.0.0/insites.esm.js">&lt;/script&gt;
+<script nomodule src="https://components.insites.io/v2.0.0/insites.js">&lt;/script&gt;</script>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+  <h2 class="section-title">Step 2: Update events</h2>
+  <p>Component events has been updated to have `ins` prefix and removed the `on` prefix to avoid conflict with the native DOM events. Please check V2 component documentation to update your event listeners from v1.</p>
+
+</body>
+</html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide - Slider</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/v1/assets/css/insites-plugins.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <script src="/v1/assets/js/insites-plugins.js"></script>
+  <script src="/v1/build/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/prism.css">
+  <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+  <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+  <script src="/v1/assets/js/prism.js"></script>
+
+  <style>
+    .page-slider-wrap {
+      padding: 20px;
+      margin-bottom: 40px;
+      clear: both;
+    }
+
+    .page-slider-wrap.l2 {
+      margin-bottom: 120px;
+    }
+
+    #myCarousel,
+    #myCarousel2 {
+      max-height: 400px;
+    }
+
+    .page-slider-wrap .ins-carousel.layout-2 {
+      color: #fff;
+    }
+
+    .page-slider-wrap .ins-carousel.layout-2 p {
+      color: #fff;
+      padding: 0 40px;
+    }
+
+    .page-slider-wrap .ins-carousel.layout-2 .img-wrap {
+      filter: brightness(0.5);
+    }
+
+    #myCarousel3 {
+      height: 600px;
+    }
+
+    #myCarousel2 .img-wrap,
+    #myCarousel3 .img-wrap {
+      width: 100%;
+      height: 600px;
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    #myCarousel2 .img-wrap.one,
+    #myCarousel3 .img-wrap.one {
+      background-image: url('/assets/images/slider/1.jpeg');
+    }
+
+    #myCarousel2 .img-wrap.two,
+    #myCarousel3 .img-wrap.two {
+      background-image: url('/assets/images/slider/2.jpeg');
+    }
+
+    #myCarousel2 .img-wrap.three,
+    #myCarousel3 .img-wrap.three {
+      background-image: url('/assets/images/slider/3.jpeg');
+    }
+
+    .code-wrap {
+      margin-bottom: 80px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- ins-carousel header -->
+  <div>
+    <h2 class="section-title">Insites Carousel
+      <code>&lt;ins-carousel&gt;</code>
+    </h2>
+    <p>Defines all direct child div of the binded element as a slide</p>
+    <div>
+
+      <!-- content -->
+      <div>
+        <h2 class="section-title">Complete Example</h2>
+        <div class="page-slider-wrap">
+          <ins-carousel layout="1"
+            heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            body-text="sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            sub-heading="Duis aute irure dolor in reprehenderit in voluptate velit"
+            cta-label="CTA BUTTON" cta-link="/#/app/other/carousel" bind-to="myCarousel">
+
+            <div id="myCarousel">
+              <div class="img-wrap">
+                <img src="/v1/assets/images/slider/1.jpeg" alt="sliders" />
+              </div>
+
+              <div class="img-wrap">
+                <img src="/v1/assets/images/slider/2.jpeg" alt="sliders" />
+              </div>
+
+              <div class="img-wrap">
+                <img src="/v1/assets/images/slider/3.jpeg" alt="sliders" />
+              </div>
+            </div>
+
+          </ins-carousel>
+        </div>
+        <div class="code-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-carousel layout="1"
+  heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  body-text="sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  sub-heading="Duis aute irure dolor in reprehenderit in voluptate velit"
+  cta-label="CTA BUTTON" cta-link="/#/app/other/slider" bind-to="myCarousel">
+
+  <div id="myCarousel">
+    <div class="img-wrap">
+      <img src="/v1/assets/images/slider/1.jpeg" alt="sliders" />
+    </div>
+
+    <div class="img-wrap">
+      <img src="/v1/assets/images/slider/2.jpeg" alt="sliders" />
+    </div>
+
+    <div class="img-wrap">
+      <img src="/v1/assets/images/slider/3.jpeg" alt="sliders" />
+    </div>
+  </div>
+
+</ins-carousel>
+          </script>
+        </div>
+    </div>
+
+      <!-- Attributes -->
+      <div>
+        <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>FIELD ATTRIBUTE</th>
+              <th>TYPE</th>
+              <th>DEFAULT</th>
+              <th>OPTIONS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>heading</td>
+              <td>string</td>
+              <td>-</td>
+              <td>-</td>
+              <td>Defines the heading of the carousel</td>
+            </tr>
+            <tr>
+              <td>sub-heading</td>
+              <td>string</td>
+              <td>-</td>
+              <td>-</td>
+              <td>Defines the sub heading of the carousel</td>
+            </tr>
+            <tr>
+              <td>body-text</td>
+              <td>string</td>
+              <td>-</td>
+              <td>-</td>
+              <td>Defines the body of text of the carousel</td>
+            </tr>
+            <tr>
+              <td>cta-label</td>
+              <td>string</td>
+              <td>-</td>
+              <td>-</td>
+              <td>Defines the CTA button label of the carousel</td>
+            </tr>
+            <tr>
+              <td>cta-link</td>
+              <td>string</td>
+              <td>-</td>
+              <td>-</td>
+              <td>Defines the CTA button link of the carousel</td>
+            </tr>
+            <tr>
+              <td>cta-link-target</td>
+              <td>string</td>
+              <td>_blank</td>
+              <td>_blank, _self, _parent, _top, framename</td>
+              <td>Defines where the CTA link should open</td>
+            </tr>
+            <tr>
+              <td>cta-color</td>
+              <td>string</td>
+              <td>-</td>
+              <td>Insites Colors</td>
+              <td>Defines the CTA button color of the carousel</td>
+            </tr>
+            <tr>
+              <td>cta-disabled</td>
+              <td>string</td>
+              <td>-</td>
+              <td>-</td>
+              <td>Defines disabled state of the CTA button</td>
+            </tr>
+            <tr>
+              <td>layout</td>
+              <td>number</td>
+              <td>1</td>
+              <td>1, 2, 3</td>
+              <td>Defines the layout of the carousel</td>
+            </tr>
+            <tr>
+              <td>width</td>
+              <td>string</td>
+              <td>100%</td>
+              <td>CSS Valid Units</td>
+              <td>Defines the width of the carousel</td>
+            </tr>
+            <tr>
+              <td>height</td>
+              <td>string</td>
+              <td>auto</td>
+              <td>CSS Valid Units</td>
+              <td>Defines the height of the carousel</td>
+            </tr>
+            <tr>
+              <td>bind-to</td>
+              <td>string</td>
+              <td>-</td>
+              <td>Required</td>
+              <td>Defines the element wrapper to bind the carousel. All direct &lt;div&gt; child of this element will become the carousel's slides.</td>
+            </tr>
+            <tr>
+              <td>start-index</td>
+              <td>number</td>
+              <td>0</td>
+              <td>-</td>
+              <td>Defines where the carousel should start upon load</td>
+            </tr>
+            <tr>
+              <td>transition</td>
+              <td>number</td>
+              <td>350</td>
+              <td>-</td>
+              <td>Defines the transition speed of the carousel</td>
+            </tr>
+              <td>duration</td>
+              <td>number</td>
+              <td>3000</td>
+              <td>-</td>
+              <td>Defines the duration speed of the carousel</td>
+            </tr>
+            <tr>
+              <td>autoplay</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Defines if the carousel should automatically slide</td>
+            </tr>
+            <tr>
+              <td>loop</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Defines if the carousel should loop the slides</td>
+            </tr>
+            <tr>
+              <td>per-page</td>
+              <td>number</td>
+              <td>1</td>
+              <td>-</td>
+              <td>Defines how many slides should show per page</td>
+            </tr>
+            <tr>
+              <td>no-carousel-button</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Defines if the carousel should have prev and next buttons</td>
+            </tr>
+            <tr>
+              <td>no-pagination</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Defines if the carousel should have pagination buttons</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Event -->
+      <div>
+        <h2 class="section-title">Events</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>EVENT</th>
+              <th>OBJECT</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>slide</td>
+              <td>click/drag event</td>
+              <td>Emits an event when the slide changes</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    <div>
+      <h2 class="section-title">Layout 2</h2>
+      <div class="page-slider-wrap l2">
+        <ins-carousel layout="2" height="400px"
+          heading="Carousel Heading"
+          body-text="Carousel Body Text"
+          sub-heading="Carousel Sub Heading"
+          cta-label="CTA BUTTON"
+          cta-link="/#/app/other/slider"
+          bind-to="myCarousel2">
+
+          <div id="myCarousel2">
+            <div class="img-wrap one">
+              <!-- <img src="/v1/assets/images/slider/1.jpeg" alt="sliders" /> -->
+            </div>
+
+            <div class="img-wrap two">
+              <!-- <img src="/v1/assets/images/slider/2.jpeg" alt="sliders" /> -->
+            </div>
+
+            <div class="img-wrap three">
+              <!-- <img src="/v1/assets/images/slider/3.jpeg" alt="sliders" /> -->
+            </div>
+          </div>
+
+        </ins-carousel>
+      </div>
+      <div class="code-wrap">
+        <script type="text/plain" class="language-markup">
+<ins-carousel layout="2"
+  heading="Carousel Heading"
+  body-text="Carousel Body Text"
+  sub-heading="Carousel Sub Heading"
+  cta-label="CTA BUTTON"
+  cta-link="/#/app/other/slider"
+  bind-to="myCarousel2">
+
+  <div id="myCarousel2">...</div>
+</ins-carousel>
+        </script>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="section-title">Layout 3</h2>
+      <div class="page-slider-wrap">
+        <ins-carousel layout="3"
+          heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          body-text="sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          sub-heading="Duis aute irure dolor in reprehenderit in voluptate velit"
+          cta-label="CTA BUTTON" cta-link="/#/app/other/slider" bind-to="myCarousel3">
+
+          <div id="myCarousel3">
+            <div class="img-wrap one"></div>
+            <div class="img-wrap two"></div>
+            <div class="img-wrap three"></div>
+          </div>
+
+        </ins-carousel>
+      </div>
+      <div class="code-wrap">
+        <script type="text/plain" class="language-markup">
+<ins-carousel layout="3"
+  bind-to="myCarousel3">
+  <div id="myCarousel3">...</div>
+</ins-carousel>
+        </script>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="section-title">Loop</h2>
+      <div class="page-slider-wrap">
+        <ins-carousel layout="1" loop
+          heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          body-text="sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          sub-heading="Duis aute irure dolor in reprehenderit in voluptate velit" bind-to="myCarousel4">
+
+          <div id="myCarousel4">
+            <div class="img-wrap">
+              <img src="/v1/assets/images/slider/1.jpeg" alt="sliders" />
+            </div>
+
+            <div class="img-wrap">
+              <img src="/v1/assets/images/slider/2.jpeg" alt="sliders" />
+            </div>
+
+            <div class="img-wrap">
+              <img src="/v1/assets/images/slider/3.jpeg" alt="sliders" />
+            </div>
+          </div>
+
+        </ins-carousel>
+      </div>
+      <div class="code-wrap">
+        <script type="text/plain" class="language-markup">
+<ins-carousel loop
+  bind-to="myCarousel4">
+  <div id="myCarousel4">...</div>
+</ins-carousel>
+        </script>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="section-title">Autoplay</h2>
+      <div class="page-slider-wrap">
+        <ins-carousel layout="1" autoplay
+          heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          body-text="sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          sub-heading="Duis aute irure dolor in reprehenderit in voluptate velit" bind-to="myCarousel5">
+
+          <div id="myCarousel5">
+            <div class="img-wrap">
+              <img src="/v1/assets/images/slider/1.jpeg" alt="sliders" />
+            </div>
+
+            <div class="img-wrap">
+              <img src="/v1/assets/images/slider/2.jpeg" alt="sliders" />
+            </div>
+
+            <div class="img-wrap">
+              <img src="/v1/assets/images/slider/3.jpeg" alt="sliders" />
+            </div>
+          </div>
+
+        </ins-carousel>
+      </div>
+      <div class="code-wrap">
+        <script type="text/plain" class="language-markup">
+<ins-carousel autoplay
+  bind-to="myCarousel5">
+  <div id="myCarousel5">...</div>
+</ins-carousel>
+        </script>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="section-title">Autoplay + Loop</h2>
+      <div class="page-slider-wrap">
+        <ins-carousel layout="1" autoplay loop
+          heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          body-text="sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          sub-heading="Duis aute irure dolor in reprehenderit in voluptate velit" bind-to="myCarousel6">
+
+          <div id="myCarousel6">
+            <div class="img-wrap">
+              <img src="/v1/assets/images/slider/1.jpeg" alt="sliders" />
+            </div>
+
+            <div class="img-wrap">
+              <img src="/v1/assets/images/slider/2.jpeg" alt="sliders" />
+            </div>
+
+            <div class="img-wrap">
+              <img src="/v1/assets/images/slider/3.jpeg" alt="sliders" />
+            </div>
+          </div>
+
+        </ins-carousel>
+      </div>
+      <div class="code-wrap">
+        <script type="text/plain" class="language-markup">
+<ins-carousel autoplay loop
+  bind-to="myCarousel6">
+  <div id="myCarousel6">...</div>
+</ins-carousel>
+        </script>
+      </div>
+    </div>
+
+</body>
+
+</html>

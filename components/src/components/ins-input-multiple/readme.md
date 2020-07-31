@@ -7,23 +7,23 @@
 
 ## Properties
 
-| Property           | Attribute           | Description | Type      | Default     |
-| ------------------ | ------------------- | ----------- | --------- | ----------- |
-| `disabled`         | `disabled`          |             | `boolean` | `false`     |
-| `errorMessage`     | `error-message`     |             | `string`  | `""`        |
-| `hasError`         | `has-error`         |             | `boolean` | `false`     |
-| `label`            | `label`             |             | `string`  | `undefined` |
-| `name`             | `name`              |             | `string`  | `undefined` |
-| `readonly`         | `readonly`          |             | `boolean` | `false`     |
-| `removeDuplicates` | `remove-duplicates` |             | `boolean` | `false`     |
-| `temp`             | `temp`              |             | `string`  | `undefined` |
-| `value`            | `value`             |             | `any`     | `[]`        |
+| Property       | Attribute       | Description | Type      | Default     |
+| -------------- | --------------- | ----------- | --------- | ----------- |
+| `disabled`     | `disabled`      |             | `boolean` | `false`     |
+| `errorMessage` | `error-message` |             | `string`  | `""`        |
+| `hasError`     | `has-error`     |             | `boolean` | `false`     |
+| `hasLoad`      | `has-load`      |             | `string`  | `undefined` |
+| `label`        | `label`         |             | `string`  | `undefined` |
+| `name`         | `name`          |             | `string`  | `undefined` |
+| `readonly`     | `readonly`      |             | `boolean` | `false`     |
+| `value`        | `value`         |             | `any`     | `[]`        |
 
 
 ## Events
 
 | Event       | Description | Type               |
 | ----------- | ----------- | ------------------ |
+| `didLoad`   |             | `CustomEvent<any>` |
 | `insChange` |             | `CustomEvent<any>` |
 | `insInput`  |             | `CustomEvent<any>` |
 

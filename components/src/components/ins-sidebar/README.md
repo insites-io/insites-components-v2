@@ -7,16 +7,18 @@
 
 ## Properties
 
-| Property   | Attribute   | Description | Type     | Default |
-| ---------- | ----------- | ----------- | -------- | ------- |
-| `fullLogo` | `full-logo` |             | `string` | `""`    |
-| `iconLogo` | `icon-logo` |             | `string` | `""`    |
+| Property   | Attribute   | Description | Type     | Default     |
+| ---------- | ----------- | ----------- | -------- | ----------- |
+| `fullLogo` | `full-logo` |             | `string` | `undefined` |
+| `hasLoad`  | `has-load`  |             | `string` | `undefined` |
+| `iconLogo` | `icon-logo` |             | `string` | `undefined` |
 
 
 ## Events
 
 | Event              | Description | Type               |
 | ------------------ | ----------- | ------------------ |
+| `didLoad`          |             | `CustomEvent<any>` |
 | `insSidebarAction` |             | `CustomEvent<any>` |
 
 

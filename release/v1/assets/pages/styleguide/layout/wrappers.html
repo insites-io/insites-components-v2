@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide - Wrappers</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/v1/assets/css/insites-plugins.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <script src="/v1/assets/js/insites-plugins.js"></script>
+  <script src="/v1/build/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/prism.css">
+  <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+  <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+  <script src="/v1/assets/js/prism.js"></script>
+
+  <style>
+  </style>
+</head>
+
+<body>
+  <!-- Breakdown -->
+  <div>
+    <p>Before you use <code>&lt;ins-header&gt;</code> and
+      <code>&lt;ins-sidebar&gt;</code>, it is important to know how structure things with these wrappers.</p>
+  </div>
+  <div>
+    <h2 class="section-title">Insites Admin <code>&lt;ins-admin&gt;</code></h2>
+    <p>Main wrapper that holds the whole page body together. </p>
+  </div>
+
+  <div>
+    <h2 class="section-title">Insites Content <code>&lt;ins-content&gt;</code></h2>
+    <p>Page content wrapper that holds the content part a page. </p>
+  </div>
+
+  <div>
+    <h2 class="section-title">Insites Renderer <code>&lt;ins-renderer&gt;</code></h2>
+    <p>Renders the "iFrame" content of a page. Also automatically manages page's heading & breadcrumbs (up to 1 level deep).</p>
+  </div>
+
+  <div>
+    <h2 class="section-title">Complete Example</h2>
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup"><html>
+  <head>
+  </head>
+  <body>
+    <ins-admin>
+      <ins-sidebar>
+        <ins-sidebar-item link="/" label="Menu 1" app></ins-sidebar-item>
+        <ins-sidebar-item link="/" label="Menu 2" with-submenu>
+          <ins-sidebar-item link="/" label="Sub Menu 1" app></ins-sidebar-item>
+          <ins-sidebar-item link="/" label="Sub Menu 2" app></ins-sidebar-item>
+        </ins-sidebar-item>
+      </ins-sidebar>
+      <ins-content>
+        <ins-header>
+          <!-- Header content here -->
+        </ins-header>
+        <ins-renderer>
+          <!-- Page content will be rendered here -->
+        </ins-renderer>
+      </ins-content>
+    </ins-admin>
+  </body>
+</html></script>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div style='padding: 15px;'></div>
+  <script src="/v1/assets/js/ins.js"></script>
+
+</body>
+
+</html>

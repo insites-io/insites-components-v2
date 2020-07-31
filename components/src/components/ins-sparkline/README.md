@@ -11,11 +11,19 @@
 | ------------- | ------------- | ----------- | -------- | ----------- |
 | `chartData`   | `chart-data`  |             | `any`    | `undefined` |
 | `description` | `description` |             | `string` | `""`        |
+| `hasLoad`     | `has-load`    |             | `string` | `undefined` |
 | `icon`        | `icon`        |             | `string` | `""`        |
 | `movement`    | `movement`    |             | `any`    | `""`        |
 | `name`        | `name`        |             | `string` | `""`        |
 | `percentage`  | `percentage`  |             | `any`    | `""`        |
 | `value`       | `value`       |             | `string` | `""`        |
+
+
+## Events
+
+| Event     | Description | Type               |
+| --------- | ----------- | ------------------ |
+| `didLoad` |             | `CustomEvent<any>` |
 
 
 ## Dependencies

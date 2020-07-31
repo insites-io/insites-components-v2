@@ -1,4 +1,4 @@
-import { h , Component, Element, State, Prop, Method, Event, EventEmitter } from "@stencil/core";
+import { h, Component, Element, State, Prop, Method, Event, EventEmitter } from "@stencil/core";
 import CodeMirror from "codemirror";
 
 // addons
@@ -26,64 +26,7 @@ import "codemirror/mode/yaml/yaml";
 		'../../../node_modules/codemirror/theme/monokai.css',
 		'../../../node_modules/codemirror/theme/neat.css',
 		'../../../node_modules/codemirror/theme/the-matrix.css',
-		'../../../node_modules/codemirror/theme/material.css',
-		// '../../../node_modules/codemirror/theme/3024-day.css',
-		// '../../../node_modules/codemirror/theme/darcula.css',
-		// '../../../node_modules/codemirror/theme/isotope.css',
-		// '../../../node_modules/codemirror/theme/railscasts.css',
-		// '../../../node_modules/codemirror/theme/vibrant-ink.css',
-		// '../../../node_modules/codemirror/theme/3024-night.css',
-		// '../../../node_modules/codemirror/theme/dracula.css',
-		// '../../../node_modules/codemirror/theme/lesser-dark.css',
-		// '../../../node_modules/codemirror/theme/moxer.css',
-		// '../../../node_modules/codemirror/theme/rubyblue.css',
-		// '../../../node_modules/codemirror/theme/xq-dark.css',
-		// '../../../node_modules/codemirror/theme/abcdef.css',
-		// '../../../node_modules/codemirror/theme/duotone-dark.css',
-		// '../../../node_modules/codemirror/theme/liquibyte.css',
-		// '../../../node_modules/codemirror/theme/seti.css',
-		// '../../../node_modules/codemirror/theme/xq-light.css',
-		// '../../../node_modules/codemirror/theme/ambiance-mobile.css',
-		// '../../../node_modules/codemirror/theme/duotone-light.css',
-		// '../../../node_modules/codemirror/theme/lucario.css',
-		// '../../../node_modules/codemirror/theme/neo.css',
-		// '../../../node_modules/codemirror/theme/shadowfox.css',
-		// '../../../node_modules/codemirror/theme/yeti.css',
-		// '../../../node_modules/codemirror/theme/ambiance.css',
-		// '../../../node_modules/codemirror/theme/eclipse.css',
-		// '../../../node_modules/codemirror/theme/material-darker.css',
-		// '../../../node_modules/codemirror/theme/night.css',
-		// '../../../node_modules/codemirror/theme/solarized.css',
-		// '../../../node_modules/codemirror/theme/yonce.css',
-		// '../../../node_modules/codemirror/theme/base16-dark.css',
-		// '../../../node_modules/codemirror/theme/elegant.css',
-		// '../../../node_modules/codemirror/theme/material-ocean.css',
-		// '../../../node_modules/codemirror/theme/nord.css',
-		// '../../../node_modules/codemirror/theme/ssms.css',
-		// '../../../node_modules/codemirror/theme/zenburn.css',
-		// '../../../node_modules/codemirror/theme/base16-light.css',
-		// '../../../node_modules/codemirror/theme/erlang-dark.css',
-		// '../../../node_modules/codemirror/theme/material-palenight.css',
-		// '../../../node_modules/codemirror/theme/oceanic-next.css',
-		// '../../../node_modules/codemirror/theme/bespin.css',
-		// '../../../node_modules/codemirror/theme/gruvbox-dark.css',
-		// '../../../node_modules/codemirror/theme/panda-syntax.css',
-		// '../../../node_modules/codemirror/theme/tomorrow-night-bright.css',
-		// '../../../node_modules/codemirror/theme/blackboard.css',
-		// '../../../node_modules/codemirror/theme/hopscotch.css',
-		// '../../../node_modules/codemirror/theme/mbo.css',
-		// '../../../node_modules/codemirror/theme/paraiso-dark.css',
-		// '../../../node_modules/codemirror/theme/tomorrow-night-eighties.css',
-		// '../../../node_modules/codemirror/theme/cobalt.css',
-		// '../../../node_modules/codemirror/theme/icecoder.css',
-		// '../../../node_modules/codemirror/theme/mdn-like.css',
-		// '../../../node_modules/codemirror/theme/paraiso-light.css',
-		// '../../../node_modules/codemirror/theme/ttcn.css',
-		// '../../../node_modules/codemirror/theme/colorforth.css',
-		// '../../../node_modules/codemirror/theme/idea.css',
-		// '../../../node_modules/codemirror/theme/midnight.css',
-		// '../../../node_modules/codemirror/theme/pastel-on-dark.css',
-		// '../../../node_modules/codemirror/theme/twilight.css'
+		'../../../node_modules/codemirror/theme/material.css'
 	]
 })
 
@@ -91,6 +34,8 @@ export class InsCodeEditor {
 	@Element() insCodeEditorEl: HTMLElement;
 	@Event() onblur: EventEmitter;
 	@Event() oninput: EventEmitter;
+	@Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
 	@Prop({ mutable: true }) label: string = "";
 	@Prop({ mutable: true }) value: string = "";
@@ -113,62 +58,69 @@ export class InsCodeEditor {
 	@Method()
 	async refresh() {
 		this.codeMirrorEl.refresh();
+	}
+
+	@Method()
+	async reset() {
+		this.codeMirrorEl.setValue('');
   }
 
-  @Method()
- 	async reset() {
- 		this.codeMirrorEl.setValue('');
- 	}
-
-  @Method()
+	@Method()
 	async setValue(value) {
 		this.codeMirrorEl.setValue(value);
 	}
 
 	@Method()
 	async beautify() {
-		this.codeMirrorEl.autoFormatRange({ line: 0, ch: 0 }, { line: this.codeMirrorEl.getValue().split('\n').length, ch: 0 });
+    if (this.codeMirrorEl.autoFormatRange){
+      this.codeMirrorEl.autoFormatRange(
+        { line: 0, ch: 0 },
+        { line: this.codeMirrorEl.getValue().split('\n').length, ch: 0 });
+    }
 		this.codeMirrorEl.setSelection({ line: 1, ch: 0 });
 	}
 
 	componentDidLoad() {
-		const self = this;
+    let textarea = this.insCodeEditorEl.querySelector('.codemirror');
+    this.codeMirrorEl = CodeMirror.fromTextArea(textarea, {
+      autoRefresh: true,
+      lineNumbers: !this.disableLineNumbers,
+      lineWrapping: true,
+      mode: this.mode,
+      extraKeys: {
+        "Alt-F": "findPersistent",
+        "F10": el => {
+          el.setOption("fullScreen", !el.getOption("fullScreen"));
+        }
+      },
+      readOnly: this.readonly
+    });
 
-		setTimeout(() => {
-			self.codeMirrorEl = CodeMirror.fromTextArea(self.insCodeEditorEl.querySelector('.codemirror'), {
-				autoRefresh: true,
-				lineNumbers: !self.disableLineNumbers,
-				lineWrapping: true,
-				mode: self.mode,
-				extraKeys: {
-					"Alt-F": "findPersistent",
-					"F10": el => {
-						el.setOption("fullScreen", !el.getOption("fullScreen"));
-					}
-				},
-				readOnly: self.readonly
-			});
+    CodeMirror.commands["selectAll"](this.codeMirrorEl);
+    this.setEvents();
+    this.hideCursor();
 
-			CodeMirror.commands["selectAll"](self.codeMirrorEl);
-			self.setEvents();
-			self.hideCursor();
+    let wrap = this.insCodeEditorEl.querySelector('.CodeMirror-wrap');
 
-			let wrap = self.insCodeEditorEl.querySelector('.CodeMirror-wrap');
+    wrap.addEventListener('mouseover', () => {
+      wrap.classList.add('fullscreen-help');
 
-			wrap.addEventListener('mouseover', () => {
-				wrap.classList.add('fullscreen-help');
+      setTimeout(() => {
+        wrap.classList.remove('fullscreen-help');
+      }, 5000);
+    });
 
-				setTimeout(() => {
-					wrap.classList.remove('fullscreen-help');
-				}, 5000);
-			});
+    wrap.addEventListener('mouseout', () => {
+      wrap.classList.remove('fullscreen-help');
+    });
 
-			wrap.addEventListener('mouseout', () => {
-				wrap.classList.remove('fullscreen-help');
-			});
+    this.refresh();
 
-			self.refresh();
-		}, 500);
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insCodeEditorEl);
+    }
 	}
 
 	showCursor() {

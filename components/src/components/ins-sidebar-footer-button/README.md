@@ -7,16 +7,18 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default |
-| -------- | --------- | ----------- | -------- | ------- |
-| `icon`   | `icon`    |             | `string` | `''`    |
-| `open`   | `open`    |             | `string` | `''`    |
+| Property  | Attribute  | Description | Type     | Default     |
+| --------- | ---------- | ----------- | -------- | ----------- |
+| `hasLoad` | `has-load` |             | `string` | `undefined` |
+| `icon`    | `icon`     |             | `string` | `''`        |
+| `open`    | `open`     |             | `string` | `''`        |
 
 
 ## Events
 
 | Event                         | Description | Type               |
 | ----------------------------- | ----------- | ------------------ |
+| `didLoad`                     |             | `CustomEvent<any>` |
 | `insSidebarFooterButtonEvent` |             | `CustomEvent<any>` |
 
 

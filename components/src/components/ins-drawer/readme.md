@@ -12,6 +12,7 @@
 | `backdropCanClose` | `backdrop-can-close` |             | `boolean` | `true`      |
 | `bordered`         | `bordered`           |             | `boolean` | `true`      |
 | `customWidth`      | `custom-width`       |             | `string`  | `undefined` |
+| `hasLoad`          | `has-load`           |             | `string`  | `undefined` |
 | `icon`             | `icon`               |             | `string`  | `undefined` |
 | `isOpen`           | `is-open`            |             | `boolean` | `false`     |
 | `label`            | `label`              |             | `string`  | `undefined` |
@@ -26,6 +27,7 @@
 
 | Event       | Description | Type               |
 | ----------- | ----------- | ------------------ |
+| `didLoad`   |             | `CustomEvent<any>` |
 | `insToggle` |             | `CustomEvent<any>` |
 
 

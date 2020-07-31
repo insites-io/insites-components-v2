@@ -1,0 +1,461 @@
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Drawer</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/v2.0.0/insites-font-icons.min.css" />
+  <link rel="stylesheet" href="/v2.0.0/insites.min.css" />
+
+  <script type="module" src="/v2.0.0/insites.esm.js"></script>
+  <script nomodule src="/v2.0.0/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+</head>
+<body>
+  <!-- Insites Drawer Component -->
+  <div>
+    <h2 class="section-title">Insites Drawer Tag <code>&lt;ins-drawer&gt;</code></h2>
+    <p>Creates a side drawer element. </p>
+  </div>
+
+  <!-- content -->
+  <div>
+    <h2 class="section-title">Complete Example</h2>
+    <p><strong>NOTE:</strong> If you are using iframes, your 'ins-drawer' should be placed outside of the 'iframe'. Use <code>parent.</code> to select your element.</p>
+    <ins-styleguide>
+      <div class="has-css" slot="actual">
+        <ins-button label="Open Inner" solid color="blue" id="openDrawerEl"></ins-button>
+        <ins-button label="Open Outer" solid color="blue" id="openOuterDrawerEl"></ins-button>
+        <ins-drawer label="Inner Drawer" custom-width="550px" position="left" icon="icon-star" id="drawerEl">
+          <h4>Hello World</h4>
+          <p>You can add any HTML element here. Use <code>custom-width</code> attribute to set your custom width.</p>
+            <ins-input label="Name"></ins-input>
+            <ins-input label="Email"></ins-input>
+          <div style="text-align: right;">
+            <ins-button solid color="blue" label="Save"></ins-button>
+          </div>
+        </ins-drawer>
+        <script>
+          // this button opens the <ins-drawer> inside of the iframe
+          document.getElementById('openDrawerEl').addEventListener('insClick', function() {
+            document.getElementById('drawerEl').setDrawerState(true);
+          });
+          // this button opens the <ins-drawer> outside of the iframe
+          document.getElementById('openOuterDrawerEl').addEventListener('insClick', function () {
+            parent.document.getElementById('drawerOutsideEl').setDrawerState(true);
+          });
+        </script>
+      </div>
+      <div slot="code">
+        <script type="text/plain" class="language-markup">
+<ins-button label="Open Inner" solid color="blue" id="openDrawerEl"></ins-button>
+<ins-button label="Open Outer" solid color="blue" id="openOuterDrawerEl"></ins-button>
+
+<!-- Drawer inside iframe -->
+<ins-drawer label="Inner Drawer" custom-width="550px" position="left" icon="icon-star" id="drawerEl">
+  <h4>Hello World</h4>
+  <p>You can add any HTML element here. Use <code>custom-width</code> attribute to set your custom width.</p>
+  <ins-input label="Name"></ins-input>
+  <ins-input label="Email"></ins-input>
+  <div style="text-align: right;">
+    <ins-button solid color="blue" label="Save"></ins-button>
+  </div>
+</ins-drawer>
+
+<script>
+  // this button opens the <ins-drawer> inside of the iframe
+  document.getElementById('openDrawerEl').addEventListener('insClick', function() {
+    document.getElementById('drawerEl').setDrawerState(true);
+  });
+  // this button opens the <ins-drawer> outside of the iframe
+  document.getElementById('openOuterDrawerEl').addEventListener('insClick', function () {
+    parent.document.getElementById('drawerOutsideEl').setDrawerState(true);
+  });
+&lt;/script&gt;
+              </script>
+      </div>
+    </ins-styleguide>
+  </div>
+
+  <!-- ins-drawer attribute table -->
+  <div>
+    <h2 class="section-title">Properties</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>label</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines drawer heading text</td>
+        </tr>
+        <tr>
+          <td>icon</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines heading icon CSS class</td>
+        </tr>
+        <tr>
+          <td>is-open</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Open / Close the drawer element</td>
+        </tr>
+        <tr>
+          <td>position</td>
+          <td>string</td>
+          <td>right</td>
+          <td>left, right</td>
+          <td>Defines drawer placement</td>
+        </tr>
+        <tr>
+          <td>sticky-header</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true, false</td>
+          <td>Make heaading sticky on top of the drawer element</td>
+        </tr>
+        <tr>
+          <td>show-header</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true, false</td>
+          <td>Show / Hide drawer heaading</td>
+        </tr>
+        <tr>
+          <td>bordered</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true, false</td>
+          <td>Defines heading has border bottom </td>
+        </tr>
+        <tr>
+          <td>custom-width</td>
+          <td>string</td>
+          <td>"420px"</td>
+          <td>any</td>
+          <td>Defines custom width of drawer</td>
+        </tr>
+        <tr>
+          <td>no-padding</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Defines drawer body has padding</td>
+        </tr>
+        <tr>
+          <td>backdrop-can-close</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true, false</td>
+          <td>Click on backdrop closes the drawer</td>
+        </tr>
+        <tr>
+          <td>show-close-button</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>true, false</td>
+          <td>Show / Hide drawer close button</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ins-drawer event table -->
+  <div>
+    <h2 class="section-title">Events</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>EVENT</th>
+          <th>OBJECT</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>insToggle</td>
+          <td>status, label</td>
+          <td>Emit drawer element details on change state.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ins-drawer Methods -->
+  <div>
+    <h2 class="section-title">Methods</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FUNCTION</th>
+          <th>PARAMETERS</th>
+          <th>RETURN</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>setDrawerState</td>
+          <td>boolean</td>
+          <td>n/a</td>
+          <td>Open / Close drawer element</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Event Example -->
+<div>
+  <h2 class="section-title">Event Example</h2>
+  <ins-styleguide>
+    <div class="has-css" slot="actual">
+      <ins-button label="Open" solid color="blue" id="openEventDrawer"></ins-button>
+      <ins-drawer label="Sample" show-header="false" id="eventDrawerEl">
+        <h4>Hello World</h4>
+        <p>This drawer sample has no heading.</p>
+        <p>See console log for event data.</p>
+        <hr>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+            Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+            eum fugiat quo voluptas nulla pariatur.
+        </p>
+        <p>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
+          ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+          voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+        </p>
+        <script>
+
+        </script>
+      </ins-drawer>
+
+      <script>
+        // button event to open drawer
+        document.getElementById('openEventDrawer').addEventListener('insClick', function () {
+          document.getElementById('eventDrawerEl').setDrawerState(true);
+        });
+        // Drawer event listener
+        document.getElementById('eventDrawerEl').addEventListener('toggleDrawer', function (event) {
+          console.log("Toggle Drawer", event.detail)
+        });
+      </script>
+    </div>
+    <div slot="code">
+      <script type="text/plain" class="language-markup">
+<ins-button label="Open" solid color="blue" id="openEventDrawer"></ins-button>
+<ins-drawer label="Sample" show-header="false" id="eventDrawerEl">
+  <h4>Hello World</h4>
+  <p>This drawer sample has no heading.</p>
+  <p>See console log for event data.</p>
+  <hr>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+    Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+    eum fugiat quo voluptas nulla pariatur.
+  </p>
+  <p>
+    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
+    ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+    voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+  </p>
+</ins-drawer>
+
+<script>
+  // button event to open drawer
+  document.getElementById('openEventDrawer').addEventListener('insClick', function () {
+    document.getElementById('eventDrawerEl').setDrawerState(true);
+  });
+  // Drawer event listener
+  document.getElementById('eventDrawerEl').addEventListener('toggleDrawer', function (event) {
+    console.log("Toggle Drawer", event.detail)
+  });
+&lt;/script&gt;
+      </script>
+    </div>
+  </ins-styleguide>
+</div>
+
+
+  <!-- Insites Notifications Component -->
+  <div>
+    <h2 class="section-title">Insites Notifications <code>&lt;ins-notifications&gt;</code></h2>
+    <p>Creates a side drawer element to show notifications. </p>
+  </div>
+
+    <!-- State -->
+    <div>
+      <h2 class="section-title">State</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>STATE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>showNotifications</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>Notifications element show state</td>
+          </tr>
+          <tr>
+            <td>insNotificationsitemsEl</td>
+            <td>array</td>
+            <td>
+              <code>ins-notifications-items</code> inside the
+              <code>ins-notifications wrapper</code>
+            </td>
+            <td>Notification items list</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div>
+        <h2 class="section-title">Insites Notifications Item <code>&lt;ins-notifications-item&gt;</code></h2>
+        <p>Defines a notification item. </p>
+    </div>
+    <!-- ins-button attribute table -->
+    <div>
+      <h2 class="section-title">Properties</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>event-type</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines event title value</td>
+          </tr>
+          <tr>
+            <td>heading</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines heading value</td>
+          </tr>
+          <tr>
+            <td>duration</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines the time displayed</td>
+          </tr>
+          <tr>
+            <td>desc</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Text content about the notification </td>
+          </tr>
+          <tr>
+            <td>icon</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines the icon class to be used</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines class / color to be used for the icon</td>
+          </tr>
+          <tr>
+            <td>link</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Link / URL</td>
+          </tr>
+          <tr>
+            <td>link-label</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines the link label to be used</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  <!-- COMPLETE EXAMPLE -->
+  <div class="ins-styleguide-wrap">
+    <div class="ins-styleguide-label-wrap">Complete Sample</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-button id="toggleButton" solid label="Open"></ins-button>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+  <ins-button id="toggleButton" label="Open"></ins-button>
+
+  <ins-notifications id="sample-notification">
+    <ins-notifications-item event-type="Task Completed" heading="Heading" duration="5 mins ago" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      link="/" link-label="View Task" icon="icon-check" status="green">
+    </ins-notifications-item>
+  </ins-notifications>
+  <script>
+    var insNotificationsEl = document.getElementById('sample-notification');
+    var toggleButton = document.getElementById('toggleButton');
+    toggleButton.addEventListener('click', function () {
+      insNotificationsEl.toggleNotificationshandler();
+    });
+  &lt;/script&gt;
+              </script>
+        </div>
+    </div>
+  </div>
+
+
+
+  <!-- Complete Example Notifications -->
+  <ins-notifications id="sample-notification">
+    <ins-notifications-item event-type="Task Completed" heading="Heading" duration="5 mins ago" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      link="/" link-label="View Task" icon="icon-check" status="green">
+    </ins-notifications-item>
+    <script>
+      var insNotificationsEl = document.getElementById('sample-notification');
+      var toggleButton = document.getElementById('toggleButton');
+      toggleButton.addEventListener('click', function () {
+        insNotificationsEl.toggleNotificationshandler();
+      });
+    </script>
+  </ins-notifications>
+
+
+</body>
+
+</html>

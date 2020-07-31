@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Buttons</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+
+  <script type="module" src="/build/insites-components.esm.js"></script>
+  <script nomodule src="/build/insites-components.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+
+  <style>
+    .multiple-button ins-button:first-of-type {
+      padding-left: 0;
+    }
+    .multiple-button ins-button:last-of-type {
+      padding-right: 0;
+    }
+    .multiple-button ins-button {
+      padding: 0 5px;
+    }
+    .button-container {
+      width: 171px;
+    }
+    .button-container ins-button button {
+      margin: 0 auto;
+      position: relative;
+      display: block;
+      width: 171px;
+      transition: all 0.3s ease-in-out;
+    }
+    .button-container ins-button button::after {
+      transition: all 0.1s ease-in-out;
+    }
+    .button-container ins-button button.is-loading {
+      width: 56px;
+      -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+    .button-container ins-button button.is-loading .spinner {
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ins-button header -->
+  <div>
+    <h2 class="section-title">Insites Button <code>&lt;ins-button&gt;</code></h2>
+    <p>Defines a clickable button.</p>
+  </div>
+  <!-- ins-button Complete Example -->
+  <div>
+      <h2 class="section-title">Complete Example</h2>
+      <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-button label="NORMAL" icon="icon-email-1" solid color="blue"
+                size="normal"></ins-button>
+            </div>
+
+            <div class="ins-styleguide-code-slot-wrap">
+              <!-- <div class="ins-styleguide-label-wrap">HTML</div> -->
+              <script type="text/plain" class="language-markup">
+<ins-button label="NORMAL" icon="icon-email-1" solid color="blue" size="normal"></ins-button>
+              </script>
+            </div>
+        </div>
+
+        <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+
+      </div>
+  </div>
+
+  <!-- ins-button attribute table -->
+  <div>
+    <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>color</td>
+            <td>string</td>
+            <td>blue</td>
+            <td>blue / green / positive / warning</td>
+            <td>Defines color of button</td>
+          </tr>
+          <tr>
+            <td>label</td>
+            <td>string</td>
+            <td>BUTTON</td>
+            <td>any</td>
+            <td>Defines label of button</td>
+          </tr>
+          <tr>
+              <td>icon</td>
+              <td>string</td>
+              <td>""</td>
+              <td>icon-close-1, icon-lock-1, icon-logout-1 ...</td>
+              <td>Defines icon of button</td>
+          </tr>
+          <tr>
+              <td>size</td>
+              <td>string</td>
+              <td>normal</td>
+              <td>normal, small, large</td>
+              <td>Defines size of button</td>
+          </tr>
+          <tr>
+              <td>data</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines data of button</td>
+          </tr>
+          <tr>
+              <td>type</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Defines type of button</td>
+          </tr>
+          <tr>
+              <td>options</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any value separated by comma</td>
+              <td>Defines dropdown options of button</td>
+          </tr>
+          <tr>
+            <td>dropdown</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true,false</td>
+            <td>Makes the whole button show options on click</td>
+          </tr>
+          <tr>
+              <td>solid</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Enables button to have solid display color</td>
+          </tr>
+          <tr>
+              <td>disabled</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Disables button</td>
+          </tr>
+          <tr>
+              <td>cursor</td>
+              <td>string</td>
+              <td>""</td>
+              <td>text, default</td>
+              <td>Defines appearance of cursor</td>
+          </tr>
+          <tr>
+              <td>text-transform</td>
+              <td>string</td>
+              <td>""</td>
+              <td>uppercase, lowercase, none</td>
+              <td>Defines appearance of label</td>
+          </tr>
+          <tr>
+            <td>loading</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true, false</td>
+            <td>Enables loading state of button</td>
+          </tr>
+        </table>
+  </div>
+  </div>
+
+  <!-- ins-button event table -->
+  <div>
+    <div class="table-style">
+        <table>
+          <tr>
+            <th>EVENT</th>
+            <th>OBJECT</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>insClick</td>
+            <td>label, data</td>
+            <td>Execute a script when button is clicked</td>
+          </tr>
+          <tr>
+            <td>insClickOption</td>
+            <td>label</td>
+            <td>Execute a script when button option is clicked</td>
+          </tr>
+        </table>
+    </div>
+  </div>
+
+  <!-- ins-button States -->
+  <div>
+    <h2 class="section-title">States</h2>
+    <!-- Default State -->
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Default State</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-button></ins-button>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-button></ins-button>
+          </script>
+        </div>
+      </div>
+      <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/1/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+      </div>
+    </div>
+
+    <!-- Direct Set Data -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">
+          Direct Set Data
+        </div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button id="dsv"></ins-button>
+            <script>
+              var dsv = document.getElementById('dsv')
+              dsv.addEventListener('didLoad', function () {
+                dsv.label = 'Direct Set Data';
+                dsv.solid = true;
+              });
+            </script>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button id="dsv"></ins-button>
+<script>
+  var dsv = document.getElementById('dsv')
+  dsv.addEventListener('didLoad', function(e){
+    dsv.label = 'Direct Set Data';
+    dsv.solid = true;
+  });
+&lt;/script&gt;
+            </script>
+          </div>
+        </div>
+
+        <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/204/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Static Data Source -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Static Data Source</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button label="Open" solid color="positive" size="normal"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="Open" solid color="positive" size="normal"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/3/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Disabled State -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Disabled State</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button disabled solid color="negative" label="Delete"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button disabled solid color="negative" label="Delete"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/4/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Label Attribute -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Label Attribute</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button label="Label Change"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="Label Change"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/5/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Color Attribute -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Color Attribute</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button color="positive"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button color="positive"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/6/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Size Attribute -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Size Attribute</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button size="large"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button size="large"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/7/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ins-button types -->
+  <div>
+    <h2 class="section-title">Types</h2>
+    <!-- Default -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Default</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button label="TEXT" color="blue" size="normal"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="TEXT" color="blue" size="normal"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/8/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Normal -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Normal</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button label="NORMAL" solid color="blue" size="normal"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="NORMAL" solid color="blue" size="normal"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/9/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Outlined -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Outlined</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button label="OUTLINED" color="blue" outlined size="normal"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="OUTLINED" color="blue" outlined size="normal"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/10/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Default with Icon -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Default with Icon</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button label="TEXT" icon="icon-email-1" color="blue" size="normal"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="TEXT" icon="icon-email-1" color="blue" size="normal"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/11/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Normal with Icon -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Normal with Icon</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button label="NORMAL" icon="icon-email-1" solid color="blue"
+              size="normal"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="NORMAL" icon="icon-email-1" solid color="blue" size="normal"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/12/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Outlined with Icon -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Outlined with Icon</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button label="OUTLINED" icon="icon-email-1" color="blue"
+              outlined size="normal"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="OUTLINED" icon="icon-email-1" color="blue" outlined size="normal"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/13/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Button -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Action Button</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button icon="icon-delete" color="grey" solid size="normal" label=""></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button icon="icon-delete" color="grey" size="normal" label=""></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/14/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Options Button -->
+    <div>
+      <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Options Button</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+                <ins-button label="NORMAL" icon="icon-email-1" solid color="blue"
+                  size="normal" options="Option 2, Option 3"></ins-button>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-button label="NORMAL" icon="icon-email-1" solid color="blue" size="normal" options="Option 2, Option 3"></ins-button>
+              </script>
+            </div>
+          </div>
+          <div class="ins-styleguide-actual-slot-wrap">
+            <!-- <a href='https://jsfiddle.net/insites/nzas10yk/15/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+          </div>
+      </div>
+    </div>
+
+    <!-- Options-Dropdown Button -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Options-Dropdown Button</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button label="NORMAL" icon="icon-email-1" solid color="blue" size="normal"
+              options="Option 2, Option 3" dropdown></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="NORMAL" icon="icon-email-1" solid color="blue" size="normal" options="Option 2, Option 3" dropdown></ins-button>
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ins-button sizes -->
+  <div>
+    <h2 class="section-title">Sizes</h2>
+    <!-- SMALL -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Small</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button label="SMALL" solid color="blue" size="small"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="SMALL" solid color="blue" size="small"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/16/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- LARGE -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Large</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button label="LARGE" solid color="blue" size="large"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="LARGE" solid color="blue" size="large"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/17/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ins-button colors -->
+  <div>
+    <h2 class="section-title">Colours</h2>
+    <!-- PRIMARY -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Primary</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap" class="multiple-button">
+            <ins-button label="TEXT" color="primary" size="normal"></ins-button>
+            <ins-button label="NORMAL" solid color="primary" size="normal"></ins-button>
+            <ins-button label="OUTLINED" color="primary" outlined size="normal"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="TEXT" color="primary" size="normal"></ins-button>
+<ins-button label="NORMAL" solid color="primary" size="normal"></ins-button>
+<ins-button label="OUTLINED" color="primary" outlined size="normal"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/18/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- POSITIVE -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Positive</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap" class="multiple-button">
+            <ins-button label="TEXT" color="positive" size="normal"></ins-button>
+            <ins-button label="NORMAL" solid color="positive" size="normal"></ins-button>
+            <ins-button label="OUTLINED" color="positive" outlined size="normal"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="TEXT" color="positive" size="normal"></ins-button>
+<ins-button label="NORMAL" solid color="positive" size="normal"></ins-button>
+<ins-button label="OUTLINED" color="positive" outlined size="normal"></ins-button>
+              </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/19/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- SECONDARY -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Secondary</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap" class="multiple-button">
+            <ins-button label="TEXT" color="secondary" size="normal"></ins-button>
+            <ins-button label="NORMAL" solid color="secondary" size="normal"></ins-button>
+            <ins-button label="OUTLINED" color="secondary" outlined size="normal"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="TEXT" color="secondary" size="normal"></ins-button>
+<ins-button label="NORMAL" solid color="secondary" size="normal"></ins-button>
+<ins-button label="OUTLINED" color="secondary" outlined size="normal"></ins-button>
+              </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/20/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Negative -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Negative</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap" class="multiple-button">
+            <ins-button label="TEXT" color="negative" size="normal"></ins-button>
+            <ins-button label="NORMAL" solid color="negative" size="normal"></ins-button>
+            <ins-button label="OUTLINED" color="negative" outlined size="normal"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="TEXT" color="negative" size="normal"></ins-button>
+<ins-button label="NORMAL" solid color="negative" size="normal"></ins-button>
+<ins-button label="OUTLINED" color="negative" outlined size="normal"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/21/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Warning -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Warning</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap" class="multiple-button">
+            <ins-button label="TEXT" color="warning" size="normal"></ins-button>
+            <ins-button label="NORMAL" solid color="warning" size="normal"></ins-button>
+            <ins-button label="OUTLINED" color="warning" outlined size="normal"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="TEXT" color="warning" size="normal"></ins-button>
+<ins-button label="NORMAL" solid color="warning" size="normal"></ins-button>
+<ins-button label="OUTLINED" color="warning" outlined size="normal"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/22/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Information 1 -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Information 1</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap" class="multiple-button">
+            <ins-button label="TEXT" color="information-1" size="normal"></ins-button>
+            <ins-button label="NORMAL" solid color="information-1" size="normal"></ins-button>
+            <ins-button label="OUTLINED" color="information-1" outlined size="normal"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="TEXT" color="information-1" size="normal"></ins-button>
+<ins-button label="NORMAL" solid color="information-1" size="normal"></ins-button>
+<ins-button label="OUTLINED" color="information-1" outlined size="normal"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/23/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Information 2 -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Information 2</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap" class="multiple-button">
+            <ins-button label="TEXT" color="information-2" size="normal"></ins-button>
+            <ins-button label="NORMAL" solid color="information-2" size="normal"></ins-button>
+            <ins-button label="OUTLINED" color="information-2" outlined size="normal"></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="TEXT" color="information-2" size="normal"></ins-button>
+<ins-button label="NORMAL" solid color="information-2" size="normal"></ins-button>
+<ins-button label="OUTLINED" color="information-2" outlined size="normal"></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/24/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ins-button LOADING STATE -->
+  <div>
+    <h2 class="section-title">Loading State</h2>
+    <!-- Default Button -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Default Button</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap" class="multiple-button">
+            <ins-button label="OUTLINED" color="blue" solid size="normal" loading></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="OUTLINED" color="blue" solid size="normal" loading></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/25/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Small Button -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Small Button</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap" class="multiple-button">
+            <ins-button label="OUTLINED" color="blue" solid size="small" loading></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="OUTLINED" color="blue" solid size="small" loading></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/26/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Large Button -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Large Button</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap" class="multiple-button">
+            <ins-button label="OUTLINED" color="blue" solid size="large" loading></ins-button>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button label="OUTLINED" color="blue" solid size="large" loading></ins-button>
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/46/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Button with Loading State -->
+    <div>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Button with Loading State</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap" class="multiple-button">
+            <div class="button-container">
+              <ins-button id="submitButton" label="Loading button" color="blue"
+                solid></ins-button>
+            </div>
+            <script>
+              var submitButtonEl = document.getElementById('submitButton');
+              submitButtonEl.addEventListener('insClick', function(e){
+                submitButtonEl.loading = true;
+                setTimeout(() => {
+                  submitButtonEl.loading = false;
+                }, 2000);
+              });
+            </script>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button id="submitButton" label="Loading button" color="blue" solid></ins-button>
+
+<script>
+  var submitButtonEl = document.getElementById('submitButton');
+  submitButtonEl.addEventListener('insClick', function(e){
+    submitButtonEl.loading = true;
+    setTimeout(() => {
+      submitButtonEl.loading = false;
+    }, 2000);
+  });
+&lt;/script&gt;
+            </script>
+          </div>
+        </div>
+        <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/27/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ins-button events -->
+  <div>
+    <h2 class="section-title">Events</h2>
+    <!-- onClickInsButton -->
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">onClickInsButton</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-button id="onClickInsButton" data="demo-data"></ins-button>
+          <script>
+            const onClickInsButton = document.getElementById('onClickInsButton')
+            onClickInsButton.addEventListener('insClick', event => {
+              console.log(event.detail.label);
+              console.log(event.detail.data);
+              alert('Hello! I am an alert box!!');
+            });
+          </script>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-button id="onClickInsButton" data="demo-data"></ins-button>
+<script>
+  const onClickInsButton = document.getElementById('onClickInsButton')
+  onClickInsButton.addEventListener('insClick', event => {
+    console.log(event.detail.label);
+    console.log(event.detail.data);
+    alert('Hello! I am an alert box!!');
+  });
+&lt;/script&gt;
+          </script>
+        </div>
+      </div>
+      <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/135/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+      </div>
+    </div>
+    <!-- onClickInsButtonOption -->
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">onClickInsButtonOption</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-button id="onClickInsButtonOption" label="NORMAL" solid options="Option 2, Option 3">    </ins-button>
+          <script>
+            var button = document.getElementById('onClickInsButtonOption');
+              // Event handler to check button 'options' click
+              button.addEventListener('insClickOption', function (event) {
+                console.log(event.detail.label);
+                alert(event.detail.option);
+              });
+              // Event handler for 'main button' click
+              button.addEventListener('insClick', function (event) {
+                console.log(event.detail.label);
+                alert('Main Button Label ' + event.detail.label);
+              });
+        </script>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-button id="onClickInsButtonOption" label="NORMAL" solid options="Option 2,Option 3">    </ins-button>
+<script>
+  var button = document.getElementById('onClickInsButtonOption');
+  // Event handler to check button 'options' click
+      button.addEventListener('insClickOption', function(event) {
+        console.log(event.detail.label);
+        alert(event.detail.option);
+      });
+  // Event handler for 'main button' click
+    button.addEventListener('insClick', function(event) {
+      console.log(event.detail.label);
+      alert('Main Button Label ' + event.detail.label);
+    });
+&lt;/script&gt;
+          </script>
+        </div>
+      </div>
+      <div class="ins-styleguide-actual-slot-wrap">
+          <!-- <a href='https://jsfiddle.net/insites/nzas10yk/169/' target="_blank" class="style-btn style-margin-bottom">Try it yourself</a> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- INS Button Group -->
+  <!-- ins-button header -->
+  <div>
+    <h2 class="section-title">Insites Button Group <code>&lt;ins-button-group&gt;</code></h2>
+    <p>Defines a group of inline buttons.</p>
+
+    <h2 class="section-title">Complete Example</h2>
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-button-group options="Label 1, Label 2, Label 3" color="blue" small active-option="Label 1"></ins-button-group>
+        </div>
+
+        <div class="ins-styleguide-code-slot-wrap">
+          <!-- <div class="ins-styleguide-label-wrap">HTML</div> -->
+          <script type="text/plain" class="language-markup">
+<ins-button-group options="Label 1, Label 2, Label 3" color="blue" small active-option="Label 1"></ins-button-group>
+          </script>
+        </div>
+      </div>
+    </div>
+
+    <!-- ins-button-group attribute table -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>options</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any (comma separated)</td>
+            <td>Defines labels for each button</td>
+          </tr>
+          <tr>
+            <td>active-option</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines which button is active by the value matching the label.</td>
+          </tr>
+          <tr>
+            <td>active-index</td>
+            <td>int</td>
+            <td>0</td>
+            <td>any</td>
+            <td>Defines which button is active by index</td>
+          </tr>
+          <tr>
+            <td>color</td>
+            <td>string</td>
+            <td>blue</td>
+            <td>blue, grey</td>
+            <td>Defines CSS class used for the button color</td>
+          </tr>
+          <tr>
+            <td>size</td>
+            <td>string</td>
+            <td>normal</td>
+            <td>normal, small</td>
+            <td>Defines button size</td>
+          </tr>
+          <tr>
+            <td>disabled</td>
+            <td>boolen</td>
+            <td>false</td>
+            <td>true,false</td>
+            <td>Disable the buttons</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ins-button-group event table -->
+    <div>
+      <h2 class="section-title">Events</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>EVENT</th>
+            <th>OBJECT</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>insClick</td>
+            <td>action, label, index</td>
+            <td>Emit button details when button is clicked</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Methods -->
+    <div>
+      <h2 class="section-title">Methods</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FUNCTION</th>
+            <th>PARAMETERS</th>
+            <th>RETURN</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>getActiveOption</td>
+            <td>n/a</td>
+            <td>index, label</td>
+            <td>Return active button details</td>
+          </tr>
+          <tr>
+            <td>setActiveOption</td>
+            <td>string</td>
+            <td>n/a</td>
+            <td>Set button matching label to active</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="section-title">Disabled State</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button-group options="Label 1, Label 2, Label 3" color="blue" disabled></ins-button-group>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+  <ins-button-group options="Label 1, Label 2, Label 3" color="blue" disabled></ins-button-group>
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button Group - Colors & Size -->
+    <div>
+      <h2 class="section-title">Colours & Size </h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Defult / Blue</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button-group options="Label 1, Label 2, Label 3" color="blue"></ins-button-group>
+            <ins-button-group options="Label 1, Label 2, Label 3" color="blue" size="small"></ins-button-group>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button-group options="Label 1, Label 2, Label 3" color="blue"></ins-button-group>
+<ins-button-group options="Label 1, Label 2, Label 3" color="blue" size="small"></ins-button-group>
+            </script>
+          </div>
+        </div>
+      </div>
+
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Grey</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button-group options="Label 1, Label 2, Label 3" color="grey"></ins-button-group>
+            <ins-button-group options="Label 1, Label 2, Label 3" color="grey" size="small"></ins-button-group>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button-group options="Label 1, Label 2, Label 3" color="blue"></ins-button-group>
+<ins-button-group options="Label 1, Label 2, Label 3" color="grey" size="small"></ins-button-group>
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button Group - Events -->
+    <div>
+      <h2 class="section-title">Event</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-button-group options="Label 1, Label 2, Label 3" color="blue" id="methodEl"></ins-button-group>
+
+            <script>
+              document.getElementById('methodEl').addEventListener('onButtonAction', function(event) {
+                alert("Button group clicked, see console log for data.")
+                console.log('Event', event.detail);
+              });
+            </script>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button-group options="Label 1, Label 2, Label 3" color="blue" id="methodEl"></ins-button-group>
+
+<script>
+  document.getElementById('methodEl').addEventListener('onButtonAction', function(event) {
+    alert("Button group clicked, see console log for data.")
+    console.log('Event', event.detail);
+  });
+&lt;/script&gt;
+                </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <h2 class="section-title">Methods</h2>
+      <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-button-group options="Label 1, Label 2" color="blue" id="directValueEl"></ins-button-group>
+          <ins-select id="triggerMethodEl" label="Change Active Button" value="Label 1">
+            <ins-select-option label="Label 1" value="Label 1"></ins-select-option>
+            <ins-select-option label="Label 2" value="Label 2"></ins-select-option>
+          </ins-select>
+          <script>
+            document.getElementById('triggerMethodEl').addEventListener('valueChange', function(event) {
+              // set button group 'active' button
+              document.getElementById('directValueEl').setActiveOption(event.detail);
+              // console log the 'active' button details
+              console.log("Changed active button", document.getElementById('methodEl').getActiveOption());
+            });
+          </script>
+        </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-button-group options="Label 1, Label 2" color="blue" id="directValueEl"></ins-button-group>
+<ins-select id="triggerMethodEl" label="Change Active Button" value="Label 1">
+  <ins-select-option label="Label 1" value="Label 1"></ins-select-option>
+  <ins-select-option label="Label 2" value="Label 2"></ins-select-option>
+</ins-select>
+<script>
+  document.getElementById('triggerMethodEl').addEventListener('valueChange', function(event) {
+    // set button group 'active' button
+    document.getElementById('directValueEl').setActiveOption(event.detail);
+    // console log the 'active' button details
+    console.log("Changed active button", document.getElementById('methodEl').getActiveOption());
+  });
+&lt;/script&gt;
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>

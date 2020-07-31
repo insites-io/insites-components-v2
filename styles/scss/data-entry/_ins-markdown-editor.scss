@@ -107,10 +107,15 @@ ins-markdown-editor {
       border-left: none;
     }
     &.is-invalid {
+
       .editor-toolbar:not(.fullscreen) {
-        border: $border_thickness $border_style $negative;
+        border:
+          var(--ins-border-style)
+          var(--ins-border-thickness)
+          var(--ins-color-negative);
         border-bottom: none;
       }
+
       .CodeMirror-wrap:not(.CodeMirror-fullscreen) {
         border-top: none;
         border:

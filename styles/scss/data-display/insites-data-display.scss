@@ -2,23 +2,8 @@
 @import "../colors";
 @import "../spacing";
 
-$negative_bg: #FEF8F8;
-$border_color: $ink10;
-$border_thickness: 1px;
-$border_style: solid;
-$border_radius: 4px;
 $input_field_font_size: 14px;
 $input_field_font_weight: 400;
-
-.ins-form-label {
-  font-family: var(--ins-font-family);
-  font-size: 12px;
-  font-weight: 600;
-  color: $ink;
-  margin-bottom: 3px;
-  display: block;
-  line-height: 1.4;
-}
 
 @import "./ins-card";
 @import "./ins-filter";
@@ -34,10 +19,10 @@ $input_field_font_weight: 400;
 @import "./ins-info-table";
 @import "./ins-sort";
 @import "./ins-markdown";
-
+@import "./ins-notifications";
+@import "./ins-notifications-item";
 
 @import "./ins-bar-chart";
 @import "./ins-line-chart";
 @import "./ins-pie-chart";
 @import "./ins-sparkline";
-

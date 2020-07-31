@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Image Picker</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+
+  <script type="module" src="/build/insites-components.esm.js"></script>
+  <script nomodule src="/build/insites-components.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+</head>
+<body>
+  <!-- ins-image Picker -->
+  <div>
+    <h2 class="section-title">Insites Image Picker
+      <code>&lt;ins-image-picker&gt;</code>
+    </h2>
+    <p>Defines an image input field and preview. Field supports `image/jpeg` and `image/png` type files.</p>
+  <div>
+
+  <!-- content -->
+  <div>
+    <h2 class="section-title">Complete Example</h2>
+    <ins-styleguide>
+      <div slot="actual">
+        <ins-image-picker
+          img-type="Image"
+          button-color="green"
+          placeholder="Drag image here"
+          upload-img-container="rectangle"
+          upload-img-rec-width=100
+          upload-img-rec-height=100
+          upload-img-rec-file-size=30>
+      </ins-image-picker>
+      </div>
+      <div slot="code">
+        <script type="text/plain" class="language-markup">
+<ins-image-picker
+    img-type="Image"
+    button-color="green"
+    placeholder="Drag image here"
+    upload-img-container="rectangle"
+    upload-img-rec-width=100
+    upload-img-rec-height=100
+    upload-img-rec-file-size=30>
+</ins-image-picker>
+        </script>
+      </div>
+    </ins-styleguide>
+  </div>
+
+  <!-- Attributes -->
+  <div>
+    <h2 class="section-title">Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>img-type</td>
+          <td>string</td>
+          <td>"picture"</td>
+          <td>any</td>
+          <td>Defines the button label text as "Add/Change" + img-type value</td>
+        </tr>
+        <tr>
+          <td>button-color</td>
+          <td>string</td>
+          <td>"blue"</td>
+          <td>any</td>
+          <td>Defines outline color of button</td>
+        </tr>
+        <tr>
+          <td>placeholder</td>
+          <td>string</td>
+          <td>"Drag and drop the file or add an image"</td>
+          <td>any</td>
+          <td>Defines the field placeholder</td>
+        </tr>
+        <tr>
+          <td>not-image-file</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Attribute to display error on the modal input field if file being attached is not an image</td>
+        </tr>
+        <tr>
+          <td>upload-img-container</td>
+          <td>string</td>
+          <td>""</td>
+          <td>square, rectangle</td>
+          <td>Make the image picker to be rectangular</td>
+        </tr>
+        <tr>
+          <td>upload-img-rec-width</td>
+          <td>number</td>
+          <td>120</td>
+          <td>integer</td>
+          <td>Define the text for recommended image width in px</td>
+        </tr>
+        <tr>
+          <td>upload-img-rec-height</td>
+          <td>number</td>
+          <td>120</td>
+          <td>integer</td>
+          <td>Define the text for recommended image height in px</td>
+        </tr>
+        <tr>
+          <td>upload-img-rec-file-size</td>
+          <td>number</td>
+          <td>25</td>
+          <td>integer</td>
+          <td>Define the text for recommended file size in kb</td>
+        </tr>
+        <tr>
+          <td>value</td>
+          <td>any</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines the field image value</td>
+        </tr>
+        <tr>
+          <td>file-name</td>
+          <td>any</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines the file name value</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Event -->
+  <div>
+    <h2 class="section-title">Events</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>EVENT</th>
+          <th>OBJECT</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>insValueChange</td>
+          <td>base64, filename</td>
+          <td>Emits image base64 and filename on field value change</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Default State -->
+  <div>
+    <h2 class="section-title">Default State</h2>
+    <ins-styleguide>
+      <div slot="actual">
+        <ins-image-picker></ins-image-picker>
+      </div>
+      <div slot="code">
+        <script type="text/plain" class="language-markup">
+<ins-image-picker></ins-image-picker>
+            </script>
+      </div>
+    </ins-styleguide>
+  </div>
+
+  <!-- Direct Set Value -->
+    <div>
+      <h2 class="section-title">Direct Value Set</h2>
+      <ins-styleguide>
+        <div slot="actual">
+          <ins-image-picker id="directSetImage"></ins-image-picker>
+          <script>
+            var image = 'https://s3-us-west-2.amazonaws.com/ins-styleguide/assets/images/logo-3%402x.png';
+            var fileName = 'Sample Logo';
+            var imageField = document.getElementById('directSetImage');
+            imageField.addEventListener('didLoad', function(e){
+              imageField.imgType = "Icon";
+              imageField.buttonColor = "green";
+              imageField.uploadImgContainer = "square";
+              imageField.value = image;
+              imageField.fileName = fileName;
+            });
+          </script>
+        </div>
+        <div slot="code">
+          <script type="text/plain" class="language-markup">
+<ins-image-picker id="directSetImage"></ins-image-picker>
+<script>
+  var image = 'https://s3-us-west-2.amazonaws.com/ins-styleguide/assets/images/logo-3%402x.png';
+  var fileName = 'Sample Logo';
+  var imageField = document.getElementById('directSetImage');
+  imageField.addEventListener('didLoad', function(e){
+    imageField.imgType = "Icon";
+    imageField.buttonColor = "green";
+    imageField.uploadImgContainer = "square";
+    imageField.value = image;
+    imageField.fileName = fileName;
+  });
+&lt;/script&gt;
+          </script>
+        </div>
+      </ins-styleguide>
+    </div>
+
+    <!-- Event -->
+    <div>
+      <h2 class="section-title">Events</h2>
+      <ins-styleguide>
+        <div slot="actual">
+          <ins-image-picker id="eventImageField"></ins-image-picker>
+          <script>
+            let field = document.getElementById('eventImageField');
+                field.addEventListener('valueChange', event => {
+                  console.log("filename", event.detail.filename);
+                  console.log("base64", event.detail.base64);
+                  alert("check console logs for file data");
+                });
+          </script>
+        </div>
+
+        <div slot="code">
+          <script type="text/plain" class="language-markup">
+<ins-image-picker id="eventImageField"></ins-image-picker>
+<script>
+  let field = document.getElementById('eventImageField');
+      field.addEventListener('valueChange', event => {
+        console.log("filename", event.detail.filename);
+        console.log("base64", event.detail.base64);
+        alert("check console logs for file data");
+      });
+&lt;/script&gt;
+          </script>
+        </div>
+      </ins-styleguide>
+    </div>
+</body>
+</html>

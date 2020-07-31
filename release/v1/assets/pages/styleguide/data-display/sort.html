@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide - Buttons</title>
+  <script src="/v1/build/insites.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-admin-font.css" />
+  <link rel="stylesheet" href="/v1/assets/vendor/css/font-face.css">
+  <link rel="stylesheet" href="/v1/assets/vendor/css/jquery-ui.css">
+  <link rel="stylesheet" href="/v1/assets/vendor/css/cropper.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/intlTelInput.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/style.css">
+  <link rel="stylesheet" href="/v1/assets/css/admin.css">
+  <link rel="stylesheet" href="/v1/assets/css/prism.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+
+  <script src="/v1/assets/vendor/js/cropper.js"></script>
+  <script src="/v1/assets/vendor/js/jquery-1.12.4.min.js"></script>
+  <script src="/v1/assets/vendor/js/jquery-ui.js"></script>
+  <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+  <script src="/v1/assets/vendor/js/highcharts.js"></script>
+  <script src="/v1/assets/vendor/js/jquery.timepicker.js"></script>
+  <script src="/v1/assets/intl-tel-scripts/utils.js"></script>
+  <script src="/v1/assets/intl-tel-scripts/intlTelInput.min.js"></script>
+  <script src="/v1/assets/js/prism.js"></script>
+  <style>
+    .padding-1 {
+      padding: 1em 0;
+    }
+    .padding-tb-1 {
+      padding: 1em 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ins-sort -->
+  <div>
+    <!-- ins-sort header -->
+    <div>
+      <h2 class="section-title">Insites Sortable</h2>
+      <p>Creates reorderable drag-and-drop lists</p>
+    </div>
+    <!-- ins-sort Complete Example -->
+    <div>
+        <h2 class="section-title">Complete Example</h2>
+        <div class="ins-styleguide-wrap">
+            <div class="padding-1">
+                <style>
+                  .sourcebox-wrapper{
+                    display: flex;
+                    justify-content: space-around;
+                    padding: 10px;
+                  }
+                  .sourcebox-wrapper > * {
+                    flex: 0 0 auto !important;
+                  }
+                </style>
+                <ins-card no-padding steady>
+                  <ins-sort wrapper-class="sourcebox-wrapper" id="source-box" sort-group="insites-group-complete-example" droppable="false" sort="false">
+                      <ins-button icon="icon-drag-indicator" solid color="blue" label="Draggable #1"></ins-button>
+                      <ins-button icon="icon-drag-indicator" solid color="green" label="Draggable #2"></ins-button>
+                      <ins-button icon="icon-drag-indicator" solid color="red" label="Draggable #3"></ins-button>
+                  </ins-sort>
+                </ins-card>
+                <ins-card steady>
+                  <ins-sort id="destination-box" sort-group="insites-group-complete-example" droppable="true" draggable="false" ignore-elements="ins-input[disabled]">
+                    <ins-input data-sortable-id="1" label="Sortable Input" icon="icon-more-vertical"></ins-input>
+                    <ins-input data-sortable-id="2" value="This is not selectable item" disabled></ins-input>
+                    <ins-datepicker data-sortable-id="3" label="Sortable Date Picker" icon="icon-more-vertical"></ins-datepicker>
+                  </ins-sort>
+                </ins-card>
+                <script>
+                  var sourceBox = document.getElementById("source-box")
+                  sourceBox.addEventListener('onRemove', function(e){
+                    alert("Item Transferred")
+                  });
+
+                  var destinationBox = document.getElementById("destination-box")
+                  destinationBox.addEventListener('didLoad', function(){
+                    destinationBox.load(["2", "1", "3"])
+                  });
+                </script>
+            </div>
+
+            <div class="padding-1">
+              <script type="text/plain" class="language-markup">
+<ins-card no-padding steady>
+  <ins-sort wrapper-class="sourcebox-wrapper" id="source-box" sort-group="insites-group-complete-example" droppable="false" sort="false">
+    <ins-button icon="icon-drag-indicator" solid color="blue" label="Draggable #1"></ins-button>
+    <ins-button icon="icon-drag-indicator" solid color="green" label="Draggable #2"></ins-button>
+    <ins-button icon="icon-drag-indicator" solid color="red" label="Draggable #3"></ins-button>
+  </ins-sort>
+</ins-card>
+<ins-card steady>
+  <ins-sort id="destination-box" sort-group="insites-group-complete-example" droppable="true" draggable="false" ignore-elements="ins-input[disabled]">
+    <ins-input data-sortable-id="1" label="Sortable Input" icon="icon-more-vertical"></ins-input>
+    <ins-input data-sortable-id="2" value="This is not selectable item" disabled></ins-input>
+    <ins-datepicker data-sortable-id="3" label="Sortable Date Picker" icon="icon-more-vertical"></ins-datepicker>
+  </ins-sort>
+</ins-card>
+              </script>
+            </div>
+
+            <div class="padding-1">
+              <script type="text/plain" class="language-markup">
+<script>
+  var sourceBox = document.getElementById("source-box")
+  sourceBox.addEventListener('onRemove', function (e) {
+    alert("Item Transferred")
+  });
+
+  var destinationBox = document.getElementById("destination-box")
+  destinationBox.addEventListener('didLoad', function(){
+    destinationBox.load(["2", "1", "3"])
+  });
+&lt;/script&gt;
+              </script>
+            <div class="padding-1">
+              <script type="text/plain" class="language-markup">
+<style>
+  .sourcebox-wrapper{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+  }
+  .sourcebox-wrapper > * {
+    flex: 0 0 auto !important;
+  }
+</style>
+              </script>
+            </div>
+        </div>
+    </div>
+
+    <!-- ins-sort attribute table -->
+    <div>
+      <h2 class="section-title">Attributes</h2>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FIELD ATTRIBUTE</th>
+            <th>TYPE</th>
+            <th>DEFAULT</th>
+            <th>OPTIONS</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>cloneOnDrag</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true/false</td>
+            <td>Specifies that the dragged element will be copied to other sort group. Note: Only supports native HTML tags.</td>
+          </tr>
+          <tr>
+            <td>disabled</td>
+            <td>boolean</td>
+            <td>false</td>
+            <td>true/false</td>
+            <td>Disables the sorting</td>
+          </tr>
+          <tr>
+            <td>draggable</td>
+            <td>boolean/string</td>
+            <td>true</td>
+            <td>true/false/any</td>
+            <td>Defines if the child elements can be dragged/transfer into another sort group. Passing string will specify the sort group it can be transferred.</td>
+          </tr>
+          <tr>
+            <td>droppable</td>
+            <td>boolean</td>
+            <td>true</td>
+            <td>true/false/any</td>
+            <td>Specifies that other items from another sort group can be transferred inside. Passing string will specify the source group allowed to transfer.</td>
+          </tr>
+          <tr>
+            <td>ignoreElements</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines the selectors that do not lead to dragging</td>
+          </tr>
+          <tr>
+            <td>wrapperClass</td>
+            <td>string</td>
+            <td>""</td>
+            <td>any</td>
+            <td>Defines the class of the parent container of the sortable elements</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ins-sort event table -->
+    <div>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>EVENT</th>
+            <th>OBJECT</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>onDragStart</td>
+            <td>detail</td>
+            <td>Element dragging started</td>
+          </tr>
+          <tr>
+            <td>onDragEnd</td>
+            <td>detail</td>
+            <td>Element dragging ended</td>
+          </tr>
+          <tr>
+            <td>onChoose</td>
+            <td>detail</td>
+            <td>Element is chosen</td>
+          </tr>
+          <tr>
+            <td>onAdd</td>
+            <td>detail</td>
+            <td>Element is dropped into the list from another list</td>
+          </tr>
+          <tr>
+            <td>onUpdate</td>
+            <td>detail</td>
+            <td>Changed sorting within list</td>
+          </tr>
+          <tr>
+            <td>onMove</td>
+            <td>detail</td>
+            <td>Event when you move an item in the list or between lists</td>
+          </tr>
+          <tr>
+            <td>onRemoved</td>
+            <td>detail</td>
+            <td>Element is removed from the list into another list</td>
+          </tr>
+          <tr>
+            <td>onCloned</td>
+            <td>detail</td>
+            <td>Called when creating a clone of element</td>
+          </tr>
+          <tr>
+            <td>onPositionChanged</td>
+            <td>detail</td>
+            <td>Called when dragging element changes position</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- ins-sort method table -->
+    <div>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>FUNCTION</th>
+            <th>PARAMETER</th>
+            <th>RETURN</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>load</td>
+            <td>array</td>
+            <td>n/a</td>
+            <td>Loads the sorting based on the data-sortable-id of the child elements</td>
+          </tr>
+          <tr>
+            <td>getSortOrder</td>
+            <td>n/a</td>
+            <td>object</td>
+            <td>Returns the data-sortable-id sorting in</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+
+    <!-- ins-sort States -->
+    <div>
+      <h2 class="section-title">States</h2>
+
+      <!-- Default State -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Default State</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+            <ins-sort>
+              <ins-card><i class="icon-drag-indicator"></i> &emsp; Sortable Item #1</ins-card>
+              <ins-card><i class="icon-drag-indicator"></i> &emsp; Sortable Item #2</ins-card>
+            </ins-sort>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-sort>
+  <ins-card><i class="icon-drag-indicator"></i> &emsp; Sortable Item #1</ins-card>
+  <ins-card><i class="icon-drag-indicator"></i> &emsp; Sortable Item #2</ins-card>
+</ins-sort>
+            </script>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Direct Set Data -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Direct Set Data</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+            <ins-sort id="sortElement">
+              <ins-card data-sortable-id="1"><i class="icon-drag-indicator"></i> &emsp; Sortable Item #1</ins-card>
+              <ins-card data-sortable-id="2"><i class="icon-drag-indicator"></i> &emsp; Sortable Item #2</ins-card>
+              <ins-card data-sortable-id="3"><i class="icon-drag-indicator"></i> &emsp; Sortable Item #3</ins-card>
+            </ins-sort>
+            <script>
+              var order = ["3","2","1"]
+              var sortElement = document.getElementById("sortElement");
+              sortElement.addEventListener('didLoad', function(e){
+                sortElement.load(order);
+              });
+            </script>
+          </div>
+
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-sort id="sortElement">
+  <ins-card data-sortable-id="1"><i class="icon-drag-indicator"></i> &emsp; Sortable Item #1</ins-card>
+  <ins-card data-sortable-id="2"><i class="icon-drag-indicator"></i> &emsp; Sortable Item #2</ins-card>
+  <ins-card data-sortable-id="3"><i class="icon-drag-indicator"></i> &emsp; Sortable Item #3</ins-card>
+</ins-sort>
+<script>
+  var order = ["3","2","1"]
+  var sortElement = document.getElementById("sortElement");
+  sortElement.addEventListener('didLoad', function(e){
+    sortElement.load(order);
+  });
+&lt;/script&gt;
+            </script>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Disabled State -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Disabled State</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-sort disabled>
+                <ins-card><i class="icon-drag-indicator"></i> &emsp; Sortable Item #1</ins-card>
+                <ins-card><i class="icon-drag-indicator"></i> &emsp; Sortable Item #2</ins-card>
+              </ins-sort>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-sort disabled>
+  <ins-card><i class="icon-drag-indicator"></i> &emsp; Sortable Item #1</ins-card>
+  <ins-card><i class="icon-drag-indicator"></i> &emsp; Sortable Item #2</ins-card>
+</ins-sort>
+                  </script>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Draggable and Droppable Specific-->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Draggable and Droppable Specific</div>
+          <div class="padding-1">
+            <style>
+              .display-flex {
+                display: flex;
+                flex-flow: row wrap;
+                width: 100%;
+              }
+              .display-flex > * {
+                flex-basis: 1 0 auto;
+                margin: 0.5em;
+              }
+            </style>
+            <div class="grid-x grid-margin-x">
+              <div class="medium-6 cell">
+                <ins-card steady>
+                  <ins-heading label="Draggable Only"></ins-heading>
+                  <ins-sort sort="false" droppable="false" wrapper-class="display-flex">
+                    <ins-tag light="false" icon="icon-drag-indicator" label="Draggable Item #1" color="blue"></ins-tag>
+                    <ins-tag light="false" icon="icon-drag-indicator" label="Draggable Item #2" color="green"></ins-tag>
+                    <ins-tag light="false" icon="icon-drag-indicator" label="Draggable Item #3" color="red"></ins-tag>
+                  </ins-sort>
+                </ins-card>
+              </div>
+              <div class="medium-6 cell">
+                <ins-card steady>
+                  <ins-heading label="Droppable Only"></ins-heading>
+                  <ins-sort draggable="false" wrapper-class="display-flex">
+                    <ins-tag icon="icon-drag-indicator" label="Sortable Item #1" color="blue"></ins-tag>
+                    <ins-tag icon="icon-drag-indicator" label="Sortable Item #2" color="green"></ins-tag>
+                    <ins-tag icon="icon-drag-indicator" label="Sortable Item #3" color="red"></ins-tag>
+                  </ins-sort>
+                </ins-card>
+              </div>
+            </div>
+          </div>
+          <div class="padding-tb-1">
+            <script type="text/plain" class="language-markup">
+<style>
+  .display-flex {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+  }
+
+  .display-flex>* {
+    flex-basis: 1 0 auto;
+    margin: 0.5em;
+  }
+</style>
+<div class="grid-x grid-margin-x">
+  <div class="medium-6 cell">
+    <ins-card steady>
+      <ins-heading label="Draggable Only"></ins-heading>
+      <ins-sort sort="false" droppable="false" wrapper-class="display-flex">
+        <ins-tag light="false" icon="icon-drag-indicator" label="Draggable Item #1" color="blue"></ins-tag>
+        <ins-tag light="false" icon="icon-drag-indicator" label="Draggable Item #2" color="green"></ins-tag>
+        <ins-tag light="false" icon="icon-drag-indicator" label="Draggable Item #3" color="red"></ins-tag>
+      </ins-sort>
+    </ins-card>
+  </div>
+  <div class="medium-6 cell">
+    <ins-card steady>
+      <ins-heading label="Droppable Only"></ins-heading>
+      <ins-sort draggable="false" wrapper-class="display-flex">
+        <ins-tag icon="icon-drag-indicator" label="Sortable Item #1" color="blue"></ins-tag>
+        <ins-tag icon="icon-drag-indicator" label="Sortable Item #2" color="green"></ins-tag>
+        <ins-tag icon="icon-drag-indicator" label="Sortable Item #3" color="red"></ins-tag>
+      </ins-sort>
+    </ins-card>
+  </div>
+</div>
+                </script>
+            </div>
+        </div>
+      </div>
+
+      <!-- Clone on Drag -->
+      <div>
+        <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Clone on Drag</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-card steady>
+                <ins-heading label="Source"></ins-heading>
+                <ins-card steady>
+                  <ins-sort clone-on-drag sort="false">
+                    <span>{{ title }}</span>
+                    <span>{{ author }}</span>
+                    <span>{{ content }}</span>
+                    <span>{{ created_at }}</span>
+                  </ins-sort>
+                </ins-card>
+              </ins-card>
+
+              <ins-card steady>
+                <ins-heading label="Drop Items Below"></ins-heading>
+                <ins-card steady>
+                  <ins-sort draggable="false">
+
+                  </ins-sort>
+                </ins-card>
+              </ins-card>
+            </div>
+            <div class="ins-styleguide-code-slot-wrap">
+              <script type="text/plain" class="language-markup">
+<ins-card steady>
+  <ins-heading label="Source"></ins-heading>
+  <ins-card steady>
+    <ins-sort clone-on-drag sort="false">
+      <span>{{ title }}</span>
+      <span>{{ author }}</span>
+      <span>{{ content }}</span>
+      <span>{{ created_at }}</span>
+    </ins-sort>
+  </ins-card>
+</ins-card>
+
+<ins-card steady>
+  <ins-heading label="Drop Items Below"></ins-heading>
+  <ins-card steady>
+    <ins-sort draggable="false">
+
+    </ins-sort>
+  </ins-card>
+</ins-card>
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style='padding: 35px;'></div>
+  <script src="../../../assets/js/ins.js"></script>
+</body>
+
+</html>

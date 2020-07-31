@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide - Tooltip</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/v1/assets/css/insites-plugins.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <script src="/v1/assets/js/insites-plugins.js"></script>
+  <script src="/v1/build/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/prism.css">
+  <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+  <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+  <script src="/v1/assets/js/prism.js"></script>
+  <style>
+      .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap, .ins-styleguide-wrap .ins-styleguide-code-slot-wrap { overflow: initial; }
+  </style>
+</head>
+
+<body>
+    <div>
+      <h2 class="section-title">Insites Tooltip <code>&lt;ins-tooltip&gt;</code></h2>
+      <p>Creates a tooltip element.</p>
+    </div>
+    <!-- ins-input Complete Example -->
+    <div>
+    <h2 class="section-title">Complete Example</h2>
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <p>See the tooltip by hovering
+              <ins-tooltip label="?" content="Hello World">
+            </p>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-tooltip
+  label="?"
+  content="Hello World">
+</ins-tooltip>
+            </script>
+          </div>
+        </div>
+      </div>
+
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <p>See the tooltip by clicking
+              <ins-tooltip
+                label="sample"
+                shape="rectangle"
+                icon="icon-warning"
+                position="right"
+                trigger="click"
+                width="500px"
+                content="This is an example of a tooltip that also utilizes other tooltip properties. You can check other properties can at the table below."></ins-tooltip>
+            </p>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-tooltip
+  label="sample"
+  shape="rectangle"
+  icon="icon-warning"
+  position="right"
+  trigger="click"
+  width="500px"
+  content="This is an example of a tooltip that also utilizes other tooltip properties. You can check other properties can at the table below.">
+</ins-tooltip>
+            </script>
+          </div>
+        </div>
+      </div>
+
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <p>See the tooltip by clicking
+              <ins-tooltip
+                label="html tooltip"
+                shape="rectangle"
+                icon="icon-warning"
+                background="false"
+                position="bottom-start"
+                html="true"
+                trigger="click"
+                width="300px"
+                content="<h2>Hi There!</h2><p>This is an HTML content example with a <a href='#'>link</a>.">
+              </ins-tooltip>
+            </p>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-tooltip
+  label="html tooltip"
+  shape="rectangle"
+  icon="icon-warning"
+  background="false"
+  position="bottom-start"
+  html="true"
+  trigger="click"
+  width="300px"
+  content="<p>This is an HTML content example with a <a href='#'>link</a>.">
+</ins-tooltip>
+                  </script>
+          </div>
+        </div>
+      </div>
+
+      <div id="attributes-table">
+        <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+              <tr>
+                <th>ATTRIBUTE</th>
+                <th>TYPE</th>
+                <th>DEFAULT</th>
+                <th>OPTIONS</th>
+                <th>DESCRIPTION</th>
+              </tr>
+              <tr>
+                <td>label</td>
+                <td>string</td>
+                <td>“”</td>
+                <td>any</td>
+                <td>Defines the text displayed on the tooltip label</td>
+              </tr>
+              <tr>
+                <td>shape</td>
+                <td>string</td>
+                <td>circle</td>
+                <td>circle, rectangle</td>
+                <td>Defines the shape of the tooltip label</td>
+              </tr>
+              <tr>
+                <td>icon</td>
+                <td>string</td>
+                <td>“”</td>
+                <td>any</td>
+                <td>Applies the font-icon class to the tooltip label</td>
+              </tr>
+              <tr>
+                <td>position</td>
+                <td>string</td>
+                <td>top</td>
+                <td>top, bottom, left, right (_-start, _-end)</td>
+                <td>Defines the default position the tooltip is to be displayed</td>
+              </tr>
+              <tr>
+                <td>content</td>
+                <td>string</td>
+                <td>“”</td>
+                <td>any</td>
+                <td>Content displayed on the tooltip</td>
+              </tr>
+              <tr>
+                <td>background</td>
+                <td>boolean</td>
+                <td>true</td>
+                <td>true, false</td>
+                <td>Enable / Disables background color for tooltip</td>
+              </tr>
+              <tr>
+                <td>html</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>true, false</td>
+                <td>Makes the tooltip content render as HTML code</td>
+              </tr>
+              <tr>
+                <td>trigger</td>
+                <td>string</td>
+                <td>hover focus</td>
+                <td>hover, focus, click</td>
+                <td>Defines how the tooltip is triggered <br><br>
+                    You may pass multiple triggers; separate them with a space</td>
+              </tr>
+              <tr>
+                <td>close-on-click</td>
+                <td>boolean</td>
+                <td>true</td>
+                <td>true, false</td>
+                <td>Makes the content hide when user click anywhere outside the tooltip <br><br>
+                    Only works for trigger on
+                  <code>'click'</code>
+                </td>
+              </tr>
+              <tr>
+                <td>width</td>
+                <td>string</td>
+                <td>“”</td>
+                <td>any</td>
+                <td>Specifies the width for the tooltip content <br><br>
+                    You may pass any proper CSS width value; ex.(100px, 100%, 100vw, 100em, etc…)</td>
+              </tr>
+              <tr>
+                <td>auto-width</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>true, false</td>
+                <td>Apply auto width to the tooltip content with CSS property
+                  <code>'white-space: nowrap'</code><br><br>
+                    For best responsive result, it is ideal to only enable this for short contents</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Default State -->
+    <div>
+      <h2 class="section-title">Default State</h2>
+      <ins-styleguide>
+        <div slot="actual">
+          <ins-tooltip></ins-tooltip>
+        </div>
+        <div slot="code">
+          <script type="text/plain" class="language-markup">
+    <ins-tooltip></ins-tooltip>
+          </script>
+        </div>
+      </ins-styleguide>
+    </div>
+
+</body>
+
+</html>

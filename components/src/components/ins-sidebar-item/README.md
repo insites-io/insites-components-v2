@@ -11,6 +11,7 @@
 | ------------- | -------------- | ----------- | --------- | ----------- |
 | `app`         | `app`          |             | `boolean` | `false`     |
 | `footerLink`  | `footer-link`  |             | `string`  | `''`        |
+| `hasLoad`     | `has-load`     |             | `string`  | `undefined` |
 | `icon`        | `icon`         |             | `any`     | `'no-icon'` |
 | `label`       | `label`        |             | `string`  | `'Label'`   |
 | `landingPage` | `landing-page` |             | `boolean` | `false`     |
@@ -22,38 +23,39 @@
 
 | Event       | Description | Type               |
 | ----------- | ----------- | ------------------ |
+| `didLoad`   |             | `CustomEvent<any>` |
 | `routePage` |             | `CustomEvent<any>` |
 
 
 ## Methods
 
-### `activate() => Promise<void>`
+### `activate() => Promise<boolean>`
 
 
 
 #### Returns
 
-Type: `Promise<void>`
+Type: `Promise<boolean>`
 
 
 
-### `activateParent() => Promise<void>`
-
-
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-### `deactivate() => Promise<void>`
+### `activateParent() => Promise<boolean>`
 
 
 
 #### Returns
 
-Type: `Promise<void>`
+Type: `Promise<boolean>`
+
+
+
+### `deactivate() => Promise<boolean>`
+
+
+
+#### Returns
+
+Type: `Promise<boolean>`
 
 
 
@@ -67,13 +69,13 @@ Type: `Promise<any>`
 
 
 
-### `hideSubMenu() => Promise<void>`
+### `hideSubMenu() => Promise<boolean>`
 
 
 
 #### Returns
 
-Type: `Promise<void>`
+Type: `Promise<boolean>`
 
 
 
@@ -87,13 +89,13 @@ Type: `Promise<{ crumbs: any[]; }>`
 
 
 
-### `showSubMenu() => Promise<void>`
+### `showSubMenu() => Promise<boolean>`
 
 
 
 #### Returns
 
-Type: `Promise<void>`
+Type: `Promise<boolean>`
 
 
 

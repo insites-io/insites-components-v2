@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide - Tables</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/v1/assets/css/insites-plugins.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <script src="/v1/assets/js/insites-plugins.js"></script>
+  <script src="/v1/build/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+  <link rel="stylesheet" href="/v1/assets/css/prism.css">
+  <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+  <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+  <script src="/v1/assets/js/prism.js"></script>
+</head>
+
+<body>
+<div>
+  <!-- ins-base-table -->
+  <div>
+    <h2 class="section-title">Insites Info Table <code>&lt;ins-info-table&gt;</code></h2>
+    <p>Defines a 2 column table to display data.</p>
+  </div>
+
+  <!-- COMPLETE EXAMPLE -->
+  <div class="ins-styleguide-wrap">
+    <div class="ins-styleguide-label-wrap">Complete Sample</div>
+    <div class="ins-styleguide-cont">
+      <div class="ins-styleguide-actual-slot-wrap">
+        <ins-info-table
+          id="info"
+          heading="This is a sample info table"
+          no-wrap
+          text-overflow="no-wrap"
+          render-html></ins-info-table>
+
+        <script>
+          var infoTable = document.getElementById('info');
+          var infoData = [{"Team": "<strong style='color: #24be8d'>Insites</strong>"}, { "Name": "Derek de Guzman" }, {"No Data": ""}, { "Contact": "<span class='icon-phone1'></span> <a href='#'>+63 219 19182210</a>" }, { "Details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit." }]
+          infoTable.tableData = infoData;
+        </script>
+      </div>
+      <div class="ins-styleguide-code-slot-wrap">
+        <script type="text/plain" class="language-markup">
+<ins-info-table id="info" no-wrap heading="This is a sample info table" text-overflow="no-wrap" render-html></ins-info-table>
+
+<script>
+  var infoTable = document.getElementById('info');
+  var infoData = [{"Team": "<strong style='color: #24be8d'>Insites</strong>"}, { "Name": "Derek de Guzman" }, {"No Data": ""}, { "Contact": "<span class='icon-phone1'></span> <a href='#'>+63 219 19182210</a>" }, { "Details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit." }]
+  infoTable.tableData = infoData;
+&lt;/script&gt;
+        </script>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Default State -->
+  <div class="ins-styleguide-wrap">
+    <div class="ins-styleguide-label-wrap">Default State</div>
+    <div class="ins-styleguide-cont">
+      <div class="ins-styleguide-actual-slot-wrap">
+        <ins-info-table></ins-info-table>
+      </div>
+      <div class="ins-styleguide-code-slot-wrap">
+        <script type="text/plain" class="language-markup">
+  <ins-info-table></ins-info-table>
+          </script>
+      </div>
+    </div>
+  </div>
+
+    <!-- Loading State -->
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Loading State</div>
+
+      <!-- Default Loading State -->
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Default Loading State</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-info-table loading-screen></ins-info-table>
+          </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+        <ins-info-table loading-screen></ins-info-table>
+                </script>
+          </div>
+        </div>
+      </div>
+
+      <!-- Direct Set Value -->
+      <div class="ins-styleguide-label-wrap">Diret Set Value</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-info-table id="infoTable"></ins-info-table>
+          <script>
+            var infoTable = document.getElementById('infoTable');
+            infoTable.loadingScreen = true;
+            infoTable.loaderTitle = "Processing Data"
+            infoTable.loaderMessage = "Just a moment, we're process your data.";
+            infoTable.loaderIcon = "processing";
+          </script>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-info-table id="infoTable"></ins-info-table>
+<script>
+  var infoTable = document.getElementById('infoTable');
+      infoTable.loadingScreen = true;
+      infoTable.loaderTitle = "Processing Data"
+      infoTable.loaderMessage = "Just a moment, we're process your data.";
+      infoTable.loaderIcon = "processing";
+&lt;/script&gt;
+              </script>
+        </div>
+      </div>
+    </div>
+
+
+  <!-- Properties -->
+  <div>
+    <h2 class="section-title">Properties</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>render-html</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Allows rendering of html content for the component table-data</td>
+        </tr>
+        <tr>
+          <td>no-wrap</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Removes table border and shadow styling</td>
+        </tr>
+        <tr>
+          <td>heading</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines table heading</td>
+        </tr>
+        <tr>
+          <td>table-data</td>
+          <td>array</td>
+          <td>[]</td>
+          <td>any</td>
+          <td>Defines table data, object  key-value pair will be shown as the column values</td>
+        </tr>
+        <tr>
+          <td>text-overflow</td>
+          <td>string</td>
+          <td>ellipsis</td>
+          <td>any</td>
+          <td>Change table text-overflow from 'ellipsis' to default</td>
+        </tr>
+        <tr>
+          <td>loading-screen</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Enables loader in table</td>
+        </tr>
+        <tr>
+          <td>loader-title</td>
+          <td>string</td>
+          <td>Just a moment</td>
+          <td>any</td>
+          <td>Defines title of loader</td>
+        </tr>
+        <tr>
+          <td>loader-message</td>
+          <td>string</td>
+          <td>We are processing your request</td>
+          <td>any</td>
+          <td>Defines message of loader</td>
+        </tr>
+        <tr>
+          <td>loader-icon</td>
+          <td>string</td>
+          <td>processing</td>
+          <td>processing, warning, help, error, success, downloading, uploading</td>
+          <td>Defines icon of loader</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ins-base-table -->
+  <div>
+    <h2 class="section-title">Insites Base Table <code>&lt;ins-base-table&gt;</code></h2>
+    <p>Defines a searchable table.</p>
+  </div>
+
+  <h2 class="section-title">Complete Example</h2>
+  <ins-base-table
+    id="insBaseTable"
+    searchbar-placeholder="Search..."
+    default-bulk-action="Archive">
+  </ins-base-table>
+
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<ins-base-table
+id="insBaseTable"
+heading="Table"
+searchbar-placeholder="Search...">
+</ins-base-table>
+    </script>
+  </div>
+
+  <h2 class="section-title">Set Initial Properties</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+var insBaseTable = document.getElementById('insBaseTable');
+var rawData = [];
+var filteredData = [];
+var displayedData = [];
+var tableHeaders = [];
+var totalCount = 0;
+var pageNumber = 1;
+var pageSize = 10;
+var searchKeyword = '';
+var sortedKeyword = '';
+
+insBaseTable.loadingScreen = true;
+insBaseTable.bulkActions = ['Archive'];
+insBaseTable.rowActions = ['Archive'];
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h2 class="section-title">Add Event Listener</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+insBaseTable.addEventListener('onPaginationChange', tablePaginationHandler);
+insBaseTable.addEventListener('onTableSearch', tableSearchHandler);
+insBaseTable.addEventListener('onTableSort', tableSortHandler);
+insBaseTable.addEventListener('onTableBulkAction', tableBulkActionHandler);
+insBaseTable.addEventListener('onTableRowAction', tableRowActionHandler);
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h2 class="section-title">Table Pagination Handler</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+function tablePaginationHandler(event){
+  insBaseTable.loadingScreen = true;
+  pageSize = event.detail.pageSize;
+  pageNumber = event.detail.pageNumber;
+  processTableData()
+}
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h2 class="section-title">Table Search Handler</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+function tableSearchHandler(event){
+  insBaseTable.loadingScreen = true;
+  searchKeyword = event.detail.value;
+
+  if (!searchKeyword) {
+    processTableData();
+    return;
+  }
+
+  filteredData = [];
+  rawData.forEach((value) => {
+    Object.keys(value).forEach((key) => {
+      if (key === 'Default Column'){
+        var match = value[key];
+        if (match.toLowerCase().includes(searchKeyword.toLowerCase())) {
+          filteredData.push(value);
+        }
+      }
+    });
+  });
+
+  if (sortedKeyword && filteredData.length > 1) {
+    filteredData.sort(dynamicKeySort(sortedKeyword));
+  }
+  insBaseTable.pageNumber = 1;
+  processTableData();
+
+  if (!filteredData.length) {
+    insBaseTable.loadingScreen = true;
+    insBaseTable.loaderTitle = '';
+    insBaseTable.loaderMessage = 'No result found for "' + searchKeyword + '"';
+    insBaseTable.loaderIcon = '';
+  }
+}
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h2 class="section-title">Table Sort Handler</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+function tableSortHandler(event){
+  sortedKeyword = event.detail.order === 'asc' ? event.detail.keyword : `-${event.detail.keyword}`;
+  if (searchKeyword){
+    filteredData.sort(dynamicKeySort(sortedKeyword));
+  } else {
+    rawData.sort(dynamicKeySort(sortedKeyword));
+  }
+  processTableData();
+}
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h2 class="section-title">Table Bulk Action Handler</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+function tableBulkActionHandler(event){
+  if (event.detail.action === 'Archive'){
+    archiveSelection(event.detail.selections);
+  }
+}
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h2 class="section-title">Table Row Action Handler</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+function tableRowActionHandler(event){
+  if (event.detail.action === 'Archive'){
+    archiveItem(event.detail.data);
+  }
+}
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <h2 class="section-title">Process Table Data</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+function processTableData(){
+  var last_index = pageNumber * pageSize;
+  var first_index = (last_index - pageSize) + 1;
+
+  displayedData = [];
+
+  if (searchKeyword) {
+
+    filteredData.forEach((value, index) => {
+      if (index >= first_index && index <= last_index) {
+        displayedData.push(value);
+      } else if (filteredData.length < pageSize){
+        displayedData.push(value);
+      }
+    });
+    insBaseTable.totalCount = filteredData.length;
+
+  } else {
+
+    rawData.forEach((value, index) => {
+      if (index >= first_index && index <= last_index) {
+        displayedData.push(value);
+      }
+    });
+    insBaseTable.totalCount = rawData.length;
+
+  }
+
+  insBaseTable.tableData = displayedData;
+  insBaseTable.loadingScreen = false;
+}
+&lt;/script&gt;
+    </script>
+  </div>
+
+<script>
+function fetchDataFromSrc () {
+
+  insBaseTable.loadingScreen = true;
+
+  insBaseTable.loaderTitle = "Processing Your Data";
+  insBaseTable.loaderMessage = "Just a moment, we're fetching and processing your data.";
+  insBaseTable.loaderIcon = "processing";
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+
+      var tableData = JSON.parse(this.responseText);
+      rawData = tableData.list.map(function(data){
+        data["Default Column_Img"] = '';
+        return data;
+      });
+      insBaseTable.totalCount = tableData.count;
+      insBaseTable.tableHeaders = [
+        { label: "Default Column", type: 'string', sortable: true, hasLink: true, hasImage: true}, //
+        { label: "Date Column", type: 'string', sortable: true },
+        { label: "Number Column", type: 'number', sortable: true },
+        { label: "Currency Column", type: 'currency', sortable: true }
+      ];
+
+      processTableData();
+    }
+  };
+  xhttp.open("GET", 'https://ag64gmtsc0.execute-api.us-east-2.amazonaws.com/insites-dummy-deployment/insites-dummy-get-table', true);
+  xhttp.send();
+}
+</script>
+    </script>
+  </div>
+
+  <h2 class="section-title">Dynamic Key Sort</h3>
+  <div class="padding-1">
+    <script type="text/plain" class="language-markup">
+<script>
+function dynamicKeySort(key) {
+  var OrderSortIndex = 1;
+
+  if (key[0] === "-") {
+    OrderSortIndex = -1;
+    key = key.substr(1);
+  }
+
+  return function (a, b) {
+    var num = (a[key] < b[key]) ? -1 : (a[key] > b[key]) ? 1 : 0;
+    return num * OrderSortIndex;
+  }
+}
+&lt;/script&gt;
+    </script>
+  </div>
+
+  <!-- attribute table -->
+  <div class="padding-1">
+    <h2 class="section-title">Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>no-wrap</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Removes the table borders and shadow styling</td>
+        </tr>
+        <tr>
+          <td>search-position</td>
+          <td>string</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Changes search field position</td>
+        </tr>
+        <tr>
+          <td>without-search</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Removes search input field</td>
+        </tr>
+        <tr>
+          <td>without-pagination</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Removes table pagination display</td>
+        </tr>
+        <tr>
+          <td>static-table</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Enables table accept static data</td>
+        </tr>
+        <tr>
+          <td>loading-screen</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Enables loader in table</td>
+        </tr>
+        <tr>
+          <td>loader-title</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines title of loader</td>
+        </tr>
+        <tr>
+          <td>loader-message</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines message of loader</td>
+        </tr>
+        <tr>
+          <td>loader-icon</td>
+          <td>string</td>
+          <td>""</td>
+          <td>processing, warning, help, error, success, downloading, uploading</td>
+          <td>Defines icon of loader</td>
+        </tr>
+        <tr>
+          <td>searchbar-placeholder</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines the short hint that describes the expected value in the input field</td>
+        </tr>
+        <tr>
+          <td>heading</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines header of table</td>
+        </tr>
+        <tr>
+          <td>currency</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines currency in table</td>
+        </tr>
+        <tr>
+          <td>table-headers</td>
+          <td>Array of InsBaseTableHeader</td>
+          <td>[]</td>
+          <td>any</td>
+          <td>Defines header of data columns in table</td>
+        </tr>
+        <tr>
+          <td>table-data</td>
+          <td>Array</td>
+          <td>[]</td>
+          <td>any</td>
+          <td>Defines data in table (Property keys should match the column header)</td>
+        </tr>
+        <tr>
+          <td>empty-value</td>
+          <td>string</td>
+          <td>"-"</td>
+          <td>any</td>
+          <td>String displayed when value is empty</td>
+        </tr>
+        <tr>
+          <td>page-number</td>
+          <td>number</td>
+          <td>1</td>
+          <td>any</td>
+          <td>Defines number of pages in table</td>
+        </tr>
+        <tr>
+          <td>page-size</td>
+          <td>number</td>
+          <td>10</td>
+          <td>any</td>
+          <td>Defines size of pages in table</td>
+        </tr>
+        <tr>
+          <td>page-size-options</td>
+          <td>number</td>
+          <td>[10, 20, 50]</td>
+          <td>any</td>
+          <td>Defines size options of pages in table</td>
+        </tr>
+        <tr>
+          <td>total-count</td>
+          <td>any</td>
+          <td>0</td>
+          <td>any</td>
+          <td>Defines total count value</td>
+        </tr>
+        <tr>
+          <td>bulk-actions</td>
+          <td>any</td>
+          <td>[]</td>
+          <td>any</td>
+          <td>Defines options of Bulk actions dropdown</td>
+        </tr>
+        <tr>
+          <td>row-actions</td>
+          <td>any</td>
+          <td>[]</td>
+          <td>any</td>
+          <td>Defines options of rows actions</td>
+        </tr>
+        <tr>
+          <td>selected-rows</td>
+          <td>any</td>
+          <td>[]</td>
+          <td>any</td>
+          <td>Defines options of selected rows</td>
+        </tr>
+        <tr>
+          <td>empty-value</td>
+          <td>string</td>
+          <td>"-"</td>
+          <td>any</td>
+          <td>Defines the value displayed when a column has no value</td>
+        </tr>
+        <tr>
+          <td>sort-order</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Defines the default sorting by order of the header arrow </td>
+        </tr>
+        <tr>
+          <td>sort-keyword</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Defines the default table header sorted by</td>
+        </tr>
+        <tr>
+          <td>text-overflow</td>
+          <td>string</td>
+          <td>""</td>
+          <td>ellipsis</td>
+          <td>Set the table text-overflow to 'ellipsis'</td>
+        </tr>
+        <tr>
+          <td>default-bulk-action</td>
+          <td>string</td>
+          <td>""</td>
+          <td>[any value set on bulk-actions]</td>
+          <td>Defines the pre-selected bulk action</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- header attributes table -->
+  <div>
+    <h2 class="section-title">Table Header Data Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>label</td>
+          <td>string</td>
+          <td>""</td>
+          <td>any</td>
+          <td>Text label for column header</td>
+        </tr>
+        <tr>
+          <td>sortable</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true,false</td>
+          <td>Allow column to be sortable</td>
+        </tr>
+        <tr>
+          <td>has-tag</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true,false</td>
+          <td>Change styling of the column content to be 'tags'. Column value is appended as class value to the column which can be used for styling</td>
+        </tr>
+        <tr>
+          <td>has-link</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true,false</td>
+          <td>Change styling of the column to have link styling</td>
+        </tr>
+        <tr>
+          <td>has-column-action</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true,false</td>
+          <td>Shows table row actions on the column. By default, 1st column will always show row actions (if table row actions are available)</td>
+        </tr>
+        <tr>
+          <td>has-image</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true,false</td>
+          <td>Marks the column to have an image besides the value<br>
+            - To set image value, data should be as ["column name"_Img]<br>
+            (ie. Header Label = <strong>['Customer Name']</strong> then Image = <strong>['Customer Name_Img']</strong>
+          </td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td>string</td>
+          <td>"string"</td>
+          <td>string, select, number, currency, date</td>
+          <td>Defines the column data type. "Number & Currency" will make the text right aligned.</td>
+        </tr>
+        <tr>
+          <td>editable</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true,false</td>
+          <td>Makes the table row field values editable. (table needs to have 'bulk-actions') <br>
+              Supported field types:
+                <ul>
+                  <li>string (default)</li>
+                  <li>select</li>
+                  <li>date</li>
+                </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>select-options</td>
+          <td>array</td>
+          <td>[]</td>
+          <td>any</td>
+          <td>Defines the options for 'select' field type (on editable only)</td>
+        </tr>
+        <tr>
+          <td>date-format</td>
+          <td>string</td>
+          <td>"YYYY-MM-DD"</td>
+          <td>any valid date format</td>
+          <td>Defines field date format (on editable only)</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ins-table event table -->
+  <div>
+      <div class="table-style">
+        <table>
+          <tr>
+            <th>EVENT</th>
+            <th>OBJECT</th>
+            <th>DESCRIPTION</th>
+          </tr>
+          <tr>
+            <td>onPaginationChange</td>
+            <td>pageSize,pageNumber</td>
+            <td>Execute a script when pagination is clicked</td>
+          </tr>
+          <tr>
+            <td>onTableSearch</td>
+            <td>value</td>
+            <td>Execute a script when an element gets user search input</td>
+          </tr>
+          <tr>
+            <td>onTableSort</td>
+            <td>keyword,order</td>
+            <td>Execute a script when table is sorted</td>
+          </tr>
+          <tr>
+            <td>onTableBulkAction</td>
+            <td>action,selections,updated_items (for editable table)</td>
+            <td>Execute a script when bulk action button is clicked</td>
+          </tr>
+          <tr>
+            <td>onTableRowAction</td>
+            <td>action,header,data (table row data)</td>
+            <td>Execute a script when row action button is clicked</td>
+          </tr>
+          <tr>
+            <td>onFieldChange</td>
+            <td>value (for editable table)</td>
+            <td>Execute a script when row field value has changed</td>
+          </tr>
+        </table>
+      </div>
+  </div>
+</div>
+
+<h2 class="section-title">InsBaseTableHeader Demo</h2>
+<ins-base-table
+  id="insBaseTableHeaders"
+  searchbar-placeholder="Search...">
+ </ins-base-table>
+
+<br />
+
+ <div class="padding-1">
+   <script type="text/plain" class="language-markup">
+<script>
+window.addEventListener('load', () => {
+  var table = document.getElementById('insBaseTableHeaders');
+
+  table.totalCount = 1;
+  table.tableHeaders = [
+    { label: "String", type: 'string' },
+    { label: "Number", type: 'number' },
+    { label: "Currency", type: 'currency' }
+  ];
+
+  table.tableData = [
+    { id: 1, "String": "John Doe", "Number":  100, "Currency": 99.99 }
+  ]
+});
+&lt;/script&gt;
+   </script>
+ </div>
+</div>
+
+<div style='padding: 15px;'></div>
+<script src="../../../assets/js/ins.js"></script>
+<script>
+window.addEventListener('load', () => {
+  var table = document.getElementById('insBaseTableHeaders');
+
+  table.totalCount = 1;
+  table.tableHeaders = [
+    { label: "String", type: 'string' },
+    { label: "Number", type: 'number' },
+    { label: "Currency", type: 'currency' }
+  ];
+
+  table.tableData = [
+    { id: 1, "String": "John Doe", "Number":  100, "Currency": 99.99 }
+  ]
+});
+
+  var insBaseTable = document.getElementById('insBaseTable');
+  var rawData = [];
+  var filteredData = [];
+  var displayedData = [];
+  var tableHeaders = [];
+  var totalCount = 0;
+  var pageNumber = 1;
+  var pageSize = 10;
+  var searchKeyword = '';
+  var sortedKeyword = '';
+
+  insBaseTable.loadingScreen = true;
+  insBaseTable.bulkActions = ['Archive'];
+  insBaseTable.rowActions = ['Archive'];
+  insBaseTable.addEventListener('onPaginationChange', tablePaginationHandler);
+  insBaseTable.addEventListener('onTableSearch', tableSearchHandler);
+  insBaseTable.addEventListener('onTableSort', tableSortHandler);
+  insBaseTable.addEventListener('onTableBulkAction', tableBulkActionHandler);
+  insBaseTable.addEventListener('onTableRowAction', tableRowActionHandler);
+  // insBaseTable.addEventListener('onFieldChange', event => console.log('onFieldChange', event));
+
+  function tablePaginationHandler(event){
+    insBaseTable.loadingScreen = true;
+    pageSize = event.detail.pageSize;
+    pageNumber = event.detail.pageNumber;
+    processTableData()
+  }
+  function tableSearchHandler(event){
+    insBaseTable.loadingScreen = true;
+    searchKeyword = event.detail.value;
+
+    if (!searchKeyword) {
+      processTableData();
+      return;
+    }
+
+    filteredData = [];
+    rawData.forEach((value) => {
+      Object.keys(value).forEach((key) => {
+        if (key === 'Default Column'){
+          var match = value[key];
+          if (match.toLowerCase().includes(searchKeyword.toLowerCase())) {
+            filteredData.push(value);
+          }
+        }
+      });
+    });
+
+    if (sortedKeyword && filteredData.length > 1) {
+      filteredData.sort(dynamicKeySort(sortedKeyword));
+    }
+    insBaseTable.pageNumber = 1;
+    processTableData();
+
+    if (!filteredData.length) {
+      insBaseTable.loadingScreen = true;
+      insBaseTable.loaderTitle = '';
+      insBaseTable.loaderMessage = 'No result found for "' + searchKeyword + '"';
+      insBaseTable.loaderIcon = '';
+    }
+  }
+  function tableSortHandler(event){
+    sortedKeyword = event.detail.order === 'asc' ? event.detail.keyword : `-${event.detail.keyword}`;
+    if (searchKeyword){
+      filteredData.sort(dynamicKeySort(sortedKeyword));
+    } else {
+      rawData.sort(dynamicKeySort(sortedKeyword));
+    }
+    processTableData();
+  }
+  function tableBulkActionHandler(event){
+    if (event.detail.action === 'Archive'){
+      archiveSelection(event.detail.selections);
+    }
+  }
+  function tableRowActionHandler(event){
+    console.log('tableRowActionHandler', event);
+    if (event.detail.action === 'Archive'){
+      archiveItem(event.detail.data);
+    }
+  }
+  function archiveItem(value){
+    swal({
+      title: '',
+      // text: "Are you sure you want to delete these items",
+      html: `
+        <ins-loader
+          state-icon="warning"
+          icon-color="warning"
+          state-message="Are you sure you want to archive this item?">
+        </ins-loader>`,
+      type: '',
+      showCancelButton: true,
+      confirmButtonText: 'Archive'
+    }).then((result) => {
+      deleteItem(value);
+      processTableData();
+    });
+  }
+
+  function archiveSelection(selections) {
+    swal({
+      title: '',
+      html: `
+      <ins-loader
+        state-icon="warning"
+        icon-color="warning"
+        state-message="Are you sure you want to archive these items?">
+      </ins-loader>`,
+      type: '',
+      showCancelButton: true,
+      confirmButtonText: 'Archive'
+    }).then((result) => {
+      if (result.value) {
+          let counter = 0;
+          selections.forEach(value => {
+
+            this.deleteItem(value);
+            counter++;
+
+            if (selections.length === counter){
+              insBaseTable.resetSelections();
+              processTableData()
+            }
+          });
+        }
+    });
+  }
+
+  function deleteItem(value) {
+    var selectionIndex;
+    var searchSelectionIndex;
+
+    if (rawData) {
+      selectionIndex = rawData.findIndex(item => {
+        return item.Id === value;
+      });
+    }
+
+    if (filteredData) {
+      searchSelectionIndex = filteredData.findIndex(item => {
+        return item.Id === value;
+      });
+    }
+
+    if (selectionIndex > -1){
+      rawData.splice(selectionIndex, 1);
+    }
+
+    if (searchSelectionIndex > -1){
+      filteredData.splice(searchSelectionIndex, 1);
+    }
+  }
+
+  function processTableData(){
+    var last_index = pageNumber * pageSize;
+    var first_index = (last_index - pageSize);// + 1;
+
+    displayedData = [];
+
+    if (searchKeyword) {
+
+      filteredData.forEach((value, index) => {
+        value['ArchiveLink'] = "https://www.google.com";
+
+        if (index >= first_index && index <= last_index) {
+          displayedData.push(value);
+        } else if (filteredData.length < pageSize){
+          displayedData.push(value);
+        }
+      });
+      insBaseTable.totalCount = filteredData.length;
+
+    } else {
+      rawData.forEach((value, index) => {
+        value['ArchiveLink'] = "https://www.google.com";
+        if (index >= first_index && index <= last_index) {
+          displayedData.push(value);
+        }
+      });
+
+      insBaseTable.totalCount = rawData.length;
+
+    }
+
+    insBaseTable.tableData = displayedData;
+    insBaseTable.loadingScreen = false;
+  }
+  function dynamicKeySort(key) {
+    var OrderSortIndex = 1;
+
+    if (key[0] === "-") {
+      OrderSortIndex = -1;
+      key = key.substr(1);
+    }
+
+    return function (a, b) {
+      var num = (a[key] < b[key]) ? -1 : (a[key] > b[key]) ? 1 : 0;
+      return num * OrderSortIndex;
+    }
+  }
+  function fetchDataFromSrc () {
+
+    insBaseTable.loadingScreen = true;
+
+    insBaseTable.loaderTitle = "Processing Your Data";
+    insBaseTable.loaderMessage = "Just a moment, we're fetching and processing your data.";
+    insBaseTable.loaderIcon = "processing";
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        var tableData = JSON.parse(this.responseText);
+        rawData = tableData.list.map(function(data){
+          data["Default Column_Img"] = '';
+          return data;
+        });
+        insBaseTable.totalCount = tableData.count;
+        insBaseTable.tableHeaders = [
+          { label: "Default Column", type: 'string', sortable: true, hasLink: true, hasImage: true },
+          { label: "Date Column", type: 'date', sortable: true, editable: true },
+          { label: "Number Column", type: 'number', sortable: true, editable: true },
+          { label: "Currency Column", type: 'currency', sortable: true, editable: true }
+        ];
+
+        processTableData();
+      }
+    };
+    xhttp.open("GET", 'https://ag64gmtsc0.execute-api.us-east-2.amazonaws.com/insites-dummy-deployment/insites-dummy-get-table', true);
+    xhttp.send();
+  }
+
+  fetchDataFromSrc();
+</script>
+
+<div>
+  <div style="margin: 50px auto;">
+    <h2 class="section-title">Editable Table</h2>
+    <p>Setting the table header attribute <code>editable</code> to `true`, you can change the functionality of your table row action to be "edit row data".</p>
+    <p>Use the event "onTableBulkAction" to catch the event details.</p>
+  </div>
+
+  <!-- Table -->
+  <div>
+    <ins-base-table id="fieldTable" default-bulk-action="Update" without-pagination without-search>
+    </ins-base-table>
+    <style>
+      #fieldTable .tagged.Active span { background-color: #24be8d; color: #fff; }
+      #fieldTable .tagged span { background-color: #d4d4d4; color: #636363; padding: 6px 10px; font-size: 11px; border-radius: 4px; }
+    </style>
+    <script>
+      var fieldTable = document.getElementById('fieldTable');
+      var dateFormat = "MM/DD/YYYY"
+      fieldTable.bulkActions = ["Update"];
+      fieldTable.tableHeaders = [
+        { label: 'Name', type: "string", editable: true },
+        { label: 'Birthday', type: "date", editable: true },
+        { label: 'Status', type: "select", hasTag: true, editable: true,
+            selectOptions: ['Active', 'Inactive'] }
+        ]
+      fieldTable.tableData = [
+        { "id": "sample-001", "Name": "John Doe", "Birthday": "01/29/1990", "Status": "Active" },
+        { "id": "sample-002", "Name": "Derek de Guzman", "Birthday": "11/29/1990", "Status": "Inactive" }
+      ]
+      fieldTable.addEventListener('onTableBulkAction', function(event) {
+        console.log('Edit table event', event.detail);
+        alert("Check console log for event data");
+      });
+    </script>
+  </div>
+  <!-- Code sample -->
+  <div style="margin-top: 50px;">
+    <script type="text/plain" class="language-markup">
+<ins-base-table id="fieldTable" default-bulk-action="Update" without-pagination without-search>
+</ins-base-table>
+<style>
+  // CSS for table tags
+  #fieldTable .tagged.Active span { background-color: #24be8d; color: #fff; }
+  #fieldTable .tagged span { background-color: #d4d4d4; color: #636363; padding: 6px 10px; font-size: 11px; border-radius: 4px; }
+</style>
+<script>
+  var fieldTable = document.getElementById('fieldTable');
+  var dateFormat = "MM/DD/YYYY"
+
+  // set table bulk actions
+  fieldTable.bulkActions = ["Update"];
+
+  // set table headers
+  fieldTable.tableHeaders = [
+    { label: 'Name', type: "string", editable: true },
+    { label: 'Birthday', type: "date", editable: true },
+    { label: 'Status', type: "select", hasTag: true, editable: true,
+        selectOptions: ['Active', 'Inactive'] }
+  ];
+
+  // set table data
+  fieldTable.tableData = [
+    { "id": "sample-001", "Name": "John Doe", "Birthday": "01/02/1990", "Status": "Active" },
+    { "id": "sample-002", "Name": "Derek de Guzman", "Birthday": "11/29/1990", "Status": "Inactive" }
+  ];
+
+  // add table event listener
+  fieldTable.addEventListener('onTableBulkAction', function(event) {
+    console.log('Edit table event', event.detail);
+    alert("Check console log for event data");
+  });
+&lt;/script&gt;
+    </script>
+  </div>
+</div>
+
+  <!-- Static Table -->
+  <div style="margin-top: 50px;">
+    <h2 class="section-title">Static Table</h2>
+    <p>Using the attribute <code>static-table</code>, you can manually construct your table rows and columns and apply your own HTML layout & styling</p>
+    <p>To do this, you can nest these sub-components: </p>
+
+    <h2 class="section-title">Insites Base Table Row <code>&lt;ins-base-table-row&gt;</code></h2>
+    <p>Defines a table <code>&lt;tr&gt;</code> element</p>
+
+    <h2 class="section-title">Insites Base Table Header <code>&lt;ins-base-table-th&gt;</code></h2>
+    <p>Defines a table <code>&lt;tr&gt;</code> element</p>
+
+    <h2 class="section-title">Insites Base Table Data / Column <code>&lt;ins-base-table-td&gt;</code></h2>
+    <p>Defines a table <code>&lt;td&gt;</code> element</p>
+
+    <div style="margin: 50px auto;">
+      <h2 class="section-title">Sample Static Table</h2>
+    </div>
+
+    <!-- Table -->
+    <div>
+      <ins-base-table static-table without-pagination>
+        <ins-base-table-row>
+          <ins-base-table-th><h6>Column Header 1</h6></ins-base-table-th>
+          <ins-base-table-th><h6>Column Header 2</h6></ins-base-table-th>
+        </ins-base-table-row>
+        <ins-base-table-row>
+          <ins-base-table-td>
+            <div>
+              <h5>Sample Data</h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...
+                <a href="#">link</a>
+              </p>
+              <ul>
+                <li><a href="#">link 1</a></li>
+                <li><a href="#">link 2</a></li>
+              </ul>
+            </div>
+          </ins-base-table-td>
+          <ins-base-table-td>
+            <div>
+              <h5>Sample Data</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur</p>
+              <ins-button solid></ins-button>
+            </div>
+          </ins-base-table-td>
+        </ins-base-table-row>
+        <ins-base-table-row>
+          <ins-base-table-td>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...</p>
+          </ins-base-table-td>
+          <ins-base-table-td>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...</p>
+          </ins-base-table-td>
+        </ins-base-table-row>
+      </ins-base-table>
+    </div>
+    <!-- Code sample -->
+    <div style="margin-top: 50px;">
+    <script type="text/plain" class="language-markup">
+<ins-base-table static-table without-pagination>
+  <ins-base-table-row>
+    <ins-base-table-th><h6>Column Header 1</h6></ins-base-table-th>
+    <ins-base-table-th><h6>Column Header 2</h6></ins-base-table-th>
+  </ins-base-table-row>
+  <ins-base-table-row>
+    <ins-base-table-td>
+      <div>
+        <h5>Sample Data</h5>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...
+          <a href="#">link</a>
+        </p>
+        <ul>
+          <li><a href="#">link 1</a></li>
+          <li><a href="#">link 2</a></li>
+        </ul>
+      </div>
+    </ins-base-table-td>
+    <ins-base-table-td>
+      <div>
+        <h5>Sample Data</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur</p>
+        <ins-button solid></ins-button>
+      </div>
+    </ins-base-table-td>
+  </ins-base-table-row>
+  <ins-base-table-row>
+    <ins-base-table-td>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...</p>
+    </ins-base-table-td>
+    <ins-base-table-td>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...</p>
+    </ins-base-table-td>
+  </ins-base-table-row>
+</ins-base-table>
+    </script>
+    </div>
+  </div>
+</body>
+</html>

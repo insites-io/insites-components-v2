@@ -7,12 +7,20 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type      | Default                         |
-| -------- | --------- | ----------- | --------- | ------------------------------- |
-| `app`    | `app`     |             | `boolean` | `false`                         |
-| `label`  | `label`   |             | `string`  | `undefined`                     |
-| `link`   | `link`    |             | `string`  | `undefined`                     |
-| `route`  | `route`   |             | `any`     | `{     label: "", link: ""   }` |
+| Property  | Attribute  | Description | Type      | Default                         |
+| --------- | ---------- | ----------- | --------- | ------------------------------- |
+| `app`     | `app`      |             | `boolean` | `false`                         |
+| `hasLoad` | `has-load` |             | `string`  | `undefined`                     |
+| `label`   | `label`    |             | `string`  | `undefined`                     |
+| `link`    | `link`     |             | `string`  | `undefined`                     |
+| `route`   | `route`    |             | `any`     | `{     label: "", link: ""   }` |
+
+
+## Events
+
+| Event     | Description | Type               |
+| --------- | ----------- | ------------------ |
+| `didLoad` |             | `CustomEvent<any>` |
 
 
 ## Methods

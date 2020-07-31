@@ -1,8 +1,10 @@
-import { h, Component, Element, Method } from "@stencil/core";
+import { h, Component, Element, Method, Event, EventEmitter, Prop } from "@stencil/core";
 
 @Component({ tag: 'ins-sidebar-footer' })
 export class InsSidebarFooter {
   @Element() InsSidebarFooter: HTMLElement;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   componentDidLoad(){
     let items = this.InsSidebarFooter
@@ -10,6 +12,12 @@ export class InsSidebarFooter {
 
     for (let i = 0; i < items.length; i++) {
       items[i].style.width = `${100 / items.length}%`;
+    }
+
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.InsSidebarFooter);
     }
   }
 

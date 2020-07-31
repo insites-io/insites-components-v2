@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Credit Card</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/v2.0.0/insites-font-icons.min.css" />
+  <link rel="stylesheet" href="/v2.0.0/insites.min.css" />
+
+  <script type="module" src="/v2.0.0/insites.esm.js"></script>
+  <script nomodule src="/v2.0.0/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+</head>
+
+<body>
+  <div>
+    <h2 class="section-title">Insites Credit Card <code>&lt;ins-credit-card&gt;</code></h2>
+    <p>Defines a credit card UI that display the brand, last 4 digits, its expiration and if its expired.</p>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div>
+      <h2 class="section-title">Complete Example</h2>
+      <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+
+              <ins-credit-card
+                active
+                expired
+                brand="visa"
+                last-four="3456"
+                expiry-month="9"
+                expiry-year="2022"
+                full-year
+                value="card_128kjh21387kasd2h">
+              </ins-credit-card>
+            </div>
+
+            <div class="ins-styleguide-code-slot-wrap">
+              <!-- <div class="ins-styleguide-label-wrap">HTML</div> -->
+              <script type="text/plain" class="language-markup">
+<ins-credit-card
+  active
+  expired
+  brand="visa"
+  last-four="3456"
+  expiry-month="9"
+  expiry-year="2022"
+  full-year
+  value="card_128kjh21387kasd2h">
+</ins-credit-card>
+              </script>
+            </div>
+        </div>
+      </div>
+  </div>
+
+  <div>
+    <h2 class="section-title">Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>activate</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true / false</td>
+          <td>Defines the active state of the element</td>
+        </tr>
+        <tr>
+          <td>expired</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true / false</td>
+          <td>Defines if the credit card is expired</td>
+        </tr>
+        <tr>
+            <td>brand</td>
+            <td>string</td>
+            <td>-</td>
+            <td>
+              <ul>
+                <li>amex</li>
+                <li>americanexpress</li>
+                <li>american express</li>
+                <li>american-express</li>
+                <li>dinersclub</li>
+                <li>diners club</li>
+                <li>diners-club</li>
+                <li>discover</li>
+                <li>jcb</li>
+                <li>master</li>
+                <li>mastercard</li>
+                <li>master card</li>
+                <li>master-card</li>
+                <li>unionpay</li>
+                <li>union pay</li>
+                <li>union-pay</li>
+                <li>visa</li>
+              </ul>
+              </td>
+            <td>Defines the brand of the card</td>
+        </tr>
+        <tr>
+            <td>last-four</td>
+            <td>string</td>
+            <td>Invalid</td>
+            <td>Should be a 4 digit number</td>
+            <td>Defines the last four digit of the card</td>
+        </tr>
+        <tr>
+            <td>expiry-month</td>
+            <td>string</td>
+            <td>Invalid</td>
+            <td>Should be a 2 digit representation of the month</td>
+            <td>Defines the expiry month of the card</td>
+        </tr>
+        <tr>
+            <td>expiry-year</td>
+            <td>string</td>
+            <td>Invalid</td>
+            <td>Should be a 2 digit representation of the year or the full year when full-year attribute is present. Up to 9999 only for full year. </td>
+            <td>Defines the expiry year of the card</td>
+        </tr>
+        <tr>
+          <td>full-year</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true / false</td>
+          <td>Enables full year value on expiry-year attribute</td>
+        </tr>
+        <tr>
+            <td>value</td>
+            <td>any</td>
+            <td>-</td>
+            <td>any</td>
+            <td>Defines the vaue of the element</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="section-title">Events</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>EVENT</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>insClick</td>
+          <td>Triggers an event when the card is clicked</td>
+        </tr>
+        <tr>
+          <td>insClose</td>
+          <td>Triggers an event when the close button is clicked</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div>
+      <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Default State</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-credit-card></ins-credit-card>
+            </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-credit-card></ins-credit-card>
+            </script>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ins-styleguide-wrap">
+          <div class="ins-styleguide-label-wrap">Static Data Source</div>
+          <div class="ins-styleguide-cont">
+            <div class="ins-styleguide-actual-slot-wrap">
+              <ins-credit-card
+                expired
+                brand="visa"
+                last-four="3456"
+                expiry-month="6"
+                expiry-year="19"
+                value="card_128kjh21387kasd2h">
+              </ins-credit-card>
+            </div>
+          <div class="ins-styleguide-code-slot-wrap">
+            <script type="text/plain" class="language-markup">
+<ins-credit-card
+  expired
+  brand="visa"
+  last-four="3456"
+  expiry-month="6"
+  expiry-year="19"
+  value="card_128kjh21387kasd2h">
+</ins-credit-card>
+            </script>
+          </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="ins-styleguide-wrap">
+        <div class="ins-styleguide-label-wrap">Error State</div>
+        <div class="ins-styleguide-cont">
+          <div class="ins-styleguide-actual-slot-wrap">
+            <ins-credit-card
+              brand=""
+              last-four="test"
+              expiry-month="13"
+              expiry-year="12345"
+              full-year
+              value="card_128kjh21387kasd2h">
+            </ins-credit-card>
+          </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-credit-card
+  brand=""
+  last-four="test"
+  expiry-month="13"
+  expiry-year="12345"
+  full-year
+  value="card_128kjh21387kasd2h">
+</ins-credit-card>
+          </script>
+        </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="spacer"></div>
+
+</body>
+
+</html>

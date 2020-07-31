@@ -1,0 +1,415 @@
+body {
+  background: #fafbfc;
+  margin: 0;
+  padding: 0 20px 40px;
+  font-family: "Open Sans", sans-serif;
+}
+@media only screen and (max-width: 768px) {
+  body {
+    padding-left: 0;
+    padding-right: 15px;
+  }
+}
+
+hr {
+  border: 1px solid #e4e6ec;
+}
+
+.section-title {
+  font-family: "Open Sans", sans-serif;
+  padding-bottom: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  border-bottom: solid 1px #eee;
+  margin: 30px 0 0;
+  color: #2c3148;
+}
+
+.ins-styleguide-wrap {
+  padding: 0.9375rem;
+}
+.ins-styleguide-wrap:nth-of-type(even) {
+  background-color: #f1f1f1;
+}
+.ins-styleguide-wrap .ins-styleguide-label-wrap {
+  padding-top: 0.9rem;
+  font-size: 14px;
+  font-weight: 600;
+}
+.ins-styleguide-wrap .ins-styleguide-cont {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+.ins-styleguide-wrap .ins-styleguide-actual-slot-wrap,
+.ins-styleguide-wrap .ins-styleguide-code-slot-wrap {
+  width: 30%;
+  box-sizing: border-box;
+  display: table-cell;
+  padding: 1em;
+  overflow: auto;
+  vertical-align: top;
+}
+.ins-styleguide-wrap .ins-styleguide-code-slot-wrap {
+  width: 70%;
+}
+
+.ins-styleguide-wrap .ins-styleguide-code-slot-wrap.full {
+  display: block;
+  width: 100%;
+}
+
+.ins-styleguide-wrap .ins-styleguide-actual-slot-wrap::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+.ins-styleguide-wrap .ins-styleguide-actual-slot-wrap::-webkit-scrollbar-track {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.ins-styleguide-wrap .ins-styleguide-actual-slot-wrap::-webkit-scrollbar-thumb {
+  background-color: #c4c4c4;
+  border-radius: 16px;
+  outline: none;
+}
+.ins-styleguide-wrap:hover {
+  background-color: #f1f1f1;
+}
+.ins-styleguide-wrap:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.style-btn,
+.style-btn:link,
+.style-btn:visited {
+  color: #ffffff;
+  background-color: #2c3148;
+  padding: 8px 16px;
+  border: none;
+  padding: 8px 16px;
+  overflow: hidden;
+  text-decoration: none;
+}
+.style-btn:hover {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
+.style-margin-bottom {
+  margin-bottom: 16px !important;
+}
+
+/* ADDED 03-20-2019
+.table-style {
+  width: 98%;
+}*/
+
+p {
+  font-family: "Open Sans", sans-serif;
+  color: #2c3148;
+  font-weight: 300;
+  line-height: 1.6;
+  font-size: 16px;
+  /* color: #222; */
+}
+
+th {
+  text-align: left;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #f5f5f5;
+  font-size: 14px;
+  border-collapse: collapse;
+}
+td {
+  text-align: left;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #2c3148;
+  font-size: 14px;
+  border-collapse: collapse;
+}
+tr:first-child {
+  background-color: #2c3148;
+}
+
+tr:hover:not(:first-child) {
+  background-color: #f5f5f5;
+}
+table tbody td,
+table tbody th {
+  padding: 0.5rem 0.625rem 0.625rem;
+}
+table tbody tr:nth-child(even) {
+  border-bottom: 0;
+  background-color: #f1f1f1;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 0;
+}
+.sec-title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 30px 0 0;
+  color: #2c3148;
+}
+
+@media (max-width: 1024px) {
+  .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap,
+  .ins-styleguide-wrap .ins-styleguide-code-slot-wrap {
+    width: 100%;
+    float: none;
+  }
+  .ins-styleguide-wrap .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap,
+  .ins-styleguide-wrap .ins-styleguide-wrap .ins-styleguide-code-slot-wrap {
+    width: 100%;
+    display: block;
+    padding: 1em 0;
+  }
+}
+@media (max-width: 768px) {
+  .ins-styleguide-wrap.m-overflow-initial .ins-styleguide-actual-slot-wrap {
+    overflow: initial;
+  }
+}
+@media (max-width: 414px) {
+  .ins-styleguide-wrap:nth-of-type(even) .ins-styleguide-wrap,
+  .ins-styleguide-wrap .ins-styleguide-wrap,
+  .ins-styleguide-wrap .ins-styleguide-wrap:hover {
+    padding: 0;
+    background-color: unset;
+  }
+}
+
+.spacer {
+  padding: 15px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* font-icons */
+
+.glyph {
+  font-size: 16px;
+  width: 15em;
+  padding-bottom: 1em;
+  margin-right: 4em;
+  margin-bottom: 1em;
+  float: left;
+  overflow: hidden;
+}
+.liga {
+  width: 80%;
+  width: calc(100% - 2.5em);
+}
+.talign-right {
+  text-align: right;
+}
+.talign-center {
+  text-align: center;
+}
+.bgc1 {
+  background: #f1f1f1;
+}
+.fgc1 {
+  color: #999;
+}
+.fgc0 {
+  color: #000;
+}
+p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.mvm {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+.mtn {
+  margin-top: 0;
+}
+.mtl,
+.mal {
+  margin-top: 1.5em;
+}
+.mbl,
+.mal {
+  margin-bottom: 1.5em;
+}
+.mal,
+.mhl {
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+}
+.mhmm {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.mls {
+  margin-left: 0.25em;
+}
+.ptl {
+  padding-top: 1.5em;
+}
+.pbs,
+.pvs {
+  padding-bottom: 0.25em;
+}
+.pvs,
+.pts {
+  padding-top: 0.25em;
+}
+.unit {
+  float: left;
+}
+.unitRight {
+  float: right;
+}
+.size1of2 {
+  width: 50%;
+}
+.size1of1 {
+  width: 100%;
+}
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.hidden-true {
+  display: none;
+}
+.textbox0 {
+  width: 3em;
+  background: #f1f1f1;
+  padding: 0.25em 0.5em;
+  line-height: 1.5;
+  height: 1.5em;
+}
+.fs0 {
+  font-size: 16px;
+}
+.fs1 {
+  font-size: 24px;
+}
+.fs2 {
+  font-size: 32px;
+}
+.fs3 {
+  font-size: 28px;
+}
+.ins-styleguide-wrap {
+  margin-bottom: 40px;
+}
+.ins-styleguide-wrap .actual {
+  margin-bottom: 20px;
+}
+.ins-styleguide-wrap .actual {
+  margin-bottom: 20px;
+}
+.ins-styleguide-wrap .label {
+  padding-bottom: 15px;
+  font-size: 14px;
+  font-weight: 600;
+}
+code {
+  padding: 0.125rem 0.3125rem 0.0625rem;
+  border: 1px solid #cacaca;
+  background-color: #e6e6e6;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  font-weight: 400;
+  color: #0a0a0a;
+}
+
+/* START styleguide component css */
+ins-styleguide:nth-of-type(even) .ins-styleguide-wrap {
+  background-color: #f1f1f1;
+}
+ins-styleguide .ins-styleguide-wrap {
+  padding: 0.9375rem;
+}
+ins-styleguide .ins-styleguide-wrap .ins-styleguide-label-wrap {
+  padding-top: 0.9rem;
+  font-size: 14px;
+  font-weight: 600;
+}
+ins-styleguide .ins-styleguide-wrap .ins-styleguide-cont {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+ins-styleguide .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap,
+ins-styleguide .ins-styleguide-wrap .ins-styleguide-code-slot-wrap {
+  width: 30%;
+  box-sizing: border-box;
+  display: table-cell;
+  padding: 1em;
+  overflow: auto;
+  vertical-align: top;
+}
+ins-styleguide .ins-styleguide-wrap .ins-styleguide-code-slot-wrap {
+  width: 70%;
+}
+ins-styleguide .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+ins-styleguide .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap::-webkit-scrollbar-track {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+ins-styleguide .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap::-webkit-scrollbar-thumb {
+  background-color: #c4c4c4;
+  border-radius: 16px;
+  outline: none;
+}
+ins-styleguide .ins-styleguide-wrap:hover {
+  background-color: #f1f1f1;
+}
+ins-styleguide .ins-styleguide-wrap:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+@media (max-width: 1024px) {
+  ins-styleguide .ins-styleguide-actual-slot-wrap,
+  ins-styleguide .ins-styleguide-code-slot-wrap {
+    width: 100%;
+    float: none;
+  }
+  ins-styleguide .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap,
+  ins-styleguide .ins-styleguide-wrap .ins-styleguide-code-slot-wrap {
+    width: 100%;
+    display: block;
+    padding: 1em 0;
+  }
+}
+@media (max-width: 768px) {
+  ins-styleguide.m-overflow-initial .ins-styleguide-actual-slot-wrap {
+    overflow: initial;
+  }
+}
+@media (max-width: 414px) {
+  ins-styleguide:nth-of-type(even) .ins-styleguide-wrap,
+  ins-styleguide .ins-styleguide-wrap,
+  ins-styleguide .ins-styleguide-wrap:hover {
+    padding: 0;
+    background-color: unset;
+  }
+}
+/* END styleguide component css */
+
+p a {
+  color: #1e86e3;
+  text-decoration: none;
+}

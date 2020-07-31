@@ -19,10 +19,10 @@
 
 ## Events
 
-| Event                   | Description | Type               |
-| ----------------------- | ----------- | ------------------ |
-| `tabItemDisableToggled` |             | `CustomEvent<any>` |
-| `tabItemError`          |             | `CustomEvent<any>` |
+| Event                 | Description | Type               |
+| --------------------- | ----------- | ------------------ |
+| `insTabDisableToggle` |             | `CustomEvent<any>` |
+| `insTabError`         |             | `CustomEvent<any>` |
 
 
 ## Methods

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <title>Insites 2.0 Frontend Styleguide - QA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="5tVBrtdq8yU/lBAT1NiR/tKCLVqKvfWr/bxFK1L3qh51jBV7Z9iGufcuqlfHn4Pw+iUsCNcWl26yQLdPL3MrOA==" name="csrf-token">
+
+    <!-- Insites Essentials -->
+    <link rel="stylesheet" href="/v1/assets/css/insites-plugins.css">
+    <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+    <script src="/v1/assets/js/insites-plugins.js"></script>
+    <script src="/v1/build/insites.js"></script>
+
+    <!-- Documention Styleguide CSS -->
+    <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+    <link rel="stylesheet" href="/v1/assets/css/prism.css">
+    <link rel="stylesheet" href="/v1/assets/css/styleguide.css">
+    <script src="/v1/assets/vendor/js/foundation.min.js"></script>
+    <script src="/v1/assets/js/prism.js"></script>
+
+    <style>
+        .font-1 {
+            font-family: "Open Sans", sans-serif;
+            color: #2C3148;
+            font-weight: 300;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h1>Test</h1>
+    <a href="/#/app/test?reroute=%2Fassets%2Fpages%2Fstyleguide%2Fessentials.html&reroutelabel=Essentials">reroute</a> -->
+    <ins-input id="test" icon-title="Copy to Clipboard" icon="icon-content_copy" name="my_field" label="My Field"></ins-input>
+
+    <div id="app">
+        <p>{{ selected }}</p>
+        <insites-select required name="project_status"
+            @input="selectProjectStatus"
+            :value="project_status"
+            placeholder="Please Select">
+
+            <insites-select-option label="Offline" value="Offline"></insites-select-option>
+            <insites-select-option label="Open for Investment" value="Open for Investment"></insites-select-option>
+            <insites-select-option label="Funding Complete" value="Funding Complete"></insites-select-option>
+        </insites-select>
+
+        <insites-select label="Status" required name="project_status" multiple has-error
+            error-message="This is required"
+            @input="selectProjectStatus"
+            :value="project_status"
+            placeholder="Please Select">
+
+            <insites-select-option label="Offline" value="Offline"></insites-select-option>
+            <insites-select-option label="Open for Investment" value="Open for Investment"></insites-select-option>
+            <insites-select-option label="Funding Complete" value="Funding Complete"></insites-select-option>
+        </insites-select>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/v1/assets/js/insites-components-vue-wrapper.js"></script>
+
+    <script>
+        window.addEventListener('load', () => {
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    project_status: "Offline",
+                    selected: 'Test',
+                    values: {
+                        a: 'a',
+                        b: 'b',
+                        c: 'c',
+                    }
+                },
+                methods: {
+                    selectProjectStatus(e){
+                        console.log('e', e);
+                    }
+                }
+            });
+        });
+    </script>
+    <ins-base-table id="fieldTable" default-bulk-action="Update" without-pagination without-search>
+    </ins-base-table>
+    <style>
+      #fieldTable .tagged.Active span, #fieldTable .tagged.Active a {
+        background-color: #24be8d;
+        color: #fff;
+      }
+
+      #fieldTable .tagged span, #fieldTable .tagged a {
+        background-color: #d4d4d4;
+        color: #636363;
+        padding: 6px 10px;
+        font-size: 11px;
+        border-radius: 4px;
+      }
+    </style>
+    <script>
+      var fieldTable = document.getElementById('fieldTable');
+      var dateFormat = "MM.DD.YYYY"
+      fieldTable.bulkActions = ["Update"];
+      fieldTable.tableHeaders = [
+        { label: 'Name', type: "string", hasLink: true, editable: true },
+        { label: 'Birthday', type: "date", editable: true },
+        {
+          label: 'Status', type: "select", hasTag: true, editable: true,
+          selectOptions: ['Active', 'Inactive']
+        }
+      ]
+      fieldTable.tableData = [
+        { "id": "sample-001", "NameLink": "test1.html", "Name": "John Doe", "Birthday": "01.29.1990", "Status": "Active" },
+        { "id": "sample-002", "RowLink": "test2.html", "BirthdayLink": "test1.html", "Name": "Derek de Guzman", "Birthday": "11.29.1990", "Status": "Inactive" },
+        { "id": "sample-002", "RowLink": "test2.html", "BirthdayLink": "test1.html", "Name": "Derek de Guzman", "Birthday": "11.29.1990", "Status": "Manual Class", "Status_tagClass": "Active" }
+      ]
+      fieldTable.addEventListener('onTableBulkAction', function (event) {
+        console.log('Edit table event', event.detail);
+        alert("Check console log for event data");
+      });
+    </script>
+
+</body>
+</html>

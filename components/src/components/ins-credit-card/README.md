@@ -15,16 +15,18 @@
 | `expiryMonth` | `expiry-month` |             | `string`  | `undefined` |
 | `expiryYear`  | `expiry-year`  |             | `string`  | `undefined` |
 | `fullYear`    | `full-year`    |             | `boolean` | `undefined` |
+| `hasLoad`     | `has-load`     |             | `string`  | `undefined` |
 | `lastFour`    | `last-four`    |             | `string`  | `undefined` |
 | `value`       | `value`        |             | `string`  | `undefined` |
 
 
 ## Events
 
-| Event                  | Description | Type               |
-| ---------------------- | ----------- | ------------------ |
-| `insCreditCardClicked` |             | `CustomEvent<any>` |
-| `insCreditCardClosed`  |             | `CustomEvent<any>` |
+| Event      | Description | Type               |
+| ---------- | ----------- | ------------------ |
+| `didLoad`  |             | `CustomEvent<any>` |
+| `insClick` |             | `CustomEvent<any>` |
+| `insClose` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------

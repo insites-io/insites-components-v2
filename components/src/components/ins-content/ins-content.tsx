@@ -1,11 +1,13 @@
-import { h, Component, State } from "@stencil/core";
+import { h, Component } from "@stencil/core";
 
 @Component({ tag: 'ins-content' })
 export class InsContent {
-  @State() insSidebarEl;
-  componentDidLoad(){
+  insSidebarEl;
+
+  componentWillLoad(){
     this.insSidebarEl = document.querySelector('ins-sidebar');
   }
+
   mouseEnterHandler(){
     let insAdminEl = document.querySelector('ins-admin');
     let submenuWrapEls = document.querySelectorAll('ins-sidebar-item') as any;
@@ -16,6 +18,7 @@ export class InsContent {
       }
     }
   }
+
   render() {
     return (
       <div class={`content ${this.insSidebarEl ? '' : 'no-sidebar'}`}

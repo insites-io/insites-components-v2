@@ -10,6 +10,7 @@
 | Property        | Attribute        | Description | Type      | Default     |
 | --------------- | ---------------- | ----------- | --------- | ----------- |
 | `disabled`      | `disabled`       |             | `boolean` | `undefined` |
+| `hasLoad`       | `has-load`       |             | `string`  | `undefined` |
 | `label`         | `label`          |             | `string`  | `undefined` |
 | `name`          | `name`           |             | `string`  | `undefined` |
 | `noPadding`     | `no-padding`     |             | `boolean` | `undefined` |
@@ -23,6 +24,7 @@
 
 | Event            | Description | Type               |
 | ---------------- | ----------- | ------------------ |
+| `didLoad`        |             | `CustomEvent<any>` |
 | `insClick`       |             | `CustomEvent<any>` |
 | `insValueChange` |             | `CustomEvent<any>` |
 

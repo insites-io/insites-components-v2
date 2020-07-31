@@ -1,8 +1,10 @@
-import { h, Component, State, Prop, Element, Method } from "@stencil/core";
+import { h, Component, State, Prop, Element, Method, Event, EventEmitter } from "@stencil/core";
 
 @Component({ tag: 'ins-header' })
 export class InsHeader {
   @Element() insHeaderEl: HTMLElement;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
 
   @Prop({ mutable: true }) supportLink: string;
   @Prop({ mutable: true }) hasMenuToggle: boolean = true;
@@ -29,24 +31,27 @@ export class InsHeader {
     this.insNavEl = document.querySelector('.full-width-navs');
 
     window.onresize = function() {
-        $this.toggleMinimise();
+      $this.toggleMinimise();
     };
 
     this.toggleMinimise();
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insHeaderEl);
+    }
   }
 
   toggleMinimise() {
     const mq = window.matchMedia( "(max-width: 1260px)" );
-    let $this = this;
-
     if (mq.matches) {
-      this.insAdminEl.classList.add('mini');
-      if (!$this.sidebarMini && this.insSidebarEl) {
+      if (this.insAdminEl) this.insAdminEl.classList.add('mini');
+      if (!this.sidebarMini && this.insSidebarEl) {
         this.insSidebarEl.minimise();
       }
     } else {
-      if ($this.sidebarMini) {
-        $this.toggleSidebar();
+      if (this.sidebarMini) {
+        this.toggleSidebar();
       }
     }
   }
@@ -149,23 +154,28 @@ export class InsHeader {
         </button> : ''}
 
         <div class="full-width-navs">
-          <button class="icon-nav" onClick={() => this.toggleFullScreen()}>
-            {this.fullScreenState ?
-            <i class="icon-minimize-1"></i> :
-            <i class="icon-maximize"></i>}
-          </button>
-          {this.supportLink ?
-          <button class="icon-nav"
-            onClick={() => this.goToSupportLink()}>
-            <i class="icon-support-1"></i>
-          </button> : ''}
+          <div class="ins-header-buttons">
+            <button class="icon-nav" onClick={() => this.toggleFullScreen()}>
+              {this.fullScreenState ?
+              <i class="icon-minimize-1" title="Minimise View"></i> :
+              <i class="icon-maximize" title="Maximise View"></i>}
+            </button>
 
-          {/* TODO: include on styleguide */}
+            {this.supportLink ?
+              <button class="icon-nav"
+                onClick={() => this.goToSupportLink()}>
+                <i class="icon-support-1" title="Open Support Page"></i>
+              </button>
+            : ''}
 
-          {this.insNotificationsEl ?
-          <button class="icon-nav" onClick={() => this.toggleNotifications()}>
-            <i class="icon-notification-1"></i>
-          </button> : ''}
+            {/* TODO: include on styleguide */}
+
+            {this.insNotificationsEl ?
+              <button class="icon-nav" onClick={() => this.toggleNotifications()}>
+                <i class="icon-notification-1" title="Open Notifications"></i>
+              </button>
+            : ''}
+          </div>
 
           <slot />
         </div>

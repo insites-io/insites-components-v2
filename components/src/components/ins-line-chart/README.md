@@ -7,11 +7,19 @@
 
 ## Properties
 
-| Property     | Attribute    | Description | Type     | Default |
-| ------------ | ------------ | ----------- | -------- | ------- |
-| `categories` | `categories` |             | `any`    | `[]`    |
-| `chartData`  | `chart-data` |             | `any`    | `[]`    |
-| `name`       | `name`       |             | `string` | `""`    |
+| Property     | Attribute    | Description | Type     | Default     |
+| ------------ | ------------ | ----------- | -------- | ----------- |
+| `categories` | `categories` |             | `any`    | `[]`        |
+| `chartData`  | `chart-data` |             | `any`    | `[]`        |
+| `hasLoad`    | `has-load`   |             | `string` | `undefined` |
+| `name`       | `name`       |             | `string` | `""`        |
+
+
+## Events
+
+| Event     | Description | Type               |
+| --------- | ----------- | ------------------ |
+| `didLoad` |             | `CustomEvent<any>` |
 
 
 ## Dependencies

@@ -4,6 +4,9 @@ import { h, Component, Prop, Event, EventEmitter, State, Method, Element } from 
 export class InsSidebarItem {
   @Element() insSidebarItemEl: HTMLElement;
   @Event() routePage: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
+
   @Prop({mutable: true}) link: any = '';
   @Prop({mutable: true}) footerLink: string = '';
   @Prop({mutable: true}) icon: any = 'no-icon';
@@ -111,30 +114,35 @@ export class InsSidebarItem {
 
     this.submenuVisible = true;
     this.toggleSidebar();
+    return true;
   }
 
   @Method()
   async hideSubMenu(){
     this.submenuVisible = false;
+    return true;
   }
 
   @Method()
   async activate(){
-    this.deactivateSiblings();
+    await this.deactivateSiblings();
     let checkIfSubMenu = this.insSidebarItemEl.closest('.submenu-wrap');
     if (checkIfSubMenu) {
       checkIfSubMenu.closest('ins-sidebar-item').activateParent();
     }
+    return true;
   }
 
   @Method()
   async activateParent(){
     this.isActive = true;
+    return true;
   }
 
   @Method()
   async deactivate(){
     this.isActive = false;
+    return true;
   }
 
   hideSiblingsMenu(){
@@ -145,13 +153,16 @@ export class InsSidebarItem {
     }
   }
 
-  deactivateSiblings(){
-    let submenuWrapEls = this.insSidebarItemEl.closest('ins-sidebar').querySelectorAll('ins-sidebar-item') as any;
+  async deactivateSiblings(){
+    let submenuWrapEls = this.insSidebarItemEl.closest('ins-sidebar')
+      .querySelectorAll('ins-sidebar-item') as any;
 
     for (let i = 0; i < submenuWrapEls.length; ++i) {
-      submenuWrapEls[i].deactivate();
+      await submenuWrapEls[i].deactivate();
     }
+
     this.isActive = true;
+    return true;
   }
 
   componentWillLoad(){
@@ -168,6 +179,12 @@ export class InsSidebarItem {
         this.addRippleEffect(e, target);
       }
     });
+
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insSidebarItemEl);
+    }
   }
 
   @Method()

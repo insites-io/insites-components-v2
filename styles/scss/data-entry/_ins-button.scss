@@ -4,7 +4,7 @@
   color: var(--ins-color-#{$color});
 
   &.solid {
-    background-color: $color;
+    background-color: var(--ins-color-#{$color});
     color: var(--ins-color-ink1);
 
     &:not([disabled]):hover {
@@ -54,7 +54,10 @@
 
 @mixin caretColor($color){
   color: var(--ins-color-#{$color});
-  border-left: $border_thickness $border_style $border_color;
+  border-left:
+    var(--ins-border-style)
+    var(--ins-border-thickness)
+    var(--ins-border-color);
 }
 
 ins-button {
@@ -172,12 +175,6 @@ ins-button {
       &--large {
         height: 48px;
         padding: 10px 24px;
-
-        &.is-loading .spinner,
-        .spinner:after {
-          width: 30px;
-          height: 30px;
-        }
       }
     }
 

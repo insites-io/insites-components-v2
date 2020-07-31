@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Tag</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+
+  <script type="module" src="/build/insites-components.esm.js"></script>
+  <script nomodule src="/build/insites-components.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+
+  <style>
+    ins-styleguide .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap {
+      overflow: initial;
+    }
+    .padding-1 { margin: 20px 0; }
+    .example h1, .example h2, .example h3, .example h4, .example h5, .example p {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ins-markdown -->
+  <div>
+    <h2 class="section-title">Insites Tag
+      <code>&lt;ins-tag&gt;</code>
+    </h2>
+    <p>Defines a tag element.</p>
+    <div>
+
+      <!-- content -->
+      <div>
+          <div class="example" slot="actual">
+            <h2 class="section-title">Complete Example</h2>
+            <h1>
+              <ins-tag label="DRAFT" color="orange"></ins-tag>
+              <ins-tag label="DRAFT" light=false color="orange"></ins-tag>
+              H1 Heading: 123456
+            </h1>
+            <h2>
+              <ins-tag label="ICON" icon="icon-star" color="blue"></ins-tag>
+              <ins-tag label="ICON" icon="icon-star" light=false color="blue"></ins-tag>
+              H2 Heading: 123456
+            </h2>
+            <h3>
+              <ins-tag label="New" color="yellow"></ins-tag>
+              <ins-tag label="New" light=false color="yellow"></ins-tag>
+              H3 Heading: 123456
+            </h3>
+            <h4>
+              <ins-tag label="Error" color="red"></ins-tag>
+              <ins-tag label="Error" light=false color="red"></ins-tag>
+              H4 Heading: 123456
+            </h4>
+            <h5>
+              <ins-tag label="Active" color="green"></ins-tag>
+              <ins-tag label="Active" light=false color="green"></ins-tag>
+              H5 Heading: 123456
+            </h5>
+            <p>
+              <ins-tag label="Default"></ins-tag>
+              <ins-tag label="Default" light=false></ins-tag>
+              p paragraph: 123456
+            </p>
+            <p>
+              <ins-tag label="Direct CSS Style" font-color="#ffffff" background-color="#dd20a1"></ins-tag>
+              p paragraph: 123456
+            </p>
+
+          <div class="padding-1">
+            <script type="text/plain" class="language-markup">
+<h1>
+  <ins-tag label="DRAFT" color="orange"></ins-tag>
+  <ins-tag label="DRAFT" light=false color="orange"></ins-tag>
+  H1 Heading: 123456
+</h1>
+<h2>
+  <ins-tag label="ICON" icon="icon-star" color="blue"></ins-tag>
+  <ins-tag label="ICON" icon="icon-star" light=false color="blue"></ins-tag>
+  H2 Heading: 123456
+</h2>
+<h3>
+  <ins-tag label="New" color="yellow"></ins-tag>
+  <ins-tag label="New" light=false color="yellow"></ins-tag>
+  H3 Heading: 123456
+</h3>
+<h4>
+  <ins-tag label="Error" color="red"></ins-tag>
+  <ins-tag label="Error" light=false color="red"></ins-tag>
+  H4 Heading: 123456
+</h4>
+<h5>
+  <ins-tag label="Active" color="green"></ins-tag>
+  <ins-tag label="Active" light=false color="green"></ins-tag>
+  H5 Heading: 123456
+</h5>
+<p>
+  <ins-tag label="Default"></ins-tag>
+  <ins-tag label="Default" light=false></ins-tag>
+  p paragraph: 123456
+</p>
+<p>
+  <ins-tag label="Direct CSS Style" font-color="#ffffff" background-color="#dd20a1"></ins-tag>
+  p paragraph: 123456
+</p>
+            </script>
+          </div>
+
+          <!-- Inherited Font Style -->
+            <h2 class="section-title">Inherited Font Style</h2>
+              <p>Using the proprty <code>font-inherit</code>, tag will inherit the parent font size & line height.</p>
+              <br/>
+            <h1>
+              <ins-tag label="DRAFT" color="orange" font-inherit></ins-tag>
+              H1 Heading: 123456
+            </h1>
+            <h2>
+              <ins-tag label="ICON" icon="icon-star" color="blue" font-inherit></ins-tag>
+              H2 Heading: 123456
+            </h2>
+            <h3>
+              <ins-tag label="New" color="yellow" font-inherit></ins-tag>
+              H3 Heading: 123456
+            </h3>
+            <h4>
+              <ins-tag label="Error" color="red" font-inherit></ins-tag>
+              H4 Heading: 123456
+            </h4>
+            <h5>
+              <ins-tag label="Active" color="green" font-inherit></ins-tag>
+              H5 Heading: 123456
+            </h5>
+            <p>
+              <ins-tag label="Default" font-inherit></ins-tag>
+              p paragraph: 123456
+            </p>
+          </div>
+          <div class="padding-1">
+            <script type="text/plain" class="language-markup">
+<h1>
+  <ins-tag label="DRAFT" color="orange" font-inherit></ins-tag>
+  H1 Heading: 123456
+</h1>
+<h2>
+  <ins-tag label="ICON" icon="icon-star" color="blue" font-inherit></ins-tag>
+  H2 Heading: 123456
+</h2>
+<h3>
+  <ins-tag label="New" color="yellow" font-inherit></ins-tag>
+  H3 Heading: 123456
+</h3>
+<h4>
+  <ins-tag label="Error" color="red" font-inherit></ins-tag>
+  H4 Heading: 123456
+</h4>
+<h5>
+  <ins-tag label="Active" color="green" font-inherit></ins-tag>
+  H5 Heading: 123456
+</h5>
+<p>
+  <ins-tag label="Default" font-inherit></ins-tag>
+  p paragraph: 123456
+</p>
+            </script>
+          </div>
+      </div>
+
+      <!-- Attributes -->
+      <div>
+        <h2 class="section-title">Attributes</h2>
+        <div class="table-style">
+          <table>
+            <tr>
+              <th>FIELD ATTRIBUTE</th>
+              <th>TYPE</th>
+              <th>DEFAULT</th>
+              <th>OPTIONS</th>
+              <th>DESCRIPTION</th>
+            </tr>
+            <tr>
+              <td>label</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Tag text value</td>
+            </tr>
+            <tr>
+              <td>color</td>
+              <td>string</td>
+              <td>""</td>
+              <td>grey, blue, red, green, yellow, orange, ..</td>
+              <td>Specify the CSS class used to assign tag color</td>
+            </tr>
+            <tr>
+              <td>icon</td>
+              <td>string</td>
+              <td>""</td>
+              <td>any</td>
+              <td>CSS class used to display an icon before the text</td>
+            </tr>
+            <tr>
+              <td>light</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>true,false</td>
+              <td>Specify which Insites tag color style to use (light / solid)</td>
+            </tr>
+            <tr>
+              <td>font-inherit</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>true, false</td>
+              <td>Set tag font-size & line-height to inherit parent element</td>
+            </tr>
+            <tr>
+              <td>font-color</td>
+              <td>string / CSS hex code</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Directly set inline CSS 'font-color', this will overwrite the `color & light` property. </td>
+            </tr>
+            <tr>
+              <td>background-color</td>
+              <td>string / CSS hex code</td>
+              <td>""</td>
+              <td>any</td>
+              <td>Directly set inline CSS 'background-color', this will overwrite the `color & light` property. </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+</body>
+
+</html>
