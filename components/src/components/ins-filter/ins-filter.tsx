@@ -1,267 +1,381 @@
 import { h, Component, Element, Event, EventEmitter, Prop, State, Listen, Method } from "@stencil/core";
-import flatpickr from "flatpickr";
 
 @Component({ tag: 'ins-filter' })
 export class InsFilter {
-    @Element() insFilterEl: HTMLElement;
-    @Event() insDateFilter: EventEmitter;
-    @Event() insFilter: EventEmitter;
-    @Event() didLoad: EventEmitter;
-    @Prop() hasLoad: string;
+  @Element() insFilterEl: HTMLElement;
+  @Event() insFilterApply: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
+  @Prop({ mutable: true }) withDateFilter: boolean = false;
+  @Prop({ mutable: true }) dateTitle: any = "Date Period";
+  @Prop({ mutable: true }) defaultDate: string = "";
+  @Prop({ mutable: true }) dateFrom: string = "";
+  @Prop({ mutable: true }) dateTo: string = "";
+  @Prop({ mutable: true }) dateOpt: any = [
+    'All',
+    'Today',
+    'This Week',
+    'Last Week',
+    'This Month',
+    'Last Month',
+    'This Year',
+    'Last Year',
+    'Custom'
+  ];
 
-    @Prop({ mutable: true }) withDateFilter: boolean = false;
-    @Prop({ mutable: true }) dateTitle: any = "Date Period";
-    @Prop({ mutable: true }) defaultDate: string = "";
-    @Prop({ mutable: true }) dateFrom: string = "";
-    @Prop({ mutable: true }) dateTo: string = "";
-    @Prop({ mutable: true }) dateOpt: any = [
-        'All',
-        'Today',
-        'This Week',
-        'Last Week',
-        'This Month',
-        'Last Month',
-        'This Year',
-        'Last Year',
-        'Custom'
-    ];
+  @State() dateFilterState: any;
+  @State() selectedRange: any = "All";
 
-    @State() filterItem: any;
-    @State() dateFilterState: any;
-    @State() selectedCustom: boolean;
-    @State() selectedRange: any;
-    @State() isAll: boolean = false;
-    @State() pickerInstance: any;
+  filterItem: any;
+  selectedCustom: boolean = false;
+  pickerInstance: any;
+  currentFilter: any = "All";
+  isAll: boolean = true;
+  fromPicker: any;
+  fromInput: any;
+  toPicker: any;
+  toInput: any;
+  dateFilterEl: any;
 
-    @State() fromPickerInstance: any;
-    @State() toPickerInstance: any;
+  temp: any = {
+    from: "",
+    to: "",
+    range: "All"
+  }
 
-    @State() currentFilter: any;
+  cancelDateFilter(){
+    this.closeDateFilter();
+    this.fromPicker.value = this.temp.from;
+    this.fromInput.value = this.temp.from;
+    this.toPicker.value = this.temp.to;
+    this.toInput.value = this.temp.to;
+    this.fromPicker.maxDate = this.temp.to;
+    this.toPicker.minDate = this.temp.from;
+    this.selectedRange = this.temp.range;
 
-    @Method()
-    async closeDateFilter() {
-        this.dateFilterState = false;
+    if (this.temp.range === "All"){
+      this.isAll = true;
+    } else this.isAll = false;
+
+    if (this.temp.range.includes('Custom')){
+      this.selectedCustom = true;
+    } else this.selectedCustom = false;
+  }
+
+  @Method()
+  async closeDateFilter() {
+    this.dateFilterState = false;
+  }
+
+  @Method()
+  async getDate() {
+    return this.getLocDate();
+  }
+
+  @Listen('insInput')
+  datePickerChanged(e){
+    let name = e.detail.name;
+    let date = e.detail.date_string;
+    this[`${name}Input`].value = date;
+
+    if (name === "from"){
+      this.toPicker.minDate = date;
+    } else {
+      this.fromPicker.maxDate = date;
     }
 
-    @Listen('onFilter')
-    async onFilterHandler() {
-        let insFilterItems = this.insFilterEl.querySelectorAll('ins-filter-item') as any;
-        let selections = {};
+    if (this.fromInput.value && this.toInput.value){
+      this.isAll = false;
+      this.selectedRange = this.customFormat();
+    }
+  }
 
-        for (let i = 0; i < insFilterItems.length; i++) {
-            let selected = await insFilterItems[i].getSelected();
-            selections[selected.name] = selected.option;
-        }
+  @Listen('insSelect')
+  async onFilterHandler() {
+    let insFilterItems = this.insFilterEl.querySelectorAll('ins-filter-item') as any;
+    let selections = {};
 
-        this.insFilter.emit(selections);
+    for (let i = 0; i < insFilterItems.length; i++) {
+      let selected = await insFilterItems[i].getSelected();
+      selections[selected.name] = selected.option;
     }
 
-    toggleDateFilter() {
-        this.dateFilterState = !this.dateFilterState;
+    selections[this.dateTitle] = this.getLocDate();
+    this.insFilterApply.emit(selections);
+  }
 
-        let insFilter = document.getElementsByTagName('ins-filter-item');
-        for (let i = 0; i > insFilter.length; i++) {
-            insFilter[i].closeFilter();
-        }
+  toggleDateFilter() {
+    this.dateFilterState = !this.dateFilterState;
+
+    let insFilter = document.getElementsByTagName('ins-filter-item');
+    for (let i = 0; i > insFilter.length; i++) {
+      insFilter[i].closeFilter();
+    }
+  }
+
+  async dateOptEHandler(option) {
+
+    this.selectedRange = option;
+    this.selectedCustom = false;
+
+    if (option.toLowerCase() == 'all') {
+
+      this.isAll = true;
+      this.fromInput.value = "";
+      this.fromPicker.value = "";
+      this.fromPicker.maxDate = "";
+
+      this.toInput.value = "";
+      this.toPicker.value = "";
+      this.toPicker.minDate = "";
+
+    } else {
+
+      let from = new Date();
+      let to = new Date();
+      let curr = new Date();
+
+      if (option.toLowerCase() == 'this week') {
+
+        let first = curr.getDate() - (curr.getDay() - 1); // First day is the day of the month - the day of the week
+        let last = first + 6; // last day is the first day + 6
+        let toDate = new Date();
+
+        from = new Date(curr.setDate(first));
+        to = new Date(toDate.setDate(last));
+
+      } else if (option.toLowerCase() == 'last week') {
+
+        let beforeOneWeek = new Date(new Date().getTime() - 60 * 60 * 24 * 7 * 1000);
+        let beforeOneWeek2 = new Date(beforeOneWeek);
+        let day = beforeOneWeek.getDay();
+        let diffToMonday = beforeOneWeek.getDate() - day + (day === 0 ? -6 : 1);
+
+        from = new Date(beforeOneWeek.setDate(diffToMonday));
+        to = new Date(beforeOneWeek2.setDate(diffToMonday + 6));
+
+      } else if (option.toLowerCase() == 'this month') {
+        from = new Date(from.getFullYear(), from.getMonth(), 1);
+        to = new Date(from.getFullYear(), from.getMonth() + 1, 0);
+
+      } else if (option.toLowerCase() == 'last month') {
+        from.setDate(1);
+        from.setMonth(from.getMonth() - 1);
+        to = new Date(from.getFullYear(), from.getMonth() + 1, 0);
+
+      } else if (option.toLowerCase() == 'this year') {
+
+        from = new Date(from.getFullYear(), 0, 1);
+        to = new Date(from.getFullYear(), 11, 31);
+
+      } else if (option.toLowerCase() == 'last year') {
+
+        from = new Date(from.getFullYear() - 1, 0, 1);
+        to = new Date(from.getFullYear(), 11, 31);
+
+      } else if (option.toLowerCase() == 'custom' && !this.isAll) {
+
+        from = new Date(this.fromInput.value);
+        to = new Date(this.toInput.value);
+      }
+
+      this.isAll = false;
+
+      this.fromPicker.maxDate = to;
+      this.fromPicker.value = from;
+
+      this.toPicker.minDate = from;
+      this.toPicker.value = to;
+
+      this.fromInput.value = await this.fromPicker.formatDate(from);
+      this.toInput.value = await this.toPicker.formatDate(to);
+
+      if (option === 'Custom') {
+        this.selectedRange = this.customFormat();
+      }
+    }
+  }
+
+  customFormat() {
+    if (!this.isAll) {
+      this.selectedCustom = true;
+      let filter = this.getLocDate() as any;
+      return `Custom (${filter.from} to ${filter.to})`;
+    } return 'All'
+  }
+
+  getLocDate() {
+    let from = this.fromInput.value;
+    let to = this.toInput.value;
+
+    if (from && to) return { from, to }
+    return 'All';
+  }
+
+  addClickOutside(){
+    window.addEventListener("click", e => {
+      let target = e.target as any;
+      let closest = target.closest(".filter__date")
+
+      if (closest !== this.dateFilterEl) {
+        this.cancelDateFilter();
+      }
+    });
+  }
+
+  componentWillLoad() {
+    this.filterItem = this.insFilterEl.querySelectorAll('ins-filter-item').length;
+  }
+
+  componentDidLoad() {
+    if (this.withDateFilter){
+      this.dateFilterEl = this.insFilterEl.querySelector('.filter__date');
+      this.addClickOutside();
+      this.initDatePickerInput('from');
+      this.initDatePickerInput('to');
+      this.setDefaultDate();
     }
 
-    dateOptEHandler(option) {
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]) {
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insFilterEl);
+    }
+  }
 
-        this.selectedRange = option;
-        this.selectedCustom = false;
+  initDatePickerInput(prop) {
+    this[`${prop}Picker`] = this.insFilterEl
+      .querySelector(`.${prop} ins-date-time`);
 
-        let from = new Date();
-        let to = new Date();
-        let curr = new Date();
+    this[`${prop}Input`] = this.insFilterEl
+      .querySelector(`.ins-date-${prop}`);
+  }
 
-        if (option.toLowerCase() == 'all') {
+  setDefaultDate() {
 
-            this.isAll = true;
-            this.fromPickerInstance.clear();
-            this.toPickerInstance.clear();
+    if (this.defaultDate) {
 
-        } else {
-            this.isAll = false;
+      let arr = this.dateOpt.map(item => item.toLowerCase());
+      let arrSearch = arr.indexOf(item => item === this.defaultDate.toLowerCase());
 
-            if (option.toLowerCase() == 'this week') {
+      if (arrSearch >= 0) {
+        this.currentFilter = this.dateOpt[arrSearch];
+        this.dateOptEHandler(this.currentFilter)
+      }
 
-                let first = curr.getDate() - (curr.getDay() - 1); // First day is the day of the month - the day of the week
-                let last = first + 6; // last day is the first day + 6
-                let toDate = new Date();
+    } /*else if (this.dateFrom && this.dateTo) {
 
-                from = new Date(curr.setDate(first));
-                to = new Date(toDate.setDate(last));
+      let from = new Date(this.dateFrom);
+      let to = new Date(this.dateTo);
 
-            } else if (option.toLowerCase() == 'last week') {
+      if (to > from) {
+        this.isAll = false;
+        this.pickerInstance.setDate
+        this.currentFilter = this.customFormat();
+        this.selectedRange = this.customFormat();
+      }
 
-                let beforeOneWeek = new Date(new Date().getTime() - 60 * 60 * 24 * 7 * 1000);
-                let beforeOneWeek2 = new Date(beforeOneWeek);
-                let day = beforeOneWeek.getDay();
-                let diffToMonday = beforeOneWeek.getDate() - day + (day === 0 ? -6 : 1);
+    } else {
+      this.currentFilter = this.dateOpt[0];
+      this.dateOptEHandler(this.currentFilter);
+    } */
+  }
 
-                from = new Date(beforeOneWeek.setDate(diffToMonday));
-                to = new Date(beforeOneWeek2.setDate(diffToMonday + 6));
+  updatePickers(e, range) {
+    let date = e.target.value;
+    this[`${range}Picker`].value = date;
 
-            } else if (option.toLowerCase() == 'this month') {
-                from = new Date(from.getFullYear(), from.getMonth(), 1);
-                to = new Date(from.getFullYear(), from.getMonth() + 1, 0);
-
-            } else if (option.toLowerCase() == 'last month') {
-                from.setDate(1);
-                from.setMonth(from.getMonth() - 1);
-                to = new Date(from.getFullYear(), from.getMonth() + 1, 0);
-
-            } else if (option.toLowerCase() == 'this year') {
-
-                from = new Date(from.getFullYear(), 0, 1);
-                to = new Date(from.getFullYear(), 11, 31);
-
-            } else if (option.toLowerCase() == 'last year') {
-
-                from = new Date(from.getFullYear() - 1, 0, 1);
-                to = new Date(from.getFullYear(), 11, 31);
-
-            } else if (option.toLowerCase() == 'custom') {
-                let filter = this.getDate() as any;
-                from = new Date(filter.from);
-                to = new Date(filter.to);
-            }
-
-            this.fromPickerInstance.set('defaultDate', from);
-            this.toPickerInstance.set('defaultDate', to);
-            if (option === 'Custom') this.selectedRange = this.customFormat();
-        }
+    if (range === "from"){
+      this.toPicker.minDate = date;
+    } else {
+      this.fromPicker.maxDate = date;
     }
 
-    customFormat() {
-        if (!this.isAll) {
-            this.selectedCustom = true;
-            let filter = this.getDate() as any;
-            return `Custom (${filter.from} to ${filter.to})`;
-        } return 'All'
+    if (this.fromInput.value && this.toInput.value){
+      this.isAll = false;
+      this.selectedRange = this.customFormat();
     }
+  }
 
-    @Method()
-    async getDate() {
-        let from = this.fromPickerInstance.selectedDates;
-        let to = this.toPickerInstance.selectedDates;
+  applyDateFilter(){
+    this.temp.from = this.fromInput.value;
+    this.temp.to = this.toInput.value;
+    this.temp.range = this.selectedRange;
+    this.onFilterHandler();
+    this.closeDateFilter();
+  }
 
-        console.log('from', from);
-        console.log('to', to);
+  render() {
+    return (
+      <div class="filter">
+        <span class="filter__label">Filter:</span>
+        <div class="filter__btn-container">
 
-        if (from && to) {
-            return {
-                from: flatpickr.formatDate(from[0], 'Y-m-d'),
-                to: flatpickr.formatDate(to[0], 'Y-m-d')
-            }
-        }
-        return 'All';
-    }
+          <slot></slot>
 
-    componentWillLoad() {
-        this.filterItem = this.insFilterEl.querySelectorAll('ins-filter-item').length;
-    }
+          {this.withDateFilter ?
 
-    componentDidLoad() {
-        this.initInsFilterDatePicker('from');
-        this.initInsFilterDatePicker('to');
-        this.setDefaultDate();
-        this.didLoad.emit();
-        if (this.hasLoad && window["Insites"]){
-          let func = window["Insites"].methods[this.hasLoad];
-          if (func) func(this.insFilterEl);
-        }
-    }
+            <div class="filter__date ins-filter-datepicker-wrap">
 
-    initInsFilterDatePicker(prop) {
-        let inputEl = this.insFilterEl.querySelector(`.${prop} input.ins-filter-datepicker-input`);
-        let wrapper = this.insFilterEl.querySelector(`.input-wrap.${prop}`) as any;
+              <div class="date-filter" onClick={() => this.toggleDateFilter()}>
+                <span class="date-filter__text">{this.dateTitle}: </span>
+                <span class="date-filter__option">{this.selectedRange}</span>
+                <i class="fas icon-caret-down"></i>
+              </div>
 
-        this[`${prop}PickerInstance`] = flatpickr(inputEl, {
-            inline: true,
-            dateFormat: 'Y-m-d',
-            onChange: this.onPickHandler.bind(this),
-            appendTo: wrapper
-        });
-    }
-
-    setDefaultDate() {
-
-        if (this.defaultDate) {
-
-            let arr = this.dateOpt.map(item => item.toLowerCase());
-            let arrSearch = arr.indexOf(item => item === this.defaultDate.toLowerCase());
-
-            if (arrSearch >= 0) {
-                this.currentFilter = this.dateOpt[arrSearch];
-                this.dateOptEHandler(this.currentFilter)
-            }
-
-        } else if (this.dateFrom && this.dateTo) {
-
-            let from = new Date(this.dateFrom);
-            let to = new Date(this.dateTo);
-
-            if (to > from) {
-                this.isAll = false;
-                this.pickerInstance.setDate
-                this.currentFilter = this.customFormat();
-                this.selectedRange = this.customFormat();
-            }
-        } else {
-            this.currentFilter = this.dateOpt[0];
-            this.dateOptEHandler(this.currentFilter);
-        }
-    }
-
-    onPickHandler(selected_dates, value) {
-        console.log('selected_dates', selected_dates);
-        console.log('value', value);
-    }
-
-    render() {
-        return (
-            <div class="filter">
-                <span class="filter__label">Filter:</span>
-                <div class="filter__btn-container">
-
-                    <slot></slot>
-
-                    {this.withDateFilter ?
-
-                        <div class="filter__date ins-filter-datepicker-wrap">
-
-                            <div class="date-filter" onClick={() => this.toggleDateFilter()}>
-                                <span class="date-filter__text">{this.dateTitle}: </span>
-                                <span class="date-filter__option">{this.selectedRange}</span>
-                                <i class="fas icon-caret-down"></i>
-                            </div>
-
-                            <div class={this.dateFilterState ? 'date-range active' : 'date-range'}>
-                                <div class="date-range__opt-container">
-                                    {this.dateOpt.map((option) =>
-                                        <div id="tab-container" onClick={() => this.dateOptEHandler(option)}>
-                                            <div class={`date-range__tab
-                                                    ${option === this.selectedRange || (this.selectedCustom && option === 'Custom')
-                                                    ? 'active-tab' : ''}`}>
-                                                {option}
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div class="from input-wrap">
-                                    <input type="text" class="from ins-filter-datepicker-input" />
-                                </div>
-                                <div class="to input-wrap">
-                                    <input type="text" class="to ins-filter-datepicker-input" />
-                                </div>
-                            </div>
-                        </div>
-
-                        : ''}
+              <div class={this.dateFilterState ? 'date-range active' : 'date-range'}>
+                <div class="date-range__opt-container">
+                  {this.dateOpt.map((option) =>
+                    <div onClick={() => this.dateOptEHandler(option)}>
+                      <div class={`date-range__tab
+                        ${option === this.selectedRange
+                          || (this.selectedCustom && option === 'Custom')
+                            ? 'active-tab'
+                            : ''}`}>
+                        {option}
+                      </div>
+                    </div>
+                  )}
                 </div>
+
+                <div class="from input-wrap">
+                  <ins-date-time mode="datepicker" name="from"
+                    inline value={this.dateFrom}>
+                  </ins-date-time>
+                </div>
+
+                <div class="to input-wrap">
+                  <ins-date-time mode="datepicker" name="to"
+                    inline value={this.dateTo}>
+                  </ins-date-time>
+                </div>
+
+                <div class="date-range__action">
+                  <label class="ins-label">From</label>
+                  <input type="date" class="ins-date-from"
+                    onChange={(e) => this.updatePickers(e, 'from')} />
+
+                  <span class="d-spacer">&nbsp; - &nbsp;</span>
+
+                  <label class="ins-label">To</label>
+                  <input type="date" class="ins-date-to"
+                    onChange={(e) => this.updatePickers(e, 'to')} />
+
+                  <div class="date-range__cancel-apply">
+                    <ins-button label="cancel" size="small"
+                      onClick={() => this.cancelDateFilter()} outlined />
+
+                    <ins-button label="apply" size="small"
+                      onClick={() => this.applyDateFilter()} solid />
+                  </div>
+                </div>
+
+              </div>
             </div>
-        )
-    }
+
+            : ''}
+        </div>
+      </div>
+    )
+  }
 }

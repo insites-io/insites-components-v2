@@ -787,12 +787,13 @@ function dynamicKeySort(key) {
       archiveSelection(event.detail.selections);
     }
   }
+
   function tableRowActionHandler(event){
-    console.log('tableRowActionHandler', event);
     if (event.detail.action === 'Archive'){
       archiveItem(event.detail.data);
     }
   }
+
   function archiveItem(value){
     swal({
       title: '',

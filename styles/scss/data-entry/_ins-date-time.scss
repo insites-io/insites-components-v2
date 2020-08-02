@@ -2,6 +2,23 @@
 
 ins-date-time {
 
+  .ins-form-field-wrap .ins-form-field:read-only:not([read-only="false"]) {
+    background-color: var(--ins-bg-color);
+    color: var(--ins-color-ink);
+
+    &:focus {
+      border-color: var(--ins-color-primary);
+    }
+  }
+
+  .ins-form-field-wrap.disabled,
+  .ins-form-field-wrap.readonly {
+    .ins-form-field:read-only:not([read-only="false"]){
+      background-color: var(--ins-color-disabled_readonly_bg);
+      color: var(--ins-color-ink40);
+    }
+  }
+
   i[class^="icon-"] {
     font-size: 16px;
     position: absolute;
@@ -45,8 +62,13 @@ ins-date-time {
       font-family: var(--ins-font-family);
       font-size: 12px;
       font-weight: 400;
-      -webkit-box-shadow: 0 2px 4px 0 rgba(15, 21, 38, 0.14), 1px 1px 3px 0 rgba(140, 148, 164, 0.2);
-      box-shadow: 0 2px 4px 0 rgba(15, 21, 38, 0.14), 1px 1px 3px 0 rgba(140, 148, 164, 0.2);
+
+      -webkit-box-shadow: 0 2px 4px 0 rgba(15, 21, 38, 0.14),
+        1px 1px 3px 0 rgba(140, 148, 164, 0.2);
+
+      box-shadow: 0 2px 4px 0 rgba(15, 21, 38, 0.14),
+        1px 1px 3px 0 rgba(140, 148, 164, 0.2);
+
       padding: 7px 7px 12px;
 
       top: 60px !important;
@@ -167,6 +189,7 @@ ins-date-time {
           padding: 0 7px;
           background-color: var(--ins-bg-color5);
           height: auto;
+          box-sizing: border-box;
         }
 
         .flatpickr-weekdaycontainer {
@@ -194,7 +217,8 @@ ins-date-time {
           color: var(--ins-color-ink);
 
           &.prevMonthDay,
-          &.nextMonthDay {
+          &.nextMonthDay,
+          &.flatpickr-disabled {
             color: var(--ins-color-ink10);
           }
         }

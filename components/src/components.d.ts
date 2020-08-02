@@ -166,9 +166,11 @@ export namespace Components {
         "disabled": boolean;
         "errorMessage": string;
         "format": string;
+        "formatDate": (date: any) => Promise<any>;
         "hasError": boolean;
         "hasLoad": string;
         "icon": string;
+        "inline": boolean;
         "label": string;
         "maxDate": string;
         "maxTime": string;
@@ -236,7 +238,7 @@ export namespace Components {
         "dateTitle": any;
         "dateTo": string;
         "defaultDate": string;
-        "getDate": () => Promise<"All" | { from: string; to: string; }>;
+        "getDate": () => Promise<"All" | { from: any; to: any; }>;
         "hasLoad": string;
         "withDateFilter": boolean;
     }
@@ -1477,6 +1479,7 @@ declare namespace LocalJSX {
         "hasError"?: boolean;
         "hasLoad"?: string;
         "icon"?: string;
+        "inline"?: boolean;
         "label"?: string;
         "maxDate"?: string;
         "maxTime"?: string;
@@ -1555,8 +1558,7 @@ declare namespace LocalJSX {
         "defaultDate"?: string;
         "hasLoad"?: string;
         "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsDateFilter"?: (event: CustomEvent<any>) => void;
-        "onInsFilter"?: (event: CustomEvent<any>) => void;
+        "onInsFilterApply"?: (event: CustomEvent<any>) => void;
         "withDateFilter"?: boolean;
     }
     interface InsFilterItem {

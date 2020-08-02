@@ -148,7 +148,7 @@
     .ins-form-field-wrap .ins-form-field:hover {
       border-color: var(--ins-color-ink40); }
     .ins-form-field-wrap .ins-form-field:focus {
-      border-color: var(--ins-color-ink-primary);
+      border-color: var(--ins-color-primary);
       box-shadow: none;
       outline: 0; }
     .ins-form-field-wrap .ins-form-field:disabled, .ins-form-field-wrap .ins-form-field:read-only:not([read-only="false"]) {
@@ -3680,6 +3680,17 @@ span.flatpickr-weekday {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); } }
 
+ins-date-time .ins-form-field-wrap .ins-form-field:read-only:not([read-only="false"]) {
+  background-color: var(--ins-bg-color);
+  color: var(--ins-color-ink); }
+  ins-date-time .ins-form-field-wrap .ins-form-field:read-only:not([read-only="false"]):focus {
+    border-color: var(--ins-color-primary); }
+
+ins-date-time .ins-form-field-wrap.disabled .ins-form-field:read-only:not([read-only="false"]),
+ins-date-time .ins-form-field-wrap.readonly .ins-form-field:read-only:not([read-only="false"]) {
+  background-color: var(--ins-color-disabled_readonly_bg);
+  color: var(--ins-color-ink40); }
+
 ins-date-time i[class^="icon-"] {
   font-size: 16px;
   position: absolute;
@@ -3818,7 +3829,8 @@ ins-date-time .ins-datepicker-wrap {
       ins-date-time .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .dayContainer {
         padding: 0 7px;
         background-color: var(--ins-bg-color5);
-        height: auto; }
+        height: auto;
+        box-sizing: border-box; }
       ins-date-time .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-weekdaycontainer,
       ins-date-time .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-weekdaycontainer {
         padding: 10px 0;
@@ -3837,9 +3849,10 @@ ins-date-time .ins-datepicker-wrap {
         line-height: 30px;
         height: 32px;
         color: var(--ins-color-ink); }
-        ins-date-time .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.prevMonthDay, ins-date-time .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.nextMonthDay,
+        ins-date-time .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.prevMonthDay, ins-date-time .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.nextMonthDay, ins-date-time .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.flatpickr-disabled,
         ins-date-time .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.prevMonthDay,
-        ins-date-time .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.nextMonthDay {
+        ins-date-time .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.nextMonthDay,
+        ins-date-time .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.flatpickr-disabled {
           color: var(--ins-color-ink10); }
       ins-date-time .ins-date-time-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.today,
       ins-date-time .ins-datepicker-wrap .flatpickr-calendar .flatpickr-rContainer .flatpickr-day.today {

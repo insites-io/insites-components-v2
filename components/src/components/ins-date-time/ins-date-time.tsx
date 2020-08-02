@@ -1,4 +1,4 @@
-import { h, Component, Element, Prop, Event, EventEmitter } from "@stencil/core";
+import { h, Component, Element, Prop, Event, EventEmitter, Method } from "@stencil/core";
 import flatpickr from "flatpickr";
 
 @Component({ tag: 'ins-date-time' })
@@ -26,10 +26,16 @@ export class InsDateTime {
   @Prop({mutable: true}) errorMessage: string = "";
   @Prop({ mutable: true }) icon: string = "";
   @Prop({ mutable: true }) mode: string = "";
+  @Prop({ mutable: true }) inline: boolean = false;
 
   pickerInstance: any;
   locFormat: any;
   locNoMeridiem: any;
+
+  @Method()
+  async formatDate(date){
+    return this.pickerInstance.formatDate(date, this.locFormat);
+  }
 
   componentWillLoad(){
     this.checkFormat();
@@ -49,7 +55,7 @@ export class InsDateTime {
   }
 
   componentDidUpdate(){
-    this.initInsDateTime();
+    this.updateInstance();
   }
 
   checkFormat(){
@@ -70,12 +76,29 @@ export class InsDateTime {
       : "";
   }
 
+  updateInstance(){
+    let updatedFormat = this.updateFormat();
+
+    this.pickerInstance.set("inline", this.inline);
+    this.pickerInstance.set("enableTime", (this.mode !== "datepicker"));
+    this.pickerInstance.set("noCalendar", (this.mode === "timepicker"));
+    this.pickerInstance.set("dateFormat", updatedFormat);
+    this.pickerInstance.set("time_24hr", this.locNoMeridiem);
+    this.pickerInstance.set("minDate", this.minDate);
+    this.pickerInstance.set("maxDate", this.maxDate);
+    this.pickerInstance.set("minTime", this.minTime);
+    this.pickerInstance.set("maxTime", this.maxTime);
+    this.pickerInstance.set("onChange", this.insInputHandler.bind(this));
+    this.pickerInstance.setDate(this.value);
+  }
+
   initInsDateTime(){
     let updatedFormat = this.updateFormat();
     let inputEl = this.insDateTimeEl.querySelector('input');
     let wrapper = this.insDateTimeEl.querySelector('.ins-date-time-wrap') as any;
 
     this.pickerInstance = flatpickr(inputEl, {
+      inline: this.inline,
       enableTime: (this.mode !== "datepicker"),
       noCalendar: (this.mode === "timepicker"),
       dateFormat: updatedFormat,
@@ -85,13 +108,20 @@ export class InsDateTime {
       minTime: this.minTime,
       maxTime: this.maxTime,
       onChange: this.insInputHandler.bind(this),
-      appendTo: wrapper
+      appendTo: wrapper,
+      defaultDate: this.value
     });
   }
 
   insInputHandler(selected_dates, date_string){
-    this.insInput.emit({label: this.label, selected_dates, date_string});
+    this.insInput.emit({
+      label: this.label,
+      name: this.name,
+      selected_dates,
+      date_string
+    });
     this.insValueChange.emit(date_string);
+    this.value = date_string;
   }
 
   activateLabel(){
@@ -127,19 +157,22 @@ export class InsDateTime {
 
 	render() {
     return (
-      <div class={`ins-date-time-wrap ins-form-field-wrap ${this.hasError ? 'is-invalid' : ''}`}>
+      <div class={`ins-date-time-wrap ins-form-field-wrap
+        ${this.disabled ? 'disabled' : ''}
+        ${this.readonly ? 'readonly' : ''}
+        ${this.hasError ? 'is-invalid' : ''}`}>
+
         { this.label ?
-            <label htmlFor={this.name}
-              class={`ins-form-label
-                ${this.disabled ? 'disabled' : ''}`}>
-              {this.label}
-            </label>
+          <label htmlFor={this.name}
+            class={`ins-form-label
+              ${this.disabled ? 'disabled' : ''}`}>
+            {this.label}
+          </label>
         : ''}
 
         <input type="text" class="ins-form-field"
           name={this.name}
           placeholder={this.placeholder}
-          value={this.value}
           onFocus={() => this.activateLabel()}
           onBlur={() => this.onblurHandler()}
           disabled={this.disabled || this.readonly} />

@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
   <link rel="stylesheet" href="/assets/css/insites-components.css" />
 
-  <script type="module" src="/build/insites-components.esm.js"></script>
-  <script nomodule src="/build/insites-components.js"></script>
+  <script type="module" src="/build/insites.esm.js"></script>
+  <script nomodule src="/build/insites.js"></script>
   <style>
     body {
       font-family: 'Open Sans', Arial, Helvetica, sans-serif;
@@ -22,7 +22,21 @@
 </head>
 
 <body>
-  <ins-date-time label="Test"></ins-date-time>
+  <ins-filter with-date-filter id="myInsFilter">
+    <ins-filter-item name="Colours"
+      options='["Red","Green","Blue"]'>
+    </ins-filter-item>
+  </ins-filter>
+
+  <ins-date-time label="Compatibility"></ins-date-time>
+
+  <script>
+    var myInsFilter = document.getElementById('myInsFilter');
+    myInsFilter.addEventListener('insFilterApply', e => {
+      console.log(e.detail);
+    });
+  </script>
+
 </body>
 
 </html>

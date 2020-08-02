@@ -17,6 +17,7 @@ export class InsFilterItem {
     @State() currentFilter: any;
     @State() dateFilter: any;
 
+    optionsWrapEl: any;
 
     @Watch('options')
     optionsUpdate() {
@@ -34,35 +35,27 @@ export class InsFilterItem {
     }
 
     toggleDropDown() {
-        this.insFilter = document.getElementsByTagName('ins-filter-item');
-        this.dateFilter = document.getElementsByTagName('ins-filter')[0];
+      this.dropDownState = !this.dropDownState;
+    }
 
-        if (this.dateFilter){
-            this.dateFilter.closeDateFilter();
+    addClickOutside(){
+      window.addEventListener("click", e => {
+        let target = e.target as any;
+        let closest = target.closest(".filter-item__button")
+
+        if (closest !== this.optionsWrapEl) {
+          this.closeFilter();
         }
-
-        if (this.insFilter.length) {
-            for (let i = 0; i > this.insFilter.length; i++) {
-                this.insFilter[i].closeFilter();
-            }
-        }
-
-        this.dropDownState = true;
+      });
     }
 
     componentWillLoad() {
-        this.setOptions();
+      this.setOptions();
     }
 
     componentDidLoad() {
-      window.addEventListener("click", e => {
-          let target = e.target as any;
-          let parent = target.closest(".filter-item__button")
-
-          if (!parent) {
-              this.closeFilter();
-          }
-      });
+      this.optionsWrapEl = this.el.querySelector('.filter-item__button');
+      this.addClickOutside();
 
       this.didLoad.emit();
       if (this.hasLoad && window["Insites"]){

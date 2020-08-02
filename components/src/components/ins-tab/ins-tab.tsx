@@ -164,7 +164,7 @@ export class InsTab {
     this.setActiveTabItem(index);
   }
 
-  @Listen('tabItemDisableToggled')
+  @Listen('insTabDisableToggle')
   tabItemDisableToggledHandler(event){
     let tabIndex = this.insTabItems.indexOf(event.target);
     if (this.insTabHeaders[tabIndex]) {
@@ -176,7 +176,7 @@ export class InsTab {
     }
   }
 
-  @Listen('tabItemError')
+  @Listen('insTabError')
   checkForErrors(event){
     let errorIndex = this.insTabItems.indexOf(event.target);
     if (this.insTabHeaders[errorIndex]) {

@@ -13,7 +13,7 @@ ins-filter-item {
       background-color: #e4e6ec;
       padding: 7px 7px;
       color: var(--ins-color-ink);
-      cursor: default;
+      cursor: pointer;
 
       &--text {
         font-weight: 600;
@@ -64,56 +64,33 @@ ins-filter-item {
   }
 }
 
-@media only screen and (max-width: 414px) {
-  .ui-datepicker {
-    width: auto !important;
-  }
+@media only screen and (max-width: 420px) {
+  ins-filter-item {
 
-  ins-filter-item .filter-item {
-    // float: left;
-    margin-top: 10px;
-    width: auto;
+    display: block;
+    width: 100%;
 
-    .filter-item__button--option {
-      margin-left: 5px;
-    }
-    .filter-item__button--option .fas {
-      // margin-left: 97px;
-      float: right;
-      margin-top: 5px;
+    .filter-item {
+      margin-top: 0;
+      margin-bottom: 16px;
     }
 
-    .filter-item__options {
-      min-width: 229px;
-    }
-  }
-
-  .date-filter__option {
-    margin-left: 5px;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  ins-filter-item .filter-item {
-    width: 232px;
-
-    .filter-item__button--option {
-      margin-left: 5px;
-    }
-    .filter-item__button--option .fas {
-      // margin-left: 97px;
-      float: right;
-      margin-top: 5px;
-    }
     .filter-item__button {
-      margin: 5px 0 15px;
-      font-size: 10px;
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      position: relative;
+
+      i {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+      }
     }
-    .filter-item__options {
-      min-width: 232px;
-    }
-    .filter-item__options > div {
-      font-size: 10px;
+
+    .filter-item__options.active {
+      width: 100%;
+      top: 40px;
     }
   }
 }

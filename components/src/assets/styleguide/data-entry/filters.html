@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
   <link rel="stylesheet" href="/assets/css/insites-components.css" />
 
-  <script type="module" src="/build/insites-components.esm.js"></script>
-  <script nomodule src="/build/insites-components.js"></script>
+  <script type="module" src="/build/insites.esm.js"></script>
+  <script nomodule src="/build/insites.js"></script>
 
   <!-- Documention Styleguide CSS -->
   <link rel="stylesheet" href="/assets/prism/prism.css">
@@ -120,11 +120,11 @@
       <table>
         <tr>
           <th>EVENT</th>
-            <th>OBJECT</th>
+          <th>OBJECT</th>
           <th>DESCRIPTION</th>
         </tr>
         <tr>
-          <td>onFilterApply</td>
+          <td>insFilterApply</td>
           <td>stateFrom, stateTo</td>
           <td>Execute a script when a date filter has been selected</td>
         </tr>
@@ -370,7 +370,6 @@
                 <script>
                   var filter = document.getElementById('directSetDataFilterItem');
                   filter.addEventListener('didLoad', function(e) {
-                    console.log('directSetDataFilterItem didLoad')
                     var options = ["CEO", "Manager"];
                     filter.name = 'Position';
                     filter.options = options;
