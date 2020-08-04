@@ -7,7 +7,7 @@
   <title>Insites Components - Filters</title>
 
   <!-- Insites Essentials -->
-  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/reset.min.css" />
   <link rel="stylesheet" href="/v2.0.0/css/insites-font-icons.min.css" />
   <link rel="stylesheet" href="/v2.0.0/css/insites.min.css" />
 
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/assets/prism/prism.css">
   <script src="/assets/prism/prism.js"></script>
 
-  <link rel="stylesheet" href="/assets/css/styleguide.css">
+  <link rel="stylesheet" href="/assets/css/styleguide.min.css">
 
   <style>
     ins-styleguide .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap,
@@ -370,7 +370,6 @@
                 <script>
                   var filter = document.getElementById('directSetDataFilterItem');
                   filter.addEventListener('didLoad', function(e) {
-                    console.log('directSetDataFilterItem didLoad')
                     var options = ["CEO", "Manager"];
                     filter.name = 'Position';
                     filter.options = options;

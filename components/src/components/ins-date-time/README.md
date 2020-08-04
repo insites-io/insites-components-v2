@@ -15,6 +15,7 @@
 | `hasError`     | `has-error`     |             | `boolean` | `false`     |
 | `hasLoad`      | `has-load`      |             | `string`  | `undefined` |
 | `icon`         | `icon`          |             | `string`  | `""`        |
+| `inline`       | `inline`        |             | `boolean` | `false`     |
 | `label`        | `label`         |             | `string`  | `undefined` |
 | `maxDate`      | `max-date`      |             | `string`  | `""`        |
 | `maxTime`      | `max-time`      |             | `string`  | `""`        |
@@ -37,17 +38,32 @@
 | `insValueChange` |             | `CustomEvent<any>` |
 
 
+## Methods
+
+### `formatDate(date: any) => Promise<any>`
+
+
+
+#### Returns
+
+Type: `Promise<any>`
+
+
+
+
 ## Dependencies
 
 ### Used by
 
  - [ins-datepicker](../ins-datepicker)
+ - [ins-filter](../ins-filter)
  - [ins-timepicker](../ins-timepicker)
 
 ### Graph
 ```mermaid
 graph TD;
   ins-datepicker --> ins-date-time
+  ins-filter --> ins-date-time
   ins-timepicker --> ins-date-time
   style ins-date-time fill:#f9f,stroke:#333,stroke-width:4px
 ```

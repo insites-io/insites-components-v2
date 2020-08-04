@@ -1,5 +1,7 @@
 import { h, Element, Component, Prop, State, Method, Event, EventEmitter } from "@stencil/core";
 import CodeMirror from "codemirror";
+import "../../assets/redactor.min.js";
+
 declare var $R;
 
 // addons

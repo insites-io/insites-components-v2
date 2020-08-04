@@ -1,0 +1,33 @@
+Release Notes: 10:25 - 11:00, 12:00 - 1:00 PM
+
+Hi @here *Insites Components* `v2.0.0` is now released.
+
+Please see the latest documentation for the updates
+http://components.insites.io/
+
+*Change Log*
+`Breaking change`
+- StencilJS version updated from `v0.18.0` to `v1.14.0`;
+- Styles are now separated from the components for theming and caching
+- Updated event names to make it predictable and to avoid native DOM event conflicts
+    - example: from `onClickInsButton` to `insClick`
+
+- Methods are now asynchronous this is to avoid race condition when the method is called during component render
+- `ins-base-table` is now updated to `ins-table`
+
+*Improvements*
+- Insites Component Colors is now using CSS custom properties which you can customise for your project's theme
+  - Demo: https://cbo.d.pr/xxvncz
+
+- Third Party libraries are now built-in the components
+- Caching: Assets now has Cache-Control with max-age of 1 year
+- Compression: Assets are now being served as gzipped
+- Versioning:
+  - Projects will now have an option to pick which version to use
+  - Projects Will no longer be affected by Continuous Deployment from v1 that causes `403` issues
+
+Please check here on how to migrate from V1
+http://components.insites.io/#/app/migrating-from-v1
+
+V1 docs is available here - http://components.insites.io/v1/
+Insites Components V1 will be supported until `December 31, 2020`

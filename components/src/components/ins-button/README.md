@@ -40,6 +40,7 @@
 ### Used by
 
  - [ins-carousel](../ins-carousel)
+ - [ins-filter](../ins-filter)
  - [ins-heading](../ins-heading)
  - [ins-image-picker](../ins-image-picker)
  - [ins-modal](../ins-modal)
@@ -51,6 +52,7 @@
 ```mermaid
 graph TD;
   ins-carousel --> ins-button
+  ins-filter --> ins-button
   ins-heading --> ins-button
   ins-image-picker --> ins-button
   ins-modal --> ins-button

@@ -1,0 +1,118 @@
+@mixin input_placeholder($color){
+
+  &:-moz-placeholder,
+  &::-moz-placeholder {
+    color: var(--ins-color-#{$color});
+  }
+
+  &:-ms-input-placeholder {
+    color: var(--ins-color-#{$color});
+  }
+
+  &::-webkit-input-placeholder {
+    color: var(--ins-color-#{$color});
+  }
+}
+
+@mixin input_field {
+  color: var(--ins-color-ink);
+  font-family: var(--ins-font-family);
+  font-size: $input_field_font_size;
+  font-weight: $input_field_font_weight;
+
+  width: 100%;
+  box-shadow: none;
+  box-sizing: border-box;
+  border-radius: var(--ins-border-radius);
+  margin: 0;
+}
+
+@mixin input_disabled {
+  border-color:  var(--ins-color-ink10);
+  background-color: var(--ins-color-disabled_readonly_bg);
+  color: var(--ins-color-ink40);
+  cursor: not-allowed;
+}
+
+$input_field_font_size: 14px;
+$input_field_font_weight: 400;
+
+.ins-form-field-wrap {
+  font-family: var(--ins-font-family);
+  margin-bottom: $bottom_spacing;
+
+  .ins-form-label {
+    font-family: var(--ins-font-family);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ins-color-ink);
+    margin-bottom: 3px;
+    display: block;
+    line-height: 1.4;
+
+    &.disabled {
+      color: var(--ins-color-ink40);
+    }
+
+    &.active {
+      color: var(--ins-color-primary);
+    }
+  }
+
+  .ins-form-field {
+
+    @include input_field;
+    @include input_placeholder("ink40");
+
+    border:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-border-color);
+
+    padding: $input_padding;
+    -webkit-transition: border-color .25s ease-in-out;
+    transition: border-color .25s ease-in-out;
+
+    &:hover {
+      border-color: var(--ins-color-ink40);
+    }
+
+    &:focus {
+      border-color: var(--ins-color-primary);
+      box-shadow: none;
+      outline: 0;
+    }
+
+    &:disabled,
+    &:read-only:not([read-only="false"]) {
+      @include input_disabled;
+    }
+
+    &:read-only:not([read-only="false"]) {
+      cursor: text;
+    }
+  }
+
+  &.is-invalid {
+
+    .ins-form-label {
+      color: var(--ins-color-negative);
+    }
+
+    .ins-form-field {
+      color: var(--ins-color-negative);
+      border-color: var(--ins-color-negative);
+      background-color: var(--ins-color-red-10p);
+      @include input_placeholder("negative");
+    }
+
+    .ins-form-error {
+      display: block;
+      margin-top: 4px;
+      font-family: var(--ins-font-family);
+      font-size: 12px;
+      line-height: 16px;
+      color: var(--ins-color-negative);
+    }
+  }
+}

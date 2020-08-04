@@ -1,5 +1,3 @@
-$bg-gray: #F5F6F8;
-
 ins-sidebar-item {
 
   div.ins-sidebar-item-wrap {
@@ -48,6 +46,7 @@ ins-sidebar-item {
         width: 83%;
       }
     }
+
     .fas.icon-chevron-right {
       font-size: 10px;
       color: var(--ins-color-ink40);
@@ -61,7 +60,8 @@ ins-sidebar-item {
     .submenu-wrap {
       display: none;
       position: absolute;
-      background-color: $bg-gray;
+      background-color: var(--ins-bg-color4);
+      box-sizing: border-box;
       width: 240px;
       height: 100%;
       top: 0;

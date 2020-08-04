@@ -20,7 +20,9 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-	vertical-align: baseline;
+  vertical-align: baseline;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,

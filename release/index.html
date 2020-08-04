@@ -5,13 +5,42 @@
   <meta charset="utf-8">
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <!-- <th>event</th> -->
+
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/assets/images/favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/images/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/images/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/images/favicons/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-128.png" sizes="128x128">
+
   <title>Insites Components Documentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+    rel="stylesheet">
 
-  <script type="module" src="/v2.0.0/insites.esm.js"></script>
-  <script nomodule src="/v2.0.0/insites.js"></script>
+  <link rel="preload" href="/assets/css/reset.min.css" as="style" />
+  <link rel="preload" href="/v2.0.0/css/insites-font-icons.min.css" as="style" />
+  <link rel="preload" href="/v2.0.0/css/insites.min.css" as="style" />
 
-  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="preload" href="/v2.0.0/p-d9187cdf.js" as="script">
+  <link rel="modulepreload" href="/v2.0.0/p-42d743e8.js">
+  <link rel="modulepreload" href="/v2.0.0/p-52779e9c.js">
+  <link rel="modulepreload" href="/v2.0.0/p-7b1fcb34.entry.js">
+  <link rel="modulepreload" href="/v2.0.0/p-b18ab5ec.js">
+  <script type="module" src="/v2.0.0/p-42d743e8.js" data-stencil data-resources-url="/v2.0.0/"
+    data-stencil-namespace="insites"></script>
+  <script nomodule="" src="/v2.0.0/insites.js" data-stencil></script>
+
+  <!-- <script type="module" src="/v2.0.0/insites.esm.js"></script>
+  <script nomodule src="/v2.0.0/insites.js"></script> -->
+
+  <link rel="stylesheet" href="/assets/css/reset.min.css" />
   <link rel="stylesheet" href="/v2.0.0/css/insites-font-icons.min.css" />
   <link rel="stylesheet" href="/v2.0.0/css/insites.min.css" />
 </head>
@@ -49,9 +78,7 @@
         <ins-sidebar-item link="/assets/styleguide/data-entry/check-card.html" label="Check Card" app></ins-sidebar-item>
         <ins-sidebar-item link="/assets/styleguide/data-entry/code-editor.html" label="Code Editor" app></ins-sidebar-item>
         <ins-sidebar-item link="/assets/styleguide/data-entry/credit-card.html" label="Credit Card" app></ins-sidebar-item>
-        <!-- <ins-sidebar-item link="/assets/styleguide/data-entry/date-picker.html" label="Date Picker" app></ins-sidebar-item> -->
         <ins-sidebar-item link="/assets/styleguide/data-entry/date-time-picker.html" label="Date and Time" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/filters.html" label="Filters" app></ins-sidebar-item>
         <ins-sidebar-item link="/assets/styleguide/data-entry/image-picker.html" label="Image Picker" app></ins-sidebar-item>
         <ins-sidebar-item link="/assets/styleguide/data-entry/input.html" label="Input" app></ins-sidebar-item>
         <ins-sidebar-item link="/assets/styleguide/data-entry/input-multiple.html" label="Input - Multiple" app></ins-sidebar-item>
@@ -62,7 +89,6 @@
         <ins-sidebar-item link="/assets/styleguide/data-entry/slider.html" label="Slider" app></ins-sidebar-item>
         <ins-sidebar-item link="/assets/styleguide/data-entry/switch.html" label="Switch" app></ins-sidebar-item>
         <ins-sidebar-item link="/assets/styleguide/data-entry/textarea.html" label="Textarea" app></ins-sidebar-item>
-        <!-- <ins-sidebar-item link="/assets/styleguide/data-entry/time-picker.html" label="Time Picker" app></ins-sidebar-item> -->
         <ins-sidebar-item link="/assets/styleguide/data-entry/upload.html" label="Upload" app></ins-sidebar-item>
         <ins-sidebar-item link="/assets/styleguide/data-entry/wysiwyg-editor.html" label="WYSIWYG Editor" app></ins-sidebar-item>
       </ins-sidebar-item>
@@ -74,6 +100,7 @@
         <ins-sidebar-item link="/assets/styleguide/data-display/markdown.html" label="Markdown" app></ins-sidebar-item>
         <ins-sidebar-item link="/assets/styleguide/data-display/progress-bar.html" label="Progress Bar" app></ins-sidebar-item>
         <ins-sidebar-item link="/assets/styleguide/data-display/sort.html" label="Sort" app></ins-sidebar-item>
+        <ins-sidebar-item link="/assets/styleguide/data-entry/filters.html" label="Filters" app></ins-sidebar-item>
         <ins-sidebar-item link="/assets/styleguide/data-display/tables.html" label="Tables" app></ins-sidebar-item>
         <ins-sidebar-item link="/assets/styleguide/data-display/tabs.html" label="Tabs" app></ins-sidebar-item>
         <ins-sidebar-item link="/assets/styleguide/data-display/tag.html" label="Tag" app></ins-sidebar-item>

@@ -13,6 +13,13 @@
 
   <script type="module" src="/build/insites.esm.js"></script>
   <script nomodule src="/build/insites.js"></script>
+
+  <!-- jQuery library -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous">
+  </script>
+
   <style>
     body {
       font-family: 'Open Sans', Arial, Helvetica, sans-serif;
@@ -22,7 +29,7 @@
 </head>
 
 <body>
-  <ins-filter with-date-filter id="myInsFilter">
+  <!-- <ins-filter with-date-filter id="myInsFilter">
     <ins-filter-item name="Colours"
       options='["Red","Green","Blue"]'>
     </ins-filter-item>
@@ -35,8 +42,8 @@
     myInsFilter.addEventListener('insFilterApply', e => {
       console.log(e.detail);
     });
-  </script>
-
+  </script> -->
+  <ins-editor label="Test"></ins-editor>
 </body>
 
 </html>

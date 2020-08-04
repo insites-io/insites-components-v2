@@ -7,7 +7,7 @@
   <title>Insites Components - Tables</title>
 
   <!-- Insites Essentials -->
-  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/reset.min.css" />
   <link rel="stylesheet" href="/v2.0.0/css/insites-font-icons.min.css" />
   <link rel="stylesheet" href="/v2.0.0/css/insites.min.css" />
 
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/assets/prism/prism.css">
   <script src="/assets/prism/prism.js"></script>
 
-  <link rel="stylesheet" href="/assets/css/styleguide.css">
+  <link rel="stylesheet" href="/assets/css/styleguide.min.css">
 </head>
 
 <body>
@@ -929,7 +929,6 @@ window.addEventListener('load', () => {
     }
   }
   function tableRowActionHandler(event){
-    console.log('tableRowActionHandler', event);
     if (event.detail.action === 'Archive'){
       archiveItem(event.detail.data);
     }
