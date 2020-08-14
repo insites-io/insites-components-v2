@@ -420,6 +420,16 @@ export class InsSelect {
   }
 
   @Method()
+  async reset(){
+    let options = await this.getAllOptions();
+    for (let i = 0; i < options.length; i++) {
+      options[i].deactivate();
+    }
+    this.labelOfValue = 0;
+    this.noMoreOptions = false;
+  }
+
+  @Method()
   async setSelectedFromValue(value?){
     this.value = value ? value : this.value;
     let insSelectOptions = await this.getAllOptions();

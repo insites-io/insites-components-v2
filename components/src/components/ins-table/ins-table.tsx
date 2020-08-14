@@ -58,6 +58,16 @@ export class InsTable {
   tableDataChangeHandler(){
     this.tableUpdated = true;
   }
+
+  @Watch('bulkActions')
+  bulkActionsChangeHandler(){
+    let bulkActionEl = this.insTableEl
+      .querySelector(
+        'ins-select[data-type="bulk-action"]'
+      ) as any;
+    if (bulkActionEl) bulkActionEl.reset();
+  }
+
   componentWillLoad(){
     this.updatePageInfo();
   }
@@ -120,7 +130,8 @@ export class InsTable {
 
   @Listen('insClick')
   onClickInsButtonHandler(event){
-    if (event.target.id === 'insTableBulkButton'){
+    if (event.target.className.includes('insTableBulkButton')){
+      console.log('nice!')
       this.bulkActionHandler()
     }
   }
@@ -311,7 +322,7 @@ export class InsTable {
 
   bulkActionHandler(){
     let bulkActionEl = this.insTableEl.querySelector('ins-select[data-type="bulk-action"]') as any;
-
+    console.log('bulkActionEl.value', bulkActionEl.value);
     if (bulkActionEl.value){
       this.insTableBulkAction.emit({
         action: bulkActionEl.value,
@@ -854,7 +865,7 @@ export class InsTable {
                 }
               </ins-select>
               <ins-button
-                id="insTableBulkButton"
+                class="insTableBulkButton"
                 label="Apply"
                 size="small"
                 solid

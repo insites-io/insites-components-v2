@@ -1,66 +1,4 @@
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-Regular.ttf); }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-Bold.ttf);
-  font-weight: 700; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-BoldItalic.ttf);
-  font-weight: 700;
-  font-style: italic; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-ExtraBold.ttf);
-  font-weight: 800; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-ExtraBoldItalic.ttf);
-  font-weight: 800;
-  font-style: italic; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-Italic.ttf);
-  font-style: italic; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-Light.ttf);
-  font-weight: 100; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-LightItalic.ttf);
-  font-weight: 100;
-  font-style: italic; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-SemiBold.ttf);
-  font-weight: 600; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-SemiBoldItalic.ttf);
-  font-weight: 600;
-  font-style: italic; }
-
+/* @import "../fonts"; */
 :root {
   --ins-color-ink: #2c3148;
   --ins-color-ink40: #8c94a4;
@@ -163,7 +101,7 @@
     min-width: 111px;
     margin-bottom: 0; }
     .ibt-table-wrap .ibt-table-action-container .ins-select-wrap.buttonise .ins-select-label-wrap {
-      padding: 1px 5px;
+      padding: 3px 5px;
       width: 100%;
       box-sizing: border-box; }
       .ibt-table-wrap .ibt-table-action-container .ins-select-wrap.buttonise .ins-select-label-wrap span {
@@ -210,13 +148,19 @@
       display: inline;
       background-image: none;
       font-size: 12px;
-      margin: 0; }
+      margin: 0;
+      width: auto;
+      height: auto;
+      position: relative;
+      z-index: 2;
+      background-color: transparent; }
       .ibt-table-wrap__pagination--option:focus {
         border: none;
-        box-shadow: none; }
+        box-shadow: none;
+        background-color: transparent; }
     .ibt-table-wrap__pagination span {
-      margin-right: 30px; }
-    .ibt-table-wrap__pagination:after {
+      margin-right: 10px; }
+    .ibt-table-wrap__pagination:before {
       content: "";
       width: 1px;
       height: 1px;
@@ -224,7 +168,9 @@
       border-left: solid 4px transparent;
       border-right: solid 4px transparent;
       position: absolute;
-      top: 10px; }
+      top: 8px;
+      right: 0;
+      z-index: 1; }
   .ibt-table-wrap .ibt-table {
     display: table;
     table-layout: fixed;
@@ -606,8 +552,6 @@
   .ibt-table-wrap__pagination--option {
     right: 7px;
     position: relative; }
-  .ibt-table-wrap__pagination:after {
-    right: 3px; }
   .ibt-table-wrap__page {
     margin: 10px 0 0 0;
     float: left; }

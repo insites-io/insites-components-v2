@@ -1,66 +1,4 @@
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-Regular.ttf); }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-Bold.ttf);
-  font-weight: 700; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-BoldItalic.ttf);
-  font-weight: 700;
-  font-style: italic; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-ExtraBold.ttf);
-  font-weight: 800; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-ExtraBoldItalic.ttf);
-  font-weight: 800;
-  font-style: italic; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-Italic.ttf);
-  font-style: italic; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-Light.ttf);
-  font-weight: 100; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-LightItalic.ttf);
-  font-weight: 100;
-  font-style: italic; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-SemiBold.ttf);
-  font-weight: 600; }
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  src: url(../fonts/OpenSans-SemiBoldItalic.ttf);
-  font-weight: 600;
-  font-style: italic; }
-
+/* @import "../fonts"; */
 :root {
   --ins-color-ink: #2c3148;
   --ins-color-ink40: #8c94a4;
@@ -607,7 +545,7 @@ ins-admin {
   .ins-renderer-wrap iframe {
     border: none;
     width: 100%;
-    height: calc(100vh - 137px);
+    height: calc(100vh - 130px);
     overflow: auto;
     box-sizing: border-box; }
 

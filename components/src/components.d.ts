@@ -564,6 +564,7 @@ export namespace Components {
         "openOptions": () => Promise<void>;
         "placeholder": string;
         "readonly": boolean;
+        "reset": () => Promise<void>;
         "searchable": boolean;
         "selected_values": any;
         "setInsSelectDefaultValue": () => Promise<void>;
