@@ -41,11 +41,17 @@
         <h2 class="section-title">Complete Example</h2>
         <ins-styleguide>
           <div slot="actual">
-            <ins-toggle-switch name="sample" label="Active" value="true"></ins-toggle-switch>
+            <ins-toggle-switch name="sample" checked
+              enabled-label="Toggle switch is enabled"
+              disabled-label="Toggle switch is disabled">
+            </ins-toggle-switch>
           </div>
           <div slot="code">
             <script type="text/plain" class="language-markup">
-<ins-toggle-switch name="sample" label="Active" value="true"></ins-toggle-switch>
+<ins-toggle-switch name="sample" checked
+  enabled-label="Toggle switch is enabled"
+  disabled-label="Toggle switch is disabled">
+</ins-toggle-switch>
             </script>
           </div>
         </ins-styleguide>

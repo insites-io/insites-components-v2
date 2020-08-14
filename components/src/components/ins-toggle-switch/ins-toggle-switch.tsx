@@ -16,6 +16,9 @@ export class InsToggleSwitch {
   @Prop({mutable: true}) label: string;
   @Prop({mutable: true}) disabled: boolean;
 
+  @Prop({mutable: true}) enabledLabel: string;
+  @Prop({mutable: true}) disabledLabel: string;
+
   componentDidLoad(){
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
@@ -41,6 +44,13 @@ export class InsToggleSwitch {
     this.insValueChange.emit(toEmit);
   }
 
+  constructLabel(){
+    if (this.checked){
+      return this.enabledLabel ? this.enabledLabel : this.label;
+    }
+    return this.disabledLabel ? this.disabledLabel : this.label;
+  }
+
   render() {
     return (
       <div class={`v-switch ${this.disabled ? 'disabled':''}`}>
@@ -51,7 +61,7 @@ export class InsToggleSwitch {
             disabled={this.disabled} />
 
           <span class="ins-slider round"><i></i></span>
-          <span class="ins-label">{this.label}</span>
+          <span class="ins-label">{this.constructLabel()}</span>
         </label>
       </div>
     );

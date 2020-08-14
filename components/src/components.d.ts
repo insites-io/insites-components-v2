@@ -775,6 +775,8 @@ export namespace Components {
     interface InsToggleSwitch {
         "checked": boolean;
         "disabled": boolean;
+        "disabledLabel": string;
+        "enabledLabel": string;
         "falseValue": string;
         "hasLoad": string;
         "label": string;
@@ -2112,6 +2114,8 @@ declare namespace LocalJSX {
     interface InsToggleSwitch {
         "checked"?: boolean;
         "disabled"?: boolean;
+        "disabledLabel"?: string;
+        "enabledLabel"?: string;
         "falseValue"?: string;
         "hasLoad"?: string;
         "label"?: string;
