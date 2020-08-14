@@ -279,6 +279,7 @@ export namespace Components {
     }
     interface InsImagePicker {
         "buttonColor": string;
+        "errorMessage": string;
         "fileName": any;
         "hasLoad": string;
         "imgType": string;
@@ -287,7 +288,9 @@ export namespace Components {
         "notImageFile": boolean;
         "placeholder": string;
         "uploadImgContainer": string;
+        "uploadImgFileFormats": string;
         "uploadImgRecFileSize": number;
+        "uploadImgRecFileSizeType": string;
         "uploadImgRecHeight": number;
         "uploadImgRecWidth": number;
         "value": any;
@@ -1601,6 +1604,7 @@ declare namespace LocalJSX {
     }
     interface InsImagePicker {
         "buttonColor"?: string;
+        "errorMessage"?: string;
         "fileName"?: any;
         "hasLoad"?: string;
         "imgType"?: string;
@@ -1611,7 +1615,9 @@ declare namespace LocalJSX {
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
         "uploadImgContainer"?: string;
+        "uploadImgFileFormats"?: string;
         "uploadImgRecFileSize"?: number;
+        "uploadImgRecFileSizeType"?: string;
         "uploadImgRecHeight"?: number;
         "uploadImgRecWidth"?: number;
         "value"?: any;

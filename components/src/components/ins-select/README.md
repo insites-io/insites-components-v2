@@ -116,6 +116,16 @@ Type: `Promise<void>`
 
 
 
+### `reset() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `setInsSelectDefaultValue() => Promise<void>`
 
 

@@ -7,21 +7,24 @@
 
 ## Properties
 
-| Property               | Attribute                  | Description | Type      | Default                                    |
-| ---------------------- | -------------------------- | ----------- | --------- | ------------------------------------------ |
-| `buttonColor`          | `button-color`             |             | `string`  | `'blue'`                                   |
-| `fileName`             | `file-name`                |             | `any`     | `undefined`                                |
-| `hasLoad`              | `has-load`                 |             | `string`  | `undefined`                                |
-| `imgType`              | `img-type`                 |             | `string`  | `'picture'`                                |
-| `label`                | `label`                    |             | `string`  | `'CHANGE PICTURE'`                         |
-| `name`                 | `name`                     |             | `string`  | `undefined`                                |
-| `notImageFile`         | `not-image-file`           |             | `boolean` | `undefined`                                |
-| `placeholder`          | `placeholder`              |             | `string`  | `'Drag and drop the file or add an image'` |
-| `uploadImgContainer`   | `upload-img-container`     |             | `string`  | `""`                                       |
-| `uploadImgRecFileSize` | `upload-img-rec-file-size` |             | `number`  | `25`                                       |
-| `uploadImgRecHeight`   | `upload-img-rec-height`    |             | `number`  | `120`                                      |
-| `uploadImgRecWidth`    | `upload-img-rec-width`     |             | `number`  | `120`                                      |
-| `value`                | `value`                    |             | `any`     | `undefined`                                |
+| Property                   | Attribute                       | Description | Type      | Default                                    |
+| -------------------------- | ------------------------------- | ----------- | --------- | ------------------------------------------ |
+| `buttonColor`              | `button-color`                  |             | `string`  | `'blue'`                                   |
+| `errorMessage`             | `error-message`                 |             | `string`  | `"Invalid image file."`                    |
+| `fileName`                 | `file-name`                     |             | `any`     | `undefined`                                |
+| `hasLoad`                  | `has-load`                      |             | `string`  | `undefined`                                |
+| `imgType`                  | `img-type`                      |             | `string`  | `'picture'`                                |
+| `label`                    | `label`                         |             | `string`  | `'CHANGE PICTURE'`                         |
+| `name`                     | `name`                          |             | `string`  | `undefined`                                |
+| `notImageFile`             | `not-image-file`                |             | `boolean` | `undefined`                                |
+| `placeholder`              | `placeholder`                   |             | `string`  | `'Drag and drop the file or add an image'` |
+| `uploadImgContainer`       | `upload-img-container`          |             | `string`  | `""`                                       |
+| `uploadImgFileFormats`     | `upload-img-file-formats`       |             | `string`  | `"JPG, JPEG, PNG or SVG."`                 |
+| `uploadImgRecFileSize`     | `upload-img-rec-file-size`      |             | `number`  | `25`                                       |
+| `uploadImgRecFileSizeType` | `upload-img-rec-file-size-type` |             | `string`  | `"KB"`                                     |
+| `uploadImgRecHeight`       | `upload-img-rec-height`         |             | `number`  | `120`                                      |
+| `uploadImgRecWidth`        | `upload-img-rec-width`          |             | `number`  | `120`                                      |
+| `value`                    | `value`                         |             | `any`     | `undefined`                                |
 
 
 ## Events

@@ -23,6 +23,9 @@ export class Insimagepicker {
   @Prop({mutable: true}) uploadImgRecWidth: number = 120;
   @Prop({mutable: true}) uploadImgRecHeight: number = 120;
   @Prop({mutable: true}) uploadImgRecFileSize: number = 25;
+  @Prop({mutable: true}) uploadImgRecFileSizeType: string = "KB";
+  @Prop({mutable: true}) uploadImgFileFormats: string = "JPG, JPEG, PNG or SVG.";
+  @Prop({mutable: true}) errorMessage: string = "Invalid image file.";
 
   @State() ImageElement: HTMLImageElement;
   @State() modal: any;
@@ -54,10 +57,27 @@ export class Insimagepicker {
     this.processImgFile(dt.files);
   }
 
+  invalidFile(){
+    this.notImageFile = true;
+    this.ImageElement = this.insImagePickerEl.querySelector('.image');
+    this.ImageElement.src = '';
+    if (this.cropper) this.cropper.destroy();
+    return;
+  }
+
+  validateFormat(type){
+    return this.uploadImgFileFormats
+      .toLocaleLowerCase()
+      .includes(type);
+  }
+
   processImgFile(files) {
     let component = this;
+    if (!files[0].type.includes('image/')) return this.invalidFile();
 
-    if (files[0] && (files[0].type === 'image/jpeg' || files[0].type === 'image/png')) {
+    let ext = files[0].type.split('/')[1];
+    if (!this.validateFormat(ext)) return this.invalidFile();
+    if (files[0] && (ext === 'jpeg' || ext === 'png')) {
       this.notImageFile = false;
       this.fileName = files[0].name;
 
@@ -76,7 +96,7 @@ export class Insimagepicker {
           fr.readAsDataURL(files[0]);
       }
 
-    } else if(files[0].type.includes('image/svg')) {
+    } else if(ext.includes('svg')) {
       this.notImageFile = false;
       this.fileName = files[0].name;
 
@@ -91,14 +111,7 @@ export class Insimagepicker {
 
         }
         fr.readAsDataURL(files[0]);
-    }
-
-    } else {
-      this.notImageFile = true;
-      this.ImageElement = this.insImagePickerEl.querySelector('.image');
-      // console.log(this.ImageElement);
-      this.ImageElement.src = '';
-      this.cropper.destroy();
+      }
     }
   }
 
@@ -194,11 +207,10 @@ export class Insimagepicker {
           }
         </div>
         <div class="inline-block">
-          <span class="texts_uploadinfo">
-          File Formats: JPG, JPEG, PNG or SVG. <br />
-          Recommended Dimensions: {`${this.uploadImgRecWidth}px x ${this.uploadImgRecHeight}px`}<br />
-          Recommended File Size: {`${this.uploadImgRecFileSize} kb`}
-
+        <span class="texts_uploadinfo">
+          File Formats: {this.uploadImgFileFormats} <br />
+          Recommended Dimensions: {`${this.uploadImgRecWidth}px by ${this.uploadImgRecHeight}px`}<br />
+          Recommended File Size: <span class="file-size">{`${this.uploadImgRecFileSize} ${this.uploadImgRecFileSizeType}`}</span>
           </span>
           <ins-button
            // label={'CHANGE ' + this.imgType}
@@ -236,7 +248,7 @@ export class Insimagepicker {
               </div>
 
               <div class={`error-wrap`}>
-                <span>Please choose image files only.</span>
+                <span>{ this.errorMessage }</span>
               </div>
 
               <div class="controllers">
