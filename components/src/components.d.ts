@@ -183,21 +183,6 @@ export namespace Components {
         "readonly": boolean;
         "value": string;
     }
-    interface InsDatepicker {
-        "disabled": boolean;
-        "errorMessage": string;
-        "format": string;
-        "hasError": boolean;
-        "hasLoad": string;
-        "icon": string;
-        "label": string;
-        "maxDate": string;
-        "minDate": string;
-        "name": string;
-        "placeholder": string;
-        "readonly": boolean;
-        "value": string;
-    }
     interface InsDrawer {
         "backdropCanClose": boolean;
         "bordered": boolean;
@@ -760,21 +745,6 @@ export namespace Components {
         "inline": boolean;
         "solid": boolean;
     }
-    interface InsTimepicker {
-        "disabled": boolean;
-        "errorMessage": string;
-        "hasError": boolean;
-        "hasLoad": string;
-        "icon": string;
-        "label": string;
-        "maxTime": string;
-        "minTime": string;
-        "name": string;
-        "noMeridiem": boolean;
-        "placeholder": string;
-        "readonly": boolean;
-        "value": string;
-    }
     interface InsToggleSwitch {
         "checked": boolean;
         "disabled": boolean;
@@ -909,12 +879,6 @@ declare global {
     var HTMLInsDateTimeElement: {
         prototype: HTMLInsDateTimeElement;
         new (): HTMLInsDateTimeElement;
-    };
-    interface HTMLInsDatepickerElement extends Components.InsDatepicker, HTMLStencilElement {
-    }
-    var HTMLInsDatepickerElement: {
-        prototype: HTMLInsDatepickerElement;
-        new (): HTMLInsDatepickerElement;
     };
     interface HTMLInsDrawerElement extends Components.InsDrawer, HTMLStencilElement {
     }
@@ -1216,12 +1180,6 @@ declare global {
         prototype: HTMLInsTimelineItemElement;
         new (): HTMLInsTimelineItemElement;
     };
-    interface HTMLInsTimepickerElement extends Components.InsTimepicker, HTMLStencilElement {
-    }
-    var HTMLInsTimepickerElement: {
-        prototype: HTMLInsTimepickerElement;
-        new (): HTMLInsTimepickerElement;
-    };
     interface HTMLInsToggleSwitchElement extends Components.InsToggleSwitch, HTMLStencilElement {
     }
     var HTMLInsToggleSwitchElement: {
@@ -1253,7 +1211,6 @@ declare global {
         "ins-content": HTMLInsContentElement;
         "ins-credit-card": HTMLInsCreditCardElement;
         "ins-date-time": HTMLInsDateTimeElement;
-        "ins-datepicker": HTMLInsDatepickerElement;
         "ins-drawer": HTMLInsDrawerElement;
         "ins-editor": HTMLInsEditorElement;
         "ins-filter": HTMLInsFilterElement;
@@ -1304,7 +1261,6 @@ declare global {
         "ins-thumbnail": HTMLInsThumbnailElement;
         "ins-timeline": HTMLInsTimelineElement;
         "ins-timeline-item": HTMLInsTimelineItemElement;
-        "ins-timepicker": HTMLInsTimepickerElement;
         "ins-toggle-switch": HTMLInsToggleSwitchElement;
         "ins-tooltip": HTMLInsTooltipElement;
     }
@@ -1494,24 +1450,6 @@ declare namespace LocalJSX {
         "mode"?: string;
         "name"?: string;
         "noMeridiem"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsInput"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
-        "placeholder"?: string;
-        "readonly"?: boolean;
-        "value"?: string;
-    }
-    interface InsDatepicker {
-        "disabled"?: boolean;
-        "errorMessage"?: string;
-        "format"?: string;
-        "hasError"?: boolean;
-        "hasLoad"?: string;
-        "icon"?: string;
-        "label"?: string;
-        "maxDate"?: string;
-        "minDate"?: string;
-        "name"?: string;
         "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsInput"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
@@ -2099,24 +2037,6 @@ declare namespace LocalJSX {
         "inline"?: boolean;
         "solid"?: boolean;
     }
-    interface InsTimepicker {
-        "disabled"?: boolean;
-        "errorMessage"?: string;
-        "hasError"?: boolean;
-        "hasLoad"?: string;
-        "icon"?: string;
-        "label"?: string;
-        "maxTime"?: string;
-        "minTime"?: string;
-        "name"?: string;
-        "noMeridiem"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsInput"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
-        "placeholder"?: string;
-        "readonly"?: boolean;
-        "value"?: string;
-    }
     interface InsToggleSwitch {
         "checked"?: boolean;
         "disabled"?: boolean;
@@ -2164,7 +2084,6 @@ declare namespace LocalJSX {
         "ins-content": InsContent;
         "ins-credit-card": InsCreditCard;
         "ins-date-time": InsDateTime;
-        "ins-datepicker": InsDatepicker;
         "ins-drawer": InsDrawer;
         "ins-editor": InsEditor;
         "ins-filter": InsFilter;
@@ -2215,7 +2134,6 @@ declare namespace LocalJSX {
         "ins-thumbnail": InsThumbnail;
         "ins-timeline": InsTimeline;
         "ins-timeline-item": InsTimelineItem;
-        "ins-timepicker": InsTimepicker;
         "ins-toggle-switch": InsToggleSwitch;
         "ins-tooltip": InsTooltip;
     }
@@ -2242,7 +2160,6 @@ declare module "@stencil/core" {
             "ins-content": LocalJSX.InsContent & JSXBase.HTMLAttributes<HTMLInsContentElement>;
             "ins-credit-card": LocalJSX.InsCreditCard & JSXBase.HTMLAttributes<HTMLInsCreditCardElement>;
             "ins-date-time": LocalJSX.InsDateTime & JSXBase.HTMLAttributes<HTMLInsDateTimeElement>;
-            "ins-datepicker": LocalJSX.InsDatepicker & JSXBase.HTMLAttributes<HTMLInsDatepickerElement>;
             "ins-drawer": LocalJSX.InsDrawer & JSXBase.HTMLAttributes<HTMLInsDrawerElement>;
             "ins-editor": LocalJSX.InsEditor & JSXBase.HTMLAttributes<HTMLInsEditorElement>;
             "ins-filter": LocalJSX.InsFilter & JSXBase.HTMLAttributes<HTMLInsFilterElement>;
@@ -2293,7 +2210,6 @@ declare module "@stencil/core" {
             "ins-thumbnail": LocalJSX.InsThumbnail & JSXBase.HTMLAttributes<HTMLInsThumbnailElement>;
             "ins-timeline": LocalJSX.InsTimeline & JSXBase.HTMLAttributes<HTMLInsTimelineElement>;
             "ins-timeline-item": LocalJSX.InsTimelineItem & JSXBase.HTMLAttributes<HTMLInsTimelineItemElement>;
-            "ins-timepicker": LocalJSX.InsTimepicker & JSXBase.HTMLAttributes<HTMLInsTimepickerElement>;
             "ins-toggle-switch": LocalJSX.InsToggleSwitch & JSXBase.HTMLAttributes<HTMLInsToggleSwitchElement>;
             "ins-tooltip": LocalJSX.InsTooltip & JSXBase.HTMLAttributes<HTMLInsTooltipElement>;
         }

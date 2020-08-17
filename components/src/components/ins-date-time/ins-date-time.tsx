@@ -1,7 +1,10 @@
 import { h, Component, Element, Prop, Event, EventEmitter, Method } from "@stencil/core";
 import flatpickr from "flatpickr";
 
-@Component({ tag: 'ins-date-time' })
+@Component({
+  tag: 'ins-date-time',
+  styleUrl: '../../../node_modules/flatpickr/dist/flatpickr.min.css'
+})
 export class InsDateTime {
   @Element() insDateTimeEl: HTMLElement;
   @Event() insInput: EventEmitter;

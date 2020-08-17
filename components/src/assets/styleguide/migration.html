@@ -10,7 +10,7 @@
   <!-- Insites Essentials -->
   <link rel="stylesheet" href="/assets/css/reset.css" />
   <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
-  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+  <link rel="stylesheet" href="/assets/css/insites.css" />
 
   <script type="module" src="/build/insites.esm.js"></script>
   <script nomodule src="/build/insites.js"></script>
@@ -20,9 +20,16 @@
   <script src="/assets/prism/prism.js"></script>
 
   <link rel="stylesheet" href="/assets/css/styleguide.css">
+
+  <style>
+    li {
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
 <body>
-  <div class="spacer"></div>
+  <!-- <div class="spacer"></div> -->
+  <p>For V1 documentation please go <a href="/v1/index.html" target="_blank">here</a>.</p>
   <h2 class="section-title">Step 1: Update dependencies</h2>
   <div class="ins-styleguide-wrap">
     <h2 class="section-title">Remove this</h2>
@@ -46,19 +53,30 @@
   <div class="ins-styleguide-wrap">
     <h2 class="section-title">Replace with</h2>
     <div class="ins-styleguide-code-slot-wrap full">
-      <script type="text/plain" class="language-markup"><!-- Font Icons -->
-<link rel="preload" href="https://components.insites.io/v2.0.0/css/insites-font-icons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://components.insites.io/v2.0.0/css/insites-font-icons.min.css"></noscript>
+      <script type="text/plain" class="language-markup"><!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+<!-- Font Icons -->
+<link rel="stylesheet" href="https://components.insites.io/latest/css/insites-font-icons.css">
 
 <!-- Components -->
-<link rel="stylesheet" href="https://components.insites.io/v2.0.0/css/insites.min.css" />
-<script type="module" src="https://components.insites.io/v2.0.0/insites.esm.js">&lt;/script&gt;
-<script nomodule src="https://components.insites.io/v2.0.0/insites.js">&lt;/script&gt;</script>
+<link rel="stylesheet" href="https://components.insites.io/latest/css/insites.css" />
+<script type="module" src="https://components.insites.io/latest/insites.esm.js">&lt;/script&gt;
+<script nomodule src="https://components.insites.io/latest/insites.js">&lt;/script&gt;</script>
     </div>
   </div>
+
+  <h2 class="section-title">Step 2: Update component tags</h2>
   <div class="spacer"></div>
+
+  <ul>
+    <li>Update <code>ins-base-table</code> to <code>ins-table</code></li>
+    <li>Update <code>ins-datepicker</code> to <code>ins-date-time</code> with <a href="/#/app/data-entry/date-and-time" target="_blank" title="ins-date-time Documentation">mode</a> attribute set to datepicker </li>
+    <li>Update <code>ins-timepicker</code> to <code>ins-date-time</code> with <a href="/#/app/data-entry/date-and-time" target="_blank" title="ins-date-time Documentation">mode</a> attribute set to timepicker </li>
+  </ul>
   <div class="spacer"></div>
-  <h2 class="section-title">Step 2: Update events</h2>
+
+  <h2 class="section-title">Step 3: Update events in event listeners</h2>
   <p>Component events has been updated to have `ins` prefix and removed the `on` prefix to avoid conflict with the native DOM events. Please check V2 component documentation to update your event listeners from v1.</p>
 
 </body>

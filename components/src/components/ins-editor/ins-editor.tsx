@@ -22,6 +22,7 @@ import "codemirror/mode/yaml/yaml";
 @Component({
 	tag: 'ins-editor',
 	styleUrls: [
+    '../../assets/redactor.min.css',
 		'../../../node_modules/codemirror/lib/codemirror.css',
 		// addons
 		'../../../node_modules/codemirror/addon/dialog/dialog.css',

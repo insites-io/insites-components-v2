@@ -1,7 +1,10 @@
 import { h, Component, Element, Prop, Method, Event, EventEmitter } from "@stencil/core";
 import Accordion from "../../assets/accordion/src/accordion";
 
-@Component({ tag: 'ins-accordion' })
+@Component({
+  tag: 'ins-accordion',
+  styleUrl: '../../assets/accordion/src/accordion.css'
+})
 export class InsAccordion {
   @Element() insAccordionEl: HTMLElement;
   @Event() insToggle: EventEmitter;

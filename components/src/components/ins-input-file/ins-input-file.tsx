@@ -2,7 +2,11 @@ import { h, Component, Prop, Element, State, Method, Watch, Event, EventEmitter}
 import DropZone from "dropzone";
 
 @Component({
-  tag: 'ins-input-file'
+  tag: 'ins-input-file',
+  styleUrls: [
+    '../../assets/dropzone/basic.min.css',
+    '../../assets/dropzone/dropzone.min.css'
+  ]
 })
 export class InsInputFile {
   @Element() insInputFileEl: HTMLElement;

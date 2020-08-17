@@ -9,7 +9,7 @@
   <!-- Insites Essentials -->
   <link rel="stylesheet" href="/assets/css/reset.css" />
   <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
-  <link rel="stylesheet" href="/assets/css/insites-components.css" />
+  <link rel="stylesheet" href="/assets/css/insites.css" />
 
   <script type="module" src="/build/insites.esm.js"></script>
   <script nomodule src="/build/insites.js"></script>
@@ -83,7 +83,7 @@
             <tr>
               <td>mode</td>
               <td>string</td>
-              <td>-</td>
+              <td>If not defined both date and time picker will be rendered</td>
               <td>datepicker, timepicker</td>
               <td>Render only datepicker or timepicker</td>
             </tr>
@@ -216,6 +216,30 @@
           <div slot="code">
             <script type="text/plain" class="language-markup">
 <ins-date-time></ins-date-time>
+            </script>
+          </div>
+        </ins-styleguide>
+
+        <h2 class="section-title">Date Picker Mode</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-date-time label="Date Picker Mode" mode="datepicker"></ins-date-time>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-date-time label="Date Picker Mode" mode="datepicker"></ins-date-time>
+            </script>
+          </div>
+        </ins-styleguide>
+
+        <h2 class="section-title">Time Picker Mode</h2>
+        <ins-styleguide>
+          <div slot="actual">
+            <ins-date-time label="Time Picker Mode" mode="timepicker"></ins-date-time>
+          </div>
+          <div slot="code">
+            <script type="text/plain" class="language-markup">
+<ins-date-time label="Time Picker Mode" mode="Timepicker"></ins-date-time>
             </script>
           </div>
         </ins-styleguide>
