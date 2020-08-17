@@ -1,0 +1,85 @@
+/* @import "./fonts"; */
+@import "./colors";
+@import "./spacing";
+
+/* DATA ENTRY */
+@import "./data-entry/ins-data-entry";
+@import "./data-entry/ins-button";
+@import "./data-entry/ins-button-group";
+@import "./data-entry/ins-input";
+@import "./data-entry/ins-input-file";
+@import "./data-entry/ins-input-multiple";
+@import "./data-entry/ins-input-tel";
+@import "./data-entry/ins-input-slider";
+@import "./data-entry/ins-select";
+@import "./data-entry/ins-select-button";
+@import "./data-entry/ins-select-option";
+@import "./data-entry/ins-select-group";
+@import "./data-entry/ins-radio-checkbox";
+@import "./data-entry/ins-toggle-switch";
+@import "./data-entry/ins-date-time";
+@import "./data-entry/ins-credit-card";
+@import "./data-entry/ins-checbox-card";
+@import "./data-entry/ins-image-picker";
+@import "./data-entry/ins-markdown-editor";
+@import "./data-entry/ins-editor";
+@import "./data-entry/ins-code-editor";
+
+/* DATA DISPLAY */
+$input_field_font_size: 14px;
+$input_field_font_weight: 400;
+
+@import "./data-display/ins-card";
+@import "./data-display/ins-filter";
+@import "./data-display/ins-filter-item";
+@import "./data-display/ins-progress-bar";
+@import "./data-display/ins-thumbnail";
+@import "./data-display/ins-tab";
+@import "./data-display/ins-tab-item";
+@import "./data-display/ins-tag";
+@import "./data-display/ins-timeline";
+@import "./data-display/ins-timeline-item";
+@import "./data-display/ins-tooltip";
+@import "./data-display/ins-info-table";
+@import "./data-display/ins-sort";
+@import "./data-display/ins-markdown";
+@import "./data-display/ins-notifications";
+@import "./data-display/ins-notifications-item";
+@import "./data-display/ins-bar-chart";
+@import "./data-display/ins-line-chart";
+@import "./data-display/ins-pie-chart";
+@import "./data-display/ins-sparkline";
+
+/* FEEDBACK */
+@import "./feedback/ins-drawer";
+@import "./feedback/ins-loader";
+@import "./feedback/ins-modal";
+
+/* OTHER */
+@import "./other/ins-accordion";
+@import "./other/ins-accordion-item";
+@import "./other/ins-accordion-link";
+@import "./other/ins-backdrop";
+@import "./other/ins-carousel";
+@import "./other/ins-heading";
+
+/* SHELL */
+@import "./shell/ins-sidebar";
+@import "./shell/ins-sidebar-item";
+@import "./shell/ins-sidebar-footer";
+@import "./shell/ins-sidebar-footer-button";
+@import "./shell/ins-sidebar-footer-menu";
+@import "./shell/ins-admin";
+@import "./shell/ins-content";
+@import "./shell/ins-renderer";
+@import "./shell/ins-breadcrumbs";
+@import "./shell/ins-header";
+@import "./shell/ins-header-user";
+@import "./shell/ins-instances";
+@import "./shell/ins-instances-item";
+
+/* TABLE */
+@import "./table/ins-table";
+@import "./table/ins-table-row";
+@import "./table/ins-table-td";
+@import "./table/ins-table-th";

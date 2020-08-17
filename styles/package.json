@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node-sass scss/insites-components.scss -o ../components/src/assets/css/",
-    "serve": "npm run build & node-sass -rw scss -wo ../components/src/assets/css/"
+    "build": "node-sass scss/ -o ../components/src/assets/css/ --output-style compressed",
+    "serve": "npm run build & node-sass -rw scss -wo ../components/src/assets/css/ --output-style compressed"
   },
   "author": "",
   "license": "ISC",
