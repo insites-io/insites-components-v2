@@ -29,21 +29,31 @@
 </head>
 
 <body>
-  <!-- <ins-filter with-date-filter id="myInsFilter">
-    <ins-filter-item name="Colours"
-      options='["Red","Green","Blue"]'>
-    </ins-filter-item>
-  </ins-filter>
+  <p>Nike Shoes</p> <br>
 
-  <ins-date-time label="Compatibility"></ins-date-time>
+  <ins-gallery zoomable>
+    <div class="thumbs">
+      <ins-gallery-thumbnail default
+        source="https://components.insites.io/assets/images/gallery/t1.jpg"
+        actual="https://components.insites.io/assets/images/gallery/1.jpg">
+      </ins-gallery-thumbnail>
 
-  <script>
-    var myInsFilter = document.getElementById('myInsFilter');
-    myInsFilter.addEventListener('insFilterApply', e => {
-      console.log(e.detail);
-    });
-  </script> -->
-  <ins-editor label="Test"></ins-editor>
+      <ins-gallery-thumbnail
+        source="https://components.insites.io/assets/images/gallery/t2.jpg"
+        actual="https://components.insites.io/assets/images/gallery/2.jpg">
+      </ins-gallery-thumbnail>
+
+      <ins-gallery-thumbnail
+        source="https://components.insites.io/assets/images/gallery/t3.jpg"
+        actual="https://components.insites.io/assets/images/gallery/3.jpg">
+      </ins-gallery-thumbnail>
+
+      <ins-gallery-thumbnail
+        source="https://components.insites.io/assets/images/gallery/t4.jpg"
+        actual="https://components.insites.io/assets/images/gallery/4.jpg">
+      </ins-gallery-thumbnail>
+    </div>
+  </ins-gallery>
 </body>
 
 </html>

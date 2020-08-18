@@ -1,0 +1,29 @@
+.ins-gallery-thumbnail {
+  display: inline-block;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  img {
+    width: 60px;
+    height: 60px;
+    background-color: var(--ins-bg-color4);
+    border:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      transparent;
+
+    outline: none;
+    margin: 5px;
+    transition: .25s border;
+
+    &:hover {
+      border-color: var(--ins-color-ink);
+    }
+  }
+}
+
+ins-gallery-thumbnail.active {
+  .ins-gallery-thumbnail img {
+    border-color: var(--ins-color-primary);
+  }
+}

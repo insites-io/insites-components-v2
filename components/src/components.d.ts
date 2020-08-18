@@ -235,6 +235,20 @@ export namespace Components {
         "options": any;
         "selected": any;
     }
+    interface InsGallery {
+        "imgAlt": string;
+        "imgTitle": string;
+        "zoomable": boolean;
+    }
+    interface InsGalleryThumbnail {
+        "activate": () => Promise<boolean>;
+        "actual": string;
+        "deactivate": () => Promise<boolean>;
+        "default": boolean;
+        "imgAlt": string;
+        "imgTitle": string;
+        "source": string;
+    }
     interface InsHeader {
         "hasLoad": string;
         "hasMenuToggle": boolean;
@@ -904,6 +918,18 @@ declare global {
         prototype: HTMLInsFilterItemElement;
         new (): HTMLInsFilterItemElement;
     };
+    interface HTMLInsGalleryElement extends Components.InsGallery, HTMLStencilElement {
+    }
+    var HTMLInsGalleryElement: {
+        prototype: HTMLInsGalleryElement;
+        new (): HTMLInsGalleryElement;
+    };
+    interface HTMLInsGalleryThumbnailElement extends Components.InsGalleryThumbnail, HTMLStencilElement {
+    }
+    var HTMLInsGalleryThumbnailElement: {
+        prototype: HTMLInsGalleryThumbnailElement;
+        new (): HTMLInsGalleryThumbnailElement;
+    };
     interface HTMLInsHeaderElement extends Components.InsHeader, HTMLStencilElement {
     }
     var HTMLInsHeaderElement: {
@@ -1215,6 +1241,8 @@ declare global {
         "ins-editor": HTMLInsEditorElement;
         "ins-filter": HTMLInsFilterElement;
         "ins-filter-item": HTMLInsFilterItemElement;
+        "ins-gallery": HTMLInsGalleryElement;
+        "ins-gallery-thumbnail": HTMLInsGalleryThumbnailElement;
         "ins-header": HTMLInsHeaderElement;
         "ins-header-user": HTMLInsHeaderUserElement;
         "ins-heading": HTMLInsHeadingElement;
@@ -1512,6 +1540,19 @@ declare namespace LocalJSX {
         "onInsSelect"?: (event: CustomEvent<any>) => void;
         "options"?: any;
         "selected"?: any;
+    }
+    interface InsGallery {
+        "imgAlt"?: string;
+        "imgTitle"?: string;
+        "zoomable"?: boolean;
+    }
+    interface InsGalleryThumbnail {
+        "actual"?: string;
+        "default"?: boolean;
+        "imgAlt"?: string;
+        "imgTitle"?: string;
+        "onInsUpdateSrc"?: (event: CustomEvent<any>) => void;
+        "source"?: string;
     }
     interface InsHeader {
         "hasLoad"?: string;
@@ -2088,6 +2129,8 @@ declare namespace LocalJSX {
         "ins-editor": InsEditor;
         "ins-filter": InsFilter;
         "ins-filter-item": InsFilterItem;
+        "ins-gallery": InsGallery;
+        "ins-gallery-thumbnail": InsGalleryThumbnail;
         "ins-header": InsHeader;
         "ins-header-user": InsHeaderUser;
         "ins-heading": InsHeading;
@@ -2164,6 +2207,8 @@ declare module "@stencil/core" {
             "ins-editor": LocalJSX.InsEditor & JSXBase.HTMLAttributes<HTMLInsEditorElement>;
             "ins-filter": LocalJSX.InsFilter & JSXBase.HTMLAttributes<HTMLInsFilterElement>;
             "ins-filter-item": LocalJSX.InsFilterItem & JSXBase.HTMLAttributes<HTMLInsFilterItemElement>;
+            "ins-gallery": LocalJSX.InsGallery & JSXBase.HTMLAttributes<HTMLInsGalleryElement>;
+            "ins-gallery-thumbnail": LocalJSX.InsGalleryThumbnail & JSXBase.HTMLAttributes<HTMLInsGalleryThumbnailElement>;
             "ins-header": LocalJSX.InsHeader & JSXBase.HTMLAttributes<HTMLInsHeaderElement>;
             "ins-header-user": LocalJSX.InsHeaderUser & JSXBase.HTMLAttributes<HTMLInsHeaderUserElement>;
             "ins-heading": LocalJSX.InsHeading & JSXBase.HTMLAttributes<HTMLInsHeadingElement>;
