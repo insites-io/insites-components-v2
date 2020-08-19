@@ -343,7 +343,7 @@ export namespace Components {
         "removeFiles": () => Promise<void>;
         "required": boolean;
         "s3Data": object;
-        "setFiles": (files: any) => Promise<void>;
+        "setFiles": (files: any) => Promise<boolean>;
         "setS3FormData": () => Promise<void>;
         "showLimit": boolean;
         "showNotifications": boolean;

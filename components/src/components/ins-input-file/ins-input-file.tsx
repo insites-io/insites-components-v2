@@ -1,12 +1,8 @@
 import { h, Component, Prop, Element, Method, Watch, Event, EventEmitter, /*State*/} from "@stencil/core";
 import DropZone from "dropzone";
-
 @Component({
   tag: 'ins-input-file',
-  styleUrls: [
-    '../../assets/dropzone/basic.min.css',
-    '../../assets/dropzone/dropzone.min.css'
-  ]
+  styleUrl: '../../assets/dropzone/dropzone.min.css'
 })
 export class InsInputFile {
   @Element() insInputFileEl: HTMLElement;
@@ -58,8 +54,9 @@ export class InsInputFile {
       if (func) func(this.insInputFileEl);
     }
   }
+
   componentDidUpdate() {
-    this.initDropZone();
+    this.updateDropZone();
   }
 
   @Method()
@@ -232,6 +229,7 @@ export class InsInputFile {
     } else {
       this.setFile(files);
     }
+    return true;
   }
 
   @Method()
@@ -247,8 +245,8 @@ export class InsInputFile {
   @Method()
   async setFiles(files) {
     if (!this.disabled) {
-      this.bindFiles(files);
-    }
+      return this.bindFiles(files);
+    } else return false;
   }
 
   @Method()
@@ -264,6 +262,18 @@ export class InsInputFile {
   @Method()
   async getDropzoneInstance(){
     return this.dropZone;
+  }
+
+  updateDropZone(){
+    if (!this.dropZone) return this.initDropZone();
+    this.dropZone.options.parallelUploads = this.maxFiles > 0 ? this.maxFiles : 1;
+    this.dropZone.options.capture = this.capture;
+    this.dropZone.options.maxFilesize = this.maxFileSize > 0 ? this.maxFileSize : 1;
+    this.dropZone.options.maxFiles = this.maxFiles > 0 ? this.maxFiles : 1;
+    this.dropZone.options.acceptedFiles = this.acceptedFiles;
+    this.dropZone.options.dictFileTooBig = `File too big. Maximum of ${this.maxFileSize + 'MB'}. `;
+    this.dropZone.options.dictInvalidFileType = `You cannot upload this file type. Accepted file types: (${this.acceptedFiles}). `;
+    this.dropZone.options.dictMaxFilesExceeded = `You cannot upload any more files. Maximum of ${this.maxFiles } files. `;
   }
 
   initDropZone() {
@@ -320,6 +330,7 @@ export class InsInputFile {
         }
       });
     }
+    return true
   }
 
   render() {

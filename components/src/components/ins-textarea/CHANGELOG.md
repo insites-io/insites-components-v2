@@ -1,4 +1,6 @@
-# v2.0.0
+# v2.1.0
+- [TW#16925380] Fixed value prop binding
+- [TW#16925380] Added min-height in styles
 
 ## Changes from V1
 - Update `oninput` to `insInput` to avoid DOM event conflict
