@@ -1,4 +1,4 @@
-import { h, Component, Prop, Element, State, Method, Watch, Event, EventEmitter} from "@stencil/core";
+import { h, Component, Prop, Element, Method, Watch, Event, EventEmitter, /*State*/} from "@stencil/core";
 import DropZone from "dropzone";
 
 @Component({
@@ -37,14 +37,13 @@ export class InsInputFile {
   @Prop({ mutable: true }) capture: string = null;
 
   // auto upload - pOS S3
-  @State() InsitesUtil: any; // https://components.insites.io/S3UploaderService.js
   @Prop({ mutable: true }) autoUpload: boolean = false;
   @Prop({ mutable: true }) credentialsUrl: string;
   @Prop({ mutable: true }) fieldType: string = "image"; // image/file
   @Prop({ mutable: true }) fieldName: string;
   @Prop({ mutable: true }) s3Data: object;
 
-  @State() dropZone: any;
+  /* @State() */ dropZone: any;
 
   @Watch('disabled')
   disableStateHandler() {

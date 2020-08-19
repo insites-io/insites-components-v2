@@ -30,6 +30,7 @@ export class InsTextarea {
     });
 
     this.insValueChange.emit(event.target.value);
+    this.value = event.target.value;
   }
 
   activateLabel() {
