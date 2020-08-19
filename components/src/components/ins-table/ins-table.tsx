@@ -54,6 +54,8 @@ export class InsTable {
 
   @State() tableDataCopy: any = []
 
+  selectedBulkAction: string = "";
+
   @Watch('tableData')
   tableDataChangeHandler(){
     this.tableUpdated = true;
@@ -65,7 +67,11 @@ export class InsTable {
       .querySelector(
         'ins-select[data-type="bulk-action"]'
       ) as any;
-    if (bulkActionEl) bulkActionEl.reset();
+    if (bulkActionEl) {
+      bulkActionEl.reset();
+      this.selectedBulkAction = "";
+      this.resetSelections();
+    }
   }
 
   componentWillLoad(){
@@ -123,7 +129,6 @@ export class InsTable {
   @Listen('insInput')
   onSearchHandler(event) {
     if (event.target.icon === "icon-search"){
-      console.log('emitting tableSearch')
       this.insTableSearch.emit(event.detail);
     }
   }
@@ -131,7 +136,6 @@ export class InsTable {
   @Listen('insClick')
   onClickInsButtonHandler(event){
     if (event.target.className.includes('insTableBulkButton')){
-      console.log('nice!')
       this.bulkActionHandler()
     }
   }
@@ -321,11 +325,9 @@ export class InsTable {
   }
 
   bulkActionHandler(){
-    let bulkActionEl = this.insTableEl.querySelector('ins-select[data-type="bulk-action"]') as any;
-    console.log('bulkActionEl.value', bulkActionEl.value);
-    if (bulkActionEl.value){
+    if (this.selectedBulkAction){
       this.insTableBulkAction.emit({
-        action: bulkActionEl.value,
+        action: this.selectedBulkAction,
         selections: this.selectedRows,
         updated_items: this.updatedRows
       });
@@ -452,6 +454,9 @@ export class InsTable {
         this.insFieldChange.emit(event);
         this.updateUpdatedRows(copy, prop);
       }
+    } else if (event.target.attributes["data-type"]
+      && event.target.attributes["data-type"].value === "bulk-action"){
+      this.selectedBulkAction = event.detail.value || event.detail;
     }
   }
 

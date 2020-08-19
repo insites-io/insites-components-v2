@@ -1,4 +1,5 @@
-# v2.0.0
+# v2.1.0
+- [TW#16930854] Fixed bulk action binding
 
 ## Changes from V1
 - Methods are now asynchronous
