@@ -1,4 +1,4 @@
-.ins-gallery-thumbnail {
+.ins-gallery-image {
   cursor: pointer;
   width: 60px;
   height: 60px;
@@ -23,13 +23,13 @@
   }
 }
 
-ins-gallery-thumbnail {
+ins-gallery-image {
   display: inline-block;
   padding: 5px;
 }
 
-ins-gallery-thumbnail.active {
-  .ins-gallery-thumbnail {
+ins-gallery-image.active {
+  .ins-gallery-image {
     border-color: var(--ins-color-primary);
   }
 }

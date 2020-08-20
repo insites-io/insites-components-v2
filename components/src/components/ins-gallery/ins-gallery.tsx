@@ -8,15 +8,15 @@ export class InsGallery {
   @Prop({ mutable: true }) imgTitle: string;
   @Prop({ mutable: true }) zoomable: boolean;
   @Prop({ mutable: true }) slidable: boolean;
-  @Prop({ mutable: true }) slidableThumbs: boolean;
+  @Prop({ mutable: true }) withIndicator: boolean;
+  @Prop({ mutable: true }) thumbnailLayout: string = "inline";
 
   imgEl; thumbs; sliderThumbs; slider; slides; progress;
 
   @Listen('insGalleryUpdate')
   insUpdateSrcHandler(e){
-    console.log('insGalleryUpdate');
     let i = this.thumbs.indexOf(e.target);
-    let img = e.detail.actual;
+    let img = e.detail.image;
     if (this.slidable && !this.zoomable){
       this.updateSlide(i, img);
     } else this.updateSrc(img, i)
@@ -49,7 +49,7 @@ export class InsGallery {
     let selector = '.ins-gallery_current-image img';
     this.imgEl = this.el.querySelector(selector);
     this.thumbs[0].activate();
-    this.updateSrc(this.thumbs[0].actual)
+    this.updateSrc(this.thumbs[0].image)
   }
 
   setProgress(i){
@@ -58,7 +58,7 @@ export class InsGallery {
 
   componentDidLoad(){
     if (this.slidable && !this.zoomable) this.initSlider();
-    if (this.slidableThumbs) this.initSliderThumbs();
+    if (this.thumbnailLayout === "slider") this.initSliderThumbs();
     this.progress = this.el.querySelector('.ins-gallery_progress');
     this.setProgress(0);
     this.setDefaultImg();
@@ -67,7 +67,7 @@ export class InsGallery {
   onSlideHandler(){
     let i = this.slider.currentSlide;
     this.thumbs[i].activate();
-    this.updateSlideImg(i, this.thumbs[i].actual);
+    this.updateSlideImg(i, this.thumbs[i].image);
     this.setProgress(i);
   }
 
@@ -87,8 +87,8 @@ export class InsGallery {
   }
 
   calculateViewport(viewport, current, wrapper, thumbnail){
-    const i =  Math.floor(((viewport / current) * wrapper) / thumbnail) + 1;
-    return i > this.thumbs.length ? this.thumbs.length : i;
+    return Math.floor(((viewport / current) * wrapper) / thumbnail);
+    // return i > this.thumbs.length ? this.thumbs.length : i;
   }
 
   calculateThumbnailsPerPage(wrapper){
@@ -214,7 +214,7 @@ export class InsGallery {
   }
 
   generateImage(){
-    let nodes = this.el.querySelectorAll('ins-gallery-thumbnail');
+    let nodes = this.el.querySelectorAll('ins-gallery-image');
     this.thumbs = Array.from(nodes);
 
     if (this.slidable && !this.zoomable){
@@ -240,26 +240,22 @@ export class InsGallery {
   }
 
   generateThumbs(){
-    if (this.slidableThumbs){
+    if (this.thumbnailLayout === "slider"){
       return (
         <div class="ins-gallery_thumb-slider">
-
           <div class="ins-gallery_thumbnails">
             <slot />
           </div>
 
           <div class="ins-gallery_thumb-slider-prev"
             onClick={() => this.prevSlideThumb()}>
-
             <div class="ins-gallery_prev-arrow"></div>
           </div>
 
           <div class="ins-gallery_thumb-slider-next"
             onClick={() => this.nextSlideThumb()}>
-
             <div class="ins-gallery_next-arrow"></div>
           </div>
-
         </div>
       )
     }
@@ -273,7 +269,9 @@ export class InsGallery {
 
   render() {
     return (
-      <div class={`ins-gallery ${this.zoomable ? 'zoomable':''}`}>
+      <div class={`ins-gallery
+        ${this.zoomable ? 'zoomable':''}
+        ${this.withIndicator ? 'with-indicator':''}`}>
 
         <div class="ins-gallery_current-image">
           <div class="spinner"></div>

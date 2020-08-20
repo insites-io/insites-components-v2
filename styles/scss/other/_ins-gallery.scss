@@ -19,7 +19,14 @@
     }
   }
 
+  &.with-indicator {
+    .ins-gallery_progress {
+      display: block;
+    }
+  }
+
   &_progress {
+    display: none;
     position: absolute;
     right: 10px;
     top: 10px;

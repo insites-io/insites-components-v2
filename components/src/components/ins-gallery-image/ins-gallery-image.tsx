@@ -1,12 +1,12 @@
 import { h, Component, Prop, Event, EventEmitter, Element, Method } from "@stencil/core";
 
-@Component({ tag: 'ins-gallery-thumbnail' })
+@Component({ tag: 'ins-gallery-image' })
 export class InsGalleryThumbnail {
   @Element() el: HTMLElement;
   @Event() insGalleryUpdate: EventEmitter;
 
-  @Prop({ mutable: true }) source: string;
-  @Prop({ mutable: true }) actual: string;
+  @Prop({ mutable: true }) thumbnail: string;
+  @Prop({ mutable: true }) image: string;
   @Prop({ mutable: true }) imgAlt: string;
   @Prop({ mutable: true }) imgTitle: string;
   // @Prop({ mutable: true }) default: boolean;
@@ -18,15 +18,15 @@ export class InsGalleryThumbnail {
   clickHandler(){
     this.activate();
     this.insGalleryUpdate.emit({
-      source: this.source,
-      actual: this.actual
+      thumbnail: this.thumbnail,
+      image: this.image
     });
   }
 
   @Method()
   async activate(){
     let parent = this.el.closest('ins-gallery');
-    let thumbs = parent.querySelectorAll('ins-gallery-thumbnail');
+    let thumbs = parent.querySelectorAll('ins-gallery-image');
     for (let i = 0; i < thumbs.length; i++){
       await thumbs[i].deactivate();
     }
@@ -46,8 +46,8 @@ export class InsGalleryThumbnail {
 
   render() {
     return (
-      <div class="ins-gallery-thumbnail" onClick={() => { this.clickHandler() }}>
-        <img src={this.source} alt={this.imgAlt} title={this.imgTitle} />
+      <div class="ins-gallery-image" onClick={() => { this.clickHandler() }}>
+        <img src={this.thumbnail} alt={this.imgAlt} title={this.imgTitle} />
       </div>
     );
   }
