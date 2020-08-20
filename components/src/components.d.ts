@@ -238,13 +238,14 @@ export namespace Components {
     interface InsGallery {
         "imgAlt": string;
         "imgTitle": string;
+        "slidable": boolean;
+        "slidableThumbs": boolean;
         "zoomable": boolean;
     }
     interface InsGalleryThumbnail {
         "activate": () => Promise<boolean>;
         "actual": string;
         "deactivate": () => Promise<boolean>;
-        "default": boolean;
         "imgAlt": string;
         "imgTitle": string;
         "source": string;
@@ -1544,14 +1545,15 @@ declare namespace LocalJSX {
     interface InsGallery {
         "imgAlt"?: string;
         "imgTitle"?: string;
+        "slidable"?: boolean;
+        "slidableThumbs"?: boolean;
         "zoomable"?: boolean;
     }
     interface InsGalleryThumbnail {
         "actual"?: string;
-        "default"?: boolean;
         "imgAlt"?: string;
         "imgTitle"?: string;
-        "onInsUpdateSrc"?: (event: CustomEvent<any>) => void;
+        "onInsGalleryUpdate"?: (event: CustomEvent<any>) => void;
         "source"?: string;
     }
     interface InsHeader {

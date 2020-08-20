@@ -1,21 +1,23 @@
 import { h, Component, Prop, Event, EventEmitter, Element, Method } from "@stencil/core";
 
-@Component({
-  tag: 'ins-gallery-thumbnail'
-})
+@Component({ tag: 'ins-gallery-thumbnail' })
 export class InsGalleryThumbnail {
   @Element() el: HTMLElement;
-  @Event() insUpdateSrc: EventEmitter;
+  @Event() insGalleryUpdate: EventEmitter;
 
   @Prop({ mutable: true }) source: string;
   @Prop({ mutable: true }) actual: string;
   @Prop({ mutable: true }) imgAlt: string;
   @Prop({ mutable: true }) imgTitle: string;
-  @Prop({ mutable: true }) default: boolean;
+  // @Prop({ mutable: true }) default: boolean;
+
+  // TODO:
+  // Shape: square, circle
+  // empty source handler will render a bullet like UI
 
   clickHandler(){
     this.activate();
-    this.insUpdateSrc.emit({
+    this.insGalleryUpdate.emit({
       source: this.source,
       actual: this.actual
     });
@@ -38,9 +40,9 @@ export class InsGalleryThumbnail {
     return true;
   }
 
-  componentDidLoad(){
-    if (this.default) this.clickHandler();
-  }
+  // componentDidLoad(){
+  //   if (this.default) this.clickHandler();
+  // }
 
   render() {
     return (

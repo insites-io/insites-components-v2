@@ -1,39 +1,110 @@
 import { h, Component, Listen, Element, Prop } from "@stencil/core";
-// import Siema from "siema";
+import Siema from "siema";
 
-@Component({
-  tag: 'ins-gallery'
-})
+@Component({ tag: 'ins-gallery' })
 export class InsGallery {
   @Element() el: HTMLElement;
   @Prop({ mutable: true }) imgAlt: string;
   @Prop({ mutable: true }) imgTitle: string;
   @Prop({ mutable: true }) zoomable: boolean;
+  @Prop({ mutable: true }) slidable: boolean;
+  @Prop({ mutable: true }) slidableThumbs: boolean;
 
-  // TODO:
-  // zoom width and height
-  // zoom level
+  imgEl; thumbs; sliderThumbs; slider; slides; progress;
 
-  imgEl;
-  defaultImg;
-
-  @Listen('insUpdateSrc')
+  @Listen('insGalleryUpdate')
   insUpdateSrcHandler(e){
+    console.log('insGalleryUpdate');
+    let i = this.thumbs.indexOf(e.target);
     let img = e.detail.actual;
-    if (this.imgEl) this.updateSrc(img)
-    else this.defaultImg = img;
+    if (this.slidable && !this.zoomable){
+      this.updateSlide(i, img);
+    } else this.updateSrc(img, i)
   }
 
-  updateSrc(img){
+  updateSrc(img, i?){
+    if (i !== undefined) this.setProgress(i);
+    this.loading();
     this.imgEl.src = img;
+  }
+
+  updateSlide(i, img){
+    this.updateSlideImg(i, img);
+    this.setProgress(i);
+    this.slider.goTo(i);
+  }
+
+  updateSlideImg(i, img){
+    if (this.slides[i].src !== img){
+      this.loading();
+      this.slides[i].src = img;
+    }
+  }
+
+  loading(){
     this.el.classList.add('is-loading');
   }
 
-  componentDidLoad(){
-    this.imgEl = this.el
-      .querySelector('.ins-gallery_current-image img');
+  setDefaultImg(){
+    let selector = '.ins-gallery_current-image img';
+    this.imgEl = this.el.querySelector(selector);
+    this.thumbs[0].activate();
+    this.updateSrc(this.thumbs[0].actual)
+  }
 
-    if (this.defaultImg) this.updateSrc(this.defaultImg);
+  setProgress(i){
+    this.progress.innerHTML = `${i+1} / ${this.thumbs.length}`;
+  }
+
+  componentDidLoad(){
+    if (this.slidable && !this.zoomable) this.initSlider();
+    if (this.slidableThumbs) this.initSliderThumbs();
+    this.progress = this.el.querySelector('.ins-gallery_progress');
+    this.setProgress(0);
+    this.setDefaultImg();
+  }
+
+  onSlideHandler(){
+    let i = this.slider.currentSlide;
+    this.thumbs[i].activate();
+    this.updateSlideImg(i, this.thumbs[i].actual);
+    this.setProgress(i);
+  }
+
+  initSlider(){
+    let sliderEl = this.el.querySelector('.ins-gallery_slider');
+    this.slides = this.el.querySelectorAll('.ins-gallery_slide img');
+    this.slider = new Siema({
+      selector: sliderEl,
+      onChange: () => this.onSlideHandler()
+    });
+  }
+
+  initSliderThumbs(){
+    let thumbnails = this.el.querySelector(`.ins-gallery_thumbnails`);
+    let perPage = this.calculateThumbnailsPerPage(thumbnails);
+    this.sliderThumbs = new Siema({ selector: thumbnails, perPage })
+  }
+
+  calculateViewport(viewport, current, wrapper, thumbnail){
+    const i =  Math.floor(((viewport / current) * wrapper) / thumbnail) + 1;
+    return i > this.thumbs.length ? this.thumbs.length : i;
+  }
+
+  calculateThumbnailsPerPage(wrapper){
+    const docWidth = document.documentElement.clientWidth || 0;
+    const windowWidth = window.innerWidth || 0;
+    const viewport = Math.max(docWidth, windowWidth);
+    const wrapperWidth = wrapper.offsetWidth - 60;
+    const thumbnailWidth = this.thumbs[0].offsetWidth;
+    // const deFault = Math.floor(wrapperWidth / thumbnailWidth);
+    return {
+      1200: this.calculateViewport(1200, viewport, wrapperWidth, thumbnailWidth),
+      900: this.calculateViewport(900, viewport, wrapperWidth, thumbnailWidth),
+      700: this.calculateViewport(700, viewport, wrapperWidth, thumbnailWidth),
+      400: this.calculateViewport(400, viewport, wrapperWidth, thumbnailWidth),
+      300: this.calculateViewport(300, viewport, wrapperWidth, thumbnailWidth)
+    }
   }
 
   onLoadHandler(){
@@ -52,6 +123,10 @@ export class InsGallery {
       margin = (pEl.offsetWidth - this.imgEl.offsetWidth) / 2;
       lens.style.left = margin + "px";
     }
+
+    /* Update lens width and height to be 25% of pEL (4x zoom) */
+    lens.style.width = this.imgEl.offsetWidth * .25 + 'px';
+    lens.style.height = this.imgEl.offsetHeight * .25 + 'px';
 
     /* Calculate the ratio between result DIV and lens: */
     cx = pEl.offsetWidth / lens.offsetWidth;
@@ -129,8 +204,72 @@ export class InsGallery {
     this.imgEl.addEventListener("touchend", () => result.classList.remove('zooming'));
   }
 
-  // TODO slider gallery
-  // only when not zoomable
+  generateSliders(){
+    return (
+      <div class="ins-gallery_slide">
+        <img src="" alt={this.imgAlt} title={this.imgTitle}
+          onLoad={() => this.onLoadHandler()} />
+      </div>
+    )
+  }
+
+  generateImage(){
+    let nodes = this.el.querySelectorAll('ins-gallery-thumbnail');
+    this.thumbs = Array.from(nodes);
+
+    if (this.slidable && !this.zoomable){
+      return (
+        <div class="ins-gallery_slider">
+          { this.thumbs.map(() => this.generateSliders()) }
+        </div>
+      )
+    }
+
+    return (
+      <img src="" alt={this.imgAlt} title={this.imgTitle}
+        onLoad={() => this.onLoadHandler()} />
+    )
+  }
+
+  prevSlideThumb(){
+    this.sliderThumbs.prev();
+  }
+
+  nextSlideThumb(){
+    this.sliderThumbs.next();
+  }
+
+  generateThumbs(){
+    if (this.slidableThumbs){
+      return (
+        <div class="ins-gallery_thumb-slider">
+
+          <div class="ins-gallery_thumbnails">
+            <slot />
+          </div>
+
+          <div class="ins-gallery_thumb-slider-prev"
+            onClick={() => this.prevSlideThumb()}>
+
+            <div class="ins-gallery_prev-arrow"></div>
+          </div>
+
+          <div class="ins-gallery_thumb-slider-next"
+            onClick={() => this.nextSlideThumb()}>
+
+            <div class="ins-gallery_next-arrow"></div>
+          </div>
+
+        </div>
+      )
+    }
+
+    return (
+      <div class="ins-gallery_thumbnails">
+        <slot />
+      </div>
+    )
+  }
 
   render() {
     return (
@@ -138,19 +277,13 @@ export class InsGallery {
 
         <div class="ins-gallery_current-image">
           <div class="spinner"></div>
+          <div class="ins-gallery_progress"></div>
           <div class="ins-gallery_lens"></div>
-
-          <div class="ins-class_slider">
-            <img src="" alt={this.imgAlt} title={this.imgTitle}
-              onLoad={() => this.onLoadHandler()} />
-          </div>
-
+          { this.generateImage() }
           <div class="ins-gallery_zoom"></div>
         </div>
 
-        <div class="ins-gallery_thumbnails">
-          <slot />
-        </div>
+        { this.generateThumbs() }
       </div>
     );
   }

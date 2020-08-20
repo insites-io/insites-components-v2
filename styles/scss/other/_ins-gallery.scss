@@ -1,17 +1,31 @@
 .ins-gallery {
   box-sizing: border-box;
+  * { box-sizing: border-box; }
 
   &.zoomable {
     width: 50%;
 
-    &_lens {
+    .ins-gallery_lens {
+      display: block;
       position: absolute;
-      border: 1px solid #d4d4d4;
+      border:
+        var(--ins-border-style)
+        var(--ins-border-thickness)
+        var(--ins-color-ink40);
       cursor: search;
       /*set the size of the lens:*/
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 80px;
     }
+  }
+
+  &_progress {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1;
+    font-size: 12px;
+    color: var(--ins-color-ink);
   }
 
   &_lens {
@@ -50,6 +64,7 @@
 
     img {
       max-width: 100%;
+      max-height: 100%;
       min-width: 280px;
       background-color: var(--ins-bg-color4);
       border: 0;
@@ -59,6 +74,78 @@
 
   &_thumbnails {
     text-align: center;
+  }
+
+  &_slide {
+    width: 100%;
+  }
+
+  &_thumb-slider {
+    position: relative;
+
+    .ins-gallery_thumbnails {
+      width: calc(100% - 60px);
+      margin: 0 auto;
+
+      & > div {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &_thumb-slider-prev,
+  &_thumb-slider-next {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 30px;
+
+    &:hover .ins-gallery_prev-arrow,
+    &:hover .ins-gallery_next-arrow {
+      border-color: var(--ins-color-primary);
+    }
+  }
+
+  &_thumb-slider-prev {
+    left: 0;
+  }
+
+  &_thumb-slider-next {
+    right: 0;
+  }
+
+  &_prev-arrow,
+  &_next-arrow {
+    width: 12px;
+    height: 12px;
+    border-top:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-color-ink);
+
+    position: absolute;
+    top: calc(50% - 8px);
+  }
+
+  &_prev-arrow {
+    border-left:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-color-ink);
+
+    transform: rotate(-45deg);
+    left: calc(50% - 5px);
+  }
+
+  &_next-arrow {
+    border-right:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-color-ink);
+
+    transform: rotate(45deg);
+    right: calc(50% - 5px);
   }
 }
 
@@ -108,6 +195,18 @@ ins-gallery {
         width: 20px;
         height: 20px;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .ins-gallery.zoomable {
+    width: 100%;
+
+    .ins-gallery_zoom {
+      left: 0;
+      top: calc(100% + 5px);
+      width: 100%;
     }
   }
 }
