@@ -641,6 +641,21 @@ export namespace Components {
         "percentage": any;
         "value": string;
     }
+    interface InsStepper {
+        "activated": boolean;
+        "disabled": boolean;
+        "errorMessage": string;
+        "hasError": boolean;
+        "hasLoad": string;
+        "label": string;
+        "max": string;
+        "min": string;
+        "name": string;
+        "readonly": boolean;
+        "required": boolean;
+        "step": string;
+        "value": string;
+    }
     interface InsStyleguide {
         "label": string;
     }
@@ -1108,6 +1123,12 @@ declare global {
         prototype: HTMLInsSparklineElement;
         new (): HTMLInsSparklineElement;
     };
+    interface HTMLInsStepperElement extends Components.InsStepper, HTMLStencilElement {
+    }
+    var HTMLInsStepperElement: {
+        prototype: HTMLInsStepperElement;
+        new (): HTMLInsStepperElement;
+    };
     interface HTMLInsStyleguideElement extends Components.InsStyleguide, HTMLStencilElement {
     }
     var HTMLInsStyleguideElement: {
@@ -1249,6 +1270,7 @@ declare global {
         "ins-sidebar-item": HTMLInsSidebarItemElement;
         "ins-sort": HTMLInsSortElement;
         "ins-sparkline": HTMLInsSparklineElement;
+        "ins-stepper": HTMLInsStepperElement;
         "ins-styleguide": HTMLInsStyleguideElement;
         "ins-tab": HTMLInsTabElement;
         "ins-tab-item": HTMLInsTabItemElement;
@@ -1923,6 +1945,25 @@ declare namespace LocalJSX {
         "percentage"?: any;
         "value"?: string;
     }
+    interface InsStepper {
+        "activated"?: boolean;
+        "disabled"?: boolean;
+        "errorMessage"?: string;
+        "hasError"?: boolean;
+        "hasLoad"?: string;
+        "label"?: string;
+        "max"?: string;
+        "min"?: string;
+        "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onInsBlur"?: (event: CustomEvent<any>) => void;
+        "onInsInput"?: (event: CustomEvent<any>) => void;
+        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "readonly"?: boolean;
+        "required"?: boolean;
+        "step"?: string;
+        "value"?: string;
+    }
     interface InsStyleguide {
         "label"?: string;
     }
@@ -2122,6 +2163,7 @@ declare namespace LocalJSX {
         "ins-sidebar-item": InsSidebarItem;
         "ins-sort": InsSort;
         "ins-sparkline": InsSparkline;
+        "ins-stepper": InsStepper;
         "ins-styleguide": InsStyleguide;
         "ins-tab": InsTab;
         "ins-tab-item": InsTabItem;
@@ -2198,6 +2240,7 @@ declare module "@stencil/core" {
             "ins-sidebar-item": LocalJSX.InsSidebarItem & JSXBase.HTMLAttributes<HTMLInsSidebarItemElement>;
             "ins-sort": LocalJSX.InsSort & JSXBase.HTMLAttributes<HTMLInsSortElement>;
             "ins-sparkline": LocalJSX.InsSparkline & JSXBase.HTMLAttributes<HTMLInsSparklineElement>;
+            "ins-stepper": LocalJSX.InsStepper & JSXBase.HTMLAttributes<HTMLInsStepperElement>;
             "ins-styleguide": LocalJSX.InsStyleguide & JSXBase.HTMLAttributes<HTMLInsStyleguideElement>;
             "ins-tab": LocalJSX.InsTab & JSXBase.HTMLAttributes<HTMLInsTabElement>;
             "ins-tab-item": LocalJSX.InsTabItem & JSXBase.HTMLAttributes<HTMLInsTabItemElement>;
