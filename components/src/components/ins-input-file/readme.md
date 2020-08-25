@@ -116,13 +116,13 @@ Type: `Promise<void>`
 
 
 
-### `setFiles(files: any) => Promise<void>`
+### `setFiles(files: any) => Promise<boolean>`
 
 
 
 #### Returns
 
-Type: `Promise<void>`
+Type: `Promise<boolean>`
 
 
 
