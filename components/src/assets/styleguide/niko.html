@@ -7,6 +7,7 @@
   <title>Insites Components - QA</title>
 
   <!-- Insites Essentials -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap">
   <link rel="stylesheet" href="/assets/css/reset.css" />
   <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
   <link rel="stylesheet" href="/assets/css/insites.css" />
@@ -29,21 +30,11 @@
 </head>
 
 <body>
-  <!-- <ins-filter with-date-filter id="myInsFilter">
-    <ins-filter-item name="Colours"
-      options='["Red","Green","Blue"]'>
-    </ins-filter-item>
-  </ins-filter>
-
-  <ins-date-time label="Compatibility"></ins-date-time>
-
-  <script>
-    var myInsFilter = document.getElementById('myInsFilter');
-    myInsFilter.addEventListener('insFilterApply', e => {
-      console.log(e.detail);
-    });
-  </script> -->
-  <ins-editor label="Test"></ins-editor>
+  <ins-steps id="testEl" inline>
+    <ins-step description="Shipping"></ins-step>
+    <ins-step description="Payment"></ins-step>
+    <ins-step description="Summary"></ins-step>
+  </ins-steps>
 </body>
 
 </html>
