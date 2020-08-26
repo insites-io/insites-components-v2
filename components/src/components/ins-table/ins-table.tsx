@@ -84,6 +84,10 @@ export class InsTable {
       let func = window["Insites"].methods[this.hasLoad];
       if (func) func(this.insTableEl);
     }
+
+    if (this.defaultBulkAction){
+      this.selectedBulkAction = this.defaultBulkAction;
+    }
   }
 
   componentWillUpdate(){
