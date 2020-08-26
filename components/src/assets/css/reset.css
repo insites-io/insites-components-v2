@@ -37,7 +37,7 @@ ol, ul {
   list-style-type: disc;
 }
 li {
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 blockquote, q {
 	quotes: none;
