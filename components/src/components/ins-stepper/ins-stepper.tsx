@@ -1,0 +1,164 @@
+import { h, Component, Prop, Event, EventEmitter, Element } from "@stencil/core";
+
+@Component({ tag: 'ins-stepper' })
+export class InsStepper {
+  @Element() el: HTMLElement;
+  @Event() insBlur: EventEmitter;
+  @Event() insInput: EventEmitter;
+  @Event() insValueChange: EventEmitter;
+  @Event() didLoad: EventEmitter;
+  @Prop() hasLoad: string;
+
+  @Prop({ mutable: true }) label: string = "";
+  @Prop({ mutable: true }) name: string = "";
+
+  @Prop({ mutable: true }) step: string = "1";
+  @Prop({ mutable: true }) min: string;
+  @Prop({ mutable: true }) max: string;
+  @Prop({ mutable: true }) value: string;
+
+  @Prop({ mutable: true }) activated: boolean = false;
+  @Prop({ mutable: true }) required: boolean = false;
+  @Prop({ mutable: true }) disabled: boolean = false;
+  @Prop({ mutable: true }) readonly: boolean = false;
+
+  @Prop({ mutable: true }) hasError: boolean = false;
+  @Prop({ mutable: true }) errorMessage: string = "";
+
+  componentWillLoad(){
+    this.value = this.validateInput(this.value);
+  }
+
+  componentWillUpdate(){
+    this.value = this.validateInput(this.value);
+  }
+
+  componentDidLoad(){
+    this.addClickOutside();
+  }
+
+  stepDown(){
+    if (this.readonly || this.disabled) return false;
+    let diff = Number(this.value) - Number(this.step);
+    this.value = this.validateInput(diff);
+  }
+
+  validateInput(input){
+    let num = Number(input);
+    if (!num && num !== 0) return "0";
+    if (this.min && num < Number(this.min)) return this.min;
+    if (this.max && num > Number(this.max)) return this.max;
+    return input;
+  }
+
+  stepUp(){
+    if (this.readonly || this.disabled) return false;
+    let sum = Number(this.value) + Number(this.step);
+    this.value = this.validateInput(sum);
+  }
+
+  activateLabel(){
+    if (!this.readonly && !this.disabled){
+      this.activated = true
+    }
+  }
+
+  deactivateLabel(){
+    this.activated = false
+  }
+
+  onInputHandler(event){
+    let x = event.which || event.keyCode;
+    this.insInput.emit({
+      value: event.target.value,
+      validated: this.value,
+      keyCode: x
+    });
+  }
+
+  inputChanged(ev: any) {
+    let val = ev.target && ev.target.value;
+    this.value = this.validateInput(val);
+    this.insValueChange.emit(this.value);
+    ev.target.value = this.value;
+  }
+
+  insBlurHandler(event){
+    let x = event.which || event.keyCode;
+
+    this.insBlur.emit({
+      value: this.value,
+      keyCode: x
+    });
+    this.deactivateLabel();
+  }
+
+  addClickOutside(){
+    window.addEventListener("click", e => {
+      let target = e.target as any;
+      let closest = target.closest("ins-stepper")
+
+      if (closest !== this.el) {
+        this.deactivateLabel();
+      }
+    });
+  }
+
+  render() {
+    return (
+      <div class={`ins-stepper ins-form-field-wrap
+        ${this.hasError ? 'is-invalid' : ''}
+        ${this.readonly ? 'readonly': ''}
+        ${this.disabled ? 'disabled': ''}`}>
+
+        { this.label ?
+          <label htmlFor={this.name}
+            class={`ins-form-label
+              ${this.disabled ? 'disabled' : ''}
+              ${this.activated ? 'active':''}`}>
+
+            {this.label}
+          </label>
+        : ''}
+
+        <div class={`ins-stepper_input-wrap
+          ${this.activated ? 'active': ''}`}
+          onClick={() => this.activateLabel()}>
+
+          <div class="ins-stepper_minus"
+            onClick={() => this.stepDown()}>
+            <i class="icon-minus"></i>
+          </div>
+
+          <div class="ins-stepper_input">
+            <input type="number"
+              step={this.step}
+              min={this.min}
+              max={this.max}
+              name={this.name}
+              value={this.value}
+              required={this.required}
+              disabled={this.disabled}
+              readonly={this.readonly}
+              onFocus={() => this.activateLabel()}
+              onBlur={e => this.insBlurHandler(e)}
+              onKeyUp={e => this.onInputHandler(e)}
+              onInput={e => this.inputChanged(e)} />
+          </div>
+
+          <div class="ins-stepper_plus"
+            onClick={() => this.stepUp()}>
+            <i class="icon-plus"></i>
+          </div>
+
+        </div>
+
+        { this.hasError ?
+          <div class="ins-form-error">
+            {this.errorMessage}
+          </div>
+        : ''}
+      </div>
+    );
+  }
+}
