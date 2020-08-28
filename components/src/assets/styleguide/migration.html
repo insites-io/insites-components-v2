@@ -79,5 +79,40 @@
   <h2 class="section-title">Step 3: Update events in event listeners</h2>
   <p>Component events has been updated to have `ins` prefix and removed the `on` prefix to avoid conflict with the native DOM events. Please check V2 component documentation to update your event listeners from v1.</p>
 
+  <h2 class="section-title">Step 4: Update Component API calls</h2>
+  <p>If you have use a component API and expecting a return, please use async await operation as component APIs are now asynchronous to avoid race condition.</p>
+  <div class="ins-styleguide-code-slot-wrap full">
+    <script type="text/plain" class="language-markup"><script>
+  <!-- V1 -->
+  function getFiles(){
+    let files = insInputFile.getFilesList()
+  }
+
+  <!-- V2 -->
+  async function getFiles(){
+    let files = await insInputFile.getFilesList();
+  }
+&lt;/script&gt;</script>
+  </div>
+
+  <h2 class="section-title">Step 5: Update Plugins</h2>
+  <p>If your project have used the following plugins directly from insites-plugins.js outside of the component, please replace it with a CDN source as some of these plugins are now built in the component or has been replaced.</p>
+
+  <ul>
+    <li>Cropper JS</li>
+    <li>jQuery v1.12.4</li>
+    <li>jQuery UI</li>
+    <li>highcharts JS</li>
+    <li>jquery.timepicker</li>
+    <li>intlTelInput/utils.js</li>
+    <li>intlTelInput/min JS</li>
+    <li>sweetalert v7.26.11</li>
+    <li>toastr</li>
+    <li>jQuery Validate JS</li>
+    <li>simpleMDE</li>
+    <li>moment JS v2.24.0</li>
+    <li>Redactor</li>
+  </ul>
+
 </body>
 </html>
