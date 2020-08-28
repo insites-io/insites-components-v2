@@ -657,6 +657,21 @@ export namespace Components {
         "percentage": any;
         "value": string;
     }
+    interface InsStep {
+        "active": boolean;
+        "complete": boolean;
+        "description": string;
+        "icon": string;
+        "indicator": string;
+    }
+    interface InsSteps {
+        "finish": () => Promise<boolean>;
+        "indicator": string;
+        "inline": boolean;
+        "next": () => Promise<{ currentStep: any; previousStep?: undefined; } | { previousStep: any; currentStep: any; }>;
+        "prev": () => Promise<false | { previousStep: any; currentStep: any; }>;
+        "setStep": (i: any) => Promise<{ currentStep: any; }>;
+    }
     interface InsStyleguide {
         "label": string;
     }
@@ -1136,6 +1151,18 @@ declare global {
         prototype: HTMLInsSparklineElement;
         new (): HTMLInsSparklineElement;
     };
+    interface HTMLInsStepElement extends Components.InsStep, HTMLStencilElement {
+    }
+    var HTMLInsStepElement: {
+        prototype: HTMLInsStepElement;
+        new (): HTMLInsStepElement;
+    };
+    interface HTMLInsStepsElement extends Components.InsSteps, HTMLStencilElement {
+    }
+    var HTMLInsStepsElement: {
+        prototype: HTMLInsStepsElement;
+        new (): HTMLInsStepsElement;
+    };
     interface HTMLInsStyleguideElement extends Components.InsStyleguide, HTMLStencilElement {
     }
     var HTMLInsStyleguideElement: {
@@ -1279,6 +1306,8 @@ declare global {
         "ins-sidebar-item": HTMLInsSidebarItemElement;
         "ins-sort": HTMLInsSortElement;
         "ins-sparkline": HTMLInsSparklineElement;
+        "ins-step": HTMLInsStepElement;
+        "ins-steps": HTMLInsStepsElement;
         "ins-styleguide": HTMLInsStyleguideElement;
         "ins-tab": HTMLInsTabElement;
         "ins-tab-item": HTMLInsTabItemElement;
@@ -1968,6 +1997,18 @@ declare namespace LocalJSX {
         "percentage"?: any;
         "value"?: string;
     }
+    interface InsStep {
+        "active"?: boolean;
+        "complete"?: boolean;
+        "description"?: string;
+        "icon"?: string;
+        "indicator"?: string;
+        "onInsClick"?: (event: CustomEvent<any>) => void;
+    }
+    interface InsSteps {
+        "indicator"?: string;
+        "inline"?: boolean;
+    }
     interface InsStyleguide {
         "label"?: string;
     }
@@ -2169,6 +2210,8 @@ declare namespace LocalJSX {
         "ins-sidebar-item": InsSidebarItem;
         "ins-sort": InsSort;
         "ins-sparkline": InsSparkline;
+        "ins-step": InsStep;
+        "ins-steps": InsSteps;
         "ins-styleguide": InsStyleguide;
         "ins-tab": InsTab;
         "ins-tab-item": InsTabItem;
@@ -2247,6 +2290,8 @@ declare module "@stencil/core" {
             "ins-sidebar-item": LocalJSX.InsSidebarItem & JSXBase.HTMLAttributes<HTMLInsSidebarItemElement>;
             "ins-sort": LocalJSX.InsSort & JSXBase.HTMLAttributes<HTMLInsSortElement>;
             "ins-sparkline": LocalJSX.InsSparkline & JSXBase.HTMLAttributes<HTMLInsSparklineElement>;
+            "ins-step": LocalJSX.InsStep & JSXBase.HTMLAttributes<HTMLInsStepElement>;
+            "ins-steps": LocalJSX.InsSteps & JSXBase.HTMLAttributes<HTMLInsStepsElement>;
             "ins-styleguide": LocalJSX.InsStyleguide & JSXBase.HTMLAttributes<HTMLInsStyleguideElement>;
             "ins-tab": LocalJSX.InsTab & JSXBase.HTMLAttributes<HTMLInsTabElement>;
             "ins-tab-item": LocalJSX.InsTabItem & JSXBase.HTMLAttributes<HTMLInsTabItemElement>;
