@@ -329,6 +329,8 @@ export namespace Components {
         "readonly": boolean;
         "required": boolean;
         "step": string;
+        "unitLeft": string;
+        "unitRight": string;
         "value": string;
     }
     interface InsInputFile {
@@ -1695,6 +1697,8 @@ declare namespace LocalJSX {
         "readonly"?: boolean;
         "required"?: boolean;
         "step"?: string;
+        "unitLeft"?: string;
+        "unitRight"?: string;
         "value"?: string;
     }
     interface InsInputFile {

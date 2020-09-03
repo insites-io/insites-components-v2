@@ -31,3 +31,45 @@
     color: var(--ins-color-negative);
   }
 }
+
+.ins-input-wrap {
+
+  .unit-right,
+  .unit-left {
+    position: absolute;
+    top: 9px;
+    font-size: 14px;
+    color: #8C94A4;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .unit-right {
+    right: 10px;
+  }
+
+  .unit-left {
+    left: 10px;
+  }
+
+  .has-unit-left input {
+    padding-left: 20px;
+  }
+
+  &.has-unit-right,
+  &.has-icon {
+    input {
+      padding-right: 32px;
+    }
+  }
+
+  &.has-unit-right.has-icon {
+
+    input {
+      padding-right: 52px;
+    }
+
+    .unit-right {
+      right: 30px;
+    }
+  }
+}

@@ -30,6 +30,9 @@ export class InsInput {
   @Prop({mutable: true}) hasError: boolean = false;
   @Prop({mutable: true}) activated: boolean = false;
 
+  @Prop({mutable: true}) unitRight: string = "";
+  @Prop({mutable: true}) unitLeft: string = "";
+
   componentDidLoad(){
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
@@ -82,7 +85,12 @@ export class InsInput {
 
   render(){
     return (
-      <div class={`${this.hasError ? 'is-invalid' : ''} ins-input-wrap ins-form-field-wrap`}>
+      <div class={`ins-input-wrap ins-form-field-wrap
+        ${this.hasError ? 'is-invalid' : ''}
+        ${this.icon ? "has-icon":""}
+        ${this.unitLeft ? "has-unit-left":""}
+        ${this.unitRight ? "has-unit-right":""}`}>
+
         { this.label ?
           <label htmlFor={this.name}
             class={`ins-form-label
@@ -94,6 +102,12 @@ export class InsInput {
         : ''}
 
         <div class="input-wrap">
+
+          {this.unitLeft
+            ? <div class="unit-left">
+                { this.unitLeft }
+              </div>
+            : "" }
 
           <input class="ins-form-field"
             id={this.fieldId ? this.fieldId : null}
@@ -112,6 +126,12 @@ export class InsInput {
             min={this.min}
             max={this.max}
             step={this.step} />
+
+          {this.unitRight
+            ? <div class="unit-right">
+                { this.unitRight }
+              </div>
+            : "" }
 
           {this.icon ?
             <i title={this.iconTitle}
