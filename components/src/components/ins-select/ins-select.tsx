@@ -46,6 +46,9 @@ export class InsSelect {
   @Prop({ mutable: true }) infiniteScroll: boolean = false;
   @Prop({ mutable: true }) dynamicSearch: boolean = false;
   @Prop({ mutable: true }) withDynamicOption: boolean = false;
+  @Prop({ mutable: true }) withDynamicOptionValidate: boolean = false;
+  @Prop({ mutable: true }) dynamicHasError: boolean = false;
+  @Prop({ mutable: true }) dynamicErrorMessage: string = "";
   @Prop({ mutable: true }) dynamicPlaceholder: string;
   @Prop({ mutable: true }) buttonLabel: string = "Add";
   dynamicInputEl; scrollWrapEl;
@@ -258,20 +261,31 @@ export class InsSelect {
   initDynamicOption(){
     if (!this.withDynamicOption) return false;
     this.dynamicInputEl = this.searchEl('input[data-dynamic]');
-    this.searchEl('button[data-dynamic]').addEventListener('click',
-      () => this.dynamicOptionHandler());
   }
 
-  dynamicOptionHandler() {
-    let value = this.dynamicInputEl.value;
+  defaultValidate(value){
     if (value){
       this.dynamicInputEl.classList.remove('invalid');
       this.insSubmit.emit(value);
-      this.collapseSection();
       this.dynamicInputEl.value = '';
-    } else {
-      this.dynamicInputEl.classList.add('invalid');
-    }
+      this.collapseSection();
+
+    } else this.dynamicInputEl.classList.add('invalid');
+  }
+
+  dynamicOptionHandler(e) {
+    e.stopPropagation();
+    let value = this.dynamicInputEl.value;
+    if (this.withDynamicOptionValidate){
+      this.insSubmit.emit(value);
+    } else this.defaultValidate(value);
+  }
+
+  @Method()
+  async resetDynamicOption() {
+    this.collapseSection();
+    this.dynamicInputEl.value = '';
+    this.dynamicHasError = false;
   }
 
   checkDropUp(){
@@ -383,7 +397,7 @@ export class InsSelect {
 
     if (this.multiple){
       this.multipleInputHandler(clickedOption);
-    } else this.defaultInputHandler(event.detail);
+    } else this.defaultInputHandler(clickedOption, event.detail);
   }
 
   multipleInputHandler(clickedOption){
@@ -398,11 +412,12 @@ export class InsSelect {
     }
   }
 
-  defaultInputHandler(e){
+  defaultInputHandler(clickedOption, e){
     this.loopThroughOptions(option => option.activated = false);
     this.collapseSection();
     this.showHiddenOptions();
     this.labelOfValue = e.label;
+    clickedOption.activated = true;
     this.insValueChange.emit(e.value);
     this.value = e.value;
   }
@@ -655,8 +670,19 @@ export class InsSelect {
     if (!this.withDynamicOption) return "";
     return (
       <div class="dynamic-option-wrap">
-        <input data-dynamic placeholder={this.dynamicPlaceholder} />
-        <button data-dynamic type="button">{this.buttonLabel}</button>
+        <div class="dynamic-option-input-wrap">
+          <input class={this.dynamicHasError ? "invalid" : ""}
+            placeholder={this.dynamicPlaceholder} data-dynamic />
+
+          { this.dynamicHasError
+            ? <div class="error-message">
+                { this.dynamicErrorMessage }
+              </div>
+            : "" }
+        </div>
+        <button type="button" onClick={e => this.dynamicOptionHandler(e)}>
+          { this.buttonLabel }
+        </button>
       </div>
     );
   }

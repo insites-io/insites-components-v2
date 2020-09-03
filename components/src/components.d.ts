@@ -568,6 +568,8 @@ export namespace Components {
         "disableNoResult": () => Promise<boolean>;
         "disabled": boolean;
         "dropUp": boolean;
+        "dynamicErrorMessage": string;
+        "dynamicHasError": boolean;
         "dynamicPlaceholder": string;
         "dynamicSearch": boolean;
         "enableNoResult": () => Promise<boolean>;
@@ -583,6 +585,7 @@ export namespace Components {
         "name": string;
         "placeholder": string;
         "readonly": boolean;
+        "resetDynamicOption": () => Promise<void>;
         "searchable": boolean;
         "selected_values": any;
         "setInsSelectDefaultValue": () => Promise<void>;
@@ -593,6 +596,7 @@ export namespace Components {
         "updateSelectedOptions": () => Promise<boolean>;
         "value": any;
         "withDynamicOption": boolean;
+        "withDynamicOptionValidate": boolean;
     }
     interface InsSelectGroup {
         "label": string;
@@ -1941,6 +1945,8 @@ declare namespace LocalJSX {
         "buttonLabel"?: string;
         "disabled"?: boolean;
         "dropUp"?: boolean;
+        "dynamicErrorMessage"?: string;
+        "dynamicHasError"?: boolean;
         "dynamicPlaceholder"?: string;
         "dynamicSearch"?: boolean;
         "errorMessage"?: string;
@@ -1965,6 +1971,7 @@ declare namespace LocalJSX {
         "small"?: boolean;
         "value"?: any;
         "withDynamicOption"?: boolean;
+        "withDynamicOptionValidate"?: boolean;
     }
     interface InsSelectGroup {
         "label"?: string;

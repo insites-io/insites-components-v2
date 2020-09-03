@@ -247,7 +247,7 @@
         max-height: calc(222px - 72px);
       }
       .dynamic-option-wrap {
-        display: block;
+        display: flex;
       }
     }
 
@@ -312,10 +312,7 @@
 
   .dynamic-option-wrap {
     padding: 16px;
-    border-top:
-      var(--ins-border-style)
-      var(--ins-border-thickness)
-      var(--ins-border-color);
+    border-top: solid 1px #e4e6ec;
     display: none;
 
     &::after {
@@ -324,9 +321,12 @@
       display: block;
     }
 
+    .dynamic-option-input-wrap {
+      flex: 9;
+    }
+
     input {
-      float: left;
-      width: calc(100% - 76px);
+      width: calc(100% - 15px);
       height: auto;
       min-height: 36px;
       margin-bottom: 0;
@@ -356,12 +356,12 @@
     }
 
     button {
-      float: right;
       height: 36px;
       padding: 0 16px;
       border: none;
       border-radius: 4px;
       background-color: #1e86e3;
+      outline: none;
 
       font-family: "Open Sans", sans-serif;
       font-weight: 600;
@@ -371,8 +371,19 @@
       text-transform: uppercase;
 
       -webkit-tap-highlight-color: transparent;
-      -webkit-appearance: none;
+      appearance: none;
       cursor: pointer;
+    }
+
+    .error-message {
+      display: block;
+      font-size: 12px;
+      font-family: "Open Sans", sans-serif;
+      line-height: 16px;
+      color: #F27474;
+      margin-top: 2px;
+      float: left;
+      width: 100%;
     }
   }
 
