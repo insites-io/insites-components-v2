@@ -3,14 +3,14 @@ import { h, Component, Prop, Element, Method, Event, EventEmitter, Listen } from
 @Component({ tag: 'ins-select' })
 export class InsSelect {
   @Element() insSelectEl: HTMLElement;
-  @Event() valueChange: EventEmitter;
-  @Event() onOptionSelect: EventEmitter;
+  @Event() insValueChange: EventEmitter;
+  @Event() insOptionSelect: EventEmitter;
   @Event() insClose: EventEmitter;
 
   // Dynamic Events
-  @Event() onSubmitOption: EventEmitter;
-  @Event() onSearch: EventEmitter;
-  @Event() loadMore: EventEmitter;
+  @Event() insSubmitOption: EventEmitter;
+  @Event() insSearch: EventEmitter;
+  @Event() insLoadMore: EventEmitter;
 
   // Lifecycle
   @Event() didLoad: EventEmitter;
@@ -56,7 +56,7 @@ export class InsSelect {
     let target = this.scrollWrapEl.scrollHeight - 200;
     let pos = this.scrollWrapEl.scrollTop + this.scrollWrapEl.clientHeight;
     if (pos >= target && !this.loading){
-      this.loadMore.emit();
+      this.insLoadMore.emit();
       this.loading = true;
       this.setLoadingState(true);
       this.disableNoResult();
@@ -266,7 +266,7 @@ export class InsSelect {
     let value = this.dynamicInputEl.value;
     if (value){
       this.dynamicInputEl.classList.remove('invalid');
-      this.onSubmitOption.emit(value);
+      this.insSubmitOption.emit(value);
       this.collapseSection();
       this.dynamicInputEl.value = '';
     } else {
@@ -319,7 +319,7 @@ export class InsSelect {
     !this.searching && !this.loading) {
       this.setSearchingState(true);
       this.disableNoResult();
-      this.onSearch.emit(keyword);
+      this.insSearch.emit(keyword);
     }
   }
 
@@ -403,7 +403,7 @@ export class InsSelect {
     this.collapseSection();
     this.showHiddenOptions();
     this.labelOfValue = e.label;
-    this.valueChange.emit(e.value);
+    this.insValueChange.emit(e.value);
     this.value = e.value;
   }
 
@@ -431,7 +431,7 @@ export class InsSelect {
   emitEvent(event_type){
     if (this.multiple) {
       this.emitForMultiple(event_type);
-    } else this.valueChange.emit(this.value);
+    } else this.insValueChange.emit(this.value);
   }
 
   emitForMultiple(event_type){
@@ -443,11 +443,11 @@ export class InsSelect {
       }
     });
 
-    this.onOptionSelect.emit({
+    this.insOptionSelect.emit({
       event_type, selected, selectedOptions
     });
 
-    this.valueChange.emit(selected);
+    this.insValueChange.emit(selected);
     this.selected_values = selected;
   }
 

@@ -1949,11 +1949,11 @@ declare namespace LocalJSX {
         "name"?: string;
         "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsClose"?: (event: CustomEvent<any>) => void;
-        "onLoadMore"?: (event: CustomEvent<any>) => void;
-        "onOnOptionSelect"?: (event: CustomEvent<any>) => void;
-        "onOnSearch"?: (event: CustomEvent<any>) => void;
-        "onOnSubmitOption"?: (event: CustomEvent<any>) => void;
-        "onValueChange"?: (event: CustomEvent<any>) => void;
+        "onInsLoadMore"?: (event: CustomEvent<any>) => void;
+        "onInsOptionSelect"?: (event: CustomEvent<any>) => void;
+        "onInsSearch"?: (event: CustomEvent<any>) => void;
+        "onInsSubmitOption"?: (event: CustomEvent<any>) => void;
+        "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
         "readonly"?: boolean;
         "searchable"?: boolean;
