@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Steps</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.min.css" />
+  <link rel="stylesheet" href="/v2/latest/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/v2/latest/css/insites.css" />
+
+  <script type="module" src="/v2/latest/insites.esm.js"></script>
+  <script nomodule src="/v2/latest/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.min.css">
+  <style>
+    .ins-styleguide-label-wrap {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h2 class="section-title">Insites Steps</h2>
+    <p>Renders a sequence of steps that can guide users through the task.</p>
+    <h2 class="section-title">Complete Example</h2>
+
+    <div class="ins-styleguide-wrap">
+      <ins-steps>
+        <ins-step description="Shipping"></ins-step>
+        <ins-step description="Payment"></ins-step>
+        <ins-step description="Summary"></ins-step>
+      </ins-steps>
+      <div class="spacer"></div>
+      <div class="">
+        <script type="text/plain" class="language-markup">
+<ins-steps>
+  <ins-step description="Shipping"></ins-step>
+  <ins-step description="Payment"></ins-step>
+  <ins-step description="Summary"></ins-step>
+</ins-steps>
+        </script>
+      </div>
+    </div>
+  </div>
+  <!-- ins-steps attribute table -->
+  <div>
+    <h2 class="section-title"><code>&lt;ins-steps&gt;</code> Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>indicator</td>
+          <td>string</td>
+          <td>-</td>
+          <td>number</td>
+          <td>Renders the steps indicator as numbers</td>
+        </tr>
+        <tr>
+          <td>inline</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Renders the steps description inline with the indicators</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ins-step attribute table -->
+  <div>
+    <h2 class="section-title"><code>&lt;ins-step&gt;</code> Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>icon</td>
+          <td>string</td>
+          <td>-</td>
+          <td>Insites Font Icons</td>
+          <td>Renders indicator as icons</td>
+        </tr>
+        <tr>
+          <td>description</td>
+          <td>string</td>
+          <td>-</td>
+          <td>any</td>
+          <td>Defines the description of the step </td>
+        </tr>
+        <tr>
+          <td>active</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Defines if the step is active</td>
+        </tr>
+        <tr>
+          <td>complete</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Defines if the step is completed</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="section-title">States</h2>
+    <!-- Default State -->
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Default State</div>
+      <ins-steps>
+        <ins-step></ins-step>
+        <ins-step></ins-step>
+        <ins-step></ins-step>
+      </ins-steps>
+      <div class="spacer"></div>
+      <div class="">
+        <script type="text/plain" class="language-markup">
+<ins-steps>
+  <ins-step></ins-step>
+  <ins-step></ins-step>
+  <ins-step></ins-step>
+</ins-steps>
+        </script>
+      </div>
+    </div>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Number Indicator State</div>
+      <ins-steps indicator="number">
+        <ins-step></ins-step>
+        <ins-step></ins-step>
+        <ins-step></ins-step>
+      </ins-steps>
+      <div class="spacer"></div>
+      <div class="">
+        <script type="text/plain" class="language-markup">
+<ins-steps indicator="number">
+  <ins-step></ins-step>
+  <ins-step></ins-step>
+  <ins-step></ins-step>
+</ins-steps>
+        </script>
+      </div>
+    </div>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Complete and Active State</div>
+      <ins-steps>
+        <ins-step complete></ins-step>
+        <ins-step active></ins-step>
+        <ins-step></ins-step>
+      </ins-steps>
+      <div class="spacer"></div>
+      <div class="">
+        <script type="text/plain" class="language-markup">
+<ins-steps>
+  <ins-step complete></ins-step>
+  <ins-step active></ins-step>
+  <ins-step></ins-step>
+</ins-steps>
+        </script>
+      </div>
+    </div>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Inline State</div>
+      <ins-steps inline>
+        <ins-step complete description="Shipping"></ins-step>
+        <ins-step active description="Payment"></ins-step>
+        <ins-step description="Summary"></ins-step>
+      </ins-steps>
+      <div class="spacer"></div>
+      <div class="">
+        <script type="text/plain" class="language-markup">
+<ins-steps inline>
+  <ins-step complete description="Shipping"></ins-step>
+  <ins-step active description="Payment"></ins-step>
+  <ins-step description="Summary"></ins-step>
+</ins-steps>
+        </script>
+      </div>
+    </div>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Inline State</div>
+      <ins-steps>
+        <ins-step icon="icon-truck" description="Shipping"></ins-step>
+        <ins-step icon="icon-credit-card"  description="Payment"></ins-step>
+        <ins-step icon="icon-clipboard" description="Summary"></ins-step>
+      </ins-steps>
+      <div class="spacer"></div>
+      <div class="">
+        <script type="text/plain" class="language-markup">
+<ins-steps>
+  <ins-step icon="icon-truck" description="Shipping"></ins-step>
+  <ins-step icon="icon-credit-card"  description="Payment"></ins-step>
+  <ins-step icon="icon-clipboard" description="Summary"></ins-step>
+</ins-steps>
+        </script>
+      </div>
+    </div>
+</div>
+<!-- end states -->
+
+<div>
+  <h2 class="section-title">API</h2>
+
+  <div class="ins-styleguide-wrap">
+    <div class="ins-styleguide-label-wrap">Navigating through steps</div>
+    <ins-steps id="insStepsEl">
+      <ins-step description="Shipping"></ins-step>
+      <ins-step description="Payment"></ins-step>
+      <ins-step description="Summary"></ins-step>
+    </ins-steps>
+    <div class="spacer"></div>
+    <ins-button label="Prev" solid id="prevBtn"></ins-button>
+    <ins-button label="Next" solid id="nextBtn"></ins-button>
+    <ins-button label="Start Again" solid id="startAgain"></ins-button>
+    <ins-button label="Finish" solid id="finish"></ins-button>
+    <script>
+      var insStepsEl = document.getElementById("insStepsEl");
+      var prevBtn = document.getElementById("prevBtn");
+      var nextBtn = document.getElementById("nextBtn");
+      var startAgain = document.getElementById("startAgain");
+      var finish = document.getElementById("finish");
+
+      prevBtn.addEventListener('insClick', () => insStepsEl.prev());
+      nextBtn.addEventListener('insClick', () => insStepsEl.next());
+      startAgain.addEventListener('insClick', () => insStepsEl.setStep(1));
+      finish.addEventListener('insClick', () => insStepsEl.finish());
+    </script>
+    <div class="spacer"></div>
+    <div class="">
+      <script type="text/plain" class="language-markup">
+<ins-steps id="insStepsEl">
+  <ins-step description="Shipping"></ins-step>
+  <ins-step description="Payment"></ins-step>
+  <ins-step description="Summary"></ins-step>
+</ins-steps>
+
+<ins-button label="Prev" solid id="prevBtn"></ins-button>
+<ins-button label="Next" solid id="nextBtn"></ins-button>
+<ins-button label="Start Again" solid id="startAgain"></ins-button>
+<ins-button label="Finish" solid id="finish"></ins-button>
+
+<script>
+  var insStepsEl = document.getElementById("insStepsEl");
+  var prevBtn = document.getElementById("prevBtn");
+  var nextBtn = document.getElementById("nextBtn");
+  var startAgain = document.getElementById("startAgain");
+  var finish = document.getElementById("finish");
+
+  prevBtn.addEventListener('insClick', () => insStepsEl.prev());
+  nextBtn.addEventListener('insClick', () => insStepsEl.next());
+  startAgain.addEventListener('insClick', () => insStepsEl.setStep(1));
+  finish.addEventListener('insClick', () => insStepsEl.finish());
+&lt;/script&gt;
+      </script>
+    </div>
+  </div>
+
+  <div class="ins-styleguide-wrap">
+    <div class="ins-styleguide-label-wrap">API Details</div>
+    <ins-steps id="insStepsElD">
+      <ins-step description="Shipping"></ins-step>
+      <ins-step description="Payment"></ins-step>
+      <ins-step description="Summary"></ins-step>
+    </ins-steps>
+    <div class="spacer"></div>
+    <ins-button label="Prev" solid id="prevBtnD"></ins-button>
+    <ins-button label="Next" solid id="nextBtnD"></ins-button>
+    <ins-button label="Start Again" solid id="startBtnD"></ins-button>
+    <ins-button label="Finish" solid id="finishBtnD"></ins-button>
+    <script>
+      var insStepsElD = document.getElementById("insStepsElD");
+      var prevBtnD = document.getElementById("prevBtnD");
+      var nextBtnD = document.getElementById("nextBtnD");
+      var startAgainD = document.getElementById("startBtnD");
+      var finishD = document.getElementById("finishBtnD");
+
+      prevBtnD.addEventListener('insClick', async () => {
+        let res = await insStepsElD.prev();
+        console.log('API: prev', res);
+      });
+
+      nextBtnD.addEventListener('insClick', async () => {
+        let res = await insStepsElD.next();
+        console.log('API: next', res);
+      });
+
+      startAgainD.addEventListener('insClick', async () => {
+        let res = await insStepsElD.setStep(1);
+        console.log('API: setStep', res);
+      });
+
+      finishD.addEventListener('insClick', async () => {
+        let res = await insStepsElD.finish();
+        console.log('API: finish', res);
+      });
+    </script>
+    <div class="spacer"></div>
+    <div class="">
+      <script type="text/plain" class="language-markup">
+<ins-steps id="insStepsElD">
+  <ins-step description="Shipping"></ins-step>
+  <ins-step description="Payment"></ins-step>
+  <ins-step description="Summary"></ins-step>
+</ins-steps>
+
+<ins-button label="Prev" solid id="prevBtnD"></ins-button>
+<ins-button label="Next" solid id="nextBtnD"></ins-button>
+<ins-button label="Start Again" solid id="startBtnD"></ins-button>
+<ins-button label="Finish" solid id="finishBtnD"></ins-button
+
+<script>
+  var insStepsElD = document.getElementById("insStepsElD");
+  var prevBtnD = document.getElementById("prevBtnD");
+  var nextBtnD = document.getElementById("nextBtnD");
+  var startAgainD = document.getElementById("startBtnD");
+  var finishD = document.getElementById("finishBtnD");
+
+  prevBtnD.addEventListener('insClick', async () => {
+    let res = await insStepsElD.prev();
+    console.log('API: prev', res);
+  });
+
+  nextBtnD.addEventListener('insClick', async () => {
+    let res = await insStepsElD.next();
+    console.log('API: next', res);
+  });
+
+  startAgainD.addEventListener('insClick', async () => {
+    let res = await insStepsElD.setStep(1);
+    console.log('API: setStep', res);
+  });
+
+  finishD.addEventListener('insClick', async () => {
+    let res = await insStepsElD.finish();
+    console.log('API: finish', res);
+  });
+&lt;/script&gt;
+</script>
+      </script>
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>

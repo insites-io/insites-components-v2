@@ -1,17 +1,35 @@
 .ins-select-wrap.buttonise {
 
   display: inline-block;
-  background: $ink10;
+  background: var(--ins-bg-color2);
   border-radius: var(--ins-border-radius);
   position: relative;
 
+  .scroll-wrap {
+    margin-top: 0;
+  }
+
   .ins-select-label-wrap {
-    display: inline-block;
     margin-bottom: 0;
+    display: inline-block;
     vertical-align: top;
     padding: 7px 7px;
     cursor: default;
+    position: relative;
 
+    &.ripple {
+      background-position: center;
+      transition: background 0.8s;
+      border-radius: var(--ins-border-radius);
+      &:hover {
+        background: #e4e6ec radial-gradient(circle, transparent 1%, #e4e6ec 1%) center/15000%;
+      }
+      &:active {
+        background-color: #d3d9dd;
+        background-size: 100%;
+        transition: background 0s;
+      }
+    }
     span {
       font-size: 0.75rem;
       font-weight: 400;
@@ -20,6 +38,18 @@
     }
 
     cursor: pointer;
+
+    i.icon-caret-down {
+      color: var(--ins-color-ink40);
+      font-size: 14px;
+      line-height: 5px;
+      width: 10px;
+      height: 5px;
+      position: absolute;
+      display: block;
+      right: 5px;
+      top: calc(50% - 2px);
+    }
   }
 
   .ins-select-value-wrap {
@@ -44,7 +74,6 @@
     border: solid 1px transparent;
     border-radius: var(--ins-border-radius);
     box-shadow: 0px 0px 0px transparent;
-    transition: height 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     overflow: hidden;
   }
 
@@ -55,21 +84,31 @@
       var(--ins-border-style)
       var(--ins-border-thickness)
       var(--ins-border-color);
-
     background-color: var(--ins-bg-color);
 
-    i {
-      font-size: $input_field_font_size;
+    .ins-select-value-input {
+      border:
+        var(--ins-border-style)
+        var(--ins-border-thickness)
+        var(--ins-border-color);
+      padding: 10px 12px;
+    }
+
+    .icon-search {
       position: absolute;
       right: 24px;
       top: calc(50% - 8px);
-      color:  var(--ins-color-ink40);
+      color: var(--ins-color-ink40);
     }
+  }
+
+  .no-result-text {
+    margin-top: 16px;
   }
 
   &.activated {
     .ins-select-label-wrap {
-      color: var(--ins-color-ink)
+      color: var(--ins-color-ink);
     }
 
     .ins-select-options-wrap {
@@ -79,7 +118,9 @@
       box-shadow:
         var(--ins-shadow-x)
         var(--ins-shadow-y)
-        var(--ins-shadow-blur) $ink10;
+        var(--ins-shadow-blur)
+        var(--ins-shadow-color);
+      margin-top: 0;
     }
 
     &.drop-up {
@@ -91,24 +132,20 @@
   }
 
   &.small {
+    .ins-select-value-wrap,
     .ins-select-label-wrap,
-    .ins-select-value-wrap {
+    .ins-select-label-wrap span {
       font-size: 0.625rem;
     }
+
     .ins-select-option-wrap {
       font-size: 0.75rem;
     }
   }
 
-  &.disabled {
+  &.readonly, &.disabled {
     .ins-select-label-wrap {
       cursor: not-allowed;
-    }
-  }
-
-  &.readonly {
-    .ins-select-label-wrap {
-      cursor: text;
     }
   }
 }

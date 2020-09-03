@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Backdrop</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.min.css" />
+  <link rel="stylesheet" href="/v2/latest/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/v2/latest/css/insites.css" />
+
+  <script type="module" src="/v2/latest/insites.esm.js"></script>
+  <script nomodule src="/v2/latest/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.min.css">
+  <style>
+    .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap {
+      width: 50%;
+    }
+    .ins-styleguide-wrap .ins-styleguide-code-slot-wrap {
+      width: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h2 class="section-title">Insites Gallery Component</h2>
+    <p>Creates a responsive gallery that lazy loads images from thumbnails. </p>
+    <h2 class="section-title">Complete Example</h2>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-gallery with-indicator>
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t1.jpg"
+              image="/assets/images/gallery/1.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t2.jpg"
+              image="/assets/images/gallery/2.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t3.jpg"
+              image="/assets/images/gallery/3.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t4.jpg"
+              image="/assets/images/gallery/4.jpg">
+            </ins-gallery-image>
+          </ins-gallery>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-gallery with-indicator>
+  <ins-gallery-image
+    thumbnail="/assets/images/gallery/t1.jpg"
+    image="/assets/images/gallery/1.jpg">
+  </ins-gallery-image>
+
+  <ins-gallery-image
+    thumbnail="/assets/images/gallery/t2.jpg"
+    image="/assets/images/gallery/2.jpg">
+  </ins-gallery-image>
+
+  <ins-gallery-image
+    thumbnail="/assets/images/gallery/t3.jpg"
+    image="/assets/images/gallery/3.jpg">
+  </ins-gallery-image>
+
+  <ins-gallery-image
+    thumbnail="/assets/images/gallery/t4.jpg"
+    image="/assets/images/gallery/4.jpg">
+  </ins-gallery-image>
+</ins-gallery>
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ins-gallery attribute table -->
+  <div>
+    <h2 class="section-title"><code>&lt;ins-gallery&gt;</code> Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>img-alt</td>
+          <td>string</td>
+          <td>-</td>
+          <td>-</td>
+          <td>Sets the gallery img alt atribute.</td>
+        </tr>
+        <tr>
+          <td>img-title</td>
+          <td>string</td>
+          <td>-</td>
+          <td>-</td>
+          <td>Sets the gallery img title atribute.</td>
+        </tr>
+        <tr>
+          <td>zoomable</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true,false</td>
+          <td>Renders a zoom element that appears on image hover</td>
+        </tr>
+        <tr>
+          <td>slidable</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true,false</td>
+          <td>Defines if the gallery image can be navigated with slide events but not zoomable</td>
+        </tr>
+        <tr>
+          <td>with-indicator</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true,false</td>
+          <td>Hide or show the image indicator</td>
+        </tr>
+        <tr>
+          <td>thumbnails-layout</td>
+          <td>string</td>
+          <td>inline</td>
+          <td>inline,slider</td>
+          <td>Defines the layout of the gallery thumbnails</td>
+        </tr>
+      </table>
+    </div>
+
+    <h2 class="section-title"><code>&lt;ins-gallery-image&gt;</code> Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <th>thumbnail</th>
+          <th>string</th>
+          <th>-</th>
+          <th>-</th>
+          <th>Defines the img src for the image thumbnail</th>
+        </tr>
+        <tr>
+          <th>image</th>
+          <th>string</th>
+          <th>-</th>
+          <th>-</th>
+          <th>Defines the img src for the gallery image</th>
+        </tr>
+        <tr>
+          <td>img-alt</td>
+          <td>string</td>
+          <td>-</td>
+          <td>-</td>
+          <td>Sets the image thumbnail's img alt atribute.</td>
+        </tr>
+        <tr>
+          <td>img-title</td>
+          <td>string</td>
+          <td>-</td>
+          <td>-</td>
+          <td>Sets the image thumbnail's img title atribute.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div>
+
+    <h2 class="section-title">States</h2>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Zoomable State</div>
+      <div class="ins-styleguide-cont">
+        <div class="">
+          <ins-gallery zoomable>
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t1.jpg"
+              image="/assets/images/gallery/1.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t2.jpg"
+              image="/assets/images/gallery/2.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t3.jpg"
+              image="/assets/images/gallery/3.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t4.jpg"
+              image="/assets/images/gallery/4.jpg">
+            </ins-gallery-image>
+          </ins-gallery>
+          <div class="spacer"></div>
+        </div>
+        <div class="">
+          <script type="text/plain" class="language-markup">
+<ins-gallery zoomable>
+  <ins-gallery-image
+    thumbnail="/assets/images/gallery/t1.jpg"
+    image="/assets/images/gallery/1.jpg">
+  </ins-gallery-image>
+
+  <ins-gallery-image
+    thumbnail="/assets/images/gallery/t2.jpg"
+    image="/assets/images/gallery/2.jpg">
+  </ins-gallery-image>
+
+  <ins-gallery-image
+    thumbnail="/assets/images/gallery/t3.jpg"
+    image="/assets/images/gallery/3.jpg">
+  </ins-gallery-image>
+
+  <ins-gallery-image
+    thumbnail="/assets/images/gallery/t4.jpg"
+    image="/assets/images/gallery/4.jpg">
+  </ins-gallery-image>
+</ins-gallery>
+          </script>
+        </div>
+      </div>
+    </div>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Slidable State</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-gallery slidable>
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t1.jpg"
+              image="/assets/images/gallery/1.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t2.jpg"
+              image="/assets/images/gallery/2.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t3.jpg"
+              image="/assets/images/gallery/3.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t4.jpg"
+              image="/assets/images/gallery/4.jpg">
+            </ins-gallery-image>
+          </ins-gallery>
+          <div class="spacer"></div>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-gallery slidable>
+  <ins-gallery-image
+    thumbnail="/assets/images/gallery/t1.jpg"
+    image="/assets/images/gallery/1.jpg">
+  </ins-gallery-image>
+
+  <ins-gallery-image
+    thumbnail="/assets/images/gallery/t2.jpg"
+    image="/assets/images/gallery/2.jpg">
+  </ins-gallery-image>
+
+  <ins-gallery-image
+    thumbnail="/assets/images/gallery/t3.jpg"
+    image="/assets/images/gallery/3.jpg">
+  </ins-gallery-image>
+
+  <ins-gallery-image
+    thumbnail="/assets/images/gallery/t4.jpg"
+    image="/assets/images/gallery/4.jpg">
+  </ins-gallery-image>
+</ins-gallery>
+          </script>
+        </div>
+      </div>
+    </div>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Slider Thumbnail Layout</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-gallery thumbnail-layout="slider">
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t1.jpg"
+              image="/assets/images/gallery/1.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t2.jpg"
+              image="/assets/images/gallery/2.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t3.jpg"
+              image="/assets/images/gallery/3.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t4.jpg"
+              image="/assets/images/gallery/4.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t1.jpg"
+              image="/assets/images/gallery/1.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t2.jpg"
+              image="/assets/images/gallery/2.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t3.jpg"
+              image="/assets/images/gallery/3.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t4.jpg"
+              image="/assets/images/gallery/4.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t1.jpg"
+              image="/assets/images/gallery/1.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t2.jpg"
+              image="/assets/images/gallery/2.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t3.jpg"
+              image="/assets/images/gallery/3.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t4.jpg"
+              image="/assets/images/gallery/4.jpg">
+            </ins-gallery-image>
+
+          </ins-gallery>
+          <div class="spacer"></div>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-gallery thumbnail-layout="slider">
+  <ins-gallery-image
+    thumbnail="/assets/images/gallery/t1.jpg"
+    image="/assets/images/gallery/1.jpg">
+  </ins-gallery-image>
+
+  ...
+</ins-gallery>
+          </script>
+        </div>
+      </div>
+    </div>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Slidable image with slider thumbnail layout</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-gallery slidable thumbnail-layout="slider">
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t1.jpg"
+              image="/assets/images/gallery/1.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t2.jpg"
+              image="/assets/images/gallery/2.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t3.jpg"
+              image="/assets/images/gallery/3.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t4.jpg"
+              image="/assets/images/gallery/4.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t1.jpg"
+              image="/assets/images/gallery/1.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t2.jpg"
+              image="/assets/images/gallery/2.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t3.jpg"
+              image="/assets/images/gallery/3.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t4.jpg"
+              image="/assets/images/gallery/4.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t1.jpg"
+              image="/assets/images/gallery/1.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t2.jpg"
+              image="/assets/images/gallery/2.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t3.jpg"
+              image="/assets/images/gallery/3.jpg">
+            </ins-gallery-image>
+
+            <ins-gallery-image
+              thumbnail="/assets/images/gallery/t4.jpg"
+              image="/assets/images/gallery/4.jpg">
+            </ins-gallery-image>
+
+          </ins-gallery>
+          <div class="spacer"></div>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-gallery thumbnail-layout="slider">
+  <ins-gallery-image
+    thumbnail="/assets/images/gallery/t1.jpg"
+    image="/assets/images/gallery/1.jpg">
+  </ins-gallery-image>
+
+  ...
+</ins-gallery>
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end states -->
+
+
+</body>
+
+</html>
