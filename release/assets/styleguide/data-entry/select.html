@@ -199,6 +199,7 @@
       <!-- EVENTS -->
       <div>
         <div class="table-style">
+
           <table>
             <tr>
               <th>EVENT</th>
@@ -208,17 +209,17 @@
             <tr>
               <td>insValueChange</td>
               <td>value</td>
-              <td>Returns value when an element gets user input</td>
+              <td>Emits the value of the selected option</td>
             </tr>
             <tr>
-              <td>insChange</td>
-              <td>value, keycode</td>
-              <td>Emit field value and keycode on input blur event</td>
+              <td>insOptionSelect</td>
+              <td>{ event_type, selected, selectedOptions }</td>
+              <td>Emits the event type (add,remove), selected values and a list of the selected option's label and value</td>
             </tr>
             <tr>
               <td>insSubmit</td>
               <td>value</td>
-              <td>Emit field value and keycode on input blur event</td>
+              <td>Emits the value of the dynamic option input triggered by the "ADD" button</td>
             </tr>
             <tr>
               <td>insSearch</td>
