@@ -266,7 +266,7 @@ export class InsSelect {
     let value = this.dynamicInputEl.value;
     if (value){
       this.dynamicInputEl.classList.remove('invalid');
-      this.insSubmitOption.emit(value);
+      this.insSubmit.emit(value);
       this.collapseSection();
       this.dynamicInputEl.value = '';
     } else {
