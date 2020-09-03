@@ -8,7 +8,7 @@ export class InsSelect {
   @Event() insClose: EventEmitter;
 
   // Dynamic Events
-  @Event() insSubmitOption: EventEmitter;
+  @Event() insSubmit: EventEmitter;
   @Event() insSearch: EventEmitter;
   @Event() insLoadMore: EventEmitter;
 
