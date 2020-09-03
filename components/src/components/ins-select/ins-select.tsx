@@ -1,348 +1,80 @@
-import { h, Component, Prop, State, Listen, Element, Method, Event, EventEmitter } from "@stencil/core";
+import { h, Component, Prop, Element, Method, Event, EventEmitter, Listen } from "@stencil/core";
 
 @Component({ tag: 'ins-select' })
 export class InsSelect {
   @Element() insSelectEl: HTMLElement;
+  @Event() valueChange: EventEmitter;
+  @Event() onOptionSelect: EventEmitter;
+  @Event() insClose: EventEmitter;
 
-  @Event() insValueChange: EventEmitter;
-  @Event() insChange: EventEmitter;
-  @Event() insSearch: EventEmitter;
-  @Event() insSubmit: EventEmitter;
-  @Event() insLoadMore: EventEmitter;
+  // Dynamic Events
+  @Event() onSubmitOption: EventEmitter;
+  @Event() onSearch: EventEmitter;
+  @Event() loadMore: EventEmitter;
+
+  // Lifecycle
   @Event() didLoad: EventEmitter;
   @Prop() hasLoad: string;
 
-  @Prop({mutable: true}) label: string;
-  @Prop({mutable: true}) name: string;
-  @Prop({mutable: true}) placeholder: string = "";
-  @Prop({mutable: true}) buttonLabel: string = "Add";
-  @Prop({mutable: true}) dynamicPlaceholder: string;
-  @Prop({mutable: true}) disabled: boolean = false;
-  @Prop({mutable: true}) readonly: boolean = false;
+  // Input Controllers
+  @Prop({ mutable: true }) name: string;
+  @Prop({ mutable: true }) label: string;
+  @Prop({ mutable: true }) value: any;
+  @Prop({ mutable: true }) placeholder: string = "";
+  @Prop({ mutable: true }) disabled: boolean = false;
+  @Prop({ mutable: true }) readonly: boolean = false;
+  @Prop({ mutable: true }) searchable: boolean = false;
+  @Prop({ mutable: true }) hasError: boolean = false;
+  @Prop({ mutable: true }) errorMessage: string = "";
+
+  // Multiple Mode
+  @Prop({mutable: true}) multiple: boolean = false;
+
+  // Buttonise Mode
   @Prop({mutable: true}) button: boolean = false;
   @Prop({mutable: true}) small: boolean = false;
-  @Prop({mutable: true}) searchable: boolean = false;
-  @Prop({mutable: true}) multiple: boolean = false;
-  @Prop({mutable: true}) value: any;
-  @Prop({mutable: true}) selected_values: any = [];
-  @Prop({mutable: true}) dropUp: boolean = false;
-  @Prop({mutable: true}) withDynamicOption: boolean = false;
-  @Prop({mutable: true}) dynamicSearch: boolean = false;
-  @Prop({mutable: true}) infiniteScroll: boolean = false;
-  @Prop({mutable: true}) initializing: boolean = false;
 
-  @Prop({mutable: true}) hasError: boolean = false;
-  @Prop({mutable: true}) errorMessage: string = "";
+  // Static Controllers
+  @Prop({ mutable: true }) dropUp: boolean = false;
+  @Prop({ mutable: true }) selected_values: any = [];
+  activated: boolean = false;
+  labelOfValue = ""; tempSearch = "";
+  inputValueEl; optionsWrapEl; mainWrapEl;
 
-  // @State() value: any;
-  @State() labelOfValue: any;
-  @State() activated: boolean;
-  @State() defaultHasBeenSet: boolean;
-  @State() counter: number = 0;
-  @State() insButtonEl: any;
-  @State() noMoreOptions: boolean = false;
-
+  // Dynamic Controllers
+  @Prop({ mutable: true }) initializing: boolean = false;
+  @Prop({ mutable: true }) infiniteScroll: boolean = false;
+  @Prop({ mutable: true }) dynamicSearch: boolean = false;
+  @Prop({ mutable: true }) withDynamicOption: boolean = false;
+  @Prop({ mutable: true }) dynamicPlaceholder: string;
+  @Prop({ mutable: true }) buttonLabel: string = "Add";
+  dynamicInputEl; scrollWrapEl;
   loading: boolean = false;
   searching: boolean = false;
-  insSelectOptionsWrap: any;
-  tempSearch: string = "";
 
-  @Method()
-  async setLoadingState(state){
-    this.loading = state;
-
-    if (this.insSelectOptionsWrap){
-      this.insSelectOptionsWrap.classList[state? 'add':'remove']('loading');
-    } else return false
-  }
-
-  @Method()
-  async setSearchingState(state){
-    this.searching = state;
-    if (this.insSelectOptionsWrap){
-      this.insSelectOptionsWrap.classList[state? 'add':'remove']('searching');
-    } else return false
-  }
-
-  // @Listen('onClickInsButton')
-  onClickInsButtonHandler() {
-    let dynamicOption = this.insSelectEl.querySelector('ins-input') as any;
-
-    if (dynamicOption.value){
-      dynamicOption.hasError = false;
-      this.insSubmit.emit(dynamicOption.value);
-      this.toggleInsSelectOptions();
-      dynamicOption.value = '';
-    } else {
-      dynamicOption.hasError = true;
+  scrollHandler = () => {
+    let target = this.scrollWrapEl.scrollHeight - 200;
+    let pos = this.scrollWrapEl.scrollTop + this.scrollWrapEl.clientHeight;
+    if (pos >= target && !this.loading){
+      this.loadMore.emit();
+      this.loading = true;
+      this.setLoadingState(true);
+      this.disableNoResult();
     }
   }
 
-  @Listen('insSelectOptionClicked')
-  async InsSelectOptionClickedHandler(event: CustomEvent){
-    let clickedOption = event.target as any;
-    let insSelectOptions = await this.getAllOptions();
-
-    if (this.multiple){
-
-      let checkSelections = this.value.find(el => {
-        return el === clickedOption
-      });
-
-      if (!checkSelections){
-        this.value.push(clickedOption);
-        this.counter++;
-      }
-
-      if (insSelectOptions.length === this.value.length){
-        this.noMoreOptions = true;
-      }
-
-    } else {
-
-      for (let i = 0; i < insSelectOptions.length; i++){
-        insSelectOptions[i].deactivate();
-      }
-
-      this.value = event.detail.value;
-      this.labelOfValue = event.detail.label;
-
-      if (insSelectOptions.length === 1){
-        this.noMoreOptions = true;
-      }
-    }
-
-    clickedOption.activate();
-    if (!this.multiple){
-      this.hideSelectOptions();
-    }
-
-    // this.toggleInsSelectOptions();
-    this.emitEvent('add');
-  }
-
-  emitEvent(event_type){
-    if (this.multiple) {
-      let detail = []
-      this.value.forEach(item => detail.push(item.value));
-      this.selected_values = detail;
-      this.insChange.emit({ event_type, selected: detail });
-      this.insValueChange.emit(detail);
-    } else {
-      this.insValueChange.emit(this.value);
-    }
-  }
-
-  closeMenu(){
-    window.addEventListener('click', event => {
-      let clickedEl = event.target as any;
-      let closestEl = clickedEl.closest('ins-select');
-
-      if (closestEl !== this.insSelectEl){
-        if (this.activated) {
-          this.showAllOptions()
-          this.hideSelectOptions();
-        }
-      }
-    })
-  }
-
-  @Method()
-  async setValue(value){
-    this.value = value;
-    this.selected_values = value;
-  }
-
-  addSelectedValue(value) {
-    this.selected_values.push(value);
-  }
-
-  showSelectOptions() {
-    if (!this.readonly && !this.disabled && !this.initializing) {
-      this.activated = true;
-      this.toggleSelectOptionsWrap();
-
-      if (this.searchable) {
-        setTimeout(() => {
-          let insSelectValueInput = this.insSelectEl.querySelector('.ins-select-value-input') as HTMLInputElement;
-          if (insSelectValueInput) insSelectValueInput.focus();
-        });
-      }
-    }
-  }
-
-  hideSelectOptions(){
-    this.activated = false;
-    this.tempSearch = "";
-    this.toggleSelectOptionsWrap();
-  }
-
-  @Method()
-  async toggleInsSelectOptions(){
-    if (!this.readonly && !this.disabled){
-      this.activated = !this.activated;
-      this.toggleSelectOptionsWrap();
-    }
-  }
-
-  checkDropUp(){
-    this.dropUp = false;
-    let pos = this.insSelectEl.getBoundingClientRect();
-    if ((window.innerHeight - pos.bottom) < 65) {
-      this.dropUp = true;
-    }
-  }
-
-  toggleSelectOptionsWrap(){
-    this.checkDropUp();
-
-    if (this.activated) {
-      this.expandSection();
-    } else {
-      this.collapseSection();
-    }
-  }
-
-  @Method()
-  async closeOptions(){
-    this.activated = false;
-    this.collapseSection();
-  }
-
-  @Method()
-  async openOptions(){
-    this.activated = true;
-    this.checkDropUp();
-    this.expandSection();
-  }
-
-  @Method()
-  async collapseSection() {
-    let element = this.insSelectEl.querySelector('.ins-select-options-wrap') as any;
-    let sectionHeight = (element.scrollHeight > 400 ? 400 : element.scrollHeight);
-    let elementTransition = element.style.transition;
-    element.style.transition = '';
-    requestAnimationFrame(function() {
-      element.style.height = sectionHeight + 'px';
-      element.style.transition = elementTransition;
-
-      requestAnimationFrame(function() {
-        element.style.height = 0 + 'px';
-      });
-    });
-    element.setAttribute('data-collapsed', 'true');
-  }
-
-  @Method()
-  async expandSection() {
-    let element = this.insSelectEl.querySelector('.ins-select-options-wrap') as any;
-    let sectionHeight = (element.scrollHeight > 400 ? 400 : element.scrollHeight) + 2;
-    if (element.getAttribute('data-collapsed') != 'false') {
-      element.style.height = sectionHeight + 'px';
-    }
-    element.setAttribute('data-collapsed', 'false');
-  }
-
-  @Method()
-  async enableNoResult(){
-    if (this.insSelectOptionsWrap){
-      this.insSelectOptionsWrap.classList.add('no-result');
-    } else return false
-  }
-
-  @Method()
-  async disableNoResult(){
-    if (this.insSelectOptionsWrap){
-      this.insSelectOptionsWrap.classList.remove('no-result');
-    } else return false
-  }
-
-  async searchOptions(event){
-    if (!this.activated){
-      this.showSelectOptions();
-    }
-
-    this.disableNoResult();
-
-    if (this.dynamicSearch) {
-      if ((event.which === 13 || event.target.value === "") &&
-         !this.searching && !this.loading) {
-        this.insSearch.emit(event.target.value.toLowerCase());
-        this.searching = true;
-        this.setSearchingState(true);
-        this.disableNoResult();
-      }
-
-    } else {
-      let insSelectOptions = await this.getAllOptions();
-      let hasResult = false;
-
-      if (event.target.value){
-        for (let i = 0; i < insSelectOptions.length; i++){
-          insSelectOptions[i].hideOption();
-          let result = insSelectOptions[i].label.toLowerCase().indexOf(event.target.value.toLowerCase());
-          if (result >= 0){
-            insSelectOptions[i].showOption();
-            hasResult = true;
-          }
-        }
-      }
-
-      if (!hasResult){
-        this.enableNoResult();
-      }
-      this.tempSearch = event.target.value;
-    }
-  }
-
-  async showAllOptions(){
-    let insSelectOptionsWrap = this.insSelectEl.querySelector('.ins-select-options-wrap');
-    insSelectOptionsWrap.classList.remove('no-result');
-
-    // if (!this.button){
-    //   event.target.value = this.value ? this.value : '';
-    // }
-
-    let insSelectOptions = await this.getAllOptions();
-    for (let i = 0; i < insSelectOptions.length; i++){
-      insSelectOptions[i].showOption();
-    }
-
-    this.hideSelectOptions();
-  }
-
-  deleteItem(option){
-    if (!this.disabled && !this.readonly){
-      let checkIndex = this.value.findIndex(el => {
-        return el === option
-      });
-
-      if (checkIndex > -1) {
-        this.value[checkIndex].deactivate();
-        this.value.splice(checkIndex, 1);
-        this.counter--;
-
-        this.emitEvent('remove');
-      }
-
-      this.noMoreOptions = false;
-    }
-  }
-
-  isJSON(str) {
-    let parsed;
-    try {
-      parsed = JSON.parse(str);
-    } catch (e) {
-      return [];
-    }
-    return parsed;
+  initInfiniteScroll(){
+    let action = this.infiniteScroll ? "add" : "remove";
+    this.scrollWrapEl = this.searchEl(".scroll-wrap");
+    this.scrollWrapEl[`${action}EventListener`]('scroll', this.scrollHandler);
   }
 
   componentWillLoad(){
+    this.checkDropUp();
 
     if (this.multiple && this.button){
       console.warn('ins-select button does not yet support multiple selection, falling back to standard multiple select.');
+      this.button = false;
     }
 
     if (this.multiple && !this.value){
@@ -351,62 +83,20 @@ export class InsSelect {
       this.value = this.isJSON(this.value)
     }
 
-    if (!this.value || !this.value.length){
-      this.setInsSelectDefaultValue();
-    } else {
-      this.setSelectedFromValue();
+    if (!this.placeholder && this.searchable){
+      this.placeholder = "Please select or type to search for an option";
     }
-
-    if (!this.placeholder){
-      this.placeholder = this.searchable ?
-       "Please select or type to search for an option" : ""
-    }
-
-    this.closeMenu();
-  }
-
-  initScrollHandler(){
-    let selector = this.withDynamicOption ? ".scroll-wrap" : ".ins-select-options-wrap";
-    let scrollWrap = this.insSelectEl.querySelector(selector);
-    scrollWrap.addEventListener('scroll', () => {
-      if (scrollWrap.scrollTop + scrollWrap.clientHeight >= (scrollWrap.scrollHeight - 200)) {
-        if (!this.loading && this.infiniteScroll){
-          this.insLoadMore.emit();
-          this.loading = true;
-          this.setLoadingState(true);
-          this.disableNoResult();
-        }
-      }
-
-    });
-  }
-
-  initElObserver(){
-    const io = new IntersectionObserver(el => {
-      el.forEach(e => {
-        if (e.intersectionRatio === 0 && this.activated){
-          this.showAllOptions()
-          this.hideSelectOptions();
-        }
-      });
-    });
-
-    io.observe(this.insSelectEl);
   }
 
   componentDidLoad(){
-    if (this.withDynamicOption){
-      this.insButtonEl = this.insSelectEl.querySelector('ins-button');
-      this.insButtonEl.addEventListener('onClickInsButton', this.onClickInsButtonHandler.bind(this))
-    }
+    this.bindEls();
+    this.initOutsideClick();
+    this.initSearchInput();
+    this.initValue();
+    this.initDynamicOption();
+    this.initInfiniteScroll();
+    this.checkForOptions();
 
-    if (this.infiniteScroll){
-      this.initScrollHandler();
-    }
-
-    this.insSelectOptionsWrap = this.insSelectEl.querySelector('.ins-select-options-wrap');
-
-    this.initElObserver();
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
@@ -414,102 +104,187 @@ export class InsSelect {
     }
   }
 
-  @Method()
-  async getAllOptions(){
-    return this.insSelectEl.querySelectorAll('ins-select-option');
+  componentDidUpdate(){
+    this.bindEls();
+    this.initSearchInput();
+    this.initDynamicOption();
+    this.initInfiniteScroll();
+    this.checkForOptions();
   }
 
-  @Method()
-  async reset(){
-    let options = await this.getAllOptions();
-    for (let i = 0; i < options.length; i++) {
-      options[i].deactivate();
-    }
-    this.labelOfValue = 0;
-    this.noMoreOptions = false;
+  isJSON(value) {
+    try { return JSON.parse(value) }
+    catch(err) { return [] }
   }
 
-  @Method()
-  async setSelectedFromValue(value?){
-    this.value = value ? value : this.value;
-    let insSelectOptions = await this.getAllOptions();
-    let tempMultipleValue = []
+  searchEl(selector){
+    return this.insSelectEl.querySelector(selector) as any;
+  }
 
-    if (insSelectOptions.length) {
-      for (let i = 0; i < insSelectOptions.length; i++) {
-        if (this.multiple) {
+  bindEls(){
+    this.mainWrapEl = this.searchEl('.ins-select-wrap');
+    this.inputValueEl = this.searchEl('.ins-select-value-input');
+    this.optionsWrapEl = this.searchEl('.ins-select-options-wrap');
+  }
 
-          this.value.forEach(val => {
-            if (val === insSelectOptions[i].value){
-              tempMultipleValue.push(insSelectOptions[i]);
-              this.addSelectedValue(val);
-              setTimeout(()=>{
-                insSelectOptions[i].activate();
-              }, 100);
-              this.counter++;
+  initOutsideClick(){
+    window.addEventListener('click', event => {
+      let clickedEl = event.target as any;
+      let closestEl = clickedEl.closest('ins-select');
 
-              if (tempMultipleValue.length === insSelectOptions.length){
-                this.noMoreOptions = true;
-              }
-            } else {
-              insSelectOptions[i].deactivate();
-            }
-          });
-
-        } else {
-
-          if (this.value === insSelectOptions[i].value) {
-            this.labelOfValue = insSelectOptions[i].label;
-            setTimeout(() => {
-              insSelectOptions[i].activate();
-              if (insSelectOptions.length === 1){
-                this.noMoreOptions = true;
-              }
-            }, 100);
-            break;
-          }
-
+      if (closestEl !== this.insSelectEl){
+        if (this.activated) {
+          this.collapseSection();
         }
       }
+    });
+  }
 
-      if (this.multiple){
-        this.value = tempMultipleValue;
-      }
-    } else {
-      this.noMoreOptions = true;
+  initSearchInput(){
+    if (this.searchable && this.inputValueEl){
+      this.inputValueEl.addEventListener('keyup',
+        e => this.searchOptions(e));
     }
+  }
+
+  initValue(){
+    if (!this.value || !this.value.length){
+      this.setInsSelectDefaultValue();
+    } else {
+      this.setSelectedFromValue();
+    }
+  }
+
+  setMultipleDefault(){
+    let tempDefaults = [], tempValues = []
+    this.loopThroughOptions(option => {
+      if (option.default){
+        option.activated = true;
+        tempDefaults.push(option);
+        tempValues.push(option.value);
+      }
+    });
+
+    if (tempDefaults.length){
+      this.value = tempDefaults;
+      this.selected_values = tempValues;
+    }
+  }
+
+  setDefault(){
+    let defaultOption = this.searchEl('ins-select-option[default]');
+    if (!defaultOption) return;
+    defaultOption.activated = true;
+    this.labelOfValue = defaultOption.label;
+    this.value = defaultOption.value;
   }
 
   @Method()
   async setInsSelectDefaultValue(){
-    let insSelectOptions = await this.getAllOptions();
+    if (this.multiple){
+      this.setMultipleDefault();
+    } else this.setDefault();
+  }
 
-    for (let i = 0; i < insSelectOptions.length; i++) {
-      if (insSelectOptions[i].default) {
-        if (this.multiple) {
-          this.value.push(insSelectOptions[i]);
-          setTimeout(()=>{
-            insSelectOptions[i].activate();
-          }, 100);
-          this.counter++;
-
-          if (this.value.length === insSelectOptions.length){
-            this.noMoreOptions = true;
-          }
-
-        } else {
-          this.value = insSelectOptions[i].value;
-          this.labelOfValue = insSelectOptions[i].label;
-          setTimeout(()=>{
-            insSelectOptions[i].activate();
-          }, 100)
-
-          if (insSelectOptions.length === 1){
-            this.noMoreOptions = true;
-          }
-          break;
-        }
+  setMultipleValue(val, options){
+    let values = [], selections = []
+    this.loopThroughOptions(option => {
+      option.activated = false;
+      if (val.includes(option.value)){
+        option.activated = true;
+        values.push(option.value);
+        selections.push(option);
       }
+    }, options);
+
+    this.value = selections;
+    this.selected_values = values;
+  }
+
+  setSelected(val, options){
+    this.loopThroughOptions(option => {
+      option.activated = false;
+      if (val === option.value) {
+        option.activated = true;
+        this.checkForOptions();
+        this.labelOfValue = option.label;
+        if (this.inputValueEl) this.inputValueEl.value = option.label;
+        return true;
+      }
+    }, options);
+  }
+
+  @Method()
+  async setSelectedFromValue(value?){
+    let options = await this.getAllOptions();
+    if (!options.length) return false;
+
+    let val = value || this.value;
+    if (this.multiple) {
+      this.setMultipleValue(val, options);
+    } else this.setSelected(val, options);
+  }
+
+  updateSelectedForMultiple(){
+    this.value.forEach(item => {
+      this.loopThroughOptions(option => {
+        if (option.value === item.value && !option.activated){
+          option.activated = true;
+          return true;
+        }
+      });
+    });
+  }
+
+  updateSelected(){
+    this.loopThroughOptions(option => {
+      if (option.value === this.value){
+        option.activated = true;
+        this.labelOfValue = option.label;
+        this.inputValueEl.value = option.label;
+        return true;
+      }
+    });
+  }
+
+  @Method()
+  async updateSelectedOptions(){
+    if (!this.value) return false;
+    if (this.multiple){
+      this.updateSelectedForMultiple()
+    } else this.updateSelected();
+  }
+
+  initDynamicOption(){
+    if (!this.withDynamicOption) return false;
+    this.dynamicInputEl = this.searchEl('input[data-dynamic]');
+    this.searchEl('button[data-dynamic]').addEventListener('click',
+      () => this.dynamicOptionHandler());
+  }
+
+  dynamicOptionHandler() {
+    let value = this.dynamicInputEl.value;
+    if (value){
+      this.dynamicInputEl.classList.remove('invalid');
+      this.onSubmitOption.emit(value);
+      this.collapseSection();
+      this.dynamicInputEl.value = '';
+    } else {
+      this.dynamicInputEl.classList.add('invalid');
+    }
+  }
+
+  checkDropUp(){
+    let pos = this.insSelectEl.getBoundingClientRect();
+    if ((window.innerHeight - pos.bottom) < 65) {
+      this.dropUp = true;
+    }
+  }
+
+  loopThroughOptions(cb, opts?){
+    let options = opts || this.getAllOptions();
+    for (let i = 0; i < options.length; i++){
+      if (cb(options[i])) break;
     }
   }
 
@@ -523,152 +298,423 @@ export class InsSelect {
       }
 
       this.activated && validTarget
-        ? this.hideSelectOptions()
-        : this.showSelectOptions();
+        ? this.collapseSection()
+        : this.expandSection();
     }
   }
 
-	render() {
+  searchOptions(event){
+    let keyword = event.target.value;
+    this.tempSearch = keyword;
+    this.disableNoResult();
+    if (!this.activated) this.expandSection();
+
+    if (this.dynamicSearch) {
+      this.dynamicSearchHandler(keyword, event);
+    } else this.staticSearch(keyword);
+  }
+
+  dynamicSearchHandler(keyword, event){
+    if ((event.which === 13 || keyword === "") &&
+    !this.searching && !this.loading) {
+      this.setSearchingState(true);
+      this.disableNoResult();
+      this.onSearch.emit(keyword);
+    }
+  }
+
+  @Method()
+  async setSearchingState(state){
+    this.searching = state;
+    this.inputValueEl.readonly = state;
+    if (this.optionsWrapEl){
+      this.optionsWrapEl.classList[state? 'add' : 'remove']('searching');
+    } else return false
+  }
+
+  @Method()
+  async setLoadingState(state){
+    this.loading = state;
+    if (this.optionsWrapEl){
+      this.optionsWrapEl.classList[state? 'add':'remove']('loading');
+    } else return false
+  }
+
+  staticSearch(keyword){
+    if (!keyword) {
+      this.showHiddenOptions();
+      return this.checkForOptions();
+    }
+
+    let hasResult = false;
+    this.loopThroughOptions(option => {
+      option.hideOption();
+
+      let result = option.label.toLowerCase()
+        .indexOf(keyword.toLowerCase());
+
+      if (result >= 0){
+        option.showOption();
+        hasResult = true;
+      }
+    });
+
+    if (!hasResult) this.enableNoResult();
+    else this.checkForOptions();
+  }
+
+  @Method()
+  async enableNoResult(){
+    if (this.optionsWrapEl){
+      this.optionsWrapEl.classList.add('no-result');
+    } else return false
+  }
+
+  @Method()
+  async disableNoResult(){
+    if (this.optionsWrapEl){
+      this.optionsWrapEl.classList.remove('no-result');
+    } else return false
+  }
+
+  @Listen('insSelectOptionClicked')
+  InsSelectOptionClickedHandler(event: CustomEvent){
+    let clickedOption = event.target as any;
+
+    if (this.multiple){
+      this.multipleInputHandler(clickedOption);
+    } else this.defaultInputHandler(event.detail);
+  }
+
+  multipleInputHandler(clickedOption){
+    let checkSelections = this.value.find(el => {
+      return el === clickedOption
+    });
+
+    if (!checkSelections){
+      clickedOption.activated = true;
+      this.value.push(clickedOption);
+      this.emitEvent('add');
+    }
+  }
+
+  defaultInputHandler(e){
+    this.loopThroughOptions(option => option.activated = false);
+    this.collapseSection();
+    this.showHiddenOptions();
+    this.labelOfValue = e.label;
+    this.valueChange.emit(e.value);
+    this.value = e.value;
+  }
+
+  async checkForOptions(){
+    let options = await this.getAllOptions();
+
+    if (!options.length){
+      this.mainWrapEl.classList.add("no-options");
+      return false;
+    }
+
+    let hasOption = false;
+    this.loopThroughOptions(option => {
+      if (!option.activated && !option.hidden) {
+        hasOption = true;
+        return true;
+      }
+    }, options);
+
+    let action = hasOption ? "remove" : "add";
+    this.mainWrapEl.classList[action]("no-options");
+    return hasOption;
+  }
+
+  emitEvent(event_type){
+    if (this.multiple) {
+      this.emitForMultiple(event_type);
+    } else this.valueChange.emit(this.value);
+  }
+
+  emitForMultiple(event_type){
+    let selected = this.value.map(item => item.value);
+    let selectedOptions = this.value.map(item => {
+      return {
+        label: item.label,
+        value: item.value
+      }
+    });
+
+    this.onOptionSelect.emit({
+      event_type, selected, selectedOptions
+    });
+
+    this.valueChange.emit(selected);
+    this.selected_values = selected;
+  }
+
+  @Method()
+  async getAllOptions(){
+    return this.insSelectEl.querySelectorAll('ins-select-option');
+  }
+
+  showHiddenOptions(){
+    this.optionsWrapEl.classList.remove('no-result');
+    this.loopThroughOptions(option => option.showOption());
+  }
+
+  @Method()
+  async expandSection() {
+    if (!this.readonly && !this.disabled && !this.initializing) {
+      this.activated = true;
+      this.mainWrapEl.classList.add("activated");
+
+      if (this.searchable && this.inputValueEl)
+        this.inputValueEl.focus();
+    }
+  }
+
+  @Method()
+  async collapseSection() {
+    this.activated = false;
+    this.mainWrapEl.classList.remove("activated");
+    if (this.tempSearch) this.showHiddenOptions();
+    this.tempSearch = "";
+
+    if (!this.multiple && this.searchable){
+      if (this.button) this.inputValueEl.value = "";
+      else this.inputValueEl.value = this.labelOfValue;
+    }
+
+    if (this.withDynamicOption)
+      this.dynamicInputEl.classList.remove('invalid');
+
+    this.insClose.emit();
+  }
+
+  removeItem(option){
+    if (!this.disabled && !this.readonly){
+      let i = this.value.findIndex(el => {
+        return el === option
+      });
+
+      if (i > -1) {
+        this.value[i].activated = false;
+        this.value.splice(i, 1);
+        this.emitEvent('remove');
+      }
+    }
+  }
+
+  renderLabelForButtonised(){
     return (
-      <div class={
-          `ins-select-wrap ins-form-field-wrap
-          ${this.initializing ? 'initializing' : ''}
-          ${this.activated ? 'activated' : ''}
-          ${this.disabled ? 'disabled' : ''}
-          ${this.readonly ? 'readonly' : ''}
-          ${this.small ? 'small' : ''}
-          ${this.button && !this.multiple ? 'buttonise' : ''}
-          ${this.insSelectEl.querySelectorAll('ins-select-option').length > 0 ? '' : 'no-options'}
-          ${this.dropUp ? 'drop-up' : ''}
-          ${this.hasError ? 'is-invalid' : ''} `}>
+      <label class={`ins-select-label-wrap
+        ${this.disabled ? '' : 'ripple'}`}
+        onClick={e => this.buttoniseClick(e)}>
 
-        { this.multiple ?
-        <input type ="hidden"
-          name={this.name}
-          value={this.selected_values} />
-        :
-        <input type ="hidden"
-          name={this.name}
-          value={this.value} />
-        }
+        { this.label } :
+        <span>
+          { this.labelOfValue
+            ? this.labelOfValue
+            : this.placeholder }
+        </span>
 
-        {this.label ?
-        <label class={`ins-select-label-wrap ins-form-label
-          ${this.button && !this.multiple && !this.disabled ? 'ripple' : ''}`}
-          onClick={e => this.buttoniseClick(e)}>
+        <i class="icon-caret-down"></i>
+      </label>
+    )
+  }
 
-          {this.label}{this.button && !this.multiple ? ':' : ''}
-          {this.button && !this.multiple ?
-          <span>{this.labelOfValue ? this.labelOfValue : this.placeholder}</span> : ''}
+  renderLabelWrap(){
+    if (!this.label) return "";
+    if (this.button && !this.multiple){
+      return this.renderLabelForButtonised()
+    }
 
-          <i class="icon-caret-down"></i>
-        </label> : ''}
+    return (
+      <label class="ins-select-label-wrap">
+        {this.label}
+      </label>
+    )
+  }
 
-        {!this.label && this.button ?
-        <div class={`ins-select-label-wrap ins-form-label
-          ${this.button && !this.multiple && !this.disabled? 'ripple' : ''}`}
-          onClick={e => this.buttoniseClick(e)}>
-          {this.button && !this.multiple ?
-          <span>{this.labelOfValue ? this.labelOfValue : this.placeholder}</span> : ''}
+  renderCaret(){
+    if (this.initializing) return "";
+    return (<i class="icon-caret-down"></i>)
+  }
 
-          <i class="icon-caret-down"></i>
-        </div> : ''}
+  renderSingleValue(){
+    return (
+      <div class="ins-select-value-wrap"
+        onClick={() => this.expandSection()}>
+        { this.renderCaret() }
+        <input class="ins-select-value-input" value={this.labelOfValue}
+          readonly={this.readonly || !this.searchable || this.initializing}
+          placeholder={this.placeholder} disabled={this.disabled} />
+      </div>
+    )
+  }
 
-        {!this.button && !this.multiple ?
-        <div class="ins-select-value-wrap"
-          onClick={() => this.showSelectOptions()}>
+  renderItem(item){
+    return (
+      <div class="multiple-item-wrap">
+        <span>{item.label}</span>
+        <span class="icon-close"
+          onClick={() => this.removeItem(item)}>
+        </span>
+      </div>
+    )
+  }
 
-          {this.initializing ? "" : <i class="icon-caret-down"></i>}
+  renderSelections(){
+    if (!this.value.length && this.searchable) return "";
+    if (this.value.length) return (
+      this.value.map(item => this.renderItem(item))
+    );
 
-          <input class="ins-select-value-input green"
-            onKeyUp={event => this.searchOptions(event)}
-            value={this.labelOfValue}
-            placeholder={this.placeholder}
-            readonly={!this.searchable || this.readonly || this.initializing}
-            disabled={this.disabled} />
-        </div> : ''}
+    return (
+      <div class="multiple-placeholder">
+        { this.placeholder ? this.placeholder : "Select" }
+      </div>
+    )
+  }
 
-        {this.multiple ?
-        <div class="ins-select-value-wrap multiple"
-        onClick={() => this.showSelectOptions()}>
+  renderSearchWrapForMultiple(){
+    if (!this.searchable) return "";
+    return(
+      <div>
+        <input class="ins-select-value-input" value={this.tempSearch}
+          readonly={this.readonly} disabled={this.disabled}
+          placeholder={this.value.length
+            ? "Type here to search for options"
+            : this.placeholder} />
+      </div>
+    )
+  }
 
-          {this.initializing ? "" : <i class="icon-caret-down"></i>}
+  renderValueWrapForMultiple(){
+    return (
+      <div class={`ins-select-value-wrap multiple
+        ${this.value.length ? "has-value": ""}`}
+        onClick={() => this.expandSection()}>
 
-          {this.value.length ? this.value.map(item => {
-            return (
-              <div class="multiple-item-wrap">
-                <span>{item.label}</span>
-                <span class="icon-close"
-                  onClick={() => this.deleteItem(item)}>
-                </span>
-              </div>
-            )
-          }) : this.searchable ? ""
-          : <div class="multiple-placeholder">{this.placeholder ? this.placeholder : "Select" }</div>}
+        { this.renderCaret() }
+        { this.renderSelections() }
+        { this.renderSearchWrapForMultiple() }
+      </div>
+    )
+  }
 
-          {(this.searchable && !this.value.length) || (this.searchable && this.activated) ?
-          <div>
-            <input class="ins-select-value-input red" readonly={this.readonly}
-              placeholder={this.value.length ? "Type here to search for options" : this.placeholder}
-              onKeyUp={event => this.searchOptions(event)} value={this.tempSearch}/>
-          </div>
-          : ''}
-        </div> : ''}
+  renderValueWrap(){
+    if (this.multiple){
+      return this.renderValueWrapForMultiple();
+    }
 
-        {this.hasError ?
-          <div class="ins-form-error">
-            {this.errorMessage}
-          </div>
-        : ''}
+    if (!this.button && !this.multiple){
+      return this.renderSingleValue()
+    }
 
-        <div class={`ins-select-options-wrap
-          ${this.multiple ? 'multiple' : '' }
-          ${this.noMoreOptions ? 'no-options' : ''}
-          ${this.withDynamicOption ? 'with-dynamic-option' : '' }`}>
+    return "";
+  }
 
-          <div class={`scroll-wrap`}>
-            {this.button && !this.multiple && this.searchable ?
-              <div class="ins-select-options-searchbar">
-                <input class="ins-select-value-input blue"
-                  name={this.name}
-                  onKeyUp={event => this.searchOptions(event)}
-                  placeholder="Search options" />
+  renderOptionsWrap(){
+    return (
+      <div class={`ins-select-options-wrap
+          ${this.multiple ? 'multiple' : ''}
+          ${this.withDynamicOption ? 'with-dynamic-option' : ''}`}>
 
-                <i class="icon-search"></i>
-              </div>
-            : ''}
+          { this.renderCloseBtnWrap() }
 
-            <p class="no-result-text">No result found</p>
-            {this.noMoreOptions
-             ? <p class="no-more-options">No options available</p>
-             : ''}
+          <div class="scroll-wrap">
+            { this.renderSearchWrapForButtonized() }
+
+            <div class="no-result-text">No result found</div>
+            <div class="no-more-options">No options available</div>
 
             <div class="ins-select-slot-wrap">
               <slot />
             </div>
 
-            <div class="spinner-wrap"><div class="spinner"></div></div>
+            <div class="spinner-wrap">
+              <div class="spinner"></div>
+            </div>
           </div>
 
-          {this.withDynamicOption ?
-            <div class="dynamic-option-wrap">
-              <ins-input field="text" placeholder={this.dynamicPlaceholder}></ins-input>
-              <ins-button type="button" label={this.buttonLabel} solid></ins-button>
-            </div>
-          : ''}
+          { this.renderDynamicOptionWrap() }
         </div>
+    )
+  }
 
-        { this.activated && !this.button
+  renderCloseBtnWrap(){
+    if (this.button) return "";
+    return (
+      <div class="done-wrap" onClick={() => this.collapseSection()}>
+        Close Options
+      </div>
+    )
+  }
 
-          ? <div class="done-wrap"
-              onClick={() => this.hideSelectOptions()}>
+  renderDynamicOptionWrap(){
+    if (!this.withDynamicOption) return "";
+    return (
+      <div class="dynamic-option-wrap">
+        <input data-dynamic placeholder={this.dynamicPlaceholder} />
+        <button data-dynamic type="button">{this.buttonLabel}</button>
+      </div>
+    );
+  }
 
-              Close Options
-            </div>
+  renderSearchWrapForButtonized(){
+    if (this.button && this.searchable && !this.multiple){
+      return (
+        <div class="ins-select-options-searchbar">
+          <input class="ins-select-value-input blue"
+            onKeyUp={event => this.searchOptions(event)}
+            placeholder="Search options" name={ this.name } />
 
-          : "" }
+          <i class="icon-search"></i>
+        </div>
+      )
+    } return "";
+  }
 
-        <div class="main-spinner-wrap"><div class="spinner"></div></div>
+  renderErrorWrap(){
+    if (!this.hasError) return ""
+    return (
+      <div class="ins-form-error">
+        {this.errorMessage}
+      </div>
+    )
+  }
+
+  renderHiddenFields(){
+    let value = this.multiple
+      ? this.selected_values
+      : this.value;
+
+    return (
+      <input type ="hidden"
+        name={this.name}
+        value={value} />
+    )
+  }
+
+	render() {
+    return (
+      <div class={`ins-select-wrap
+        ${this.readonly ? 'readonly' : ''}
+        ${this.disabled ? 'disabled' : ''}
+        ${this.hasError ? 'is-invalid' : ''}
+        ${this.small ? 'small' : ''}
+        ${this.initializing ? 'initializing' : ''}
+        ${this.button && !this.multiple ? 'buttonise' : ''}`}>
+
+        { this.renderHiddenFields() }
+        { this.renderLabelWrap() }
+        { this.renderValueWrap() }
+        { this.renderErrorWrap() }
+        { this.renderOptionsWrap() }
+
+        <div class="main-spinner-wrap">
+          <div class="spinner"></div>
+        </div>
       </div>
     );
 	}

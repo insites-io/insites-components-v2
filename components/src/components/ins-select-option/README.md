@@ -7,12 +7,14 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type      | Default    |
-| ---------- | ---------- | ----------- | --------- | ---------- |
-| `default`  | `default`  |             | `boolean` | `false`    |
-| `disabled` | `disabled` |             | `boolean` | `false`    |
-| `label`    | `label`    |             | `string`  | `'Option'` |
-| `value`    | `value`    |             | `string`  | `''`       |
+| Property    | Attribute   | Description | Type      | Default    |
+| ----------- | ----------- | ----------- | --------- | ---------- |
+| `activated` | `activated` |             | `boolean` | `false`    |
+| `default`   | `default`   |             | `boolean` | `false`    |
+| `disabled`  | `disabled`  |             | `boolean` | `false`    |
+| `hidden`    | `hidden`    |             | `boolean` | `false`    |
+| `label`     | `label`     |             | `string`  | `'Option'` |
+| `value`     | `value`     |             | `string`  | `''`       |
 
 
 ## Events

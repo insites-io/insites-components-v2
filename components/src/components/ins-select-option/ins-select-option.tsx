@@ -1,4 +1,4 @@
-import { h, Component, Prop, Event, EventEmitter, Method, State } from "@stencil/core";
+import { h, Component, Prop, Event, EventEmitter, Method } from "@stencil/core";
 
 @Component({ tag: 'ins-select-option' })
 
@@ -9,9 +9,8 @@ export class InsSelectOption {
   @Prop({mutable: true}) value: string = '';
   @Prop({mutable: true}) disabled: boolean = false;
   @Prop({mutable: true}) default: boolean = false;
-
-  @State() activated: boolean;
-  @State() hidden: boolean;
+  @Prop({mutable: true}) activated: boolean = false;
+  @Prop({mutable: true}) hidden: boolean = false;
 
   insSelectOptionClickHandler(){
     if (!this.disabled){

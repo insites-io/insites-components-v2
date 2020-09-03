@@ -7,20 +7,19 @@
 
 ## Properties
 
-| Property   | Attribute   | Description | Type      | Default     |
-| ---------- | ----------- | ----------- | --------- | ----------- |
-| `actual`   | `actual`    |             | `string`  | `undefined` |
-| `default`  | `default`   |             | `boolean` | `undefined` |
-| `imgAlt`   | `img-alt`   |             | `string`  | `undefined` |
-| `imgTitle` | `img-title` |             | `string`  | `undefined` |
-| `source`   | `source`    |             | `string`  | `undefined` |
+| Property    | Attribute   | Description | Type     | Default     |
+| ----------- | ----------- | ----------- | -------- | ----------- |
+| `image`     | `image`     |             | `string` | `undefined` |
+| `imgAlt`    | `img-alt`   |             | `string` | `undefined` |
+| `imgTitle`  | `img-title` |             | `string` | `undefined` |
+| `thumbnail` | `thumbnail` |             | `string` | `undefined` |
 
 
 ## Events
 
-| Event          | Description | Type               |
-| -------------- | ----------- | ------------------ |
-| `insUpdateSrc` |             | `CustomEvent<any>` |
+| Event              | Description | Type               |
+| ------------------ | ----------- | ------------------ |
+| `insGalleryUpdate` |             | `CustomEvent<any>` |
 
 
 ## Methods

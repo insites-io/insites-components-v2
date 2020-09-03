@@ -44,7 +44,6 @@
  - [ins-heading](../ins-heading)
  - [ins-image-picker](../ins-image-picker)
  - [ins-modal](../ins-modal)
- - [ins-select](../ins-select)
  - [ins-table](../ins-table)
  - [ins-thumbnail](../ins-thumbnail)
 
@@ -56,7 +55,6 @@ graph TD;
   ins-heading --> ins-button
   ins-image-picker --> ins-button
   ins-modal --> ins-button
-  ins-select --> ins-button
   ins-table --> ins-button
   ins-thumbnail --> ins-button
   style ins-button fill:#f9f,stroke:#333,stroke-width:4px

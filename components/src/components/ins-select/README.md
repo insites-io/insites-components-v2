@@ -37,24 +37,15 @@
 | Event            | Description | Type               |
 | ---------------- | ----------- | ------------------ |
 | `didLoad`        |             | `CustomEvent<any>` |
-| `insChange`      |             | `CustomEvent<any>` |
-| `insLoadMore`    |             | `CustomEvent<any>` |
-| `insSearch`      |             | `CustomEvent<any>` |
-| `insSubmit`      |             | `CustomEvent<any>` |
-| `insValueChange` |             | `CustomEvent<any>` |
+| `insClose`       |             | `CustomEvent<any>` |
+| `loadMore`       |             | `CustomEvent<any>` |
+| `onOptionSelect` |             | `CustomEvent<any>` |
+| `onSearch`       |             | `CustomEvent<any>` |
+| `onSubmitOption` |             | `CustomEvent<any>` |
+| `valueChange`    |             | `CustomEvent<any>` |
 
 
 ## Methods
-
-### `closeOptions() => Promise<void>`
-
-
-
-#### Returns
-
-Type: `Promise<void>`
-
-
 
 ### `collapseSection() => Promise<void>`
 
@@ -106,26 +97,6 @@ Type: `Promise<NodeListOf<HTMLInsSelectOptionElement>>`
 
 
 
-### `openOptions() => Promise<void>`
-
-
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-### `reset() => Promise<void>`
-
-
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
 ### `setInsSelectDefaultValue() => Promise<void>`
 
 
@@ -156,33 +127,23 @@ Type: `Promise<boolean>`
 
 
 
-### `setSelectedFromValue(value?: any) => Promise<void>`
+### `setSelectedFromValue(value?: any) => Promise<boolean>`
 
 
 
 #### Returns
 
-Type: `Promise<void>`
+Type: `Promise<boolean>`
 
 
 
-### `setValue(value: any) => Promise<void>`
-
-
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-### `toggleInsSelectOptions() => Promise<void>`
+### `updateSelectedOptions() => Promise<boolean>`
 
 
 
 #### Returns
 
-Type: `Promise<void>`
+Type: `Promise<boolean>`
 
 
 
@@ -193,16 +154,9 @@ Type: `Promise<void>`
 
  - [ins-table](../ins-table)
 
-### Depends on
-
-- [ins-input](../ins-input)
-- [ins-button](../ins-button)
-
 ### Graph
 ```mermaid
 graph TD;
-  ins-select --> ins-input
-  ins-select --> ins-button
   ins-table --> ins-select
   style ins-select fill:#f9f,stroke:#333,stroke-width:4px
 ```

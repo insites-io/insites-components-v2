@@ -547,7 +547,6 @@ export namespace Components {
     interface InsSelect {
         "button": boolean;
         "buttonLabel": string;
-        "closeOptions": () => Promise<void>;
         "collapseSection": () => Promise<void>;
         "disableNoResult": () => Promise<boolean>;
         "disabled": boolean;
@@ -565,19 +564,16 @@ export namespace Components {
         "label": string;
         "multiple": boolean;
         "name": string;
-        "openOptions": () => Promise<void>;
         "placeholder": string;
         "readonly": boolean;
-        "reset": () => Promise<void>;
         "searchable": boolean;
         "selected_values": any;
         "setInsSelectDefaultValue": () => Promise<void>;
         "setLoadingState": (state: any) => Promise<boolean>;
         "setSearchingState": (state: any) => Promise<boolean>;
-        "setSelectedFromValue": (value?: any) => Promise<void>;
-        "setValue": (value: any) => Promise<void>;
+        "setSelectedFromValue": (value?: any) => Promise<boolean>;
         "small": boolean;
-        "toggleInsSelectOptions": () => Promise<void>;
+        "updateSelectedOptions": () => Promise<boolean>;
         "value": any;
         "withDynamicOption": boolean;
     }
@@ -586,9 +582,11 @@ export namespace Components {
     }
     interface InsSelectOption {
         "activate": () => Promise<void>;
+        "activated": boolean;
         "deactivate": () => Promise<void>;
         "default": boolean;
         "disabled": boolean;
+        "hidden": boolean;
         "hideOption": () => Promise<void>;
         "label": string;
         "showOption": () => Promise<void>;
@@ -1929,11 +1927,12 @@ declare namespace LocalJSX {
         "multiple"?: boolean;
         "name"?: string;
         "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsChange"?: (event: CustomEvent<any>) => void;
-        "onInsLoadMore"?: (event: CustomEvent<any>) => void;
-        "onInsSearch"?: (event: CustomEvent<any>) => void;
-        "onInsSubmit"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onInsClose"?: (event: CustomEvent<any>) => void;
+        "onLoadMore"?: (event: CustomEvent<any>) => void;
+        "onOnOptionSelect"?: (event: CustomEvent<any>) => void;
+        "onOnSearch"?: (event: CustomEvent<any>) => void;
+        "onOnSubmitOption"?: (event: CustomEvent<any>) => void;
+        "onValueChange"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
         "readonly"?: boolean;
         "searchable"?: boolean;
@@ -1946,8 +1945,10 @@ declare namespace LocalJSX {
         "label"?: string;
     }
     interface InsSelectOption {
+        "activated"?: boolean;
         "default"?: boolean;
         "disabled"?: boolean;
+        "hidden"?: boolean;
         "label"?: string;
         "onInsSelectOptionClicked"?: (event: CustomEvent<any>) => void;
         "value"?: string;

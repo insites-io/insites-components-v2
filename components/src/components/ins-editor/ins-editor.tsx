@@ -28,67 +28,10 @@ import "codemirror/mode/yaml/yaml";
 		'../../../node_modules/codemirror/addon/dialog/dialog.css',
 		'../../../node_modules/codemirror/addon/display/fullscreen.css',
 		// themes
-		// '../../../node_modules/codemirror/theme/3024-day.css',
-		// '../../../node_modules/codemirror/theme/darcula.css',
-		// '../../../node_modules/codemirror/theme/isotope.css',
 		'../../../node_modules/codemirror/theme/monokai.css',
-		// '../../../node_modules/codemirror/theme/railscasts.css',
-		// '../../../node_modules/codemirror/theme/vibrant-ink.css',
-		// '../../../node_modules/codemirror/theme/3024-night.css',
-		// '../../../node_modules/codemirror/theme/dracula.css',
-		// '../../../node_modules/codemirror/theme/lesser-dark.css',
-		// '../../../node_modules/codemirror/theme/moxer.css',
-		// '../../../node_modules/codemirror/theme/rubyblue.css',
-		// '../../../node_modules/codemirror/theme/xq-dark.css',
-		// '../../../node_modules/codemirror/theme/abcdef.css',
-		// '../../../node_modules/codemirror/theme/duotone-dark.css',
-		// '../../../node_modules/codemirror/theme/liquibyte.css',
 		'../../../node_modules/codemirror/theme/neat.css',
-		// '../../../node_modules/codemirror/theme/seti.css',
-		// '../../../node_modules/codemirror/theme/xq-light.css',
-		// '../../../node_modules/codemirror/theme/ambiance-mobile.css',
-		// '../../../node_modules/codemirror/theme/duotone-light.css',
-		// '../../../node_modules/codemirror/theme/lucario.css',
-		// '../../../node_modules/codemirror/theme/neo.css',
-		// '../../../node_modules/codemirror/theme/shadowfox.css',
-		// '../../../node_modules/codemirror/theme/yeti.css',
-		// '../../../node_modules/codemirror/theme/ambiance.css',
-		// '../../../node_modules/codemirror/theme/eclipse.css',
-		// '../../../node_modules/codemirror/theme/material-darker.css',
-		// '../../../node_modules/codemirror/theme/night.css',
-		// '../../../node_modules/codemirror/theme/solarized.css',
-		// '../../../node_modules/codemirror/theme/yonce.css',
-		// '../../../node_modules/codemirror/theme/base16-dark.css',
-		// '../../../node_modules/codemirror/theme/elegant.css',
-		// '../../../node_modules/codemirror/theme/material-ocean.css',
-		// '../../../node_modules/codemirror/theme/nord.css',
-		// '../../../node_modules/codemirror/theme/ssms.css',
-		// '../../../node_modules/codemirror/theme/zenburn.css',
-		// '../../../node_modules/codemirror/theme/base16-light.css',
-		// '../../../node_modules/codemirror/theme/erlang-dark.css',
-		// '../../../node_modules/codemirror/theme/material-palenight.css',
-		// '../../../node_modules/codemirror/theme/oceanic-next.css',
 		'../../../node_modules/codemirror/theme/the-matrix.css',
-		// '../../../node_modules/codemirror/theme/bespin.css',
-		// '../../../node_modules/codemirror/theme/gruvbox-dark.css',
 		'../../../node_modules/codemirror/theme/material.css',
-		// '../../../node_modules/codemirror/theme/panda-syntax.css',
-		// '../../../node_modules/codemirror/theme/tomorrow-night-bright.css',
-		// '../../../node_modules/codemirror/theme/blackboard.css',
-		// '../../../node_modules/codemirror/theme/hopscotch.css',
-		// '../../../node_modules/codemirror/theme/mbo.css',
-		// '../../../node_modules/codemirror/theme/paraiso-dark.css',
-		// '../../../node_modules/codemirror/theme/tomorrow-night-eighties.css',
-		// '../../../node_modules/codemirror/theme/cobalt.css',
-		// '../../../node_modules/codemirror/theme/icecoder.css',
-		// '../../../node_modules/codemirror/theme/mdn-like.css',
-		// '../../../node_modules/codemirror/theme/paraiso-light.css',
-		// '../../../node_modules/codemirror/theme/ttcn.css',
-		// '../../../node_modules/codemirror/theme/colorforth.css',
-		// '../../../node_modules/codemirror/theme/idea.css',
-		// '../../../node_modules/codemirror/theme/midnight.css',
-		// '../../../node_modules/codemirror/theme/pastel-on-dark.css',
-		// '../../../node_modules/codemirror/theme/twilight.css'
 	]
 })
 
@@ -141,7 +84,8 @@ export class InsEditor {
 	async val() {
 		if (this.isSourceView) {
 			if (this.codeEditor) {
-				return this.codeEditor.getValue();
+        let val = this.codeEditor.getValue();
+				return this.removeEditableAttr(val);
 			}
 		} else {
 			return this.sourceViewRedactor();
@@ -258,7 +202,11 @@ export class InsEditor {
 		}
 
 		return;
-	}
+  }
+
+  removeEditableAttr(value){
+    return value.replace(/ contenteditable="true"/g, "")
+  }
 
 	redactorCallbacks() {
 		const self = this;
@@ -268,9 +216,10 @@ export class InsEditor {
 				self.firstLoadRedactor = true;
 			},
 			keyup: () => {
-				self.firstLoadRedactor = false;
-				self.oninput.emit(self.val());
-				self.valueChange.emit(self.val());
+        self.firstLoadRedactor = false;
+        let sanitized = self.removeEditableAttr(self.val());
+				self.oninput.emit(sanitized);
+				self.valueChange.emit(sanitized);
 			},
 			source: {},
 			focus() {
@@ -278,7 +227,8 @@ export class InsEditor {
 			},
 			blur() {
 				self.deactivateLabel();
-				self.onblur.emit(self.val());
+        let sanitized = self.removeEditableAttr(self.val());
+				self.onblur.emit(sanitized);
 			}
 		};
 
@@ -550,10 +500,10 @@ export class InsEditor {
 		(this.redactorHTML ? '</html>' : '');
 
 		html = html.replace(/^\s*[\r\n]/gm, '').replace(/﻿/g, '');
+    let sanitized = this.removeEditableAttr(html);
+		this.sourceCodeViewOnly(sanitized);
 
-		this.sourceCodeViewOnly(html);
-
-		return html;
+		return sanitized;
 	}
 
 	uncommentOriginalStyles(html) {
@@ -635,8 +585,9 @@ export class InsEditor {
 				self.activateLabel();
 			}
 			self.sourceCodeViewOnly(editor.getValue());
-			self.isDisabledRedactorVisualEditorView();
-			self.oninput.emit(self.val());
+      self.isDisabledRedactorVisualEditorView();
+      let sanitized = this.removeEditableAttr(self.val());
+			self.oninput.emit(sanitized);
 		});
 
 		editor.on('focus', () => {
@@ -646,8 +597,9 @@ export class InsEditor {
 
 		editor.on('blur', () => {
 			self.deactivateLabel();
-			self.hideCursor();
-			self.onblur.emit(self.val());
+      self.hideCursor();
+      let sanitized = this.removeEditableAttr(self.val());
+			self.onblur.emit(sanitized);
 		});
 	}
 
