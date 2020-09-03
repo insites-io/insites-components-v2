@@ -1,6 +1,6 @@
 import { h, Component, Prop, Event, EventEmitter, Element } from "@stencil/core";
 
-@Component({ tag: 'ins-stepper' })
+@Component({ tag: 'ins-input-stepper' })
 export class InsStepper {
   @Element() el: HTMLElement;
   @Event() insBlur: EventEmitter;
@@ -96,7 +96,7 @@ export class InsStepper {
   addClickOutside(){
     window.addEventListener("click", e => {
       let target = e.target as any;
-      let closest = target.closest("ins-stepper")
+      let closest = target.closest("ins-input-stepper")
 
       if (closest !== this.el) {
         this.deactivateLabel();
@@ -106,7 +106,7 @@ export class InsStepper {
 
   render() {
     return (
-      <div class={`ins-stepper ins-form-field-wrap
+      <div class={`ins-input-stepper ins-form-field-wrap
         ${this.hasError ? 'is-invalid' : ''}
         ${this.readonly ? 'readonly': ''}
         ${this.disabled ? 'disabled': ''}`}>
@@ -121,16 +121,16 @@ export class InsStepper {
           </label>
         : ''}
 
-        <div class={`ins-stepper_input-wrap
+        <div class={`ins-input-stepper_input-wrap
           ${this.activated ? 'active': ''}`}
           onClick={() => this.activateLabel()}>
 
-          <div class="ins-stepper_minus"
+          <div class="ins-input-stepper_minus"
             onClick={() => this.stepDown()}>
             <i class="icon-minus"></i>
           </div>
 
-          <div class="ins-stepper_input">
+          <div class="ins-input-stepper_input">
             <input type="number"
               step={this.step}
               min={this.min}
@@ -146,7 +146,7 @@ export class InsStepper {
               onInput={e => this.inputChanged(e)} />
           </div>
 
-          <div class="ins-stepper_plus"
+          <div class="ins-input-stepper_plus"
             onClick={() => this.stepUp()}>
             <i class="icon-plus"></i>
           </div>

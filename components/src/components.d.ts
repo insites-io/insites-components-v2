@@ -393,6 +393,21 @@ export namespace Components {
         "step": number;
         "value": any;
     }
+    interface InsInputStepper {
+        "activated": boolean;
+        "disabled": boolean;
+        "errorMessage": string;
+        "hasError": boolean;
+        "hasLoad": string;
+        "label": string;
+        "max": string;
+        "min": string;
+        "name": string;
+        "readonly": boolean;
+        "required": boolean;
+        "step": string;
+        "value": string;
+    }
     interface InsInputTel {
         "areaCode": string;
         "areacodePlaceholder": string;
@@ -661,21 +676,6 @@ export namespace Components {
         "description": string;
         "icon": string;
         "indicator": string;
-    }
-    interface InsStepper {
-        "activated": boolean;
-        "disabled": boolean;
-        "errorMessage": string;
-        "hasError": boolean;
-        "hasLoad": string;
-        "label": string;
-        "max": string;
-        "min": string;
-        "name": string;
-        "readonly": boolean;
-        "required": boolean;
-        "step": string;
-        "value": string;
     }
     interface InsSteps {
         "finish": () => Promise<boolean>;
@@ -1014,6 +1014,12 @@ declare global {
         prototype: HTMLInsInputSliderElement;
         new (): HTMLInsInputSliderElement;
     };
+    interface HTMLInsInputStepperElement extends Components.InsInputStepper, HTMLStencilElement {
+    }
+    var HTMLInsInputStepperElement: {
+        prototype: HTMLInsInputStepperElement;
+        new (): HTMLInsInputStepperElement;
+    };
     interface HTMLInsInputTelElement extends Components.InsInputTel, HTMLStencilElement {
     }
     var HTMLInsInputTelElement: {
@@ -1170,12 +1176,6 @@ declare global {
         prototype: HTMLInsStepElement;
         new (): HTMLInsStepElement;
     };
-    interface HTMLInsStepperElement extends Components.InsStepper, HTMLStencilElement {
-    }
-    var HTMLInsStepperElement: {
-        prototype: HTMLInsStepperElement;
-        new (): HTMLInsStepperElement;
-    };
     interface HTMLInsStepsElement extends Components.InsSteps, HTMLStencilElement {
     }
     var HTMLInsStepsElement: {
@@ -1300,6 +1300,7 @@ declare global {
         "ins-input-file": HTMLInsInputFileElement;
         "ins-input-multiple": HTMLInsInputMultipleElement;
         "ins-input-slider": HTMLInsInputSliderElement;
+        "ins-input-stepper": HTMLInsInputStepperElement;
         "ins-input-tel": HTMLInsInputTelElement;
         "ins-instances": HTMLInsInstancesElement;
         "ins-instances-item": HTMLInsInstancesItemElement;
@@ -1326,7 +1327,6 @@ declare global {
         "ins-sort": HTMLInsSortElement;
         "ins-sparkline": HTMLInsSparklineElement;
         "ins-step": HTMLInsStepElement;
-        "ins-stepper": HTMLInsStepperElement;
         "ins-steps": HTMLInsStepsElement;
         "ins-styleguide": HTMLInsStyleguideElement;
         "ins-tab": HTMLInsTabElement;
@@ -1756,6 +1756,25 @@ declare namespace LocalJSX {
         "step"?: number;
         "value"?: any;
     }
+    interface InsInputStepper {
+        "activated"?: boolean;
+        "disabled"?: boolean;
+        "errorMessage"?: string;
+        "hasError"?: boolean;
+        "hasLoad"?: string;
+        "label"?: string;
+        "max"?: string;
+        "min"?: string;
+        "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onInsBlur"?: (event: CustomEvent<any>) => void;
+        "onInsInput"?: (event: CustomEvent<any>) => void;
+        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "readonly"?: boolean;
+        "required"?: boolean;
+        "step"?: string;
+        "value"?: string;
+    }
     interface InsInputTel {
         "areaCode"?: string;
         "areacodePlaceholder"?: string;
@@ -2028,25 +2047,6 @@ declare namespace LocalJSX {
         "indicator"?: string;
         "onInsClick"?: (event: CustomEvent<any>) => void;
     }
-    interface InsStepper {
-        "activated"?: boolean;
-        "disabled"?: boolean;
-        "errorMessage"?: string;
-        "hasError"?: boolean;
-        "hasLoad"?: string;
-        "label"?: string;
-        "max"?: string;
-        "min"?: string;
-        "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsBlur"?: (event: CustomEvent<any>) => void;
-        "onInsInput"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
-        "readonly"?: boolean;
-        "required"?: boolean;
-        "step"?: string;
-        "value"?: string;
-    }
     interface InsSteps {
         "indicator"?: string;
         "inline"?: boolean;
@@ -2227,6 +2227,7 @@ declare namespace LocalJSX {
         "ins-input-file": InsInputFile;
         "ins-input-multiple": InsInputMultiple;
         "ins-input-slider": InsInputSlider;
+        "ins-input-stepper": InsInputStepper;
         "ins-input-tel": InsInputTel;
         "ins-instances": InsInstances;
         "ins-instances-item": InsInstancesItem;
@@ -2253,7 +2254,6 @@ declare namespace LocalJSX {
         "ins-sort": InsSort;
         "ins-sparkline": InsSparkline;
         "ins-step": InsStep;
-        "ins-stepper": InsStepper;
         "ins-steps": InsSteps;
         "ins-styleguide": InsStyleguide;
         "ins-tab": InsTab;
@@ -2308,6 +2308,7 @@ declare module "@stencil/core" {
             "ins-input-file": LocalJSX.InsInputFile & JSXBase.HTMLAttributes<HTMLInsInputFileElement>;
             "ins-input-multiple": LocalJSX.InsInputMultiple & JSXBase.HTMLAttributes<HTMLInsInputMultipleElement>;
             "ins-input-slider": LocalJSX.InsInputSlider & JSXBase.HTMLAttributes<HTMLInsInputSliderElement>;
+            "ins-input-stepper": LocalJSX.InsInputStepper & JSXBase.HTMLAttributes<HTMLInsInputStepperElement>;
             "ins-input-tel": LocalJSX.InsInputTel & JSXBase.HTMLAttributes<HTMLInsInputTelElement>;
             "ins-instances": LocalJSX.InsInstances & JSXBase.HTMLAttributes<HTMLInsInstancesElement>;
             "ins-instances-item": LocalJSX.InsInstancesItem & JSXBase.HTMLAttributes<HTMLInsInstancesItemElement>;
@@ -2334,7 +2335,6 @@ declare module "@stencil/core" {
             "ins-sort": LocalJSX.InsSort & JSXBase.HTMLAttributes<HTMLInsSortElement>;
             "ins-sparkline": LocalJSX.InsSparkline & JSXBase.HTMLAttributes<HTMLInsSparklineElement>;
             "ins-step": LocalJSX.InsStep & JSXBase.HTMLAttributes<HTMLInsStepElement>;
-            "ins-stepper": LocalJSX.InsStepper & JSXBase.HTMLAttributes<HTMLInsStepperElement>;
             "ins-steps": LocalJSX.InsSteps & JSXBase.HTMLAttributes<HTMLInsStepsElement>;
             "ins-styleguide": LocalJSX.InsStyleguide & JSXBase.HTMLAttributes<HTMLInsStyleguideElement>;
             "ins-tab": LocalJSX.InsTab & JSXBase.HTMLAttributes<HTMLInsTabElement>;

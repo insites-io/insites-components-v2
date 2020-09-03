@@ -1,4 +1,4 @@
-.ins-stepper {
+.ins-input-stepper {
   box-sizing: border-box;
   * { box-sizing: border-box; }
 
@@ -46,8 +46,8 @@
     &:hover {
       border-color: var(--ins-color-ink40);
 
-      .ins-stepper_minus,
-      .ins-stepper_plus {
+      .ins-input-stepper_minus,
+      .ins-input-stepper_plus {
         background-color: var(--ins-bg-color4);
       }
     }
@@ -87,52 +87,52 @@
   &.readonly,
   &.disabled {
 
-    .ins-stepper_minus,
-    .ins-stepper_plus,
-    .ins-stepper_input {
+    .ins-input-stepper_minus,
+    .ins-input-stepper_plus,
+    .ins-input-stepper_input {
       cursor: text;
       border-color: var(--ins-color-ink10);
       background-color: var(--ins-color-disabled_readonly_bg);
       color: var(--ins-color-ink10);
     }
 
-    .ins-stepper_input input {
+    .ins-input-stepper_input input {
       color: var(--ins-color-ink40);
     }
 
-    .ins-stepper_input-wrap,
-    .ins-stepper_input-wrap:hover {
+    .ins-input-stepper_input-wrap,
+    .ins-input-stepper_input-wrap:hover {
       border-color: var(--ins-color-ink10);
     }
   }
 
   &.disabled {
-    .ins-stepper_minus,
-    .ins-stepper_plus,
-    .ins-stepper_input {
+    .ins-input-stepper_minus,
+    .ins-input-stepper_plus,
+    .ins-input-stepper_input {
       cursor: not-allowed;
     }
 
-    .ins-stepper_input input {
+    .ins-input-stepper_input input {
       cursor: not-allowed;
     }
   }
 
   &.is-invalid {
-    .ins-stepper_minus,
-    .ins-stepper_plus,
-    .ins-stepper_input {
+    .ins-input-stepper_minus,
+    .ins-input-stepper_plus,
+    .ins-input-stepper_input {
       border-color: var(--ins-color-negative);
       background-color: var(--ins-color-red-10p);
       color: var(--ins-color-negative);
     }
 
-    .ins-stepper_input input {
+    .ins-input-stepper_input input {
       color: var(--ins-color-negative);
     }
 
-    .ins-stepper_input-wrap,
-    .ins-stepper_input-wrap:hover {
+    .ins-input-stepper_input-wrap,
+    .ins-input-stepper_input-wrap:hover {
       border-color: var(--ins-color-negative);
     }
   }
