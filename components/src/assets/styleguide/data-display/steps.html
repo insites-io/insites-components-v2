@@ -81,6 +81,44 @@
     </div>
   </div>
 
+  <div>
+    <h2 class="section-title"><code>&lt;ins-steps&gt;</code> API</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>NAME</th>
+          <th>PARAMETERS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>next</td>
+          <td>-</td>
+          <td>This will complete the current step and activate the next step</td>
+        </tr>
+        <tr>
+          <td>prev</td>
+          <td>-</td>
+          <td>This will deactivate the current step and activate the previous step</td>
+        </tr>
+        <tr>
+          <td>finish</td>
+          <td>-</td>
+          <td>This will complete all steps and activate the last step</td>
+        </tr>
+        <tr>
+          <td>setStep</td>
+          <td>place of step &lt;number&gt;</td>
+          <td>This will deactivate the current step and activate the step given in the parameter</td>
+        </tr>
+        <tr>
+          <td>getAllSteps</td>
+          <td>-</td>
+          <td>This will return all ins-step provided.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
   <!-- ins-step attribute table -->
   <div>
     <h2 class="section-title"><code>&lt;ins-step&gt;</code> Attributes</h2>
@@ -205,7 +243,7 @@
     </div>
 
     <div class="ins-styleguide-wrap">
-      <div class="ins-styleguide-label-wrap">Inline State</div>
+      <div class="ins-styleguide-label-wrap">Icons State</div>
       <ins-steps>
         <ins-step icon="icon-truck" description="Shipping"></ins-step>
         <ins-step icon="icon-credit-card"  description="Payment"></ins-step>
@@ -226,11 +264,12 @@
 <!-- end states -->
 
 <div>
-  <h2 class="section-title">API</h2>
+  <h2 class="section-title">API Examples</h2>
 
   <div class="ins-styleguide-wrap">
     <div class="ins-styleguide-label-wrap">Navigating through steps</div>
     <ins-steps id="insStepsEl">
+      <ins-step description="Account"></ins-step>
       <ins-step description="Shipping"></ins-step>
       <ins-step description="Payment"></ins-step>
       <ins-step description="Summary"></ins-step>
@@ -238,19 +277,27 @@
     <div class="spacer"></div>
     <ins-button label="Prev" solid id="prevBtn"></ins-button>
     <ins-button label="Next" solid id="nextBtn"></ins-button>
-    <ins-button label="Start Again" solid id="startAgain"></ins-button>
+    <ins-button label="Go Back to step 1" solid id="backToStep1"></ins-button>
     <ins-button label="Finish" solid id="finish"></ins-button>
+    <ins-button label="Start Again" solid id="startAgain"></ins-button>
+
     <script>
       var insStepsEl = document.getElementById("insStepsEl");
       var prevBtn = document.getElementById("prevBtn");
       var nextBtn = document.getElementById("nextBtn");
-      var startAgain = document.getElementById("startAgain");
       var finish = document.getElementById("finish");
+      var backToStep1 = document.getElementById("backToStep1");
+      var startAgain = document.getElementById("startAgain");
 
       prevBtn.addEventListener('insClick', () => insStepsEl.prev());
       nextBtn.addEventListener('insClick', () => insStepsEl.next());
-      startAgain.addEventListener('insClick', () => insStepsEl.setStep(1));
       finish.addEventListener('insClick', () => insStepsEl.finish());
+      backToStep1.addEventListener('insClick', () => insStepsEl.setStep(1));
+      startAgain.addEventListener('insClick', async () => {
+        let steps = await insStepsEl.getAllSteps();
+        steps.forEach(step => step.complete = false);
+        insStepsEl.setStep(1);
+      });
     </script>
     <div class="spacer"></div>
     <div class="">
@@ -270,103 +317,23 @@
   var insStepsEl = document.getElementById("insStepsEl");
   var prevBtn = document.getElementById("prevBtn");
   var nextBtn = document.getElementById("nextBtn");
-  var startAgain = document.getElementById("startAgain");
   var finish = document.getElementById("finish");
+  var backToStep1 = document.getElementById("backToStep1");
+  var startAgain = document.getElementById("startAgain");
 
   prevBtn.addEventListener('insClick', () => insStepsEl.prev());
   nextBtn.addEventListener('insClick', () => insStepsEl.next());
-  startAgain.addEventListener('insClick', () => insStepsEl.setStep(1));
   finish.addEventListener('insClick', () => insStepsEl.finish());
+  backToStep1.addEventListener('insClick', () => insStepsEl.setStep(1));
+  startAgain.addEventListener('insClick', async () => {
+    let steps = await insStepsEl.getAllSteps();
+    steps.forEach(step => step.complete = false);
+    insStepsEl.setStep(1);
+  });
 &lt;/script&gt;
       </script>
     </div>
   </div>
-
-  <div class="ins-styleguide-wrap">
-    <div class="ins-styleguide-label-wrap">API Details</div>
-    <ins-steps id="insStepsElD">
-      <ins-step description="Shipping"></ins-step>
-      <ins-step description="Payment"></ins-step>
-      <ins-step description="Summary"></ins-step>
-    </ins-steps>
-    <div class="spacer"></div>
-    <ins-button label="Prev" solid id="prevBtnD"></ins-button>
-    <ins-button label="Next" solid id="nextBtnD"></ins-button>
-    <ins-button label="Start Again" solid id="startBtnD"></ins-button>
-    <ins-button label="Finish" solid id="finishBtnD"></ins-button>
-    <script>
-      var insStepsElD = document.getElementById("insStepsElD");
-      var prevBtnD = document.getElementById("prevBtnD");
-      var nextBtnD = document.getElementById("nextBtnD");
-      var startAgainD = document.getElementById("startBtnD");
-      var finishD = document.getElementById("finishBtnD");
-
-      prevBtnD.addEventListener('insClick', async () => {
-        let res = await insStepsElD.prev();
-        console.log('API: prev', res);
-      });
-
-      nextBtnD.addEventListener('insClick', async () => {
-        let res = await insStepsElD.next();
-        console.log('API: next', res);
-      });
-
-      startAgainD.addEventListener('insClick', async () => {
-        let res = await insStepsElD.setStep(1);
-        console.log('API: setStep', res);
-      });
-
-      finishD.addEventListener('insClick', async () => {
-        let res = await insStepsElD.finish();
-        console.log('API: finish', res);
-      });
-    </script>
-    <div class="spacer"></div>
-    <div class="">
-      <script type="text/plain" class="language-markup">
-<ins-steps id="insStepsElD">
-  <ins-step description="Shipping"></ins-step>
-  <ins-step description="Payment"></ins-step>
-  <ins-step description="Summary"></ins-step>
-</ins-steps>
-
-<ins-button label="Prev" solid id="prevBtnD"></ins-button>
-<ins-button label="Next" solid id="nextBtnD"></ins-button>
-<ins-button label="Start Again" solid id="startBtnD"></ins-button>
-<ins-button label="Finish" solid id="finishBtnD"></ins-button
-
-<script>
-  var insStepsElD = document.getElementById("insStepsElD");
-  var prevBtnD = document.getElementById("prevBtnD");
-  var nextBtnD = document.getElementById("nextBtnD");
-  var startAgainD = document.getElementById("startBtnD");
-  var finishD = document.getElementById("finishBtnD");
-
-  prevBtnD.addEventListener('insClick', async () => {
-    let res = await insStepsElD.prev();
-    console.log('API: prev', res);
-  });
-
-  nextBtnD.addEventListener('insClick', async () => {
-    let res = await insStepsElD.next();
-    console.log('API: next', res);
-  });
-
-  startAgainD.addEventListener('insClick', async () => {
-    let res = await insStepsElD.setStep(1);
-    console.log('API: setStep', res);
-  });
-
-  finishD.addEventListener('insClick', async () => {
-    let res = await insStepsElD.finish();
-    console.log('API: finish', res);
-  });
-&lt;/script&gt;
-</script>
-      </script>
-    </div>
-  </div>
-</div>
 
 </body>
 

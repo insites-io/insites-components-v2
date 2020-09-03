@@ -674,11 +674,13 @@ export namespace Components {
         "active": boolean;
         "complete": boolean;
         "description": string;
+        "hasError": boolean;
         "icon": string;
         "indicator": string;
     }
     interface InsSteps {
         "finish": () => Promise<boolean>;
+        "getAllSteps": () => Promise<HTMLInsStepElement[]>;
         "indicator": string;
         "inline": boolean;
         "next": () => Promise<{ currentStep: any; previousStep?: undefined; } | { previousStep: any; currentStep: any; }>;
@@ -2043,6 +2045,7 @@ declare namespace LocalJSX {
         "active"?: boolean;
         "complete"?: boolean;
         "description"?: string;
+        "hasError"?: boolean;
         "icon"?: string;
         "indicator"?: string;
         "onInsClick"?: (event: CustomEvent<any>) => void;

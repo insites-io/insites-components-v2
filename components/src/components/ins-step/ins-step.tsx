@@ -9,17 +9,14 @@ export class InsStep {
   @Prop({ mutable: true }) description: string = "";
   @Prop({ mutable: true }) active: boolean = false;
   @Prop({ mutable: true }) complete: boolean = false;
-
-  clickHandler(){
-    this.insClick.emit();
-  }
+  @Prop({ mutable: true }) hasError: boolean = false;
 
   render() {
     return (
       <div class={`ins-step
         ${this.active ? 'active' : ''}
         ${this.complete ? 'completed' : ''}`}
-        onClick={() => this.clickHandler()}>
+        onClick={() => this.insClick.emit()}>
 
         <div class="ins-step_progress-bar"></div>
         <div class="ins-step_details">

@@ -30,56 +30,12 @@
 </head>
 
 <body>
-  <ins-editor label="Test" has-code-editor></ins-editor>
-  <div class="col-6">
-    <ins-select id="testEl" label="test">
-      <div id="dynamicOptions">
-        <ins-select-option label="Test 1" value="Test 1"></ins-select-option>
-        <ins-select-option label="Test 2" value="Test 2"></ins-select-option>
-        <ins-select-option label="Test 3" value="Test 3"></ins-select-option>
-        <ins-select-option label="Test 4" value="Test 4"></ins-select-option>
-        <ins-select-option label="Test 5" value="Test 5"></ins-select-option>
-      </div>
-    </ins-select>
-  </div>
-
-  <script>
-    function loadDynamicOptions(){
-      var slotWrap = document.getElementById('dynamicOptions');
-      slotWrap.innerHTML = "";
-      for (i = 0; i < 5; i++){
-        var option = document.createElement('ins-select-option');
-        option.label = `Test Dynamic ${i}`;
-        option.value = `Test Dynamic ${i}`;
-        slotWrap.appendChild(option);
-      }
-      testEl.setLoadingState(false);
-      testEl.setSearchingState(false);
-      testEl.updateSelectedOptions();
-    }
-
-    function loadStaticOptions(){
-      var slotWrap = document.getElementById('dynamicOptions');
-      slotWrap.innerHTML = "";
-      for (i = 0; i < 20; i++){
-        var option = document.createElement('ins-select-option');
-        option.label = `Test ${i}`;
-        option.value = `Test ${i}`;
-        slotWrap.appendChild(option);
-      }
-      testEl.setLoadingState(false);
-      testEl.setSearchingState(false);
-      testEl.updateSelectedOptions();
-    }
-
-    testEl.addEventListener('loadMore', console.log);
-    testEl.addEventListener('onOptionSelect', e => console.log(e.detail));
-    testEl.addEventListener('insClose', () => console.log('closed'));
-    testEl.addEventListener('onSearch', e => {
-      if (e.detail) loadDynamicOptions();
-      else loadStaticOptions();
-    });
-  </script>
+  <ins-steps id="insStepsEl">
+    <ins-step description="Account"></ins-step>
+    <ins-step description="Shipping"></ins-step>
+    <ins-step description="Payment"></ins-step>
+    <ins-step description="Summary"></ins-step>
+  </ins-steps>
 </body>
 
 </html>

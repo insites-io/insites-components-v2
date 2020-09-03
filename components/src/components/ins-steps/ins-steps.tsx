@@ -94,6 +94,11 @@ export class InsSteps {
     }
   }
 
+  @Method()
+  async getAllSteps(){
+    return Array.from(this.el.querySelectorAll('ins-step'));
+  }
+
   render() {
     return (
       <div class={`ins-steps
