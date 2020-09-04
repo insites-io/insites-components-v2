@@ -4,7 +4,7 @@ import { h, Component, Prop, Event, EventEmitter, Element } from "@stencil/core"
 export class InsStepper {
   @Element() el: HTMLElement;
   @Event() insBlur: EventEmitter;
-  @Event() insInput: EventEmitter;
+  // @Event() insInput: EventEmitter;
   @Event() insValueChange: EventEmitter;
   @Event() didLoad: EventEmitter;
   @Prop() hasLoad: string;
@@ -17,7 +17,6 @@ export class InsStepper {
   @Prop({ mutable: true }) max: string;
   @Prop({ mutable: true }) value: string;
 
-  @Prop({ mutable: true }) activated: boolean = false;
   @Prop({ mutable: true }) required: boolean = false;
   @Prop({ mutable: true }) disabled: boolean = false;
   @Prop({ mutable: true }) readonly: boolean = false;
@@ -25,16 +24,29 @@ export class InsStepper {
   @Prop({ mutable: true }) hasError: boolean = false;
   @Prop({ mutable: true }) errorMessage: string = "";
 
+  labelEl; inputEl; active;
+
   componentWillLoad(){
+    console.log('componentWillLoad');
     this.value = this.validateInput(this.value);
+  }
+
+  componentDidLoad(){
+    this.addClickOutside();
+    this.bindEls();
   }
 
   componentWillUpdate(){
     this.value = this.validateInput(this.value);
   }
 
-  componentDidLoad(){
-    this.addClickOutside();
+  componentDidUpdate(){
+    this.bindEls();
+  }
+
+  bindEls(){
+    this.labelEl = this.el.querySelector('.ins-form-label');
+    this.inputEl = this.el.querySelector('.ins-input-stepper_input-wrap');
   }
 
   stepDown(){
@@ -59,38 +71,35 @@ export class InsStepper {
 
   activateLabel(){
     if (!this.readonly && !this.disabled){
-      this.activated = true
+      this.active = true;
+      if (this.labelEl) this.labelEl.classList.add('active');
+      if (this.inputEl) this.inputEl.classList.add('active');
     }
   }
 
   deactivateLabel(){
-    this.activated = false
+    this.active = false;
+    if (this.labelEl) this.labelEl.classList.remove('active');
+    if (this.inputEl) this.inputEl.classList.remove('active');
   }
 
-  onInputHandler(event){
-    let x = event.which || event.keyCode;
-    this.insInput.emit({
-      value: event.target.value,
-      validated: this.value,
-      keyCode: x
-    });
-  }
-
-  inputChanged(ev: any) {
-    let val = ev.target && ev.target.value;
-    this.value = this.validateInput(val);
-    this.insValueChange.emit(this.value);
-    ev.target.value = this.value;
-  }
+  // onInputHandler(event){
+  //   let x = event.which || event.keyCode;
+  //   this.insInput.emit({
+  //     value: event.target.value,
+  //     validated: this.value,
+  //     keyCode: x
+  //   });
+  // }
 
   insBlurHandler(event){
-    let x = event.which || event.keyCode;
-
-    this.insBlur.emit({
-      value: this.value,
-      keyCode: x
-    });
+    console.log('blurred')
+    let keyCode = event.which || event.keyCode;
+    let value = this.validateInput(event.target.value);
+    event.target.value = value;
+    this.insBlur.emit({ value, keyCode });
     this.deactivateLabel();
+    this.value = value;
   }
 
   addClickOutside(){
@@ -114,15 +123,13 @@ export class InsStepper {
         { this.label ?
           <label htmlFor={this.name}
             class={`ins-form-label
-              ${this.disabled ? 'disabled' : ''}
-              ${this.activated ? 'active':''}`}>
+              ${this.disabled ? 'disabled' : ''}`}>
 
             {this.label}
           </label>
         : ''}
 
-        <div class={`ins-input-stepper_input-wrap
-          ${this.activated ? 'active': ''}`}
+        <div class="ins-input-stepper_input-wrap"
           onClick={() => this.activateLabel()}>
 
           <div class="ins-input-stepper_minus"
@@ -142,8 +149,9 @@ export class InsStepper {
               readonly={this.readonly}
               onFocus={() => this.activateLabel()}
               onBlur={e => this.insBlurHandler(e)}
-              onKeyUp={e => this.onInputHandler(e)}
-              onInput={e => this.inputChanged(e)} />
+              // onKeyUp={e => this.onInputHandler(e)}
+              // onInput={e => this.inputChanged(e)}
+/>
           </div>
 
           <div class="ins-input-stepper_plus"

@@ -396,7 +396,6 @@ export namespace Components {
         "value": any;
     }
     interface InsInputStepper {
-        "activated": boolean;
         "disabled": boolean;
         "errorMessage": string;
         "hasError": boolean;
@@ -1768,7 +1767,6 @@ declare namespace LocalJSX {
         "value"?: any;
     }
     interface InsInputStepper {
-        "activated"?: boolean;
         "disabled"?: boolean;
         "errorMessage"?: string;
         "hasError"?: boolean;
@@ -1779,7 +1777,6 @@ declare namespace LocalJSX {
         "name"?: string;
         "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsBlur"?: (event: CustomEvent<any>) => void;
-        "onInsInput"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "readonly"?: boolean;
         "required"?: boolean;
