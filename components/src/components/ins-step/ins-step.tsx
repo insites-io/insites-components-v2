@@ -14,6 +14,7 @@ export class InsStep {
   render() {
     return (
       <div class={`ins-step
+        ${this.hasError ? 'has-error' : ''}
         ${this.active ? 'active' : ''}
         ${this.complete ? 'completed' : ''}`}
         onClick={() => this.insClick.emit()}>
@@ -29,7 +30,10 @@ export class InsStep {
             }
 
             <i class="icon-check"></i>
-            { this.indicator || this.icon ? "" : <div class="dot"></div> }
+
+            { this.indicator || this.icon ? "" :
+              <div class="ins-step_dot"></div>
+            }
           </div>
 
           { this.description

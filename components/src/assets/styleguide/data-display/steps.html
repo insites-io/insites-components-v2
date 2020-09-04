@@ -88,31 +88,60 @@
         <tr>
           <th>NAME</th>
           <th>PARAMETERS</th>
+          <th>RETURN</th>
           <th>DESCRIPTION</th>
         </tr>
         <tr>
           <td>next</td>
           <td>-</td>
+          <td>
+            <pre>
+{
+  end: boolean,             // true if the current step is the end if not false
+  previousStep: html node,  // the previous ins-step element
+  currentStep: html node    // the current ins-step element
+}
+            </pre>
+          </td>
           <td>This will complete the current step and activate the next step</td>
         </tr>
         <tr>
           <td>prev</td>
           <td>-</td>
+          <td>
+            <pre>
+{
+  start: boolean,           // true if the current step is the start if not false
+  previousStep: html node,  // the previous ins-step element
+  currentStep: html node    // the current ins-step element
+}
+            </pre>
+          </td>
           <td>This will deactivate the current step and activate the previous step</td>
         </tr>
         <tr>
           <td>finish</td>
           <td>-</td>
+          <td>true</td>
           <td>This will complete all steps and activate the last step</td>
         </tr>
         <tr>
           <td>setStep</td>
           <td>place of step &lt;number&gt;</td>
+          <td>
+            <pre>
+{
+  previousStep: html node,  // the previous ins-step element
+  currentStep: html node    // the current ins-step element
+}
+            </pre>
+          </td>
           <td>This will deactivate the current step and activate the step given in the parameter</td>
         </tr>
         <tr>
           <td>getAllSteps</td>
           <td>-</td>
+          <td>List of all <code>ins-step</code> elements</td>
           <td>This will return all ins-step provided.</td>
         </tr>
       </table>
@@ -158,6 +187,13 @@
           <td>false</td>
           <td>true, false</td>
           <td>Defines if the step is completed</td>
+        </tr>
+        <tr>
+          <td>has-error</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Defines if the step has an error</td>
         </tr>
       </table>
     </div>
@@ -274,61 +310,123 @@
       <ins-step description="Payment"></ins-step>
       <ins-step description="Summary"></ins-step>
     </ins-steps>
+
     <div class="spacer"></div>
-    <ins-button label="Prev" solid id="prevBtn"></ins-button>
+
+    <ins-button label="Prev" solid id="prevBtn" disabled></ins-button>
     <ins-button label="Next" solid id="nextBtn"></ins-button>
-    <ins-button label="Go Back to step 1" solid id="backToStep1"></ins-button>
+    <ins-button label="Go to step 2" solid id="goToStep2"></ins-button>
     <ins-button label="Finish" solid id="finish"></ins-button>
     <ins-button label="Start Again" solid id="startAgain"></ins-button>
 
     <script>
-      var insStepsEl = document.getElementById("insStepsEl");
-      var prevBtn = document.getElementById("prevBtn");
-      var nextBtn = document.getElementById("nextBtn");
-      var finish = document.getElementById("finish");
-      var backToStep1 = document.getElementById("backToStep1");
-      var startAgain = document.getElementById("startAgain");
+      let insStepsEl = document.getElementById("insStepsEl");
+      let prevBtn = document.getElementById("prevBtn");
+      let nextBtn = document.getElementById("nextBtn");
+      let finish = document.getElementById("finish");
+      let goToStep2 = document.getElementById("goToStep2");
+      let startAgain = document.getElementById("startAgain");
 
-      prevBtn.addEventListener('insClick', () => insStepsEl.prev());
-      nextBtn.addEventListener('insClick', () => insStepsEl.next());
-      finish.addEventListener('insClick', () => insStepsEl.finish());
-      backToStep1.addEventListener('insClick', () => insStepsEl.setStep(1));
       startAgain.addEventListener('insClick', async () => {
-        let steps = await insStepsEl.getAllSteps();
-        steps.forEach(step => step.complete = false);
-        insStepsEl.setStep(1);
+        insStepsEl.reset();
+        prevBtn.disabled = true;
+        nextBtn.disabled = false;
       });
+
+      finish.addEventListener('insClick', () => {
+        insStepsEl.finish();
+        prevBtn.disabled = false;
+        nextBtn.disabled = true;
+      });
+
+      goToStep2.addEventListener('insClick', () => {
+        insStepsEl.setStep(2)
+        prevBtn.disabled = false;
+        nextBtn.disabled = false;
+      });
+
+      // Use async await when calling APIs if you are expecting a return from the API
+      prevBtn.addEventListener('insClick', async () => {
+        nextBtn.disabled = false;
+        let track = await insStepsEl.prev();
+        console.log('prev', track);
+        if (track.start) prevBtn.disabled = true;
+      });
+
+      nextBtn.addEventListener('insClick', async () => {
+        prevBtn.disabled = false;
+        let track = await insStepsEl.next();
+        console.log('next', track)
+        if (track.end) nextBtn.disabled = true;
+
+        if (track.previousStep.description === "Shipping"){
+          track.previousStep.hasError = true;
+        }
+      });
+
     </script>
     <div class="spacer"></div>
     <div class="">
       <script type="text/plain" class="language-markup">
 <ins-steps id="insStepsEl">
+  <ins-step description="Account"></ins-step>
   <ins-step description="Shipping"></ins-step>
   <ins-step description="Payment"></ins-step>
   <ins-step description="Summary"></ins-step>
 </ins-steps>
 
-<ins-button label="Prev" solid id="prevBtn"></ins-button>
+<div class="spacer"></div>
+
+<ins-button label="Prev" solid id="prevBtn" disabled></ins-button>
 <ins-button label="Next" solid id="nextBtn"></ins-button>
-<ins-button label="Start Again" solid id="startAgain"></ins-button>
+<ins-button label="Go to step 2" solid id="goToStep2"></ins-button>
 <ins-button label="Finish" solid id="finish"></ins-button>
+<ins-button label="Start Again" solid id="startAgain"></ins-button>
 
 <script>
-  var insStepsEl = document.getElementById("insStepsEl");
-  var prevBtn = document.getElementById("prevBtn");
-  var nextBtn = document.getElementById("nextBtn");
-  var finish = document.getElementById("finish");
-  var backToStep1 = document.getElementById("backToStep1");
-  var startAgain = document.getElementById("startAgain");
+  let insStepsEl = document.getElementById("insStepsEl");
+  let prevBtn = document.getElementById("prevBtn");
+  let nextBtn = document.getElementById("nextBtn");
+  let finish = document.getElementById("finish");
+  let goToStep2 = document.getElementById("goToStep2");
+  let startAgain = document.getElementById("startAgain");
 
-  prevBtn.addEventListener('insClick', () => insStepsEl.prev());
-  nextBtn.addEventListener('insClick', () => insStepsEl.next());
-  finish.addEventListener('insClick', () => insStepsEl.finish());
-  backToStep1.addEventListener('insClick', () => insStepsEl.setStep(1));
   startAgain.addEventListener('insClick', async () => {
-    let steps = await insStepsEl.getAllSteps();
-    steps.forEach(step => step.complete = false);
-    insStepsEl.setStep(1);
+    insStepsEl.reset();
+    prevBtn.disabled = true;
+    nextBtn.disabled = false;
+  });
+
+  finish.addEventListener('insClick', () => {
+    insStepsEl.finish();
+    prevBtn.disabled = false;
+    nextBtn.disabled = true;
+  });
+
+  goToStep2.addEventListener('insClick', () => {
+    insStepsEl.setStep(2)
+    prevBtn.disabled = false;
+    nextBtn.disabled = false;
+  });
+
+  // Use async await when calling APIs if you are expecting a return from the API
+  // Check the console to see the track
+  prevBtn.addEventListener('insClick', async () => {
+    nextBtn.disabled = false;
+    let track = await insStepsEl.prev();
+    console.log('prev', track);
+    if (track.start) prevBtn.disabled = true;
+  });
+
+  nextBtn.addEventListener('insClick', async () => {
+    prevBtn.disabled = false;
+    let track = await insStepsEl.next();
+    console.log('next', track)
+    if (track.end) nextBtn.disabled = true;
+
+    if (track.previousStep.description === "Shipping"){
+      track.previousStep.hasError = true;
+    }
   });
 &lt;/script&gt;
       </script>

@@ -35,19 +35,17 @@ export class InsSteps {
     this.setDefault();
   }
 
-  moveStep(){
-    this.steps
-  }
-
   @Method()
   async setStep(i){
     for (let l = 0; l < this.steps.length; l++){
       this.steps[l].active = false;
     }
 
+    let previousStep = this.steps[this.current];
     this.current = i - 1;
     this.steps[this.current].active = true;
-    return { currentStep: this.steps[this.current] }
+
+    return { previousStep, currentStep: this.steps[this.current] }
   }
 
   @Method()
@@ -62,26 +60,35 @@ export class InsSteps {
   @Method()
   async next(){
     let sum = this.current + 1;
+    let end = (sum + 1) === this.steps.length;
     let previousStep = this.steps[this.current];
     previousStep.complete = true;
     previousStep.active = false;
 
     if (sum >= this.steps.length) {
-      return { currentStep: this.steps[sum] };
+      return {
+        end,
+        previousStep: this.steps[this.current - 1],
+        currentStep: previousStep,
+      }
     }
 
     this.current = sum;
     this.steps[sum].active = true;
 
     return {
-      previousStep, currentStep: this.steps[sum]
+      end, previousStep, currentStep: this.steps[sum]
     }
   }
 
   @Method()
   async prev(){
     let diff = this.current - 1;
-    if (diff < 0) return false;
+    if (diff < 0) return {
+      start: true,
+      previousStep: this.steps[this.current + 1],
+      currentStep: this.steps[this.current]
+    };
 
     let previousStep = this.steps[this.current];
     previousStep.active = false;
@@ -90,13 +97,27 @@ export class InsSteps {
     this.steps[diff].active = true;
 
     return {
-      previousStep, currentStep: this.steps[diff]
+      start: diff === 0,
+      previousStep,
+      currentStep: this.steps[diff]
     }
   }
 
   @Method()
   async getAllSteps(){
-    return Array.from(this.el.querySelectorAll('ins-step'));
+    return this.steps;
+  }
+
+  @Method()
+  async reset(){
+    let total = this.steps.length;
+    for (let i = 0; i < total; i ++){
+      this.steps[i].complete = false;
+      this.steps[i].active = false;
+      this.steps[i].hasError = false;
+    }
+    this.steps[0].active = true;
+    return true;
   }
 
   render() {

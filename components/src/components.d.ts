@@ -686,12 +686,13 @@ export namespace Components {
     }
     interface InsSteps {
         "finish": () => Promise<boolean>;
-        "getAllSteps": () => Promise<HTMLInsStepElement[]>;
+        "getAllSteps": () => Promise<any>;
         "indicator": string;
         "inline": boolean;
-        "next": () => Promise<{ currentStep: any; previousStep?: undefined; } | { previousStep: any; currentStep: any; }>;
-        "prev": () => Promise<false | { previousStep: any; currentStep: any; }>;
-        "setStep": (i: any) => Promise<{ currentStep: any; }>;
+        "next": () => Promise<{ end: boolean; previousStep: any; currentStep: any; }>;
+        "prev": () => Promise<{ start: boolean; previousStep: any; currentStep: any; }>;
+        "reset": () => Promise<boolean>;
+        "setStep": (i: any) => Promise<{ previousStep: any; currentStep: any; }>;
     }
     interface InsStyleguide {
         "label": string;

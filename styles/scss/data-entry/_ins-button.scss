@@ -62,7 +62,7 @@
 
 ins-button {
 
-  &[disabled] {
+  & button[disabled] {
     pointer-events: none;
   }
 
