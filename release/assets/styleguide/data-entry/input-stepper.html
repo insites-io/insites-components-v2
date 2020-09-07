@@ -22,32 +22,37 @@
 </head>
 
 <body>
-  <!-- ins-stepper -->
+  <!-- ins-input-stepper -->
   <div>
-    <!-- ins-stepper header -->
+    <!-- ins-input-stepper header -->
     <div>
-      <h2 class="section-title">Insites Stepper <code>&lt;ins-stepper&gt;</code></h2>
+      <h2 class="section-title">Insites Stepper <code>&lt;ins-input-stepper&gt;</code></h2>
       <p>Defines an input field where user can enter data or use the -, + buttons to update the value.</p>
     </div>
-    <!-- ins-stepper Complete Example -->
+    <!-- ins-input-stepper Complete Example -->
     <div>
         <h2 class="section-title">Complete Example</h2>
         <div class="ins-styleguide-wrap">
           <div class="ins-styleguide-cont">
             <div class="ins-styleguide-actual-slot-wrap">
-              <ins-stepper value="50" step="10" min="10" max="100"></ins-stepper>
+              <ins-input-stepper value="50" step="10" min="10" max="100"></ins-input-stepper>
             </div>
 
             <div class="ins-styleguide-code-slot-wrap">
               <script type="text/plain" class="language-markup">
-<ins-stepper value="50" step="10" min="10" max="100"></ins-stepper>
+<ins-input-stepper
+  value="50"
+  step="10"
+  min="10"
+  max="100">
+</ins-input-stepper>
               </script>
             </div>
           </div>
         </div>
     </div>
 
-    <!-- ins-stepper attribute table -->
+    <!-- ins-input-stepper attribute table -->
     <div>
       <h2 class="section-title">Attributes</h2>
       <div class="table-style">
@@ -140,7 +145,7 @@
       </div>
     </div>
 
-    <!-- ins-stepper event table -->
+    <!-- ins-input-stepper event table -->
     <div>
       <div class="table-style">
         <table>
@@ -168,7 +173,7 @@
       </div>
     </div>
 
-    <!-- ins-stepper States -->
+    <!-- ins-input-stepper States -->
     <div>
       <h2 class="section-title">States</h2>
 
@@ -178,10 +183,10 @@
           <div class="ins-styleguide-label-wrap">Default State</div>
           <div class="ins-styleguide-cont">
             <div class="ins-styleguide-actual-slot-wrap">
-            <ins-stepper></ins-stepper>
+            <ins-input-stepper></ins-input-stepper>
           </div>
           <div class="ins-styleguide-code-slot-wrap">
-            <script type="text/plain" class="language-markup"><ins-stepper></ins-stepper></script>
+            <script type="text/plain" class="language-markup"><ins-input-stepper></ins-input-stepper></script>
           </div>
           </div>
         </div>
@@ -193,7 +198,7 @@
         <div class="ins-styleguide-label-wrap">Direct Set Data</div>
           <div class="ins-styleguide-cont">
             <div class="ins-styleguide-actual-slot-wrap">
-            <ins-stepper id="dsv"></ins-stepper>
+            <ins-input-stepper id="dsv"></ins-input-stepper>
             <script>
               var dsv = document.getElementById('dsv');
               dsv.addEventListener('didLoad', function(e){
@@ -204,7 +209,7 @@
 
           <div class="ins-styleguide-code-slot-wrap">
             <script type="text/plain" class="language-markup">
-<ins-stepper id="dsv"></ins-stepper>
+<ins-input-stepper id="dsv"></ins-input-stepper>
 <script>
   var dsv = document.getElementById('dsv');
   dsv.addEventListener('didLoad', function(e){
@@ -223,17 +228,17 @@
           <div class="ins-styleguide-label-wrap">Static Data Source</div>
           <div class="ins-styleguide-cont">
             <div class="ins-styleguide-actual-slot-wrap">
-            <ins-stepper
+            <ins-input-stepper
               value="200"
               label="Name">
-            </ins-stepper>
+            </ins-input-stepper>
           </div>
           <div class="ins-styleguide-code-slot-wrap">
             <script type="text/plain" class="language-markup">
-<ins-stepper
+<ins-input-stepper
   value="200"
   label="Name">
-</ins-stepper>
+</ins-input-stepper>
             </script>
           </div>
           </div>
@@ -246,11 +251,11 @@
           <div class="ins-styleguide-label-wrap">Disabled State</div>
           <div class="ins-styleguide-cont">
             <div class="ins-styleguide-actual-slot-wrap">
-            <ins-stepper label="Disabled" disabled></ins-stepper>
+            <ins-input-stepper label="Disabled" disabled></ins-input-stepper>
           </div>
           <div class="ins-styleguide-code-slot-wrap">
             <script type="text/plain" class="language-markup">
-<ins-stepper label="Disabled" disabled></ins-stepper>
+<ins-input-stepper label="Disabled" disabled></ins-input-stepper>
             </script>
           </div>
           </div>
@@ -263,11 +268,11 @@
           <div class="ins-styleguide-label-wrap">Read Only State</div>
           <div class="ins-styleguide-cont">
             <div class="ins-styleguide-actual-slot-wrap">
-            <ins-stepper label="Readonly" readonly></ins-stepper>
+            <ins-input-stepper label="Readonly" readonly></ins-input-stepper>
           </div>
           <div class="ins-styleguide-code-slot-wrap">
             <script type="text/plain" class="language-markup">
-<ins-stepper label="Readonly" readonly></ins-stepper>
+<ins-input-stepper label="Readonly" readonly></ins-input-stepper>
             </script>
           </div>
           </div>
@@ -280,22 +285,22 @@
           <div class="ins-styleguide-label-wrap">Error State</div>
           <div class="ins-styleguide-cont">
             <div class="ins-styleguide-actual-slot-wrap">
-            <ins-stepper has-error label="Quantity"
+            <ins-input-stepper has-error label="Quantity"
               error-message="Please enter quantity">
-            </ins-stepper>
+            </ins-input-stepper>
           </div>
           <div class="ins-styleguide-code-slot-wrap">
             <script type="text/plain" class="language-markup">
-<ins-stepper has-error label="Quantity"
+<ins-input-stepper has-error label="Quantity"
   error-message="Please enter quantity">
-</ins-stepper>
+</ins-input-stepper>
             </script>
           </div>
           </div>
         </div>
       </div>
 
-    <!-- ins-stepper events -->
+    <!-- ins-input-stepper events -->
 		<div>
       <h2 class="section-title">Events</h2>
       <!-- insInput -->
@@ -303,7 +308,7 @@
         <div class="ins-styleguide-label-wrap">insInput</div>
         <div class="ins-styleguide-cont">
           <div class="ins-styleguide-actual-slot-wrap">
-            <ins-stepper id="insInput"></ins-stepper>
+            <ins-input-stepper id="insInput"></ins-input-stepper>
             <p id="demo"></p>
             <script>
             const insInput = document.getElementById('insInput')
@@ -316,7 +321,7 @@
           </div>
           <div class="ins-styleguide-code-slot-wrap">
             <script type="text/plain" class="language-markup">
-<ins-stepper id="insInput"></ins-stepper>
+<ins-input-stepper id="insInput"></ins-input-stepper>
 <p id="demo"></p>
 <script>
 const insInput = document.getElementById('insInput')
@@ -337,13 +342,13 @@ insInput.addEventListener('insInput', event => {
           <div class="ins-styleguide-label-wrap">insValueChange</div>
           <div class="ins-styleguide-cont">
             <div class="ins-styleguide-actual-slot-wrap">
-              <ins-stepper
+              <ins-input-stepper
               id="insValueChange"
               placeholder="Email"
               label="Email"
               field="email"
               icon="icon-mail">
-            </ins-stepper>
+            </ins-input-stepper>
             <p id="el"></p>
             <script>
               const insValueChange = document.getElementById('insValueChange')
@@ -355,13 +360,13 @@ insInput.addEventListener('insInput', event => {
             </div>
             <div class="ins-styleguide-code-slot-wrap">
               <script type="text/plain" class="language-markup">
-<ins-stepper
+<ins-input-stepper
   id="valueChange"
   placeholder="Email"
   label="Email"
   field="email"
   icon="icon-mail">
-</ins-stepper>
+</ins-input-stepper>
 <p id="demo"></p>
 <script>
   const valueChange = document.getElementById('valueChange')

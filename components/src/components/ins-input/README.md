@@ -28,6 +28,8 @@
 | `readonly`     | `readonly`      |             | `boolean` | `false`     |
 | `required`     | `required`      |             | `boolean` | `false`     |
 | `step`         | `step`          |             | `string`  | `""`        |
+| `unitLeft`     | `unit-left`     |             | `string`  | `""`        |
+| `unitRight`    | `unit-right`    |             | `string`  | `""`        |
 | `value`        | `value`         |             | `string`  | `""`        |
 
 

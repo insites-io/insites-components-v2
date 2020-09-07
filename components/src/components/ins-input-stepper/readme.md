@@ -9,7 +9,6 @@
 
 | Property       | Attribute       | Description | Type      | Default     |
 | -------------- | --------------- | ----------- | --------- | ----------- |
-| `activated`    | `activated`     |             | `boolean` | `false`     |
 | `disabled`     | `disabled`      |             | `boolean` | `false`     |
 | `errorMessage` | `error-message` |             | `string`  | `""`        |
 | `hasError`     | `has-error`     |             | `boolean` | `false`     |
@@ -30,7 +29,6 @@
 | ---------------- | ----------- | ------------------ |
 | `didLoad`        |             | `CustomEvent<any>` |
 | `insBlur`        |             | `CustomEvent<any>` |
-| `insInput`       |             | `CustomEvent<any>` |
 | `insValueChange` |             | `CustomEvent<any>` |
 
 

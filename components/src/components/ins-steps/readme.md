@@ -25,33 +25,53 @@ Type: `Promise<boolean>`
 
 
 
-### `next() => Promise<{ currentStep: any; previousStep?: undefined; } | { previousStep: any; currentStep: any; }>`
+### `getAllSteps() => Promise<any>`
 
 
 
 #### Returns
 
-Type: `Promise<{ currentStep: any; previousStep?: undefined; } | { previousStep: any; currentStep: any; }>`
+Type: `Promise<any>`
 
 
 
-### `prev() => Promise<false | { previousStep: any; currentStep: any; }>`
-
-
-
-#### Returns
-
-Type: `Promise<false | { previousStep: any; currentStep: any; }>`
-
-
-
-### `setStep(i: any) => Promise<{ currentStep: any; }>`
+### `next() => Promise<{ end: boolean; previousStep: any; currentStep: any; }>`
 
 
 
 #### Returns
 
-Type: `Promise<{ currentStep: any; }>`
+Type: `Promise<{ end: boolean; previousStep: any; currentStep: any; }>`
+
+
+
+### `prev() => Promise<{ start: boolean; previousStep: any; currentStep: any; }>`
+
+
+
+#### Returns
+
+Type: `Promise<{ start: boolean; previousStep: any; currentStep: any; }>`
+
+
+
+### `reset() => Promise<boolean>`
+
+
+
+#### Returns
+
+Type: `Promise<boolean>`
+
+
+
+### `setStep(i: any) => Promise<{ previousStep: any; currentStep: any; }>`
+
+
+
+#### Returns
+
+Type: `Promise<{ previousStep: any; currentStep: any; }>`
 
 
 

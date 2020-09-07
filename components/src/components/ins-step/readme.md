@@ -12,6 +12,7 @@
 | `active`      | `active`      |             | `boolean` | `false` |
 | `complete`    | `complete`    |             | `boolean` | `false` |
 | `description` | `description` |             | `string`  | `""`    |
+| `hasError`    | `has-error`   |             | `boolean` | `false` |
 | `icon`        | `icon`        |             | `string`  | `""`    |
 | `indicator`   | `indicator`   |             | `string`  | `""`    |
 

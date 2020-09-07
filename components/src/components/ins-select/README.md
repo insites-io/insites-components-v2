@@ -7,42 +7,45 @@
 
 ## Properties
 
-| Property             | Attribute             | Description | Type      | Default     |
-| -------------------- | --------------------- | ----------- | --------- | ----------- |
-| `button`             | `button`              |             | `boolean` | `false`     |
-| `buttonLabel`        | `button-label`        |             | `string`  | `"Add"`     |
-| `disabled`           | `disabled`            |             | `boolean` | `false`     |
-| `dropUp`             | `drop-up`             |             | `boolean` | `false`     |
-| `dynamicPlaceholder` | `dynamic-placeholder` |             | `string`  | `undefined` |
-| `dynamicSearch`      | `dynamic-search`      |             | `boolean` | `false`     |
-| `errorMessage`       | `error-message`       |             | `string`  | `""`        |
-| `hasError`           | `has-error`           |             | `boolean` | `false`     |
-| `hasLoad`            | `has-load`            |             | `string`  | `undefined` |
-| `infiniteScroll`     | `infinite-scroll`     |             | `boolean` | `false`     |
-| `initializing`       | `initializing`        |             | `boolean` | `false`     |
-| `label`              | `label`               |             | `string`  | `undefined` |
-| `multiple`           | `multiple`            |             | `boolean` | `false`     |
-| `name`               | `name`                |             | `string`  | `undefined` |
-| `placeholder`        | `placeholder`         |             | `string`  | `""`        |
-| `readonly`           | `readonly`            |             | `boolean` | `false`     |
-| `searchable`         | `searchable`          |             | `boolean` | `false`     |
-| `selected_values`    | `selected_values`     |             | `any`     | `[]`        |
-| `small`              | `small`               |             | `boolean` | `false`     |
-| `value`              | `value`               |             | `any`     | `undefined` |
-| `withDynamicOption`  | `with-dynamic-option` |             | `boolean` | `false`     |
+| Property                    | Attribute                      | Description | Type      | Default     |
+| --------------------------- | ------------------------------ | ----------- | --------- | ----------- |
+| `button`                    | `button`                       |             | `boolean` | `false`     |
+| `buttonLabel`               | `button-label`                 |             | `string`  | `"Add"`     |
+| `disabled`                  | `disabled`                     |             | `boolean` | `false`     |
+| `dropUp`                    | `drop-up`                      |             | `boolean` | `false`     |
+| `dynamicErrorMessage`       | `dynamic-error-message`        |             | `string`  | `""`        |
+| `dynamicHasError`           | `dynamic-has-error`            |             | `boolean` | `false`     |
+| `dynamicPlaceholder`        | `dynamic-placeholder`          |             | `string`  | `undefined` |
+| `dynamicSearch`             | `dynamic-search`               |             | `boolean` | `false`     |
+| `errorMessage`              | `error-message`                |             | `string`  | `""`        |
+| `hasError`                  | `has-error`                    |             | `boolean` | `false`     |
+| `hasLoad`                   | `has-load`                     |             | `string`  | `undefined` |
+| `infiniteScroll`            | `infinite-scroll`              |             | `boolean` | `false`     |
+| `initializing`              | `initializing`                 |             | `boolean` | `false`     |
+| `label`                     | `label`                        |             | `string`  | `undefined` |
+| `multiple`                  | `multiple`                     |             | `boolean` | `false`     |
+| `name`                      | `name`                         |             | `string`  | `undefined` |
+| `placeholder`               | `placeholder`                  |             | `string`  | `""`        |
+| `readonly`                  | `readonly`                     |             | `boolean` | `false`     |
+| `searchable`                | `searchable`                   |             | `boolean` | `false`     |
+| `selected_values`           | `selected_values`              |             | `any`     | `[]`        |
+| `small`                     | `small`                        |             | `boolean` | `false`     |
+| `value`                     | `value`                        |             | `any`     | `undefined` |
+| `withDynamicOption`         | `with-dynamic-option`          |             | `boolean` | `false`     |
+| `withDynamicOptionValidate` | `with-dynamic-option-validate` |             | `boolean` | `false`     |
 
 
 ## Events
 
-| Event            | Description | Type               |
-| ---------------- | ----------- | ------------------ |
-| `didLoad`        |             | `CustomEvent<any>` |
-| `insClose`       |             | `CustomEvent<any>` |
-| `loadMore`       |             | `CustomEvent<any>` |
-| `onOptionSelect` |             | `CustomEvent<any>` |
-| `onSearch`       |             | `CustomEvent<any>` |
-| `onSubmitOption` |             | `CustomEvent<any>` |
-| `valueChange`    |             | `CustomEvent<any>` |
+| Event             | Description | Type               |
+| ----------------- | ----------- | ------------------ |
+| `didLoad`         |             | `CustomEvent<any>` |
+| `insClose`        |             | `CustomEvent<any>` |
+| `insLoadMore`     |             | `CustomEvent<any>` |
+| `insOptionSelect` |             | `CustomEvent<any>` |
+| `insSearch`       |             | `CustomEvent<any>` |
+| `insSubmit`       |             | `CustomEvent<any>` |
+| `insValueChange`  |             | `CustomEvent<any>` |
 
 
 ## Methods
@@ -94,6 +97,16 @@ Type: `Promise<void>`
 #### Returns
 
 Type: `Promise<NodeListOf<HTMLInsSelectOptionElement>>`
+
+
+
+### `resetDynamicOption() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 
