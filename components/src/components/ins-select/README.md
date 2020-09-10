@@ -50,6 +50,16 @@
 
 ## Methods
 
+### `closeOptions() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `collapseSection() => Promise<void>`
 
 
@@ -100,6 +110,26 @@ Type: `Promise<NodeListOf<HTMLInsSelectOptionElement>>`
 
 
 
+### `openOptions() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `reset() => Promise<boolean>`
+
+
+
+#### Returns
+
+Type: `Promise<boolean>`
+
+
+
 ### `resetDynamicOption() => Promise<void>`
 
 
@@ -147,6 +177,26 @@ Type: `Promise<boolean>`
 #### Returns
 
 Type: `Promise<boolean>`
+
+
+
+### `setValue(value: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `toggleInsSelectOptions() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

@@ -198,6 +198,17 @@ export namespace Components {
         "showHeader": boolean;
         "stickyHeader": boolean;
     }
+    interface InsDropdown {
+        "label": string;
+        "lined": boolean;
+    }
+    interface InsDropdownItem {
+        "label": string;
+        "link": string;
+        "linkTitle": string;
+        "submenu": boolean;
+        "target": string;
+    }
     interface InsEditor {
         "classId": string;
         "disableLineNumbers": boolean;
@@ -356,6 +367,7 @@ export namespace Components {
         "maxFiles": number;
         "maxFilesLabel": string;
         "name": string;
+        "noDefaultValue": boolean;
         "placeholder": string;
         "processS3AutoUpload": (file: any) => Promise<void>;
         "removeFiles": () => Promise<void>;
@@ -365,7 +377,9 @@ export namespace Components {
         "setS3FormData": () => Promise<void>;
         "showLimit": boolean;
         "showNotifications": boolean;
+        "subtext": string;
         "trigger": () => Promise<void>;
+        "typeLabel": string;
         "uploadErrorNotification": () => Promise<void>;
         "value": any;
     }
@@ -563,6 +577,7 @@ export namespace Components {
     interface InsSelect {
         "button": boolean;
         "buttonLabel": string;
+        "closeOptions": () => Promise<void>;
         "collapseSection": () => Promise<void>;
         "disableNoResult": () => Promise<boolean>;
         "disabled": boolean;
@@ -582,8 +597,10 @@ export namespace Components {
         "label": string;
         "multiple": boolean;
         "name": string;
+        "openOptions": () => Promise<void>;
         "placeholder": string;
         "readonly": boolean;
+        "reset": () => Promise<boolean>;
         "resetDynamicOption": () => Promise<void>;
         "searchable": boolean;
         "selected_values": any;
@@ -591,7 +608,9 @@ export namespace Components {
         "setLoadingState": (state: any) => Promise<boolean>;
         "setSearchingState": (state: any) => Promise<boolean>;
         "setSelectedFromValue": (value?: any) => Promise<boolean>;
+        "setValue": (value: any) => Promise<void>;
         "small": boolean;
+        "toggleInsSelectOptions": () => Promise<void>;
         "updateSelectedOptions": () => Promise<boolean>;
         "value": any;
         "withDynamicOption": boolean;
@@ -684,6 +703,7 @@ export namespace Components {
         "indicator": string;
     }
     interface InsSteps {
+        "clickable": boolean;
         "finish": () => Promise<boolean>;
         "getAllSteps": () => Promise<any>;
         "indicator": string;
@@ -937,6 +957,18 @@ declare global {
     var HTMLInsDrawerElement: {
         prototype: HTMLInsDrawerElement;
         new (): HTMLInsDrawerElement;
+    };
+    interface HTMLInsDropdownElement extends Components.InsDropdown, HTMLStencilElement {
+    }
+    var HTMLInsDropdownElement: {
+        prototype: HTMLInsDropdownElement;
+        new (): HTMLInsDropdownElement;
+    };
+    interface HTMLInsDropdownItemElement extends Components.InsDropdownItem, HTMLStencilElement {
+    }
+    var HTMLInsDropdownItemElement: {
+        prototype: HTMLInsDropdownItemElement;
+        new (): HTMLInsDropdownItemElement;
     };
     interface HTMLInsEditorElement extends Components.InsEditor, HTMLStencilElement {
     }
@@ -1294,6 +1326,8 @@ declare global {
         "ins-credit-card": HTMLInsCreditCardElement;
         "ins-date-time": HTMLInsDateTimeElement;
         "ins-drawer": HTMLInsDrawerElement;
+        "ins-dropdown": HTMLInsDropdownElement;
+        "ins-dropdown-item": HTMLInsDropdownItemElement;
         "ins-editor": HTMLInsEditorElement;
         "ins-filter": HTMLInsFilterElement;
         "ins-filter-item": HTMLInsFilterItemElement;
@@ -1560,6 +1594,17 @@ declare namespace LocalJSX {
         "showHeader"?: boolean;
         "stickyHeader"?: boolean;
     }
+    interface InsDropdown {
+        "label"?: string;
+        "lined"?: boolean;
+    }
+    interface InsDropdownItem {
+        "label"?: string;
+        "link"?: string;
+        "linkTitle"?: string;
+        "submenu"?: boolean;
+        "target"?: string;
+    }
     interface InsEditor {
         "classId"?: string;
         "disableLineNumbers"?: boolean;
@@ -1571,10 +1616,10 @@ declare namespace LocalJSX {
         "label"?: string;
         "mode"?: string;
         "name"?: string;
-        "onOnblur"?: (event: CustomEvent<any>) => void;
-        "onOninput"?: (event: CustomEvent<any>) => void;
-        "onOnupload"?: (event: CustomEvent<any>) => void;
-        "onValueChange"?: (event: CustomEvent<any>) => void;
+        "onInsBlur"?: (event: CustomEvent<any>) => void;
+        "onInsInput"?: (event: CustomEvent<any>) => void;
+        "onInsUpload"?: (event: CustomEvent<any>) => void;
+        "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "pluginsList"?: any;
         "readonly"?: boolean;
         "showSource"?: boolean;
@@ -1723,6 +1768,7 @@ declare namespace LocalJSX {
         "maxFiles"?: number;
         "maxFilesLabel"?: string;
         "name"?: string;
+        "noDefaultValue"?: boolean;
         "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsFileAdded"?: (event: CustomEvent<any>) => void;
         "onInsFileError"?: (event: CustomEvent<any>) => void;
@@ -1732,6 +1778,8 @@ declare namespace LocalJSX {
         "s3Data"?: object;
         "showLimit"?: boolean;
         "showNotifications"?: boolean;
+        "subtext"?: string;
+        "typeLabel"?: string;
         "value"?: any;
     }
     interface InsInputMultiple {
@@ -2057,11 +2105,13 @@ declare namespace LocalJSX {
         "hasError"?: boolean;
         "icon"?: string;
         "indicator"?: string;
-        "onInsClick"?: (event: CustomEvent<any>) => void;
+        "onInsStepClick"?: (event: CustomEvent<any>) => void;
     }
     interface InsSteps {
+        "clickable"?: boolean;
         "indicator"?: string;
         "inline"?: boolean;
+        "onInsClick"?: (event: CustomEvent<any>) => void;
     }
     interface InsStyleguide {
         "label"?: string;
@@ -2225,6 +2275,8 @@ declare namespace LocalJSX {
         "ins-credit-card": InsCreditCard;
         "ins-date-time": InsDateTime;
         "ins-drawer": InsDrawer;
+        "ins-dropdown": InsDropdown;
+        "ins-dropdown-item": InsDropdownItem;
         "ins-editor": InsEditor;
         "ins-filter": InsFilter;
         "ins-filter-item": InsFilterItem;
@@ -2306,6 +2358,8 @@ declare module "@stencil/core" {
             "ins-credit-card": LocalJSX.InsCreditCard & JSXBase.HTMLAttributes<HTMLInsCreditCardElement>;
             "ins-date-time": LocalJSX.InsDateTime & JSXBase.HTMLAttributes<HTMLInsDateTimeElement>;
             "ins-drawer": LocalJSX.InsDrawer & JSXBase.HTMLAttributes<HTMLInsDrawerElement>;
+            "ins-dropdown": LocalJSX.InsDropdown & JSXBase.HTMLAttributes<HTMLInsDropdownElement>;
+            "ins-dropdown-item": LocalJSX.InsDropdownItem & JSXBase.HTMLAttributes<HTMLInsDropdownItemElement>;
             "ins-editor": LocalJSX.InsEditor & JSXBase.HTMLAttributes<HTMLInsEditorElement>;
             "ins-filter": LocalJSX.InsFilter & JSXBase.HTMLAttributes<HTMLInsFilterElement>;
             "ins-filter-item": LocalJSX.InsFilterItem & JSXBase.HTMLAttributes<HTMLInsFilterItemElement>;

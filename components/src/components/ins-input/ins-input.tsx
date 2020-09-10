@@ -34,10 +34,28 @@ export class InsInput {
   @Prop({mutable: true}) unitLeft: string = "";
 
   componentDidLoad(){
+    this.adjustInputPadding();
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
       if (func) func(this.el);
+    }
+  }
+
+
+  adjustInputPadding(){
+    let input = this.el.querySelector('input');
+    if (this.unitRight){
+      let rightEl = this.el.querySelector('.unit-right') as any;
+      let padding = rightEl.offsetWidth + 20;
+      if (this.icon) padding = padding + 20;
+      input.style.paddingRight = padding + 'px';
+    }
+
+    if (this.unitLeft){
+      let leftEl = this.el.querySelector('.unit-left') as any;
+      let padding = leftEl.offsetWidth + 16;
+      input.style.paddingLeft = padding + 'px';
     }
   }
 

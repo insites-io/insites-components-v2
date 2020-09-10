@@ -19,9 +19,9 @@
 
 ## Events
 
-| Event      | Description | Type               |
-| ---------- | ----------- | ------------------ |
-| `insClick` |             | `CustomEvent<any>` |
+| Event          | Description | Type               |
+| -------------- | ----------- | ------------------ |
+| `insStepClick` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------

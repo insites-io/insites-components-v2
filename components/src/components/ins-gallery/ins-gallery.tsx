@@ -11,7 +11,7 @@ export class InsGallery {
   @Prop({ mutable: true }) withIndicator: boolean;
   @Prop({ mutable: true }) thumbnailLayout: string = "inline";
 
-  imgEl; thumbs; sliderThumbs; slider; slides; progress;
+  imgEl; thumbs; sliderThumbs; slider; slides; progress; viewports;
 
   @Listen('insGalleryUpdate')
   insUpdateSrcHandler(e){
@@ -19,7 +19,7 @@ export class InsGallery {
     let img = e.detail.image;
     if (this.slidable && !this.zoomable){
       this.updateSlide(i, img);
-    } else this.updateSrc(img, i)
+    } else this.updateSrc(img, i);
   }
 
   updateSrc(img, i?){
@@ -67,6 +67,7 @@ export class InsGallery {
   onSlideHandler(){
     let i = this.slider.currentSlide;
     this.thumbs[i].activate();
+    this.sliderThumbs.goTo(i);
     this.updateSlideImg(i, this.thumbs[i].image);
     this.setProgress(i);
   }
@@ -83,7 +84,10 @@ export class InsGallery {
   initSliderThumbs(){
     let thumbnails = this.el.querySelector(`.ins-gallery_thumbnails`);
     let perPage = this.calculateThumbnailsPerPage(thumbnails);
-    this.sliderThumbs = new Siema({ selector: thumbnails, perPage })
+    this.sliderThumbs = new Siema({
+      selector: thumbnails,
+      perPage
+    })
   }
 
   calculateViewport(viewport, current, wrapper, thumbnail){
@@ -98,13 +102,16 @@ export class InsGallery {
     const wrapperWidth = wrapper.offsetWidth - 60;
     const thumbnailWidth = this.thumbs[0].offsetWidth;
     // const deFault = Math.floor(wrapperWidth / thumbnailWidth);
-    return {
+
+    this.viewports = {
       1200: this.calculateViewport(1200, viewport, wrapperWidth, thumbnailWidth),
       900: this.calculateViewport(900, viewport, wrapperWidth, thumbnailWidth),
       700: this.calculateViewport(700, viewport, wrapperWidth, thumbnailWidth),
       400: this.calculateViewport(400, viewport, wrapperWidth, thumbnailWidth),
       300: this.calculateViewport(300, viewport, wrapperWidth, thumbnailWidth)
     }
+
+    return this.viewports;
   }
 
   onLoadHandler(){

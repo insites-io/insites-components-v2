@@ -5,6 +5,8 @@ $input_field_font_size: 14px;
 $input_field_font_weight: 400;
 
 @import "./data-display/ins-card";
+@import "./data-display/ins-dropdown";
+@import "./data-display/ins-dropdown-item";
 @import "./data-display/ins-filter";
 @import "./data-display/ins-filter-item";
 @import "./data-display/ins-progress-bar";

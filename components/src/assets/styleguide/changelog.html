@@ -16,15 +16,47 @@
     h2.section-title {
       margin-bottom: 1rem;
     }
+
+    code.c-tag,
+    code.a-tag,
+    code.p-tag {
+      background-color: transparent;
+      border: 0;
+      color: #1e86e3;
+    }
+
+    code.a-tag {
+      color: #ffa639;
+    }
+
+    code.p-tag {
+      color: #ff3366;
+    }
   </style>
 </head>
 
 <body>
+  <h2 class="section-title">v2.1.0 (September 10, 2020)</h2>
+  <ul>
+    <li>Fixed <code class="c-tag">ins-editor</code> adding contenteditable attribute</li>
+    <li>Fixed <code class="c-tag">ins-select</code> state handling</li>
+    <li>New API for <code class="c-tag">ins-select</code> <code class="a-tag">reset()</code> and <code class="a-tag">resetDynamicOption()</code></li>
+    <li>New attributes for <code class="c-tag">ins-select</code> <code class="p-tag">with-dynamic-option-validate</code>, <code class="p-tag">dynamicHasError</code> and <code class="p-tag">dynamicErrorMessage</code></li>
+    <li>New attributes for <code class="c-tag">ins-input</code> <code class="p-tag">unit-left</code> and <code class="p-tag">unit-right</code></li>
+    <li>New attributes for <code class="c-tag">ins-input-file</code> <code class="p-tag">no-default-value</code>, <code class="p-tag">subtext</code> and <code class="p-tag">type-label</code></li>
+    <li>New component <code class="c-tag">ins-dropdown</code></li>
+    <li>New component <code class="c-tag">ins-gallery</code></li>
+    <li>New component <code class="c-tag">ins-steps</code></li>
+    <li>New component <code class="c-tag">ins-input-stepper</code></li>
+    <li>Updated documentation of Font Icons</li>
+    <li>Updated sidebar menus</li>
+  </ul>
+
   <h2 class="section-title">v2.0.1 (August 26, 2020)</h2>
   <ul>
-    <li>Fixed <code>ins-input-file</code> styles and updated state</li>
-    <li>Fixed <code>ins-input-tel</code> flags image source</li>
-    <li>Fixed <code>ins-textarea</code> value prop binding and add min-height in styles</li>
+    <li>Fixed <code class="c-tag">ins-input-file</code> styles and updated state</li>
+    <li>Fixed <code class="c-tag">ins-input-tel</code> flags image source</li>
+    <li>Fixed <code class="c-tag">ins-textarea</code> value prop binding and add min-height in styles</li>
   </ul>
 
   <h2 class="section-title">v2.0.0 (August 3, 2020)</h2>
@@ -32,7 +64,7 @@
     <li>Separated styles from the components for theming and caching</li>
     <li>Updated event names to avoid native DOM event conflicts</li>
     <li>Updated APIs to be asynchronous to avoid race conditions</li>
-    <li>Updated <code>ins-base-table</code> to <code>ins-table</code></li>
+    <li>Updated <code class="c-tag">ins-base-table</code> to <code class="c-tag">ins-table</code></li>
     <li>Added CSS variables for Insites Theme</li>
     <li>Updated components to include third party libraries</li>
     <li>Added Cache-Control with max-age of 1 year to components and assets</li>

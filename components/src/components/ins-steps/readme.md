@@ -9,8 +9,16 @@
 
 | Property    | Attribute   | Description | Type      | Default |
 | ----------- | ----------- | ----------- | --------- | ------- |
+| `clickable` | `clickable` |             | `boolean` | `false` |
 | `indicator` | `indicator` |             | `string`  | `""`    |
 | `inline`    | `inline`    |             | `boolean` | `false` |
+
+
+## Events
+
+| Event      | Description | Type               |
+| ---------- | ----------- | ------------------ |
+| `insClick` |             | `CustomEvent<any>` |
 
 
 ## Methods

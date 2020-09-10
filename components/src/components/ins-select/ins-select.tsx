@@ -288,6 +288,28 @@ export class InsSelect {
     this.dynamicHasError = false;
   }
 
+  @Method()
+  async reset() {
+    let options = await this.getAllOptions();
+    if (!options.length) return false;
+
+    if (this.multiple) {
+      this.resetMultipleValue(options);
+    } else this.resetSelected(options);
+  }
+
+  resetSelected(options) {
+    this.loopThroughOptions(o => o.activated = false, options);
+    this.labelOfValue = "";
+    this.value = "";
+  }
+
+  resetMultipleValue(options){
+    this.loopThroughOptions(o => o.activated = false, options);
+    this.value = [];
+    this.selected_values = [];
+  }
+
   checkDropUp(){
     let pos = this.insSelectEl.getBoundingClientRect();
     if ((window.innerHeight - pos.bottom) < 65) {
@@ -518,6 +540,37 @@ export class InsSelect {
       }
     }
   }
+
+  // START Old methods
+  @Method()
+  async setValue(value){
+    this.value = value;
+    this.selected_values = value;
+  }
+
+  @Method()
+  async toggleInsSelectOptions(){
+    if (!this.readonly && !this.disabled){
+      this.activated = !this.activated;
+      if (this.activated) {
+        this.expandSection();
+      } else {
+        this.collapseSection();
+      }
+    }
+  }
+
+  @Method()
+  async closeOptions(){
+    this.collapseSection();
+  }
+
+  @Method()
+  async openOptions(){
+    this.checkDropUp();
+    this.expandSection();
+  }
+  // END Old methods
 
   renderLabelForButtonised(){
     return (

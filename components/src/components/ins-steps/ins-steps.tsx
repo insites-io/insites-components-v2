@@ -1,12 +1,38 @@
-import { h, Component, Element, Method, Prop } from "@stencil/core";
+import { h, Component, Element, Method, Prop, Listen, Event, EventEmitter } from "@stencil/core";
 
 @Component({ tag: 'ins-steps' })
 export class InsSteps {
   @Element() el: HTMLElement;
+  @Event() insClick: EventEmitter;
   @Prop({ mutable: true }) indicator: string = "";
   @Prop({ mutable: true }) inline: boolean = false;
+  @Prop({ mutable: true }) clickable: boolean = false;
 
   steps; current = 0;
+
+  @Listen('insStepClick')
+  insStepClicked(e){
+    if (!this.clickable) return false;
+
+    let step = e.target;
+    for (let i = 0; i < this.steps.length; i++){
+      this.steps[i].active = false;
+      if (this.steps[i] === step){
+        this.emitEvent(step, i);
+      }
+    }
+  }
+
+  emitEvent(currentStep, i){
+    let previousStep = this.steps[this.current];
+    this.current = i;
+    this.steps[i].active = true;
+    this.insClick.emit({
+      start: i === 0,
+      end: i === (this.steps.length - 1),
+      previousStep, currentStep
+    });
+  }
 
   setIndicators(){
     if (this.indicator && this.indicator === "number"){

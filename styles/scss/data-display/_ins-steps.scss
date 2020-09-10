@@ -36,6 +36,22 @@ ins-steps.hydrated {
   display: block;
   box-sizing: border-box;
   * { box-sizing: border-box; }
+
+  &[clickable] {
+    .ins-step_details {
+      cursor: pointer;
+
+      &:hover {
+        .ins-step_indicator {
+          border-color: var(--ins-color-primary);
+        }
+
+        .ins-step_description {
+          color: var(--ins-color-primary);
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 425px) {

@@ -30,7 +30,14 @@
 </head>
 
 <body>
-  <ins-input-stepper value="50" step="10" min="10" max="100"></ins-input-stepper>
+  <ins-steps clickable id="testEl">
+    <ins-step description="Shipping"></ins-step>
+    <ins-step description="Payment" has-error></ins-step>
+    <ins-step description="Summary"></ins-step>
+  </ins-steps>
+  <script>
+    testEl.addEventListener('insClick', console.log);
+  </script>
 </body>
 
 </html>

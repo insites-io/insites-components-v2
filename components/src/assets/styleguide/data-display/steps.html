@@ -77,6 +77,40 @@
           <td>true, false</td>
           <td>Renders the steps description inline with the indicators</td>
         </tr>
+        <tr>
+          <td>clickable</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Renders the steps to be clickable</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="section-title"><code>&lt;ins-steps&gt;</code> Event</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>NAME</th>
+          <th>OBJECT</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>insClick</td>
+          <td>
+            <pre>
+{
+  start: boolean,
+  end: boolean,
+  previousStep: html node,
+  currentStep: html node
+}
+            </pre>
+          </td>
+          <td>Emits an event when steps are clickable</td>
+        </tr>
       </table>
     </div>
   </div>
@@ -97,9 +131,9 @@
           <td>
             <pre>
 {
-  end: boolean,             // true if the current step is the end if not false
-  previousStep: html node,  // the previous ins-step element
-  currentStep: html node    // the current ins-step element
+  end: boolean,
+  previousStep: html_node,
+  currentStep: html_node
 }
             </pre>
           </td>
@@ -111,9 +145,9 @@
           <td>
             <pre>
 {
-  start: boolean,           // true if the current step is the start if not false
-  previousStep: html node,  // the previous ins-step element
-  currentStep: html node    // the current ins-step element
+  start: boolean,
+  previousStep: html_node,
+  currentStep: html_node
 }
             </pre>
           </td>
@@ -131,8 +165,8 @@
           <td>
             <pre>
 {
-  previousStep: html node,  // the previous ins-step element
-  currentStep: html node    // the current ins-step element
+  previousStep: html_node,
+  currentStep: html_node
 }
             </pre>
           </td>
@@ -312,6 +346,32 @@
   <ins-step description="Payment" complete has-error></ins-step>
   <ins-step description="Summary" has-error></ins-step>
 </ins-steps>
+        </script>
+      </div>
+    </div>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Clickable State</div>
+      <ins-steps clickable id="insStepsClickEl">
+        <ins-step description="Shipping"></ins-step>
+        <ins-step description="Payment"></ins-step>
+        <ins-step description="Summary"></ins-step>
+      </ins-steps>
+      <script>
+        insStepsClickEl.addEventListener('insClick', console.log);
+      </script>
+      <div class="spacer"></div>
+      <div class="">
+        <script type="text/plain" class="language-markup">
+<ins-steps clickable id="insStepsClickEl">
+  <ins-step description="Shipping"></ins-step>
+  <ins-step description="Payment"></ins-step>
+  <ins-step description="Summary"></ins-step>
+</ins-steps>
+<script>
+  // Check console for event log
+  insStepsClickEl.addEventListener('insClick', console.log);
+&lt;/script&gt;
         </script>
       </div>
     </div>

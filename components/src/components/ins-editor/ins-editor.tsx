@@ -37,10 +37,10 @@ import "codemirror/mode/yaml/yaml";
 
 export class InsEditor {
 	@Element() insEditorEl: HTMLElement;
-  @Event() onblur: EventEmitter;
-  @Event() oninput: EventEmitter;
-  @Event() onupload: EventEmitter;
-  @Event() valueChange: EventEmitter;
+  @Event() insBlur: EventEmitter;
+  @Event() insInput: EventEmitter;
+  @Event() insUpload: EventEmitter;
+  @Event() insValueChange: EventEmitter;
 
 	@Prop({ mutable: true }) value: string = "";
 	@Prop({ mutable: true }) label: string = "";
@@ -192,7 +192,7 @@ export class InsEditor {
 	setImageUpload() {
 		if (this.imageUpload) {
 			return (data, files, event, upload) => {
-				this.onupload.emit({
+				this.insUpload.emit({
 					data: data,
 					image: files[0],
 					event: event,
@@ -218,8 +218,8 @@ export class InsEditor {
 			keyup: () => {
         self.firstLoadRedactor = false;
         let sanitized = self.removeEditableAttr(self.val());
-				self.oninput.emit(sanitized);
-				self.valueChange.emit(sanitized);
+				self.insInput.emit(sanitized);
+				self.insValueChange.emit(sanitized);
 			},
 			source: {},
 			focus() {
@@ -228,7 +228,7 @@ export class InsEditor {
 			blur() {
 				self.deactivateLabel();
         let sanitized = self.removeEditableAttr(self.val());
-				self.onblur.emit(sanitized);
+				self.insBlur.emit(sanitized);
 			}
 		};
 
@@ -587,7 +587,7 @@ export class InsEditor {
 			self.sourceCodeViewOnly(editor.getValue());
       self.isDisabledRedactorVisualEditorView();
       let sanitized = this.removeEditableAttr(self.val());
-			self.oninput.emit(sanitized);
+			self.insInput.emit(sanitized);
 		});
 
 		editor.on('focus', () => {
@@ -599,7 +599,7 @@ export class InsEditor {
 			self.deactivateLabel();
       self.hideCursor();
       let sanitized = this.removeEditableAttr(self.val());
-			self.onblur.emit(sanitized);
+			self.insBlur.emit(sanitized);
 		});
 	}
 

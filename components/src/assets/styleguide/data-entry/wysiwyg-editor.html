@@ -295,7 +295,7 @@
 					<p>JSON file used for <code>images</code>: <br/> <a target="_blank" href="/assets/json/editor-image.json">/assets/json/editor-image.json</a></p>
 					<script>
 						var imagesEditorEl = document.getElementById('imagesEditorEl');
-						imagesEditorEl.addEventListener('onupload', testFileUpload);
+						imagesEditorEl.addEventListener('insUpload', testFileUpload);
 
 						function testFileUpload(event) {
 							var image = event.detail.image;
@@ -317,7 +317,7 @@
 <script>
   var imagesEditorEl = document.getElementById('imagesEditorEl');
 
-  imagesEditorEl.addEventListener('onupload', testFileUpload);
+  imagesEditorEl.addEventListener('insUpload', testFileUpload);
 
   function testFileUpload(event) {
     var image = event.detail.image;

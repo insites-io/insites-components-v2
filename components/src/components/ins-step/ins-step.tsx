@@ -2,7 +2,7 @@ import { h, Component, Prop, Event, EventEmitter } from "@stencil/core";
 
 @Component({ tag: 'ins-step' })
 export class InsStep {
-  @Event() insClick: EventEmitter;
+  @Event() insStepClick: EventEmitter;
 
   @Prop({ mutable: true }) indicator: string = "";
   @Prop({ mutable: true }) icon: string = "";
@@ -17,7 +17,7 @@ export class InsStep {
         ${this.hasError ? 'has-error' : ''}
         ${this.active ? 'active' : ''}
         ${this.complete ? 'completed' : ''}`}
-        onClick={() => this.insClick.emit()}>
+        onClick={() => this.insStepClick.emit()}>
 
         <div class="ins-step_progress-bar"></div>
         <div class="ins-step_details">

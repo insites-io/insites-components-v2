@@ -28,12 +28,12 @@
 
 ## Events
 
-| Event         | Description | Type               |
-| ------------- | ----------- | ------------------ |
-| `onblur`      |             | `CustomEvent<any>` |
-| `oninput`     |             | `CustomEvent<any>` |
-| `onupload`    |             | `CustomEvent<any>` |
-| `valueChange` |             | `CustomEvent<any>` |
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `insBlur`        |             | `CustomEvent<any>` |
+| `insInput`       |             | `CustomEvent<any>` |
+| `insUpload`      |             | `CustomEvent<any>` |
+| `insValueChange` |             | `CustomEvent<any>` |
 
 
 ## Methods

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - Dropdown</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+    rel="stylesheet">
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/insites.css" />
+
+  <script type="module" src="/build/insites.esm.js"></script>
+  <script nomodule src="/build/insites.js"></script>
+
+  <!-- Documention Styleguide CSS -->
+  <link rel="stylesheet" href="/assets/prism/prism.css">
+  <script src="/assets/prism/prism.js"></script>
+
+  <link rel="stylesheet" href="/assets/css/styleguide.css">
+  <style>
+    .ins-styleguide-wrap .ins-styleguide-actual-slot-wrap {
+      width: 55%;
+    }
+    .ins-styleguide-wrap .ins-styleguide-code-slot-wrap {
+      width: 45%;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h2 class="section-title">Insites Dropdown Tag</h2>
+    <p>Creates a dropdown menu.</p>
+    <h2 class="section-title">Complete Example</h2>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+
+          <ins-dropdown lined
+            label="Products">
+
+            <ins-dropdown-item
+              label="Menu Item" link="#">
+            </ins-dropdown-item>
+
+            <ins-dropdown-item submenu
+              label="Menu Item with Submenu">
+
+              <ins-dropdown-item
+                label="Submenu Item" link="#">
+              </ins-dropdown-item>
+
+              <ins-dropdown-item submenu
+                label="Submenu Item with Submenu">
+
+                <ins-dropdown-item
+                  label="3rd Level Item 1" link="#">
+                </ins-dropdown-item>
+
+                <ins-dropdown-item
+                  label="3rd Level Item 2" link="#">
+                </ins-dropdown-item>
+
+              </ins-dropdown-item>
+            </ins-dropdown-item>
+          </ins-dropdown>
+
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-dropdown lined
+  label="Products">
+
+  <ins-dropdown-item
+    label="Menu Item" link="#">
+  </ins-dropdown-item>
+
+  <ins-dropdown-item submenu
+    label="Menu Item with Submenu">
+
+    <ins-dropdown-item
+      label="Submenu Item" link="#">
+    </ins-dropdown-item>
+
+    <ins-dropdown-item submenu
+      label="Submenu Item with Submenu">
+
+      <ins-dropdown-item
+        label="3rd Level Item 1" link="#">
+      </ins-dropdown-item>
+
+      <ins-dropdown-item
+        label="3rd Level Item 2" link="#">
+      </ins-dropdown-item>
+
+    </ins-dropdown-item>
+  </ins-dropdown-item>
+</ins-dropdown>
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ins-dropdown attribute table -->
+  <div>
+    <h2 class="section-title"><code>&lt;ins-dropdown&gt;</code> Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>label</td>
+          <td>string</td>
+          <td>-</td>
+          <td>any</td>
+          <td>Defines the label of the dropdown</td>
+        </tr>
+        <tr>
+          <td>lined</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Render menu items with a border</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="section-title"><code>&lt;ins-dropdown-item&gt;</code> Attributes</h2>
+    <div class="table-style">
+      <table>
+        <tr>
+          <th>FIELD ATTRIBUTE</th>
+          <th>TYPE</th>
+          <th>DEFAULT</th>
+          <th>OPTIONS</th>
+          <th>DESCRIPTION</th>
+        </tr>
+        <tr>
+          <td>label</td>
+          <td>string</td>
+          <td>-</td>
+          <td>any</td>
+          <td>Defines the label of the dropdown item</td>
+        </tr>
+        <tr>
+          <td>link</td>
+          <td>string</td>
+          <td>-</td>
+          <td>any</td>
+          <td>Defines the link of the dropdown item</td>
+        </tr>
+        <tr>
+          <td>linkTitle</td>
+          <td>string</td>
+          <td>-</td>
+          <td>any</td>
+          <td>Defines the value for the <code>&lt;a&gt;</code> tag title attribute</td>
+        </tr>
+        <tr>
+          <td>target</td>
+          <td>string</td>
+          <td>_self</td>
+          <td>_self, _blank, _parent, _top</td>
+          <td>Defines the value for the <code>&lt;a&gt;</code> tag target attribute</td>
+        </tr>
+        <tr>
+          <td>submenu</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>true, false</td>
+          <td>Defines if the item has a submenu</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="section-title">States</h2>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Default State</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-dropdown></ins-dropdown>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-dropdown></ins-dropdown>
+          </script>
+        </div>
+      </div>
+    </div>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">HTML Tags</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-dropdown>
+            <ul style="color: #000">
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+              <li>Item 4</li>
+              <li>Item 5</li>
+            </ul>
+          </ins-dropdown>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-dropdown>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    <li>Item 5</li>
+  </ul>
+</ins-dropdown>
+          </script>
+        </div>
+      </div>
+    </div>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Dropdown Items</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-dropdown label="Dropdown Menu">
+            <ins-dropdown-item
+              link="#"
+              label="Menu Item 1">
+            </ins-dropdown-item>
+
+            <ins-dropdown-item
+              link="#"
+              label="Menu Item 2">
+            </ins-dropdown-item>
+
+            <ins-dropdown-item
+              link="#"
+              label="Menu Item 3">
+            </ins-dropdown-item>
+          </ins-dropdown>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-dropdown label="Dropdown Menu">
+  <ins-dropdown-item
+    link="#"
+    label="Menu Item 1">
+  </ins-dropdown-item>
+
+  <ins-dropdown-item
+    link="#"
+    label="Menu Item 2">
+  </ins-dropdown-item>
+
+  <ins-dropdown-item
+    link="#"
+    label="Menu Item 3">
+  </ins-dropdown-item>
+</ins-dropdown>
+            </script>
+        </div>
+      </div>
+    </div>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Target Attribute</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-dropdown label="Dropdown Menu">
+            <ins-dropdown-item link="#"
+              label="Open in the same tab"
+              target="_self">
+            </ins-dropdown-item>
+
+            <ins-dropdown-item link="#"
+              label="Open in a new tab or window"
+              target="_blank">
+            </ins-dropdown-item>
+          </ins-dropdown>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-dropdown label="Dropdown Menu">
+  <ins-dropdown-item link="#"
+    label="Open in the same tab"
+    target="_self">
+  </ins-dropdown-item>
+
+  <ins-dropdown-item link="#"
+    label="Open in a new tab or window"
+    target="_blank">
+  </ins-dropdown-item>
+</ins-dropdown>
+            </script>
+        </div>
+      </div>
+    </div>
+
+    <div class="ins-styleguide-wrap">
+      <div class="ins-styleguide-label-wrap">Link Title Attribute</div>
+      <div class="ins-styleguide-cont">
+        <div class="ins-styleguide-actual-slot-wrap">
+          <ins-dropdown label="Dropdown Menu">
+            <ins-dropdown-item link="#"
+              label="Hover over this menu item for 3 seconds"
+              link-title="This is the link title">
+            </ins-dropdown-item>
+          </ins-dropdown>
+        </div>
+        <div class="ins-styleguide-code-slot-wrap">
+          <script type="text/plain" class="language-markup">
+<ins-dropdown label="Dropdown Menu">
+  <ins-dropdown-item link="#"
+    label="Hover over this menu item"
+    link-title="This is the link title">
+  </ins-dropdown-item>
+</ins-dropdown>
+            </script>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- end states -->
+
+
+</body>
+
+</html>
