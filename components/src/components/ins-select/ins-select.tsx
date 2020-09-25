@@ -51,6 +51,7 @@ export class InsSelect {
   @Prop({ mutable: true }) dynamicErrorMessage: string = "";
   @Prop({ mutable: true }) dynamicPlaceholder: string;
   @Prop({ mutable: true }) buttonLabel: string = "Add";
+
   dynamicInputEl; scrollWrapEl;
   loading: boolean = false;
   searching: boolean = false;
@@ -209,12 +210,44 @@ export class InsSelect {
       option.activated = false;
       if (val === option.value) {
         option.activated = true;
-        this.checkForOptions();
         this.labelOfValue = option.label;
-        if (this.inputValueEl) this.inputValueEl.value = option.label;
-        return true;
+        this.updateValueEls(option);
+        this.checkForOptions();
       }
     }, options);
+  }
+
+  updateValueEls(option){
+    if (this.inputValueEl){
+      this.inputValueEl.value = option.label;
+    }
+
+    if (this.button && !this.label){
+      let valueEl = this.searchEl('.ins-select-label-wrap span');
+      valueEl.innerHTML = option.label;
+    }
+  }
+
+  @Method()
+  async reset() {
+    let options = await this.getAllOptions();
+    if (!options.length) return false;
+
+    if (this.multiple) {
+      this.resetMultipleValue(options);
+    } else this.resetSelected(options);
+  }
+
+  resetSelected(options) {
+    this.loopThroughOptions(o => o.activated = false, options);
+    this.labelOfValue = "";
+    this.value = "";
+  }
+
+  resetMultipleValue(options){
+    this.loopThroughOptions(o => o.activated = false, options);
+    this.value = [];
+    this.selected_values = [];
   }
 
   @Method()
@@ -286,28 +319,6 @@ export class InsSelect {
     this.collapseSection();
     this.dynamicInputEl.value = '';
     this.dynamicHasError = false;
-  }
-
-  @Method()
-  async reset() {
-    let options = await this.getAllOptions();
-    if (!options.length) return false;
-
-    if (this.multiple) {
-      this.resetMultipleValue(options);
-    } else this.resetSelected(options);
-  }
-
-  resetSelected(options) {
-    this.loopThroughOptions(o => o.activated = false, options);
-    this.labelOfValue = "";
-    this.value = "";
-  }
-
-  resetMultipleValue(options){
-    this.loopThroughOptions(o => o.activated = false, options);
-    this.value = [];
-    this.selected_values = [];
   }
 
   checkDropUp(){
@@ -541,38 +552,19 @@ export class InsSelect {
     }
   }
 
-  // START Old methods
-  @Method()
-  async setValue(value){
-    this.value = value;
-    this.selected_values = value;
-  }
+  renderNoLabelForButtonised(){
+    return (
+      <div class={`ins-select-label-wrap ${!this.disabled? 'ripple' : ''}`}
+        onClick={e => this.buttoniseClick(e)}>
 
-  @Method()
-  async toggleInsSelectOptions(){
-    if (!this.readonly && !this.disabled){
-      this.activated = !this.activated;
-      if (this.activated) {
-        this.expandSection();
-      } else {
-        this.collapseSection();
-      }
-    }
+        <span>{this.labelOfValue ? this.labelOfValue : this.placeholder}</span>
+        <i class="icon-caret-down"></i>
+      </div>
+    )
   }
-
-  @Method()
-  async closeOptions(){
-    this.collapseSection();
-  }
-
-  @Method()
-  async openOptions(){
-    this.checkDropUp();
-    this.expandSection();
-  }
-  // END Old methods
 
   renderLabelForButtonised(){
+    if (!this.label) return this.renderNoLabelForButtonised();
     return (
       <label class={`ins-select-label-wrap
         ${this.disabled ? '' : 'ripple'}`}
@@ -591,7 +583,7 @@ export class InsSelect {
   }
 
   renderLabelWrap(){
-    if (!this.label) return "";
+    if (!this.label && !this.button) return "";
     if (this.button && !this.multiple){
       return this.renderLabelForButtonised()
     }
@@ -685,28 +677,28 @@ export class InsSelect {
   renderOptionsWrap(){
     return (
       <div class={`ins-select-options-wrap
-          ${this.multiple ? 'multiple' : ''}
-          ${this.withDynamicOption ? 'with-dynamic-option' : ''}`}>
+        ${this.multiple ? 'multiple' : ''}
+        ${this.withDynamicOption ? 'with-dynamic-option' : ''}`}>
 
-          { this.renderCloseBtnWrap() }
+        { this.renderCloseBtnWrap() }
 
-          <div class="scroll-wrap">
-            { this.renderSearchWrapForButtonized() }
+        <div class="scroll-wrap">
+          { this.renderSearchWrapForButtonized() }
 
-            <div class="no-result-text">No result found</div>
-            <div class="no-more-options">No options available</div>
+          <div class="no-result-text">No result found</div>
+          <div class="no-more-options">No options available</div>
 
-            <div class="ins-select-slot-wrap">
-              <slot />
-            </div>
-
-            <div class="spinner-wrap">
-              <div class="spinner"></div>
-            </div>
+          <div class="ins-select-slot-wrap">
+            <slot />
           </div>
 
-          { this.renderDynamicOptionWrap() }
+          <div class="spinner-wrap">
+            <div class="spinner"></div>
+          </div>
         </div>
+
+        { this.renderDynamicOptionWrap() }
+      </div>
     )
   }
 
@@ -728,13 +720,13 @@ export class InsSelect {
             placeholder={this.dynamicPlaceholder} data-dynamic />
 
           { this.dynamicHasError
-            ? <div class="error-message">
-                { this.dynamicErrorMessage }
-              </div>
-            : "" }
+          ? <div class="error-message">
+              { this.dynamicErrorMessage }
+            </div>
+          : "" }
         </div>
         <button type="button" onClick={e => this.dynamicOptionHandler(e)}>
-          { this.buttonLabel }
+            {this.buttonLabel}
         </button>
       </div>
     );

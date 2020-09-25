@@ -1,5 +1,33 @@
 .ins-textarea-wrap {
   textarea {
     min-height: 200px;
+    resize: vertical;
+  }
+
+  .ins-textarea-counter {
+    color: #2C3148;
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    text-align: right;
+    float: right;
+    max-width: 50%;
+  }
+
+  &.with-counter textarea {
+    margin-bottom: 8px;
+  }
+
+  &.is-invalid {
+
+    .with-counter {
+      .ins-form-error {
+        float: left;
+        max-width: 50%;
+      }
+
+      .ins-textarea-counter {
+        color: #F27474;
+      }
+    }
   }
 }

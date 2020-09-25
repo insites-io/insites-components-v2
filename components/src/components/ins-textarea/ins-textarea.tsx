@@ -15,11 +15,14 @@ export class InsTextarea {
   @Prop({mutable: true}) value: string;
   @Prop({mutable: true}) errorMessage: string;
   @Prop({mutable: true}) maxlength: string = "";
+  @Prop({mutable: true}) counter: string = "";
   @Prop({mutable: true}) hasError: boolean = false;
   @Prop({mutable: true}) readonly: boolean = false;
   @Prop({mutable: true}) disabled: boolean = false;
   @Prop({mutable: true}) required: boolean = false;
+
   @State() activeLabel: boolean;
+  @State() charCount: string = "0";
 
   onTextareaHandler(event){
     let x = event.which || event.keyCode;
@@ -41,6 +44,28 @@ export class InsTextarea {
     this.activeLabel = false;
   }
 
+  charCounter(){
+    let current = this.value.length;
+    let max = this.maxlength ? `/ ${this.maxlength}` : "";
+    return `${current}${max}`;
+  }
+
+  componentWillUpdate(){
+    if (this.counter) this.charCount = this.charCounter();
+  }
+
+  componentWillLoad(){
+    let max = Number(this.maxlength);
+    if (this.counter === "decreasing" && max){
+      this.charCounter = () => {
+        let left = max - (this.value ? this.value.length : 0)
+        return `${left} characters left`;
+      }
+      this.charCount = this.charCounter();
+    }
+  }
+
+
   componentDidLoad(){
     let textarea = this.insTextareaEl.querySelector('textarea');
     textarea.addEventListener('keyup', e => {this.onTextareaHandler(e)});
@@ -57,7 +82,7 @@ export class InsTextarea {
     return (
       <div class={`ins-textarea-wrap ins-form-field-wrap ${this.hasError ? 'is-invalid' : ''}`}>
 
-        <div class="ins-ta">
+        <div class={`ins-ta ${ this.counter ? 'with-counter' : ''}`}>
           {this.label ?
             <label class={`ins-form-label
               ${this.disabled ? 'disabled' : ''}
@@ -83,6 +108,13 @@ export class InsTextarea {
               {this.errorMessage}
             </div>
           : ''}
+
+          {this.counter ?
+            <div class="ins-textarea-counter">
+              { this.charCount }
+            </div>
+          : ''}
+
         </div>
 
       </div>

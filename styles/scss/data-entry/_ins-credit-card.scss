@@ -1,71 +1,86 @@
-.ins-credit-card-main-wrap {
-  width: 100%;
-  max-width: 410px;
-  height: 248px;
-  border-radius: 12px;
-  padding: 20px;
-  box-sizing: border-box;
-  position: relative;
-  background: var(--ins-bg-color);
-  -webkit-transition: all .15s;
+.ins-credit-card-wrap {
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 1px 1px 3px #E4E6ED;
   transition: all .15s;
 
-  -webkit-box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.1);
-
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 24px;
   color: var(--ins-color-ink);
 
-  .close-btn {
+  padding: 6% 5%;
+  margin-bottom: 16px;
+  min-height: 142px;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .insites-user-card-details {
     position: absolute;
-    right: 20px;
-    top: 16px;
-    font-size: 20px;
+    bottom: 9%;
+  }
+
+  &:hover {
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.6s ease;
+  }
+
+  &_brand {
+    min-height: 20%;
+
+    & svg {
+      width: 24%;
+    }
+  }
+
+  &_expired {
+    position: absolute;
+    bottom: 9%;
+    right: 6%;
+    color: #f27474;
+  }
+}
+
+.ins-credit-card-main-wrap {
+  position: relative;
+  padding-bottom: 56.66%;
+
+  .close-btn {
+    font-size: 18px;
+    line-height: 10px;
+    position: absolute;
+    right: 6%;
+    top: 9%;
+    color: var(--ins-color-ink40);
     cursor: pointer;
 
     &:hover {
-      color: var(--ins-color-red);
+      color: var(--ins-color-ink);
     }
   }
 
   &.active {
-
-    background: linear-gradient(292.96deg, #2D9CDB 6.72%, #56CCF2 91.78%);
-    color: var(--ins-color-white);
-
     .ins-credit-card-wrap {
+
+      background: linear-gradient(292.96deg, #2D9CDB 6.72%, #56CCF2 91.78%);
+      color: #fff;
+
       &_expired {
-        color: var(--ins-color-white);
+        color: #fff;
       }
     }
 
     .close-btn {
-      color: var(--ins-color-ink10);
+      color: #e4e6ec;
 
       &:hover {
-        color: var(--ins-color-white);
+        color: #fff;
       }
     }
-  }
-}
-
-.ins-credit-card-wrap {
-
-  &_brand {
-    width: 70px;
-  }
-
-  .insites-user-card-details {
-    font-size: 16px;
-    font-family: monospace;
-    position: absolute;
-    bottom: 40%;
-  }
-
-  &_expired {
-    font-family: var(--ins-font-family);
-    color: var(--ins-color-red);
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
   }
 }

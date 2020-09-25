@@ -577,7 +577,6 @@ export namespace Components {
     interface InsSelect {
         "button": boolean;
         "buttonLabel": string;
-        "closeOptions": () => Promise<void>;
         "collapseSection": () => Promise<void>;
         "disableNoResult": () => Promise<boolean>;
         "disabled": boolean;
@@ -597,7 +596,6 @@ export namespace Components {
         "label": string;
         "multiple": boolean;
         "name": string;
-        "openOptions": () => Promise<void>;
         "placeholder": string;
         "readonly": boolean;
         "reset": () => Promise<boolean>;
@@ -608,9 +606,7 @@ export namespace Components {
         "setLoadingState": (state: any) => Promise<boolean>;
         "setSearchingState": (state: any) => Promise<boolean>;
         "setSelectedFromValue": (value?: any) => Promise<boolean>;
-        "setValue": (value: any) => Promise<void>;
         "small": boolean;
-        "toggleInsSelectOptions": () => Promise<void>;
         "updateSelectedOptions": () => Promise<boolean>;
         "value": any;
         "withDynamicOption": boolean;
@@ -782,6 +778,7 @@ export namespace Components {
         "light": boolean;
     }
     interface InsTextarea {
+        "counter": string;
         "disabled": boolean;
         "errorMessage": string;
         "hasError": boolean;
@@ -2187,6 +2184,7 @@ declare namespace LocalJSX {
         "light"?: boolean;
     }
     interface InsTextarea {
+        "counter"?: string;
         "disabled"?: boolean;
         "errorMessage"?: string;
         "hasError"?: boolean;
