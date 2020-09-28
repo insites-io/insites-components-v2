@@ -43,11 +43,11 @@ ins-steps.hydrated {
 
       &:hover {
         .ins-step_indicator {
-          border-color: var(--ins-color-primary);
+          border-color: var(--ins-color-ink);
         }
 
         .ins-step_description {
-          color: var(--ins-color-primary);
+          color: var(--ins-color-ink);
         }
       }
     }

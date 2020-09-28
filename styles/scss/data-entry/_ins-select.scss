@@ -240,6 +240,7 @@
     overflow: hidden;
     height: 0;
     position: absolute;
+    z-index: 990;
     width: 100%;
 
     &.with-dynamic-option {

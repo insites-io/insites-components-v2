@@ -34,7 +34,7 @@
     border-radius: 50%;
     margin: 0 auto;
 
-    .icon-check, .ins-step_dot {
+    .complete-icon, .ins-step_dot {
       display: none;
     }
 
@@ -82,16 +82,26 @@
         display: none;
       }
 
-      .icon-check {
+      .complete-icon {
         display: block;
         font-size: 10px;
         margin-top: 5px;
         margin-left: -1px;
         color: var(--ins-color-white);
       }
+
+      &-icon {
+        border: 0;
+        background: transparent;
+
+        .complete-icon {
+          color: var(--ins-color-primary);
+          font-size: 18px;
+        }
+      }
     }
     &.has-error {
-      .icon-check {
+      .complete-icon {
         display: none;
       }
     }
@@ -101,27 +111,27 @@
 
     .ins-step_indicator,
     .ins-step_description {
-      color: var(--ins-color-primary);
+      color: var(--ins-color-ink);
     }
 
     .ins-step_indicator {
-      border-color: var(--ins-color-primary);
+      border-color: var(--ins-color-ink);
       background: var(--ins-bg-color);
 
       .ins-step_dot {
         width: 12px;
         height: 12px;
-        background: var(--ins-color-primary);
+        background: var(--ins-color-ink);
         display: block;
         border-radius: 50%;
         margin: 4px auto 0;
       }
 
       span {
-        color: var(--ins-color-primary);
+        color: var(--ins-color-ink);
       }
 
-      i.icon-check {
+      i.complete-icon {
         display: none;
       }
     }
