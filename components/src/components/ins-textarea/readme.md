@@ -9,6 +9,7 @@
 
 | Property       | Attribute       | Description | Type      | Default     |
 | -------------- | --------------- | ----------- | --------- | ----------- |
+| `counter`      | `counter`       |             | `string`  | `""`        |
 | `disabled`     | `disabled`      |             | `boolean` | `false`     |
 | `errorMessage` | `error-message` |             | `string`  | `undefined` |
 | `hasError`     | `has-error`     |             | `boolean` | `false`     |

@@ -29,7 +29,10 @@ export class InsStep {
               : <span>{this.indicator}</span>
             }
 
-            <i class="icon-check"></i>
+            { this.icon
+              ? <i class={`complete-icon ${this.icon}`}></i>
+              : <i class="complete-icon icon-check"></i>
+            }
 
             { this.indicator || this.icon ? "" :
               <div class="ins-step_dot"></div>

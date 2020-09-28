@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property    | Attribute   | Description | Type      | Default |
-| ----------- | ----------- | ----------- | --------- | ------- |
-| `clickable` | `clickable` |             | `boolean` | `false` |
-| `indicator` | `indicator` |             | `string`  | `""`    |
-| `inline`    | `inline`    |             | `boolean` | `false` |
+| Property         | Attribute         | Description | Type      | Default |
+| ---------------- | ----------------- | ----------- | --------- | ------- |
+| `clickable`      | `clickable`       |             | `boolean` | `false` |
+| `indicator`      | `indicator`       |             | `string`  | `""`    |
+| `inline`         | `inline`          |             | `boolean` | `false` |
+| `withValidation` | `with-validation` |             | `boolean` | `false` |
 
 
 ## Events

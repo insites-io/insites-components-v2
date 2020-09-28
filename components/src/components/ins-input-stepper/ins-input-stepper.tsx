@@ -27,7 +27,6 @@ export class InsStepper {
   labelEl; inputEl; active;
 
   componentWillLoad(){
-    console.log('componentWillLoad');
     this.value = this.validateInput(this.value);
   }
 
@@ -52,7 +51,10 @@ export class InsStepper {
   stepDown(){
     if (this.readonly || this.disabled) return false;
     let diff = Number(this.value) - Number(this.step);
-    this.value = this.validateInput(diff);
+    let value = this.validateInput(diff);
+
+    this.insValueChange.emit(value);
+    this.value = value;
   }
 
   validateInput(input){
@@ -66,7 +68,10 @@ export class InsStepper {
   stepUp(){
     if (this.readonly || this.disabled) return false;
     let sum = Number(this.value) + Number(this.step);
-    this.value = this.validateInput(sum);
+    let value = this.validateInput(sum);
+
+    this.insValueChange.emit(value);
+    this.value = value;
   }
 
   activateLabel(){
@@ -93,12 +98,13 @@ export class InsStepper {
   // }
 
   insBlurHandler(event){
-    console.log('blurred')
     let keyCode = event.which || event.keyCode;
     let value = this.validateInput(event.target.value);
     event.target.value = value;
-    this.insBlur.emit({ value, keyCode });
+
     this.deactivateLabel();
+    this.insBlur.emit({ value, keyCode });
+    this.insValueChange.emit(Number(value));
     this.value = value;
   }
 

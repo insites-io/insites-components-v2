@@ -329,7 +329,7 @@ export class InsSelect {
   }
 
   loopThroughOptions(cb, opts?){
-    let options = opts || this.getAllOptions();
+    let options = opts || this.insSelectEl.querySelectorAll('ins-select-option');
     for (let i = 0; i < options.length; i++){
       if (cb(options[i])) break;
     }
@@ -447,10 +447,10 @@ export class InsSelect {
 
   defaultInputHandler(clickedOption, e){
     this.loopThroughOptions(option => option.activated = false);
+    clickedOption.activated = true;
     this.collapseSection();
     this.showHiddenOptions();
     this.labelOfValue = e.label;
-    clickedOption.activated = true;
     this.insValueChange.emit(e.value);
     this.value = e.value;
   }
