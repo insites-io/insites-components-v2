@@ -708,6 +708,7 @@ export namespace Components {
         "prev": () => Promise<{ start: boolean; previousStep: any; currentStep: any; }>;
         "reset": () => Promise<boolean>;
         "setStep": (i: any) => Promise<{ previousStep: any; currentStep: any; }>;
+        "withValidation": boolean;
     }
     interface InsStyleguide {
         "label": string;
@@ -2109,6 +2110,7 @@ declare namespace LocalJSX {
         "indicator"?: string;
         "inline"?: boolean;
         "onInsClick"?: (event: CustomEvent<any>) => void;
+        "withValidation"?: boolean;
     }
     interface InsStyleguide {
         "label"?: string;

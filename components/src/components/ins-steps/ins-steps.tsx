@@ -7,25 +7,44 @@ export class InsSteps {
   @Prop({ mutable: true }) indicator: string = "";
   @Prop({ mutable: true }) inline: boolean = false;
   @Prop({ mutable: true }) clickable: boolean = false;
+  @Prop({ mutable: true }) withValidation: boolean = false;
 
-  steps; current = 0;
+  steps;
 
   @Listen('insStepClick')
   insStepClicked(e){
     if (!this.clickable) return false;
 
-    let step = e.target;
+    let nextStep = e.target;
     for (let i = 0; i < this.steps.length; i++){
-      this.steps[i].active = false;
-      if (this.steps[i] === step){
-        this.emitEvent(step, i);
+      if (!this.withValidation) this.steps[i].active = false;
+      if (this.steps[i] === nextStep){
+
+        if (this.withValidation){
+
+          this.insClick.emit({
+            nextStep, currentStep: this.findActiveStep()
+          });
+
+        } else this.emitEvent(nextStep, i);
       }
     }
   }
 
+  findActiveStep(){
+    for (let i = 0; i < this.steps.length; i++){
+      if (this.steps[i].active) return this.steps[i];
+    }
+  }
+
+  findActiveStepIndex(){
+    for (let i = 0; i < this.steps.length; i++){
+      if (this.steps[i].active) return i;
+    }
+  }
+
   emitEvent(currentStep, i){
-    let previousStep = this.steps[this.current];
-    this.current = i;
+    let previousStep = this.findActiveStep();
     this.steps[i].active = true;
     this.insClick.emit({
       start: i === 0,
@@ -67,11 +86,11 @@ export class InsSteps {
       this.steps[l].active = false;
     }
 
-    let previousStep = this.steps[this.current];
-    this.current = i - 1;
-    this.steps[this.current].active = true;
+    let previousStep = this.findActiveStep();
+    let next = i - 1;
+    this.steps[next].active = true;
 
-    return { previousStep, currentStep: this.steps[this.current] }
+    return { previousStep, currentStep: this.steps[next] }
   }
 
   @Method()
@@ -85,21 +104,21 @@ export class InsSteps {
 
   @Method()
   async next(){
-    let sum = this.current + 1;
+    let current = this.findActiveStepIndex();
+    let sum = current + 1;
     let end = (sum + 1) === this.steps.length;
-    let previousStep = this.steps[this.current];
+    let previousStep = this.steps[current];
     previousStep.complete = true;
     previousStep.active = false;
 
     if (sum >= this.steps.length) {
       return {
         end,
-        previousStep: this.steps[this.current - 1],
+        previousStep: this.steps[current - 1],
         currentStep: previousStep,
       }
     }
 
-    this.current = sum;
     this.steps[sum].active = true;
 
     return {
@@ -109,17 +128,17 @@ export class InsSteps {
 
   @Method()
   async prev(){
-    let diff = this.current - 1;
+    let current = this.findActiveStepIndex();
+    let diff = current - 1;
     if (diff < 0) return {
       start: true,
-      previousStep: this.steps[this.current + 1],
-      currentStep: this.steps[this.current]
+      previousStep: this.steps[current + 1],
+      currentStep: this.steps[current]
     };
 
-    let previousStep = this.steps[this.current];
+    let previousStep = this.steps[current];
     previousStep.active = false;
 
-    this.current = diff;
     this.steps[diff].active = true;
 
     return {

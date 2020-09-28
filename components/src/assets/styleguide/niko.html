@@ -30,8 +30,15 @@
 </head>
 
 <body>
-  <ins-textarea label="Test" maxlength="1000" counter="decreasing"
-  has-error error-message="This field is required."></ins-textarea>
+  <ins-steps clickable id="insStepsClickEl">
+    <ins-step description="Shipping"></ins-step>
+    <ins-step description="Payment"></ins-step>
+    <ins-step description="Summary"></ins-step>
+  </ins-steps>
+
+  <script>
+    insStepsClickEl.addEventListener('insClick', e => console.log(e.detail));
+  </script>
 </body>
 
 </html>
