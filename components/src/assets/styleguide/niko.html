@@ -26,19 +26,24 @@
       font-family: 'Open Sans', Arial, Helvetica, sans-serif;
       padding: 20px
     }
+
+    .cc-wrapper {
+      width: 400px;
+    }
   </style>
 </head>
 
 <body>
-  <ins-steps clickable id="insStepsClickEl">
-    <ins-step description="Shipping"></ins-step>
-    <ins-step description="Payment"></ins-step>
-    <ins-step description="Summary"></ins-step>
-  </ins-steps>
-
-  <script>
-    insStepsClickEl.addEventListener('insClick', e => console.log(e.detail));
-  </script>
+  <div class="cc-wrapper">
+    <ins-credit-card
+      brand="visa"
+      last-four="3456"
+      expiry-month="10"
+      expiry-year="2020"
+      full-year
+      value="card_128kjh21387kasd2h">
+    </ins-credit-card>
+  </div>
 </body>
 
 </html>

@@ -17,12 +17,28 @@ export class InsCreditCard {
   @Prop({mutable: true}) expired: boolean;
   @Prop({mutable: true}) fullYear: boolean;
 
+  componentWillLoad(){
+    this.checkExpiry();
+  }
+
+  componentWillUpdate(){
+    this.checkExpiry();
+  }
+
   componentDidLoad(){
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
       if (func) func(this.insCreditCardEl);
     }
+  }
+
+  checkExpiry(){
+    let year = Number(this.expiryYear);
+    let month = Number(this.expiryMonth);
+    let exp = new Date(year, month).toJSON();
+    let today = new Date().toJSON();
+    this.expired = exp < today;
   }
 
   renderBrand(){
