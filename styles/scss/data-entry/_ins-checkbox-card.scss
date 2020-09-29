@@ -22,7 +22,6 @@
 
   box-sizing: border-box;
   margin-top: 0;
-  transition: all .15s;
   padding: 15px;
   box-shadow: none;
   cursor: pointer;
@@ -32,7 +31,6 @@
   }
 
   &:focus {
-    margin-top: -3px;
     box-shadow: 0px 4px 13px var(--ins-shadow-color);
     outline: none;
   }
@@ -73,6 +71,7 @@
     padding-top: 6px;
     text-align: center;
     box-sizing: border-box;
+    transition: all .15s;
   }
 
   &.ink               { @include border_and_bg("ink") }
