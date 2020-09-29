@@ -34,9 +34,7 @@ export class InsCreditCard {
   }
 
   checkExpiry(){
-    let year = Number(this.expiryYear);
-    let month = Number(this.expiryMonth);
-    let exp = new Date(year, month).toJSON();
+    let exp = new Date(+this.expiryYear, +this.expiryMonth).toJSON();
     let today = new Date().toJSON();
     this.expired = exp < today;
   }
@@ -239,8 +237,8 @@ export class InsCreditCard {
   }
 
   checkAttrVal(attr, min, max){
-    let num = Number(attr);
-    if (Number(num) && (num >= min && num <= max)){
+    let num = +attr;
+    if (num && (num >= min && num <= max)){
       let str = attr.toString();
       return str.length === 1 ? `0${str}` : str;
     }
@@ -248,19 +246,7 @@ export class InsCreditCard {
   }
 
   checkLastFour(){
-    let isValid = true;
-    if (this.lastFour && this.lastFour.length === 4){
-      for (var i = 0; i < this.lastFour.length; i++){
-        let num = Number(this.lastFour[i]);
-        if (isNaN(num)){
-          isValid = false;
-          break;
-        }
-      }
-    } else {
-      isValid = false;
-    }
-    return isValid ? this.lastFour : "Invalid";
+    return +this.lastFour && this.lastFour.length === 4 ? this.lastFour : "Invalid";
   }
 
   constructExpiry(){

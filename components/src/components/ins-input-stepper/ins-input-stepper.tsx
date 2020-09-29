@@ -50,7 +50,7 @@ export class InsStepper {
 
   stepDown(){
     if (this.readonly || this.disabled) return false;
-    let diff = Number(this.value) - Number(this.step);
+    let diff = +this.value - +this.step;
     let value = this.validateInput(diff);
 
     this.insValueChange.emit(value);
@@ -58,16 +58,16 @@ export class InsStepper {
   }
 
   validateInput(input){
-    let num = Number(input);
+    let num = +input;
     if (!num && num !== 0) return "0";
-    if (this.min && num < Number(this.min)) return this.min;
-    if (this.max && num > Number(this.max)) return this.max;
+    if (this.min && num < +this.min) return this.min;
+    if (this.max && num > +this.max) return this.max;
     return input;
   }
 
   stepUp(){
     if (this.readonly || this.disabled) return false;
-    let sum = Number(this.value) + Number(this.step);
+    let sum = +this.value + +this.step;
     let value = this.validateInput(sum);
 
     this.insValueChange.emit(value);
@@ -104,7 +104,7 @@ export class InsStepper {
 
     this.deactivateLabel();
     this.insBlur.emit({ value, keyCode });
-    this.insValueChange.emit(Number(value));
+    this.insValueChange.emit(+value);
     this.value = value;
   }
 
