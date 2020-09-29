@@ -367,7 +367,6 @@ export namespace Components {
         "maxFiles": number;
         "maxFilesLabel": string;
         "name": string;
-        "noDefaultValue": boolean;
         "placeholder": string;
         "processS3AutoUpload": (file: any) => Promise<void>;
         "removeFiles": () => Promise<void>;
@@ -1766,7 +1765,6 @@ declare namespace LocalJSX {
         "maxFiles"?: number;
         "maxFilesLabel"?: string;
         "name"?: string;
-        "noDefaultValue"?: boolean;
         "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsFileAdded"?: (event: CustomEvent<any>) => void;
         "onInsFileError"?: (event: CustomEvent<any>) => void;

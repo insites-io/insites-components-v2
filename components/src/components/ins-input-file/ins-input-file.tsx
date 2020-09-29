@@ -19,7 +19,6 @@ export class InsInputFile {
   @Prop({ mutable: true }) fileIcon : string = "icon-notepad"
   @Prop({ mutable: true }) placeholder: string = "Drop file here or click to upload";
   @Prop({ mutable: true }) value: any = []; // [{ name: "2nd-image.jpg", size: 12412, url: "https://uploads.staging.oregon.platform-os.com/instances/658/uploads/images/custom_image/image/3294/transformed_aroma-aromatic-art-434213.jpg" }];
-  @Prop({ mutable: true }) noDefaultValue: boolean = false;
   @Prop({ mutable: true }) hasError: boolean = false;
   @Prop({ mutable: true }) errorMessage: string = "";
   @Prop({ mutable: true }) disabled: boolean = false;
@@ -301,11 +300,6 @@ export class InsInputFile {
         "dictInvalidFileType": `You cannot upload this file type. Accepted file types: (${this.acceptedFiles}). `,
         "dictMaxFilesExceeded": `You cannot upload any more files. Maximum of ${this.maxFiles } files. `,
         init: function () {
-          if (self.value.length && !self.noDefaultValue) {
-            setTimeout(() => {
-              self.bindFiles(self.value);
-            }, 200);
-          }
           this.on('addedfile', (file) => {
               self.setFileIcon(file);
               self.checkFileSizeDisplay(file);

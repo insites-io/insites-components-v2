@@ -55,12 +55,16 @@ export class InsTextarea {
   }
 
   componentWillLoad(){
-    let max = Number(this.maxlength);
-    if (this.counter === "decreasing" && max){
-      this.charCounter = () => {
-        let left = max - (this.value ? this.value.length : 0)
-        return `${left} characters left`;
+    if (this.counter){
+
+      let max = Number(this.maxlength);
+      if (this.counter === "decreasing" && max){
+        this.charCounter = () => {
+          let left = max - (this.value ? this.value.length : 0)
+          return `${left} characters left`;
+        }
       }
+
       this.charCount = this.charCounter();
     }
   }

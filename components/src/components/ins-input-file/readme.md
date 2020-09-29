@@ -26,7 +26,6 @@
 | `maxFiles`          | `max-files`           |             | `number`  | `1`                                   |
 | `maxFilesLabel`     | `max-files-label`     |             | `string`  | `"Up to"`                             |
 | `name`              | `name`                |             | `string`  | `"file"`                              |
-| `noDefaultValue`    | `no-default-value`    |             | `boolean` | `false`                               |
 | `placeholder`       | `placeholder`         |             | `string`  | `"Drop file here or click to upload"` |
 | `required`          | `required`            |             | `boolean` | `false`                               |
 | `s3Data`            | --                    |             | `object`  | `undefined`                           |

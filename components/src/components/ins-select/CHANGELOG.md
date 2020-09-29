@@ -1,4 +1,9 @@
-# v2.0.0
+# v2.2.0
+- Fixed bug when selecting options
+
+# v2.1.0
+- Applied refactored codes from V1
+- Implement new props from V1, `with-dynamic-option-validate`, `dynamicHasError` and `dynamicErrorMessage`
 
 ## Changes from V1
 - Methods are now asynchronous

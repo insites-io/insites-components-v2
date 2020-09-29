@@ -1,4 +1,5 @@
-# v2.0.0
+# v2.2.0
+- Fixed styles
 
 ## Changes from V1
 - Updated event `onClickInsButton` to `insClick` to describe the event better
