@@ -9,6 +9,7 @@ export class InsStep {
   @Prop({ mutable: true }) description: string = "";
   @Prop({ mutable: true }) active: boolean = false;
   @Prop({ mutable: true }) complete: boolean = false;
+  @Prop({ mutable: true }) disabled: boolean = false;
   @Prop({ mutable: true }) hasError: boolean = false;
 
   render() {
@@ -16,8 +17,10 @@ export class InsStep {
       <div class={`ins-step
         ${this.hasError ? 'has-error' : ''}
         ${this.active ? 'active' : ''}
+        ${this.disabled ? 'disabled' : ''}
         ${this.complete ? 'completed' : ''}`}
-        onClick={() => this.insStepClick.emit()}>
+
+        onClick={() => this.disabled ? '' : this.insStepClick.emit()}>
 
         <div class="ins-step_progress-bar"></div>
         <div class="ins-step_details">
