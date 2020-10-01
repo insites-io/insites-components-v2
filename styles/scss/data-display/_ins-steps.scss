@@ -38,16 +38,18 @@ ins-steps.hydrated {
   * { box-sizing: border-box; }
 
   &[clickable] {
-    .ins-step_details {
-      cursor: pointer;
+    ins-step:not([disabled]) {
+      .ins-step_details {
+        cursor: pointer;
 
-      &:hover {
-        .ins-step_indicator {
-          border-color: var(--ins-color-ink);
-        }
+        &:hover {
+          .ins-step_indicator {
+            border-color: var(--ins-color-ink);
+          }
 
-        .ins-step_description {
-          color: var(--ins-color-ink);
+          .ins-step_description {
+            color: var(--ins-color-ink);
+          }
         }
       }
     }
