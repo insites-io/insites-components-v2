@@ -57,7 +57,7 @@ export class InsTextarea {
   componentWillLoad(){
     if (this.counter){
 
-      let max = Number(this.maxlength);
+      let max = +this.maxlength;
       if (this.counter === "decreasing" && max){
         this.charCounter = () => {
           let left = max - (this.value ? this.value.length : 0)
