@@ -10,6 +10,7 @@
 | Property         | Attribute         | Description | Type      | Default |
 | ---------------- | ----------------- | ----------- | --------- | ------- |
 | `clickable`      | `clickable`       |             | `boolean` | `false` |
+| `complete`       | `complete`        |             | `boolean` | `false` |
 | `indicator`      | `indicator`       |             | `string`  | `""`    |
 | `inline`         | `inline`          |             | `boolean` | `false` |
 | `withValidation` | `with-validation` |             | `boolean` | `false` |
@@ -65,6 +66,16 @@ Type: `Promise<{ start: boolean; previousStep: any; currentStep: any; }>`
 
 
 ### `reset() => Promise<boolean>`
+
+
+
+#### Returns
+
+Type: `Promise<boolean>`
+
+
+
+### `setComplete() => Promise<boolean>`
 
 
 

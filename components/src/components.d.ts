@@ -700,6 +700,7 @@ export namespace Components {
     }
     interface InsSteps {
         "clickable": boolean;
+        "complete": boolean;
         "finish": () => Promise<boolean>;
         "getAllSteps": () => Promise<any>;
         "indicator": string;
@@ -707,6 +708,7 @@ export namespace Components {
         "next": () => Promise<{ end: boolean; previousStep: any; currentStep: any; }>;
         "prev": () => Promise<{ start: boolean; previousStep: any; currentStep: any; }>;
         "reset": () => Promise<boolean>;
+        "setComplete": () => Promise<boolean>;
         "setStep": (i: any) => Promise<{ previousStep: any; currentStep: any; }>;
         "withValidation": boolean;
     }
@@ -2107,6 +2109,7 @@ declare namespace LocalJSX {
     }
     interface InsSteps {
         "clickable"?: boolean;
+        "complete"?: boolean;
         "indicator"?: string;
         "inline"?: boolean;
         "onInsClick"?: (event: CustomEvent<any>) => void;

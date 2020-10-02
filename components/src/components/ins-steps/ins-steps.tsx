@@ -8,6 +8,7 @@ export class InsSteps {
   @Prop({ mutable: true }) inline: boolean = false;
   @Prop({ mutable: true }) clickable: boolean = false;
   @Prop({ mutable: true }) withValidation: boolean = false;
+  @Prop({ mutable: true }) complete: boolean = false;
 
   steps;
 
@@ -62,6 +63,16 @@ export class InsSteps {
     }
   }
 
+  @Method()
+  async setComplete() {
+    for (let i = 0; i < this.steps.length; i++) {
+      this.steps[i].active = false;
+      this.steps[i].hasError = false;
+      this.steps[i].complete = true;
+    }
+    return true;
+  }
+
   setDefault(){
     let hasActive = false;
     for (let i = 0; i < this.steps.length; i++){
@@ -77,7 +88,10 @@ export class InsSteps {
   componentDidLoad(){
     this.steps = this.el.querySelectorAll('ins-step');
     this.setIndicators();
-    this.setDefault();
+    if (this.complete)
+      this.setComplete();
+    else
+      this.setDefault();
   }
 
   @Method()
