@@ -91,3 +91,13 @@ $input_field_font_weight: 400;
 @import "./table/ins-table-row";
 @import "./table/ins-table-td";
 @import "./table/ins-table-th";
+
+ins-page {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+ins-page.hydrated {
+  position: initial;
+}

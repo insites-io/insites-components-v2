@@ -530,6 +530,8 @@ export namespace Components {
         "linkLabel": string;
         "status": string;
     }
+    interface InsPage {
+    }
     interface InsPieChart {
         "chartData": Array<any>;
         "colors": Array<any>;
@@ -1126,6 +1128,12 @@ declare global {
         prototype: HTMLInsNotificationsItemElement;
         new (): HTMLInsNotificationsItemElement;
     };
+    interface HTMLInsPageElement extends Components.InsPage, HTMLStencilElement {
+    }
+    var HTMLInsPageElement: {
+        prototype: HTMLInsPageElement;
+        new (): HTMLInsPageElement;
+    };
     interface HTMLInsPieChartElement extends Components.InsPieChart, HTMLStencilElement {
     }
     var HTMLInsPieChartElement: {
@@ -1354,6 +1362,7 @@ declare global {
         "ins-modal": HTMLInsModalElement;
         "ins-notifications": HTMLInsNotificationsElement;
         "ins-notifications-item": HTMLInsNotificationsItemElement;
+        "ins-page": HTMLInsPageElement;
         "ins-pie-chart": HTMLInsPieChartElement;
         "ins-progress-bar": HTMLInsProgressBarElement;
         "ins-radio": HTMLInsRadioElement;
@@ -1941,6 +1950,8 @@ declare namespace LocalJSX {
         "linkLabel"?: string;
         "status"?: string;
     }
+    interface InsPage {
+    }
     interface InsPieChart {
         "chartData"?: Array<any>;
         "colors"?: Array<any>;
@@ -2306,6 +2317,7 @@ declare namespace LocalJSX {
         "ins-modal": InsModal;
         "ins-notifications": InsNotifications;
         "ins-notifications-item": InsNotificationsItem;
+        "ins-page": InsPage;
         "ins-pie-chart": InsPieChart;
         "ins-progress-bar": InsProgressBar;
         "ins-radio": InsRadio;
@@ -2389,6 +2401,7 @@ declare module "@stencil/core" {
             "ins-modal": LocalJSX.InsModal & JSXBase.HTMLAttributes<HTMLInsModalElement>;
             "ins-notifications": LocalJSX.InsNotifications & JSXBase.HTMLAttributes<HTMLInsNotificationsElement>;
             "ins-notifications-item": LocalJSX.InsNotificationsItem & JSXBase.HTMLAttributes<HTMLInsNotificationsItemElement>;
+            "ins-page": LocalJSX.InsPage & JSXBase.HTMLAttributes<HTMLInsPageElement>;
             "ins-pie-chart": LocalJSX.InsPieChart & JSXBase.HTMLAttributes<HTMLInsPieChartElement>;
             "ins-progress-bar": LocalJSX.InsProgressBar & JSXBase.HTMLAttributes<HTMLInsProgressBarElement>;
             "ins-radio": LocalJSX.InsRadio & JSXBase.HTMLAttributes<HTMLInsRadioElement>;

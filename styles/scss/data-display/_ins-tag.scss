@@ -3,13 +3,13 @@ ins-tag span {
   &.ins-tag {
     border-radius: var(--ins-border-radius);
     font-family: var(--ins-font-family);
-    background-color: var(ins-bg-color3);
+    background-color: var(--ins-bg-color3);
     padding: 6px 10px;
     min-width: 70px;
     font-size: 11px;
     line-height: 14px;
     font-weight: 600;
-    color: var(ins-color-white);
+    color: var(--ins-color-white);
     text-align: center;
     display: inline-block;
 
@@ -23,18 +23,18 @@ ins-tag span {
       margin-right: 3px;
     }
     &.blue {
-      background-color: var(ins-color-blue);
+      background-color: var(--ins-color-blue);
     }
     &.new,
     &.orange {
-      background-color: var(ins-color-orange);
+      background-color: var(--ins-color-orange);
     }
     &.closed,
     &.grey {
-      background-color: var(ins-color-grey);
+      background-color: var(--ins-color-grey);
     }
     &.pending &.yellow {
-      background-color: var(ins-color-yellow);
+      background-color: var(--ins-color-yellow);
     }
 
     &.flagged,
@@ -44,7 +44,7 @@ ins-tag span {
     &.archived,
     &.disabled,
     &.red {
-      background-color: var(ins-color-red);
+      background-color: var(--ins-color-red);
     }
 
     &.open,
@@ -54,33 +54,33 @@ ins-tag span {
     &.valid,
     &.enabled,
     &.green {
-      background-color: var(ins-color-green);
+      background-color: var(--ins-color-green);
     }
 
     &.light {
-      background-color: var(ins-bg-color2);
-      color: var(ins-color-ink);
+      background-color: var(--ins-bg-color2);
+      color: var(--ins-color-ink);
 
       &.blue {
-        background-color: var(ins-color-blue-10p);
-        color: var(ins-color-blue);
+        background-color: var(--ins-color-blue-10p);
+        color: var(--ins-color-blue);
       }
 
       &.new,
       &.orange {
-        background-color: var(ins-color-orange-10p);
-        color: var(ins-color-orange);
+        background-color: var(--ins-color-orange-10p);
+        color: var(--ins-color-orange);
       }
 
       &.closed,
       &.grey {
-        background-color: var(ins-bg-color3);
+        background-color: var(--ins-bg-color3);
       }
 
       &.pending,
       &.yellow {
-        background-color: var(ins-color-yellow-10p);
-        color: var(ins-color-yellow);
+        background-color: var(--ins-color-yellow-10p);
+        color: var(--ins-color-yellow);
       }
 
       &.flagged,
@@ -90,8 +90,8 @@ ins-tag span {
       &.archived,
       &.disabled,
       &.red {
-        background-color: var(ins-color-red-10p);
-        color: var(ins-color-red);
+        background-color: var(--ins-color-red-10p);
+        color: var(--ins-color-red);
       }
 
       &.open,
@@ -101,8 +101,8 @@ ins-tag span {
       &.valid,
       &.enabled,
       &.green {
-        background-color: var(ins-color-green-10p);
-        color: var(ins-color-green);
+        background-color: var(--ins-color-green-10p);
+        color: var(--ins-color-green);
       }
     }
   }
