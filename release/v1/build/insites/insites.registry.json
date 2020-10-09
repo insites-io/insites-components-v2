@@ -3,8 +3,8 @@
   "fsNamespace": "insites",
   "loader": "../insites.js",
   "global": "insites.global.js",
-  "core": "insites.e14bzekj.js",
-  "corePolyfilled": "insites.qwkhhnrj.js",
+  "core": "insites.l7hvieir.js",
+  "corePolyfilled": "insites.zpnwjedl.js",
   "components": {
     "ins-accordion": {
       "bundleIds": {
@@ -38,7 +38,7 @@
     },
     "ins-base-table": {
       "bundleIds": {
-        "$": "dzmx9v7s"
+        "$": "rcvme6r5"
       }
     },
     "ins-base-table-row": {
@@ -63,7 +63,7 @@
     },
     "ins-button": {
       "bundleIds": {
-        "$": "8frjxoin"
+        "$": "8wmmaf4e"
       }
     },
     "ins-button-group": {
@@ -83,7 +83,7 @@
     },
     "ins-checkbox": {
       "bundleIds": {
-        "$": "dzmx9v7s"
+        "$": "rcvme6r5"
       }
     },
     "ins-checkbox-card": {
@@ -113,7 +113,7 @@
     },
     "ins-datepicker": {
       "bundleIds": {
-        "$": "dzmx9v7s"
+        "$": "rcvme6r5"
       }
     },
     "ins-drawer": {
@@ -128,7 +128,7 @@
     },
     "ins-editor": {
       "bundleIds": {
-        "$": "mrc0hrra"
+        "$": "hvb2a7cb"
       }
     },
     "ins-fav-icon": {
@@ -163,7 +163,7 @@
     },
     "ins-image-picker": {
       "bundleIds": {
-        "$": "uouwimqt"
+        "$": "hr5jpair"
       }
     },
     "ins-info-table": {
@@ -173,12 +173,12 @@
     },
     "ins-input": {
       "bundleIds": {
-        "$": "dzmx9v7s"
+        "$": "rcvme6r5"
       }
     },
     "ins-input-file": {
       "bundleIds": {
-        "$": "gfivbzdi"
+        "$": "3spuec7q"
       }
     },
     "ins-input-multiple": {
@@ -193,7 +193,7 @@
     },
     "ins-input-tel": {
       "bundleIds": {
-        "$": "d4apopqc"
+        "$": "i1lfnjh6"
       }
     },
     "ins-instances": {
@@ -278,7 +278,7 @@
     },
     "ins-select": {
       "bundleIds": {
-        "$": "dzmx9v7s"
+        "$": "rcvme6r5"
       }
     },
     "ins-select-group": {
@@ -288,7 +288,7 @@
     },
     "ins-select-option": {
       "bundleIds": {
-        "$": "dzmx9v7s"
+        "$": "rcvme6r5"
       }
     },
     "ins-sidebar": {
@@ -369,7 +369,7 @@
     },
     "ins-textarea": {
       "bundleIds": {
-        "$": "mq4pkjme"
+        "$": "givp7rps"
       }
     },
     "ins-thumbnail": {
@@ -404,7 +404,7 @@
     },
     "ins-toggle-switch": {
       "bundleIds": {
-        "$": "v3swjn1g"
+        "$": "6rprwlgi"
       }
     },
     "ins-tooltip": {
