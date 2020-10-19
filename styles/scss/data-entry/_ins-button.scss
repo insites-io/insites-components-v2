@@ -124,7 +124,7 @@ ins-button {
     line-height: 16px;
     vertical-align: top;
 
-    height: 36px;
+    height: 38px;
     border: none;
     border-radius: var(--ins-border-radius);
     padding: 0 16px;
@@ -145,8 +145,8 @@ ins-button {
     &.round {
       border-radius: 50% !important;
       padding: 0;
-      height: 36px;
-      width: 36px;
+      height: 38px;
+      width: 38px;
     }
 
     &.size {
