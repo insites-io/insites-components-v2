@@ -43,7 +43,10 @@
         <div class="ins-styleguide-actual-slot-wrap">
 
           <ins-dropdown lined
-            label="Products">
+            label="Products"
+            link="#"
+            link-title="Insites Dropdown"
+            target="_blank">
 
             <ins-dropdown-item
               label="Menu Item" link="#">
@@ -75,7 +78,10 @@
         <div class="ins-styleguide-code-slot-wrap">
           <script type="text/plain" class="language-markup">
 <ins-dropdown lined
-  label="Products">
+  label="Products"
+  link="#"
+  link-title="Insites Dropdown"
+  target="_blank">
 
   <ins-dropdown-item
     label="Menu Item" link="#">
@@ -133,6 +139,27 @@
           <td>true, false</td>
           <td>Render menu items with a border</td>
         </tr>
+        <tr>
+          <td>link</td>
+          <td>string</td>
+          <td>-</td>
+          <td>any</td>
+          <td>Defines the link of the dropdown item</td>
+        </tr>
+        <tr>
+          <td>link-title</td>
+          <td>string</td>
+          <td>-</td>
+          <td>any</td>
+          <td>Defines the value for the <code>&lt;a&gt;</code> tag title attribute</td>
+        </tr>
+        <tr>
+          <td>target</td>
+          <td>string</td>
+          <td>_self</td>
+          <td>_self, _blank, _parent, _top</td>
+          <td>Defines the value for the <code>&lt;a&gt;</code> tag target attribute</td>
+        </tr>
       </table>
     </div>
   </div>
@@ -163,7 +190,7 @@
           <td>Defines the link of the dropdown item</td>
         </tr>
         <tr>
-          <td>linkTitle</td>
+          <td>link-title</td>
           <td>string</td>
           <td>-</td>
           <td>any</td>

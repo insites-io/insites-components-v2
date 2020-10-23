@@ -13,6 +13,11 @@
       right: 10px;
       top: calc(50% - 7px);
     }
+
+    a {
+      color: var(--ins-color-primary);
+      text-decoration: none;
+    }
   }
 
   &_menu {
