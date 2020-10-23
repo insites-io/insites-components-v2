@@ -201,6 +201,9 @@ export namespace Components {
     interface InsDropdown {
         "label": string;
         "lined": boolean;
+        "link": string;
+        "linkTitle": string;
+        "target": string;
     }
     interface InsDropdownItem {
         "label": string;
@@ -1606,6 +1609,9 @@ declare namespace LocalJSX {
     interface InsDropdown {
         "label"?: string;
         "lined"?: boolean;
+        "link"?: string;
+        "linkTitle"?: string;
+        "target"?: string;
     }
     interface InsDropdownItem {
         "label"?: string;

@@ -5,11 +5,20 @@ export class InsDropdown {
   @Prop({mutable: true}) label: string = "Dropdown";
   @Prop({mutable: true}) lined: boolean = false;
 
+  @Prop({mutable: true}) link: string = "";
+  @Prop({mutable: true}) target: string = "_self";
+  @Prop({mutable: true}) linkTitle: string = "";
+
   render() {
     return (
       <div class={`ins-dropdown ${this.lined ? "lined":""}`}>
         <div class="ins-dropdown_label">
-          { this.label }
+          { this.link
+            ? <a href={ this.link } target={this.target} title={this.linkTitle}>
+                { this.label }
+              </a>
+            : <span>{ this.label }</span>
+          }
 
           <i class="icon-angle-down"></i>
         </div>
