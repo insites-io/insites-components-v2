@@ -137,6 +137,15 @@ export class InsInputTel {
   }
 
   @Method()
+  async getValues(){
+    return {
+      country_code: this._iti.getSelectedCountryData().dialCode,
+      area_code: this._areaCode.value,
+      phone_number: this._phoneNumber.value
+    }
+  }
+
+  @Method()
   async getCountryData() {
     return this._iti.getSelectedCountryData();
   }
@@ -169,12 +178,12 @@ export class InsInputTel {
 
         <label class="ins-form-label">{this.label}</label>
 
-        <div class="row-col-container clearfix">
+        <div class="row-col-container">
+
           <div class="col-container column-1">
             <input type="tel" class="phone ins-form-field"
               disabled={this.disabled}
               readonly={this.readonly} />
-
           </div>
 
           <div class="col-container column-2">
@@ -199,12 +208,13 @@ export class InsInputTel {
               disabled={this.disabled} readonly={this.readonly} />
           </div>
 
-          {this.hasError ?
-            <div class="ins-form-error">
-              {this.errorMessage}
-            </div>
-          : ''}
         </div>
+
+        {this.hasError ?
+          <div class="ins-form-error">
+            {this.errorMessage}
+          </div>
+        : ''}
       </div>
     );
   }

@@ -57,6 +57,16 @@ Type: `Promise<string>`
 
 
 
+### `getValues() => Promise<{ country_code: any; area_code: any; phone_number: any; }>`
+
+
+
+#### Returns
+
+Type: `Promise<{ country_code: any; area_code: any; phone_number: any; }>`
+
+
+
 ### `setCountry(country: any) => Promise<void>`
 
 

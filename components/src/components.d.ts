@@ -434,6 +434,7 @@ export namespace Components {
         "errorMessage": string;
         "getCountryData": () => Promise<any>;
         "getValue": () => Promise<string>;
+        "getValues": () => Promise<{ country_code: any; area_code: any; phone_number: any; }>;
         "hasError": boolean;
         "hasLoad": string;
         "label": string;
