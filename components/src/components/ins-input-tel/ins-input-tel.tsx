@@ -70,13 +70,13 @@ export class InsInputTel {
   }
 
   initKeyPressEvents(){
-    this._areaCode.addEventListener('keypress', e => this.validateValue(e, 5, 'area_code'));
-    this._phoneNumber.addEventListener('keypress', e => this.validateValue(e, 11, 'phone_number'));
+    this._areaCode.addEventListener('keyup', e => this.validateValue(e, 5, 'area_code'));
+    this._phoneNumber.addEventListener('keyup', e => this.validateValue(e, 13, 'phone_number'));
   }
 
   validateValue(event, maxChars, field){
     let evt = event as any;
-    let value = evt.target.value;
+    let value = evt.target.value.replace(/[^\d.]/g, '');
 
     if ((event.which < 48 || event.which > 57)
         && (event.which !== 8 && event.which !== 9 && event.which !== 32)) {
@@ -84,9 +84,10 @@ export class InsInputTel {
     }
 
     if (value.length > maxChars) {
-      evt.target.value = value.substr(0, maxChars);
+      value = value.substr(0, maxChars).replace(/[^\d.]/g, '');
     }
 
+    evt.target.value = value;
     this.insInput.emit({ field, value });
     this.insValueChange.emit(this.getValue());
   }
