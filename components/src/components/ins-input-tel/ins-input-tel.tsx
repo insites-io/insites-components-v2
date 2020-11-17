@@ -162,10 +162,12 @@ export class InsInputTel {
   }
 
   activateLabel() {
+    if (this.readonly || this.disabled) return;
     this._label.classList.add('active');
   }
 
   deactivateLabel() {
+    if (this.readonly || this.disabled) return;
     this._label.classList.remove('active');
   }
 

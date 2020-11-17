@@ -108,9 +108,13 @@
   }
 
   &.read-only {
-    .intl-tel-input.separate-dial-code.allow-dropdown.iti-sdc-3 .selected-flag {
+    .iti .iti__flag-container .iti__selected-flag {
       background-color: var(--ins-bg-color5);
-      cursor: not-allowed;
+      cursor: text;
+
+      &:hover, &:focus {
+        border-color: var(--ins-color-ink10);
+      }
     }
   }
 
