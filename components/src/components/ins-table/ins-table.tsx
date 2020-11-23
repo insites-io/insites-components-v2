@@ -309,6 +309,7 @@ export class InsTable {
     let to = this.pageSize * this.pageNumber;
     to = (to > this.totalCount) ? this.totalCount : to;
 
+    if (!this.staticTable && !this.tableData.length) from = 0;
     this.pageInfo = from + '-' + to + ' of ' + this.numberWithCommas(this.totalCount);
   }
 

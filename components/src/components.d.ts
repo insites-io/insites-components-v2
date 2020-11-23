@@ -636,6 +636,7 @@ export namespace Components {
         "fullLogo": string;
         "hasLoad": string;
         "iconLogo": string;
+        "maximise": () => Promise<void>;
         "minimise": () => Promise<void>;
     }
     interface InsSidebarFooter {

@@ -173,14 +173,16 @@ export class InsDateTime {
           </label>
         : ''}
 
-        <input type="text" class="ins-form-field"
-          name={this.name}
-          placeholder={this.placeholder}
-          onFocus={() => this.activateLabel()}
-          onBlur={() => this.onblurHandler()}
-          disabled={this.disabled || this.readonly} />
+        <div class="ins-date-time-wrap_input">
+          <input type="text" class="ins-form-field"
+            name={this.name}
+            placeholder={this.placeholder}
+            onFocus={() => this.activateLabel()}
+            onBlur={() => this.onblurHandler()}
+            disabled={this.disabled || this.readonly} />
 
-        {this.icon ? <i class={this.label ? this.icon + ' with-label' : this.icon}></i> : ''}
+          {this.icon ? <i class={this.label ? this.icon + ' with-label' : this.icon}></i> : ''}
+        </div>
 
         { this.hasError ?
           <div class="ins-form-error">

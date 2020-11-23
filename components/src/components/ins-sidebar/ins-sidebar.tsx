@@ -5,11 +5,15 @@ export class InsSidebar {
   @Element() insSidebarEl: HTMLElement;
   @Event() insSidebarAction: EventEmitter;
   @Event() didLoad: EventEmitter;
+
   @Prop() hasLoad: string;
   @Prop({ mutable: true }) fullLogo: string;
   @Prop({ mutable: true }) iconLogo: string;
+
   @State() minimised: boolean;
   @State() noFooter: boolean = false;
+
+  baseURL = "http://components.insites.io/assets/images";
 
   componentDidLoad(){
     this.didLoad.emit();
@@ -33,7 +37,12 @@ export class InsSidebar {
 
   @Method()
   async minimise(){
-    this.minimised = !this.minimised;
+    this.minimised = true;
+  }
+
+  @Method()
+  async maximise(){
+    this.minimised = false;
   }
 
   sidebarActionEventHandler(event){
@@ -48,13 +57,21 @@ export class InsSidebar {
     }
   }
 
+  getIcon(){
+    return this.iconLogo ? this.iconLogo : `${this.baseURL}/insites_logo_icon.svg`;
+  }
+
+  getLogo(){
+    return this.fullLogo ? this.fullLogo : `${this.baseURL}/Insites_logo.svg`
+  }
+
   render() {
     return (
       <div class={`sidebar ${this.noFooter ? 'no-footer':''}`}>
         <div class="insites-logo-wrap">
-          {this.minimised ?
-            <img src={this.iconLogo ? this.iconLogo : "" }/> :
-            <img src={this.fullLogo ? this.fullLogo : ""}/>
+        { this.minimised
+            ? <img src={ this.getIcon() } />
+            : <img src={ this.getLogo() }/>
           }
         </div>
 

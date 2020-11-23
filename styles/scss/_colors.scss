@@ -97,3 +97,8 @@ $disabled_readonly_bg: #FAFBFC;
 
   --ins-font-family: 'Open Sans', sans-serif
 }
+
+[class="hydrated"]{
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+}

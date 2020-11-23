@@ -38,7 +38,7 @@ ins-tab {
         content: " ";
         height: 1px;
         width: 100%;
-        background: var(ins-color-ink10);
+        background: var(--ins-color-ink10);
       }
 
       &.scrollable {
@@ -55,7 +55,7 @@ ins-tab {
         }
 
         &::-webkit-scrollbar-thumb {
-          background-color: var(ins-color-ink10);
+          background-color: var(--ins-color-ink10);
           border-radius: 16px;
           outline: none;
         }

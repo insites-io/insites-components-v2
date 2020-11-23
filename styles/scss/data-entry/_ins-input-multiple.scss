@@ -33,6 +33,14 @@ ins-input-multiple {
       &.ins-form-field {
         padding: 6px 8px;
       }
+
+      input {
+        background: var(--ins-bg-color);
+      }
+
+      &:hover {
+        border-color: var(--ins-bg-color3);
+      }
     }
     &.active {
       label {
@@ -51,6 +59,12 @@ ins-input-multiple {
       }
       .ins-input-multiple-container {
         border: var(--ins-border-style) var(--ins-border-thickness)  var(--ins-color-red);
+        background: var(--ins-color-red-10p);
+
+        input {
+          background: var(--ins-color-red-10p);
+        }
+
       }
     }
     &.disabled {
@@ -105,7 +119,7 @@ ins-input-multiple {
         padding: 7px;
         padding-right: 2px;
         border-radius: 4px;
-        color: var(ins-color-ink40);
+        color: var(--ins-color-ink40);
       }
     }
 
@@ -119,6 +133,15 @@ ins-input-multiple {
       }
       input {
         background: var(--ins-bg-color);
+      }
+      .ins-input-multiple-container {
+        border-color: var(--ins-bg-color2);
+        background-color: var(--ins-bg-color5);
+        color: var(--ins-color-ink40);
+
+        &:hover {
+          border-color: var(--ins-bg-color2);
+        }
       }
     }
   }

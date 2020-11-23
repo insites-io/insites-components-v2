@@ -34,7 +34,6 @@ export class InsHeader {
       $this.toggleMinimise();
     };
 
-    this.toggleMinimise();
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
@@ -47,12 +46,11 @@ export class InsHeader {
     if (mq.matches) {
       if (this.insAdminEl) this.insAdminEl.classList.add('mini');
       if (!this.sidebarMini && this.insSidebarEl) {
+        this.sidebarMini = true;
         this.insSidebarEl.minimise();
       }
-    } else {
-      if (this.sidebarMini) {
-        this.toggleSidebar();
-      }
+    } else if (this.sidebarMini) {
+      this.toggleSidebar();
     }
   }
 
@@ -65,7 +63,9 @@ export class InsHeader {
 
     this.sidebarMini = !this.sidebarMini;
     if (this.insSidebarEl){
-      this.insSidebarEl.minimise();
+      this.sidebarMini
+        ? this.insSidebarEl.minimise()
+        : this.insSidebarEl.maximise();
     }
 
     if (this.insAdminEl){

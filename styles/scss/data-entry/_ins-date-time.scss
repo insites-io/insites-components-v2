@@ -2,12 +2,22 @@
 
 ins-date-time {
 
-  .ins-form-field-wrap .ins-form-field:read-only:not([read-only="false"]) {
-    background-color: var(--ins-bg-color);
-    color: var(--ins-color-ink);
+  .ins-form-field-wrap {
+    .ins-form-field:read-only:not([read-only="false"]) {
+      background-color: var(--ins-bg-color);
+      color: var(--ins-color-ink);
 
-    &:focus {
-      border-color: var(--ins-color-primary);
+      &:focus {
+        border-color: var(--ins-color-primary);
+      }
+    }
+
+    &.is-invalid {
+      .ins-form-field:read-only:not([read-only="false"]) {
+        color: var(--ins-color-negative);
+        border-color: var(--ins-color-negative);
+        background-color: var(--ins-color-red-10p);
+      }
     }
   }
 
@@ -17,6 +27,10 @@ ins-date-time {
       background-color: var(--ins-color-disabled_readonly_bg);
       color: var(--ins-color-ink40);
     }
+  }
+
+  .ins-date-time-wrap_input {
+    position: relative;
   }
 
   i[class^="icon-"] {
@@ -29,9 +43,9 @@ ins-date-time {
     transition: color .25s ease-in-out;
   }
 
-  i.with-label {
-    top: calc(50% + 1px);
-  }
+  // i.with-label {
+  //   top: calc(50% + 1px);
+  // }
 
   &[disabled] {
     input {
