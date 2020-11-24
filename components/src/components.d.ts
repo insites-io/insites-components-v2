@@ -803,6 +803,10 @@ export namespace Components {
     }
     interface InsThumbnail {
         "alt": string;
+        "buttonColor": string;
+        "buttonIcon": string;
+        "buttonLabel": string;
+        "buttonType": string;
         "hasLoad": string;
         "label": string;
         "name": string;
@@ -2226,6 +2230,10 @@ declare namespace LocalJSX {
     }
     interface InsThumbnail {
         "alt"?: string;
+        "buttonColor"?: string;
+        "buttonIcon"?: string;
+        "buttonLabel"?: string;
+        "buttonType"?: string;
         "hasLoad"?: string;
         "label"?: string;
         "name"?: string;

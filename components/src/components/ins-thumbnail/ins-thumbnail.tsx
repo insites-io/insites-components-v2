@@ -11,13 +11,30 @@ export class InsThumbnail {
     @Prop({ mutable: true }) src: string;
     @Prop({ mutable: true }) label: string;
     @Prop({ mutable: true }) thumbnail: string;
+
+    @Prop({ mutable: true }) buttonLabel: string = "DOWNLOAD";
+    @Prop({ mutable: true }) buttonColor: string = "blue";
+    @Prop({ mutable: true }) buttonType: string = "";
+    @Prop({ mutable: true }) buttonIcon: string = "";
+
     @State() hoverState: boolean = false;
+    buttonEl;
 
     componentDidLoad(){
+      this.buttonEl = this.insThumbnailEl.querySelector('ins-button');
+      this.setButtonType();
       this.didLoad.emit();
       if (this.hasLoad && window["Insites"]){
         let func = window["Insites"].methods[this.hasLoad];
         if (func) func(this.insThumbnailEl);
+      }
+    }
+
+    setButtonType(){
+      if (this.buttonType === "solid") {
+        this.buttonEl.solid = true;
+      } else if (this.buttonType === "outlined") {
+        this.buttonEl.outlined = true;
       }
     }
 
@@ -120,12 +137,16 @@ export class InsThumbnail {
                         </div>
                         <div class="ins-thumbnail-btn">
 
-                            <div class={`download-right-btn`}>
+                            <div class="download-right-btn">
                                 <a href={this.src} download={this.name}>
-                                    <ins-button label="DOWNLOAD" color="blue" size="small"
-                                        onMouseOver={_e => this.toggleHoverState(true)}
-                                        onMouseOut={_e => this.toggleHoverState(false)}>
-                                    </ins-button>
+                                  <ins-button
+                                    label={this.buttonLabel}
+                                    color={this.buttonColor}
+                                    icon={this.buttonIcon}
+                                    size="small"
+                                    onMouseOver={_e => this.toggleHoverState(true)}
+                                    onMouseOut={_e => this.toggleHoverState(false)}>
+                                  </ins-button>
                                 </a>
                             </div>
                         </div>
