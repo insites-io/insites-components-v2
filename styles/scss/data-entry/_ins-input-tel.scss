@@ -30,7 +30,7 @@
         border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
 
         height: auto;
-        padding: 8px 6px;
+        padding: 10px 8px;
         outline: none;
         width: 94px !important;
 
@@ -137,14 +137,21 @@
 
       &.column-2 {
         width: calc(100% - 104px);
-        margin: 0;
-        margin-left: 8px;
+        margin: 0 0 9px 9px;
       }
 
       &.column-3 {
         width: 100%;
         display: block;
         float: none;
+      }
+    }
+
+    &.no-areacode {
+      .column-3 {
+        float: left;
+        margin-left: 8px;
+        width: calc(100% - 102px);
       }
     }
   }
