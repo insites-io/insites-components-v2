@@ -38,21 +38,27 @@
           button-color="green"
           placeholder="Drag image here"
           upload-img-container="rectangle"
-          upload-img-rec-width=100
-          upload-img-rec-height=100
-          upload-img-rec-file-size=30>
+          upload-img-rec-width="100"
+          upload-img-rec-height="100"
+          upload-img-rec-file-size="10"
+          upload-img-rec-file-size-type="MB"
+          upload-img-file-formats="JPG or PNG"
+          error-message="Please choose a valid image file.">
       </ins-image-picker>
       </div>
       <div slot="code">
         <script type="text/plain" class="language-markup">
 <ins-image-picker
-    img-type="Image"
-    button-color="green"
-    placeholder="Drag image here"
-    upload-img-container="rectangle"
-    upload-img-rec-width=100
-    upload-img-rec-height=100
-    upload-img-rec-file-size=30>
+  img-type="Image"
+  button-color="green"
+  placeholder="Drag image here"
+  upload-img-container="rectangle"
+  upload-img-rec-width="100"
+  upload-img-rec-height="100"
+  upload-img-rec-file-size="10"
+  upload-img-rec-file-size-type="MB"
+  upload-img-file-formats="JPG or PNG"
+  error-message="Please choose a valid image file.">
 </ins-image-picker>
         </script>
       </div>
@@ -125,7 +131,14 @@
           <td>number</td>
           <td>25</td>
           <td>integer</td>
-          <td>Define the text for recommended file size in kb</td>
+          <td>Define the text for recommended file size</td>
+        </tr>
+        <tr>
+          <td>upload-img-rec-file-size-type</td>
+          <td>string</td>
+          <td>KB</td>
+          <td>KB or MB</td>
+          <td>Define the text for recommended file size type</td>
         </tr>
         <tr>
           <td>value</td>
@@ -133,6 +146,20 @@
           <td>""</td>
           <td>any</td>
           <td>Defines the field image value</td>
+        </tr>
+        <tr>
+          <td>upload-img-file-formats</td>
+          <td>string</td>
+          <td>"JPG, JPEG, PNG or SVG"</td>
+          <td>JPG, JPEG, PNG or SVG</td>
+          <td>Defines the accepted image format</td>
+        </tr>
+        <tr>
+          <td>error-message</td>
+          <td>string</td>
+          <td>"Invalid image file."</td>
+          <td>any</td>
+          <td>Defines the error message.</td>
         </tr>
         <tr>
           <td>file-name</td>

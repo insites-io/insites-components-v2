@@ -7,14 +7,18 @@
 
 ## Properties
 
-| Property    | Attribute   | Description | Type     | Default     |
-| ----------- | ----------- | ----------- | -------- | ----------- |
-| `alt`       | `alt`       |             | `string` | `undefined` |
-| `hasLoad`   | `has-load`  |             | `string` | `undefined` |
-| `label`     | `label`     |             | `string` | `undefined` |
-| `name`      | `name`      |             | `string` | `undefined` |
-| `src`       | `src`       |             | `string` | `undefined` |
-| `thumbnail` | `thumbnail` |             | `string` | `undefined` |
+| Property      | Attribute      | Description | Type     | Default      |
+| ------------- | -------------- | ----------- | -------- | ------------ |
+| `alt`         | `alt`          |             | `string` | `undefined`  |
+| `buttonColor` | `button-color` |             | `string` | `"blue"`     |
+| `buttonIcon`  | `button-icon`  |             | `string` | `""`         |
+| `buttonLabel` | `button-label` |             | `string` | `"DOWNLOAD"` |
+| `buttonType`  | `button-type`  |             | `string` | `""`         |
+| `hasLoad`     | `has-load`     |             | `string` | `undefined`  |
+| `label`       | `label`        |             | `string` | `undefined`  |
+| `name`        | `name`         |             | `string` | `undefined`  |
+| `src`         | `src`          |             | `string` | `undefined`  |
+| `thumbnail`   | `thumbnail`    |             | `string` | `undefined`  |
 
 
 ## Events

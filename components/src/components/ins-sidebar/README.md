@@ -24,6 +24,16 @@
 
 ## Methods
 
+### `maximise() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `minimise() => Promise<void>`
 
 

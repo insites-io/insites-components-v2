@@ -1,4 +1,4 @@
-import { h, Component, Prop, State, Element, Event, EventEmitter} from '@stencil/core';
+import { h, Component, Prop, Element, Event, EventEmitter} from '@stencil/core';
 import Cropper from 'cropperjs';
 
 @Component({
@@ -27,22 +27,31 @@ export class Insimagepicker {
   @Prop({mutable: true}) uploadImgFileFormats: string = "JPG, JPEG, PNG or SVG.";
   @Prop({mutable: true}) errorMessage: string = "Invalid image file.";
 
-  @State() ImageElement: HTMLImageElement;
-  @State() modal: any;
-  @State() image: any;
-  @State() cropper: any;
-  @State() base64: any;
-  @State() hiddeninput: any;
-  @State() showModal: boolean;
+  cropper;
+  base64;
+  originalImg;
+  imagePreviewEl;
+  controllersEl;
+  imageEl;
+  modalEl;
+  hiddenInputEl;
+  croppedImage;
 
   componentDidLoad () {
-    this.modal = this.insImagePickerEl.querySelector('.modal');
-    this.hiddeninput = this.insImagePickerEl.querySelector('.hidden-input');
+    this.initEls();
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
       if (func) func(this.insImagePickerEl);
     }
+  }
+
+  initEls(){
+    this.modalEl = this.insImagePickerEl.querySelector('.modal');
+    this.hiddenInputEl = this.insImagePickerEl.querySelector('.hidden-input');
+    this.imagePreviewEl = this.insImagePickerEl.querySelector('.image-preview');
+    this.controllersEl = this.insImagePickerEl.querySelector('.controllers');
+    this.imageEl = this.insImagePickerEl.querySelector('.image');
   }
 
   displayImage(evt) {
@@ -59,8 +68,7 @@ export class Insimagepicker {
 
   invalidFile(){
     this.notImageFile = true;
-    this.ImageElement = this.insImagePickerEl.querySelector('.image');
-    this.ImageElement.src = '';
+    this.imageEl.src = '';
     if (this.cropper) this.cropper.destroy();
     return;
   }
@@ -72,89 +80,63 @@ export class Insimagepicker {
   }
 
   processImgFile(files) {
-    let component = this;
+    if (!files.length) return;
     if (!files[0].type.includes('image/')) return this.invalidFile();
 
     let ext = files[0].type.split('/')[1];
     if (!this.validateFormat(ext)) return this.invalidFile();
-    if (files[0] && (ext === 'jpeg' || ext === 'png')) {
-      this.notImageFile = false;
-      this.fileName = files[0].name;
 
-      if (FileReader && files && files.length) {
-          let fr = new FileReader();
-          fr.onload = function () {
+    this.notImageFile = false;
+    this.fileName = files[0].name;
 
-            component.ImageElement = component.insImagePickerEl.querySelector('.image');
-            component.ImageElement.src = fr.result as any;
-            // component.insImagePickerEl.querySelector('.upload').classList.remove('show');
-            // component.insImagePickerEl.querySelector('.save').classList.add('show');
-
-            // initialize cropper
-            component.initCropper();
-          }
-          fr.readAsDataURL(files[0]);
-      }
-
-    } else if(ext.includes('svg')) {
-      this.notImageFile = false;
-      this.fileName = files[0].name;
-
-      if (FileReader && files && files.length) {
-        let fr = new FileReader();
-        fr.onload = function () {
-
-          component.image = component.insImagePickerEl.querySelector('.image');
-          component.image.parentElement.classList.add('svg-type');
-          component.image.src = fr.result as any;
-          component.base64 = fr.result;
-
+    let component = this;
+    if (FileReader && files && files.length) {
+      let fr = new FileReader();
+      fr.onload = function(){
+        if (ext.includes('svg')) {
+          component.imagePreviewEl.classList.add('svg-type');
         }
-        fr.readAsDataURL(files[0]);
+        component.showImage(fr);
       }
+
+      fr.readAsDataURL(files[0]);
     }
   }
 
-  initCropper() {
-    let aspectRatio = NaN;
-    if (this.uploadImgContainer === "rectangle"){
-      aspectRatio = NaN;
-    } else {
-      aspectRatio = 1/1;
-      // width:
-    }
+  showImage(fr){
+    let img = fr.result as any;
+    this.base64 = img;
+    this.imageEl.src = img;
+    this.imageEl.style.marginTop = "0px";
+    this.imagePreviewEl.classList.add('has-image');
+    this.controllersEl.classList.add('has-image');
 
-    let component = this;
-
-    if (this.cropper){
-      this.cropper.destroy();
-    }
-
-    this.image = this.insImagePickerEl.querySelector('.image');
-    this.cropper = new Cropper(this.image, {
-      aspectRatio: aspectRatio,
-      crop() {
-        component.base64 = this.cropper.getCroppedCanvas({
-          // width: customWidth,
-          // height: '120'
-        }).toDataURL();
-      },
-      ready () {
-        component.base64 = this.cropper.getCroppedCanvas({
-          // width: customWidth,
-          // height: '120'
-        }).toDataURL();
+    setTimeout(() => {
+      if (this.imageEl.naturalHeight < 200){
+        let marginTop = (200 - this.imageEl.naturalHeight) / 2;
+        this.imageEl.style.marginTop = `${marginTop}px`;
       }
-    })
+    });
+  }
+
+  initCropper() {
+    this.controllersEl.classList.add('cropping');
+    let aspectRatio = this.uploadImgContainer === "rectangle" ? NaN : 1/1;
+    if (this.cropper) this.cropper.destroy();
+    this.cropper = new Cropper(this.imageEl, { aspectRatio });
+  }
+
+  cancelCropping(){
+    if (this.cropper) this.cropper.destroy();
+    this.controllersEl.classList.remove('cropping');
+    this.croppedImage = "";
   }
 
   exportImage(e) {
     e.preventDefault();
-    // this.ImageElement = this.insImagePickerEl.querySelector('.profile');
-    // this.ImageElement.src = this.base64;
-    // this.insValueChange.emit(this.base64);
-    // this.insImagePickerEl.querySelector('.img-placeholder').classList.remove('show');
-    // this.ImageElement.classList.add('show');
+    this.base64 = this.cropper
+      ? this.cropper.getCroppedCanvas({}).toDataURL()
+      : this.imageEl.src;
 
     this.value = this.base64;
     this.insValueChange.emit({
@@ -162,28 +144,23 @@ export class Insimagepicker {
       filename: this.fileName
     });
     this.closeModal(e);
+    this.cancelCropping();
   }
 
   openModal() {
-    // this.modal.classList.add('show');
-    this.showModal = true;
+    this.modalEl.classList.add('show');
   }
 
   closeModal(e) {
     e.preventDefault();
-    // this.modal.classList.remove('show');
-    this.showModal = false;
-    setTimeout(() => {
-      let rippleWaves = this.insImagePickerEl.querySelectorAll('.ripple-wave');
-      for (let i = 0; i < rippleWaves.length; i++){
-        let parentNode = rippleWaves[i].parentNode;
-        parentNode.removeChild(rippleWaves[i]);
-      }
-    });
+    this.modalEl.classList.remove('show');
+    this.imageEl.src = "";
+    this.imagePreviewEl.classList.remove('has-image');
+    this.controllersEl.classList.remove('has-image');
   }
 
   addImage() {
-    this.hiddeninput.click();
+    this.hiddenInputEl.click();
   }
 
   handleDrag(event) {
@@ -194,27 +171,28 @@ export class Insimagepicker {
     return (
       <div class={`image-picker ${this.uploadImgContainer}`}>
         <div class='inline-block img-container'
-        onDragOver={this.handleDrag}
-        onDrop={this.handleDrop.bind(this)}>
-          {this.value ?
-            <img src={this.value} alt={this.fileName} class='profile'
-            onClick={this.openModal.bind(this)} /> :
-            <div class='img-placeholder img-preview-holder'
-            onClick={this.openModal.bind(this)}>
-              <span class="texts_image">{this.placeholder}</span>
-              {/*<div class="icon-wrap"><i class="icon-photo"></i></div>*/}
-            </div>
-          }
+          onDragOver={this.handleDrag}
+          onDrop={this.handleDrop.bind(this)}>
+
+            {this.value
+              ? <img src={this.value} alt={this.fileName} class='profile'
+                  onClick={this.openModal.bind(this)} />
+
+              : <div class='img-placeholder img-preview-holder'
+                  onClick={this.openModal.bind(this)}>
+                  <span class="texts_image">{this.placeholder}</span>
+                </div>
+            }
         </div>
+
         <div class="inline-block">
-        <span class="texts_uploadinfo">
-          File Formats: {this.uploadImgFileFormats} <br />
-          Recommended Dimensions: {`${this.uploadImgRecWidth}px by ${this.uploadImgRecHeight}px`}<br />
-          Recommended File Size: <span class="file-size">{`${this.uploadImgRecFileSize} ${this.uploadImgRecFileSizeType}`}</span>
+          <span class="texts_uploadinfo">
+            File Formats: {this.uploadImgFileFormats} <br />
+            Recommended Dimensions: {`${this.uploadImgRecWidth}px by ${this.uploadImgRecHeight}px`}<br />
+            Recommended File Size: <span class="file-size">{`${this.uploadImgRecFileSize} ${this.uploadImgRecFileSizeType}`}</span>
           </span>
+
           <ins-button
-           // label={'CHANGE ' + this.imgType}
-           // label={this.label}
             label= {this.value ? 'CHANGE ' + this.imgType : 'ADD ' + this.imgType}
             type="button"
             size="small"
@@ -224,7 +202,7 @@ export class Insimagepicker {
           </ins-button>
         </div>
 
-        <div class={`modal ${this.showModal ? 'show':''} ${this.notImageFile ? 'has-error': ''}`}>
+        <div class={`modal ${this.notImageFile ? 'has-error': ''}`}>
           <ins-backdrop>
             <ins-card steady>
 
@@ -234,16 +212,13 @@ export class Insimagepicker {
               </div>
 
               <div class={`image-preview`}
-              onDragOver={this.handleDrag}
-              onDrop={this.handleDrop.bind(this)}>
-                {/* <div class="label-content">
-                  <i class="icon-image"></i>
-                  <h4>Add {this.imgType}</h4>
-                  <h4>{this.label}</h4>
-                </div> */}
-                {!this.base64 ?
-                <p class="placeholder-text">Drag and drop the file or add an image</p>
-                : '' }
+                onDragOver={this.handleDrag}
+                onDrop={this.handleDrop.bind(this)}>
+
+                <p class="placeholder-text">
+                  Drag and drop the file or add an image
+                </p>
+
                 <img src="" alt="" class="image" />
               </div>
 
@@ -256,15 +231,20 @@ export class Insimagepicker {
                   onInsClick={this.addImage.bind(this)}>
                 </ins-button>
 
-                {/* <ins-button label="CANCEL" type="button"
-                  onInsClick={this.closeModal.bind(this)}>
-                </ins-button> */}
+                <ins-button label="CROP IMAGE" type="button" outlined class="crop-btn"
+                  onInsClick={this.initCropper.bind(this)}
+                  disabled={this.notImageFile}>
+                </ins-button>
 
-                {this.image ?
-                <ins-button label="SAVE" type="button" solid
+                <ins-button label="CANCEL CROP" type="button" outlined class="cancel-crop-btn"
+                  onInsClick={this.cancelCropping.bind(this)}
+                  disabled={this.notImageFile}>
+                </ins-button>
+
+                <ins-button label="SAVE" type="button" solid class="save-btn"
                   onInsClick={this.exportImage.bind(this)}
                   disabled={this.notImageFile}>
-                </ins-button> : ''}
+                </ins-button>
 
                 <input type="file" class="hidden-input"
                   name={this.name}
