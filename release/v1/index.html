@@ -1,14 +1,187 @@
-<!DOCTYPE html><html dir="ltr" lang="en"><head><meta charset="utf-8">  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"> <title>Insites 2.0 Frontend Styleguide</title> <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/favicons/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/favicons/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/favicons/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/assets/images/favicons/apple-touch-icon-60x60.png">
-<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/images/favicons/apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/images/favicons/apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/images/favicons/apple-touch-icon-152x152.png">
-<link rel="icon" type="image/png" href="/assets/images/favicons/favicon-196x196.png" sizes="196x196">
-<link rel="icon" type="image/png" href="/assets/images/favicons/favicon-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/assets/images/favicons/favicon-128.png" sizes="128x128"> <!-- Index Assets --> <link rel="stylesheet" href="/assets/vendor/css/foundation.min.css"> <script src="/assets/vendor/js/jquery-1.12.4.min.js"></script> <script src="/assets/vendor/js/jquery-ui.js"></script> <script src="/assets/vendor/js/foundation.min.js"></script> <!-- Insites Essentials --> <link rel="stylesheet" href="/assets/css/insites-plugins.css"> <link rel="stylesheet" href="/assets/css/insites-font-icons.css"> <script src="/assets/js/insites-plugins.js"></script> <script data-resources-url="/build/insites/">!function(i,e,n,s,t,r,o,a,c,d,l,u,p,m){for(l=i.insites=i.insites||{},(u=e.createElement("style")).innerHTML=c+"{visibility:hidden}.hydrated{visibility:inherit}",u.setAttribute("data-styles",""),p=e.head.querySelector("meta[charset]"),e.head.insertBefore(u,p?p.nextSibling:e.head.firstChild),function(i,e,n){(i["s-apps"]=i["s-apps"]||[]).push("insites"),n.componentOnReady||(n.componentOnReady=function(){var e=this;function n(n){if(e.nodeName.indexOf("-")>0){for(var s=i["s-apps"],t=0,r=0;r<s.length;r++)if(i[s[r]].componentOnReady){if(i[s[r]].componentOnReady(e,n))return;t++}if(t<s.length)return void(i["s-cr"]=i["s-cr"]||[]).push([e,n])}n(null)}return i.Promise?new i.Promise(n):{then:n}})}(i,0,d),t=t||l.resourcesUrl,u=(p=e.querySelectorAll("script")).length-1;u>=0&&!(m=p[u]).src&&!m.hasAttribute("data-resources-url");u--);p=m.getAttribute("data-resources-url"),!t&&p&&(t=p),!t&&m.src&&(t=(p=m.src.split("/").slice(0,-1)).join("/")+(p.length?"/":"")+"insites/"),u=e.createElement("script"),function(i,e,n,s){return!(e.search.indexOf("core=esm")>0)&&(!(!(e.search.indexOf("core=es5")>0||"file:"===e.protocol)&&i.customElements&&i.customElements.define&&i.fetch&&i.CSS&&i.CSS.supports&&i.CSS.supports("color","var(--c)")&&"noModule"in n)||function(i){try{return new Function('import("")'),!1}catch(i){}return!0}())}(i,i.location,u)?u.src=t+"insites.zpnwjedl.js":(u.src=t+"insites.l7hvieir.js",u.setAttribute("type","module"),u.setAttribute("crossorigin",!0)),u.setAttribute("data-resources-url",t),u.setAttribute("data-namespace","insites"),e.head.appendChild(u)}(window,document,0,0,0,0,0,0,"ins-accordion,ins-accordion-item,ins-accordion-link,ins-admin,ins-backdrop,ins-bar-chart,ins-base-table,ins-base-table-row,ins-base-table-td,ins-base-table-th,ins-breadcrumbs,ins-button,ins-button-group,ins-card,ins-carousel,ins-checkbox,ins-checkbox-card,ins-code-editor,ins-content,ins-credit-card,ins-date-time,ins-datepicker,ins-drawer,ins-duration,ins-editor,ins-fav-icon,ins-filter,ins-filter-item,ins-header,ins-header-user,ins-heading,ins-image-picker,ins-info-table,ins-input,ins-input-file,ins-input-multiple,ins-input-slider,ins-input-tel,ins-instances,ins-instances-item,ins-instances-sub-item,ins-line-chart,ins-loader,ins-logo,ins-markdown,ins-markdown-editor,ins-modal,ins-notifications,ins-notifications-item,ins-pie-chart,ins-progress-bar,ins-radio,ins-renderer,ins-searchbar,ins-select,ins-select-group,ins-select-option,ins-sidebar,ins-sidebar-footer,ins-sidebar-footer-button,ins-sidebar-footer-menu,ins-sidebar-item,ins-sort,ins-sparkline,ins-styleguide,ins-styleguide-actual,ins-styleguide-code,ins-tab,ins-tab-item,ins-tag,ins-tagging-input,ins-tags-button,ins-textarea,ins-thumbnail,ins-timeline,ins-timeline-item,ins-timepicker,ins-timezone,ins-title,ins-toggle-switch,ins-tooltip",HTMLElement.prototype);</script> <style>body{margin:0;font-family:Open Sans,sans-serif}.margin-bottom-30{margin-bottom:30px}</style>
-</head> <body> <ins-modal id="parentModal"></ins-modal> <ins-admin> <ins-sidebar full-logo="/assets/images/Insites_logo.svg" icon-logo="/assets/images/insites_logo_icon.svg" with-sidebar-actions=""> <ins-sidebar-item link="/assets/pages/styleguide/introduction.html" icon="icon-header" label="Insites Framework" landing-page="" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/essentials.html" icon="icon-header" label="Essentials" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/lifecycle.html" icon="icon-rotate-cw" label="Lifecycle" app=""></ins-sidebar-item> <!-- General --> <ins-sidebar-item with-submenu="" icon="icon-globals" label="General"> <ins-sidebar-item link="/assets/pages/styleguide/general/buttons.html" label="Buttons" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/general/font-icons.html" label="Font Icons" app=""></ins-sidebar-item> </ins-sidebar-item> <!-- Layout --> <ins-sidebar-item with-submenu="" icon="icon-entries" label="Layout"> <ins-sidebar-item link="/assets/pages/styleguide/layout/wrappers.html" label="Wrappers" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/layout/header.html" label="Header" app=""></ins-sidebar-item> </ins-sidebar-item> <!-- Navigation --> <ins-sidebar-item with-submenu="" icon="icon-select" label="Navigation"> <ins-sidebar-item link="/assets/pages/styleguide/navigation/sidebar.html" label="Sidebar" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/navigation/routing.html" label="Routing" app=""></ins-sidebar-item> </ins-sidebar-item> <!-- Data Entry --> <ins-sidebar-item with-submenu="" icon="icon-input" label="Data Entry"> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/checkbox.html" label="Checkbox" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/check-card.html" label="Check Card" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/code-editor.html" label="Code Editor" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/credit-card.html" label="Credit Card" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/date-picker.html" label="Date Picker" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/date-time-picker.html" label="Date and Time" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/filters.html" label="Filters" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/image-picker.html" label="Image Picker" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/input.html" label="Input" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/input-multiple.html" label="Input - Multiple" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/markdown-editor.html" label="Markdown" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/phone.html" label="Phone" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/radio.html" label="Radio" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/select.html" label="Select" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/slider.html" label="Slider" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/switch.html" label="Switch" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/textarea.html" label="Textarea" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/time-picker.html" label="Time Picker" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/upload.html" label="Upload" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-entry/wysiwyg-editor.html" label="WYSIWYG Editor" app=""></ins-sidebar-item> </ins-sidebar-item> <!-- Data Display --> <ins-sidebar-item with-submenu="" icon="icon-tables" label="Data Display"> <ins-sidebar-item link="/assets/pages/styleguide/data-display/card.html" label="Card" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-display/charts.html" label="Charts" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-display/markdown.html" label="Markdown" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-display/progress-bar.html" label="Progress Bar" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-display/sort.html" label="Sort" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-display/tables.html" label="Tables" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-display/tabs.html" label="Tabs" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-display/tag.html" label="Tag" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-display/thumbnails.html" label="Thumbnails" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-display/timeline.html" label="Timeline" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/data-display/tooltip.html" label="Tooltip" app=""></ins-sidebar-item> </ins-sidebar-item> <!-- Feedback --> <ins-sidebar-item with-submenu="" icon="icon-completed-outcomes" label="Feedback"> <ins-sidebar-item link="/assets/pages/styleguide/feedback/drawer.html" label="Drawer" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/feedback/loader.html" label="Loaders" app=""></ins-sidebar-item> </ins-sidebar-item> <!-- Other --> <ins-sidebar-item with-submenu="" icon="icon-support-1" label="Other"> <ins-sidebar-item link="/assets/pages/styleguide/accordion.html" label="Accordion" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/other/backdrop.html" label="Backdrop" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/carousel.html" label="Carousel" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/other/divider.html" label="Divider" app=""></ins-sidebar-item> <ins-sidebar-item link="/assets/pages/styleguide/modal.html" label="Modal" app=""></ins-sidebar-item> </ins-sidebar-item> <!-- Custom --> <!-- <ins-sidebar-item with-submenu icon="icon-site-manager" label="Custom"></ins-sidebar-item> --> </ins-sidebar> <ins-content> <ins-header support-link="www.google.com"> <ins-header-user name="John Smith" logout-link="/" profile-link="#/my-profile"></ins-header-user> <ins-instances logo-link="/assets/images/logo-3@2x.png" instance="Final Sprint"> <ins-instances-item logo-link="/assets/images/logo-2@2x.png" instance-link="/" instance="Codehow"> </ins-instances-item> <ins-instances-item logo-link="/assets/images/logo-3@2x.png" instance-link="#" instance="Final Sprint" with-sub-item=""> <ins-instances-sub-item link="/" instance="Production"></ins-instances-sub-item> <ins-instances-sub-item link="/" instance="Staging"></ins-instances-sub-item> </ins-instances-item> <ins-instances-item logo-link="/assets/images/logo-4@2x.png" instance-link="/" instance="Sharkfinetworks"> </ins-instances-item> <ins-instances-item logo-link="/assets/images/logo-1@2x.png" instance-link="/" instance="Family Day Care Australia"></ins-instances-item> <ins-instances-item logo-link="/assets/images/logo-2@2x.png" instance-link="/" instance="ABC Corp"> </ins-instances-item> </ins-instances> </ins-header> <ins-renderer> </ins-renderer> </ins-content> </ins-admin> <ins-notifications> <ins-notifications-item event-type="Task Completed" heading="Heading" duration="5 mins ago" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." link="/" link-label="View Task" icon="icon-check" status="green"> </ins-notifications-item> <ins-notifications-item event-type="Event Started" heading="Heading" duration="1 hr ago" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." link="/" link-label="View Event" icon="icon-today" status="blue"> </ins-notifications-item> <ins-notifications-item event-type="Event Started" duration="1 hr ago" icon="icon-settings" status="red"></ins-notifications-item> </ins-notifications> <!-- Example of ins-drawer OUTSIDE iframe --> <ins-drawer label="Outer Drawer" id="drawerOutsideEl"> <h4>This drawer is outside</h4> <p>Drawer element is placed outside the <code>&lt;iframe&gt;</code></p> <hr> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p> </ins-drawer> </body></html>
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites 2.0 Frontend Styleguide</title>
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/v1/assets/images/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/v1/assets/images/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/v1/assets/images/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/v1/assets/images/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/v1/assets/images/favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/v1/assets/images/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/v1/assets/images/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/v1/assets/images/favicons/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/v1/assets/images/favicons/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/v1/assets/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/v1/assets/images/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/v1/assets/images/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/v1/assets/images/favicons/favicon-128.png" sizes="128x128">
+
+  <!-- Index Assets -->
+  <link rel="stylesheet" href="/v1/assets/vendor/css/foundation.min.css">
+  <script src="/v1/assets/vendor/js/jquery-1.12.4.min.js"></script>
+  <script src="/v1/assets/vendor/js/jquery-ui.js"></script>
+  <script src="/v1/assets/vendor/js/foundation.min.js"></script> <!-- Insites Essentials -->
+  <link rel="stylesheet" href="/v1/assets/css/insites-plugins.css">
+  <link rel="stylesheet" href="/v1/assets/css/insites-font-icons.css">
+  <script src="/v1/assets/js/insites-plugins.js"></script>
+  <script src="/v1/build/insites.js"></script><style>
+    body {
+      margin: 0;
+      font-family: Open Sans, sans-serif
+    }
+
+    .margin-bottom-30 {
+      margin-bottom: 30px
+    }
+  </style>
+</head>
+
+<body>
+  <ins-modal id="parentModal"></ins-modal>
+  <ins-admin>
+    <ins-sidebar full-logo="/v1/assets/images/Insites_logo.svg" icon-logo="/v1/assets/images/insites_logo_icon.svg"
+      with-sidebar-actions="">
+      <ins-sidebar-item link="/v1/assets/pages/styleguide/introduction.html" icon="icon-header" label="Insites Framework"
+        landing-page="" app=""></ins-sidebar-item>
+      <ins-sidebar-item link="/v1/assets/pages/styleguide/essentials.html" icon="icon-header" label="Essentials" app="">
+      </ins-sidebar-item>
+      <ins-sidebar-item link="/v1/assets/pages/styleguide/lifecycle.html" icon="icon-rotate-cw" label="Lifecycle" app="">
+      </ins-sidebar-item> <!-- General -->
+      <ins-sidebar-item with-submenu="" icon="icon-globals" label="General">
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/general/buttons.html" label="Buttons" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/general/font-icons.html" label="Font Icons" app="">
+        </ins-sidebar-item>
+      </ins-sidebar-item> <!-- Layout -->
+      <ins-sidebar-item with-submenu="" icon="icon-entries" label="Layout">
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/layout/wrappers.html" label="Wrappers" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/layout/header.html" label="Header" app=""></ins-sidebar-item>
+      </ins-sidebar-item> <!-- Navigation -->
+      <ins-sidebar-item with-submenu="" icon="icon-select" label="Navigation">
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/navigation/sidebar.html" label="Sidebar" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/navigation/routing.html" label="Routing" app="">
+        </ins-sidebar-item>
+      </ins-sidebar-item> <!-- Data Entry -->
+      <ins-sidebar-item with-submenu="" icon="icon-input" label="Data Entry">
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/checkbox.html" label="Checkbox" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/check-card.html" label="Check Card" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/code-editor.html" label="Code Editor" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/credit-card.html" label="Credit Card" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/date-picker.html" label="Date Picker" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/date-time-picker.html" label="Date and Time" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/filters.html" label="Filters" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/image-picker.html" label="Image Picker" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/input.html" label="Input" app=""></ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/input-multiple.html" label="Input - Multiple"
+          app=""></ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/markdown-editor.html" label="Markdown" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/phone.html" label="Phone" app=""></ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/radio.html" label="Radio" app=""></ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/select.html" label="Select" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/slider.html" label="Slider" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/switch.html" label="Switch" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/textarea.html" label="Textarea" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/time-picker.html" label="Time Picker" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/upload.html" label="Upload" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-entry/wysiwyg-editor.html" label="WYSIWYG Editor" app="">
+        </ins-sidebar-item>
+      </ins-sidebar-item> <!-- Data Display -->
+      <ins-sidebar-item with-submenu="" icon="icon-tables" label="Data Display">
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-display/card.html" label="Card" app=""></ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-display/charts.html" label="Charts" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-display/markdown.html" label="Markdown" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-display/progress-bar.html" label="Progress Bar" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-display/sort.html" label="Sort" app=""></ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-display/tables.html" label="Tables" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-display/tabs.html" label="Tabs" app=""></ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-display/tag.html" label="Tag" app=""></ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-display/thumbnails.html" label="Thumbnails" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-display/timeline.html" label="Timeline" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/data-display/tooltip.html" label="Tooltip" app="">
+        </ins-sidebar-item>
+      </ins-sidebar-item> <!-- Feedback -->
+      <ins-sidebar-item with-submenu="" icon="icon-completed-outcomes" label="Feedback">
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/feedback/drawer.html" label="Drawer" app=""></ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/feedback/loader.html" label="Loaders" app="">
+        </ins-sidebar-item>
+      </ins-sidebar-item> <!-- Other -->
+      <ins-sidebar-item with-submenu="" icon="icon-support-1" label="Other">
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/accordion.html" label="Accordion" app=""></ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/other/backdrop.html" label="Backdrop" app="">
+        </ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/carousel.html" label="Carousel" app=""></ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/other/divider.html" label="Divider" app=""></ins-sidebar-item>
+        <ins-sidebar-item link="/v1/assets/pages/styleguide/modal.html" label="Modal" app=""></ins-sidebar-item>
+      </ins-sidebar-item> <!-- Custom -->
+      <!-- <ins-sidebar-item with-submenu icon="icon-site-manager" label="Custom"></ins-sidebar-item> -->
+    </ins-sidebar>
+    <ins-content>
+      <ins-header support-link="www.google.com">
+        <ins-header-user name="John Smith" logout-link="/" profile-link="#/my-profile"></ins-header-user>
+        <ins-instances logo-link="/v1/assets/images/logo-3@2x.png" instance="Final Sprint">
+          <ins-instances-item logo-link="/v1/assets/images/logo-2@2x.png" instance-link="/" instance="Codehow">
+          </ins-instances-item>
+          <ins-instances-item logo-link="/v1/assets/images/logo-3@2x.png" instance-link="#" instance="Final Sprint"
+            with-sub-item="">
+            <ins-instances-sub-item link="/" instance="Production"></ins-instances-sub-item>
+            <ins-instances-sub-item link="/" instance="Staging"></ins-instances-sub-item>
+          </ins-instances-item>
+          <ins-instances-item logo-link="/v1/assets/images/logo-4@2x.png" instance-link="/" instance="Sharkfinetworks">
+          </ins-instances-item>
+          <ins-instances-item logo-link="/v1/assets/images/logo-1@2x.png" instance-link="/"
+            instance="Family Day Care Australia"></ins-instances-item>
+          <ins-instances-item logo-link="/v1/assets/images/logo-2@2x.png" instance-link="/" instance="ABC Corp">
+          </ins-instances-item>
+        </ins-instances>
+      </ins-header>
+      <ins-renderer> </ins-renderer>
+    </ins-content>
+  </ins-admin>
+  <ins-notifications>
+    <ins-notifications-item event-type="Task Completed" heading="Heading" duration="5 mins ago"
+      desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      link="/" link-label="View Task" icon="icon-check" status="green"> </ins-notifications-item>
+    <ins-notifications-item event-type="Event Started" heading="Heading" duration="1 hr ago"
+      desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      link="/" link-label="View Event" icon="icon-today" status="blue"> </ins-notifications-item>
+    <ins-notifications-item event-type="Event Started" duration="1 hr ago" icon="icon-settings" status="red">
+    </ins-notifications-item>
+  </ins-notifications> <!-- Example of ins-drawer OUTSIDE iframe -->
+  <ins-drawer label="Outer Drawer" id="drawerOutsideEl">
+    <h4>This drawer is outside</h4>
+    <p>Drawer element is placed outside the <code>&lt;iframe&gt;</code></p>
+    <hr>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+  </ins-drawer>
+</body>
+
+</html>
