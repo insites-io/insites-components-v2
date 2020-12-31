@@ -5,7 +5,9 @@ export class InsSelect {
   @Element() insSelectEl: HTMLElement;
   @Event() insValueChange: EventEmitter;
   @Event() insOptionSelect: EventEmitter;
-  @Event() insClose: EventEmitter;
+  @Event({
+    bubbles: false
+  }) insClose: EventEmitter;
 
   // Dynamic Events
   @Event() insSubmit: EventEmitter;

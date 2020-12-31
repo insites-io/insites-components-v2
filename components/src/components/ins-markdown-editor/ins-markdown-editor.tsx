@@ -104,7 +104,7 @@ export class InsMarkdownEditor {
     return (
       <div class={`ins-markdown-editor ins-form-field-wrap ${this.hasError ? 'is-invalid' : ''}`}>
         <label class="ins-form-label">
-          {`${this.label}${this.required ? ' *' : ''}`}
+          {this.label}
         </label>
 
         <div class="markdown-editor-wrap ins-form-field">

@@ -112,7 +112,10 @@ export class InsDateTime {
       maxTime: this.maxTime,
       onChange: this.insInputHandler.bind(this),
       appendTo: wrapper,
-      defaultDate: this.value
+      defaultDate: this.value,
+      onReady() {
+        if (this.mode !== "datepicker") this.showTimeInput = true;
+      }
     });
   }
 

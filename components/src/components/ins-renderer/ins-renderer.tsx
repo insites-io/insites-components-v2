@@ -79,6 +79,7 @@ export class InsRenderer {
     } else {
       formattedUrl = this.pathname + '#/app/' + formattedUrl;
     }
+
     /* Dev QA this
     {
       pathname: formattedUrl,
@@ -211,11 +212,9 @@ export class InsRenderer {
             : ""}
         </div>
 
-        {this.route.app ? "" :
-          <div class="ins-renderer__slot-wrap">
-            <slot />
-          </div>
-        }
+        <div class="ins-renderer__slot-wrap">
+          <slot />
+        </div>
       </div>
     )
   }
