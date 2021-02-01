@@ -17,7 +17,7 @@ export class InsRenderer {
   @Prop({ mutable: true }) route: any = {
     label: "", link: ""
   };
-  @Prop({ context: 'formatUrl' }) private formatUrl: any;
+  // @Prop({ context: 'formatUrl' }) formatUrl: any;
   @State() pathname: string = window.location.pathname;
 
   rerouting: boolean = false;
@@ -48,6 +48,13 @@ export class InsRenderer {
         }, 100)
       }
     }
+  }
+
+  formatUrl(e){
+    return e.toLowerCase()
+        .replace(/ +(?= )/g, '')
+        .replace(/- | - | -| /gi, '-')
+        .replace(/-+(?=)/g, '-');
   }
 
   @Method()

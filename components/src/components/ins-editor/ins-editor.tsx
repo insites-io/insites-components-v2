@@ -20,7 +20,7 @@ import "codemirror/mode/xml/xml";
 import "codemirror/mode/yaml/yaml";
 
 @Component({
-	tag: 'ins-editor',
+  tag: 'ins-editor',
 	styleUrls: [
     '../../assets/redactor.min.css',
 		'../../../node_modules/codemirror/lib/codemirror.css',
@@ -31,7 +31,7 @@ import "codemirror/mode/yaml/yaml";
 		'../../../node_modules/codemirror/theme/monokai.css',
 		'../../../node_modules/codemirror/theme/neat.css',
 		'../../../node_modules/codemirror/theme/the-matrix.css',
-		'../../../node_modules/codemirror/theme/material.css',
+    '../../../node_modules/codemirror/theme/material.css'
 	]
 })
 
@@ -58,14 +58,14 @@ export class InsEditor {
 	@Prop({ mutable: true }) imageUpload: boolean = false;
 	@Prop({ mutable: true }) images: string = "";
 
-	@State() editor: any;
+	/*@State()*/ editor: any;
 	@State() codeEditor: any;
-	@State() firstLoadRedactor: boolean = false;
+	/*@State()*/ firstLoadRedactor: boolean = false;
 	@State() disableVisualEditor: boolean = false;
 	@State() activeLabel: boolean = false;
 	@State() sourceView: boolean = false;
 	@State() isSourceView: boolean = false;
-	@State() stylesId: string = ".redactor-styles";
+	/*@State()*/ stylesId: string = ".redactor-styles";
 
 	@State() hasRedactorDoctypeHTML: number = -1;
 	@State() redactorHTML: string = "";
@@ -82,6 +82,10 @@ export class InsEditor {
 
 	@Method()
 	async val() {
+    return this.getVal();
+  }
+
+  getVal(){
 		if (this.isSourceView) {
 			if (this.codeEditor) {
         let val = this.codeEditor.getValue();
@@ -90,7 +94,7 @@ export class InsEditor {
 		} else {
 			return this.sourceViewRedactor();
 		}
-	}
+  }
 
 	generateClassId(length) {
 		let result = "";
@@ -217,7 +221,7 @@ export class InsEditor {
 			},
 			keyup: () => {
         self.firstLoadRedactor = false;
-        let sanitized = self.removeEditableAttr(self.val());
+        let sanitized = self.removeEditableAttr(self.getVal());
 				self.insInput.emit(sanitized);
 				self.insValueChange.emit(sanitized);
 			},
@@ -227,7 +231,7 @@ export class InsEditor {
 			},
 			blur() {
 				self.deactivateLabel();
-        let sanitized = self.removeEditableAttr(self.val());
+        let sanitized = self.removeEditableAttr(self.getVal());
 				self.insBlur.emit(sanitized);
 			}
 		};
@@ -586,7 +590,7 @@ export class InsEditor {
 			}
 			self.sourceCodeViewOnly(editor.getValue());
       self.isDisabledRedactorVisualEditorView();
-      let sanitized = this.removeEditableAttr(self.val());
+      let sanitized = this.removeEditableAttr(self.getVal());
 			self.insInput.emit(sanitized);
 		});
 
@@ -598,7 +602,7 @@ export class InsEditor {
 		editor.on('blur', () => {
 			self.deactivateLabel();
       self.hideCursor();
-      let sanitized = this.removeEditableAttr(self.val());
+      let sanitized = this.removeEditableAttr(self.getVal());
 			self.insBlur.emit(sanitized);
 		});
 	}
@@ -651,7 +655,11 @@ export class InsEditor {
 	render() {
 		return (
 			<div class="ins-editor">
-				<div class={(this.hasError ? 'has-error ' : '') + (this.readonly ? 'readonly ' : '') + (this.activeLabel ? 'active' : '')}>
+				<div class={`
+          ${this.hasError ? 'has-error ' : ''}
+          ${this.readonly ? 'readonly ' : ''}
+          ${this.activeLabel ? 'active' : ''}
+        `}>
 					<label>{this.label}</label>
 					<textarea name={this.name} class={this.classId}>
 					</textarea>

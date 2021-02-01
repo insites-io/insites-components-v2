@@ -1,4 +1,47 @@
-// @import "../dependencies/redactor";
+// fonts
+$default-font-family: 'Open Sans', sans-serif;
+$default-font-size: 0.875rem;
+$default-line-height: 1.5;
+$font-bold: 600;
+$font-regular: 400;
+$font-light: 300;
+
+// color pallete
+$black: #2c3148;
+$red: #f27474;
+$orange: #ffa639;
+$yellow: #fdd835;
+$pink: #ff3366;
+$turquoise: #2bbad9;
+$blue: #1e86e3;
+$green: #24be8d;
+$dark-grey: #8c94a4;
+$medium-grey: #e4e6ec;
+$light-grey: #f2f4f8;
+$wash-white: #fafbfc;
+$white: #ffffff;
+
+// colors
+$primary-color: $black;
+$secondary-color: $white;
+$link-color: $blue;
+$link-hover: $turquoise;
+
+// background colors
+$background-black: $black;
+$background-grey: $medium-grey;
+$background-white: $wash-white;
+
+// variables
+$link-color: $blue;
+$link-hover: $turquoise;
+$button-font: 16px;
+$button-primary: $blue;
+$button-hover: #0068c4;
+$button-negative: $red;
+$button-positive: $green;
+
+$button-line-height: 1px;
 
 $spacing--x-small: 8px;
 $spacing--small: 16px;
@@ -133,6 +176,18 @@ $spacing--mamoth: 128px;
   }
 }
 
+.spacer {
+  padding: 0.46875em;
+
+  &.small {
+    padding: 0.5em;
+  }
+
+  &.large {
+    padding: 2em;
+  }
+}
+
 .height-full {
   height: 100%;
 }
@@ -158,9 +213,9 @@ ins-editor {
 	.ins-form-error {
 		font-size: 12px;
 		display: none;
-		font-family: var(--ins-font-family);
+		font-family: $default-font-family;
 		line-height: 16px;
-		color: var(--ins-color-red);
+		color: $red;
 		margin-top: 8px;
 		margin-bottom: 0;
 	}
@@ -184,38 +239,32 @@ ins-editor {
     background: #282a3c;
 	}
 
-	font-family: var(--ins-font-family);
+	font-family: $default-font-family;
 	margin-bottom: 20px;
 
 	label {
 		font-size: 12px;
 		font-weight: 600;
-		color: $ink;
-		font-family: var(--ins-font-family);
+		color: $black;
+		font-family: "Open Sans", sans-serif;
 		margin-bottom: 2px;
 	}
 
 	.active {
 		label {
-			color: var(--ins-color-blue);
+			color: $blue;
 		}
 		.redactor-box {
-      border:
-        var(--ins-border-style)
-        var(--ins-border-thickness)
-        var(--ins-color-blue) !important;
+			border: 1px solid $blue !important;
 		}
 	}
 
 	.has-error {
 		label {
-			color: var(--ins-color-red);
+			color: $red;
 		}
 		.redactor-box {
-      border:
-        var(--ins-border-style)
-        var(--ins-border-thickness)
-        var(--ins-color-red) !important;
+			border: 1px solid $red !important;
 		}
 		.ins-form-error {
 			display: block;
@@ -224,21 +273,18 @@ ins-editor {
 
 	.disabled {
 		label {
-			color: var(--ins-color-ink40);
+			color: $dark-grey;
 		}
 		.redactor-box {
-      border:
-        var(--ins-border-style)
-        var(--ins-border-thickness)
-        var(--ins-color-ink40) !important;
+			border: 1px solid $dark-grey !important;
 		}
 	}
 
 	&-dropdown {
 		a:hover, a:focus {
 			outline: none;
-			color: var(--ins-color-ink1) !important;
-			background-color: var(--ins-color-blue) !important;
+			color: $white !important;
+			background-color: $blue !important;
 		}
 		& a.redactor-dropdown-item-disabled {
 			display: none;
@@ -247,7 +293,7 @@ ins-editor {
 	}
 	&-focus {
 		&.redactor-styles-on{
-			border-color: var(--ins-color-blue) !important;
+			border-color: $blue !important;
 		}
 	}
 
@@ -270,11 +316,11 @@ ins-editor {
 
 		// .redactor-modal-header
 		&-header {
-			font-family: var(--ins-font-family);
+			font-family: $default-font-family;
 			font-size: 18px;
 			letter-spacing: 0.14px;
 			line-height: 24px;
-			font-weight: 400;
+			font-weight: $font-regular;
 		}
 
 		// .redactor-modal-body
@@ -284,24 +330,20 @@ ins-editor {
 			line-height: 18px;
 
 			span.error {
-				color: var(--ins-color-red);
+				color: $red;
 				letter-spacing: 0.2px;
 				display: none;
 			}
 
 			input {
 				&:focus {
-					border-color: var(--ins-color-blue);
+					border-color: $blue;
 					box-shadow: none;
 					transition: all ease-in-out .5s;
 				}
 				&.error {
-					border:
-            var(--ins-border-style)
-            var(--ins-border-thickness)
-            var(--ins-color-red);
-
-					background-color: var(--ins-bg-color5);
+					border: 1px solid $red;
+					background-color: #fef8f8;
 
 					& + span.error {
 						display: block;
@@ -321,45 +363,37 @@ ins-editor {
 			flex-direction: row-reverse;
 
 			& button {
-				color: var(--ins-color-ink1);
-				background-color: var(--ins-color-blue);
-				font-family: var(--ins-font-family);
+				color: $white;
+				background-color: $blue;
+				font-family: $default-font-family;
 				font-size: 12px;
-				font-weight: 600;
+				font-weight: $font-bold;
 				text-transform: uppercase;
 				border: none;
 				letter-spacing: 1px;
-				border-radius: var(--ins-border-radius);
+				border-radius: 4px;
 
 				&:last-child {
 					margin-right: 15px;
 				}
 
 				&:hover, &:focus {
-					background: var(--ins-color-blue2);
-					color: var(--ins-color-ink1);
+					background: #1a79ce;
+					color: $white;
 				}
 				&.redactor-button-unstyled {
 					float: none;
 					letter-spacing: 1px;
-					border:
-            var(--ins-border-style)
-            var(--ins-border-thickness)
-            var(--ins-color-blue);
-
-					color: var(--ins-color-blue);
+					border: 1px solid $blue;
+					color: $blue;
 					background-color: transparent;
 
 					&:hover, &:focus {
 						text-decoration: none !important;
 						text-transform: uppercase !important;
-						color: var(--ins-color-blue);
-						background: var(--ins-bg-color2);
-						border:
-              var(--ins-border-style)
-              var(--ins-border-thickness)
-              var(--ins-color-blue);
-
+						color: $blue;
+						border: 1px solid $blue;
+						background: #e6f1fc;
 					}
 				}
 			}
@@ -372,13 +406,13 @@ ins-editor {
 			padding: 0 16px;
 			font-size: 28px;
 			font-weight: 300;
-			font-family: var(--ins-font-family);
-			color: $ink;
+			font-family: $default-font-family;
+			color: $primary-color;
 			vertical-align: text-top;
 
 			&::before {
 				content: '\D7';
-				font-family: var(--ins-font-family);
+				font-family: $default-font-family;
 				font-weight: 300;
 			}
 		}
@@ -398,13 +432,13 @@ ins-editor {
 	}
 	// overrides
 	.redactor-toolbar {
-		background-color: $ink5;
+		background-color: $light-grey;
 		.re-button-icon, .re-fullscreen {
 			position: relative;
-			background-color: var(--ins-color-ink1)0;
+			background-color: $background-grey;
 			width: 34px;
 			height: 34px;
-			color: $ink40;
+			color: $dark-grey;
 			box-shadow: none;
 			margin-right: 2px;
 			margin-bottom: 2px;
@@ -415,8 +449,8 @@ ins-editor {
 		}
 
 		.re-fullscreen:hover, .re-button-icon:hover {
-			background-color: var(--ins-color-blue);
-			color: var(--ins-color-white);
+			background-color: $button-hover;
+			color: $secondary-color;
 		}
 	}
 
@@ -451,10 +485,10 @@ ins-editor {
 	}
 	&.has-error {
 		.redactor-label {
-			color: var(--ins-color-red);
+			color: $red;
 		}
 		.redactor-box.redactor-styles-on {
-			border-color: var(--ins-color-red) !important;
+			border-color: $red !important;
 		}
 		.CodeMirror-wrap {
 				border-left: solid 1px#F27474 !important;
@@ -503,10 +537,7 @@ ins-editor {
 	}
 
 	.cm-s-default .CodeMirror-cursor {
-		border-left:
-      var(--ins-border-style)
-      var(--ins-border-thickness)
-      var(--ins-color-ink5);
+		border-left: 1px solid #f8f8f0;
 	}
 
 	.cm-s-default span.cm-comment {
@@ -598,11 +629,18 @@ ins-editor {
 
 	.cm-s-default .CodeMirror-matchingbracket {
 		text-decoration: underline;
-		color: var(--ins-color-white) !important;
+		color: white !important;
 	}
 
 	.CodeMirror-fullscreen {
 		z-index: 32000;
 		margin-bottom: 0;
 	}
+}
+
+ins-editor.code-mode {
+  .re-button {
+    opacity: .3;
+    pointer-events: none;
+  }
 }

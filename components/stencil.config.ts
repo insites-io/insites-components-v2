@@ -6,6 +6,5 @@ export const config: Config = {
     { type: 'docs-readme' },
     { type: 'www', serviceWorker: null }
   ],
-  enableCache: true,
-  globalScript: 'src/globals/context.ts'
+  enableCache: true
 };

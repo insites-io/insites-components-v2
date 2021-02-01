@@ -24,7 +24,7 @@ export class InsButton {
   @Prop({ mutable: true }) cursor: string  = '';
   @Prop({ mutable: true }) textTransform: string  = '';
   @Prop({ mutable: true }) loading: boolean  = false;
-  @Prop({ context: 'addRippleEffect' }) private addRippleEffect: any;
+  // @Prop({ context: 'addRippleEffect' }) privateż addRippleEffect: any;
 
   @State() buttonOptions = []
   @State() toggleOption = false;
@@ -59,6 +59,35 @@ export class InsButton {
         this.label = existingLabel;
       }, 300);
     }
+  }
+
+  addRippleEffect(startingPoint, target){
+
+    let rect = target.getBoundingClientRect();
+    let ripple = target.querySelector('.ripple-wave');
+
+    if (!ripple) {
+      ripple = document.createElement('span');
+      ripple.className = 'ripple-wave';
+      ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height) + 'px';
+      target.appendChild(ripple);
+    }
+
+    ripple.classList.remove('show');
+    let top = startingPoint.pageY - (rect.top + window.scrollY) - ripple.offsetHeight / 2;
+
+    let left = startingPoint.pageX - rect.left - ripple.offsetWidth / 2;
+    ripple.style.top = top + 'px';
+    ripple.style.left = left + 'px';
+    ripple.classList.add('show');
+
+    setTimeout(() => {
+      if (target.contains(ripple)){
+        target.removeChild(ripple);
+      }
+    }, 1250);
+
+    return false;
   }
 
   componentDidLoad() {
