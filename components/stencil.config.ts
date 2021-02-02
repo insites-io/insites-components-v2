@@ -1,4 +1,6 @@
 import { Config } from '@stencil/core';
+import { sass } from '@stencil/sass';
+
 export const config: Config = {
   namespace: 'insites',
   outputTargets: [
@@ -6,5 +8,8 @@ export const config: Config = {
     { type: 'docs-readme' },
     { type: 'www', serviceWorker: null }
   ],
-  enableCache: true
+  enableCache: true,
+  plugins: [
+    sass()
+  ]
 };

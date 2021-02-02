@@ -787,6 +787,9 @@ export namespace Components {
         "label": string;
         "light": boolean;
     }
+    interface InsTest {
+        "value": string;
+    }
     interface InsTextarea {
         "counter": string;
         "disabled": boolean;
@@ -1287,6 +1290,12 @@ declare global {
         prototype: HTMLInsTagElement;
         new (): HTMLInsTagElement;
     };
+    interface HTMLInsTestElement extends Components.InsTest, HTMLStencilElement {
+    }
+    var HTMLInsTestElement: {
+        prototype: HTMLInsTestElement;
+        new (): HTMLInsTestElement;
+    };
     interface HTMLInsTextareaElement extends Components.InsTextarea, HTMLStencilElement {
     }
     var HTMLInsTextareaElement: {
@@ -1396,6 +1405,7 @@ declare global {
         "ins-table-td": HTMLInsTableTdElement;
         "ins-table-th": HTMLInsTableThElement;
         "ins-tag": HTMLInsTagElement;
+        "ins-test": HTMLInsTestElement;
         "ins-textarea": HTMLInsTextareaElement;
         "ins-thumbnail": HTMLInsThumbnailElement;
         "ins-timeline": HTMLInsTimelineElement;
@@ -2211,6 +2221,9 @@ declare namespace LocalJSX {
         "label"?: string;
         "light"?: boolean;
     }
+    interface InsTest {
+        "value"?: string;
+    }
     interface InsTextarea {
         "counter"?: string;
         "disabled"?: boolean;
@@ -2358,6 +2371,7 @@ declare namespace LocalJSX {
         "ins-table-td": InsTableTd;
         "ins-table-th": InsTableTh;
         "ins-tag": InsTag;
+        "ins-test": InsTest;
         "ins-textarea": InsTextarea;
         "ins-thumbnail": InsThumbnail;
         "ins-timeline": InsTimeline;
@@ -2442,6 +2456,7 @@ declare module "@stencil/core" {
             "ins-table-td": LocalJSX.InsTableTd & JSXBase.HTMLAttributes<HTMLInsTableTdElement>;
             "ins-table-th": LocalJSX.InsTableTh & JSXBase.HTMLAttributes<HTMLInsTableThElement>;
             "ins-tag": LocalJSX.InsTag & JSXBase.HTMLAttributes<HTMLInsTagElement>;
+            "ins-test": LocalJSX.InsTest & JSXBase.HTMLAttributes<HTMLInsTestElement>;
             "ins-textarea": LocalJSX.InsTextarea & JSXBase.HTMLAttributes<HTMLInsTextareaElement>;
             "ins-thumbnail": LocalJSX.InsThumbnail & JSXBase.HTMLAttributes<HTMLInsThumbnailElement>;
             "ins-timeline": LocalJSX.InsTimeline & JSXBase.HTMLAttributes<HTMLInsTimelineElement>;

@@ -21,18 +21,7 @@ import "codemirror/mode/yaml/yaml";
 
 @Component({
   tag: 'ins-editor',
-	styleUrls: [
-    '../../assets/redactor.min.css',
-		'../../../node_modules/codemirror/lib/codemirror.css',
-		// addons
-		'../../../node_modules/codemirror/addon/dialog/dialog.css',
-		'../../../node_modules/codemirror/addon/display/fullscreen.css',
-		// themes
-		'../../../node_modules/codemirror/theme/monokai.css',
-		'../../../node_modules/codemirror/theme/neat.css',
-		'../../../node_modules/codemirror/theme/the-matrix.css',
-    '../../../node_modules/codemirror/theme/material.css'
-	]
+  styleUrl: "./ins-editor.scss"
 })
 
 export class InsEditor {
