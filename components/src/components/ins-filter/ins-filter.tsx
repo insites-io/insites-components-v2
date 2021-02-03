@@ -100,7 +100,10 @@ export class InsFilter {
       selections[selected.name] = selected.option;
     }
 
-    selections[this.dateTitle] = this.getLocDate();
+    if (this.withDateFilter){
+      selections[this.dateTitle] = this.getLocDate();
+    }
+
     this.insFilterApply.emit(selections);
   }
 

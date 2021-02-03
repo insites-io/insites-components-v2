@@ -11,16 +11,15 @@
   <!-- <link rel="stylesheet" href="/assets/css/reset.css" /> -->
   <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
   <link rel="stylesheet" href="/assets/css/insites.css" />
-  <!-- <link rel="stylesheet" href="/assets/css/insites-code-editor.css" /> -->
 
   <script type="module" src="/build/insites.esm.js"></script>
   <script nomodule src="/build/insites.js"></script>
 
-  <!-- jQuery library -->
+  <!-- jQuery library
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"
     integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
     crossorigin="anonymous">
-  </script>
+  </script> -->
 
   <style>
     body {
@@ -31,9 +30,10 @@
 </head>
 
 <body>
-  <ins-code-editor
-    label="Test 2*">
-  </ins-code-editor>
+  <ins-select label="With Dynamic Option" id="dynamicSelectEl" error-message="This is required field.">
+    <ins-select-option label="macOS" value="macOS"></ins-select-option>
+    <ins-select-option label="Windows" value="Windows"></ins-select-option>
+  </ins-select>
 </body>
 
 </html>
