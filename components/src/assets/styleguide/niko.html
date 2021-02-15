@@ -30,10 +30,116 @@
 </head>
 
 <body>
-  <ins-select label="With Dynamic Option" id="dynamicSelectEl" error-message="This is required field.">
-    <ins-select-option label="macOS" value="macOS"></ins-select-option>
-    <ins-select-option label="Windows" value="Windows"></ins-select-option>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <ins-select id="ins-select" label="V1" button> 
+    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
+    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
+    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
+    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
+    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
+    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
+    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
+    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
+    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
+    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
+    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
+    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
+    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
+    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
+    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
+    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
+    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
+    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
+    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
+    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
+    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
+    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
+    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
+    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
+    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
+    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
+    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
   </ins-select>
+
+  <ins-input-select id="ins-input-select"
+    lookup
+    label="V2">
+      <ins-input-select-option value="1" label="1 - Tests"></ins-input-select-option>
+      <ins-input-select-option value="2" label="2 - Testing"></ins-input-select-option>
+      <ins-input-select-option value="3" label="3 - Tester"></ins-input-select-option>
+      <ins-input-select-option value="4" label="4 - Tests"></ins-input-select-option>
+      <ins-input-select-option value="5" label="5 - Testing"></ins-input-select-option>
+      <ins-input-select-option value="6" label="6 - Tester"></ins-input-select-option>
+  </ins-input-select>
+
+
+  <ins-button-select id="ins-button-select"
+    label="V2-B"
+    multiple
+    lookup
+    searchable>
+      <ins-button-select-option value="1" label="1 - Tests"></ins-button-select-option>
+      <ins-button-select-option value="2" label="2 - Testing"></ins-button-select-option>
+      <ins-button-select-option value="3" label="3 - Tester"></ins-button-select-option>
+      <ins-button-select-option value="4" label="4 - Tests"></ins-button-select-option>
+      <ins-button-select-option value="5" label="5 - Testing"></ins-button-select-option>
+      <ins-button-select-option value="6" label="6 - Tester"></ins-button-select-option>
+  </ins-button-select>
+
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <script>
+    window.onload = () => {
+      let el = document.getElementById('ins-input-select');
+
+      el.addEventListener('insDynamicSubmit', () => {
+        el.dynamicHasError = !el.dynamicValue;
+
+        if (!el.dynamicHasError) {
+          el.dynamicCloseOptions();
+        }
+      });
+
+      el.infiniteScroll = true;
+    };
+  </script>
 </body>
 
 </html>

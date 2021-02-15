@@ -77,6 +77,56 @@ export namespace Components {
         "setActiveOption": (option: any) => Promise<void>;
         "size": string;
     }
+    interface InsButtonSelect {
+        "closeOptions": () => Promise<void>;
+        "disableNoResult": () => Promise<boolean>;
+        "disabled": boolean;
+        "dropUp": boolean;
+        "dynamicButtonLabel": string;
+        "dynamicCloseOptions": () => Promise<void>;
+        "dynamicErrorMessage": string;
+        "dynamicHasError": boolean;
+        "dynamicOption": boolean;
+        "dynamicPlaceholder": string;
+        "dynamicValue": string;
+        "enableNoResult": () => Promise<boolean>;
+        "errorMessage": string;
+        "getAllOptions": () => Promise<NodeListOf<HTMLInsButtonSelectOptionElement>>;
+        "getValue": () => Promise<any>;
+        "hasError": boolean;
+        "hasLoad": string;
+        "label": string;
+        "lookup": boolean;
+        "lookupLoading": boolean;
+        "lookupScrolling": boolean;
+        "multiple": boolean;
+        "name": string;
+        "placeholder": string;
+        "readonly": boolean;
+        "resetValue": () => Promise<void>;
+        "searchable": boolean;
+        "searchablePlaceholder": string;
+        "selectedValues": any;
+        "setLoadingState": (state: any) => Promise<boolean>;
+        "setSearchingState": (state: any) => Promise<boolean>;
+        "setValue": (value?: any) => Promise<boolean>;
+        "value": any;
+    }
+    interface InsButtonSelectGroup {
+        "label": string;
+    }
+    interface InsButtonSelectOption {
+        "activate": () => Promise<void>;
+        "activated": boolean;
+        "deactivate": () => Promise<void>;
+        "default": boolean;
+        "disabled": boolean;
+        "hidden": boolean;
+        "hideOption": () => Promise<void>;
+        "label": string;
+        "showOption": () => Promise<void>;
+        "value": string;
+    }
     interface InsCard {
         "noPadding": boolean;
         "outlined": boolean;
@@ -396,6 +446,56 @@ export namespace Components {
         "setValue": (value: any) => Promise<void>;
         "val": () => Promise<any>;
         "value": any;
+    }
+    interface InsInputSelect {
+        "closeOptions": () => Promise<void>;
+        "disableNoResult": () => Promise<boolean>;
+        "disabled": boolean;
+        "dropUp": boolean;
+        "dynamicButtonLabel": string;
+        "dynamicCloseOptions": () => Promise<void>;
+        "dynamicErrorMessage": string;
+        "dynamicHasError": boolean;
+        "dynamicOption": boolean;
+        "dynamicPlaceholder": string;
+        "dynamicValue": string;
+        "enableNoResult": () => Promise<boolean>;
+        "errorMessage": string;
+        "getAllOptions": () => Promise<NodeListOf<HTMLInsInputSelectOptionElement>>;
+        "getValue": () => Promise<any>;
+        "hasError": boolean;
+        "hasLoad": string;
+        "label": string;
+        "lookup": boolean;
+        "lookupLoading": boolean;
+        "lookupScrolling": boolean;
+        "multiple": boolean;
+        "name": string;
+        "placeholder": string;
+        "readonly": boolean;
+        "resetValue": () => Promise<void>;
+        "searchable": boolean;
+        "searchablePlaceholder": string;
+        "selectedValues": any;
+        "setLoadingState": (state: any) => Promise<boolean>;
+        "setSearchingState": (state: any) => Promise<boolean>;
+        "setValue": (value?: any) => Promise<boolean>;
+        "value": any;
+    }
+    interface InsInputSelectGroup {
+        "label": string;
+    }
+    interface InsInputSelectOption {
+        "activate": () => Promise<void>;
+        "activated": boolean;
+        "deactivate": () => Promise<void>;
+        "default": boolean;
+        "disabled": boolean;
+        "hidden": boolean;
+        "hideOption": () => Promise<void>;
+        "label": string;
+        "showOption": () => Promise<void>;
+        "value": string;
     }
     interface InsInputSlider {
         "disabled": boolean;
@@ -909,6 +1009,24 @@ declare global {
         prototype: HTMLInsButtonGroupElement;
         new (): HTMLInsButtonGroupElement;
     };
+    interface HTMLInsButtonSelectElement extends Components.InsButtonSelect, HTMLStencilElement {
+    }
+    var HTMLInsButtonSelectElement: {
+        prototype: HTMLInsButtonSelectElement;
+        new (): HTMLInsButtonSelectElement;
+    };
+    interface HTMLInsButtonSelectGroupElement extends Components.InsButtonSelectGroup, HTMLStencilElement {
+    }
+    var HTMLInsButtonSelectGroupElement: {
+        prototype: HTMLInsButtonSelectGroupElement;
+        new (): HTMLInsButtonSelectGroupElement;
+    };
+    interface HTMLInsButtonSelectOptionElement extends Components.InsButtonSelectOption, HTMLStencilElement {
+    }
+    var HTMLInsButtonSelectOptionElement: {
+        prototype: HTMLInsButtonSelectOptionElement;
+        new (): HTMLInsButtonSelectOptionElement;
+    };
     interface HTMLInsCardElement extends Components.InsCard, HTMLStencilElement {
     }
     var HTMLInsCardElement: {
@@ -1058,6 +1176,24 @@ declare global {
     var HTMLInsInputMultipleElement: {
         prototype: HTMLInsInputMultipleElement;
         new (): HTMLInsInputMultipleElement;
+    };
+    interface HTMLInsInputSelectElement extends Components.InsInputSelect, HTMLStencilElement {
+    }
+    var HTMLInsInputSelectElement: {
+        prototype: HTMLInsInputSelectElement;
+        new (): HTMLInsInputSelectElement;
+    };
+    interface HTMLInsInputSelectGroupElement extends Components.InsInputSelectGroup, HTMLStencilElement {
+    }
+    var HTMLInsInputSelectGroupElement: {
+        prototype: HTMLInsInputSelectGroupElement;
+        new (): HTMLInsInputSelectGroupElement;
+    };
+    interface HTMLInsInputSelectOptionElement extends Components.InsInputSelectOption, HTMLStencilElement {
+    }
+    var HTMLInsInputSelectOptionElement: {
+        prototype: HTMLInsInputSelectOptionElement;
+        new (): HTMLInsInputSelectOptionElement;
     };
     interface HTMLInsInputSliderElement extends Components.InsInputSlider, HTMLStencilElement {
     }
@@ -1333,6 +1469,9 @@ declare global {
         "ins-breadcrumbs": HTMLInsBreadcrumbsElement;
         "ins-button": HTMLInsButtonElement;
         "ins-button-group": HTMLInsButtonGroupElement;
+        "ins-button-select": HTMLInsButtonSelectElement;
+        "ins-button-select-group": HTMLInsButtonSelectGroupElement;
+        "ins-button-select-option": HTMLInsButtonSelectOptionElement;
         "ins-card": HTMLInsCardElement;
         "ins-carousel": HTMLInsCarouselElement;
         "ins-chart": HTMLInsChartElement;
@@ -1358,6 +1497,9 @@ declare global {
         "ins-input": HTMLInsInputElement;
         "ins-input-file": HTMLInsInputFileElement;
         "ins-input-multiple": HTMLInsInputMultipleElement;
+        "ins-input-select": HTMLInsInputSelectElement;
+        "ins-input-select-group": HTMLInsInputSelectGroupElement;
+        "ins-input-select-option": HTMLInsInputSelectOptionElement;
         "ins-input-slider": HTMLInsInputSliderElement;
         "ins-input-stepper": HTMLInsInputStepperElement;
         "ins-input-tel": HTMLInsInputTelElement;
@@ -1482,6 +1624,49 @@ declare namespace LocalJSX {
         "onInsClick"?: (event: CustomEvent<any>) => void;
         "options"?: string;
         "size"?: string;
+    }
+    interface InsButtonSelect {
+        "disabled"?: boolean;
+        "dropUp"?: boolean;
+        "dynamicButtonLabel"?: string;
+        "dynamicErrorMessage"?: string;
+        "dynamicHasError"?: boolean;
+        "dynamicOption"?: boolean;
+        "dynamicPlaceholder"?: string;
+        "dynamicValue"?: string;
+        "errorMessage"?: string;
+        "hasError"?: boolean;
+        "hasLoad"?: string;
+        "label"?: string;
+        "lookup"?: boolean;
+        "lookupLoading"?: boolean;
+        "lookupScrolling"?: boolean;
+        "multiple"?: boolean;
+        "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onInsChange"?: (event: CustomEvent<any>) => void;
+        "onInsDynamicSubmit"?: (event: CustomEvent<any>) => void;
+        "onInsLoadMore"?: (event: CustomEvent<any>) => void;
+        "onInsOptionSelect"?: (event: CustomEvent<any>) => void;
+        "onInsSearch"?: (event: CustomEvent<any>) => void;
+        "placeholder"?: string;
+        "readonly"?: boolean;
+        "searchable"?: boolean;
+        "searchablePlaceholder"?: string;
+        "selectedValues"?: any;
+        "value"?: any;
+    }
+    interface InsButtonSelectGroup {
+        "label"?: string;
+    }
+    interface InsButtonSelectOption {
+        "activated"?: boolean;
+        "default"?: boolean;
+        "disabled"?: boolean;
+        "hidden"?: boolean;
+        "label"?: string;
+        "onInsButtonSelectOptionClicked"?: (event: CustomEvent<any>) => void;
+        "value"?: string;
     }
     interface InsCard {
         "noPadding"?: boolean;
@@ -1814,6 +1999,49 @@ declare namespace LocalJSX {
         "onInsInput"?: (event: CustomEvent<any>) => void;
         "readonly"?: boolean;
         "value"?: any;
+    }
+    interface InsInputSelect {
+        "disabled"?: boolean;
+        "dropUp"?: boolean;
+        "dynamicButtonLabel"?: string;
+        "dynamicErrorMessage"?: string;
+        "dynamicHasError"?: boolean;
+        "dynamicOption"?: boolean;
+        "dynamicPlaceholder"?: string;
+        "dynamicValue"?: string;
+        "errorMessage"?: string;
+        "hasError"?: boolean;
+        "hasLoad"?: string;
+        "label"?: string;
+        "lookup"?: boolean;
+        "lookupLoading"?: boolean;
+        "lookupScrolling"?: boolean;
+        "multiple"?: boolean;
+        "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onInsChange"?: (event: CustomEvent<any>) => void;
+        "onInsDynamicSubmit"?: (event: CustomEvent<any>) => void;
+        "onInsLoadMore"?: (event: CustomEvent<any>) => void;
+        "onInsOptionSelect"?: (event: CustomEvent<any>) => void;
+        "onInsSearch"?: (event: CustomEvent<any>) => void;
+        "placeholder"?: string;
+        "readonly"?: boolean;
+        "searchable"?: boolean;
+        "searchablePlaceholder"?: string;
+        "selectedValues"?: any;
+        "value"?: any;
+    }
+    interface InsInputSelectGroup {
+        "label"?: string;
+    }
+    interface InsInputSelectOption {
+        "activated"?: boolean;
+        "default"?: boolean;
+        "disabled"?: boolean;
+        "hidden"?: boolean;
+        "label"?: string;
+        "onInsInputSelectOptionClicked"?: (event: CustomEvent<any>) => void;
+        "value"?: string;
     }
     interface InsInputSlider {
         "disabled"?: boolean;
@@ -2295,6 +2523,9 @@ declare namespace LocalJSX {
         "ins-breadcrumbs": InsBreadcrumbs;
         "ins-button": InsButton;
         "ins-button-group": InsButtonGroup;
+        "ins-button-select": InsButtonSelect;
+        "ins-button-select-group": InsButtonSelectGroup;
+        "ins-button-select-option": InsButtonSelectOption;
         "ins-card": InsCard;
         "ins-carousel": InsCarousel;
         "ins-chart": InsChart;
@@ -2320,6 +2551,9 @@ declare namespace LocalJSX {
         "ins-input": InsInput;
         "ins-input-file": InsInputFile;
         "ins-input-multiple": InsInputMultiple;
+        "ins-input-select": InsInputSelect;
+        "ins-input-select-group": InsInputSelectGroup;
+        "ins-input-select-option": InsInputSelectOption;
         "ins-input-slider": InsInputSlider;
         "ins-input-stepper": InsInputStepper;
         "ins-input-tel": InsInputTel;
@@ -2379,6 +2613,9 @@ declare module "@stencil/core" {
             "ins-breadcrumbs": LocalJSX.InsBreadcrumbs & JSXBase.HTMLAttributes<HTMLInsBreadcrumbsElement>;
             "ins-button": LocalJSX.InsButton & JSXBase.HTMLAttributes<HTMLInsButtonElement>;
             "ins-button-group": LocalJSX.InsButtonGroup & JSXBase.HTMLAttributes<HTMLInsButtonGroupElement>;
+            "ins-button-select": LocalJSX.InsButtonSelect & JSXBase.HTMLAttributes<HTMLInsButtonSelectElement>;
+            "ins-button-select-group": LocalJSX.InsButtonSelectGroup & JSXBase.HTMLAttributes<HTMLInsButtonSelectGroupElement>;
+            "ins-button-select-option": LocalJSX.InsButtonSelectOption & JSXBase.HTMLAttributes<HTMLInsButtonSelectOptionElement>;
             "ins-card": LocalJSX.InsCard & JSXBase.HTMLAttributes<HTMLInsCardElement>;
             "ins-carousel": LocalJSX.InsCarousel & JSXBase.HTMLAttributes<HTMLInsCarouselElement>;
             "ins-chart": LocalJSX.InsChart & JSXBase.HTMLAttributes<HTMLInsChartElement>;
@@ -2404,6 +2641,9 @@ declare module "@stencil/core" {
             "ins-input": LocalJSX.InsInput & JSXBase.HTMLAttributes<HTMLInsInputElement>;
             "ins-input-file": LocalJSX.InsInputFile & JSXBase.HTMLAttributes<HTMLInsInputFileElement>;
             "ins-input-multiple": LocalJSX.InsInputMultiple & JSXBase.HTMLAttributes<HTMLInsInputMultipleElement>;
+            "ins-input-select": LocalJSX.InsInputSelect & JSXBase.HTMLAttributes<HTMLInsInputSelectElement>;
+            "ins-input-select-group": LocalJSX.InsInputSelectGroup & JSXBase.HTMLAttributes<HTMLInsInputSelectGroupElement>;
+            "ins-input-select-option": LocalJSX.InsInputSelectOption & JSXBase.HTMLAttributes<HTMLInsInputSelectOptionElement>;
             "ins-input-slider": LocalJSX.InsInputSlider & JSXBase.HTMLAttributes<HTMLInsInputSliderElement>;
             "ins-input-stepper": LocalJSX.InsInputStepper & JSXBase.HTMLAttributes<HTMLInsInputStepperElement>;
             "ins-input-tel": LocalJSX.InsInputTel & JSXBase.HTMLAttributes<HTMLInsInputTelElement>;
