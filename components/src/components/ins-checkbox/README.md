@@ -15,6 +15,7 @@
 | `hasLoad`    | `has-load`    |             | `string`  | `undefined` |
 | `label`      | `label`       |             | `string`  | `undefined` |
 | `name`       | `name`        |             | `string`  | `""`        |
+| `tooltip`    | `tooltip`     |             | `string`  | `""`        |
 | `trueValue`  | `true-value`  |             | `string`  | `""`        |
 | `value`      | `value`       |             | `string`  | `undefined` |
 
@@ -47,9 +48,14 @@ Type: `Promise<void>`
 
  - [ins-table](../ins-table)
 
+### Depends on
+
+- [ins-input-tooltip](../ins-input-tooltip)
+
 ### Graph
 ```mermaid
 graph TD;
+  ins-checkbox --> ins-input-tooltip
   ins-table --> ins-checkbox
   style ins-checkbox fill:#f9f,stroke:#333,stroke-width:4px
 ```

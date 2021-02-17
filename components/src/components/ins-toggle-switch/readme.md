@@ -17,6 +17,7 @@
 | `hasLoad`       | `has-load`       |             | `string`  | `undefined` |
 | `label`         | `label`          |             | `string`  | `undefined` |
 | `name`          | `name`           |             | `string`  | `undefined` |
+| `tooltip`       | `tooltip`        |             | `string`  | `""`        |
 | `trueValue`     | `true-value`     |             | `string`  | `""`        |
 | `value`         | `value`          |             | `string`  | `undefined` |
 
@@ -29,6 +30,19 @@
 | `insToggle`      |             | `CustomEvent<any>` |
 | `insValueChange` |             | `CustomEvent<any>` |
 
+
+## Dependencies
+
+### Depends on
+
+- [ins-input-tooltip](../ins-input-tooltip)
+
+### Graph
+```mermaid
+graph TD;
+  ins-toggle-switch --> ins-input-tooltip
+  style ins-toggle-switch fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

@@ -35,6 +35,7 @@
 graph TD;
   ins-instances --> ins-card
   ins-instances --> ins-input
+  ins-input --> ins-input-tooltip
   style ins-instances fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

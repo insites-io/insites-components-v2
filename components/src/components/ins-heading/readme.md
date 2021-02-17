@@ -40,6 +40,7 @@
 graph TD;
   ins-heading --> ins-input
   ins-heading --> ins-button
+  ins-input --> ins-input-tooltip
   style ins-heading fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

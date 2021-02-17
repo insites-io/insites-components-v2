@@ -32,6 +32,7 @@
 | `showLimit`         | `show-limit`          |             | `boolean` | `true`                                |
 | `showNotifications` | `show-notifications`  |             | `boolean` | `true`                                |
 | `subtext`           | `subtext`             |             | `string`  | `""`                                  |
+| `tooltip`           | `tooltip`             |             | `string`  | `""`                                  |
 | `typeLabel`         | `type-label`          |             | `string`  | `"file"`                              |
 | `value`             | `value`               |             | `any`     | `[]`                                  |
 
@@ -158,6 +159,19 @@ Type: `Promise<void>`
 
 
 
+
+## Dependencies
+
+### Depends on
+
+- [ins-input-tooltip](../ins-input-tooltip)
+
+### Graph
+```mermaid
+graph TD;
+  ins-input-file --> ins-input-tooltip
+  style ins-input-file fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

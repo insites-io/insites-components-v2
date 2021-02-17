@@ -61,6 +61,7 @@ Type: `Promise<"All" | { from: any; to: any; }>`
 graph TD;
   ins-filter --> ins-date-time
   ins-filter --> ins-button
+  ins-date-time --> ins-input-tooltip
   style ins-filter fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

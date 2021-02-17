@@ -20,6 +20,7 @@
 | `readonly`     | `readonly`      |             | `boolean` | `false`     |
 | `required`     | `required`      |             | `boolean` | `false`     |
 | `step`         | `step`          |             | `string`  | `"1"`       |
+| `tooltip`      | `tooltip`       |             | `string`  | `""`        |
 | `value`        | `value`         |             | `string`  | `undefined` |
 
 
@@ -31,6 +32,19 @@
 | `insBlur`        |             | `CustomEvent<any>` |
 | `insValueChange` |             | `CustomEvent<any>` |
 
+
+## Dependencies
+
+### Depends on
+
+- [ins-input-tooltip](../ins-input-tooltip)
+
+### Graph
+```mermaid
+graph TD;
+  ins-input-stepper --> ins-input-tooltip
+  style ins-input-stepper fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

@@ -20,6 +20,7 @@
 | `position`     | `position`      |             | `string`  | `"right"`   |
 | `sliderOnly`   | `slider-only`   |             | `boolean` | `false`     |
 | `step`         | `step`          |             | `number`  | `1`         |
+| `tooltip`      | `tooltip`       |             | `string`  | `""`        |
 | `value`        | `value`         |             | `any`     | `0`         |
 
 
@@ -33,6 +34,19 @@
 | `insSlideStart`  |             | `CustomEvent<any>` |
 | `insValueChange` |             | `CustomEvent<any>` |
 
+
+## Dependencies
+
+### Depends on
+
+- [ins-input-tooltip](../ins-input-tooltip)
+
+### Graph
+```mermaid
+graph TD;
+  ins-input-slider --> ins-input-tooltip
+  style ins-input-slider fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

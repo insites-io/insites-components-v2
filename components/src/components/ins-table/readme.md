@@ -107,6 +107,8 @@ graph TD;
   ins-table --> ins-loader
   ins-table --> ins-checkbox
   ins-table --> ins-button
+  ins-input --> ins-input-tooltip
+  ins-checkbox --> ins-input-tooltip
   style ins-table fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

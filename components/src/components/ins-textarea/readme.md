@@ -20,6 +20,7 @@
 | `placeholder`  | `placeholder`   |             | `string`  | `undefined` |
 | `readonly`     | `readonly`      |             | `boolean` | `false`     |
 | `required`     | `required`      |             | `boolean` | `false`     |
+| `tooltip`      | `tooltip`       |             | `string`  | `""`        |
 | `value`        | `value`         |             | `string`  | `undefined` |
 
 
@@ -31,6 +32,19 @@
 | `insInput`       |             | `CustomEvent<any>` |
 | `insValueChange` |             | `CustomEvent<any>` |
 
+
+## Dependencies
+
+### Depends on
+
+- [ins-input-tooltip](../ins-input-tooltip)
+
+### Graph
+```mermaid
+graph TD;
+  ins-textarea --> ins-input-tooltip
+  style ins-textarea fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

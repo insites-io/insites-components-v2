@@ -26,6 +26,7 @@
 | `noMeridiem`   | `no-meridiem`   |             | `boolean` | `false`     |
 | `placeholder`  | `placeholder`   |             | `string`  | `""`        |
 | `readonly`     | `readonly`      |             | `boolean` | `false`     |
+| `tooltip`      | `tooltip`       |             | `string`  | `""`        |
 | `value`        | `value`         |             | `string`  | `""`        |
 
 
@@ -57,9 +58,14 @@ Type: `Promise<any>`
 
  - [ins-filter](../ins-filter)
 
+### Depends on
+
+- [ins-input-tooltip](../ins-input-tooltip)
+
 ### Graph
 ```mermaid
 graph TD;
+  ins-date-time --> ins-input-tooltip
   ins-filter --> ins-date-time
   style ins-date-time fill:#f9f,stroke:#333,stroke-width:4px
 ```

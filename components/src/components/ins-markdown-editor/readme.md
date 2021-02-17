@@ -16,6 +16,7 @@
 | `name`         | `name`          |             | `string`  | `""`        |
 | `readonly`     | `readonly`      |             | `boolean` | `undefined` |
 | `required`     | `required`      |             | `boolean` | `undefined` |
+| `tooltip`      | `tooltip`       |             | `string`  | `""`        |
 | `value`        | `value`         |             | `string`  | `""`        |
 
 
@@ -59,6 +60,19 @@ Type: `Promise<any>`
 
 
 
+
+## Dependencies
+
+### Depends on
+
+- [ins-input-tooltip](../ins-input-tooltip)
+
+### Graph
+```mermaid
+graph TD;
+  ins-markdown-editor --> ins-input-tooltip
+  style ins-markdown-editor fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

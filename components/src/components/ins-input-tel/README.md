@@ -24,6 +24,7 @@
 | `phonenumValue`       | `phonenum-value`       |             | `string`  | `""`        |
 | `readonly`            | `readonly`             |             | `boolean` | `undefined` |
 | `required`            | `required`             |             | `boolean` | `undefined` |
+| `tooltip`             | `tooltip`              |             | `string`  | `""`        |
 
 
 ## Events
@@ -87,6 +88,19 @@ Type: `Promise<void>`
 
 
 
+
+## Dependencies
+
+### Depends on
+
+- [ins-input-tooltip](../ins-input-tooltip)
+
+### Graph
+```mermaid
+graph TD;
+  ins-input-tel --> ins-input-tooltip
+  style ins-input-tel fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

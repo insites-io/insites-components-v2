@@ -10,6 +10,7 @@
 | Property           | Attribute            | Description | Type      | Default     |
 | ------------------ | -------------------- | ----------- | --------- | ----------- |
 | `autoplay`         | `autoplay`           |             | `boolean` | `false`     |
+| `autostop`         | `autostop`           |             | `boolean` | `false`     |
 | `bindTo`           | `bind-to`            |             | `string`  | `""`        |
 | `bodyText`         | `body-text`          |             | `string`  | `""`        |
 | `ctaColor`         | `cta-color`          |             | `string`  | `"blue"`    |
