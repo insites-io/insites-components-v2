@@ -385,6 +385,7 @@ export namespace Components {
         "showLimit": boolean;
         "showNotifications": boolean;
         "subtext": string;
+        "tooltip": string;
         "trigger": () => Promise<void>;
         "typeLabel": string;
         "uploadErrorNotification": () => Promise<void>;
@@ -415,6 +416,7 @@ export namespace Components {
         "position": string;
         "sliderOnly": boolean;
         "step": number;
+        "tooltip": string;
         "value": any;
     }
     interface InsInputStepper {
@@ -429,6 +431,7 @@ export namespace Components {
         "readonly": boolean;
         "required": boolean;
         "step": string;
+        "tooltip": string;
         "value": string;
     }
     interface InsInputTel {
@@ -1825,6 +1828,7 @@ declare namespace LocalJSX {
         "showLimit"?: boolean;
         "showNotifications"?: boolean;
         "subtext"?: string;
+        "tooltip"?: string;
         "typeLabel"?: string;
         "value"?: any;
     }
@@ -1859,6 +1863,7 @@ declare namespace LocalJSX {
         "position"?: string;
         "sliderOnly"?: boolean;
         "step"?: number;
+        "tooltip"?: string;
         "value"?: any;
     }
     interface InsInputStepper {
@@ -1876,6 +1881,7 @@ declare namespace LocalJSX {
         "readonly"?: boolean;
         "required"?: boolean;
         "step"?: string;
+        "tooltip"?: string;
         "value"?: string;
     }
     interface InsInputTel {

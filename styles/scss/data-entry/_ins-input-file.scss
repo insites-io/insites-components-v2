@@ -1,4 +1,11 @@
 ins-input-file {
+
+  .ins-form-label {
+    .ins-input-tooltip {
+      margin-bottom: 6px;
+    }
+  }
+
   // disable state
   &[disabled] {
     pointer-events: none;

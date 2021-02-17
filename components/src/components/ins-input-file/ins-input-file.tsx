@@ -41,6 +41,8 @@ export class InsInputFile {
   @Prop({ mutable: true }) fieldName: string;
   @Prop({ mutable: true }) s3Data: object;
 
+  @Prop({mutable: true}) tooltip: string = "";
+
   /* @State() */ dropZone: any;
 
   @Watch('disabled')
@@ -336,7 +338,14 @@ export class InsInputFile {
   render() {
     return (
       <div class={`ins-input-file-wrapper ins-form-field-wrap ${this.hasError ? 'is-invalid' : ''}`}>
-        <label class="ins-form-label">{this.label}
+        <label class="ins-form-label">
+          <span>{this.label}</span>
+
+          {this.tooltip
+            ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+            : ''
+          }
+
           {this.showLimit && !this.disabled ?
           <div class="file-restrictions">
             {this.subtext !== ''

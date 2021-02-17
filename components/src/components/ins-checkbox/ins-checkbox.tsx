@@ -71,12 +71,12 @@ export class InsCheckbox {
               </span>
             : ''
           }
-
-          {this.tooltip
-            ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
-            : ''
-          }
         </label>
+
+        {this.tooltip
+          ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+          : ''
+        }
       </div>
     )
   }

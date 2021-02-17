@@ -63,12 +63,12 @@ export class InsToggleSwitch {
 
           <span class="ins-slider round"><i></i></span>
           <span class="ins-label">{this.constructLabel()}</span>
-
-          {this.tooltip
-            ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
-            : ''
-          }
         </label>
+
+        {this.tooltip
+          ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+          : ''
+        }
       </div>
     );
   }

@@ -30,8 +30,10 @@ export class InsInputSlider {
   @Prop({mutable: true}) disabled: boolean = false;
   @Prop({mutable: true}) sliderOnly: boolean = false;
 
+  @Prop({mutable: true}) tooltip: string = "";
+
   inputEl: any;
-  tooltip: any;
+  tooltipValue: any;
   sliderEl: any;
   labelInput: any;
 
@@ -75,7 +77,7 @@ export class InsInputSlider {
         this.emitAction('Start');
       },
       onSlide: value => {
-        this.tooltip.textContent = value;
+        this.tooltipValue.textContent = value;
         this.emitAction()
       },
       onSlideEnd: value => {
@@ -88,10 +90,10 @@ export class InsInputSlider {
 
   initTooltip(){
     const handleEl = this.sliderEl.handle;
-    this.tooltip = document.createElement('div');
-    this.tooltip.classList.add('ins-input-slider_tooltip');
-    this.tooltip.textContent = this.sliderEl.value;
-    handleEl.appendChild(this.tooltip);
+    this.tooltipValue = document.createElement('div');
+    this.tooltipValue.classList.add('ins-input-slider_tooltip');
+    this.tooltipValue.textContent = this.sliderEl.value;
+    handleEl.appendChild(this.tooltipValue);
   }
 
   initLabelInput(){
@@ -115,6 +117,12 @@ export class InsInputSlider {
         <input type="number" class="ins-input-slider_label-input"
           min={this.min} max={this.max} step={this.step}
           value={this.value || this.min} disabled={this.disabled} />
+
+
+        {this.tooltip
+          ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+          : ''
+        }
       </label>
     )
   }

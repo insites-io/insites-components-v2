@@ -9,10 +9,19 @@ ins-input-tooltip {
     text-align: center;
     border-radius: 50%;
     background-color: var(--ins-bg-color2);
-    margin-left: 5px;
     color: var(--ins-color-ink40);
     padding-top: 1px;
     box-sizing: border-box;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 8px;
+    cursor: pointer;
+
+    &:hover,
+    &[aria-expanded="true"] {
+      background-color: var(--ins-color-blue);
+      color: var(--ins-color-white);
+    }
   }
 
   .tippy-box {

@@ -24,6 +24,8 @@ export class InsStepper {
   @Prop({ mutable: true }) hasError: boolean = false;
   @Prop({ mutable: true }) errorMessage: string = "";
 
+  @Prop({mutable: true}) tooltip: string = "";
+
   labelEl; inputEl; active;
 
   componentWillLoad(){
@@ -126,12 +128,17 @@ export class InsStepper {
         ${this.readonly ? 'readonly': ''}
         ${this.disabled ? 'disabled': ''}`}>
 
-        { this.label ?
+        { this.label || this.tooltip ?
           <label htmlFor={this.name}
             class={`ins-form-label
               ${this.disabled ? 'disabled' : ''}`}>
 
             {this.label}
+
+            {this.tooltip
+              ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+              : ''
+            }
           </label>
         : ''}
 

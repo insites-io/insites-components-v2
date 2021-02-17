@@ -18,10 +18,6 @@ ins-radio {
         display: inline-block;
         margin-left: 10px;
       }
-
-      .ins-input-tooltip {
-        padding-top: 0;
-      }
     }
 
     .ripple-check {
@@ -114,6 +110,12 @@ ins-radio {
         border-radius: 50%;
       }
     }
+  }
+
+  .ins-input-tooltip {
+    line-height: 16px;
+    position: relative;
+    top: -2px;
   }
 }
 
