@@ -84,6 +84,7 @@ export namespace Components {
     }
     interface InsCarousel {
         "autoplay": boolean;
+        "autostop": boolean;
         "bindTo": string;
         "bodyText": string;
         "ctaColor": string;
@@ -1514,6 +1515,7 @@ declare namespace LocalJSX {
     }
     interface InsCarousel {
         "autoplay"?: boolean;
+        "autostop"?: boolean;
         "bindTo"?: string;
         "bodyText"?: string;
         "ctaColor"?: string;

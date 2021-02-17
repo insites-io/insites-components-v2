@@ -8,7 +8,7 @@
 
   <!-- Insites Essentials -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap">
-  <!-- <link rel="stylesheet" href="/assets/css/reset.css" /> -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
   <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
   <link rel="stylesheet" href="/assets/css/insites.css" />
 
@@ -36,18 +36,42 @@
       width: 49%;
       box-sizing: border-box;
     }
+
+    .img-wrap {
+      height: 200px;
+    }
+
+    .content-wrap {
+      width: 600px;
+      margin: 0 auto;
+    }
   </style>
 </head>
 
 <body>
-  <ins-input label="Test"
-    tooltip="Testing some tooltip content here. Please check it out. Thanks!">
-  </ins-input>
+  <div class="content-wrap">
+    <ins-carousel layout="1" autoplay autostop loop
+      heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      body-text="sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      sub-heading="Duis aute irure dolor in reprehenderit in voluptate velit"
+      cta-label="CTA BUTTON" cta-link="/#/app/other/carousel" bind-to="myCarousel">
 
-  <ins-input-file label="Test"
-    tooltip="Testing some tooltip content here. Please check it out. Thanks!">
-  </ins-input-file>
+      <div id="myCarousel">
+        <div class="img-wrap">
+          <img src="/assets/images/slider/1.jpeg" alt="sliders" />
+        </div>
 
+        <div class="img-wrap">
+          <img src="/assets/images/slider/2.jpeg" alt="sliders" />
+        </div>
+
+        <div class="img-wrap">
+          <img src="/assets/images/slider/3.jpeg" alt="sliders" />
+        </div>
+      </div>
+
+    </ins-carousel>
+  </div>
 </body>
 
 </html>

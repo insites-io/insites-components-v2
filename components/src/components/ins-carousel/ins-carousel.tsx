@@ -1,5 +1,5 @@
 import { h, Component, Prop, Element, Method, Event, EventEmitter } from "@stencil/core";
-import Siema from "siema";
+import Siema from "../../assets/js/custom-siema";
 
 @Component({ tag: 'ins-carousel' })
 export class InsCarousel {
@@ -28,6 +28,7 @@ export class InsCarousel {
   @Prop({ mutable: true }) transition: number = 350;
   @Prop({ mutable: true }) duration: number = 3000;
   @Prop({ mutable: true }) autoplay: boolean = false;
+  @Prop({ mutable: true }) autostop: boolean = false;
   @Prop({ mutable: true }) loop: boolean = false;
 
   @Prop({ mutable: true }) perPage: number = 1;
@@ -60,7 +61,8 @@ export class InsCarousel {
       duration: this.transition,
       startIndex: this.startIndex,
       loop: this.loop,
-      onChange: this.slideChanged.bind(this)
+      onChange: this.slideChanged.bind(this),
+      onDrag: this.resumeAutoPlay.bind(this)
     });
 
     this.initDimensions()
@@ -112,9 +114,16 @@ export class InsCarousel {
 
   resumeAutoPlay(){
     if (this.autoplay){
-      clearInterval(this.slideInterval);
-      this.initAutoplay();
+      this.stopAutoPlay();
+
+      if (!this.autostop){
+        this.initAutoplay();
+      }
     }
+  }
+
+  stopAutoPlay(){
+    clearInterval(this.slideInterval);
   }
 
   renderPaginate(index){
