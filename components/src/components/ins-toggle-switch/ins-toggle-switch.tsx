@@ -18,6 +18,7 @@ export class InsToggleSwitch {
 
   @Prop({mutable: true}) enabledLabel: string;
   @Prop({mutable: true}) disabledLabel: string;
+  @Prop({mutable: true}) tooltip: string = "";
 
   componentDidLoad(){
     this.didLoad.emit();
@@ -62,6 +63,11 @@ export class InsToggleSwitch {
 
           <span class="ins-slider round"><i></i></span>
           <span class="ins-label">{this.constructLabel()}</span>
+
+          {this.tooltip
+            ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+            : ''
+          }
         </label>
       </div>
     );

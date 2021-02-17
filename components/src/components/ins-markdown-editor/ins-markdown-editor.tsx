@@ -20,6 +20,7 @@ export class InsMarkdownEditor {
   @Prop({ mutable: true }) readonly: boolean;
   @Prop({ mutable: true }) errorMessage: string = "";
   @Prop({ mutable: true }) hasError: boolean;
+  @Prop({mutable: true}) tooltip: string = "";
 
   @Method()
   async val() {
@@ -103,9 +104,16 @@ export class InsMarkdownEditor {
   render() {
     return (
       <div class={`ins-markdown-editor ins-form-field-wrap ${this.hasError ? 'is-invalid' : ''}`}>
-        <label class="ins-form-label">
-          {this.label}
-        </label>
+        { this.label || this.tooltip ?
+          <label class="ins-form-label">
+            {this.label}
+
+            {this.tooltip
+              ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+              : ''
+            }
+          </label>
+        : '' }
 
         <div class="markdown-editor-wrap ins-form-field">
           <textarea name={this.name} class="markdown-editor"></textarea>

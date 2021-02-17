@@ -27,6 +27,7 @@ export class InsInputTel {
   @Prop({ mutable: true }) disabled: boolean;
   @Prop({ mutable: true }) readonly: boolean;
   @Prop({ mutable: true }) noAreacode: boolean;
+  @Prop({mutable: true}) tooltip: string = "";
 
   responsiveView: boolean;
   activeLabel: boolean;
@@ -179,7 +180,18 @@ export class InsInputTel {
         ${this.noAreacode ? 'no-areacode' : ''}
         ${this.readonly ? 'read-only' : ''} `}>
 
-        <label class="ins-form-label">{this.label}</label>
+        {this.label || this.tooltip ?
+          <label class="ins-form-label">
+            {this.label}
+
+            {this.tooltip
+              ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+              : ''
+            }
+
+          </label>
+        : '' }
+
 
         <div class="row-col-container">
 

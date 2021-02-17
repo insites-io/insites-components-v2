@@ -10,17 +10,17 @@ ins-radio {
 
     label {
       display: inline-block;
+      font-size: 14px;
+      font-family: var(--ins-font-family);
+      color: var(--ins-color-ink);
 
-      span {
-        font-family: var(--ins-font-family);
-        font-size: $input_field_font_size;
-        font-weight: $input_field_font_weight;
-        line-height: 1.8;
-        color: var(--ins-color-ink40);
+      .ins-checkbox-radio-label {
         display: inline-block;
-        vertical-align: top !important;
-        margin-top: -2px;
-        margin-left: 10px !important;
+        margin-left: 10px;
+      }
+
+      .ins-input-tooltip {
+        padding-top: 0;
       }
     }
 
@@ -46,6 +46,7 @@ ins-radio {
       outline: none;
       z-index: 990;
       border-radius: 1px;
+      top: 2px;
 
       &:hover {
         background: var(--ins-bg-color3);

@@ -117,6 +117,7 @@ export namespace Components {
         "hasLoad": string;
         "label": string;
         "name": string;
+        "tooltip": string;
         "trueValue": string;
         "updateCheckState": (state: any) => Promise<void>;
         "value": string;
@@ -146,6 +147,7 @@ export namespace Components {
         "reset": () => Promise<void>;
         "setValue": (value: any) => Promise<void>;
         "theme": string;
+        "tooltip": string;
         "val": () => Promise<any>;
         "value": string;
     }
@@ -181,6 +183,7 @@ export namespace Components {
         "noMeridiem": boolean;
         "placeholder": string;
         "readonly": boolean;
+        "tooltip": string;
         "value": string;
     }
     interface InsDrawer {
@@ -227,6 +230,7 @@ export namespace Components {
         "readonly": boolean;
         "showSource": boolean;
         "theme": string;
+        "tooltip": string;
         "val": () => Promise<any>;
         "value": string;
     }
@@ -343,6 +347,7 @@ export namespace Components {
         "readonly": boolean;
         "required": boolean;
         "step": string;
+        "tooltip": string;
         "unitLeft": string;
         "unitRight": string;
         "value": string;
@@ -394,6 +399,7 @@ export namespace Components {
         "name": string;
         "readonly": boolean;
         "setValue": (value: any) => Promise<void>;
+        "tooltip": string;
         "val": () => Promise<any>;
         "value": any;
     }
@@ -446,6 +452,10 @@ export namespace Components {
         "required": boolean;
         "setCountry": (country: any) => Promise<void>;
         "setCountryCode": (code: any) => Promise<void>;
+        "tooltip": string;
+    }
+    interface InsInputTooltip {
+        "content": string;
     }
     interface InsInstances {
         "hasLoad": string;
@@ -494,6 +504,7 @@ export namespace Components {
         "required": boolean;
         "reset": () => Promise<void>;
         "setValue": (value: any) => Promise<void>;
+        "tooltip": string;
         "val": () => Promise<any>;
         "value": string;
     }
@@ -566,6 +577,7 @@ export namespace Components {
         "label": any;
         "name": any;
         "staticValue": any;
+        "tooltip": string;
         "value": any;
     }
     interface InsRenderer {
@@ -799,6 +811,7 @@ export namespace Components {
         "placeholder": string;
         "readonly": boolean;
         "required": boolean;
+        "tooltip": string;
         "value": string;
     }
     interface InsThumbnail {
@@ -837,6 +850,7 @@ export namespace Components {
         "hasLoad": string;
         "label": string;
         "name": string;
+        "tooltip": string;
         "trueValue": string;
         "value": string;
     }
@@ -1076,6 +1090,12 @@ declare global {
     var HTMLInsInputTelElement: {
         prototype: HTMLInsInputTelElement;
         new (): HTMLInsInputTelElement;
+    };
+    interface HTMLInsInputTooltipElement extends Components.InsInputTooltip, HTMLStencilElement {
+    }
+    var HTMLInsInputTooltipElement: {
+        prototype: HTMLInsInputTooltipElement;
+        new (): HTMLInsInputTooltipElement;
     };
     interface HTMLInsInstancesElement extends Components.InsInstances, HTMLStencilElement {
     }
@@ -1361,6 +1381,7 @@ declare global {
         "ins-input-slider": HTMLInsInputSliderElement;
         "ins-input-stepper": HTMLInsInputStepperElement;
         "ins-input-tel": HTMLInsInputTelElement;
+        "ins-input-tooltip": HTMLInsInputTooltipElement;
         "ins-instances": HTMLInsInstancesElement;
         "ins-instances-item": HTMLInsInstancesItemElement;
         "ins-instances-sub-item": HTMLInsInstancesSubItemElement;
@@ -1525,6 +1546,7 @@ declare namespace LocalJSX {
         "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsCheck"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "tooltip"?: string;
         "trueValue"?: string;
         "value"?: string;
     }
@@ -1555,6 +1577,7 @@ declare namespace LocalJSX {
         "onOninput"?: (event: CustomEvent<any>) => void;
         "readonly"?: boolean;
         "theme"?: string;
+        "tooltip"?: string;
         "value"?: string;
     }
     interface InsContent {
@@ -1594,6 +1617,7 @@ declare namespace LocalJSX {
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
         "readonly"?: boolean;
+        "tooltip"?: string;
         "value"?: string;
     }
     interface InsDrawer {
@@ -1645,6 +1669,7 @@ declare namespace LocalJSX {
         "readonly"?: boolean;
         "showSource"?: boolean;
         "theme"?: string;
+        "tooltip"?: string;
         "value"?: string;
     }
     interface InsFilter {
@@ -1767,6 +1792,7 @@ declare namespace LocalJSX {
         "readonly"?: boolean;
         "required"?: boolean;
         "step"?: string;
+        "tooltip"?: string;
         "unitLeft"?: string;
         "unitRight"?: string;
         "value"?: string;
@@ -1813,6 +1839,7 @@ declare namespace LocalJSX {
         "onInsChange"?: (event: CustomEvent<any>) => void;
         "onInsInput"?: (event: CustomEvent<any>) => void;
         "readonly"?: boolean;
+        "tooltip"?: string;
         "value"?: any;
     }
     interface InsInputSlider {
@@ -1870,6 +1897,10 @@ declare namespace LocalJSX {
         "phonenumValue"?: string;
         "readonly"?: boolean;
         "required"?: boolean;
+        "tooltip"?: string;
+    }
+    interface InsInputTooltip {
+        "content"?: string;
     }
     interface InsInstances {
         "hasLoad"?: string;
@@ -1925,6 +1956,7 @@ declare namespace LocalJSX {
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "readonly"?: boolean;
         "required"?: boolean;
+        "tooltip"?: string;
         "value"?: string;
     }
     interface InsModal {
@@ -1998,6 +2030,7 @@ declare namespace LocalJSX {
         "onInsCheck"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "staticValue"?: any;
+        "tooltip"?: string;
         "value"?: any;
     }
     interface InsRenderer {
@@ -2226,6 +2259,7 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         "readonly"?: boolean;
         "required"?: boolean;
+        "tooltip"?: string;
         "value"?: string;
     }
     interface InsThumbnail {
@@ -2269,6 +2303,7 @@ declare namespace LocalJSX {
         "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsToggle"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "tooltip"?: string;
         "trueValue"?: string;
         "value"?: string;
     }
@@ -2323,6 +2358,7 @@ declare namespace LocalJSX {
         "ins-input-slider": InsInputSlider;
         "ins-input-stepper": InsInputStepper;
         "ins-input-tel": InsInputTel;
+        "ins-input-tooltip": InsInputTooltip;
         "ins-instances": InsInstances;
         "ins-instances-item": InsInstancesItem;
         "ins-instances-sub-item": InsInstancesSubItem;
@@ -2407,6 +2443,7 @@ declare module "@stencil/core" {
             "ins-input-slider": LocalJSX.InsInputSlider & JSXBase.HTMLAttributes<HTMLInsInputSliderElement>;
             "ins-input-stepper": LocalJSX.InsInputStepper & JSXBase.HTMLAttributes<HTMLInsInputStepperElement>;
             "ins-input-tel": LocalJSX.InsInputTel & JSXBase.HTMLAttributes<HTMLInsInputTelElement>;
+            "ins-input-tooltip": LocalJSX.InsInputTooltip & JSXBase.HTMLAttributes<HTMLInsInputTooltipElement>;
             "ins-instances": LocalJSX.InsInstances & JSXBase.HTMLAttributes<HTMLInsInstancesElement>;
             "ins-instances-item": LocalJSX.InsInstancesItem & JSXBase.HTMLAttributes<HTMLInsInstancesItemElement>;
             "ins-instances-sub-item": LocalJSX.InsInstancesSubItem & JSXBase.HTMLAttributes<HTMLInsInstancesSubItemElement>;

@@ -15,6 +15,7 @@ export class InsCheckbox {
   @Prop({mutable: true}) falseValue: string = "";
   @Prop({mutable: true}) label: string;
   @Prop({mutable: true}) name: string = "";
+  @Prop({mutable: true}) tooltip: string = "";
 
   componentDidLoad(){
     this.didLoad.emit();
@@ -64,7 +65,17 @@ export class InsCheckbox {
             true-value={this.trueValue}
             false-value={this.falseValue} />
 
-          { this.label ? <span>{this.label}</span> : '' }
+          { this.label
+            ? <span class="ins-checkbox-radio-label">
+                {this.label}
+              </span>
+            : ''
+          }
+
+          {this.tooltip
+            ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+            : ''
+          }
         </label>
       </div>
     )

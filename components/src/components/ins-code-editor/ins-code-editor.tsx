@@ -38,6 +38,7 @@ export class InsCodeEditor {
 	@Prop({ mutable: true }) disableLineNumbers: boolean = false;
 	@Prop({ mutable: true }) hasError: boolean = false;
 	@Prop({ mutable: true }) errorMessage: string = "";
+  @Prop({mutable: true}) tooltip: string = "";
 
 	@State() codeMirrorEl: any;
 	@State() activeLabel: boolean = false;
@@ -173,7 +174,18 @@ export class InsCodeEditor {
 		return (
 			<div class="ins-code-editor">
 				<div class={(this.hasError ? 'has-error ' : '') + (this.readonly ? 'readonly ' : '') + (this.activeLabel ? 'active' : '')}>
-					<label>{this.label}</label>
+
+          { this.label || this.tooltip ?
+            <label>
+              {this.label}
+
+              {this.tooltip
+                ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+                : ''
+              }
+            </label>
+          : '' }
+
 					<textarea name={this.name} class="codemirror">
 					</textarea>
 					<div class="ins-form-error">

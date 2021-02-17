@@ -1,0 +1,75 @@
+@import "../../../node_modules/tippy.js/dist/tippy.css";
+@import "../../../node_modules/tippy.js/animations/scale.css";
+
+ins-input-tooltip {
+  .ins-input-tooltip {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: var(--ins-bg-color2);
+    margin-left: 5px;
+    color: var(--ins-color-ink40);
+    padding-top: 1px;
+    box-sizing: border-box;
+  }
+
+  .tippy-box {
+    background: var(--ins-bg-color);
+    border-radius: 2px;
+    color: var(--ins-color-ink);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 10px 6px;
+
+    border:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-border-color);
+
+    box-shadow:
+      var(--ins-shadow-x)
+      var(--ins-shadow-y)
+      var(--ins-shadow-blur)
+      var(--ins-shadow-color);
+
+    border-radius: var(--ins-border-radius);
+  }
+
+  .tippy-box[data-placement^=top]>.tippy-arrow:before,
+  .tippy-box[data-placement^=bottom]>.tippy-arrow:before {
+    border: none;
+    width: 10px;
+    height: 10px;
+
+    border:
+      var(--ins-border-style)
+      var(--ins-border-thickness)
+      var(--ins-border-color);
+
+    background: #fff;
+    transform: rotate(45deg);
+  }
+
+  .tippy-box[data-placement^=top]>.tippy-arrow:before {
+    bottom: -8px;
+    left: 5px;
+    border-top: none;
+    border-left: none;
+
+    box-shadow:
+      var(--ins-shadow-x)
+      var(--ins-shadow-y)
+      var(--ins-shadow-blur)
+      var(--ins-shadow-color);
+  }
+
+  .tippy-box[data-placement^=bottom]>.tippy-arrow:before {
+    border-bottom: none;
+    border-right: none;
+    top: -8px;
+    left: -2px;
+  }
+}

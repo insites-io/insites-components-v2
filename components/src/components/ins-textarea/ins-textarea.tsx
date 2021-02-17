@@ -20,6 +20,7 @@ export class InsTextarea {
   @Prop({mutable: true}) readonly: boolean = false;
   @Prop({mutable: true}) disabled: boolean = false;
   @Prop({mutable: true}) required: boolean = false;
+  @Prop({mutable: true}) tooltip: string = "";
 
   @State() activeLabel: boolean;
   @State() charCount: string = "0";
@@ -87,12 +88,17 @@ export class InsTextarea {
       <div class={`ins-textarea-wrap ins-form-field-wrap ${this.hasError ? 'is-invalid' : ''}`}>
 
         <div class={`ins-ta ${ this.counter ? 'with-counter' : ''}`}>
-          {this.label ?
+          {this.label || this.tooltip ?
             <label class={`ins-form-label
               ${this.disabled ? 'disabled' : ''}
               ${this.activeLabel ? 'active' : ''}`}>
 
               {this.label}
+
+              {this.tooltip
+                ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+                : ''
+              }
             </label>
           : '' }
 

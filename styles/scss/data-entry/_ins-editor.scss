@@ -248,6 +248,8 @@ ins-editor {
 		color: $black;
 		font-family: "Open Sans", sans-serif;
 		margin-bottom: 2px;
+    min-height: 20px;
+    display: block;
 	}
 
 	.active {

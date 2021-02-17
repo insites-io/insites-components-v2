@@ -14,6 +14,7 @@ export class InsRadio {
   @Prop({mutable:true}) staticValue: any;
   @Prop({mutable:true}) name: any;
   @Prop({mutable:true}) label: any;
+  @Prop({mutable: true}) tooltip: string = "";
 
   localChecked: boolean = false;
 
@@ -60,7 +61,17 @@ export class InsRadio {
             disabled={this.disabled}
             checked={this.localChecked} />
 
-          <span>{this.label}</span>
+            { this.label
+              ? <span class="ins-checkbox-radio-label">
+                  {this.label}
+                </span>
+              : ''
+            }
+
+            {this.tooltip
+              ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+              : ''
+            }
         </label>
       </div>
     );

@@ -30,6 +30,7 @@ export class InsDateTime {
   @Prop({ mutable: true }) icon: string = "";
   @Prop({ mutable: true }) mode: string = "";
   @Prop({ mutable: true }) inline: boolean = false;
+  @Prop({mutable: true}) tooltip: string = "";
 
   pickerInstance: any;
   locFormat: any;
@@ -168,11 +169,16 @@ export class InsDateTime {
         ${this.readonly ? 'readonly' : ''}
         ${this.hasError ? 'is-invalid' : ''}`}>
 
-        { this.label ?
+        { this.label || this.tooltip ?
           <label htmlFor={this.name}
             class={`ins-form-label
               ${this.disabled ? 'disabled' : ''}`}>
             {this.label}
+
+            {this.tooltip
+              ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+              : ''
+            }
           </label>
         : ''}
 

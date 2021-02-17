@@ -32,7 +32,9 @@ ins-code-editor {
 		font-weight: 600;
 		color: $black;
 		font-family: var(--ins-font-family);
-		margin-bottom: 2px;
+    margin-bottom: 2px;
+    min-height: 20px;
+    display: block;
 
 		&.disabled {
 			color: $dark-grey;

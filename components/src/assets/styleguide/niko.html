@@ -26,14 +26,21 @@
       font-family: 'Open Sans', Arial, Helvetica, sans-serif;
       padding: 20px
     }
+
+    .spacer {
+      padding: 200px;
+    }
+
+    .grid {
+      float: left;
+      width: 49%;
+      box-sizing: border-box;
+    }
   </style>
 </head>
 
 <body>
-  <ins-select label="With Dynamic Option" id="dynamicSelectEl" error-message="This is required field.">
-    <ins-select-option label="macOS" value="macOS"></ins-select-option>
-    <ins-select-option label="Windows" value="Windows"></ins-select-option>
-  </ins-select>
+  <ins-toggle-switch label="Test" tooltip="Testing some tooltip content here. Please check it out. Thanks!"></ins-toggle-switch>
 </body>
 
 </html>

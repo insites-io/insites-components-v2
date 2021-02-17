@@ -14,7 +14,7 @@ export class InsInputMultiple {
 	@Prop({mutable: true}) disabled: boolean = false;
 	@Prop({mutable: true}) readonly: boolean = false;
 	@Prop({mutable: true}) value: any = [];
-
+  @Prop({mutable: true}) tooltip: string = "";
 	@Prop({mutable: true}) hasError: boolean = false;
   @Prop({mutable: true}) errorMessage: string = "";
 
@@ -106,7 +106,16 @@ export class InsInputMultiple {
         ${this.readonly ? 'readonly' : ''}
         ${this.hasError ? 'has-error' : ''}`}>
 
-				<label class="ins-form-label">{this.label}</label>
+        { this.label || this.tooltip ?
+          <label class="ins-form-label">
+            {this.label}
+
+            {this.tooltip
+              ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+              : ''
+            }
+          </label>
+        : '' }
 
         <div class="ins-input-multiple-container ins-form-field"
           onClick={event => this.onclickContainer(event)}>

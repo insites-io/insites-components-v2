@@ -46,6 +46,7 @@ export class InsEditor {
 	@Prop({ mutable: true }) hasError: boolean = false;
 	@Prop({ mutable: true }) imageUpload: boolean = false;
 	@Prop({ mutable: true }) images: string = "";
+  @Prop({mutable: true}) tooltip: string = "";
 
 	/*@State()*/ editor: any;
 	@State() codeEditor: any;
@@ -649,7 +650,18 @@ export class InsEditor {
           ${this.readonly ? 'readonly ' : ''}
           ${this.activeLabel ? 'active' : ''}
         `}>
-					<label>{this.label}</label>
+
+        { this.label || this.tooltip ?
+					<label>
+            {this.label}
+
+            {this.tooltip
+              ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+              : ''
+            }
+          </label>
+        : '' }
+
 					<textarea name={this.name} class={this.classId}>
 					</textarea>
         	<div class="style-area"></div>

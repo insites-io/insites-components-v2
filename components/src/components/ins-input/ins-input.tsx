@@ -33,6 +33,8 @@ export class InsInput {
   @Prop({mutable: true}) unitRight: string = "";
   @Prop({mutable: true}) unitLeft: string = "";
 
+  @Prop({mutable: true}) tooltip: string = "";
+
   componentDidLoad(){
     this.adjustInputPadding();
     this.didLoad.emit();
@@ -41,7 +43,6 @@ export class InsInput {
       if (func) func(this.el);
     }
   }
-
 
   adjustInputPadding(){
     let input = this.el.querySelector('input');
@@ -109,13 +110,19 @@ export class InsInput {
         ${this.unitLeft ? "has-unit-left":""}
         ${this.unitRight ? "has-unit-right":""}`}>
 
-        { this.label ?
+        { this.label || this.tooltip?
           <label htmlFor={this.name}
             class={`ins-form-label
               ${this.disabled ? 'disabled' : ''}
               ${this.activated ? 'active':''}`}>
 
             {this.label}
+
+            {this.tooltip
+              ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+              : ''
+            }
+
           </label>
         : ''}
 
