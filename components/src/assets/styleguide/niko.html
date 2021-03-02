@@ -51,11 +51,22 @@
 
 <body>
   <!-- <ins-editor show-source label="test" has-code-editor></ins-editor> -->
-  <ins-input-tel label="test" id="test"></ins-input-tel>
-  <script>
+  <ins-select>
+    <ins-select-option label="Android" value="Android" default></ins-select-option>
+    <ins-select-option label="iOS" value="iOS"></ins-select-option>
+    <ins-select-option label="Windows" value="Windows"></ins-select-option>
+    <ins-select-option label="Windows1" value="Windows1"></ins-select-option>
+    <ins-select-option label="Window2s" value="Windows2"></ins-select-option>
+    <ins-select-option label="Windo3ws" value="Windows3"></ins-select-option>
+    <ins-select-option label="Wind4ows" value="Windows4"></ins-select-option>
+  </ins-select>
+
+  <ins-radio label="Test"></ins-radio>
+  <ins-checkbox label="Test2"></ins-checkbox>
+  <!-- <script>
     var testEl = document.getElementById('test');
     testEl.addEventListener('insValueChange', e => console.log(e.detail));
-  </script>
+  </script> -->
 
 </body>
 
