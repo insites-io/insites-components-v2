@@ -91,6 +91,7 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [ins-date-time](../ins-date-time)
 - [ins-select](../ins-select)
 - [ins-select-option](../ins-select-option)
 - [ins-input](../ins-input)
@@ -101,12 +102,14 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
+  ins-table --> ins-date-time
   ins-table --> ins-select
   ins-table --> ins-select-option
   ins-table --> ins-input
   ins-table --> ins-loader
   ins-table --> ins-checkbox
   ins-table --> ins-button
+  ins-date-time --> ins-input-tooltip
   ins-input --> ins-input-tooltip
   ins-checkbox --> ins-input-tooltip
   style ins-table fill:#f9f,stroke:#333,stroke-width:4px

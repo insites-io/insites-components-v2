@@ -24,11 +24,11 @@
 
 ## Events
 
-| Event     | Description | Type               |
-| --------- | ----------- | ------------------ |
-| `didLoad` |             | `CustomEvent<any>` |
-| `onblur`  |             | `CustomEvent<any>` |
-| `oninput` |             | `CustomEvent<any>` |
+| Event      | Description | Type               |
+| ---------- | ----------- | ------------------ |
+| `didLoad`  |             | `CustomEvent<any>` |
+| `insBlur`  |             | `CustomEvent<any>` |
+| `insInput` |             | `CustomEvent<any>` |
 
 
 ## Methods

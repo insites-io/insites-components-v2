@@ -57,6 +57,7 @@ Type: `Promise<any>`
 ### Used by
 
  - [ins-filter](../ins-filter)
+ - [ins-table](../ins-table)
 
 ### Depends on
 
@@ -67,6 +68,7 @@ Type: `Promise<any>`
 graph TD;
   ins-date-time --> ins-input-tooltip
   ins-filter --> ins-date-time
+  ins-table --> ins-date-time
   style ins-date-time fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
