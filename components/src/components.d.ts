@@ -1578,8 +1578,8 @@ declare namespace LocalJSX {
         "mode"?: string;
         "name"?: string;
         "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onOnblur"?: (event: CustomEvent<any>) => void;
-        "onOninput"?: (event: CustomEvent<any>) => void;
+        "onInsBlur"?: (event: CustomEvent<any>) => void;
+        "onInsInput"?: (event: CustomEvent<any>) => void;
         "readonly"?: boolean;
         "theme"?: string;
         "tooltip"?: string;

@@ -54,15 +54,15 @@ export class InsEditor {
 	@State() disableVisualEditor: boolean = false;
 	@State() activeLabel: boolean = false;
 	@State() sourceView: boolean = false;
-	@State() isSourceView: boolean = false;
+	/*@State()*/ isSourceView: boolean = false;
 	/*@State()*/ stylesId: string = ".redactor-styles";
 
 	@State() hasRedactorDoctypeHTML: number = -1;
-	@State() redactorHTML: string = "";
-	@State() redactorHead: string = "";
-	@State() redactorStyle: any = [];
-	@State() redactorBody: string = "";
-	@State() redactorBodyTag: string = "";
+	/*@State()*/ redactorHTML: string = "";
+	/*@State()*/ redactorHead: string = "";
+	/*@State()*/ redactorStyle: any = [];
+	/*@State()*/ redactorBody: string = "";
+	/*@State()*/ redactorBodyTag: string = "";
 
 	componentWillLoad() {
 		if (!this.classId) {
@@ -72,18 +72,14 @@ export class InsEditor {
 
 	@Method()
 	async val() {
-    return this.getVal();
+    return this.removeEditableAttr(this.getVal());
   }
 
   getVal(){
 		if (this.isSourceView) {
-			if (this.codeEditor) {
-        let val = this.codeEditor.getValue();
-				return this.removeEditableAttr(val);
-			}
-		} else {
-			return this.sourceViewRedactor();
-		}
+			if (this.codeEditor) return this.codeEditor.getValue();
+
+		} else return this.sourceViewRedactor();
   }
 
 	generateClassId(length) {
@@ -136,10 +132,8 @@ export class InsEditor {
 	initRedactor() {
 		if (this.value && this.hasCodeEditor) {
 			this.sourceCodeViewOnly(this.value);
-      this.showSource = this.showSource;
+      this.showSource = this.disableVisualEditor;
 		}
-
-		// this.redactorFullscreen();
 
 		return $R(`.${this.classId}`, {
 			source: this.hasCodeEditor,
@@ -154,34 +148,6 @@ export class InsEditor {
 			imageManagerJson: this.images
 		});
 	}
-
-	// redactorFullscreen() {
-	// 	const self = this;
-	// 	$R.add('plugin', 'fullscreen', {
-	// 		translations: {
-	// 			en: {
-	// 				"fullscreen": ""
-	// 			}
-	// 		},
-	// 		init: function(app) {
-	// 			this.app = app;
-	// 			this.lang = app.lang;
-	// 			this.toolbar = app.toolbar;
-	// 		},
-	// 		start: function() {
-	// 			// create the button data
-	// 			var buttonData = {
-	// 				title: this.lang.get('fullscreen'),
-	// 				api: 'plugin.fullscreen.toggle'
-	// 			};
-	// 			// create the button
-	// 			this.toolbar.addButton('fullscreen', buttonData);
-	// 		},
-	// 		toggle: function() {
-	// 			alert(`My Button is toggled! ${self.classId}`);
-	// 		}
-	// 	});
-	// }
 
 	setImageUpload() {
 		if (this.imageUpload) {
@@ -542,7 +508,6 @@ export class InsEditor {
 			readOnly: this.readonly
 		});
 
-		this.codeMirrorEvents(editor);
 		CodeMirror.commands["selectAll"](editor);
 		if (this.theme) {
 			editor.setOption("theme", this.theme);
@@ -553,6 +518,7 @@ export class InsEditor {
 			this.hasRedactorDoctypeHTML = this.searchFromCode(html, '<!doctype html>');
 		}
 
+		this.codeMirrorEvents(editor);
 		let wrap = this.insEditorEl.querySelector('.CodeMirror-wrap');
 
 		wrap.addEventListener('mouseover', () => {
@@ -662,8 +628,7 @@ export class InsEditor {
           </label>
         : '' }
 
-					<textarea name={this.name} class={this.classId}>
-					</textarea>
+					<textarea name={this.name} class={this.classId}></textarea>
         	<div class="style-area"></div>
 					<div class="ins-form-error">
             {this.errorMessage}

@@ -24,8 +24,8 @@ import "codemirror/mode/yaml/yaml";
 
 export class InsCodeEditor {
 	@Element() insCodeEditorEl: HTMLElement;
-	@Event() onblur: EventEmitter;
-	@Event() oninput: EventEmitter;
+	@Event() insBlur: EventEmitter;
+	@Event() insInput: EventEmitter;
 	@Event() didLoad: EventEmitter;
   @Prop() hasLoad: string;
 
@@ -40,7 +40,7 @@ export class InsCodeEditor {
 	@Prop({ mutable: true }) errorMessage: string = "";
   @Prop({mutable: true}) tooltip: string = "";
 
-	@State() codeMirrorEl: any;
+	/*@State()*/ codeMirrorEl: any;
 	@State() activeLabel: boolean = false;
 
 	@Method()
@@ -147,8 +147,8 @@ export class InsCodeEditor {
 		});
 
 		this.codeMirrorEl.on('change', () => {
-			this.oninput.emit({
-				value: this.val()
+			this.insInput.emit({
+				value: this.codeMirrorEl.getValue()
 			});
 		});
 
@@ -156,8 +156,8 @@ export class InsCodeEditor {
 			this.deactivateLabel();
 			this.hideCursor();
 
-			this.onblur.emit({
-				value: this.val()
+			this.insBlur.emit({
+				value: this.codeMirrorEl.getValue()
 			});
 		});
 	}

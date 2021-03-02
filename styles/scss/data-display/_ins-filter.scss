@@ -112,6 +112,9 @@ ins-filter {
         box-shadow: none;
         margin: 0;
 
+        width: auto;
+        height: auto;
+
         &::-webkit-inner-spin-button,
         &::-webkit-calendar-picker-indicator {
           display: none;
@@ -153,7 +156,7 @@ ins-filter {
   .input-wrap {
     position: relative;
     display: inline-block;
-    padding: 10px 10px 0px;
+    padding: 6px 6px 0px;
     background: var(--ins-bg-color5);
 
     .ins-form-field {

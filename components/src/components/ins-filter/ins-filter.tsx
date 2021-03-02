@@ -116,7 +116,7 @@ export class InsFilter {
     }
   }
 
-  async dateOptEHandler(option) {
+  async dateOptEHandler(option, settingDefault?: Boolean) {
 
     this.selectedRange = option;
     this.selectedCustom = false;
@@ -196,6 +196,12 @@ export class InsFilter {
       if (option === 'Custom') {
         this.selectedRange = this.customFormat();
       }
+
+      if (settingDefault) {
+        this.temp.from = this.fromInput.value;
+        this.temp.to = this.toInput.value;
+        this.temp.range = this.selectedRange;
+      }
     }
   }
 
@@ -228,6 +234,7 @@ export class InsFilter {
 
   componentWillLoad() {
     this.filterItem = this.insFilterEl.querySelectorAll('ins-filter-item').length;
+    this.setDefaultDate();
   }
 
   componentDidLoad() {
@@ -236,7 +243,7 @@ export class InsFilter {
       this.addClickOutside();
       this.initDatePickerInput('from');
       this.initDatePickerInput('to');
-      this.setDefaultDate();
+      this.dateOptEHandler(this.currentFilter, true);
     }
 
     this.didLoad.emit();
@@ -255,14 +262,13 @@ export class InsFilter {
   }
 
   setDefaultDate() {
-
     if (this.defaultDate) {
       let arr = this.dateOpt.map(item => item.toLowerCase());
       let arrSearch = arr.indexOf(this.defaultDate.toLowerCase());
 
       if (arrSearch >= 0) {
         this.currentFilter = this.dateOpt[arrSearch];
-        this.dateOptEHandler(this.currentFilter)
+        this.selectedRange = this.currentFilter;
       }
     }
   }
