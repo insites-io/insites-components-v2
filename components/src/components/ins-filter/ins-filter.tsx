@@ -257,31 +257,14 @@ export class InsFilter {
   setDefaultDate() {
 
     if (this.defaultDate) {
-
       let arr = this.dateOpt.map(item => item.toLowerCase());
-      let arrSearch = arr.indexOf(item => item === this.defaultDate.toLowerCase());
+      let arrSearch = arr.indexOf(this.defaultDate.toLowerCase());
 
       if (arrSearch >= 0) {
         this.currentFilter = this.dateOpt[arrSearch];
         this.dateOptEHandler(this.currentFilter)
       }
-
-    } /*else if (this.dateFrom && this.dateTo) {
-
-      let from = new Date(this.dateFrom);
-      let to = new Date(this.dateTo);
-
-      if (to > from) {
-        this.isAll = false;
-        this.pickerInstance.setDate
-        this.currentFilter = this.customFormat();
-        this.selectedRange = this.customFormat();
-      }
-
-    } else {
-      this.currentFilter = this.dateOpt[0];
-      this.dateOptEHandler(this.currentFilter);
-    } */
+    }
   }
 
   updatePickers(e, range) {
