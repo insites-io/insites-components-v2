@@ -7,19 +7,20 @@
   <title>Insites Components - QA</title>
 
   <!-- Insites Essentials -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap">
-  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap">
+  <!-- <link rel="stylesheet" href="/assets/css/reset.css" /> -->
   <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
   <link rel="stylesheet" href="/assets/css/insites.css" />
 
   <script type="module" src="/build/insites.esm.js"></script>
   <script nomodule src="/build/insites.js"></script>
 
-  <!-- jQuery library
+  <!-- jQuery library -->
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-    crossorigin="anonymous">
-  </script> -->
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous">
+    </script>
+  <script src="https://components.insites.io/insites-config.min.js"></script>
 
   <style>
     body {
@@ -49,29 +50,13 @@
 </head>
 
 <body>
-  <div class="content-wrap">
-    <ins-carousel layout="1" autoplay autostop loop
-      heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      body-text="sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-      sub-heading="Duis aute irure dolor in reprehenderit in voluptate velit"
-      cta-label="CTA BUTTON" cta-link="/#/app/other/carousel" bind-to="myCarousel">
+  <!-- <ins-editor show-source label="test" has-code-editor></ins-editor> -->
+  <ins-input-tel label="test" id="test"></ins-input-tel>
+  <script>
+    var testEl = document.getElementById('test');
+    testEl.addEventListener('insValueChange', e => console.log(e.detail));
+  </script>
 
-      <div id="myCarousel">
-        <div class="img-wrap">
-          <img src="/assets/images/slider/1.jpeg" alt="sliders" />
-        </div>
-
-        <div class="img-wrap">
-          <img src="/assets/images/slider/2.jpeg" alt="sliders" />
-        </div>
-
-        <div class="img-wrap">
-          <img src="/assets/images/slider/3.jpeg" alt="sliders" />
-        </div>
-      </div>
-
-    </ins-carousel>
-  </div>
 </body>
 
 </html>

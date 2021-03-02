@@ -27,7 +27,7 @@ export class InsInputTel {
   @Prop({ mutable: true }) disabled: boolean;
   @Prop({ mutable: true }) readonly: boolean;
   @Prop({ mutable: true }) noAreacode: boolean;
-  @Prop({mutable: true}) tooltip: string = "";
+  @Prop({ mutable: true }) tooltip: string = "";
 
   responsiveView: boolean;
   activeLabel: boolean;
@@ -38,11 +38,16 @@ export class InsInputTel {
   _label: any;
   _iti: any;
 
+  _phone_number_value: any = "";
+  _area_code_value: any = "";
+
   componentDidLoad() {
     this._phone = this.insInputTelEl.querySelector('.phone');
     this._areaCode = this.insInputTelEl.querySelector('.area-code');
     this._phoneNumber = this.insInputTelEl.querySelector('.phone-number');
     this._label = this.insInputTelEl.querySelector('label');
+    this._phone_number_value = this.phonenumValue;
+    this._area_code_value = this.areacodeValue
 
     this.initintTel();
     this.initKeyPressEvents();
@@ -80,8 +85,8 @@ export class InsInputTel {
     let value = evt.target.value.replace(/[^\d.]/g, '');
 
     if ((event.which < 48 || event.which > 57)
-        && (event.which !== 8 && event.which !== 9 && event.which !== 32)) {
-        event.preventDefault();
+      && (event.which !== 8 && event.which !== 9 && event.which !== 32)) {
+      event.preventDefault();
     }
 
     if (value.length > maxChars) {
@@ -89,8 +94,9 @@ export class InsInputTel {
     }
 
     evt.target.value = value;
+    this[`_${field}_value`] = value;
     this.insInput.emit({ field, value });
-    this.insValueChange.emit(this.getValue());
+    this.insValueChange.emit(this._getValue());
   }
 
   initintTel() {
@@ -108,7 +114,7 @@ export class InsInputTel {
         field: 'country_code',
         value: data
       })
-      this.insValueChange.emit(this.getValue());
+      this.insValueChange.emit(this._getValue());
     });
 
     this._phone.addEventListener("open:countrydropdown", () => {
@@ -130,12 +136,16 @@ export class InsInputTel {
 
   @Method()
   async getValue(){
+    return this._getValue();
+  }
+
+  _getValue(){
     let value = `+${this.countryCode}`
     if (!this.noAreacode){
-      value += this.areacodeValue;
+      value += this._area_code_value;
     }
-    value += this.phonenumValue;
-    return value
+
+    return value += this._phone_number_value;
   }
 
   @Method()
