@@ -280,12 +280,25 @@
             padding: 6px;
             height: auto;
           }
+
+          .ins-form-field-wrap {
+            margin-bottom: 0;
+          }
+
+          .ins-input-wrap input {
+            margin: 0;
+          }
+
           .ins-select-wrap {
             margin-bottom: 0;
 
             input {
               margin: 0;
               padding: 9px 6px 8px;
+            }
+
+            .ins-select-value-wrap {
+              min-height: 33px;
             }
           }
           .numInput.cur-year {
@@ -505,6 +518,7 @@
           padding: 6px;
           height: auto;
         }
+
         .ins-select-wrap {
           margin-bottom: 0;
 

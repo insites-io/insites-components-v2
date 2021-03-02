@@ -477,13 +477,14 @@ export class InsTable {
       case 'date':
         return (
           <div class="input-wrap">
-            <ins-datepicker
+            <ins-date-time
               id={`${editedItem.id}_${tableHeader.label.split(' ').join('_')}`}
               data-id={editedItem.id}
               data-property={tableHeader.label}
               value={editedItem[tableHeader.label]}
-              icon="icon-today" format={tableHeader.dateFormat}>
-            </ins-datepicker>
+              icon="icon-today" format={tableHeader.dateFormat}
+              mode="datepicker">
+            </ins-date-time>
           </div>
         )
 
