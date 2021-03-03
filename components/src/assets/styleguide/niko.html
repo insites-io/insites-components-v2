@@ -51,13 +51,11 @@
 </head>
 
 <body>
-  <ins-editor label="Test" id="test" has-code-editor value="Test" show-source></ins-editor>
-  <script>
-    var testEl = document.getElementById('test');
-    // testEl.addEventListener('insInput', console.log);
-    testEl.addEventListener('insBlur', console.log);
-    // testEl.addEventListener('insValueChange', console.log);
-  </script>
+  <ins-filter with-date-filter>
+    <ins-filter-item name="Operating System" options='["Windows", "macOS", "Linux"]'></ins-filter-item>
+    <ins-filter-item name="Motherboard" options='["AMD", "Asus", "Intel"]'></ins-filter-item>
+    <ins-filter-item name="Video Card" options='["AMD", "NVidia"]'></ins-filter-item>
+  </ins-filter>
 </body>
 
 </html>

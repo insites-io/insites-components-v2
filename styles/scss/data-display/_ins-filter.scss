@@ -13,7 +13,7 @@ ins-filter {
     }
     &__date {
       display: inline-block;
-      margin-right: 15px;
+      // margin-right: 15px;
     }
     &__btn-container {
       display: inline-block;
@@ -61,6 +61,7 @@ ins-filter {
     &.active {
       display: block;
       top: 36px;
+      left: 0;
     }
 
     &__opt-container {
@@ -180,31 +181,12 @@ ins-filter {
   }
 }
 
-@media only screen and (max-width: 1024px) {
-  ins-filter .date-range.active {
-    left: 0;
-  }
-}
-
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 768px) {
   ins-filter {
-
-    .filter,
-    .filter__label,
-    .filter__date,
-    .filter__btn-container {
-      display: block;
-      width: 100%;
-    }
 
     .filter {
       margin-bottom: 20px;
       box-sizing: border-box;
-    }
-
-    .filter__label {
-      margin: 0 0 10px;
-      float: none;
     }
 
     .d-spacer {
@@ -222,18 +204,6 @@ ins-filter {
       line-height: 1.4;
     }
 
-    .date-filter {
-      width: 100%;
-      box-sizing: border-box;
-      position: relative;
-
-      i {
-        position: absolute;
-        right: 10px;
-        top: 10px;
-      }
-    }
-
     .input-wrap {
       display: none;
     }
@@ -244,7 +214,7 @@ ins-filter {
       box-sizing: border-box;
 
       &.active {
-        top: 40px;
+        top: initial;
       }
     }
 
@@ -299,12 +269,13 @@ ins-filter {
 
     .date-range__cancel-apply {
       float: none;
+      text-align: right;
 
       button {
-        width: 100%;
-        min-width: auto;
-        padding: 8px;
+        min-width: 80px;
         margin-bottom: 20px;
+        font-size: 12px;
+        padding: 8px;
         height: auto;
       }
     }
@@ -313,4 +284,49 @@ ins-filter {
   }
 
   /* end media*/
+}
+
+
+
+@media only screen and (max-width: 420px) {
+  ins-filter {
+    .filter,
+    .filter__label,
+    .filter__date,
+    .filter__btn-container {
+      display: block;
+      width: 100%;
+    }
+
+    .filter__label {
+      margin: 0 0 10px;
+      float: none;
+    }
+
+    .date-filter {
+      width: 100%;
+      box-sizing: border-box;
+      position: relative;
+
+      i {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+      }
+    }
+
+    .date-range__cancel-apply {
+      button {
+        width: 100%;
+        min-width: auto;
+        margin-bottom: 20px;
+      }
+    }
+
+    .date-range {
+      &.active {
+        top: 0;
+      }
+    }
+  }
 }

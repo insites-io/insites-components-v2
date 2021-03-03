@@ -84,6 +84,7 @@ export class Insimagepicker {
     if (!files[0].type.includes('image/')) return this.invalidFile();
 
     let ext = files[0].type.split('/')[1];
+    if (ext.includes("svg")) ext = "svg";
     if (!this.validateFormat(ext)) return this.invalidFile();
 
     this.notImageFile = false;
