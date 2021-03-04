@@ -9,7 +9,7 @@
   <!-- Insites Essentials -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap">
-  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <!-- <link rel="stylesheet" href="/assets/css/reset.css" /> -->
   <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
   <link rel="stylesheet" href="/assets/css/insites.css" />
 
@@ -51,11 +51,12 @@
 </head>
 
 <body>
-  <ins-filter with-date-filter>
-    <ins-filter-item name="Operating System" options='["Windows", "macOS", "Linux"]'></ins-filter-item>
-    <ins-filter-item name="Motherboard" options='["AMD", "Asus", "Intel"]'></ins-filter-item>
-    <ins-filter-item name="Video Card" options='["AMD", "NVidia"]'></ins-filter-item>
-  </ins-filter>
+  <ins-input label="Test" tooltip="Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique nulla rem vel."></ins-input>
+  <ins-select label="Test" tooltip="Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique nulla rem vel." button>
+    <ins-select-option label="Android" value="Android" default></ins-select-option>
+    <ins-select-option label="iOS" value="iOS"></ins-select-option>
+    <ins-select-option label="Windows" value="Windows"></ins-select-option>
+  </ins-select>
 </body>
 
 </html>

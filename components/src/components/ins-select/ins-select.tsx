@@ -54,6 +54,8 @@ export class InsSelect {
   @Prop({ mutable: true }) dynamicPlaceholder: string;
   @Prop({ mutable: true }) buttonLabel: string = "Add";
 
+  @Prop({mutable: true}) tooltip: string = "";
+
   dynamicInputEl; scrollWrapEl;
   loading: boolean = false;
   searching: boolean = false;
@@ -593,6 +595,11 @@ export class InsSelect {
     return (
       <label class="ins-select-label-wrap">
         {this.label}
+
+        { this.tooltip
+          ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+          : ''
+        }
       </label>
     )
   }

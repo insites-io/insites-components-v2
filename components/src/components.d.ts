@@ -628,6 +628,7 @@ export namespace Components {
         "setSearchingState": (state: any) => Promise<boolean>;
         "setSelectedFromValue": (value?: any) => Promise<boolean>;
         "small": boolean;
+        "tooltip": string;
         "updateSelectedOptions": () => Promise<boolean>;
         "value": any;
         "withDynamicOption": boolean;
@@ -2078,6 +2079,7 @@ declare namespace LocalJSX {
         "searchable"?: boolean;
         "selected_values"?: any;
         "small"?: boolean;
+        "tooltip"?: string;
         "value"?: any;
         "withDynamicOption"?: boolean;
         "withDynamicOptionValidate"?: boolean;

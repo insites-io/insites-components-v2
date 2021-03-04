@@ -28,6 +28,7 @@
  - [ins-input-tel](../ins-input-tel)
  - [ins-markdown-editor](../ins-markdown-editor)
  - [ins-radio](../ins-radio)
+ - [ins-select](../ins-select)
  - [ins-textarea](../ins-textarea)
  - [ins-toggle-switch](../ins-toggle-switch)
 
@@ -46,6 +47,7 @@ graph TD;
   ins-input-tel --> ins-input-tooltip
   ins-markdown-editor --> ins-input-tooltip
   ins-radio --> ins-input-tooltip
+  ins-select --> ins-input-tooltip
   ins-textarea --> ins-input-tooltip
   ins-toggle-switch --> ins-input-tooltip
   style ins-input-tooltip fill:#f9f,stroke:#333,stroke-width:4px

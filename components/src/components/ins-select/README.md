@@ -30,6 +30,7 @@
 | `searchable`                | `searchable`                   |             | `boolean` | `false`     |
 | `selected_values`           | `selected_values`              |             | `any`     | `[]`        |
 | `small`                     | `small`                        |             | `boolean` | `false`     |
+| `tooltip`                   | `tooltip`                      |             | `string`  | `""`        |
 | `value`                     | `value`                        |             | `any`     | `undefined` |
 | `withDynamicOption`         | `with-dynamic-option`          |             | `boolean` | `false`     |
 | `withDynamicOptionValidate` | `with-dynamic-option-validate` |             | `boolean` | `false`     |
@@ -177,9 +178,14 @@ Type: `Promise<boolean>`
 
  - [ins-table](../ins-table)
 
+### Depends on
+
+- [ins-input-tooltip](../ins-input-tooltip)
+
 ### Graph
 ```mermaid
 graph TD;
+  ins-select --> ins-input-tooltip
   ins-table --> ins-select
   style ins-select fill:#f9f,stroke:#333,stroke-width:4px
 ```

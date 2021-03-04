@@ -68,11 +68,14 @@
   }
 
   .ins-select-label-wrap {
-    font-size: .75rem;
+    font-family: var(--ins-font-family);
+    font-size: 12px;
     font-weight: 600;
-    margin-bottom: 2px;
     color: var(--ins-color-ink);
+    margin-bottom: 3px;
     display: block;
+    line-height: 1.4;
+    min-height: 20px;
   }
 
   .ins-select-value-wrap {
