@@ -24,16 +24,6 @@
 
 ## Methods
 
-### `pushHistory(title: any, childPage?: boolean) => Promise<void>`
-
-
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
 ### `resizeIframe() => Promise<void>`
 
 

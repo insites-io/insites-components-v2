@@ -589,7 +589,6 @@ export namespace Components {
         "hasLoad": string;
         "label": string;
         "link": string;
-        "pushHistory": (title: any, childPage?: boolean) => Promise<void>;
         "resizeIframe": () => Promise<void>;
         "updateRoute": (newRoutes: any, noRedirect: boolean, iframe: any) => Promise<void>;
         "updateRouteLabel": (value: any) => Promise<void>;

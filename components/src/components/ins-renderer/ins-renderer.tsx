@@ -1,8 +1,4 @@
 import { h, Component, Prop, State, Method, Element, Event, EventEmitter } from "@stencil/core";
-import { createBrowserHistory } from 'history'
-import { find } from 'lodash';
-
-const history = createBrowserHistory();
 
 @Component({ tag: 'ins-renderer' })
 export class InsRenderer {
@@ -46,13 +42,8 @@ export class InsRenderer {
   }
 
   updateElements(){
-    if (this.route.app) {
-      this.wrapEl.classList.add('app')
-      this.slotWrapEl.classList.add('hide-slot')
-    } else {
-      this.wrapEl.classList.remove('app');
-      this.slotWrapEl.classList.remove('hide-slot')
-    }
+    if (this.route.app) this.wrapEl.classList.add('app')
+    else this.wrapEl.classList.remove('app');
 
     this.titleEl.innerHTML = this.route.label;
 
@@ -67,47 +58,6 @@ export class InsRenderer {
         .replace(/ +(?= )/g, '')
         .replace(/- | - | -| /gi, '-')
         .replace(/-+(?=)/g, '-');
-  }
-
-  @Method()
-  async pushHistory(title, childPage = false) {
-    let formattedUrl = this.formatUrl(title);
-
-    if (childPage == true) {
-      let currentHash = window.location.hash;
-
-      formattedUrl = this.pathname + currentHash + '/' + formattedUrl;
-
-      let childPages = JSON.parse(localStorage.getItem('insChildPages')) ?
-        JSON.parse(localStorage.getItem('insChildPages')) :
-        [];
-
-      if (!find(childPages, { hash: formattedUrl })) {
-        setTimeout(() => {
-          childPages.push({
-            parentHash: this.pathname + currentHash,
-            hash: formattedUrl,
-            childLink: this.insRendererFrameEl.contentDocument.location.pathname,
-            pageTitle: title
-          });
-
-          localStorage.setItem('insChildPages', JSON.stringify(childPages));
-        }, 500);
-      }
-    } else {
-      formattedUrl = this.pathname + '#/app/' + formattedUrl;
-    }
-
-    /* Dev QA this
-    {
-      pathname: formattedUrl,
-      state: {
-        pageTitle: title,
-        url: formattedUrl
-      }
-    }
-    */
-    history.push({ pathname: formattedUrl })
   }
 
   componentWillLoad() {
@@ -145,7 +95,6 @@ export class InsRenderer {
     this.wrapEl = this.insRendererEl.querySelector('.ins-renderer-wrap');
     this.titleEl = this.insRendererEl.querySelector('.ins-renderer-wrap__title-span');
     this.breadcrumbsEl = this.insRendererEl.querySelector('.ins-breadcrumbs-wrap');
-    this.slotWrapEl = this.insRendererEl.querySelector('.ins-renderer__slot-wrap');
   }
 
   bindIframeListener() {
