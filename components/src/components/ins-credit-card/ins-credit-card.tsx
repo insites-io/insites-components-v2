@@ -260,17 +260,19 @@ export class InsCreditCard {
 
   render() {
     return (
-      <div class={`ins-credit-card-main-wrap ${this.active ? "active":""}`}>
-        <div class="ins-credit-card-wrap"
-          onClick={() => this.triggerClickEvent()}>
-          <div class="ins-credit-card-wrap_brand">{this.renderBrand()}</div>
-          { this.expired ?<div class="ins-credit-card-wrap_expired">Expired</div>:""}
-          <div class="insites-user-card-details">
-            <div>**** **** **** {this.checkLastFour()}</div>
-            <div>{this.constructExpiry()}</div>
+      <div class="ins-credit-card-max-size">
+        <div class={`ins-credit-card-main-wrap ${this.active ? "active":""}`}>
+          <div class="ins-credit-card-wrap"
+            onClick={() => this.triggerClickEvent()}>
+            <div class="ins-credit-card-wrap_brand">{this.renderBrand()}</div>
+            { this.expired ?<div class="ins-credit-card-wrap_expired">Expired</div>:""}
+            <div class="insites-user-card-details">
+              <div>**** **** **** {this.checkLastFour()}</div>
+              <div>{this.constructExpiry()}</div>
+            </div>
           </div>
+          <span class="close-btn" onClick={() => this.triggerCloseEvent()}>&times;</span>
         </div>
-        <span class="close-btn" onClick={() => this.triggerCloseEvent()}>&times;</span>
       </div>
     );
   }

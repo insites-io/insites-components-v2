@@ -3,26 +3,44 @@ ins-tooltip {
     display: inline-block;
     position: relative;
 
+      // display: inline-block;
+      // width: 18px;
+      // height: 18px;
+      // text-align: center;
+      // border-radius: 50%;
+      // background-color: var(--ins-bg-color2);
+      // color: var(--ins-color-ink40);
+      // padding-top: 1px;
+      // box-sizing: border-box;
+
+
     .tooltip-label {
       transition: all 0.1s ease;
       vertical-align: middle;
       font-size: 9px;
       font-family: var(--ins-font-family);
-      background-color: hsl(225, 43%, 82%);
       font-weight: 600;
       padding: 2.5px 6px;
       color: var(--ins-color-ink40);
-      cursor: help;
+      cursor: pointer;
+      background-color: var(--ins-bg-color2);
 
       i {
         font-style: normal;
       }
+
       &:hover {
         background-color: var(--ins-color-blue);
         color: var(--ins-color-white);
       }
       &.circle {
         border-radius: 50%;
+        display: inline-block;
+        font-size: 12px;
+        padding: 0;
+        min-width: 18px;
+        min-height: 18px;
+        text-align: center;
       }
       &.rectangle {
         padding: 3px 6px;
@@ -52,6 +70,8 @@ ins-tooltip {
     padding: 16px;
     font-size: 14px;
     max-width: initial;
+    z-index: 9999;
+    top: -6px !important;
 
     @media screen and (max-width: 1280px) {
       max-width: 60vw;
@@ -91,14 +111,14 @@ ins-tooltip {
 
   .popper[x-placement^="top"] .popper__arrow,
   .tooltip[x-placement^="top"] .tooltip-arrow {
-    border-width: 5px 5px 0 5px;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border: none;
+    box-shadow: 1px 1px 2px #eee;
+    transform: rotate(45deg);
+    margin: 0;
     bottom: -5px;
-    left: calc(50% - 5px);
-    margin-top: 0;
-    margin-bottom: 0;
   }
 
   .popper[x-placement^="bottom"],

@@ -57,7 +57,7 @@
   border-left:
     var(--ins-border-style)
     var(--ins-border-thickness)
-    var(--ins-border-color);
+    var(--ins-color-#{$color});
 }
 
 ins-button {
