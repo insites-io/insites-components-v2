@@ -14,40 +14,52 @@ export class InsRenderer {
   @Prop({ mutable: true }) link: string;
   @Prop({ mutable: true }) app: boolean = false;
   @Prop({ mutable: true }) label: string;
-  @Prop({ mutable: true }) route: any = {
+  /*@Prop({ mutable: true })*/ route: any = {
     label: "", link: ""
   };
   // @Prop({ context: 'formatUrl' }) formatUrl: any;
   @State() pathname: string = window.location.pathname;
 
   rerouting: boolean = false;
+  breadcrumbs: any = [];
+  insRendererFrameEl: any;
+
+  titleEl: any;
+  breadcrumbsEl: any;
+  wrapEl: any;
+  slotWrapEl: any;
 
   @Method()
   async updateRoute(newRoutes, noRedirect = false, iframe) {
     if (newRoutes && newRoutes.length) {
       let last = newRoutes.length - 1;
       this.route = newRoutes[last];
-      let loop = true;
-
-      do {
-        this.insBreadCrumbsEl = this.insRendererEl.querySelector('ins-breadcrumbs');
-        if (this.insBreadCrumbsEl) {
-          this.insBreadCrumbsEl.updateCrumbs(newRoutes, noRedirect);
-          loop = false;
-        }
-      } while (loop);
-
-      this.label = this.route.label;
+      this.updateBreadcrumbs(newRoutes, noRedirect);
+      this.updateElements();
 
       if (this.route.app) {
-        setTimeout(() => {
-          let insRendererFrameEl = this.insRendererEl.querySelector('#insRendererFrame') as any;
-          if (!noRedirect || iframe) {
-            insRendererFrameEl.contentWindow.location.replace(this.route.link);
-          }
-        }, 100)
+        if (!noRedirect || iframe) {
+          this.insRendererFrameEl.contentWindow.location.replace(this.route.link);
+        }
       }
     }
+  }
+
+  updateElements(){
+    if (this.route.app) {
+      this.wrapEl.classList.add('app')
+      this.slotWrapEl.classList.add('hide-slot')
+    } else {
+      this.wrapEl.classList.remove('app');
+      this.slotWrapEl.classList.remove('hide-slot')
+    }
+
+    this.titleEl.innerHTML = this.route.label;
+
+    let newEl = document.createElement('ins-breadcrumbs');
+    newEl.breadcrumbs = this.breadcrumbs;
+    this.breadcrumbsEl.innerHTML = "";
+    this.breadcrumbsEl.appendChild(newEl);
   }
 
   formatUrl(e){
@@ -71,12 +83,11 @@ export class InsRenderer {
         [];
 
       if (!find(childPages, { hash: formattedUrl })) {
-        let insRendererFrameEl = this.insRendererEl.querySelector('#insRendererFrame') as any;
         setTimeout(() => {
           childPages.push({
             parentHash: this.pathname + currentHash,
             hash: formattedUrl,
-            childLink: insRendererFrameEl.contentDocument.location.pathname,
+            childLink: this.insRendererFrameEl.contentDocument.location.pathname,
             pageTitle: title
           });
 
@@ -111,20 +122,17 @@ export class InsRenderer {
 
   @Method()
   async resizeIframe() {
-    setTimeout(() => {
-      let insRendererFrameEl = this.insRendererEl.querySelector('#insRendererFrame') as any;
-      insRendererFrameEl.style.height = insRendererFrameEl.contentWindow.document.body.scrollHeight + 'px';
-      insRendererFrameEl.style.opacity = '1';
-    }, 500);
+    this.insRendererFrameEl.style.height = this.insRendererFrameEl.contentWindow.document.body.scrollHeight + 'px';
+    this.insRendererFrameEl.style.opacity = '1';
   }
 
   @Method()
   async updateRouteLabel(value) {
     this.route.label = value;
-    this.label = value;
   }
 
   componentDidLoad() {
+    this.getElements();
     this.bindIframeListener();
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
@@ -133,10 +141,17 @@ export class InsRenderer {
     }
   }
 
+  getElements(){
+    this.wrapEl = this.insRendererEl.querySelector('.ins-renderer-wrap');
+    this.titleEl = this.insRendererEl.querySelector('.ins-renderer-wrap__title-span');
+    this.breadcrumbsEl = this.insRendererEl.querySelector('.ins-breadcrumbs-wrap');
+    this.slotWrapEl = this.insRendererEl.querySelector('.ins-renderer__slot-wrap');
+  }
+
   bindIframeListener() {
-    let insRendererFrameEl = this.insRendererEl.querySelector('#insRendererFrame') as any;
-    if (insRendererFrameEl) {
-      this.iframeURLChange(insRendererFrameEl, e => {
+    this.insRendererFrameEl = this.insRendererEl.querySelector('#insRendererFrame') as any;
+    if (this.insRendererFrameEl) {
+      this.iframeURLChange(this.insRendererFrameEl, e => {
         // if (this.route.app){
         if (navigator.appName == 'Microsoft Internet Explorer') {
           window.frames.document.execCommand('Stop');
@@ -150,7 +165,7 @@ export class InsRenderer {
           queryStrings.forEach(item => {
             if (item.includes("reroute=")) {
               let route = item.substring(8, item.length);
-              insRendererFrameEl.contentWindow.location.replace(route);
+              this.insRendererFrameEl.contentWindow.location.replace(route);
             } else if (item.includes("reroutelabel=")) {
               let reroutelabel = decodeURIComponent(item.substring(13, item.length))
               if (reroutelabel) {
@@ -161,7 +176,7 @@ export class InsRenderer {
           });
 
         } else if (!this.rerouting) {
-          insRendererFrameEl.contentWindow.location.replace(e);
+          this.insRendererFrameEl.contentWindow.location.replace(e);
         } else this.rerouting = false;
         // }
       });
@@ -197,13 +212,65 @@ export class InsRenderer {
     attachUnload();
   }
 
+  updateBreadcrumbs(newRoutes, noRedirect){
+    this.breadcrumbs = newRoutes;
+    let parsedCrumbs = JSON.stringify(newRoutes);
+    window.localStorage.setItem('ins_breadcrumbs', parsedCrumbs);
+
+    let lastCrumb = JSON.parse(parsedCrumbs).pop();
+    if (!lastCrumb.app && !lastCrumb.withSubmenu){
+      if (!noRedirect) {
+        document.location.hash = lastCrumb.link;
+      }
+    }
+  }
+
+  routePageHandler(crumb, index){
+    let count = this.breadcrumbs.length;
+    let lastCrumb = (count - 1) === index;
+    if (!crumb.withSubmenu && !lastCrumb){
+      this.breadcrumbs.splice((index + 1), count);
+      let newRef = JSON.parse(JSON.stringify(this.breadcrumbs));
+      this.updateRoute(newRef, false, false);
+    }
+  }
+
+  renderBreadcrumbs() {
+    if (this.breadcrumbs.length > 1) {
+      return (
+        <div class="ins-breadcrumbs">
+          <ul>
+            {this.breadcrumbs.map((crumb, index) => {
+              return (
+                <li>
+                  <span class={`crumb-label ${crumb.withSubmenu ? '': 'has-link'}`}
+                    onClick={() => this.routePageHandler(crumb, index)}>
+                    {crumb.label}
+                  </span>
+                  <span class="arrow-right"></span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      );
+    }
+
+    return "";
+  }
+
   render() {
     return (
-      <div class={`ins-renderer-wrap ${this.route.app ? "app" : ""}`}>
+      <div class={`ins-renderer-wrap content ${this.route.app ? "app" : ""}`}>
         <h1 class="ins-renderer-wrap__title">
-          <span class="ins-renderer-wrap__title-span">{this.route.label ? this.route.label : ""}</span>
-          <ins-breadcrumbs />
+          <span class="ins-renderer-wrap__title-span">
+            {this.route.label ? this.route.label : ""}
+          </span>
         </h1>
+
+        <div class="ins-breadcrumbs-wrap">
+          <ins-breadcrumbs breadcrumbs={this.breadcrumbs}></ins-breadcrumbs>
+        </div>
 
         <div class="ins-renderer__iframe-wrap">
           <iframe id="insRendererFrame"
@@ -212,11 +279,6 @@ export class InsRenderer {
             marginheight="0"
             marginwidth="0">
           </iframe>
-          {this.route.app ?
-            <div class="hide-slot">
-              <slot />
-            </div>
-            : ""}
         </div>
 
         <div class="ins-renderer__slot-wrap">

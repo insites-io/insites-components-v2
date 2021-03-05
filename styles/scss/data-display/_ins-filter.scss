@@ -4,6 +4,7 @@ ins-filter {
     font-family: var(--ins-font-family);
     display: inline-block;
     position: relative;
+    margin-right: 20px;
 
     &__label {
       margin-right: 18px;
@@ -60,7 +61,7 @@ ins-filter {
 
     &.active {
       display: block;
-      top: 36px;
+      top: 42px;
       left: 0;
     }
 

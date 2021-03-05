@@ -64,7 +64,7 @@ export class InsSidebarItem {
 
     this.toggleMenuNav();
     this.routePage.emit({ crumbs, redirect });
-    this.hideSiblingsMenu();
+    // await this.hideSiblingsMenu();
 
     let body = document.querySelector('body');
     body.style.overflowY = null;
@@ -76,7 +76,7 @@ export class InsSidebarItem {
     const mq = window.matchMedia("(max-width: 1260px)");
     let menuBar = document.querySelector('ins-sidebar') as any;
     if (mq.matches) {
-      document.querySelector('ins-admin').classList.add('mini');
+      document.querySelector('body').classList.add('mini');
       menuBar.minimise();
     }
 
@@ -97,7 +97,7 @@ export class InsSidebarItem {
   }
 
   toggleSidebar() {
-    let insAdminEl = document.querySelector('ins-admin');
+    let insAdminEl = document.querySelector('body');
     let menuBar = document.querySelector("ins-header") as any;
     if (menuBar && insAdminEl.className.includes('mini')) {
         menuBar.toggleSidebar();
@@ -106,10 +106,10 @@ export class InsSidebarItem {
 
   @Method()
   async showSubMenu(){
-    let insAdminEl = document.querySelector('ins-admin');
+    let insAdminEl = document.querySelector('body');
 
     if (this.withSubmenu && insAdminEl.className.includes('mini')) {
-      this.hideSiblingsMenu();
+      await this.hideSiblingsMenu();
     }
 
     this.submenuVisible = true;
@@ -128,7 +128,9 @@ export class InsSidebarItem {
     await this.deactivateSiblings();
     let checkIfSubMenu = this.insSidebarItemEl.closest('.submenu-wrap');
     if (checkIfSubMenu) {
-      checkIfSubMenu.closest('ins-sidebar-item').activateParent();
+      let parent = checkIfSubMenu.closest('ins-sidebar-item');
+      await parent.activateParent();
+      await parent.showSubMenu();
     }
     return true;
   }
@@ -145,11 +147,11 @@ export class InsSidebarItem {
     return true;
   }
 
-  hideSiblingsMenu(){
+  async hideSiblingsMenu(){
     let submenuWrapEls = this.insSidebarItemEl.closest('ins-sidebar').querySelectorAll('ins-sidebar-item') as any;
 
     for (let i = 0; i < submenuWrapEls.length; ++i) {
-      submenuWrapEls[i].hideSubMenu();
+      await submenuWrapEls[i].hideSubMenu();
     }
   }
 
@@ -239,7 +241,7 @@ export class InsSidebarItem {
   }
 
   mouseLeaveHandler(){
-    let insAdminEl = document.querySelector('ins-admin');
+    let insAdminEl = document.querySelector('body');
 
     if (insAdminEl && insAdminEl.className.includes('mini')) {
       this.hideSubMenu();

@@ -14,12 +14,188 @@ export class InsSidebar {
   @State() noFooter: boolean = false;
 
   baseURL = "http://components.insites.io/assets/images";
+  sidebarItemEls: any;
+  insRenderer: any;
+  insHeaderUserEl: any;
+  reroute: boolean = false;
+
+  componentWillLoad(){
+    let hasFooter = this.insSidebarEl.querySelector('ins-sidebar-footer');
+
+    if (!hasFooter){
+      this.noFooter = true;
+    }
+  }
 
   componentDidLoad(){
+    this.sidebarItemEls = this.insSidebarEl.querySelectorAll('ins-sidebar-item');
+    this.insRenderer = document.querySelector('ins-renderer');
+    this.insHeaderUserEl = document.querySelector('ins-header-user');
+
+    this.checkHash(true);
+
+    window.onhashchange = async () => {
+      await this.checkHash();
+    };
+
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
       if (func) func(this.insSidebarEl);
+    }
+  }
+
+  @Listen('routePage')
+  routePageHandler(event: CustomEvent) {
+    this.updateRoute(event.detail.crumbs, event.detail.redirect);
+  }
+
+  async updateRoute(crumbs, redirect) {
+    let noRedirect = !redirect;
+
+    if (this.reroute){
+      let queryStrings = window.location.hash.split("?")[1].split("&");
+      queryStrings.forEach(item => {
+
+        if (item.includes("reroute=")){
+          crumbs[0].link = item.substring(8, item.length);
+
+        } else if (item.includes("reroutelabel=")){
+          crumbs[0].label = decodeURIComponent(item.substring(13, item.length));
+        }
+
+      });
+      this.reroute = false;
+    }
+
+    await this.insRenderer.updateRoute(crumbs, noRedirect, true);
+  }
+
+  async goToMyProfilePage(deeplink){
+    let insHeaderUserEl = document.querySelector('ins-header-user');
+    if (!deeplink) await this.hideSidebarItems();
+
+    this.updateRoute([{
+      link: insHeaderUserEl.profileLink,
+      app: insHeaderUserEl.app,
+      label: 'My Profile',
+      withSubmenu: false
+    }], false);
+
+    // insHeaderUserEl.routePageHandler();
+  }
+
+  async hideSidebarItems(){
+    for (let i = 0; i < this.sidebarItemEls.length; ++i) {
+      await this.sidebarItemEls[i].deactivate();
+    }
+  }
+
+  async activateSidebarFromCrumbs(){
+    let currentCrumbs = window.localStorage.getItem('ins_breadcrumbs');
+    let parsedCrumbs = JSON.parse(currentCrumbs);
+    let reversed = parsedCrumbs.reverse();
+
+    for (const crumb of reversed){
+      let currentHash = crumb.app
+      ? crumb.formattedRoute
+      : crumb.link;
+
+      if (await this.matchHash(currentHash, true)){
+        break
+      }
+    }
+  }
+
+  checkIfRoot(show){
+    let currentHash = window.location.hash;
+    if (currentHash === "" || currentHash === "#/"){
+      if (show) this.showLandingPage();
+      return false;
+    }
+    return currentHash;
+  }
+
+  showLandingPage(){
+    for (let i = 0; i < this.sidebarItemEls.length; i++) {
+      if (this.sidebarItemEls[i].landingPage){
+        // this.showSubmenu(this.sidebarItemEls[i]);
+        this.sidebarItemEls[i].routePageHandler("landing");
+        break;
+      }
+    }
+  }
+
+  async matchHash(currentHash, deeplink){
+    for (let i = 0; i < this.sidebarItemEls.length; i++) {
+      let formattedRoute = await this.sidebarItemEls[i].formatRoute();
+
+      if (currentHash === formattedRoute){
+        await this.loadRoute(this.sidebarItemEls[i], deeplink);
+        return true;
+
+      } else if (formattedRoute
+        && currentHash.includes(formattedRoute)
+        && currentHash.includes("?reroute=")
+        && this.sidebarItemEls[i].app
+      ){
+        this.reroute = true;
+        await this.loadRoute(this.sidebarItemEls[i], deeplink);
+        return true;
+      }
+    }
+
+    return false
+  }
+
+  async loadRoute(sidebarItem, deeplink){
+    if (!deeplink){
+      sidebarItem.routePageHandler();
+    } else {
+      sidebarItem.activate();
+    }
+
+    // await this.hideSubmenus(sidebarItem);
+
+    // if (!this.insAdminEl.className.includes('mini')){
+    //   this.showSubmenu(sidebarItem);
+    // }
+
+    return true;
+  }
+
+  // showSubmenu(e) {
+  //   let withSubmenu = e.closest('ins-sidebar-item[with-submenu]');
+  //   if (withSubmenu) {
+  //     withSubmenu.showSubMenu();
+  //   }
+  // }
+
+  // async hideSubmenus(e){
+  //   let selectedSidebarItemParent = e.closest('ins-sidebar-item[with-submenu]');
+
+  //   for (let i = 0; i < this.sidebarItemEls.length; i++) {
+  //     let sidebarItemParent = this.sidebarItemEls[i].closest('ins-sidebar-item[with-submenu]');
+
+  //     if (selectedSidebarItemParent !== sidebarItemParent) {
+  //       if (sidebarItemParent){
+  //         await sidebarItemParent.hideSubMenu();
+  //       }
+  //     }
+  //   }
+  // }
+
+  async checkHash(deeplink?){
+    let route = this.checkIfRoot(true);
+    if (route === "#/app/my-profile" ||
+      (this.insHeaderUserEl && this.insHeaderUserEl.profileLink === route)
+    ){
+      await this.goToMyProfilePage(deeplink);
+
+    } else if (route) {
+      if (!await this.matchHash(route, false) && deeplink){
+        await this.activateSidebarFromCrumbs();
+      }
     }
   }
 
@@ -36,6 +212,13 @@ export class InsSidebar {
   }
 
   @Method()
+  async deactivateSidebarItems(){
+    for (let i = 0; i < this.sidebarItemEls.length; ++i) {
+      await this.sidebarItemEls[i].deactivate();
+    }
+  }
+
+  @Method()
   async minimise(){
     this.minimised = true;
   }
@@ -47,14 +230,6 @@ export class InsSidebar {
 
   sidebarActionEventHandler(event){
     this.insSidebarAction.emit(event);
-  }
-
-  componentWillLoad(){
-    let hasFooter = this.insSidebarEl.querySelector('ins-sidebar-footer');
-
-    if (!hasFooter){
-      this.noFooter = true;
-    }
   }
 
   getIcon(){

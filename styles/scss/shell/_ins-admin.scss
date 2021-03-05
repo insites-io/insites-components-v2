@@ -1,5 +1,5 @@
-ins-admin {
-  /* Globals */
+// ins-admin {
+//   /* Globals */
   .ins-form-field {
     font-size: 16px;
     font-family: var(--ins-font-family);
@@ -17,22 +17,7 @@ ins-admin {
     position: relative;
   }
 
-  .content {
-    width: calc(100% - 240px);
-    min-height: calc(100vh - 75px);
-    margin-left: 240px;
-    padding-top: 75px;
-    background-color: #fafbfc;
-    transition: margin .5s, width .5s;
-
-    &.no-sidebar {
-      width: 100%;
-      margin-left: 0;
-    }
-
-  }
-
-  &.mini {
+  body.mini {
 
     ins-sidebar:not(.style-guide) {
 
@@ -41,15 +26,14 @@ ins-admin {
         overflow: initial;
 
         .insites-logo-wrap img {
-          width: 46px;
-          margin-top: 4px;
-          margin-left: 0px;
+          width: auto;
+          margin: 0 auto;
         }
 
         ins-sidebar-item {
 
           div.ins-sidebar-item-wrap {
-            width: 50px;
+            // width: 50px;
             padding: 0;
             // position: relative;
             .relative-wrap {
@@ -61,23 +45,26 @@ ins-admin {
               padding-bottom: 15px;
               padding-left: 18px;
               padding-right: 0;
-              transition: width 0.75s;
+              // transition-delay: 1s;
+              // transition: width 0.5s ease-in-out;
               width: 50px;
+              height: 48px;
 
-              span,
-              .icon-chevron-right {
-                display: none;
-              }
+              // span,
+              // .icon-chevron-right {
+              //   display: none;
+              // }
             }
 
             .fas {
-              margin-right: 16px;
+              // margin-right: 16px;
               margin-left: 0;
             }
 
             .fas.icon-chevron-right,
             .ins-sidebar-item-label {
               opacity: 0;
+              transition: opacity .15s ease-in-out;
             }
 
             .submenu-wrap {
@@ -88,9 +75,9 @@ ins-admin {
               padding: 0;
               top: -50px;
 
-              & > .btn-nav-wrap > .btn-nav > .fas.icon-chevron-left {
-                display: none;
-              }
+              // & > .btn-nav-wrap > .btn-nav > .fas.icon-chevron-left {
+              //   display: none;
+              // }
 
               & > .btn-nav-wrap > .btn-nav > span {
                 margin-left: 28px;
@@ -192,7 +179,7 @@ ins-admin {
       }
 
     }
-    .content {
+    .ins-renderer-wrap.content {
       margin-left: 50px;
       width: calc(100% - 50px);
     }
@@ -205,27 +192,27 @@ ins-admin {
       }
     }
   }
-}
+// }
 .sidebar .insites-logo-wrap img.icon-img {
   display: none;
 }
 
 @media (max-width: 1024px){
-  ins-admin {
+  // ins-admin {
     .sidebar {
       //position: absolute;
       box-shadow: 1px 0px 10px rgba(0,0,0,0.15);
     }
-    .content {
+    .ins-renderer-wrap.content {
       margin-left: 50px;
       width: calc(100% - 50px);
     }
     .burger {
       margin-left: 255px;
     }
-    &.mini .sidebar {
+    body.mini .sidebar {
       position: fixed;
       box-shadow: none;
     }
   }
-}
+// }

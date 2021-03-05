@@ -71,7 +71,7 @@ ins-header {
   height: 34px;
   margin-top: 11px;
   margin-right: 11px;
-  transition: .75s;
+  transition: .5s ease-in-out;
   display: none;
 
   span {
@@ -80,9 +80,7 @@ ins-header {
     background: var(--ins-bg-color);
     display: block;
     margin: 5px auto;
-    -webkit-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
     border-radius: 50%;
   }
 }
@@ -119,7 +117,7 @@ ins-header {
   height: 34px;
   margin-top: 11px;
   margin-left: 255px;
-  transition: .75s;
+  transition: .5s ease-in-out;
   animation: burger 1s ease infinite;
 
   span {
@@ -131,7 +129,7 @@ ins-header {
     margin: 10px 0;
     top: 6px;
     background: var(--ins-bg-color);
-    transition: 0.75s;
+    transition: .5s ease-in-out;
 
     width: 16px;
     transform: translate(0px, 0px);
@@ -187,7 +185,7 @@ ins-header {
       background: #2c3148;
       position: relative;
       right: -100vw;
-      transition: right 0.75s;
+      transition: right 0.5s ease-in-out;
 
       .icon-nav {
         display: none;

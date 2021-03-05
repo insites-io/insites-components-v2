@@ -3,7 +3,7 @@
   width: 240px;
   position: fixed;
   bottom: 0;
-  transition: width .75s;
+  transition: width .5s ease-in-out;
   z-index: 1001;
 
   .ins-sidebar-footer-menu-toggle {

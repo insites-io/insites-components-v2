@@ -10,6 +10,8 @@ export class InsHeaderUser {
   @Prop({ mutable: true }) formattedRoute: string;
   @State() dropDownState: boolean;
 
+  insRendererEl: any;
+
   toggleDropDown(){
     this.dropDownState = !this.dropDownState;
   }
@@ -36,13 +38,7 @@ export class InsHeaderUser {
   async routePageHandler(){
     this.deactivateRoutes();
     this.toggleDropDown();
-
-    this.routePage.emit({crumbs:[{
-      link: this.profileLink,
-      app: this.app,
-      label: 'My Profile',
-      withSubmenu: false
-    }]});
+    await this.routeMyProfile();
   }
 
   routePageHandlerMobile() {
@@ -68,6 +64,16 @@ export class InsHeaderUser {
 
   componentWillLoad(){
     this.formatRoute();
+    this.insRendererEl = document.querySelector('ins-renderer');
+  }
+
+  async routeMyProfile(){
+    await this.insRendererEl.updateRoute([{
+      link: this.profileLink,
+      app: this.app,
+      label: 'My Profile',
+      withSubmenu: false
+    }], false, this.app);
   }
 
   render() {

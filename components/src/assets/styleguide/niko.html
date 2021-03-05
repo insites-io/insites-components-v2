@@ -9,54 +9,70 @@
   <!-- Insites Essentials -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap">
-  <!-- <link rel="stylesheet" href="/assets/css/reset.css" /> -->
+  <link rel="stylesheet" href="/assets/css/reset.css" />
   <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
   <link rel="stylesheet" href="/assets/css/insites.css" />
 
   <script type="module" src="/build/insites.esm.js"></script>
   <script nomodule src="/build/insites.js"></script>
-
-  <!-- jQuery library -->
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous">
-  </script>
-  <script src="https://components.insites.io/insites-config.min.js"></script>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css">
-  <style>
-    body {
-      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-      padding: 20px
-    }
-
-    .spacer {
-      padding: 200px;
-    }
-
-    .grid {
-      float: left;
-      width: 49%;
-      box-sizing: border-box;
-    }
-
-    .img-wrap {
-      height: 200px;
-    }
-
-    .content-wrap {
-      width: 600px;
-      margin: 0 auto;
-    }
-  </style>
 </head>
 
 <body>
-  <ins-input label="Test" tooltip="Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique nulla rem vel."></ins-input>
-  <ins-select label="Test" tooltip="Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique nulla rem vel." button>
-    <ins-select-option label="Android" value="Android" default></ins-select-option>
-    <ins-select-option label="iOS" value="iOS"></ins-select-option>
-    <ins-select-option label="Windows" value="Windows"></ins-select-option>
-  </ins-select>
+  <ins-sidebar>
+    <ins-sidebar-item label="Route 1" link="#/route-1" icon="icon-zap"></ins-sidebar-item>
+    <ins-sidebar-item label="Route 2" link="#/route-2" icon="icon-codepen"></ins-sidebar-item>
+
+    <ins-sidebar-item label="Route 3" with-submenu icon="icon-github">
+      <ins-sidebar-item label="Route 4" link="#/route-4"></ins-sidebar-item>
+      <ins-sidebar-item label="Route 5" link="#/route-5"></ins-sidebar-item>
+    </ins-sidebar-item>
+
+    <ins-sidebar-item label="Route 6 - iframe" landing-page
+      link="/assets/styleguide/test.html" app icon="icon-chrome">
+    </ins-sidebar-item>
+
+
+    <ins-sidebar-footer class="side-bar-footer">
+
+      <ins-sidebar-footer-button id="toggleMenuButton" icon="icon-menu-collapse">
+      </ins-sidebar-footer-button>
+
+    </ins-sidebar-footer>
+  </ins-sidebar>
+
+  <ins-header support-link="www.google.com" id="insMenuBar">
+    <ins-header-user name="John Smith" logout-link="/" profile-link="#/my-profile">
+    </ins-header-user>
+  </ins-header>
+
+  <ins-renderer>
+    <div>
+      <ins-filter with-date-filter>
+        <ins-filter-item name="Operating System" options='["Windows", "macOS", "Linux"]'></ins-filter-item>
+      </ins-filter>
+    </div>
+  </ins-renderer>
+
+
+  <script>
+
+    // Menu Toggle
+    var menuBtn = document.getElementById("toggleMenuButton");
+    var menuBar = document.getElementById("insMenuBar");
+    var body = document.querySelector("body");
+
+    if (menuBtn && menuBar) {
+      menuBtn.addEventListener('insSidebarFooterButtonEvent', function () { toggleMenu() });
+    }
+    function toggleMenu() {
+      if (body.classList.contains('mini')) {
+        menuBtn.icon = 'icon-menu-collapse';
+      } else {
+        menuBtn.icon = 'icon-menu-expand';
+      }
+      menuBar.toggleSidebar();
+    }
+  </script>
 </body>
 
 </html>

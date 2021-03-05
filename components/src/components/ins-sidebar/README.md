@@ -24,6 +24,16 @@
 
 ## Methods
 
+### `deactivateSidebarItems() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `maximise() => Promise<void>`
 
 

@@ -591,7 +591,6 @@ export namespace Components {
         "link": string;
         "pushHistory": (title: any, childPage?: boolean) => Promise<void>;
         "resizeIframe": () => Promise<void>;
-        "route": any;
         "updateRoute": (newRoutes: any, noRedirect: boolean, iframe: any) => Promise<void>;
         "updateRouteLabel": (value: any) => Promise<void>;
     }
@@ -650,6 +649,7 @@ export namespace Components {
         "value": string;
     }
     interface InsSidebar {
+        "deactivateSidebarItems": () => Promise<void>;
         "fullLogo": string;
         "hasLoad": string;
         "iconLogo": string;
@@ -2048,7 +2048,6 @@ declare namespace LocalJSX {
         "label"?: string;
         "link"?: string;
         "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "route"?: any;
     }
     interface InsSelect {
         "button"?: boolean;

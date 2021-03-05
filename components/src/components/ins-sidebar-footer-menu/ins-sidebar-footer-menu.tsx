@@ -23,7 +23,7 @@ export class InsSidebarFooterMenu {
   }
 
   mouseLeaveHandler(){
-    let insAdminEl = document.querySelector('ins-admin');
+    let insAdminEl = document.querySelector('body');
     if (insAdminEl.className.includes('mini')){
       this.hideMenu();
     }

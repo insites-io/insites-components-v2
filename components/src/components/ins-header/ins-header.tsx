@@ -21,7 +21,7 @@ export class InsHeader {
   componentWillLoad() {
     this.sidebarMini = false;
     this.fullScreenState = false;
-    this.insAdminEl = document.querySelector('ins-admin');
+    this.insAdminEl = document.querySelector('body');
     this.insNotificationsEl = document.querySelector('ins-notifications');
     this.insSidebarEl = document.querySelector('ins-sidebar');
   }
@@ -72,7 +72,7 @@ export class InsHeader {
       this.insAdminEl.classList.toggle('mini');
     }
 
-    let insAdminEl = document.querySelector('ins-admin');
+    let insAdminEl = document.querySelector('body');
     let submenuWrapEls = document.querySelectorAll('ins-sidebar-item');
     let footerMenus = document.querySelectorAll('ins-sidebar-footer-menu');
 

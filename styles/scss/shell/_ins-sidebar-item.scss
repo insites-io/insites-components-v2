@@ -3,7 +3,8 @@ ins-sidebar-item {
   div.ins-sidebar-item-wrap {
     padding: 0;
     box-sizing: border-box;
-    width: 240px;
+    width: 100%;
+    overflow: hidden;
 
     a {
       color: var(--ins-color-ink40);
@@ -17,7 +18,8 @@ ins-sidebar-item {
       position: relative;
       box-sizing: border-box;
       width: 240px;
-      transition: none;
+      height: 48px;
+      transition: width .5s ease-in-out;
 
       .fas {
         color: #1E86E3;
@@ -41,7 +43,8 @@ ins-sidebar-item {
 
       .ins-sidebar-item-label {
         opacity: 1;
-        transition: opacity .35s;
+        transition: opacity .35s ease-in-out;
+        transition-delay: .5s;
         display: inline-block;
         width: 83%;
       }
@@ -54,7 +57,7 @@ ins-sidebar-item {
       top: calc(50% - 5px);
       right: 0;
       opacity: 1;
-      transition: opacity .15s;
+      transition: opacity .5s ease-in-out;
     }
 
     .submenu-wrap {
@@ -128,7 +131,7 @@ html {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  transition: all 0.25s ease;
+  transition: all 0.35s ease-in-out;
   text-align: left;
 
 }
