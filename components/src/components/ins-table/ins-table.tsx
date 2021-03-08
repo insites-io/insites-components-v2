@@ -627,7 +627,11 @@ export class InsTable {
 
                 {this.tableHeaders.map(tableHeader => {
                   return (
-                    <div class={`ibt-table_th ${tableHeader.label === ''} ${(tableHeader.type === 'number' || tableHeader.type === 'currency') ? 'text-right' : ''} ${tableHeader.sortable ? '' : 'not-sortable'}`}>
+                    <div class={`ibt-table_th
+                      ${(tableHeader.type === 'number' || tableHeader.type === 'currency') ? 'text-right' : ''}
+                      ${tableHeader.sortable ? '' : 'not-sortable'}
+                      ${tableHeader.textAlign ? `text-${tableHeader.textAlign}`: ''}`}>
+
                         <span onClick={() => { if (tableHeader.sortable){this.sortTable(tableHeader.label)}}}
                           class={`label-wrap
                             ${this.sortKeyword === tableHeader.label ? 'sorted':''}
@@ -678,6 +682,7 @@ export class InsTable {
                         ${tableHeader.editable ? `editable` : ''}
                         ${this.rowActions.length ? 'has-row-actions' : ''}
                         ${this.textOverflow === "ellipsis" ? 'overflow-ellipsis' : ''}
+                        ${tableHeader.textAlign ? `text-${tableHeader.textAlign}`: ''}
                       `}>
 
                         {tableHeader.hasImage && (item[tableHeader.label] || item[`${tableHeader.label}_Img`]) ?

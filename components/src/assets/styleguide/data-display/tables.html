@@ -846,7 +846,7 @@ window.addEventListener('load', () => {
 
   table.totalCount = 1;
   table.tableHeaders = [
-    { label: "String", type: 'string' },
+    { label: "String", type: 'string', textAlign: "center" },
     { label: "Number", type: 'number' },
     { label: "Currency", type: 'currency' }
   ];
@@ -1110,9 +1110,9 @@ window.addEventListener('load', () => {
       var dateFormat = "MM/DD/YYYY"
       fieldTable.bulkActions = ["Update"];
       fieldTable.tableHeaders = [
-        { label: 'Name', type: "string", editable: true },
-        { label: 'Birthday', type: "date", editable: true },
-        { label: 'Status', type: "select", hasTag: true, editable: true,
+        { label: 'Name', type: "string", editable: true, textAlign: "center" },
+        { label: 'Birthday', type: "date", editable: true, textAlign: "center" },
+        { label: 'Status', type: "select", hasTag: true, editable: true, textAlign: "center",
             selectOptions: ['Active', 'Inactive'] }
         ]
       fieldTable.tableData = [
