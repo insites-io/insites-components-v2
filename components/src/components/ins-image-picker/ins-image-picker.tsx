@@ -56,6 +56,7 @@ export class Insimagepicker {
 
   displayImage(evt) {
     let tgt = evt.target || window.event.srcElement;
+    this.openModal();
     this.processImgFile(tgt.files);
   }
 
@@ -180,7 +181,7 @@ export class Insimagepicker {
                   onClick={this.openModal.bind(this)} />
 
               : <div class='img-placeholder img-preview-holder'
-                  onClick={this.openModal.bind(this)}>
+                  onClick={this.addImage.bind(this)}>
                   <span class="texts_image">{this.placeholder}</span>
                 </div>
             }
@@ -199,7 +200,7 @@ export class Insimagepicker {
             size="small"
             color={this.buttonColor}
             outlined
-            onClick={this.openModal.bind(this)}>
+            onClick={this.addImage.bind(this)}>
           </ins-button>
         </div>
 
