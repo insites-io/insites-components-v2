@@ -124,13 +124,15 @@ ins-button {
     line-height: 16px;
     vertical-align: top;
 
+    min-width: 52px;
     height: 38px;
     border: none;
     border-radius: var(--ins-border-radius);
     padding: 0 16px;
 
-    transition: background 0.3s;
-    transition: width .25s;
+    transition: background 0.35s;
+    transition: width .35s;
+
     cursor: pointer;
 
     &:focus {
@@ -207,7 +209,9 @@ ins-button {
     &.is-loading {
       cursor: wait;
       opacity: 1;
-      width: auto;
+      width: 52px;
+      padding-left: 16px;
+      padding-right: 16px;
 
       .spinner {
         position: relative;
@@ -224,6 +228,13 @@ ins-button {
           width: 20px;
           height: 20px;
         }
+      }
+
+      .btn__label {
+        opacity: 0;
+        transition: none;
+        display: block;
+        height: 0;
       }
     }
 
@@ -245,6 +256,9 @@ ins-button {
     .btn__label {
       display: inline-block;
       word-break: initial;
+      opacity: 1;
+      transition: opacity .35s;
+      transition-delay: .10s;
 
       // &.v-align {
         // vertical-align: middle;

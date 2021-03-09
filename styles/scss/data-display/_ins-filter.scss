@@ -145,6 +145,10 @@ ins-filter {
       position: absolute;
     }
   }
+
+  ins-filter-item:last-child {
+    margin-right: 0;
+  }
 }
 
 .active-tab {

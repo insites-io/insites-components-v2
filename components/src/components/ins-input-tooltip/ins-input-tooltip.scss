@@ -63,11 +63,11 @@ ins-input-tooltip {
   }
 
   .tippy-box[data-placement^=top]>.tippy-arrow:before {
-    bottom: -8px;
+    bottom: -7px;
     left: 5px;
     border-top: none;
     border-left: none;
-
+    box-sizing: border-box;
     box-shadow:
       var(--ins-shadow-x)
       var(--ins-shadow-y)

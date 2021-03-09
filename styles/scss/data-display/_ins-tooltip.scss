@@ -3,15 +3,10 @@ ins-tooltip {
     display: inline-block;
     position: relative;
 
-      // display: inline-block;
-      // width: 18px;
-      // height: 18px;
-      // text-align: center;
-      // border-radius: 50%;
-      // background-color: var(--ins-bg-color2);
-      // color: var(--ins-color-ink40);
-      // padding-top: 1px;
-      // box-sizing: border-box;
+    .tooltip-inner {
+      font-size: 14px;
+      font-weight: 400;
+    }
 
 
     .tooltip-label {
@@ -38,9 +33,10 @@ ins-tooltip {
         display: inline-block;
         font-size: 12px;
         padding: 0;
-        min-width: 18px;
-        min-height: 18px;
+        width: 18px;
+        height: 18px;
         text-align: center;
+        line-height: 1.5;
       }
       &.rectangle {
         padding: 3px 6px;
@@ -115,7 +111,12 @@ ins-tooltip {
     height: 10px;
     background: #fff;
     border: none;
-    box-shadow: 1px 1px 2px #eee;
+    box-shadow:
+      var(--ins-shadow-x)
+      var(--ins-shadow-y)
+      var(--ins-shadow-blur)
+      var(--ins-shadow-color);
+
     transform: rotate(45deg);
     margin: 0;
     bottom: -5px;

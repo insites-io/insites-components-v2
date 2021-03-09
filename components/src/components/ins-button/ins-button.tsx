@@ -1,4 +1,4 @@
-import { h, Component, Watch, Prop, Event, EventEmitter, Element, State } from "@stencil/core";
+import { h, Component, /*Watch,*/ Prop, Event, EventEmitter, Element, State } from "@stencil/core";
 
 @Component({ tag: "ins-button" })
 export class InsButton {
@@ -49,17 +49,17 @@ export class InsButton {
     });
   }
 
-  @Watch('loading')
-  watchLoaderHandler() {
-    if(!this.loading) {
-      let existingLabel = this.label;
-      this.label = '';
+  // @Watch('loading')
+  // watchLoaderHandler() {
+  //   if(!this.loading) {
+  //     let existingLabel = this.label;
+  //     this.label = '';
 
-      setTimeout(() => {
-        this.label = existingLabel;
-      }, 300);
-    }
-  }
+  //     setTimeout(() => {
+  //       this.label = existingLabel;
+  //     }, 300);
+  //   }
+  // }
 
   addRippleEffect(startingPoint, target){
 
@@ -224,15 +224,13 @@ export class InsButton {
             ${this.label == '' && this.icon ? 'round' : ''}`
           }
         >
-          {this.loading ?
-            <div class={`spinner ${this.solid ? '' : this.color}`}></div> :
-            <div>
-              {this.icon ? <i class={`btn__icon ${this.icon} ${this.label == '' ? 'action' : '' }`}></i> : ''}
-              <span class={`btn__label ${this.icon ? 'v-align' : ''}`}>
-                {this.label}
-              </span>
-            </div>
-          }
+          {this.loading ? <div class={`spinner ${this.solid ? '' : this.color}`}></div> : "" }
+          <div>
+            {this.icon ? <i class={`btn__icon ${this.icon} ${this.label == '' ? 'action' : '' }`}></i> : ''}
+            <span class={`btn__label ${this.icon ? 'v-align' : ''}`}>
+              {this.label}
+            </span>
+          </div>
         </button>
       );
     }

@@ -11,10 +11,20 @@
     href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap">
   <link rel="stylesheet" href="/assets/css/reset.css" />
   <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/foundation.min.css" />
   <link rel="stylesheet" href="/assets/css/insites.css" />
 
   <script type="module" src="/build/insites.esm.js"></script>
   <script nomodule src="/build/insites.js"></script>
+  <style>
+    .liquid-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2c3148;
+      font-family: Open Sans,sans-serif;
+      margin-bottom: 2px;
+    }
+  </style>
 </head>
 
 <body>
@@ -31,7 +41,6 @@
       link="/assets/styleguide/test.html" app icon="icon-chrome">
     </ins-sidebar-item>
 
-
     <ins-sidebar-footer class="side-bar-footer">
 
       <ins-sidebar-footer-button id="toggleMenuButton" icon="icon-menu-collapse">
@@ -47,14 +56,34 @@
 
   <ins-renderer>
     <div>
-      <ins-image-picker></ins-image-picker>
+      <ins-filter with-date-filter>
+        <ins-filter-item name="Operating System" options='["Windows", "macOS", "Linux"]'></ins-filter-item>
+      </ins-filter>
+
+      <ins-input tooltip="Testing built in tooltip for this component." label="Test"></ins-input>
+      <label class="liquid-label">
+        Test Tooltip
+
+        <ins-tooltip
+          width="380px"
+          label="?"
+          shape="circle"
+          position="top"
+          trigger="click"
+          content="Testing built in tooltip for this component.">
+        </ins-tooltip>
+      </label>
+
+      <ins-button label="Test long label" solid blue id="insButtonEl"></ins-button>
+      <ins-button label="Test beside" solid blue id="insButtonEl3"></ins-button>
+      <ins-button label="Actions" blue id="insButtonEl2" options="Import, Export"></ins-button>
     </div>
   </ins-renderer>
-
 
   <script>
 
     // Menu Toggle
+    var insButtonEl = document.getElementById("insButtonEl");
     var menuBtn = document.getElementById("toggleMenuButton");
     var menuBar = document.getElementById("insMenuBar");
     var body = document.querySelector("body");
@@ -70,6 +99,13 @@
       }
       menuBar.toggleSidebar();
     }
+
+    insButtonEl.addEventListener('insClick', e => {
+      insButtonEl.loading = true;
+      setTimeout(() => {
+        insButtonEl.loading = false;
+      }, 500);
+    });
   </script>
 </body>
 
