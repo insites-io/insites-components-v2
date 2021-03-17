@@ -30,7 +30,7 @@
 | `readonly`              | `readonly`               |             | `boolean` | `false`                             |
 | `searchable`            | `searchable`             |             | `boolean` | `false`                             |
 | `searchablePlaceholder` | `searchable-placeholder` |             | `string`  | `"Type here to search for options"` |
-| `selected_values`       | `selected_values`        |             | `any`     | `[]`                                |
+| `selectedValues`        | `selected-values`        |             | `any`     | `[]`                                |
 | `value`                 | `value`                  |             | `any`     | `undefined`                         |
 
 
