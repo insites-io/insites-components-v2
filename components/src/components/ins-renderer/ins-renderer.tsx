@@ -47,10 +47,33 @@ export class InsRenderer {
 
     this.titleEl.innerHTML = this.route.label;
 
-    let newEl = document.createElement('ins-breadcrumbs');
-    newEl.breadcrumbs = this.breadcrumbs;
-    this.breadcrumbsEl.innerHTML = "";
-    this.breadcrumbsEl.appendChild(newEl);
+    if (this.breadcrumbs.length > 1) {
+      let divEl = document.createElement('div');
+      divEl.className = "ins-breadcrumbs"
+
+      let ulEl = document.createElement('ul');
+
+      for (let i = 0; i < this.breadcrumbs.length; i++){
+        let spanEl = document.createElement('span');
+        spanEl.className = `crumb-label ${this.breadcrumbs[i].withSubmenu ? '': 'has-link'}`;
+        spanEl.textContent = this.breadcrumbs[i].label;
+        spanEl.addEventListener('click', () => this.routePageHandler(this.breadcrumbs[i], i));
+
+        let arrowEl = document.createElement('span');
+        arrowEl.className = "arrow-right"
+
+        let liEl = document.createElement('li');
+        liEl.appendChild(spanEl);
+        liEl.appendChild(arrowEl);
+
+        ulEl.appendChild(liEl);
+      }
+
+      divEl.appendChild(ulEl);
+
+      this.breadcrumbsEl.innerHTML = "";
+      this.breadcrumbsEl.appendChild(divEl);
+    }
   }
 
   formatUrl(e){
@@ -218,7 +241,7 @@ export class InsRenderer {
         </h1>
 
         <div class="ins-breadcrumbs-wrap">
-          <ins-breadcrumbs breadcrumbs={this.breadcrumbs}></ins-breadcrumbs>
+          {this.renderBreadcrumbs()}
         </div>
 
         <div class="ins-renderer__iframe-wrap">

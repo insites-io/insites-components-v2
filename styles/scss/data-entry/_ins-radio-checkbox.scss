@@ -1,6 +1,6 @@
 ins-checkbox,
 ins-radio {
-  input {
+  [type=checkbox], [type=radio] {
     margin: 0;
   }
 
@@ -11,8 +11,9 @@ ins-radio {
     label {
       display: inline-block;
       font-size: 14px;
+      font-weight: 400;
       font-family: var(--ins-font-family);
-      color: var(--ins-color-ink);
+      color: var(--ins-color-ink40);
 
       .ins-checkbox-radio-label {
         display: inline-block;
@@ -62,6 +63,7 @@ ins-radio {
         width: 16px;
         height: 16px;
         position: absolute;
+        top: -1px;
         display: inline-block;
         font-size: 8px;
         text-align: center;
@@ -96,6 +98,8 @@ ins-radio {
         border-radius: 50%;
         width: 18px;
         height: 18px;
+        position: relative;
+        top: 4px;
       }
 
       &.radio:checked::before {
@@ -116,6 +120,16 @@ ins-radio {
     line-height: 16px;
     position: relative;
     top: -2px;
+  }
+}
+
+ins-checkbox {
+  .ins-checkbox-radio-label {
+    margin-left: 12px;
+  }
+
+  .ins-radio-checkbox .ripple-check:checked::before {
+    top: 0
   }
 }
 
