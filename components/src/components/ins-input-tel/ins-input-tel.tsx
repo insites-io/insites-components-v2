@@ -74,7 +74,7 @@ export class InsInputTel {
     this._phoneNumber.addEventListener('keyup', e => this.validateValue(e, 13, 'phone_number'));
   }
 
-  validateValue(event, maxChars, field){
+  async validateValue(event, maxChars, field){
     let evt = event as any;
     let value = evt.target.value.replace(/[^\d.]/g, '');
 
@@ -88,8 +88,13 @@ export class InsInputTel {
     }
 
     evt.target.value = value;
+    if (field === "area_code") {
+      this.areacodeValue = value;
+    } else if (field === "phone_number") {
+      this.phonenumValue = value;
+    }
     this.insInput.emit({ field, value });
-    this.insValueChange.emit(this.getValue());
+    this.insValueChange.emit(await this.getValue());
   }
 
   initintTel() {
@@ -107,7 +112,7 @@ export class InsInputTel {
         field: 'country_code',
         value: data
       })
-      this.insValueChange.emit(this.getValue());
+      this.insValueChange.emit(await this.getValue());
     });
 
     this._phone.addEventListener("open:countrydropdown", () => {
