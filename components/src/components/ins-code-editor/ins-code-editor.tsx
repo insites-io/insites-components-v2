@@ -146,18 +146,18 @@ export class InsCodeEditor {
 			this.activateLabel();
 		});
 
-		this.codeMirrorEl.on('change', () => {
+		this.codeMirrorEl.on('change', async () => {
 			this.insInput.emit({
-				value: this.codeMirrorEl.getValue()
+				value: await this.val()
 			});
 		});
 
-		this.codeMirrorEl.on('blur', () => {
+		this.codeMirrorEl.on('blur', async () => {
 			this.deactivateLabel();
 			this.hideCursor();
 
 			this.insBlur.emit({
-				value: this.codeMirrorEl.getValue()
+				value: await this.val()
 			});
 		});
 	}

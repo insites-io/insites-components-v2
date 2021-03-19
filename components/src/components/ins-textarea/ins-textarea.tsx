@@ -27,14 +27,14 @@ export class InsTextarea {
 
   onTextareaHandler(event){
     let x = event.which || event.keyCode;
-
+    this.value = event.target.value;
+    
     this.insInput.emit({
       value: event.target.value,
       keyCode: x
     });
 
     this.insValueChange.emit(event.target.value);
-    this.value = event.target.value;
   }
 
   activateLabel() {
@@ -72,10 +72,6 @@ export class InsTextarea {
 
 
   componentDidLoad(){
-    let textarea = this.insTextareaEl.querySelector('textarea');
-    textarea.addEventListener('keyup', e => {this.onTextareaHandler(e)});
-    textarea.addEventListener('focus', () => {this.activateLabel()});
-    textarea.addEventListener('blur', () => {this.deactivateLabel()});
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
@@ -105,6 +101,9 @@ export class InsTextarea {
           <textarea
             class="ins-textarea-field ins-form-field"
             name={this.name}
+            onKeyUp={e => this.onTextareaHandler(e)}
+            onFocus={() => this.activateLabel()}
+            onBlur={() => this.deactivateLabel()}
             placeholder={this.placeholder}
             value={this.value}
             disabled={this.disabled}
