@@ -424,6 +424,11 @@ export class InsInputSelect {
         this.closeOptions();
     }
 
+    @Method()
+    dynamicUpdateOptions() {
+        this.initOptions();
+    }
+    
     keyUpDynamicInput(e) {
         this.dynamicValue = e.target.value;
     }
@@ -581,6 +586,7 @@ export class InsInputSelect {
     setSelected(value) {
         this.loopThroughOptions(option => {
             option.activated = false;
+            this.deactivateOption(option);
             if (value === option.value) {
                 this.value = option.value;
                 this.labelOfValue = option.label;

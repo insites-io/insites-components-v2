@@ -28,7 +28,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
   <ins-sidebar>
     <ins-sidebar-item label="Route 1" link="#/route-1" icon="icon-zap"></ins-sidebar-item>
     <ins-sidebar-item label="Route 2" link="#/route-2" icon="icon-codepen"></ins-sidebar-item>
@@ -81,6 +80,20 @@
 
       <ins-radio label="Test"></ins-radio>
       <ins-checkbox label="Test"></ins-checkbox>
+
+
+      <ins-input-select id="ins-input-select"
+        lookup
+        dynamic-option
+        searchable
+        label="V2">
+          <ins-input-select-option value="1" label="1 - Tests"></ins-input-select-option>
+          <ins-input-select-option value="2" label="2 - Testing"></ins-input-select-option>
+          <ins-input-select-option value="3" label="3 - Tester"></ins-input-select-option>
+          <ins-input-select-option value="4" label="4 - Tests"></ins-input-select-option>
+          <ins-input-select-option value="5" label="5 - Testing"></ins-input-select-option>
+          <ins-input-select-option value="6" label="6 - Tester"></ins-input-select-option>
+      </ins-input-select>
     </div>
   </ins-renderer>
 
@@ -110,119 +123,6 @@
         insButtonEl.loading = false;
       }, 500);
     });
-=======
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <ins-select id="ins-select" label="V1" button> 
-    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
-    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
-    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
-    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
-    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
-    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
-    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
-    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
-    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
-    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
-    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
-    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
-    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
-    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
-    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
-    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
-    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
-    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
-    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
-    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
-    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
-    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
-    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
-    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
-    <ins-select-option value="1" label="1 - Tests"></ins-select-option>
-    <ins-select-option value="2" label="2 - Testing"></ins-select-option>
-    <ins-select-option value="3" label="3 - Tester"></ins-select-option>
-  </ins-select>
-
-  <ins-input-select id="ins-input-select"
-    lookup
-    dynamic-option
-    searchable
-    label="V2">
-      <ins-input-select-option value="1" label="1 - Tests"></ins-input-select-option>
-      <ins-input-select-option value="2" label="2 - Testing"></ins-input-select-option>
-      <ins-input-select-option value="3" label="3 - Tester"></ins-input-select-option>
-      <ins-input-select-option value="4" label="4 - Tests"></ins-input-select-option>
-      <ins-input-select-option value="5" label="5 - Testing"></ins-input-select-option>
-      <ins-input-select-option value="6" label="6 - Tester"></ins-input-select-option>
-  </ins-input-select>
-
-
-  <ins-button-select id="ins-button-select"
-    label="V2-B"
-    multiple
-    lookup
-    searchable>
-      <ins-button-select-option value="1" label="1 - Tests"></ins-button-select-option>
-      <ins-button-select-option value="2" label="2 - Testing"></ins-button-select-option>
-      <ins-button-select-option value="3" label="3 - Tester"></ins-button-select-option>
-      <ins-button-select-option value="4" label="4 - Tests"></ins-button-select-option>
-      <ins-button-select-option value="5" label="5 - Testing"></ins-button-select-option>
-      <ins-button-select-option value="6" label="6 - Tester"></ins-button-select-option>
-  </ins-button-select>
-
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <script>
-    window.onload = () => {
-      let el = document.getElementById('ins-input-select');
-
-      el.addEventListener('insDynamicSubmit', () => {
-        el.dynamicHasError = !el.dynamicValue;
-
-        if (!el.dynamicHasError) {
-          el.dynamicCloseOptions();
-        }
-      });
-
-      el.infiniteScroll = true;
-    };
->>>>>>> refactor/ins-select
   </script>
 </body>
 

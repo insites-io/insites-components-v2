@@ -78,6 +78,16 @@ Type: `Promise<void>`
 
 
 
+### `dynamicUpdateOptions() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `enableNoResult() => Promise<boolean>`
 
 

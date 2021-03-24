@@ -466,6 +466,7 @@ export namespace Components {
         "dynamicHasError": boolean;
         "dynamicOption": boolean;
         "dynamicPlaceholder": string;
+        "dynamicUpdateOptions": () => Promise<void>;
         "dynamicValue": string;
         "enableNoResult": () => Promise<boolean>;
         "errorMessage": string;
