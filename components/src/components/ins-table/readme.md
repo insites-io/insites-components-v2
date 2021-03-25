@@ -95,8 +95,8 @@ Type: `Promise<void>`
 - [ins-select](../ins-select)
 - [ins-select-option](../ins-select-option)
 - [ins-input](../ins-input)
-- [ins-loader](../ins-loader)
 - [ins-checkbox](../ins-checkbox)
+- [ins-loader](../ins-loader)
 - [ins-button](../ins-button)
 
 ### Graph
@@ -106,8 +106,8 @@ graph TD;
   ins-table --> ins-select
   ins-table --> ins-select-option
   ins-table --> ins-input
-  ins-table --> ins-loader
   ins-table --> ins-checkbox
+  ins-table --> ins-loader
   ins-table --> ins-button
   ins-date-time --> ins-input-tooltip
   ins-select --> ins-input-tooltip

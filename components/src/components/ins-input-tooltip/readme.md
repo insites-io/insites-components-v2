@@ -23,6 +23,7 @@
  - [ins-input](../ins-input)
  - [ins-input-file](../ins-input-file)
  - [ins-input-multiple](../ins-input-multiple)
+ - [ins-input-select](../ins-input-select)
  - [ins-input-slider](../ins-input-slider)
  - [ins-input-stepper](../ins-input-stepper)
  - [ins-input-tel](../ins-input-tel)
@@ -42,6 +43,7 @@ graph TD;
   ins-input --> ins-input-tooltip
   ins-input-file --> ins-input-tooltip
   ins-input-multiple --> ins-input-tooltip
+  ins-input-select --> ins-input-tooltip
   ins-input-slider --> ins-input-tooltip
   ins-input-stepper --> ins-input-tooltip
   ins-input-tel --> ins-input-tooltip

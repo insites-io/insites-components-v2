@@ -31,6 +31,7 @@
 | `searchable`            | `searchable`             |             | `boolean` | `false`                             |
 | `searchablePlaceholder` | `searchable-placeholder` |             | `string`  | `"Type here to search for options"` |
 | `selectedValues`        | `selected-values`        |             | `any`     | `[]`                                |
+| `tooltip`               | `tooltip`                |             | `string`  | `""`                                |
 | `value`                 | `value`                  |             | `any`     | `undefined`                         |
 
 
@@ -158,6 +159,19 @@ Type: `Promise<boolean>`
 
 
 
+
+## Dependencies
+
+### Depends on
+
+- [ins-input-tooltip](../ins-input-tooltip)
+
+### Graph
+```mermaid
+graph TD;
+  ins-input-select --> ins-input-tooltip
+  style ins-input-select fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 
