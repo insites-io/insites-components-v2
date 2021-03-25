@@ -25,19 +25,6 @@
 </head>
 
 <body>
-  Hello World!
-  <div>
-    <ins-select placeholder="Bulk Actions" small button value="Archived">
-      <ins-select-option label="Archived"
-        value="Archived">
-      </ins-select-option>
-
-      <ins-select-option label="Restore"
-        value="Restore">
-      </ins-select-option>
-    </ins-select>
-  </div>
-
   <ins-table
     id="insBaseTable"
     searchbar-placeholder="Search..."
@@ -269,7 +256,7 @@
           insBaseTable.tableHeaders = [
             { label: "Default Column", type: 'string', sortable: true, hasLink: true, hasImage: true },
             { label: "Date Column", type: 'date', sortable: true, editable: true },
-            { label: "Number Column", type: 'number', sortable: true, editable: true },
+            { label: "Number Column", type: 'number', sortable: true, editable: true, mobileHeader: true  },
             { label: "Currency Column", type: 'currency', sortable: true, editable: true }
           ];
 

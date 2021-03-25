@@ -590,6 +590,82 @@ export class InsTable {
     )
   }
 
+  renderMobileImage(item, headerLabel, mobileHeader, hasImage){
+    return (hasImage && item[headerLabel] && !mobileHeader ?
+        <div class="img-wrap">
+          { item[`${headerLabel}_Img`] ?
+            <img src={item[`${headerLabel}_Img`]} />
+          :
+            <div class="img-fallback-wrap">
+              {this.getInitials(item[headerLabel])}
+            </div>
+          }
+        </div>
+      : ''
+    )
+  }
+
+  renderMobileHeader(item, headerLabel){
+    return (
+      <div class="text-label">
+        <span>{item[headerLabel]
+          ? item[headerLabel]
+          : '-'}
+        </span>
+      </div>
+    )
+  }
+
+  renderMobileRowHeader(item){
+    let firstHeader = this.tableHeaders[0]
+    let mobileHeader = this.tableHeaders.find(item => item.mobileHeader === true);
+    let hasImage = firstHeader.hasImage;
+    let headerLabel = mobileHeader
+      ? mobileHeader.label
+      : firstHeader.label
+
+    return(
+      <div class={`first-td ${hasImage && !mobileHeader ? 'has-image' : ''}`}>
+        {this.renderMobileImage(item, headerLabel, mobileHeader, hasImage)}
+        {this.renderMobileHeader(item, headerLabel)}
+      </div>
+    )
+  }
+
+  renderMainMobileHeader(){
+    let header = this.tableHeaders.find(item => item.mobileHeader === true);
+    let mobileHeader = header
+      ? header.label
+      : this.tableHeaders[0].label;
+
+    return(
+      <div class="ibt-table-accordion_th has-checkbox">
+
+        {this.bulkActions.length
+          ? <div class="checkbox-wrap">
+            {this.loadingScreen
+              ? ''
+              : <ins-checkbox id="checkAllAccordion" value="checkAll"></ins-checkbox>}
+          </div>
+          : ''}
+
+        <div class="first-th">
+
+          <span onClick={() => this.sortTable(mobileHeader)}
+            class={`label-wrap ${this.sortKeyword === mobileHeader ? 'sorted' : ''}`}>
+
+            { mobileHeader }
+
+            {this.sortKeyword === mobileHeader
+              ? <span class={`icon-arrow-up ${this.sortOrder ? '' : 'go-down'}`}></span>
+              : ''}
+          </span>
+
+        </div>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div class={`ibt-table-wrap ibt-table-wrap__stripe ${this.heading ? '' : 'no-label'} ${this.noWrap ? 'no-wrap' : ''}`}>
@@ -746,29 +822,10 @@ export class InsTable {
 
           </div>
 
-              <div class={`ibt-table-accordion ${this.staticTable ? 'static' : ''}`}>
-            {this.tableHeaders.length ?
-              <div class="ibt-table-accordion_th has-checkbox">
-
-                {this.bulkActions.length ?
-                <div class="checkbox-wrap">
-                  {this.loadingScreen ? '' : <ins-checkbox id="checkAllAccordion" value="checkAll"></ins-checkbox>}
-                </div> : ''}
-
-                <div class="first-th">
-
-                  <span onClick={() => this.sortTable(this.tableHeaders[0].label)}
-                    class={`label-wrap ${this.sortKeyword === this.tableHeaders[0].label? 'sorted' : ''}`}>
-
-                    {this.tableHeaders[0].label}
-                    {this.sortKeyword === this.tableHeaders[0].label?
-                      <span class={`icon-arrow-up ${this.sortOrder ? '': 'go-down'}`}></span>
-                      : ''}
-                  </span>
-
-                </div>
-              </div>
-            : ''}
+          <div class={`ibt-table-accordion ${this.staticTable ? 'static' : ''}`}>
+            {this.tableHeaders.length
+              ? this.renderMainMobileHeader()
+              : '' }
 
             {this.tableData.length && !this.loadingScreen ? this.tableData.map(item => {
               return (
@@ -785,28 +842,7 @@ export class InsTable {
                       <ins-checkbox value={item}></ins-checkbox>
                     </div> : ''}
 
-                    <div class={`
-                      first-td
-                      ${this.tableHeaders[0].hasImage ? 'has-image' : ''}
-                    `}>
-                      {this.tableHeaders[0].hasImage && item[this.tableHeaders[0].label] ?
-                        <div class="img-wrap">
-                          { item[`${this.tableHeaders[0].label}_Img`] ?
-                            <img src={item[`${this.tableHeaders[0].label}_Img`]} />
-                          :
-                            <div class="img-fallback-wrap">
-                              {this.getInitials(item[this.tableHeaders[0].label])}
-                            </div>
-                          }
-                        </div>
-                      : ''}
-                      <div class="text-label">
-                        {item[this.tableHeaders[0].label] ?
-                          <span>{item[this.tableHeaders[0].label]}</span> :
-                          <span>-</span>
-                        }
-                      </div>
-                    </div>
+                    {this.renderMobileRowHeader(item)}
 
                     <i class="icon-caret-down"></i>
                     <i class="icon-caret-up"></i>
