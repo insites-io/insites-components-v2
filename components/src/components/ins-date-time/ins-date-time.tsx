@@ -120,7 +120,8 @@ export class InsDateTime {
     });
   }
 
-  insInputHandler(selected_dates, date_string){
+  insInputHandler(selected_dates, date_string) {
+    this.value = date_string;
     this.insInput.emit({
       label: this.label,
       name: this.name,
@@ -128,7 +129,6 @@ export class InsDateTime {
       date_string
     });
     this.insValueChange.emit(date_string);
-    this.value = date_string;
   }
 
   activateLabel(){
