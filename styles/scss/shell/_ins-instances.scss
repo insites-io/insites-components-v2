@@ -2,6 +2,7 @@ ins-instances {
   .ins-instances-wrap {
     display: inline-block;
     position: relative;
+    margin-top: 3px;
 
     &.sub-item-active {
       a.ins-instances-item {
@@ -81,10 +82,14 @@ ins-instances {
   .active-instance {
     padding-left: 30px;
     min-height: 30px;
+    display: flex;
+    align-items: initial;
 
     img {
       background-color: var(--ins-bg-color);
       width: 30px;
+      height: 30px;
+      object-fit: contain;
       border-radius: 50%;
       margin-right: 15px;
       margin-bottom: -10px;
