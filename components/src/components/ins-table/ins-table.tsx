@@ -716,7 +716,9 @@ export class InsTable {
                     <div class={`ibt-table_th
                       ${(tableHeader.type === 'number' || tableHeader.type === 'currency') ? 'text-right' : ''}
                       ${tableHeader.sortable ? '' : 'not-sortable'}
-                      ${tableHeader.textAlign ? `text-${tableHeader.textAlign}`: ''}`}>
+                      ${tableHeader.textAlign ? `text-${tableHeader.textAlign}`: ''}`}
+
+                      style={{ width: tableHeader.columnWidth || "auto" }}>
 
                         <span onClick={() => { if (tableHeader.sortable){this.sortTable(tableHeader.label)}}}
                           class={`label-wrap

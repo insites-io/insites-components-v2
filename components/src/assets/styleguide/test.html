@@ -25,6 +25,7 @@
 </head>
 
 <body>
+
   <ins-table
     id="insBaseTable"
     searchbar-placeholder="Search..."
@@ -254,10 +255,8 @@
           });
           insBaseTable.totalCount = tableData.count;
           insBaseTable.tableHeaders = [
-            { label: "Default Column", type: 'string', sortable: true, hasLink: true, hasImage: true },
-            { label: "Date Column", type: 'date', sortable: true, editable: true },
-            { label: "Number Column", type: 'number', sortable: true, editable: true, mobileHeader: true  },
-            { label: "Currency Column", type: 'currency', sortable: true, editable: true }
+            { label: "Default Column", type: 'string', sortable: true, hasLink: true, hasImage: true, columnWidth: "200px" },
+            { label: "Date Column", type: 'date', sortable: true, editable: true, columnWidth: "15%" }
           ];
 
           processTableData();
