@@ -1,7 +1,7 @@
 import { h, Component, Prop, Element, Method, Listen, Event, EventEmitter } from "@stencil/core";
 
 @Component({
-    tag: 'ins-input-select', 
+    tag: 'ins-input-select',
     styleUrl: "./ins-input-select.scss"
 })
 
@@ -18,7 +18,7 @@ export class InsInputSelect {
     // Lifecycle
     @Event() didLoad: EventEmitter;
     @Prop() hasLoad: string;
-    
+
     activated: boolean = false; options = [];
     labelOfValue = ""; tempSearch = "";
     inputValueEl; inputSearchEl; optionsWrapEl; mainWrapEl;
@@ -32,6 +32,7 @@ export class InsInputSelect {
     @Prop({ mutable: true }) readonly: boolean = false;
     @Prop({ mutable: true }) hasError: boolean = false;
     @Prop({ mutable: true }) errorMessage: string = "";
+    @Prop({ mutable: true }) tooltip: string = "";
 
     // Multiple Mode
     @Prop({mutable: true}) multiple: boolean = false;
@@ -59,7 +60,7 @@ export class InsInputSelect {
     dynamicInputEl; scrollWrapEl;
     loading: boolean = false;
     searching: boolean = false;
-  
+
     @Method()
     async setValue(value?) {
         if (!this.options.length) return false;
@@ -83,7 +84,7 @@ export class InsInputSelect {
         }, this.options);
     }
 
-    @Method() 
+    @Method()
     async getValue() {
         if (this.multiple) {
             return this.value.map(el => {
@@ -93,7 +94,7 @@ export class InsInputSelect {
             return this.value;
         }
     }
-    
+
     @Listen('insInputSelectOptionClicked')
     InsInputSelectOptionClickedHandler(event: CustomEvent) {
         let clickedOption = event.target as any;
@@ -120,7 +121,7 @@ export class InsInputSelect {
         this.value = selections;
         this.selectedValues = values;
     }
-    
+
     multipleInputHandler(clickedOption) {
         let checkSelections = this.value.find(el => {
             return el === clickedOption
@@ -144,7 +145,7 @@ export class InsInputSelect {
             this.disableNoResult();
         }
     }
-    
+
     initLookupScrolling() {
         let action = this.lookupScrolling ? "add" : "remove";
         this.scrollWrapEl = this.searchEl(".scroll-wrap");
@@ -178,18 +179,18 @@ export class InsInputSelect {
 
     showHiddenOptions() {
         this.optionsWrapEl.classList.remove('no-result');
-        this.loopThroughOptions(option => { 
+        this.loopThroughOptions(option => {
             this.showOption(option);
         }, this.options);
     }
-      
+
     loopThroughOptions(cb, opts?){
         let options = opts || this.insInputSelectEl.querySelectorAll('ins-input-select-option');
         for (let i = 0; i < options.length; i++){
           if (cb(options[i])) break;
         }
     }
-    
+
     expandSection() {
         if (!this.readonly && !this.disabled && !this.lookupLoading && !this.activated) {
             this.checkDropUp();
@@ -219,12 +220,12 @@ export class InsInputSelect {
             this.inputSearchEl = this.searchEl('.ins-select-search-input');
         }
     }
-    
+
     @Method()
     async getAllOptions(){
         return this.insInputSelectEl.querySelectorAll('ins-input-select-option');
     }
-    
+
     async initOptions() {
         let options = this.insInputSelectEl.querySelectorAll('ins-input-select-option');
 
@@ -275,7 +276,7 @@ export class InsInputSelect {
 
     initSearchInput() {
         if (this.searchable && this.inputSearchEl) {
-            this.inputSearchEl.addEventListener('keyup', e => { 
+            this.inputSearchEl.addEventListener('keyup', e => {
                 this.searchOptions(e);
             });
         }
@@ -367,6 +368,11 @@ export class InsInputSelect {
         return (
             <label class="ins-select-label-wrap">
                 {this.label}
+
+                {this.tooltip
+                    ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+                    : ''
+                }
             </label>
         )
     }
@@ -376,7 +382,7 @@ export class InsInputSelect {
             <div class={`ins-select-options-wrap
                 ${this.dynamicOption ? 'with-dynamic-option' : ''}`}>
                 { this.renderCloseBtnWrap() }
-                
+
                 <div class="scroll-wrap">
                     <div class="no-result-text">No result found</div>
                     <div class="no-more-options">No options available</div>
@@ -428,7 +434,7 @@ export class InsInputSelect {
     dynamicUpdateOptions() {
         this.initOptions();
     }
-    
+
     keyUpDynamicInput(e) {
         this.dynamicValue = e.target.value;
     }
@@ -499,7 +505,7 @@ export class InsInputSelect {
         let i = this.value.findIndex(el => {
           return el === option
         });
-  
+
         if (i > -1) {
             this.value[i].activated = false;
             this.value.splice(i, 1);
@@ -522,11 +528,11 @@ export class InsInputSelect {
             value: item.value
           }
         });
-    
+
         this.insOptionSelect.emit({
           event_type, selected, selectedOptions
         });
-    
+
         this.insChange.emit(selected);
         this.selectedValues = selected;
     }
@@ -545,7 +551,7 @@ export class InsInputSelect {
                             <input class="ins-select-search-input" placeholder={this.searchablePlaceholder} />
                             <i class="icon-search"></i>
                         </div>
-                        : '' } 
+                        : '' }
             </div>
         )
     }
@@ -570,7 +576,7 @@ export class InsInputSelect {
     activateOption(option) {
         option.el.activated = true;
     }
-    
+
     deactivateOption(option) {
         option.el.activated = false;
     }
@@ -629,7 +635,7 @@ export class InsInputSelect {
             height = height + (len * 45)
         }
         if (this.dynamicOption) height = height + 70;
-        
+
         this.dropUp = (window.innerHeight - pos.bottom) < height;
     }
 
@@ -644,7 +650,7 @@ export class InsInputSelect {
             this.placeholder = "Please select or type to search for an option";
         }
     }
-    
+
     componentDidLoad() {
         this.bindEls();
         this.initOutsideClick();
@@ -676,7 +682,7 @@ export class InsInputSelect {
         this.activated = false;
         this.mainWrapEl.classList.remove("activated");
     }
-    
+
     render() {
         return (
             <div class={`ins-input-select ins-select-wrap

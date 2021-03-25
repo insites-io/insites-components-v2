@@ -489,6 +489,7 @@ export namespace Components {
         "setLoadingState": (state: any) => Promise<boolean>;
         "setSearchingState": (state: any) => Promise<boolean>;
         "setValue": (value?: any) => Promise<boolean>;
+        "tooltip": string;
         "value": any;
     }
     interface InsInputSelectGroup {
@@ -2063,6 +2064,7 @@ declare namespace LocalJSX {
         "searchable"?: boolean;
         "searchablePlaceholder"?: string;
         "selectedValues"?: any;
+        "tooltip"?: string;
         "value"?: any;
     }
     interface InsInputSelectGroup {

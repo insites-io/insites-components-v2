@@ -56,15 +56,20 @@
 
   <ins-renderer>
     <div>
-      <ins-input-multiple
-        id="test" error-message="Required field."
-        label="Test" disabled>
-      </ins-input-multiple>
-
-      <ins-input
-        id="test2" error-message="Required field."
-        label="Test 2" disabled>
-      </ins-input>
+      <ins-input-select label="Test" tooltip="test">
+        <ins-select-option
+          label="label"
+          value="value">
+        </ins-select-option>
+        <ins-select-option
+          label="label2"
+          value="value2">
+        </ins-select-option>
+        <ins-select-option
+          label="label2"
+          value="value2">
+        </ins-select-option>
+      </ins-input-select>
     </div>
   </ins-renderer>
 
