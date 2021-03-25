@@ -56,30 +56,15 @@
 
   <ins-renderer>
     <div>
-      <ins-filter with-date-filter>
-        <ins-filter-item name="Operating System" options='["Windows", "macOS", "Linux"]'></ins-filter-item>
-      </ins-filter>
+      <ins-input-multiple
+        id="test" error-message="Required field."
+        label="Test" disabled>
+      </ins-input-multiple>
 
-      <ins-input tooltip="Testing built in tooltip for this component." label="Test"></ins-input>
-      <label class="liquid-label">
-        Test Tooltip
-
-        <ins-tooltip
-          width="380px"
-          label="?"
-          shape="circle"
-          position="top"
-          trigger="click"
-          content="Testing built in tooltip for this component.">
-        </ins-tooltip>
-      </label>
-
-      <ins-button label="Test long label" solid blue id="insButtonEl"></ins-button>
-      <ins-button label="Test beside" solid blue id="insButtonEl3"></ins-button>
-      <ins-button label="Actions" blue id="insButtonEl2" options="Import, Export"></ins-button>
-
-      <ins-radio label="Test"></ins-radio>
-      <ins-checkbox label="Test"></ins-checkbox>
+      <ins-input
+        id="test2" error-message="Required field."
+        label="Test 2" disabled>
+      </ins-input>
     </div>
   </ins-renderer>
 

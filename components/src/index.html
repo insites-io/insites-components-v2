@@ -3,8 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
 
   <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/images/favicons/apple-touch-icon-57x57.png">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/favicons/apple-touch-icon-114x114.png">
@@ -21,7 +20,8 @@
   <link rel="icon" type="image/png" href="/assets/images/favicons/favicon-128.png" sizes="128x128">
 
   <title>Insites Components Documentation</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
     rel="stylesheet">
 
   <script type="module" src="/build/insites.esm.js"></script>
@@ -34,107 +34,111 @@
 
 <body>
   <ins-modal id="parentModal"></ins-modal>
-  <ins-admin>
-    <ins-sidebar full-logo="/assets/images/Insites_logo.svg" icon-logo="/assets/images/insites_logo_icon.svg" with-sidebar-actions>
-      <ins-sidebar-item link="/assets/styleguide/introduction.html" icon="icon-header" label="Insites Framework" landing-page app></ins-sidebar-item>
-      <ins-sidebar-item link="/assets/styleguide/migration.html" icon="icon-chevrons-up" label="Migrating from v1" app></ins-sidebar-item>
-      <ins-sidebar-item link="/assets/styleguide/versions.html" icon="icon-layers" label="Versions" app></ins-sidebar-item>
-      <ins-sidebar-item link="/assets/styleguide/lifecycle.html" icon="icon-rotate-cw" label="Lifecycle" app></ins-sidebar-item>
+  <ins-sidebar full-logo="/assets/images/Insites_logo.svg" icon-logo="/assets/images/insites_logo_icon.svg"
+    with-sidebar-actions>
+    <ins-sidebar-item link="/assets/styleguide/introduction.html" icon="icon-header" label="Insites Framework"
+      landing-page app></ins-sidebar-item>
+    <ins-sidebar-item link="/assets/styleguide/migration.html" icon="icon-chevrons-up" label="Migrating from v1" app>
+    </ins-sidebar-item>
+    <ins-sidebar-item link="/assets/styleguide/versions.html" icon="icon-layers" label="Versions" app>
+    </ins-sidebar-item>
+    <ins-sidebar-item link="/assets/styleguide/lifecycle.html" icon="icon-rotate-cw" label="Lifecycle" app>
+    </ins-sidebar-item>
 
-      <!-- General -->
-      <ins-sidebar-item with-submenu icon="icon-globals" label="General">
-        <ins-sidebar-item link="/assets/styleguide/general/buttons.html" label="Buttons" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/general/font-icons.html" label="Font Icons" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/feedback/loader.html" label="Loaders" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/other/carousel.html" label="Carousel" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/other/gallery.html" label="Gallery" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/other/heading.html" label="Heading" app></ins-sidebar-item>
+    <!-- General -->
+    <ins-sidebar-item with-submenu icon="icon-globals" label="General">
+      <ins-sidebar-item link="/assets/styleguide/general/buttons.html" label="Buttons" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/general/font-icons.html" label="Font Icons" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/feedback/loader.html" label="Loaders" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/other/carousel.html" label="Carousel" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/other/gallery.html" label="Gallery" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/other/heading.html" label="Heading" app></ins-sidebar-item>
+    </ins-sidebar-item>
+
+    <!-- Layout -->
+    <ins-sidebar-item with-submenu icon="icon-layout" label="Layout">
+      <ins-sidebar-item link="/assets/styleguide/layout/wrappers.html" label="Wrappers" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/layout/header.html" label="Header" app></ins-sidebar-item>
+
+      <ins-sidebar-item link="/assets/styleguide/navigation/sidebar.html" label="Sidebar" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/navigation/routing.html" label="Routing" app></ins-sidebar-item>
+
+      <ins-sidebar-item link="/assets/styleguide/data-display/tabs.html" label="Tabs" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-display/steps.html" label="Steps" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-display/dropdown.html" label="Dropdown" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/other/accordion.html" label="Accordion" app></ins-sidebar-item>
+
+      <ins-sidebar-item link="/assets/styleguide/feedback/drawer.html" label="Drawer" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/feedback/modal.html" label="Modal" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/other/backdrop.html" label="Backdrop" app></ins-sidebar-item>
+
+    </ins-sidebar-item>
+
+    <!-- Data Entry -->
+    <ins-sidebar-item with-submenu icon="icon-input" label="Data Entry">
+      <ins-sidebar-item link="/assets/styleguide/data-entry/checkbox.html" label="Checkbox" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/check-card.html" label="Check Card" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/code-editor.html" label="Code Editor" app>
       </ins-sidebar-item>
-
-      <!-- Layout -->
-      <ins-sidebar-item with-submenu icon="icon-layout" label="Layout">
-        <ins-sidebar-item link="/assets/styleguide/layout/wrappers.html" label="Wrappers" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/layout/header.html" label="Header" app></ins-sidebar-item>
-
-        <ins-sidebar-item link="/assets/styleguide/navigation/sidebar.html" label="Sidebar" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/navigation/routing.html" label="Routing" app></ins-sidebar-item>
-
-        <ins-sidebar-item link="/assets/styleguide/data-display/tabs.html" label="Tabs" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-display/steps.html" label="Steps" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-display/dropdown.html" label="Dropdown" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/other/accordion.html" label="Accordion" app></ins-sidebar-item>
-
-        <ins-sidebar-item link="/assets/styleguide/feedback/drawer.html" label="Drawer" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/feedback/modal.html" label="Modal" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/other/backdrop.html" label="Backdrop" app></ins-sidebar-item>
-
+      <ins-sidebar-item link="/assets/styleguide/data-entry/credit-card.html" label="Credit Card" app>
       </ins-sidebar-item>
-
-      <!-- Data Entry -->
-      <ins-sidebar-item with-submenu icon="icon-input" label="Data Entry">
-        <ins-sidebar-item link="/assets/styleguide/data-entry/checkbox.html" label="Checkbox" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/check-card.html" label="Check Card" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/code-editor.html" label="Code Editor" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/credit-card.html" label="Credit Card" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/date-time-picker.html" label="Date and Time" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/image-picker.html" label="Image Picker" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/input.html" label="Input" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/input-multiple.html" label="Multiple Input" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/markdown-editor.html" label="Markdown Editor" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/phone.html" label="Phone" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/radio.html" label="Radio" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/select.html" label="Select" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/slider.html" label="Slider" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/stepper.html" label="Stepper" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/switch.html" label="Switch" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/textarea.html" label="Textarea" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/upload.html" label="Upload" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/wysiwyg-editor.html" label="WYSIWYG Editor" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/date-time-picker.html" label="Date and Time" app>
       </ins-sidebar-item>
-
-      <!-- Data Display -->
-      <ins-sidebar-item with-submenu icon="icon-tables" label="Data Display">
-        <ins-sidebar-item link="/assets/styleguide/data-display/card.html" label="Card" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-display/charts.html" label="Charts" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-display/markdown.html" label="Markdown" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-display/progress-bar.html" label="Progress Bar" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-display/sort.html" label="Sort" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-entry/filters.html" label="Filters" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-display/tables.html" label="Tables" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-display/tag.html" label="Tag" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-display/thumbnails.html" label="Thumbnails" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-display/timeline.html" label="Timeline" app></ins-sidebar-item>
-        <ins-sidebar-item link="/assets/styleguide/data-display/tooltip.html" label="Tooltip" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/image-picker.html" label="Image Picker" app>
       </ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/input.html" label="Input" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/input-multiple.html" label="Multiple Input" app>
+      </ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/markdown-editor.html" label="Markdown Editor" app>
+      </ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/phone.html" label="Phone" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/radio.html" label="Radio" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/select.html" label="Select" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/slider.html" label="Slider" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/stepper.html" label="Stepper" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/switch.html" label="Switch" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/textarea.html" label="Textarea" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/upload.html" label="Upload" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/wysiwyg-editor.html" label="WYSIWYG Editor" app>
+      </ins-sidebar-item>
+    </ins-sidebar-item>
 
-      <ins-sidebar-item app link="/assets/styleguide/changelog.html" icon="icon-align-justify" label="Change Logs"></ins-sidebar-item>
+    <!-- Data Display -->
+    <ins-sidebar-item with-submenu icon="icon-tables" label="Data Display">
+      <ins-sidebar-item link="/assets/styleguide/data-display/card.html" label="Card" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-display/charts.html" label="Charts" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-display/markdown.html" label="Markdown" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-display/progress-bar.html" label="Progress Bar" app>
+      </ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-display/sort.html" label="Sort" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-entry/filters.html" label="Filters" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-display/tables.html" label="Tables" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-display/tag.html" label="Tag" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-display/thumbnails.html" label="Thumbnails" app>
+      </ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-display/timeline.html" label="Timeline" app></ins-sidebar-item>
+      <ins-sidebar-item link="/assets/styleguide/data-display/tooltip.html" label="Tooltip" app></ins-sidebar-item>
+    </ins-sidebar-item>
 
-    </ins-sidebar>
-    <ins-content>
+    <ins-sidebar-item app link="/assets/styleguide/changelog.html" icon="icon-align-justify" label="Change Logs">
+    </ins-sidebar-item>
 
-      <ins-header support-link="www.google.com">
-        <ins-header-user name="John Smith" logout-link="/" profile-link="#/my-profile"></ins-header-user>
-        <ins-instances logo-link="/assets/images/logo-3@2x.png" instance="Final Sprint">
-          <ins-instances-item logo-link="/assets/images/logo-2@2x.png" instance-link="/" instance="Codehow">
-          </ins-instances-item>
-          <ins-instances-item logo-link="/assets/images/logo-3@2x.png" instance-link="#" instance="Final Sprint"
-            with-sub-item>
-            <ins-instances-sub-item link="/" instance="Production"></ins-instances-sub-item>
-            <ins-instances-sub-item link="/" instance="Staging"></ins-instances-sub-item>
-          </ins-instances-item>
-          <ins-instances-item logo-link="/assets/images/logo-4@2x.png" instance-link="/" instance="Sharkfinetworks">
-          </ins-instances-item>
-          <ins-instances-item logo-link="/assets/images/logo-1@2x.png" instance-link="/"
-            instance="Family Day Care Australia"></ins-instances-item>
-          <ins-instances-item logo-link="/assets/images/logo-2@2x.png" instance-link="/" instance="ABC Corp">
-          </ins-instances-item>
-        </ins-instances>
-      </ins-header>
+  </ins-sidebar>
 
-      <ins-renderer>
-      </ins-renderer>
-    </ins-content>
-  </ins-admin>
+  <ins-header>
+    <ins-header-user
+      name="John Smith"
+      logout-link="/"
+      profile-link="#/my-profile">
+    </ins-header-user>
+
+    <ins-instances
+      logo-link="/assets/images/logo-3@2x.png"
+      instance="Final Sprint">
+    </ins-instances>
+  </ins-header>
+
+  <ins-renderer></ins-renderer>
 
   <ins-notifications>
     <ins-notifications-item event-type="Task Completed" heading="Heading" duration="5 mins ago"
@@ -147,7 +151,8 @@
       link="/" link-label="View Event" icon="icon-today" status="blue">
     </ins-notifications-item>
 
-    <ins-notifications-item event-type="Event Started" duration="1 hr ago" icon="icon-settings" status="red"></ins-notifications-item>
+    <ins-notifications-item event-type="Event Started" duration="1 hr ago" icon="icon-settings" status="red">
+    </ins-notifications-item>
   </ins-notifications>
 
   <!-- Example of ins-drawer OUTSIDE iframe -->
@@ -156,9 +161,12 @@
     <p>Drawer element is placed outside the <code>&lt;iframe&gt;</code></p>
     <hr>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-      dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua.
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure
+      dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat
       non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
 
   </ins-drawer>

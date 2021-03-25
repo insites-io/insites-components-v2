@@ -69,13 +69,22 @@ export class InsTable {
       ) as any;
     if (bulkActionEl) {
       bulkActionEl.reset();
-      this.selectedBulkAction = "";
+      // this.selectedBulkAction = "";
       this.resetSelections();
     }
   }
 
   componentWillLoad(){
     this.updatePageInfo();
+  }
+
+  componentDidUpdate(){
+    this.updateBulkActionEl();
+  }
+
+  async updateBulkActionEl(){
+    let bulkActionEl = this.insTableEl.querySelector('ins-select[data-type="bulk-action"]') as any;
+    if (bulkActionEl) await bulkActionEl.setSelectedFromValue(this.selectedBulkAction);
   }
 
   componentDidLoad(){
@@ -87,6 +96,7 @@ export class InsTable {
 
     if (this.defaultBulkAction){
       this.selectedBulkAction = this.defaultBulkAction;
+      this.updateBulkActionEl();
     }
   }
 
@@ -870,13 +880,18 @@ export class InsTable {
             {this.bulkActions.length ?
             <div class="ibt-table-action-container">
               <ins-select data-type="bulk-action"
-                value={this.defaultBulkAction}
                 disabled={!this.selectedRows.length}
                 placeholder="Bulk Actions"
                 small button>
                 {
                   this.bulkActions.map(action => {
-                    return (<ins-select-option label={action} value={action}></ins-select-option>)
+                    return (
+                      <ins-select-option
+                        label={action}
+                        value={action}
+                        default={this.selectedBulkAction === action}>
+                      </ins-select-option>
+                    )
                   })
                 }
               </ins-select>

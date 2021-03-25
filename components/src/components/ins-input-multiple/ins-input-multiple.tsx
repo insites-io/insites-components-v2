@@ -117,7 +117,7 @@ export class InsInputMultiple {
           </label>
         : '' }
 
-        <div class="ins-input-multiple-container ins-form-field"
+        <div class="ins-input-multiple-container"
           onClick={event => this.onclickContainer(event)}>
 
 					{	Array.isArray(this.value) ?

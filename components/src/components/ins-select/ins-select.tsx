@@ -431,7 +431,6 @@ export class InsSelect {
   @Listen('insSelectOptionClicked')
   InsSelectOptionClickedHandler(event: CustomEvent){
     let clickedOption = event.target as any;
-
     if (this.multiple){
       this.multipleInputHandler(clickedOption);
     } else this.defaultInputHandler(clickedOption, event.detail);
@@ -456,6 +455,7 @@ export class InsSelect {
     this.showHiddenOptions();
     this.labelOfValue = e.label;
     this.insValueChange.emit(e.value);
+    this.updateValueEls(clickedOption);
     this.value = e.value;
   }
 

@@ -1,0 +1,1 @@
+import{r,h as s}from"./p-8f1627b0.js";const n=class{constructor(s){r(this,s)}render(){return s("div",null,s("slot",null))}};export{n as ins_admin}

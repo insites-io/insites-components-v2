@@ -259,11 +259,11 @@ insBaseTable.rowActions = ['Archive'];
   <div class="padding-1">
     <script type="text/plain" class="language-markup">
 <script>
-insBaseTable.addEventListener('onPaginationChange', tablePaginationHandler);
-insBaseTable.addEventListener('onTableSearch', tableSearchHandler);
-insBaseTable.addEventListener('onTableSort', tableSortHandler);
-insBaseTable.addEventListener('onTableBulkAction', tableBulkActionHandler);
-insBaseTable.addEventListener('onTableRowAction', tableRowActionHandler);
+insBaseTable.addEventListener('insPaginationChange', tablePaginationHandler);
+insBaseTable.addEventListener('insTableSearch', tableSearchHandler);
+insBaseTable.addEventListener('insTableSort', tableSortHandler);
+insBaseTable.addEventListener('insTableBulkAction', tableBulkActionHandler);
+insBaseTable.addEventListener('insTableRowAction', tableRowActionHandler);
 &lt;/script&gt;
     </script>
   </div>
@@ -870,11 +870,11 @@ window.addEventListener('load', () => {
   insBaseTable.loadingScreen = true;
   insBaseTable.bulkActions = ['Archive'];
   insBaseTable.rowActions = ['Archive'];
-  insBaseTable.addEventListener('onPaginationChange', tablePaginationHandler);
-  insBaseTable.addEventListener('onTableSearch', tableSearchHandler);
-  insBaseTable.addEventListener('onTableSort', tableSortHandler);
-  insBaseTable.addEventListener('onTableBulkAction', tableBulkActionHandler);
-  insBaseTable.addEventListener('onTableRowAction', tableRowActionHandler);
+  insBaseTable.addEventListener('insPaginationChange', tablePaginationHandler);
+  insBaseTable.addEventListener('insTableSearch', tableSearchHandler);
+  insBaseTable.addEventListener('insTableSort', tableSortHandler);
+  insBaseTable.addEventListener('insTableBulkAction', tableBulkActionHandler);
+  insBaseTable.addEventListener('insTableRowAction', tableRowActionHandler);
   // insBaseTable.addEventListener('onFieldChange', event => console.log('onFieldChange', event));
 
   function tablePaginationHandler(event){
@@ -927,6 +927,7 @@ window.addEventListener('load', () => {
     processTableData();
   }
   function tableBulkActionHandler(event){
+    console.log('tableBulkActionHandler', event.detail);
     if (event.detail.action === 'Archive'){
       archiveSelection(event.detail.selections);
     }
@@ -937,51 +938,55 @@ window.addEventListener('load', () => {
     }
   }
   function archiveItem(value){
-    swal({
-      title: '',
-      // text: "Are you sure you want to delete these items",
-      html: `
-        <ins-loader
-          state-icon="warning"
-          icon-color="warning"
-          state-message="Are you sure you want to archive this item?">
-        </ins-loader>`,
-      type: '',
-      showCancelButton: true,
-      confirmButtonText: 'Archive'
-    }).then((result) => {
-      deleteItem(value);
-      processTableData();
-    });
+    if (window.swal){
+      swal({
+        title: '',
+        // text: "Are you sure you want to delete these items",
+        html: `
+          <ins-loader
+            state-icon="warning"
+            icon-color="warning"
+            state-message="Are you sure you want to archive this item?">
+          </ins-loader>`,
+        type: '',
+        showCancelButton: true,
+        confirmButtonText: 'Archive'
+      }).then((result) => {
+        deleteItem(value);
+        processTableData();
+      });
+    }
   }
 
   function archiveSelection(selections) {
-    swal({
-      title: '',
-      html: `
-      <ins-loader
-        state-icon="warning"
-        icon-color="warning"
-        state-message="Are you sure you want to archive these items?">
-      </ins-loader>`,
-      type: '',
-      showCancelButton: true,
-      confirmButtonText: 'Archive'
-    }).then((result) => {
-      if (result.value) {
-          let counter = 0;
-          selections.forEach(value => {
+    if (window.swal){
+      swal({
+        title: '',
+        html: `
+        <ins-loader
+          state-icon="warning"
+          icon-color="warning"
+          state-message="Are you sure you want to archive these items?">
+        </ins-loader>`,
+        type: '',
+        showCancelButton: true,
+        confirmButtonText: 'Archive'
+      }).then((result) => {
+        if (result.value) {
+            let counter = 0;
+            selections.forEach(value => {
 
-            this.deleteItem(value);
-            counter++;
+              this.deleteItem(value);
+              counter++;
 
-            if (selections.length === counter){
-              insBaseTable.resetSelections();
-              processTableData()
-            }
-          });
-        }
-    });
+              if (selections.length === counter){
+                insBaseTable.resetSelections();
+                processTableData()
+              }
+            });
+          }
+      });
+    }
   }
 
   function deleteItem(value) {
@@ -1119,7 +1124,7 @@ window.addEventListener('load', () => {
         { "id": "sample-001", "Name": "John Doe", "Birthday": "01/29/1990", "Status": "Active" },
         { "id": "sample-002", "Name": "Derek de Guzman", "Birthday": "11/29/1990", "Status": "Inactive" }
       ]
-      fieldTable.addEventListener('onTableBulkAction', function(event) {
+      fieldTable.addEventListener('insTableBulkAction', function(event) {
         console.log('Edit table event', event.detail);
         alert("Check console log for event data");
       });
@@ -1157,7 +1162,7 @@ window.addEventListener('load', () => {
   ];
 
   // add table event listener
-  fieldTable.addEventListener('onTableBulkAction', function(event) {
+  fieldTable.addEventListener('insTableBulkAction', function(event) {
     console.log('Edit table event', event.detail);
     alert("Check console log for event data");
   });

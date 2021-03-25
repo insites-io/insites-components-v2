@@ -15,10 +15,9 @@ ins-input-multiple {
       color: var(--ins-color-red);
     }
     &-container {
-      padding: 6px 4px;
-      padding-bottom: 0;
+      padding: 6px 8px;
       width: 100%;
-      background: var(--ins-bg-color);
+      background-color: var(--ins-bg-color);
       border-radius: var(--ins-border-radius);
       border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
 
@@ -30,12 +29,9 @@ ins-input-multiple {
       -webkit-transition: border-color 0.15s ease-in, border-radius 0.15s ease-in;
       transition: border-color 0.15s ease-in, border-radius 0.15s ease-in;
 
-      &.ins-form-field {
-        padding: 6px 8px;
-      }
-
       input {
         background: var(--ins-bg-color);
+        font-size: 14px;
       }
 
       &:hover {
@@ -132,16 +128,20 @@ ins-input-multiple {
         display: none;
       }
       input {
-        background: var(--ins-bg-color);
+        background: var(--ins-color-disabled_readonly_bg);
       }
       .ins-input-multiple-container {
         border-color: var(--ins-bg-color2);
-        background-color: var(--ins-bg-color5);
+        background-color: var(--ins-color-disabled_readonly_bg);
         color: var(--ins-color-ink40);
 
         &:hover {
           border-color: var(--ins-bg-color2);
         }
+      }
+
+      .icon-add {
+        cursor: not-allowed;
       }
     }
   }
