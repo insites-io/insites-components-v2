@@ -12,7 +12,6 @@
 | `button`                    | `button`                       |             | `boolean` | `false`     |
 | `buttonLabel`               | `button-label`                 |             | `string`  | `"Add"`     |
 | `disabled`                  | `disabled`                     |             | `boolean` | `false`     |
-| `dropUp`                    | `drop-up`                      |             | `boolean` | `false`     |
 | `dynamicErrorMessage`       | `dynamic-error-message`        |             | `string`  | `""`        |
 | `dynamicHasError`           | `dynamic-has-error`            |             | `boolean` | `false`     |
 | `dynamicPlaceholder`        | `dynamic-placeholder`          |             | `string`  | `undefined` |
