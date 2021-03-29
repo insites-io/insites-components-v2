@@ -193,7 +193,7 @@
   }
 
   .done-wrap {
-    position: absolute;
+    // position: absolute;
     top: 0;
     background-color: var(--ins-bg-color5);
     font-family: var(--ins-font-family);
@@ -213,7 +213,7 @@
   }
 
   .scroll-wrap {
-    margin-top: 42px;
+    // margin-top: 42px;
     max-height: 226px;
     overflow: auto;
 
@@ -466,6 +466,14 @@
       // position: relative;
       margin-top: -1px;
       height: auto;
+
+      // &.drop-up {
+      //   top: inherit;
+      //   bottom: 0;
+      //   margin-top: 0;
+      //   border-radius: 4px;
+      //   border-top: solid 1px var(--ins-color-blue);
+      // }
     }
 
     &.drop-up {
@@ -475,15 +483,17 @@
         border-top-color: transparent;
       }
 
-      &:not(.no-options) .ins-select-options-wrap {
+      .ins-select-options-wrap {
         top: inherit;
-        bottom: calc(100% - 20px);
+        bottom: 39px;
         border-radius: 4px 4px 0px 0px;
-        border-bottom-color: transparent !important;
+        border-bottom: none;
         border-top:
           var(--ins-border-style)
           var(--ins-border-thickness)
-          var(--ins-border-color);
+          var(--ins-color-blue);
+
+        margin: 0;
       }
     }
   }
