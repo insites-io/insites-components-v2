@@ -37,11 +37,10 @@ export class InsSelect {
   @Prop({mutable: true}) small: boolean = false;
 
   // Static Controllers
-  @Prop({ mutable: true }) dropUp: boolean = false;
   @Prop({ mutable: true }) selected_values: any = [];
   activated: boolean = false;
   labelOfValue = ""; tempSearch = "";
-  inputValueEl; optionsWrapEl; mainWrapEl;
+  inputValueEl; optionsWrapEl; mainWrapEl; labelWrapEl;
 
   // Dynamic Controllers
   @Prop({ mutable: true }) initializing: boolean = false;
@@ -78,8 +77,6 @@ export class InsSelect {
   }
 
   componentWillLoad(){
-    this.checkDropUp();
-
     if (this.multiple && this.button){
       console.warn('ins-select button does not yet support multiple selection, falling back to standard multiple select.');
       this.button = false;
@@ -133,6 +130,7 @@ export class InsSelect {
     this.mainWrapEl = this.searchEl('.ins-select-wrap');
     this.inputValueEl = this.searchEl('.ins-select-value-input');
     this.optionsWrapEl = this.searchEl('.ins-select-options-wrap');
+    this.labelWrapEl = this.searchEl('.ins-select-label-wrap');
   }
 
   initOutsideClick(){
@@ -328,7 +326,13 @@ export class InsSelect {
   checkDropUp(){
     let pos = this.insSelectEl.getBoundingClientRect();
     if ((window.innerHeight - pos.bottom) < 65) {
-      this.dropUp = true;
+      this.mainWrapEl.classList.add('drop-up');
+
+      let offset = this.labelWrapEl.offsetHeight + 4;
+      this.optionsWrapEl.style.bottom = `calc(100% - ${offset}px)`;
+    } else {
+      this.mainWrapEl.classList.remove('drop-up');
+      this.optionsWrapEl.style.bottom = "initial";
     }
   }
 
@@ -516,6 +520,7 @@ export class InsSelect {
   @Method()
   async expandSection() {
     if (!this.readonly && !this.disabled && !this.initializing) {
+      this.checkDropUp();
       this.activated = true;
       this.mainWrapEl.classList.add("activated");
 

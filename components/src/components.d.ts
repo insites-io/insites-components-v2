@@ -701,7 +701,6 @@ export namespace Components {
         "collapseSection": () => Promise<void>;
         "disableNoResult": () => Promise<boolean>;
         "disabled": boolean;
-        "dropUp": boolean;
         "dynamicErrorMessage": string;
         "dynamicHasError": boolean;
         "dynamicPlaceholder": string;
@@ -2283,7 +2282,6 @@ declare namespace LocalJSX {
         "button"?: boolean;
         "buttonLabel"?: string;
         "disabled"?: boolean;
-        "dropUp"?: boolean;
         "dynamicErrorMessage"?: string;
         "dynamicHasError"?: boolean;
         "dynamicPlaceholder"?: string;
