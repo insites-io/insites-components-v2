@@ -30,7 +30,7 @@
         border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
 
         height: auto;
-        padding: 10px 8px;
+        padding: 8px;
         outline: none;
         width: 94px !important;
 
@@ -85,6 +85,16 @@
   .col-container {
     float: left;
 
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
     &.column-2 {
       width: 50px;
       margin: 0 8px;
@@ -105,6 +115,7 @@
     position: absolute;
     top: calc(50% - 8px);
     right: 10px;
+    border: none;
   }
 
   &.read-only {

@@ -56,49 +56,17 @@
 
   <ins-renderer>
     <div>
-      <ins-input-select label="Test" tooltip="test">
-        <ins-select-option
-          label="label"
-          value="value">
-        </ins-select-option>
-        <ins-select-option
-          label="label2"
-          value="value2">
-        </ins-select-option>
-        <ins-select-option
-          label="label2"
-          value="value2">
-        </ins-select-option>
-      </ins-input-select>
+      <ins-input-tel id="test" label="Test" no-areacode></ins-input-tel>
     </div>
   </ins-renderer>
 
   <script>
 
     // Menu Toggle
-    var insButtonEl = document.getElementById("insButtonEl");
-    var menuBtn = document.getElementById("toggleMenuButton");
-    var menuBar = document.getElementById("insMenuBar");
-    var body = document.querySelector("body");
+    var insEl = document.getElementById("test");
+    insEl.addEventListener('insInput', e => { console.log('insInput', e.detail) });
+    insEl.addEventListener('insValueChange', e => { console.log('insValueChange', e.detail) });
 
-    if (menuBtn && menuBar) {
-      menuBtn.addEventListener('insSidebarFooterButtonEvent', function () { toggleMenu() });
-    }
-    function toggleMenu() {
-      if (body.classList.contains('mini')) {
-        menuBtn.icon = 'icon-menu-collapse';
-      } else {
-        menuBtn.icon = 'icon-menu-expand';
-      }
-      menuBar.toggleSidebar();
-    }
-
-    insButtonEl.addEventListener('insClick', e => {
-      insButtonEl.loading = true;
-      setTimeout(() => {
-        insButtonEl.loading = false;
-      }, 500);
-    });
   </script>
 </body>
 

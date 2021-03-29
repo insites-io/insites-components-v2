@@ -76,31 +76,51 @@ export class InsInputTel {
   }
 
   initKeyPressEvents(){
-    this._areaCode.addEventListener('keyup', e => this.validateValue(e, 5, 'area_code'));
-    this._phoneNumber.addEventListener('keyup', e => this.validateValue(e, 13, 'phone_number'));
+    this._areaCode.addEventListener('keypress', e => this.validateValue(e, 'area_code'));
+    this._phoneNumber.addEventListener('keypress', e => this.validateValue(e, 'phone_number'));
+
+    this._areaCode.addEventListener('change', e => this.changeHandler(e, 5, 'area_code'));
+    this._phoneNumber.addEventListener('change', e => this.changeHandler(e, 13, 'phone_number'));
   }
 
-  async validateValue(event, maxChars, field){
-    let evt = event as any;
-    let value = evt.target.value.replace(/[^\d.]/g, '');
-
-    if ((event.which < 48 || event.which > 57)
-      && (event.which !== 8 && event.which !== 9 && event.which !== 32)) {
-      event.preventDefault();
-    }
+  async changeHandler(event, maxChars, field){
+    let value = event.target.value.replace(/[^\d]/g, '');
 
     if (value.length > maxChars) {
-      value = value.substr(0, maxChars).replace(/[^\d.]/g, '');
+      value = value.substr(0, maxChars);
     }
 
-    evt.target.value = value;
+    event.target.value = value;
     if (field === "area_code") {
-      this.areacodeValue = value;
+      this._area_code_value = value;
     } else if (field === "phone_number") {
-      this.phonenumValue = value;
+      this._phone_number_value = value;
     }
+
     this.insInput.emit({ field, value });
     this.insValueChange.emit(await this.getValue());
+  }
+
+  async validateValue(event, field){
+
+    if ((event.which >= 48 && event.which <= 57)
+        || event.which === 8
+        || event.which === 9
+        || event.which === 32
+    ) {
+
+      let value = event.target.value + event.key;
+      if (field === "area_code") {
+        this._area_code_value = value;
+      } else if (field === "phone_number") {
+        this._phone_number_value = value;
+      }
+
+      this.insInput.emit({ field, value });
+      this.insValueChange.emit(await this.getValue());
+      return true;
+
+    } else event.preventDefault();
   }
 
   initintTel() {
@@ -184,6 +204,8 @@ export class InsInputTel {
   deactivateLabel() {
     if (this.readonly || this.disabled) return;
     this._label.classList.remove('active');
+    this.areacodeValue = this._area_code_value;
+    this.phonenumValue = this._phone_number_value;
   }
 
   render() {
@@ -218,7 +240,8 @@ export class InsInputTel {
           <div class="col-container column-2">
 
             <input
-              type="text"
+              type="tel"
+              maxlength="5"
               class="ins-form-field area-code"
               name={this.areaCode}
               placeholder={this.areacodePlaceholder}
@@ -229,7 +252,8 @@ export class InsInputTel {
 
           <div class="col-container column-3">
             <input
-              type="text"
+              type="tel"
+              maxlength="13"
               class="ins-form-field phone-number"
               name={this.phoneNumber}
               placeholder={this.phonenumPlaceholder}
