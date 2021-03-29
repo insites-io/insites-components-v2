@@ -1,1 +1,0 @@
-import{r,h as s}from"./p-8f1627b0.js";const t=class{constructor(s){r(this,s)}render(){return s("div",null,s("slot",null))}};export{t as ins_content}
