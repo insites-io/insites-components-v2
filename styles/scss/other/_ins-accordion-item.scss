@@ -24,6 +24,7 @@
       a {
         text-decoration: none;
         color: $ink;
+        padding: 0;
 
         &:hover {
           text-decoration: underline;
@@ -69,11 +70,16 @@
     .inner-content {
       padding: 14px;
       font-size: 14px;
+      border:
+        var(--ins-border-style)
+        var(--ins-border-thickness)
+        var(--ins-border-color);
 
-    border:
-      var(--ins-border-style)
-      var(--ins-border-thickness)
-      var(--ins-border-color);
+      .inner-head {
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+      }
     }
   }
 
