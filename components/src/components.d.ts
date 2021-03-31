@@ -20,6 +20,7 @@ export namespace Components {
         "icon": string;
         "link": string;
         "linkTarget": string;
+        "toggle": () => Promise<void>;
     }
     interface InsAccordionLink {
         "active": boolean;
@@ -30,6 +31,7 @@ export namespace Components {
         "link": string;
         "linkTarget": string;
         "linkTitle": string;
+        "toggle": () => Promise<void>;
     }
     interface InsAdmin {
     }

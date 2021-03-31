@@ -21,7 +21,7 @@
       font-size: 12px;
       font-weight: 600;
       color: #2c3148;
-      font-family: Open Sans,sans-serif;
+      font-family: Open Sans, sans-serif;
       margin-bottom: 2px;
     }
   </style>
@@ -37,8 +37,7 @@
       <ins-sidebar-item label="Route 5" link="#/route-5"></ins-sidebar-item>
     </ins-sidebar-item>
 
-    <ins-sidebar-item label="Route 6 - iframe"
-      link="/assets/styleguide/test.html" app icon="icon-chrome">
+    <ins-sidebar-item label="Route 6 - iframe" link="/assets/styleguide/test.html" app icon="icon-chrome">
     </ins-sidebar-item>
 
     <ins-sidebar-footer class="side-bar-footer">
@@ -56,18 +55,94 @@
 
   <ins-renderer>
     <div>
-      <ins-input-tel id="test" label="test"></ins-input-tel>
+      <ins-accordion menu>
+
+        <ins-accordion-item link-target="_self" heading="CRM" link="/platform/crm">
+
+          <ins-accordion menu>
+
+            <ins-accordion-item link-target="_self" heading="Companies"
+              link="/platform/companies">
+
+              <ins-accordion-link link-target="_self" label="Adding a company"
+                link="/platform/adding-a-company">
+              </ins-accordion-link>
+
+              <ins-accordion-link link-target="_self" label="Company Form"
+                link="/platform/company-form">
+              </ins-accordion-link>
+
+              <ins-accordion-link link-target="_self" label="Viewing a company"
+                link="/platform/viewing-a-company">
+              </ins-accordion-link>
+
+              <ins-accordion-link link-target="_self" label="Updating a company"
+                link="/platform/updating-a-company">
+              </ins-accordion-link>
+
+              <ins-accordion-link link-target="_self" label="Archiving a company"
+                link="/platform/archiving-a-company">
+              </ins-accordion-link>
+
+              <ins-accordion-link link-target="_self" label="Importing Companies"
+                link="/platform/importing-companies">
+              </ins-accordion-link>
+
+              <ins-accordion-link link-target="_self" label="Exporting Companies"
+                link="/platform/exporting-companies">
+              </ins-accordion-link>
+
+            </ins-accordion-item>
+          </ins-accordion>
+
+          <ins-accordion menu>
+            <ins-accordion-item link-target="_self" heading="Contacts"
+              link="/platform/contacts">
+
+              <ins-accordion-link link-target="_self" label="Adding a Contact"
+                link="/platform/adding-a-contact">
+              </ins-accordion-link>
+
+              <ins-accordion-link link-target="_self" label="Contact Form"
+                link="/platform/contact-form">
+              </ins-accordion-link>
+
+              <ins-accordion-link link-target="_self" label="Viewing a Contact"
+                link="/platform/viewing-a-contact">
+              </ins-accordion-link>
+
+              <ins-accordion-link link-target="_self" label="Updating a Contact"
+                link="/platform/updating-a-contact">
+              </ins-accordion-link>
+
+              <ins-accordion-link link-target="_self" label="Archiving a Contact"
+                link="/platform/archiving-a-contact">
+              </ins-accordion-link>
+
+              <ins-accordion-link link-target="_self" label="Importing Contacts"
+                link="/platform/importing-contacts">
+              </ins-accordion-link>
+
+              <ins-accordion-link link-target="_self" label="Exporting Contacts"
+                link="/platform/exporting-contacts">
+              </ins-accordion-link>
+
+            </ins-accordion-item>
+          </ins-accordion>
+
+          <ins-accordion-link link-target="_self" label="Cases"
+            link="/platform/cases">
+          </ins-accordion-link>
+
+          <ins-accordion-link link-target="_self" label="CRM Activites"
+            link="/platform/crm-activites-integrations">
+          </ins-accordion-link>
+
+        </ins-accordion-item>
+      </ins-accordion>
     </div>
+
   </ins-renderer>
-
-  <script>
-
-    // Menu Toggle
-    var insEl = document.getElementById("test");
-    insEl.addEventListener('insInput', e => { console.log('insInput', e.detail) });
-    insEl.addEventListener('insValueChange', e => { console.log('insValueChange', e.detail) });
-
-  </script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-import { h, Component, Element, Prop } from "@stencil/core";
+import { h, Component, Element, Prop, Method } from "@stencil/core";
 
 @Component({ tag: 'ins-accordion-item' })
 export class InsAccordionItem {
@@ -25,6 +25,15 @@ export class InsAccordionItem {
         {this.heading}
       </a>
     )
+  }
+
+  @Method()
+  async toggle(){
+    let el = this.insAccordionItemEl
+      .querySelector('.ins-accordion-item > .ins-accordion-item_header') as any;
+    el.click();
+
+    this.active = !this.active;
   }
 
   render() {

@@ -1,4 +1,4 @@
-import { h, Component, Prop, Element, Event, EventEmitter } from "@stencil/core";
+import { h, Component, Prop, Element, Event, EventEmitter, Method } from "@stencil/core";
 
 @Component({ tag: 'ins-accordion-link' })
 export class InsAccordionLink {
@@ -43,6 +43,11 @@ export class InsAccordionLink {
         wrap.classList.add('after')
       }
     }
+  }
+
+  @Method()
+  async toggle(){
+    this.active = !this.active;
   }
 
   render() {
