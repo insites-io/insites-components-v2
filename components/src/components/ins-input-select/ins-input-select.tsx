@@ -465,22 +465,22 @@ export class InsInputSelect {
                 <input class="ins-select-value-input" placeholder={this.placeholder}></input>
                 { this.renderCaret() }
                 { this.renderSelections() }
-                { this.renderSearchWrapForMultiple() }
             </div>
         )
+        // { this.renderSearchWrapForMultiple() }
     }
 
-    renderSearchWrapForMultiple() {
-        if (!this.searchable) return "";
-        return (
-            <div class="ins-select-search">
-                <input class="ins-select-search-input" value={this.tempSearch}
-                    readonly={this.readonly} disabled={this.disabled}
-                    placeholder={this.searchablePlaceholder} />
-                <i class="icon-search"></i>
-            </div>
-        )
-    }
+    // renderSearchWrapForMultiple() {
+    //     if (!this.searchable) return "";
+    //     return (
+    //         <div class="ins-select-search">
+    //             <input class="ins-select-search-input" value={this.tempSearch}
+    //                 readonly={this.readonly} disabled={this.disabled}
+    //                 placeholder={this.searchablePlaceholder} />
+    //             <i class="icon-search"></i>
+    //         </div>
+    //     )
+    // }
 
     renderSelections() {
         if (!this.value.length && this.searchable) return "";
