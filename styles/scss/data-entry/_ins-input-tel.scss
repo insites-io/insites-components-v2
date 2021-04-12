@@ -7,6 +7,8 @@
   }
 }
 
+// Flag dropdown z-index with ins-input-file
+
 .ins-input-tel-wrap {
   .iti {
     input {
@@ -58,6 +60,7 @@
     }
 
     .iti__country-list {
+      z-index: 11;
       font-size: 14px;
       margin-left: 0;
       margin-top: 6px;

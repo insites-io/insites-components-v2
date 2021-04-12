@@ -102,6 +102,9 @@ export class InsFilter {
 
     if (this.withDateFilter){
       selections[this.dateTitle] = this.getLocDate();
+      if (selections[this.dateTitle] != "All") {
+        selections[this.dateTitle].currentFilter = this.selectedRange;
+      }
     }
 
     this.insFilterApply.emit(selections);
@@ -177,9 +180,13 @@ export class InsFilter {
         to = new Date(from.getFullYear(), 11, 31);
 
       } else if (option.toLowerCase() == 'custom' && !this.isAll) {
-
-        from = new Date(this.fromInput.value);
-        to = new Date(this.toInput.value);
+        if (settingDefault && this.dateFrom && this.dateTo){
+          from = new Date(this.dateFrom);
+          to = new Date(this.dateTo);
+        } else {
+          from = new Date(this.fromInput.value);
+          to = new Date(this.toInput.value);
+        }
       }
 
       this.isAll = false;
@@ -270,6 +277,10 @@ export class InsFilter {
         this.currentFilter = this.dateOpt[arrSearch];
         this.selectedRange = this.currentFilter;
       }
+    } else if (this.dateFrom && this.dateTo){
+      this.currentFilter = 'Custom';
+      this.selectedRange = 'Custom';
+      this.isAll = false;
     }
   }
 
@@ -331,12 +342,14 @@ export class InsFilter {
                 </div>
 
                 <div class="from input-wrap">
+                  {this.dateFrom}
                   <ins-date-time mode="datepicker" name="from"
                     inline value={this.dateFrom}>
                   </ins-date-time>
                 </div>
 
                 <div class="to input-wrap">
+                  {this.dateTo}
                   <ins-date-time mode="datepicker" name="to"
                     inline value={this.dateTo}>
                   </ins-date-time>

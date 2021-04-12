@@ -143,9 +143,23 @@
     </div> -->
 
     <div>
-      <ins-date-time label="Test"></ins-date-time>
+      <ins-filter id="test" with-date-filter date-title="Date Period"
+        date-from="2021-04-08" date-to="2021-04-15" default-date="">
+
+        <ins-filter-item name="Operating System" selected="macOS"
+          options='["Windows", "macOS", "Linux"]'>
+        </ins-filter-item>
+      </ins-filter>
+
+      <!-- <ins-date-time label="From" value="2021-04-08" mode="datepicker"></ins-date-time>
+      <ins-date-time label="To" value="2021-04-15" mode="datepicker"></ins-date-time> -->
     </div>
   </ins-renderer>
+
+  <script>
+    var testEl = document.getElementById('test');
+    testEl.addEventListener('insFilterApply', e => console.log(e.detail));
+  </script>
 </body>
 
 </html>

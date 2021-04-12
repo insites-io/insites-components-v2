@@ -300,7 +300,7 @@ export namespace Components {
     }
     interface InsFilterItem {
         "closeFilter": () => Promise<void>;
-        "getSelected": () => Promise<any>;
+        "getSelected": () => Promise<{ name: string; option: any; }>;
         "hasLoad": string;
         "name": string;
         "options": any;

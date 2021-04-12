@@ -12,12 +12,9 @@ export class InsFilterItem {
 
     @State() dropDownState: boolean = false;
 
-    @State() optionsEl: any;
-    @State() insFilter: any;
-    @State() currentFilter: any;
-    @State() dateFilter: any;
-
+    currentFilter: any;
     optionsWrapEl: any;
+    _options: any;
 
     @Watch('options')
     optionsUpdate() {
@@ -26,12 +23,15 @@ export class InsFilterItem {
 
     @Method()
     async closeFilter() {
-        this.dropDownState = false;
+      this.dropDownState = false;
     }
 
     @Method()
     async getSelected() {
-        return this.selected;
+      return {
+        name: this.name,
+        option: this.currentFilter
+      }
     }
 
     toggleDropDown() {
@@ -67,31 +67,31 @@ export class InsFilterItem {
     setOptions() {
         if (typeof this.options === 'string') {
 
-            if (this.isJSON(this.options)) {
-                this.options = JSON.parse(this.options);
-            }
+          if (this.isJSON(this.options)) {
+            this._options = JSON.parse(this.options);
+          }
 
-            if (!Array.isArray(this.options)) {
-                this.options = ['All']
-            }
-        }
+          if (!Array.isArray(this._options)) {
+            this._options = ['All']
+          }
 
-        if (this.options) {
-            this.currentFilter = this.options[0];
-            this.selected = {
-                name: this.name,
-                option: this.currentFilter
-            }
+        } else this._options = this.options;
+
+        if (this._options) {
+          if (this.selected && this._options.includes(this.selected)){
+            this.currentFilter = this.selected;
+
+          } else this.currentFilter = this._options[0]
         }
     }
 
     filterHandler(option) {
         if (this.currentFilter !== option) {
-            this.selected = {
-                name: this.name,
-                option
-            }
-            this.insSelect.emit(this.selected);
+            this.insSelect.emit({
+              name: this.name,
+              option
+            });
+
             this.currentFilter = option;
             this.closeFilter();
         }
@@ -119,7 +119,7 @@ export class InsFilterItem {
 
                 <div class={`filter-item__options ${this.dropDownState ? 'active' : ''}`}>
 
-                    {this.options.map((option) =>
+                    {this._options.map((option) =>
                         <div class={this.currentFilter === option ? 'selected' : ''}
                             data-val={option}
                             onClick={() => this.filterHandler(option)}>

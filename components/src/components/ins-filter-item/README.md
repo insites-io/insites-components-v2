@@ -35,13 +35,13 @@ Type: `Promise<void>`
 
 
 
-### `getSelected() => Promise<any>`
+### `getSelected() => Promise<{ name: string; option: any; }>`
 
 
 
 #### Returns
 
-Type: `Promise<any>`
+Type: `Promise<{ name: string; option: any; }>`
 
 
 
