@@ -277,6 +277,7 @@ export class InsFilter {
         this.currentFilter = this.dateOpt[arrSearch];
         this.selectedRange = this.currentFilter;
       }
+
     } else if (this.dateFrom && this.dateTo){
       this.currentFilter = 'Custom';
       this.selectedRange = 'Custom';
