@@ -61,7 +61,7 @@
             &.drop-up {
                 .ins-select-options-wrap {
                     border-top: 1px solid var(--ins-color-blue);
-                    bottom: calc(100% - 20px);
+                    bottom: calc(100% - 24px);
                     border-bottom: none;
                 }
                 .dynamic-option-wrap {
@@ -95,6 +95,29 @@
             &.searching {
                 .ins-select-slot-wrap {
                     display: none;
+                }
+            }
+        }
+
+        &.searchable {
+            .ins-select-options-wrap {
+                .done-wrap {
+                    top: 56px;
+                }
+            }
+            &.activated {
+                .ins-select-value-wrap {
+                    min-height: 40px;
+                    // .icon-caret-down, .ins-select-value-input {
+                    //     display: none;
+                    // }
+                }
+                &.has-value {
+                    .ins-select-value-wrap {
+                        // .icon-caret-down, .ins-select-value-input {
+                        //     display: block
+                        // }
+                    }
                 }
             }
         }

@@ -379,8 +379,16 @@ export class InsInputSelect {
 
     renderOptionsWrap() {
         return (
+            
             <div class={`ins-select-options-wrap
                 ${this.dynamicOption ? 'with-dynamic-option' : ''}`}>
+
+                { this.searchable ?
+                    <div class="ins-select-search">
+                        <input class="ins-select-search-input" placeholder={this.searchablePlaceholder} />
+                        <i class="icon-search"></i>
+                    </div>
+                    : '' }
                 { this.renderCloseBtnWrap() }
 
                 <div class="scroll-wrap">
@@ -457,22 +465,22 @@ export class InsInputSelect {
                 <input class="ins-select-value-input" placeholder={this.placeholder}></input>
                 { this.renderCaret() }
                 { this.renderSelections() }
-                { this.renderSearchWrapForMultiple() }
             </div>
         )
+        // { this.renderSearchWrapForMultiple() }
     }
 
-    renderSearchWrapForMultiple() {
-        if (!this.searchable) return "";
-        return (
-            <div class="ins-select-search">
-                <input class="ins-select-search-input" value={this.tempSearch}
-                    readonly={this.readonly} disabled={this.disabled}
-                    placeholder={this.searchablePlaceholder} />
-                <i class="icon-search"></i>
-            </div>
-        )
-    }
+    // renderSearchWrapForMultiple() {
+    //     if (!this.searchable) return "";
+    //     return (
+    //         <div class="ins-select-search">
+    //             <input class="ins-select-search-input" value={this.tempSearch}
+    //                 readonly={this.readonly} disabled={this.disabled}
+    //                 placeholder={this.searchablePlaceholder} />
+    //             <i class="icon-search"></i>
+    //         </div>
+    //     )
+    // }
 
     renderSelections() {
         if (!this.value.length && this.searchable) return "";
@@ -545,13 +553,6 @@ export class InsInputSelect {
 
                     <input class={`ins-select-value-input ${this.value ? 'has-value' : ''}`} value={this.labelOfValue}
                         readonly placeholder={this.placeholder} disabled={this.disabled} />
-
-                    { this.searchable ?
-                        <div class="ins-select-search">
-                            <input class="ins-select-search-input" placeholder={this.searchablePlaceholder} />
-                            <i class="icon-search"></i>
-                        </div>
-                        : '' }
             </div>
         )
     }
@@ -686,6 +687,8 @@ export class InsInputSelect {
     render() {
         return (
             <div class={`ins-input-select ins-select-wrap
+                ${this.value ? 'has-value' : ''}
+                ${this.searchable ? 'searchable' : ''}
                 ${this.dropUp ? 'drop-up' : ''}
                 ${this.readonly ? 'readonly' : ''}
                 ${this.disabled ? 'disabled' : ''}
