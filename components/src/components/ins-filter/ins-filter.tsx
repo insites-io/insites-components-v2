@@ -6,6 +6,7 @@ export class InsFilter {
   @Event() insFilterApply: EventEmitter;
   @Event() didLoad: EventEmitter;
   @Prop() hasLoad: string;
+  @Prop({ mutable: true }) label: string = "Filter:";
   @Prop({ mutable: true }) withDateFilter: boolean = false;
   @Prop({ mutable: true }) dateTitle: any = "Date Period";
   @Prop({ mutable: true }) defaultDate: string = "";
@@ -312,7 +313,7 @@ export class InsFilter {
   render() {
     return (
       <div class="filter">
-        <span class="filter__label">Filter:</span>
+        <span class="filter__label">{this.label}</span>
         <div class="filter__btn-container">
 
           <slot></slot>

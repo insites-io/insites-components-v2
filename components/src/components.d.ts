@@ -296,6 +296,7 @@ export namespace Components {
         "defaultDate": string;
         "getDate": () => Promise<"All" | { from: any; to: any; }>;
         "hasLoad": string;
+        "label": string;
         "withDateFilter": boolean;
     }
     interface InsFilterItem {
@@ -1872,6 +1873,7 @@ declare namespace LocalJSX {
         "dateTo"?: string;
         "defaultDate"?: string;
         "hasLoad"?: string;
+        "label"?: string;
         "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsFilterApply"?: (event: CustomEvent<any>) => void;
         "withDateFilter"?: boolean;

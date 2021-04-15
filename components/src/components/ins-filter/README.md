@@ -15,6 +15,7 @@
 | `dateTo`         | `date-to`          |             | `string`  | `""`                                                                                                                                                 |
 | `defaultDate`    | `default-date`     |             | `string`  | `""`                                                                                                                                                 |
 | `hasLoad`        | `has-load`         |             | `string`  | `undefined`                                                                                                                                          |
+| `label`          | `label`            |             | `string`  | `"Filter:"`                                                                                                                                          |
 | `withDateFilter` | `with-date-filter` |             | `boolean` | `false`                                                                                                                                              |
 
 
