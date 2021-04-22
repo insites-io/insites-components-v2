@@ -7,9 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface InsAccordion {
-        "defaultOpen": number;
         "hasLoad": string;
-        "initAccordion": () => Promise<void>;
         "menu": boolean;
     }
     interface InsAccordionItem {
@@ -21,6 +19,7 @@ export namespace Components {
         "link": string;
         "linkTarget": string;
         "toggle": () => Promise<void>;
+        "udpateScrollHeight": (height: any) => Promise<void>;
     }
     interface InsAccordionLink {
         "active": boolean;
@@ -1577,7 +1576,6 @@ declare global {
 }
 declare namespace LocalJSX {
     interface InsAccordion {
-        "defaultOpen"?: number;
         "hasLoad"?: string;
         "menu"?: boolean;
         "onDidLoad"?: (event: CustomEvent<any>) => void;

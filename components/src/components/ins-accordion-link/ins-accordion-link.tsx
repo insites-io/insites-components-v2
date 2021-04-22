@@ -59,7 +59,10 @@ export class InsAccordionLink {
         <a class="ins-accordion-link_link" href={this.link}
           target={this.linkTarget} title={this.linkTitle}>
 
-          <span class={`ins-accordion-link_icon ${this.icon}`}></span>
+          {this.icon
+            ? <span class={`ins-accordion-link_icon ${this.icon}`}></span>
+            : "" }
+
           <span>{this.label}</span>
         </a>
       </div>

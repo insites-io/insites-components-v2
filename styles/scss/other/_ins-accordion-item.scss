@@ -1,3 +1,6 @@
+ins-accordion-item {
+  width: 100%;
+}
 .ins-accordion-item {
   background-color: var(--ins-bg-color);
 
@@ -54,18 +57,24 @@
 
     &_caret-wrap {
       position: absolute;
-      top: calc(50% - 8px);
+      top: calc(50% - 11px);
       right: 12px;
     }
 
     .icon-angle-down,
     .icon-angle-up {
       display: none;
+      padding: 4px;
+      cursor: pointer;
     }
 
   }
 
   &_content {
+
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s;
 
     .inner-content {
       padding: 14px;

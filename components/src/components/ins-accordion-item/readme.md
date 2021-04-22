@@ -30,6 +30,16 @@ Type: `Promise<void>`
 
 
 
+### `udpateScrollHeight(height: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 
 ----------------------------------------------
 

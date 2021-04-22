@@ -379,7 +379,7 @@ export class InsInputSelect {
 
     renderOptionsWrap() {
         return (
-            
+
             <div class={`ins-select-options-wrap
                 ${this.dynamicOption ? 'with-dynamic-option' : ''}`}>
 
@@ -439,7 +439,7 @@ export class InsInputSelect {
     }
 
     @Method()
-    dynamicUpdateOptions() {
+    async dynamicUpdateOptions() {
         this.initOptions();
     }
 

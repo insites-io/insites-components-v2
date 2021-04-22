@@ -11,6 +11,13 @@ export class InsAccordionItem {
   @Prop({ mutable: true }) disabled: boolean = false;
   @Prop({ mutable: true }) arrowActivated: boolean = false;
 
+  wrapper: any; body: any;
+
+  componentDidLoad(){
+    this.wrapper = this.insAccordionItemEl.querySelector('.ins-accordion-item');
+    this.body = this.insAccordionItemEl.querySelector('.ins-accordion-item_content');
+  }
+
   renderHeading(){
     if (!this.heading) return ""
     return <span class="heading">{this.heading}</span>
@@ -28,19 +35,39 @@ export class InsAccordionItem {
   }
 
   @Method()
-  async toggle(){
-    let el = this.insAccordionItemEl
-      .querySelector('.ins-accordion-item > .ins-accordion-item_header') as any;
-    el.click();
+  async udpateScrollHeight(height){
+    let newHeight = this.body.scrollHeight + height;
+    this.body.style.maxHeight = newHeight + "px";
 
-    this.active = !this.active;
+    let parent = this.insAccordionItemEl.parentElement.closest('ins-accordion-item') as any;
+    if (parent) parent.udpateScrollHeight(newHeight);
+  }
+
+  @Method()
+  async toggle(){
+    let height = this.body.scrollHeight;
+
+    if (this.body.style.maxHeight) {
+      this.wrapper.classList.remove("open");
+      this.wrapper.classList.add("closed");
+      this.body.style.maxHeight = null;
+    } else {
+      this.wrapper.classList.remove("closed");
+      this.wrapper.classList.add("open");
+      this.body.style.maxHeight = height + "px";
+    }
+
+    let parent = this.insAccordionItemEl.parentElement.closest('ins-accordion-item') as any;
+    console.log('height', height)
+    if (parent) parent.udpateScrollHeight(height || 0);
   }
 
   render() {
     return (
       <div class={`ins-accordion-item
-        ${this.active ? 'open':''}
+        ${this.active ? 'open':'closed'}
         ${this.arrowActivated ? 'arrow-activated' : ''}`}>
+
         <div class={`ins-accordion-item_header ${this.disabled ? 'disabled':''}`}>
 
           <div class="inner-head">
@@ -50,7 +77,7 @@ export class InsAccordionItem {
               ? this.renderHeadingLink()
               : this.renderHeading() }
 
-            <div class="ins-accordion-item_header_caret-wrap">
+            <div class="ins-accordion-item_header_caret-wrap" onClick={() => this.toggle()}>
               <span class="icon-angle-down"></span>
               <span class="icon-angle-up"></span>
             </div>

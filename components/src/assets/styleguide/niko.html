@@ -54,18 +54,17 @@
   </ins-header>
 
   <ins-renderer>
-    <!-- <div>
+    <div>
       <ins-accordion menu>
 
-        <ins-accordion-item link-target="_self" heading="CRM" link="/platform/crm">
+        <ins-accordion-item link-target="_self" heading="CRM" link="/platform/crm" id="item1">
 
           <ins-accordion menu>
 
-            <ins-accordion-item link-target="_self" heading="Companies"
-              link="/platform/companies">
+            <ins-accordion-item link-target="_self" heading="Companies" id="item2">
 
               <ins-accordion-link link-target="_self" label="Adding a company"
-                link="/platform/adding-a-company">
+                link="/platform/adding-a-company" id="item3">
               </ins-accordion-link>
 
               <ins-accordion-link link-target="_self" label="Company Form"
@@ -140,45 +139,19 @@
 
         </ins-accordion-item>
       </ins-accordion>
-    </div> -->
-
-    <div>
-      <ins-filter id="test" label="Filters:" with-date-filter date-title="Date Period"
-        date-from="2021-04-08" date-to="2021-04-15" default-date="">
-
-        <ins-filter-item name="Operating System" selected="macOS"
-          options='["Windows", "macOS", "Linux"]'>
-        </ins-filter-item>
-      </ins-filter>
-
-      <!-- <ins-date-time label="From" value="2021-04-08" mode="datepicker"></ins-date-time>
-      <ins-date-time label="To" value="2021-04-15" mode="datepicker"></ins-date-time> -->
     </div>
-
-    <ins-input-select label="Test" tooltip="test">
-      <ins-input-select-option
-        label="label"
-        value="value">
-      </ins-input-select-option>
-      <ins-input-select-option
-        label="label2"
-        value="value2">
-      </ins-input-select-option>
-      <ins-input-select-option
-        label="label2"
-        value="value2">
-      </ins-input-select-option>
-    </ins-input-select>
-
-    <ins-input label="test1"></ins-input>
-    <ins-input label="test2"></ins-input>
-    <ins-input label="test3"></ins-input>
-    <ins-input label="test4"></ins-input>
   </ins-renderer>
 
   <script>
-    var testEl = document.getElementById('test');
-    testEl.addEventListener('insFilterApply', e => console.log(e.detail));
+    var item1 = document.getElementById('item1');
+    var item2 = document.getElementById('item2');
+    var item3 = document.getElementById('item3');
+
+    setTimeout(() => {
+      item1.toggle()
+      item2.toggle()
+      item3.toggle()
+    }, 1000)
   </script>
 </body>
 

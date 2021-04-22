@@ -1,12 +1,11 @@
 .ins-accordion-link {
   background-color: var(--ins-bg-color);
-
   font-size: 14px;
+  border:
+    var(--ins-border-style)
+    var(--ins-border-thickness)
+    var(--ins-border-color);
 
-    border:
-      var(--ins-border-style)
-      var(--ins-border-thickness)
-      var(--ins-border-color);
   line-height: 14px;
 
   &_link {
