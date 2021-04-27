@@ -11,6 +11,7 @@ export class InsButton {
   @Prop({ mutable: true }) color: string = 'blue';
   @Prop({ mutable: true }) label: string = 'BUTTON';
   @Prop({ mutable: true }) icon: string = '';
+  @Prop({ mutable: true }) iconRight: string = '';
   @Prop({ mutable: true }) size: string = 'normal';
   @Prop({ mutable: true }) data: string = '';
   @Prop({ mutable: true }) type: string = '';
@@ -24,13 +25,15 @@ export class InsButton {
   @Prop({ mutable: true }) cursor: string  = '';
   @Prop({ mutable: true }) textTransform: string  = '';
   @Prop({ mutable: true }) loading: boolean  = false;
-  // @Prop({ context: 'addRippleEffect' }) privateż addRippleEffect: any;
 
-  @State() buttonOptions = []
+  buttonOptions = [];
+  target: any;
+
   @State() toggleOption = false;
   @State() dropUp = false;
 
-  btnOnClickHandler() {
+  btnOnClickHandler(e?, target?) {
+    if (e && target) this.rippleHandler(e, target);
     if (this.dropdown && this.buttonOptions.length){
       this.toggleOptions();
     } else {
@@ -49,20 +52,8 @@ export class InsButton {
     });
   }
 
-  // @Watch('loading')
-  // watchLoaderHandler() {
-  //   if(!this.loading) {
-  //     let existingLabel = this.label;
-  //     this.label = '';
-
-  //     setTimeout(() => {
-  //       this.label = existingLabel;
-  //     }, 300);
-  //   }
-  // }
-
   addRippleEffect(startingPoint, target){
-
+    console.log()
     let rect = target.getBoundingClientRect();
     let ripple = target.querySelector('.ripple-wave');
 
@@ -90,27 +81,45 @@ export class InsButton {
     return false;
   }
 
+
+  componentWillLoad() {
+    this.checkOptions();
+  }
+
   componentDidLoad() {
-    let target;
-    if (this.options){
-      this.buttonOptions = this.options.split(',');
-      target = this.insButtonEl.querySelector('.ins-button-options-wrap') as HTMLElement;
-    } else {
-      target = this.insButtonEl.querySelector('button') as HTMLElement;
-    }
-
-    this.insButtonEl.addEventListener('click', e => {
-      if (!this.disabled && !this.loading) {
-        this.addRippleEffect(e, target);
-      }
-    });
-
+    this.checkTarget();
     this.closeMenu();
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
       if (func) func(this.insButtonEl);
     }
+  }
+
+  componentWillUpdate(){
+    this.checkOptions();
+  }
+
+  componentDidUpdate() {
+    this.checkTarget();
+  }
+
+  rippleHandler(e, target){
+    if (!this.disabled && !this.loading) {
+      if (!target) this.checkTarget();
+      this.addRippleEffect(e, target);
+    }
+  }
+
+  checkTarget(){
+    this.target = this.insButtonEl.querySelector('button') as HTMLElement;
+    if (this.options){
+      this.target = this.insButtonEl.querySelector('.ins-button-options-wrap') as HTMLElement;
+    }
+  }
+
+  checkOptions(){
+    if (this.options) this.buttonOptions = this.options.split(',');
   }
 
   toggleOptions(){
@@ -139,11 +148,34 @@ export class InsButton {
     })
   }
 
+  renderLabelIcon(){
+    return(
+      <div>
+        {this.icon
+          ? <i class={`btn__icon ${this.icon}
+              ${this.label == '' ? 'action' : '' }`}>
+            </i>
+
+          : '' }
+
+        <span class={`btn__label ${this.icon ? 'v-align' : ''}`}>
+          {this.label}
+        </span>
+
+        {this.iconRight
+          ? <i class={`btn__icon right ${this.iconRight}`}></i>
+          : '' }
+      </div>
+    )
+  }
+
   render() {
     if (this.options){
 
       return (
-        <div class="ins-button-options-wrap">
+        <div class="ins-button-options-wrap"
+          onClick={e => this.rippleHandler(e, this.target)}>
+
           <div class="button-wrap">
             <button
               type={this.type}
@@ -157,19 +189,13 @@ export class InsButton {
                 ${this.cursor ? 'cursor--' + this.cursor : ''}
                 ${this.textTransform ? 'text-transform--' + this.textTransform : ''}
                 ${this.color}
-                ${this.label == '' && this.icon ? 'round' : ''}
+                ${this.label == '' && this.icon && !this.iconRight ? 'round' : ''}
                 ${this.buttonOptions.length ? 'has-options':''}`
               }
             >
-              {this.loading ?
-                <div class={`spinner ${this.solid ? '' : this.color}`}></div> :
-                <div>
-                  {this.icon ? <i class={`btn__icon ${this.icon} ${this.label == '' ? 'action' : '' }`}></i> : ''}
-                  <span class={`btn__label ${this.icon ? 'v-align' : ''}`}>
-                    {this.label}
-                  </span>
-                </div>
-              }
+              {this.loading
+                ? <div class={`spinner ${this.solid ? '' : this.color}`}></div>
+                : this.renderLabelIcon() }
             </button>
 
             {this.buttonOptions.length
@@ -212,7 +238,7 @@ export class InsButton {
         <button
           type={this.type}
           disabled={this.disabled || this.loading ? true : false}
-          onClick={() => this.btnOnClickHandler()}
+          onClick={e => this.btnOnClickHandler(e, this.target)}
           class={`ins-button ${this.disabled || this.loading ? '' : 'ripple'}
             ${this.loading ? 'is-loading' : ''}
             ${this.size ? 'size--' + this.size : ''}
@@ -221,16 +247,13 @@ export class InsButton {
             ${this.cursor ? 'cursor--' + this.cursor : ''}
             ${this.textTransform ? 'text-transform--' + this.textTransform : ''}
             ${this.color}
-            ${this.label == '' && this.icon ? 'round' : ''}`
+            ${this.label == '' && this.icon && !this.iconRight ? 'round' : ''}`
           }
         >
-          {this.loading ? <div class={`spinner ${this.solid ? '' : this.color}`}></div> : "" }
-          <div>
-            {this.icon ? <i class={`btn__icon ${this.icon} ${this.label == '' ? 'action' : '' }`}></i> : ''}
-            <span class={`btn__label ${this.icon ? 'v-align' : ''}`}>
-              {this.label}
-            </span>
-          </div>
+          {this.loading
+            ? <div class={`spinner ${this.solid ? '' : this.color}`}></div>
+            : this.renderLabelIcon() }
+
         </button>
       );
     }

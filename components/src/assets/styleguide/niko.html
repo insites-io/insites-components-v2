@@ -55,104 +55,16 @@
 
   <ins-renderer>
     <div>
-      <ins-accordion menu>
+      <ins-button id="testEl"
+        label=""
+        icon="icon-globe"
+        solid>
+      </ins-button>
 
-        <ins-accordion-item link-target="_self" heading="CRM" link="/platform/crm" id="item1">
-
-          <ins-accordion menu>
-
-            <ins-accordion-item link-target="_self" heading="Companies" id="item2">
-
-              <ins-accordion-link link-target="_self" label="Adding a company"
-                link="/platform/adding-a-company" id="item3">
-              </ins-accordion-link>
-
-              <ins-accordion-link link-target="_self" label="Company Form"
-                link="/platform/company-form">
-              </ins-accordion-link>
-
-              <ins-accordion-link link-target="_self" label="Viewing a company"
-                link="/platform/viewing-a-company">
-              </ins-accordion-link>
-
-              <ins-accordion-link link-target="_self" label="Updating a company"
-                link="/platform/updating-a-company">
-              </ins-accordion-link>
-
-              <ins-accordion-link link-target="_self" label="Archiving a company"
-                link="/platform/archiving-a-company">
-              </ins-accordion-link>
-
-              <ins-accordion-link link-target="_self" label="Importing Companies"
-                link="/platform/importing-companies">
-              </ins-accordion-link>
-
-              <ins-accordion-link link-target="_self" label="Exporting Companies"
-                link="/platform/exporting-companies">
-              </ins-accordion-link>
-
-            </ins-accordion-item>
-          </ins-accordion>
-
-          <ins-accordion menu>
-            <ins-accordion-item link-target="_self" heading="Contacts"
-              link="/platform/contacts">
-
-              <ins-accordion-link link-target="_self" label="Adding a Contact"
-                link="/platform/adding-a-contact">
-              </ins-accordion-link>
-
-              <ins-accordion-link link-target="_self" label="Contact Form"
-                link="/platform/contact-form">
-              </ins-accordion-link>
-
-              <ins-accordion-link link-target="_self" label="Viewing a Contact"
-                link="/platform/viewing-a-contact">
-              </ins-accordion-link>
-
-              <ins-accordion-link link-target="_self" label="Updating a Contact"
-                link="/platform/updating-a-contact">
-              </ins-accordion-link>
-
-              <ins-accordion-link link-target="_self" label="Archiving a Contact"
-                link="/platform/archiving-a-contact">
-              </ins-accordion-link>
-
-              <ins-accordion-link link-target="_self" label="Importing Contacts"
-                link="/platform/importing-contacts">
-              </ins-accordion-link>
-
-              <ins-accordion-link link-target="_self" label="Exporting Contacts"
-                link="/platform/exporting-contacts">
-              </ins-accordion-link>
-
-            </ins-accordion-item>
-          </ins-accordion>
-
-          <ins-accordion-link link-target="_self" label="Cases"
-            link="/platform/cases">
-          </ins-accordion-link>
-
-          <ins-accordion-link link-target="_self" label="CRM Activites"
-            link="/platform/crm-activites-integrations">
-          </ins-accordion-link>
-
-        </ins-accordion-item>
-      </ins-accordion>
+      <!--
+        options="Option1,Option2,Option3" -->
     </div>
   </ins-renderer>
-
-  <script>
-    var item1 = document.getElementById('item1');
-    var item2 = document.getElementById('item2');
-    var item3 = document.getElementById('item3');
-
-    setTimeout(() => {
-      item1.toggle()
-      item2.toggle()
-      item3.toggle()
-    }, 1000)
-  </script>
 </body>
 
 </html>

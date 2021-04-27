@@ -58,6 +58,7 @@ export namespace Components {
         "dropdown": boolean;
         "hasLoad": string;
         "icon": string;
+        "iconRight": string;
         "label": string;
         "loading": boolean;
         "options": string;
@@ -1629,6 +1630,7 @@ declare namespace LocalJSX {
         "dropdown"?: boolean;
         "hasLoad"?: string;
         "icon"?: string;
+        "iconRight"?: string;
         "label"?: string;
         "loading"?: boolean;
         "onDidLoad"?: (event: CustomEvent<any>) => void;
