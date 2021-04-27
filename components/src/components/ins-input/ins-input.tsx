@@ -1,4 +1,4 @@
-import { h, Component, Prop, Event, EventEmitter, Element } from "@stencil/core";
+import { h, Component, Prop, Event, EventEmitter, Element, Method } from "@stencil/core";
 
 @Component({ tag: 'ins-input' })
 export class InsInput {
@@ -34,6 +34,17 @@ export class InsInput {
   @Prop({mutable: true}) unitLeft: string = "";
 
   @Prop({mutable: true}) tooltip: string = "";
+
+  @Method()
+  async setValue(value){
+    this.value = value;
+    this.insValueChange.emit(this.value);
+  }
+
+  @Method()
+  async getValue(){
+    return this.value;
+  }
 
   componentDidLoad(){
     this.adjustInputPadding();

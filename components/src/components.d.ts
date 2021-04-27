@@ -387,6 +387,7 @@ export namespace Components {
         "errorMessage": string;
         "field": string;
         "fieldId": string;
+        "getValue": () => Promise<string>;
         "hasError": boolean;
         "hasLoad": string;
         "icon": string;
@@ -400,6 +401,7 @@ export namespace Components {
         "placeholder": string;
         "readonly": boolean;
         "required": boolean;
+        "setValue": (value: any) => Promise<void>;
         "step": string;
         "tooltip": string;
         "unitLeft": string;
