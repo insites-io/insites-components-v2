@@ -121,7 +121,7 @@ ins-button {
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    line-height: 16px;
+    line-height: 1.5;
     vertical-align: top;
 
     min-width: 52px;
@@ -149,6 +149,12 @@ ins-button {
       padding: 0;
       height: 38px;
       width: 38px;
+      min-width: 38px;
+
+      &.is-loading {
+        padding: 0px 9px;
+        width: 38px;
+      }
     }
 
     &.size {
@@ -250,6 +256,11 @@ ins-button {
       &.action {
         margin-right: 0;
         margin-left: 0;
+      }
+
+      &.right {
+        margin-right: 0;
+        margin-left: 8px;
       }
     }
 
