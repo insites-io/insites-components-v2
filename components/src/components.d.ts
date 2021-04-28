@@ -194,6 +194,7 @@ export namespace Components {
         "beautify": () => Promise<void>;
         "disableLineNumbers": boolean;
         "errorMessage": string;
+        "getValue": () => Promise<any>;
         "hasError": boolean;
         "hasLoad": string;
         "label": string;
@@ -1775,6 +1776,7 @@ declare namespace LocalJSX {
         "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsBlur"?: (event: CustomEvent<any>) => void;
         "onInsInput"?: (event: CustomEvent<any>) => void;
+        "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "readonly"?: boolean;
         "theme"?: string;
         "tooltip"?: string;

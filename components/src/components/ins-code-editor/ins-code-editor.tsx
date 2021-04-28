@@ -26,6 +26,7 @@ export class InsCodeEditor {
 	@Element() insCodeEditorEl: HTMLElement;
 	@Event() insBlur: EventEmitter;
 	@Event() insInput: EventEmitter;
+	@Event() insValueChange: EventEmitter;
 	@Event() didLoad: EventEmitter;
   @Prop() hasLoad: string;
 
@@ -49,6 +50,11 @@ export class InsCodeEditor {
 	}
 
 	@Method()
+	async getValue() {
+		return this.codeMirrorEl.getValue();
+	}
+
+	@Method()
 	async refresh() {
 		this.codeMirrorEl.refresh();
 	}
@@ -61,6 +67,7 @@ export class InsCodeEditor {
 	@Method()
 	async setValue(value) {
 		this.codeMirrorEl.setValue(value);
+    this.insValueChange.emit(this.codeMirrorEl.getValue());
 	}
 
 	@Method()
@@ -150,6 +157,8 @@ export class InsCodeEditor {
 			this.insInput.emit({
 				value: await this.val()
 			});
+
+      this.insValueChange.emit(this.codeMirrorEl.getValue());
 		});
 
 		this.codeMirrorEl.on('blur', async () => {

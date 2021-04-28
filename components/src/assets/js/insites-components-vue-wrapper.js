@@ -28,7 +28,7 @@ var componentDetailsMapping = {
   // 'button':           ['onClickInsButton', 'onClickInsButtonOption'],
   'checkbox-card':    ['insClick', 'insValueChange'],
   'checkbox':         ['insCheck', 'insValueChange'],
-  // 'code-editor':      ['valueChange'],
+  'code-editor':      ['insInput', 'insBlur', 'insValueChange'],
   // 'credit-card':      ['insCreditCardClicked', 'insCreditCardClosed'],
   // 'date-time':        ['onpick', 'valueChange'],
   // 'datepicker':       ['onDateChange', 'valueChange'],
