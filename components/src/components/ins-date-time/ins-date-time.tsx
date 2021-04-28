@@ -37,6 +37,17 @@ export class InsDateTime {
   locNoMeridiem: any;
 
   @Method()
+  async setValue(value){
+    this.value = value;
+    this.insValueChange.emit(this.value);
+  }
+
+  @Method()
+  async getValue(){
+    return this.value
+  }
+
+  @Method()
   async formatDate(date){
     return this.pickerInstance.formatDate(date, this.locFormat);
   }

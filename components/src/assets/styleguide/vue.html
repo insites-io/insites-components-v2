@@ -21,17 +21,11 @@
 
 <body>
   <div id="app">
-    <insites-credit-card
+    <insites-date-time
       id="testEl"
-      active
-      expired
-      brand="visa"
-      last-four="3456"
-      expiry-month="9"
-      expiry-year="2022"
-      full-year
+      label="Test"
       v-model="message">
-    </insites-credit-card>
+    </insites-date-time>
 
     {{ message }}
   </div>
@@ -44,7 +38,7 @@
       el: '#app',
       data(){
         return {
-          message:"Hello World!"
+          message:"2021-08-04 13:00"
         }
       },
       methods: {},

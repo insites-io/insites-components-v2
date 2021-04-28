@@ -229,6 +229,7 @@ export namespace Components {
         "errorMessage": string;
         "format": string;
         "formatDate": (date: any) => Promise<any>;
+        "getValue": () => Promise<string>;
         "hasError": boolean;
         "hasLoad": string;
         "icon": string;
@@ -243,6 +244,7 @@ export namespace Components {
         "noMeridiem": boolean;
         "placeholder": string;
         "readonly": boolean;
+        "setValue": (value: any) => Promise<void>;
         "tooltip": string;
         "value": string;
     }
