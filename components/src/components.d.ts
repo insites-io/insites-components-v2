@@ -167,9 +167,11 @@ export namespace Components {
         "checked": boolean;
         "disabled": boolean;
         "falseValue": string;
+        "getValue": () => Promise<{ value: string; trueValue: string; falseValue: string; }>;
         "hasLoad": string;
         "label": string;
         "name": string;
+        "setValue": (value: any, trueValue: any, falseValue: any) => Promise<void>;
         "tooltip": string;
         "trueValue": string;
         "updateCheckState": (state: any) => Promise<void>;

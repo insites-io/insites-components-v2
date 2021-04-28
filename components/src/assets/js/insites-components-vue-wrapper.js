@@ -27,7 +27,7 @@ var templateBuilder = function(componentKey, eventsList) {
 var componentDetailsMapping = {
   // 'button':           ['onClickInsButton', 'onClickInsButtonOption'],
   // 'checkbox-card':    ['onClickInsCheckboxCard', 'valueChange'],
-  // 'checkbox':         ['onCheckInsCheckbox', 'valueChange'],
+  'checkbox':         ['insCheck', 'insValueChange'],
   // 'code-editor':      ['valueChange'],
   // 'credit-card':      ['insCreditCardClicked', 'insCreditCardClosed'],
   // 'date-time':        ['onpick', 'valueChange'],

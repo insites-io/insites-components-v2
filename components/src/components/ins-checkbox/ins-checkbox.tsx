@@ -25,16 +25,7 @@ export class InsCheckbox {
     }
   }
 
-  onCheckHandler(){
-    this.checked = !this.checked;
-    this.insCheck.emit({
-      name: this.name,
-      checked: this.checked,
-      value: this.value,
-      trueValue: this.trueValue,
-      falseValue: this.falseValue
-    });
-
+  onValueChangeHandler(){
     let toEmit = this.value;
 
     if (this.checked && this.trueValue){
@@ -46,9 +37,39 @@ export class InsCheckbox {
     this.insValueChange.emit(toEmit);
   }
 
+  onCheckHandler(){
+    this.checked = !this.checked;
+    this.insCheck.emit({
+      name: this.name,
+      checked: this.checked,
+      value: this.value,
+      trueValue: this.trueValue,
+      falseValue: this.falseValue
+    });
+
+    this.onValueChangeHandler();
+  }
+
   @Method()
   async updateCheckState(state){
     this.checked = state;
+  }
+
+  @Method()
+  async setValue(value, trueValue, falseValue){
+    this.value = value;
+    this.trueValue = trueValue;
+    this.falseValue = falseValue;
+    this.onValueChangeHandler();
+  }
+
+  @Method()
+  async getValue(){
+    return {
+      value: this.value,
+      trueValue: this.trueValue,
+      falseValue: this.falseValue
+    }
   }
 
   render() {
