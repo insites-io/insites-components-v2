@@ -16,18 +16,24 @@
 
   <script type="module" src="/build/insites.esm.js"></script>
   <script nomodule src="/build/insites.js"></script>
-
   <style>body{ font-family: 'Open Sans', Arial, Helvetica, sans-serif; padding:20px }</style>
 </head>
 
 <body>
   <div id="app">
 
-    <insites-checkbox
+    <insites-checkbox-card
       id="testEl"
       label="test"
+      selected-color="positive"
+      label="Card Label"
       v-model="message">
-    </insites-checkbox>
+
+      <div>
+        <h4>Lorem Ipsum Dolor</h4>
+        <p>Lorem praesentium modi sapiente placeat tempora ipsam, consectetur beatae reiciendis sint impedit architecto corporis, suscipit fugiat vero dolore doloremque temporibus.</p>
+      </div>
+    </insites-checkbox-card>
 
     {{ message }}
   </div>

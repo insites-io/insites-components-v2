@@ -1,4 +1,4 @@
-import { h, Component, Prop, Element, Event, EventEmitter } from "@stencil/core";
+import { h, Component, Prop, Element, Event, EventEmitter, Method } from "@stencil/core";
 
 @Component({ tag: 'ins-checkbox-card' })
 export class InsCheckboxCard {
@@ -57,6 +57,17 @@ export class InsCheckboxCard {
 
   componentDidUpdate(){
     this.addColorStyles()
+  }
+
+  @Method()
+  async setValue(value){
+    this.value = value;
+    this.insValueChange.emit(this.value);
+  }
+
+  @Method()
+  async getValue(){
+    return this.value
   }
 
   render() {

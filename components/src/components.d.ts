@@ -179,12 +179,14 @@ export namespace Components {
     }
     interface InsCheckboxCard {
         "disabled": boolean;
+        "getValue": () => Promise<string>;
         "hasLoad": string;
         "label": string;
         "name": string;
         "noPadding": boolean;
         "selected": boolean;
         "selectedColor": string;
+        "setValue": (value: any) => Promise<void>;
         "tabOrder": string;
         "value": string;
     }
