@@ -218,8 +218,10 @@ export namespace Components {
         "expiryMonth": string;
         "expiryYear": string;
         "fullYear": boolean;
+        "getValue": () => Promise<string>;
         "hasLoad": string;
         "lastFour": string;
+        "setValue": (value: any) => Promise<void>;
         "value": string;
     }
     interface InsDateTime {
@@ -1796,6 +1798,7 @@ declare namespace LocalJSX {
         "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsClick"?: (event: CustomEvent<any>) => void;
         "onInsClose"?: (event: CustomEvent<any>) => void;
+        "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "value"?: string;
     }
     interface InsDateTime {

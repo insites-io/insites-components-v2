@@ -29,7 +29,7 @@ var componentDetailsMapping = {
   'checkbox-card':    ['insClick', 'insValueChange'],
   'checkbox':         ['insCheck', 'insValueChange'],
   'code-editor':      ['insInput', 'insBlur', 'insValueChange'],
-  // 'credit-card':      ['insCreditCardClicked', 'insCreditCardClosed'],
+  'credit-card':      ['insClick', 'insClose', 'insValueChange'],
   // 'date-time':        ['onpick', 'valueChange'],
   // 'datepicker':       ['onDateChange', 'valueChange'],
   // 'drawer':           ['toggleDrawer'],

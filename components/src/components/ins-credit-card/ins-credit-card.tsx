@@ -1,10 +1,11 @@
-import { h, Component, Prop, Event, EventEmitter, Element } from "@stencil/core";
+import { h, Component, Prop, Event, EventEmitter, Element, Method } from "@stencil/core";
 
 @Component({ tag: 'ins-credit-card' })
 export class InsCreditCard {
   @Element() insCreditCardEl: HTMLElement;
   @Event() insClick: EventEmitter;
   @Event({ bubbles: false }) insClose: EventEmitter;
+	@Event() insValueChange: EventEmitter;
   @Event() didLoad: EventEmitter;
   @Prop() hasLoad: string;
 
@@ -16,6 +17,18 @@ export class InsCreditCard {
   @Prop({mutable: true}) active: boolean;
   @Prop({mutable: true}) expired: boolean;
   @Prop({mutable: true}) fullYear: boolean;
+
+
+  @Method()
+  async setValue(value){
+    this.value = value;
+    this.insValueChange.emit(this.value);
+  }
+
+  @Method()
+  async getValue(){
+    return this.value
+  }
 
   componentWillLoad(){
     this.checkExpiry();

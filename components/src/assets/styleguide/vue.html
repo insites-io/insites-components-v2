@@ -21,12 +21,17 @@
 
 <body>
   <div id="app">
-
-    <insites-code-editor
+    <insites-credit-card
       id="testEl"
-      label="test"
+      active
+      expired
+      brand="visa"
+      last-four="3456"
+      expiry-month="9"
+      expiry-year="2022"
+      full-year
       v-model="message">
-    </insites-code-editor>
+    </insites-credit-card>
 
     {{ message }}
   </div>
