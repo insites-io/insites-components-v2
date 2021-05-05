@@ -1,4 +1,4 @@
-import { h, Component, Prop, Event, EventEmitter, Element } from "@stencil/core";
+import { h, Component, Prop, Event, EventEmitter, Element, Method } from "@stencil/core";
 
 @Component({ tag: 'ins-input-stepper' })
 export class InsStepper {
@@ -27,6 +27,17 @@ export class InsStepper {
   @Prop({mutable: true}) tooltip: string = "";
 
   labelEl; inputEl; active;
+
+  @Method()
+  async getValue(){
+    return this.value
+  }
+
+  @Method()
+  async setValue(value){
+    this.value = value;
+    this.insValueChange.emit(this.value);
+  }
 
   componentWillLoad(){
     this.value = this.validateInput(this.value);

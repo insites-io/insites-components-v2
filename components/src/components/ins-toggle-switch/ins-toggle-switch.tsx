@@ -1,4 +1,4 @@
-import { h, Component, Prop, Event, EventEmitter, Element } from "@stencil/core";
+import { h, Component, Prop, Event, EventEmitter, Element, Method } from "@stencil/core";
 
 @Component({ tag: "ins-toggle-switch" })
 export class InsToggleSwitch {
@@ -20,6 +20,29 @@ export class InsToggleSwitch {
   @Prop({mutable: true}) disabledLabel: string;
   @Prop({mutable: true}) tooltip: string = "";
 
+
+  @Method()
+  async setValue(value, trueValue, falseValue){
+    this.value = value;
+    this.trueValue = trueValue;
+    this.falseValue = falseValue;
+  }
+
+  @Method()
+  async updateCheckState(state){
+    this.checked = state;
+    this.emitEvents();
+  }
+
+  @Method()
+  async getValue(){
+    return {
+      value: this.value,
+      trueValue: this.trueValue,
+      falseValue: this.falseValue
+    }
+  }
+
   componentDidLoad(){
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
@@ -28,12 +51,17 @@ export class InsToggleSwitch {
     }
   }
 
-  onCheckHandler() {
+  onCheckHandler(){
     this.checked = !this.checked;
+    this.emitEvents();
+  }
+
+  emitEvents(){
     this.insToggle.emit({
       checked: this.checked,
       value: this.value
     });
+
     let toEmit = this.value;
 
     if (this.checked && this.trueValue){

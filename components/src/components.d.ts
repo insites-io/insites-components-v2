@@ -525,6 +525,7 @@ export namespace Components {
     interface InsInputSlider {
         "disabled": boolean;
         "errorMessage": string;
+        "getValue": () => Promise<any>;
         "hasError": boolean;
         "hasLoad": string;
         "label": string;
@@ -532,6 +533,7 @@ export namespace Components {
         "min": number;
         "name": string;
         "position": string;
+        "setValue": (value: any) => Promise<void>;
         "sliderOnly": boolean;
         "step": number;
         "tooltip": string;
@@ -540,6 +542,7 @@ export namespace Components {
     interface InsInputStepper {
         "disabled": boolean;
         "errorMessage": string;
+        "getValue": () => Promise<string>;
         "hasError": boolean;
         "hasLoad": string;
         "label": string;
@@ -548,6 +551,7 @@ export namespace Components {
         "name": string;
         "readonly": boolean;
         "required": boolean;
+        "setValue": (value: any) => Promise<void>;
         "step": string;
         "tooltip": string;
         "value": string;
@@ -729,6 +733,7 @@ export namespace Components {
         "errorMessage": string;
         "expandSection": () => Promise<void>;
         "getAllOptions": () => Promise<NodeListOf<HTMLInsSelectOptionElement>>;
+        "getValue": () => Promise<any>;
         "hasError": boolean;
         "hasLoad": string;
         "infiniteScroll": boolean;
@@ -746,6 +751,7 @@ export namespace Components {
         "setLoadingState": (state: any) => Promise<boolean>;
         "setSearchingState": (state: any) => Promise<boolean>;
         "setSelectedFromValue": (value?: any) => Promise<boolean>;
+        "setValue": (value: any) => Promise<void>;
         "small": boolean;
         "tooltip": string;
         "updateSelectedOptions": () => Promise<boolean>;
@@ -928,6 +934,7 @@ export namespace Components {
         "counter": string;
         "disabled": boolean;
         "errorMessage": string;
+        "getValue": () => Promise<string>;
         "hasError": boolean;
         "hasLoad": string;
         "label": string;
@@ -936,6 +943,7 @@ export namespace Components {
         "placeholder": string;
         "readonly": boolean;
         "required": boolean;
+        "setValue": (value: any) => Promise<void>;
         "tooltip": string;
         "value": string;
     }
@@ -972,11 +980,14 @@ export namespace Components {
         "disabledLabel": string;
         "enabledLabel": string;
         "falseValue": string;
+        "getValue": () => Promise<{ value: string; trueValue: string; falseValue: string; }>;
         "hasLoad": string;
         "label": string;
         "name": string;
+        "setValue": (value: any, trueValue: any, falseValue: any) => Promise<void>;
         "tooltip": string;
         "trueValue": string;
+        "updateCheckState": (state: any) => Promise<void>;
         "value": string;
     }
     interface InsTooltip {

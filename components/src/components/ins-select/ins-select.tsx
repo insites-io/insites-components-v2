@@ -94,6 +94,7 @@ export class InsSelect {
   }
 
   componentDidLoad(){
+    console.log('componentDidLoad', this.value);
     this.bindEls();
     this.initOutsideClick();
     this.initSearchInput();
@@ -193,6 +194,7 @@ export class InsSelect {
   }
 
   setMultipleValue(val, options){
+    console.log('setMultipleValue', val)
     let values = [], selections = []
     this.loopThroughOptions(option => {
       option.activated = false;
@@ -250,6 +252,19 @@ export class InsSelect {
     this.loopThroughOptions(o => o.activated = false, options);
     this.value = [];
     this.selected_values = [];
+  }
+
+  @Method()
+  async getValue(){
+    if (this.multiple) return this.value.map(item => item.value);
+    return this.value;
+  }
+
+  @Method()
+  async setValue(value){
+    this.value = value;
+    await this.setSelectedFromValue(value);
+    this.insValueChange.emit(await this.getValue());
   }
 
   @Method()
@@ -458,7 +473,7 @@ export class InsSelect {
     this.collapseSection();
     this.showHiddenOptions();
     this.labelOfValue = e.label;
-    this.insValueChange.emit(e.value);
+    this.insValueChange.emit(this.value);(e.value);
     this.updateValueEls(clickedOption);
     this.value = e.value;
   }
@@ -487,7 +502,7 @@ export class InsSelect {
   emitEvent(event_type){
     if (this.multiple) {
       this.emitForMultiple(event_type);
-    } else this.insValueChange.emit(this.value);
+    } else this.insValueChange.emit(this.value);(this.value);
   }
 
   emitForMultiple(event_type){
@@ -503,7 +518,7 @@ export class InsSelect {
       event_type, selected, selectedOptions
     });
 
-    this.insValueChange.emit(selected);
+    this.insValueChange.emit(this.value);(selected);
     this.selected_values = selected;
   }
 

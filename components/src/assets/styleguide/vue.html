@@ -11,7 +11,7 @@
     href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap">
   <link rel="stylesheet" href="/assets/css/reset.css" />
   <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
-  <link rel="stylesheet" href="/assets/css/foundation.min.css" />
+  <!-- <link rel="stylesheet" href="/assets/css/foundation.min.css" /> -->
   <link rel="stylesheet" href="/assets/css/insites.css" />
 
   <script type="module" src="/build/insites.esm.js"></script>
@@ -21,22 +21,30 @@
 
 <body>
   <div id="app">
-    <insites-radio v-model="radio" static-value="Fruits" label="Fruits" name="food"></insites-radio>
-    <insites-radio v-model="radio" static-value="Veggies" label="Veggies" name="food"></insites-radio>
-    <insites-radio id="testEl" v-model="radio" static-value="Meat" label="Meat" name="food"></insites-radio>
+    <insites-textarea id="testEl"
+      label="Toggle Switch"
+      v-model="strings">
+    </insites-textarea>
 
     <br>
-    <p>{{ radio }}</p>
+    <p>{{ strings }}</p>
+
+    <textarea name="test" id="testEl2" v-model="strings2"></textarea>
+
+    <br>
+    <p>{{ strings2 }}</p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="/assets/js/insites-components-vue-wrapper.js"></script>
 
   <script>
+    Vue.config.ignoredElements.push(`ins-select-option`);
 
     Vue.component('arrs', {
       props: {
-        value: Array
+        value: Array,
+        label: String
       },
       methods:{
         valueChangeHandler(e){
@@ -46,9 +54,11 @@
       mounted(){
         this.$el.value = this.value;
       },
-      template: `<ins-input-multiple
+      template: `<ins-select :label="label" multiple
         @insValueChange="valueChangeHandler">
-      </ins-input-multiple>`
+
+        <slot />
+      </ins-select>`
     });
 
     var app = new Vue({
@@ -57,8 +67,9 @@
         return {
           radio: "Fruits",
           booleans: true,
-          strings: "test",
-          arrays: ["test 1"]
+          strings: "35",
+          strings2: "hello world!",
+          arrays: ["macOS", "Android"]
         }
       },
       methods: {},

@@ -1,4 +1,4 @@
-import { h, Component, Prop, Event, State, EventEmitter, Element } from "@stencil/core";
+import { h, Component, Prop, Event, State, EventEmitter, Element, Method } from "@stencil/core";
 
 @Component({ tag: 'ins-textarea' })
 export class InsTextarea {
@@ -25,10 +25,21 @@ export class InsTextarea {
   @State() activeLabel: boolean;
   @State() charCount: string = "0";
 
+  @Method()
+  async getValue(){
+    return this.value
+  }
+
+  @Method()
+  async setValue(value){
+    this.value = value;
+    this.insValueChange.emit(this.value);
+  }
+
   onTextareaHandler(event){
     let x = event.which || event.keyCode;
     this.value = event.target.value;
-    
+
     this.insInput.emit({
       value: event.target.value,
       keyCode: x

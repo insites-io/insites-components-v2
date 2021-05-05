@@ -1,4 +1,4 @@
-import { h, Component, Prop, Event, EventEmitter, Element } from "@stencil/core";
+import { h, Component, Prop, Event, EventEmitter, Element, Method } from "@stencil/core";
 import rangeSlider from "rangeslider-pure";
 // plugin API reference https://www.npmjs.com/package/rangeslider-pure
 
@@ -36,6 +36,17 @@ export class InsInputSlider {
   tooltipValue: any;
   sliderEl: any;
   labelInput: any;
+
+  @Method()
+  async getValue(){
+    return this.value
+  }
+
+  @Method()
+  async setValue(value){
+    this.value = value;
+    this.insValueChange.emit(this.value);
+  }
 
   componentDidLoad(){
     this.initSlider();
@@ -83,7 +94,7 @@ export class InsInputSlider {
       onSlideEnd: value => {
         this.value = value;
         this.emitAction('End');
-        this.insValueChange.emit(this.value)
+        this.insValueChange.emit(this.value);
       }
     });
   }
