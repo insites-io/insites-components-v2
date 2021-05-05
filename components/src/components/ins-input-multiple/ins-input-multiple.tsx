@@ -1,11 +1,11 @@
 import { h, Component, Element, Prop, Method, Event, EventEmitter } from "@stencil/core";
-
 @Component({ tag: 'ins-input-multiple' })
 
 export class InsInputMultiple {
 	@Element() insInputMultipleEl: HTMLElement;
 	@Event() insInput: EventEmitter;
   @Event() insChange: EventEmitter;
+  @Event() insValueChange: EventEmitter;
   @Event() didLoad: EventEmitter;
   @Prop() hasLoad: string;
 
@@ -18,6 +18,23 @@ export class InsInputMultiple {
 	@Prop({mutable: true}) hasError: boolean = false;
   @Prop({mutable: true}) errorMessage: string = "";
 
+  componentWillLoad(){
+    if (!Array.isArray(this.value)){
+      this.value = this.isJSON(this.value);
+    }
+  }
+
+  componentWillUpdate(){
+    if (!Array.isArray(this.value)){
+      this.value = this.isJSON(this.value);
+    }
+  }
+
+  isJSON(value) {
+    try { return JSON.parse(value) }
+    catch(err) { return [] }
+  }
+
   componentDidLoad(){
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
@@ -26,14 +43,20 @@ export class InsInputMultiple {
     }
   }
 
-	@Method() // Discuss with mark re this as this is a redundant feature of component.value
+	@Method()
 	async val() {
 		return this.value;
 	}
 
-	@Method() // Discuss with mark re this as this is a redundant feature of component.value = value
+  @Method()
+  async getValue(){
+    return this.value
+  }
+
+	@Method()
 	async setValue(value) {
 		this.value = value;
+    this.insValueChange.emit(this.value);
 	}
 
 	onfocusHandler() {
@@ -84,18 +107,13 @@ export class InsInputMultiple {
 		this.insInput.emit({
 			value: this.value
     });
+
+    this.insValueChange.emit(this.value);
   }
 
-
-
 	componentDidUpdate() {
-		if (!Array.isArray(this.value)) {
-			this.value = [];
-		}
-
-		this.insChange.emit({
-			value: this.value
-		});
+    console.log('componentDidUpdate')
+		this.insChange.emit({ value: this.value });
 		this.insInputMultipleEl.querySelector('input').focus();
 	}
 

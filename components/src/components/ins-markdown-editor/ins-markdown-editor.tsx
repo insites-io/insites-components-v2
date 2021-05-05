@@ -12,6 +12,8 @@ export class InsMarkdownEditor {
   @Prop() hasLoad: string;
 
   editor: any;
+  labelEl: any;
+  wrapperEl: any;
 
   @Prop({ mutable: true }) label: string = "";
   @Prop({ mutable: true }) value: string = "";
@@ -28,10 +30,15 @@ export class InsMarkdownEditor {
   }
 
   @Method()
+  async getValue() {
+    return this.editor.value();
+  }
+
+  @Method()
   async reset(){
-     this.value = "";
-     this.editor.value("");
-   }
+    this.value = "";
+    this.editor.value("");
+  }
 
   @Method()
   async setValue(value) {
@@ -40,21 +47,53 @@ export class InsMarkdownEditor {
   }
 
   activeState() {
-    this.insMarkdownEditorEl.querySelector('label').classList.add('active');
-    this.insMarkdownEditorEl.querySelector('.ins-markdown-editor').classList.add('active');
+    if (this.labelEl) this.labelEl.classList.add('active');
+    if (this.wrapperEl) this.wrapperEl.classList.add('active');
   }
 
   inactiveState() {
-    this.insMarkdownEditorEl.querySelector('label').classList.remove('active');
-    this.insMarkdownEditorEl.querySelector('.ins-markdown-editor').classList.remove('active');
+    if (this.labelEl) this.labelEl.classList.remove('active');
+    if (this.wrapperEl) this.wrapperEl.classList.remove('active');
   }
 
-  readonlyState() {
-    this.insMarkdownEditorEl.querySelector('label').classList.add('active');
-    this.insMarkdownEditorEl.querySelector('.ins-markdown-editor').classList.add('active');
+  setHiddenIcons() {
+    if (this.readonly) {
+      return ['bold', 'italic', 'heading', 'quote', 'image', 'ordered-list', 'unordered-list', 'guide', 'link'];
+    } else {
+      return ['guide'];
+    }
   }
 
-  eventListeners() {
+  componentDidLoad() {
+    this.initSimpleMDE();
+    this.initEls();
+    this.initEventListeners();
+
+    this.didLoad.emit();
+    if (this.hasLoad && window["Insites"]){
+      let func = window["Insites"].methods[this.hasLoad];
+      if (func) func(this.insMarkdownEditorEl);
+    }
+  }
+
+  initSimpleMDE(){
+    this.editor = new window["SimpleMDE"]({
+      element: this.insMarkdownEditorEl.querySelector('.markdown-editor'),
+      spellChecker: false,
+      status: false,
+      hideIcons: this.setHiddenIcons()
+    });
+
+    this.editor.codemirror.options.readOnly = this.readonly;
+    if (this.value) this.editor.value(this.value);
+  }
+
+  initEls(){
+    this.labelEl = this.insMarkdownEditorEl.querySelector('label');
+    this.wrapperEl = this.insMarkdownEditorEl.querySelector('.ins-markdown-editor');
+  }
+
+  initEventListeners() {
     this.editor.codemirror.on("focus", () => {
       this.activeState();
     });
@@ -66,39 +105,6 @@ export class InsMarkdownEditor {
     this.editor.codemirror.on("change", () => {
       this.insValueChange.emit(this.editor.value());
     });
-  }
-
-  // componentDidUpdate(){
-  //   this.editor.value(this.value);
-  // }
-
-  setHiddenIcons() {
-    if (this.readonly) {
-      return ['bold', 'italic', 'heading', 'quote', 'image', 'ordered-list', 'unordered-list', 'guide', 'link'];
-    } else {
-      return ['guide'];
-    }
-  }
-
-  componentDidLoad() {
-    this.editor = new window["SimpleMDE"]({
-      element: this.insMarkdownEditorEl.querySelector('.markdown-editor'),
-      spellChecker: false,
-      status: false,
-      hideIcons: this.setHiddenIcons()
-    });
-
-    this.eventListeners();
-    this.editor.codemirror.options.readOnly = this.readonly;
-    if (this.value) {
-      this.editor.value(this.value);
-    }
-
-    this.didLoad.emit();
-    if (this.hasLoad && window["Insites"]){
-      let func = window["Insites"].methods[this.hasLoad];
-      if (func) func(this.insMarkdownEditorEl);
-    }
   }
 
   render() {

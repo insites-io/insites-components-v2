@@ -38,10 +38,11 @@ var componentDetailsMapping = {
   // 'heading':          ['onInsHeadingUpdate'],
   // 'image-picker':     ['valueChange'],
   // 'input-file':       ['fileAdded', 'fileRemoved', 'fileError'],
-  // 'input-tel':        ['insInputTelChange', 'valueChange'],
+  'input-tel':        ['insInput', 'insValueChange'],
   'input':            ['insInput', 'insBlur', 'insValueChange', 'insIconClick'],
-  // 'markdown-editor':  ['valueChange'],
-  // 'radio':            ['onSelect', 'valueChange'],
+  'input-multiple':   ['insInput', 'insChane', 'insValueChange'],
+  'markdown-editor':  ['insValueChange'],
+  'radio':            ['insCheck', 'insValueChange'],
   // 'select-option':    ['insSelectOptionClicked', 'defaultEvent'],
   // 'select':           ['onOptionSelect', 'onSubmitOption', 'valueChange'],
   // 'sort':             ['onDragStart', 'onDragEnd', 'onChoose', 'onAdd', 'onUpdate', 'onMove', 'onRemoved', 'onCloned', 'onPositionChanged'],
@@ -84,7 +85,8 @@ for (var key in componentDetailsMapping) {
     template: templateBuilder(key, eventsList),
     methods:{
       inputHandler(event){
-        this.$emit('input', event.detail)
+        console.log('inputHandler', event.detail);
+        this.$emit('input', event.detail);
       }
     }
   });

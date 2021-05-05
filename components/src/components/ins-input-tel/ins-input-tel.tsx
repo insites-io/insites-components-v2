@@ -174,6 +174,20 @@ export class InsInputTel {
   }
 
   @Method()
+  async setValue({ country, country_code, area_code, phone_number }){
+    if (country) this._iti.setCountry(country);
+    if (country_code) this._iti.setNumber(country_code);
+
+    this.areacodeValue = area_code;
+    this._area_code_value = area_code;
+
+    this.phonenumValue = phone_number;
+    this._phone_number_value = phone_number;
+
+    this.insValueChange.emit(this._getValue());
+  }
+
+  @Method()
   async getCountryData() {
     return this._iti.getSelectedCountryData();
   }
@@ -190,12 +204,12 @@ export class InsInputTel {
 
   activateLabel() {
     if (this.readonly || this.disabled) return;
-    this._label.classList.add('active');
+    if (this._label) this._label.classList.add('active');
   }
 
   deactivateLabel() {
     if (this.readonly || this.disabled) return;
-    this._label.classList.remove('active');
+    if (this._label) this._label.classList.remove('active');
     this.areacodeValue = this._area_code_value;
     this.phonenumValue = this._phone_number_value;
   }

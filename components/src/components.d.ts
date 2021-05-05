@@ -459,6 +459,7 @@ export namespace Components {
     interface InsInputMultiple {
         "disabled": boolean;
         "errorMessage": string;
+        "getValue": () => Promise<any>;
         "hasError": boolean;
         "hasLoad": string;
         "label": string;
@@ -572,6 +573,7 @@ export namespace Components {
         "required": boolean;
         "setCountry": (country: any) => Promise<void>;
         "setCountryCode": (code: any) => Promise<void>;
+        "setValue": ({ country, country_code, area_code, phone_number }: { country: any; country_code: any; area_code: any; phone_number: any; }) => Promise<void>;
         "tooltip": string;
     }
     interface InsInputTooltip {
@@ -616,6 +618,7 @@ export namespace Components {
     }
     interface InsMarkdownEditor {
         "errorMessage": string;
+        "getValue": () => Promise<any>;
         "hasError": boolean;
         "hasLoad": string;
         "label": string;
@@ -693,9 +696,12 @@ export namespace Components {
     interface InsRadio {
         "checked": boolean;
         "disabled": boolean;
+        "getValue": () => Promise<any>;
         "hasLoad": string;
         "label": any;
         "name": any;
+        "setChecked": () => Promise<void>;
+        "setValue": (value: any, static_value: any) => Promise<void>;
         "staticValue": any;
         "tooltip": string;
         "value": any;
@@ -2047,6 +2053,7 @@ declare namespace LocalJSX {
         "onDidLoad"?: (event: CustomEvent<any>) => void;
         "onInsChange"?: (event: CustomEvent<any>) => void;
         "onInsInput"?: (event: CustomEvent<any>) => void;
+        "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "readonly"?: boolean;
         "tooltip"?: string;
         "value"?: any;

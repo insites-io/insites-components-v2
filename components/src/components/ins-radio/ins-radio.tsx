@@ -1,4 +1,4 @@
-import { h, Component, Prop, Event, EventEmitter, Element } from "@stencil/core";
+import { h, Component, Prop, Event, EventEmitter, Element, Method } from "@stencil/core";
 
 @Component({ tag: "ins-radio" })
 export class InsRadio {
@@ -18,11 +18,34 @@ export class InsRadio {
 
   localChecked: boolean = false;
 
+  @Method()
+  async setValue(value, static_value){
+    this.value = value;
+    this.staticValue = static_value;
+  }
+
+  @Method()
+  async setChecked(){
+    this.localChecked = true;
+    this.checked = true;
+    this.onSelectHandler();
+  }
+
+  @Method()
+  async getValue(){
+    return this.staticValue ? this.staticValue : this.value;
+  }
+
   componentWillLoad(){
-    if (this.checked) this.localChecked = true;
+    this.checkValue();
+  }
+
+  componentWillUpdate(){
+    this.checkValue();
   }
 
   componentDidLoad(){
+
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
@@ -30,7 +53,7 @@ export class InsRadio {
     }
   }
 
-  componentWillUpdate(){
+  checkValue(){
     if (this.value === this.staticValue){
       this.localChecked = true;
     } else if (this.checked){

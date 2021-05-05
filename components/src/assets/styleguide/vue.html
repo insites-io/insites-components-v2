@@ -21,24 +21,44 @@
 
 <body>
   <div id="app">
-    <insites-date-time
-      id="testEl"
-      label="Test"
-      v-model="message">
-    </insites-date-time>
+    <insites-radio v-model="radio" static-value="Fruits" label="Fruits" name="food"></insites-radio>
+    <insites-radio v-model="radio" static-value="Veggies" label="Veggies" name="food"></insites-radio>
+    <insites-radio id="testEl" v-model="radio" static-value="Meat" label="Meat" name="food"></insites-radio>
 
-    {{ message }}
+    <br>
+    <p>{{ radio }}</p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="/assets/js/insites-components-vue-wrapper.js"></script>
 
   <script>
+
+    Vue.component('arrs', {
+      props: {
+        value: Array
+      },
+      methods:{
+        valueChangeHandler(e){
+          this.$emit('input', e.detail)
+        }
+      },
+      mounted(){
+        this.$el.value = this.value;
+      },
+      template: `<ins-input-multiple
+        @insValueChange="valueChangeHandler">
+      </ins-input-multiple>`
+    });
+
     var app = new Vue({
       el: '#app',
       data(){
         return {
-          message:"2021-08-04 13:00"
+          radio: "Fruits",
+          booleans: true,
+          strings: "test",
+          arrays: ["test 1"]
         }
       },
       methods: {},
