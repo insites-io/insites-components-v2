@@ -281,6 +281,7 @@ export namespace Components {
         "classId": string;
         "disableLineNumbers": boolean;
         "errorMessage": string;
+        "getValue": () => Promise<any>;
         "hasCodeEditor": boolean;
         "hasError": boolean;
         "imageUpload": boolean;
@@ -290,6 +291,7 @@ export namespace Components {
         "name": string;
         "pluginsList": any;
         "readonly": boolean;
+        "setValue": (value: any) => Promise<void>;
         "showSource": boolean;
         "theme": string;
         "tooltip": string;
@@ -363,12 +365,14 @@ export namespace Components {
         "buttonColor": string;
         "errorMessage": string;
         "fileName": any;
+        "getValue": () => Promise<any>;
         "hasLoad": string;
         "imgType": string;
         "label": string;
         "name": string;
         "notImageFile": boolean;
         "placeholder": string;
+        "setValue": (value: any, file_name: any) => Promise<void>;
         "uploadImgContainer": string;
         "uploadImgFileFormats": string;
         "uploadImgRecFileSize": number;

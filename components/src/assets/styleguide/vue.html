@@ -21,18 +21,13 @@
 
 <body>
   <div id="app">
-    <insites-textarea id="testEl"
-      label="Toggle Switch"
+    <insites-image-picker id="testEl"
+      label="Upload image"
       v-model="strings">
-    </insites-textarea>
+    </insites-image-picker>
 
     <br>
     <p>{{ strings }}</p>
-
-    <textarea name="test" id="testEl2" v-model="strings2"></textarea>
-
-    <br>
-    <p>{{ strings2 }}</p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -67,8 +62,7 @@
         return {
           radio: "Fruits",
           booleans: true,
-          strings: "35",
-          strings2: "hello world!",
+          strings: 'test.jpg',
           arrays: ["macOS", "Android"]
         }
       },

@@ -1,4 +1,4 @@
-import { h, Component, Prop, Element, Event, EventEmitter} from '@stencil/core';
+import { h, Component, Prop, Element, Event, EventEmitter, Method } from '@stencil/core';
 import Cropper from 'cropperjs';
 
 @Component({
@@ -37,6 +37,22 @@ export class Insimagepicker {
   hiddenInputEl;
   croppedImage;
 
+  @Method()
+  async getValue(){
+    return this.value;
+  }
+
+  @Method()
+  async setValue(value, file_name){
+    this.value = value;
+    this.fileName = file_name;
+
+    this.insValueChange.emit({
+      base64: value,
+      filename: file_name
+    });
+  }
+
   componentDidLoad () {
     this.initEls();
     this.didLoad.emit();
@@ -57,6 +73,7 @@ export class Insimagepicker {
   displayImage(evt) {
     let tgt = evt.target || window.event.srcElement;
     this.openModal();
+    console.log('tgt.files', tgt.files);
     this.processImgFile(tgt.files);
   }
 
@@ -101,6 +118,7 @@ export class Insimagepicker {
         component.showImage(fr);
       }
 
+      console.log('files[0]', files[0]);
       fr.readAsDataURL(files[0]);
     }
   }
@@ -113,6 +131,7 @@ export class Insimagepicker {
     this.imagePreviewEl.classList.add('has-image');
     this.controllersEl.classList.add('has-image');
 
+    console.log('this.base64', this.base64);
     setTimeout(() => {
       if (this.imageEl.naturalHeight < 200){
         let marginTop = (200 - this.imageEl.naturalHeight) / 2;
@@ -145,6 +164,7 @@ export class Insimagepicker {
       base64: this.base64,
       filename: this.fileName
     });
+
     this.closeModal(e);
     this.cancelCropping();
   }

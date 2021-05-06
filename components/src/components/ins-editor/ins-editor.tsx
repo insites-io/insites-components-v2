@@ -75,6 +75,23 @@ export class InsEditor {
     return this.removeEditableAttr(this.getVal());
   }
 
+	@Method()
+	async getValue() {
+    return await this.val();
+  }
+
+	@Method()
+	async setValue(value) {
+    this.value = value;
+    if (this.showSource || this.disableVisualEditor) {
+      this.codeEditor.setValue(value);
+    } else {
+      this.insEditorEl.querySelector('.redactor-styles')
+        .innerHTML = this.visualEditorRedactor(value);
+    }
+    this.insValueChange.emit(await this.getValue());
+  }
+
   getVal(){
 		if (this.isSourceView) {
 			if (this.codeEditor) return this.codeEditor.getValue();
