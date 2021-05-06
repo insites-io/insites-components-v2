@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'insites-20-fonticon';
-  src:  url('/assets/fonts/icons/Insites-Font-Icons.eot?jo0fya');
-  src:  url('/assets/fonts/icons/Insites-Font-Icons.eot?jo0fya#iefix') format('embedded-opentype'),
-    url('/assets/fonts/icons/Insites-Font-Icons.ttf?jo0fya') format('truetype'),
-    url('/assets/fonts/icons/Insites-Font-Icons.woff?jo0fya') format('woff'),
-    url('/assets/fonts/icons/Insites-Font-Icons.svg?jo0fya#Insites-Font-Icons') format('svg');
+  src:  url('/assets/fonts/icons/Insites-Font-Icons.eot?6r5qst');
+  src:  url('/assets/fonts/icons/Insites-Font-Icons.eot?6r5qst#iefix') format('embedded-opentype'),
+    url('/assets/fonts/icons/Insites-Font-Icons.ttf?6r5qst') format('truetype'),
+    url('/assets/fonts/icons/Insites-Font-Icons.woff?6r5qst') format('woff'),
+    url('/assets/fonts/icons/Insites-Font-Icons.svg?6r5qst#Insites-Font-Icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,12 +25,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-drawer:before {
-  content: "\e96d";
-}
-.icon-check1:before {
-  content: "\e99b";
-}
 .icon-archive:before {
   content: "\e979";
 }
@@ -49,6 +43,9 @@
 .icon-check-square:before {
   content: "\e99a";
 }
+.icon-check1:before {
+  content: "\e99b";
+}
 .icon-close-1:before {
   content: "\e943";
 }
@@ -57,6 +54,9 @@
 }
 .icon-crop1:before {
   content: "\e9bc";
+}
+.icon-drawer:before {
+  content: "\e96d";
 }
 .icon-edit-2:before {
   content: "\e9c5";
@@ -162,6 +162,12 @@
 }
 .icon-star:before {
   content: "\ea4a";
+}
+.icon-star-full:before {
+  content: "\ea8c";
+}
+.icon-star-half:before {
+  content: "\ea90";
 }
 .icon-thumbs-down:before {
   content: "\ea54";
