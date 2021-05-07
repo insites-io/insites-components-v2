@@ -73,6 +73,10 @@
                         border-radius: 4px 4px 0px 0px;
                     }
                 }
+
+                &.is-invalid .ins-select-options-wrap {
+                    border-top-color: var(--ins-color-negative);
+                }
             }
         }
 
@@ -88,7 +92,7 @@
         &.initializing {
             .icon-caret-down {
                 display: none;
-            }   
+            }
         }
 
         .ins-select-options-wrap {
@@ -128,7 +132,7 @@
             display: none;
         }
     }
-    
+
 
     &.activated {
         .ins-select-search {

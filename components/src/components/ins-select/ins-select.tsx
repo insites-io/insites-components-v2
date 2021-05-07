@@ -94,7 +94,6 @@ export class InsSelect {
   }
 
   componentDidLoad(){
-    console.log('componentDidLoad', this.value);
     this.bindEls();
     this.initOutsideClick();
     this.initSearchInput();

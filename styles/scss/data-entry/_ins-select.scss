@@ -511,6 +511,7 @@
       margin-top: 8px;
       height: 16px !important;
     }
+
     .ins-select-value-wrap {
       border-color: var(--ins-color-negative);
       color: var(--ins-color-negative);
@@ -525,6 +526,15 @@
       .ins-select-options-wrap {
         top: calc(100% - 24px);
         border-color: var(--ins-color-negative);
+      }
+
+      &.drop-up .ins-select-value-wrap {
+        border-bottom-color: var(--ins-color-negative);
+      }
+
+      &.drop-up .ins-select-options-wrap {
+        top: initial;
+        border-top-color: var(--ins-color-negative);
       }
     }
   }
