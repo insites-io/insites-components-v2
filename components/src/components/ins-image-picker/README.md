@@ -35,6 +35,29 @@
 | `insValueChange` |             | `CustomEvent<any>` |
 
 
+## Methods
+
+### `getValue() => Promise<any>`
+
+
+
+#### Returns
+
+Type: `Promise<any>`
+
+
+
+### `setValue(value: any, file_name: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Depends on

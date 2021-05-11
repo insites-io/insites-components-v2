@@ -22,14 +22,25 @@
 
 ## Events
 
-| Event       | Description | Type               |
-| ----------- | ----------- | ------------------ |
-| `didLoad`   |             | `CustomEvent<any>` |
-| `insChange` |             | `CustomEvent<any>` |
-| `insInput`  |             | `CustomEvent<any>` |
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `didLoad`        |             | `CustomEvent<any>` |
+| `insChange`      |             | `CustomEvent<any>` |
+| `insInput`       |             | `CustomEvent<any>` |
+| `insValueChange` |             | `CustomEvent<any>` |
 
 
 ## Methods
+
+### `getValue() => Promise<any>`
+
+
+
+#### Returns
+
+Type: `Promise<any>`
+
+
 
 ### `setValue(value: any) => Promise<void>`
 

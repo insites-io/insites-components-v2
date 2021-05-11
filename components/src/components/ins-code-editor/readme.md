@@ -24,11 +24,12 @@
 
 ## Events
 
-| Event      | Description | Type               |
-| ---------- | ----------- | ------------------ |
-| `didLoad`  |             | `CustomEvent<any>` |
-| `insBlur`  |             | `CustomEvent<any>` |
-| `insInput` |             | `CustomEvent<any>` |
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `didLoad`        |             | `CustomEvent<any>` |
+| `insBlur`        |             | `CustomEvent<any>` |
+| `insInput`       |             | `CustomEvent<any>` |
+| `insValueChange` |             | `CustomEvent<any>` |
 
 
 ## Methods
@@ -40,6 +41,16 @@
 #### Returns
 
 Type: `Promise<void>`
+
+
+
+### `getValue() => Promise<any>`
+
+
+
+#### Returns
+
+Type: `Promise<any>`
 
 
 

@@ -31,6 +31,26 @@
 
 ## Methods
 
+### `getValue() => Promise<{ value: string; trueValue: string; falseValue: string; }>`
+
+
+
+#### Returns
+
+Type: `Promise<{ value: string; trueValue: string; falseValue: string; }>`
+
+
+
+### `setValue(value: any, trueValue: any, falseValue: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `updateCheckState(state: any) => Promise<void>`
 
 

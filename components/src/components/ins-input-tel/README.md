@@ -88,6 +88,16 @@ Type: `Promise<void>`
 
 
 
+### `setValue({ country, country_code, area_code, phone_number }: { country: any; country_code: any; area_code: any; phone_number: any; }) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 
 ## Dependencies
 

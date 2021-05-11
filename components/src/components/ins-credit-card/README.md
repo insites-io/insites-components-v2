@@ -22,11 +22,35 @@
 
 ## Events
 
-| Event      | Description | Type               |
-| ---------- | ----------- | ------------------ |
-| `didLoad`  |             | `CustomEvent<any>` |
-| `insClick` |             | `CustomEvent<any>` |
-| `insClose` |             | `CustomEvent<any>` |
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `didLoad`        |             | `CustomEvent<any>` |
+| `insClick`       |             | `CustomEvent<any>` |
+| `insClose`       |             | `CustomEvent<any>` |
+| `insValueChange` |             | `CustomEvent<any>` |
+
+
+## Methods
+
+### `getValue() => Promise<string>`
+
+
+
+#### Returns
+
+Type: `Promise<string>`
+
+
+
+### `setValue(value: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ----------------------------------------------

@@ -100,6 +100,16 @@ Type: `Promise<NodeListOf<HTMLInsSelectOptionElement>>`
 
 
 
+### `getValue() => Promise<any>`
+
+
+
+#### Returns
+
+Type: `Promise<any>`
+
+
+
 ### `reset() => Promise<boolean>`
 
 
@@ -157,6 +167,16 @@ Type: `Promise<boolean>`
 #### Returns
 
 Type: `Promise<boolean>`
+
+
+
+### `setValue(value: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

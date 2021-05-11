@@ -55,17 +55,63 @@
 
   <ins-renderer>
     <div>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-      <ins-input-select label="Operating System" has-error error-message="OS is required.">
-        <ins-input-select-option label="Windows" value="Windows"></ins-input-select-option>
-        <ins-input-select-option label="MacOS" value="macOS"></ins-input-select-option>
-        <ins-input-select-option label="Linux" value="Linux"></ins-input-select-option>
-      </ins-input-select>
+      <style>
+        .slide-heading {
+          text-align: center;
+          padding: 40px 0;
+          border: solid 1px #aaa;
+          margin: 0;
+        }
+      </style>
 
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <ins-carousel layout="1" per-page="7" loop
+          heading="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          body-text="sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          sub-heading="Duis aute irure dolor in reprehenderit in voluptate velit"
+          cta-label="CTA BUTTON" cta-link="/#/app/other/slider" bind-to="myCarousel">
+
+          <div id="myCarousel">
+            <div class="img-wrap">
+              <h3 class="slide-heading">Slide 1</h3>
+            </div>
+
+            <div class="img-wrap">
+              <h3 class="slide-heading">Slide 2</h3>
+            </div>
+
+            <div class="img-wrap">
+              <h3 class="slide-heading">Slide 3</h3>
+            </div>
+
+            <div class="img-wrap">
+              <h3 class="slide-heading">Slide 4</h3>
+            </div>
+
+            <div class="img-wrap">
+              <h3 class="slide-heading">Slide 5</h3>
+            </div>
+
+            <div class="img-wrap">
+              <h3 class="slide-heading">Slide 6</h3>
+            </div>
+
+            <div class="img-wrap">
+              <h3 class="slide-heading">Slide 7</h3>
+            </div>
+
+            <div class="img-wrap">
+              <h3 class="slide-heading">Slide 8</h3>
+            </div>
+
+            <div class="img-wrap">
+              <h3 class="slide-heading">Slide 9</h3>
+            </div>
+          </div>
+
+        </ins-carousel>
+
+
     </div>
   </ins-renderer>
 </body>

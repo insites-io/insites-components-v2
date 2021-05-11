@@ -51,6 +51,26 @@ Type: `Promise<any>`
 
 
 
+### `getValue() => Promise<string>`
+
+
+
+#### Returns
+
+Type: `Promise<string>`
+
+
+
+### `setValue(value: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 
 ## Dependencies
 

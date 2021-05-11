@@ -28,6 +28,39 @@
 | `insValueChange` |             | `CustomEvent<any>` |
 
 
+## Methods
+
+### `getValue() => Promise<any>`
+
+
+
+#### Returns
+
+Type: `Promise<any>`
+
+
+
+### `setChecked() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setValue(value: any, static_value: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Depends on

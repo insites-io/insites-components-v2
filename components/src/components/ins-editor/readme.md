@@ -39,6 +39,26 @@
 
 ## Methods
 
+### `getValue() => Promise<any>`
+
+
+
+#### Returns
+
+Type: `Promise<any>`
+
+
+
+### `setValue(value: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `val() => Promise<any>`
 
 

@@ -40,6 +40,7 @@ export class InsCarousel {
   slideEls: any;
   slideInterval: any;
   currentIndex: number;
+  paginations: any;
 
   componentDidLoad(){
     this.initSiema();
@@ -94,17 +95,22 @@ export class InsCarousel {
   }
 
   initPagination(){
-    if (!this.noPagination){
-      this.slideEls = this.slides.querySelectorAll(':scope > div > div');
-      let paginationWrap = this.insCarouselEl.querySelector('.ins-carousel_paginations');
-      let count = this.loop
-        ? this.slideEls.length - 2
-        : this.slideEls.length;
+    if (this.noPagination && this.perPage === 0) return;
 
-      for (let i = 0; i < count; i++){
-        paginationWrap.appendChild(this.renderPaginate(i));
-      }
+    this.slideEls = this.slides.querySelectorAll(':scope > div > div');
+    let paginationWrap = this.insCarouselEl.querySelector('.ins-carousel_paginations');
+    let count = this.slideEls.length;
+
+    if (this.perPage >= count) return;
+    if (this.loop) count = count - (2 * this.perPage);
+    count = count - this.perPage + 1;
+
+    for (let i = 0; i < count; i++){
+      paginationWrap.appendChild(this.renderPaginate(i));
     }
+
+    this.paginations = this.insCarouselEl
+      .querySelectorAll('.ins-carousel_paginations .pagination');
   }
 
   slideChanged(){
@@ -136,18 +142,20 @@ export class InsCarousel {
   }
 
   setActiveIndex(index){
-    let paginations = this.insCarouselEl
-      .querySelectorAll('.ins-carousel_paginations .pagination');
-
-    for (let i = 0; i < paginations.length; i++){
-      paginations[i].classList.remove('active');
+    for (let i = 0; i < this.paginations.length; i++){
+      this.paginations[i].classList.remove('active');
     }
-    paginations[index].classList.add('active');
+    this.paginations[index].classList.add('active');
   }
 
   @Method()
   async goTo(slide){
     let fromSlide = this.currentIndex;
+
+    if (this.paginations && this.loop
+      && this.currentIndex === (this.paginations.length - 1) ){
+        slide = 0;
+    }
 
     switch(slide){
       case "next": this.slider.next(); break;

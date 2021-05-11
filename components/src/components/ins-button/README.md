@@ -16,6 +16,7 @@
 | `dropdown`      | `dropdown`       |             | `boolean` | `false`     |
 | `hasLoad`       | `has-load`       |             | `string`  | `undefined` |
 | `icon`          | `icon`           |             | `string`  | `''`        |
+| `iconRight`     | `icon-right`     |             | `string`  | `''`        |
 | `label`         | `label`          |             | `string`  | `'BUTTON'`  |
 | `loading`       | `loading`        |             | `boolean` | `false`     |
 | `options`       | `options`        |             | `string`  | `''`        |

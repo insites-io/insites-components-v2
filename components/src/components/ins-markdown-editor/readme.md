@@ -30,6 +30,16 @@
 
 ## Methods
 
+### `getValue() => Promise<any>`
+
+
+
+#### Returns
+
+Type: `Promise<any>`
+
+
+
 ### `reset() => Promise<void>`
 
 
