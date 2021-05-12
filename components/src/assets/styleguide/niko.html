@@ -49,7 +49,10 @@
   </ins-sidebar>
 
   <ins-header support-link="www.google.com" id="insMenuBar">
-    <ins-header-user name="John Smith" logout-link="/" profile-link="#/my-profile">
+    <ins-header-user
+      name="John Smith"
+      logout-link="/"
+      profile-link="#/my-profile">
     </ins-header-user>
   </ins-header>
 
@@ -111,9 +114,17 @@
 
         </ins-carousel>
 
+      <ins-input-phone label="Phone"
+        validate required
+        placeholder="(02) 9876 5432"
+        error-message="Phone is required">
+      </ins-input-phone>
 
     </div>
   </ins-renderer>
+
+
+
 </body>
 
 </html>

@@ -474,6 +474,22 @@ export namespace Components {
         "val": () => Promise<any>;
         "value": any;
     }
+    interface InsInputPhone {
+        "disabled": boolean;
+        "errorMessage": string;
+        "fieldId": string;
+        "getValue": () => Promise<string>;
+        "hasError": boolean;
+        "hasLoad": string;
+        "label": string;
+        "name": string;
+        "placeholder": string;
+        "readonly": boolean;
+        "required": boolean;
+        "tooltip": string;
+        "validate": boolean;
+        "value": string;
+    }
     interface InsInputSelect {
         "closeOptions": () => Promise<void>;
         "disableNoResult": () => Promise<boolean>;
@@ -1231,6 +1247,12 @@ declare global {
         prototype: HTMLInsInputMultipleElement;
         new (): HTMLInsInputMultipleElement;
     };
+    interface HTMLInsInputPhoneElement extends Components.InsInputPhone, HTMLStencilElement {
+    }
+    var HTMLInsInputPhoneElement: {
+        prototype: HTMLInsInputPhoneElement;
+        new (): HTMLInsInputPhoneElement;
+    };
     interface HTMLInsInputSelectElement extends Components.InsInputSelect, HTMLStencilElement {
     }
     var HTMLInsInputSelectElement: {
@@ -1557,6 +1579,7 @@ declare global {
         "ins-input": HTMLInsInputElement;
         "ins-input-file": HTMLInsInputFileElement;
         "ins-input-multiple": HTMLInsInputMultipleElement;
+        "ins-input-phone": HTMLInsInputPhoneElement;
         "ins-input-select": HTMLInsInputSelectElement;
         "ins-input-select-group": HTMLInsInputSelectGroupElement;
         "ins-input-select-option": HTMLInsInputSelectOptionElement;
@@ -2072,6 +2095,25 @@ declare namespace LocalJSX {
         "readonly"?: boolean;
         "tooltip"?: string;
         "value"?: any;
+    }
+    interface InsInputPhone {
+        "disabled"?: boolean;
+        "errorMessage"?: string;
+        "fieldId"?: string;
+        "hasError"?: boolean;
+        "hasLoad"?: string;
+        "label"?: string;
+        "name"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onInsInput"?: (event: CustomEvent<any>) => void;
+        "onInsValidation"?: (event: CustomEvent<any>) => void;
+        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "placeholder"?: string;
+        "readonly"?: boolean;
+        "required"?: boolean;
+        "tooltip"?: string;
+        "validate"?: boolean;
+        "value"?: string;
     }
     interface InsInputSelect {
         "disabled"?: boolean;
@@ -2634,6 +2676,7 @@ declare namespace LocalJSX {
         "ins-input": InsInput;
         "ins-input-file": InsInputFile;
         "ins-input-multiple": InsInputMultiple;
+        "ins-input-phone": InsInputPhone;
         "ins-input-select": InsInputSelect;
         "ins-input-select-group": InsInputSelectGroup;
         "ins-input-select-option": InsInputSelectOption;
@@ -2725,6 +2768,7 @@ declare module "@stencil/core" {
             "ins-input": LocalJSX.InsInput & JSXBase.HTMLAttributes<HTMLInsInputElement>;
             "ins-input-file": LocalJSX.InsInputFile & JSXBase.HTMLAttributes<HTMLInsInputFileElement>;
             "ins-input-multiple": LocalJSX.InsInputMultiple & JSXBase.HTMLAttributes<HTMLInsInputMultipleElement>;
+            "ins-input-phone": LocalJSX.InsInputPhone & JSXBase.HTMLAttributes<HTMLInsInputPhoneElement>;
             "ins-input-select": LocalJSX.InsInputSelect & JSXBase.HTMLAttributes<HTMLInsInputSelectElement>;
             "ins-input-select-group": LocalJSX.InsInputSelectGroup & JSXBase.HTMLAttributes<HTMLInsInputSelectGroupElement>;
             "ins-input-select-option": LocalJSX.InsInputSelectOption & JSXBase.HTMLAttributes<HTMLInsInputSelectOptionElement>;
