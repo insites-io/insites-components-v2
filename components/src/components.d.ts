@@ -480,14 +480,16 @@ export namespace Components {
         "disabled": boolean;
         "errorMessage": string;
         "fieldId": string;
-        "getValue": () => Promise<string>;
+        "getValue": () => Promise<any>;
         "hasError": boolean;
         "hasLoad": string;
+        "invalidMessage": string;
         "label": string;
         "name": string;
         "placeholder": string;
         "readonly": boolean;
         "required": boolean;
+        "setValue": (value: any) => Promise<void>;
         "tooltip": string;
         "validate": boolean;
         "value": string;
@@ -2106,6 +2108,7 @@ declare namespace LocalJSX {
         "fieldId"?: string;
         "hasError"?: boolean;
         "hasLoad"?: string;
+        "invalidMessage"?: string;
         "label"?: string;
         "name"?: string;
         "onDidLoad"?: (event: CustomEvent<any>) => void;

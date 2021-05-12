@@ -7,21 +7,22 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type      | Default     |
-| -------------- | --------------- | ----------- | --------- | ----------- |
-| `disabled`     | `disabled`      |             | `boolean` | `undefined` |
-| `errorMessage` | `error-message` |             | `string`  | `""`        |
-| `fieldId`      | `field-id`      |             | `string`  | `""`        |
-| `hasError`     | `has-error`     |             | `boolean` | `undefined` |
-| `hasLoad`      | `has-load`      |             | `string`  | `undefined` |
-| `label`        | `label`         |             | `string`  | `""`        |
-| `name`         | `name`          |             | `string`  | `""`        |
-| `placeholder`  | `placeholder`   |             | `string`  | `""`        |
-| `readonly`     | `readonly`      |             | `boolean` | `undefined` |
-| `required`     | `required`      |             | `boolean` | `undefined` |
-| `tooltip`      | `tooltip`       |             | `string`  | `""`        |
-| `validate`     | `validate`      |             | `boolean` | `undefined` |
-| `value`        | `value`         |             | `string`  | `""`        |
+| Property         | Attribute         | Description | Type      | Default     |
+| ---------------- | ----------------- | ----------- | --------- | ----------- |
+| `disabled`       | `disabled`        |             | `boolean` | `undefined` |
+| `errorMessage`   | `error-message`   |             | `string`  | `""`        |
+| `fieldId`        | `field-id`        |             | `string`  | `""`        |
+| `hasError`       | `has-error`       |             | `boolean` | `undefined` |
+| `hasLoad`        | `has-load`        |             | `string`  | `undefined` |
+| `invalidMessage` | `invalid-message` |             | `string`  | `""`        |
+| `label`          | `label`           |             | `string`  | `""`        |
+| `name`           | `name`            |             | `string`  | `""`        |
+| `placeholder`    | `placeholder`     |             | `string`  | `""`        |
+| `readonly`       | `readonly`        |             | `boolean` | `undefined` |
+| `required`       | `required`        |             | `boolean` | `undefined` |
+| `tooltip`        | `tooltip`         |             | `string`  | `""`        |
+| `validate`       | `validate`        |             | `boolean` | `undefined` |
+| `value`          | `value`           |             | `string`  | `""`        |
 
 
 ## Events
@@ -36,13 +37,23 @@
 
 ## Methods
 
-### `getValue() => Promise<string>`
+### `getValue() => Promise<any>`
 
 
 
 #### Returns
 
-Type: `Promise<string>`
+Type: `Promise<any>`
+
+
+
+### `setValue(value: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

@@ -1,4 +1,4 @@
-import { h, Component, Prop, Element, Method, State, Event, EventEmitter } from '@stencil/core';
+import { h, Component, Prop, Element, Method, State, Event, EventEmitter, Watch } from '@stencil/core';
 import intlTelInput from "intl-tel-input";
 
 @Component({
@@ -18,6 +18,7 @@ export class InsInputPhone {
   @Prop({ mutable: true }) value: string = "";
   @Prop({ mutable: true }) placeholder: string = "";
   @Prop({ mutable: true }) errorMessage: string = "";
+  @Prop({ mutable: true }) invalidMessage: string = "";
   @Prop({ mutable: true }) validate: boolean;
   @Prop({ mutable: true }) required: boolean;
   @Prop({ mutable: true }) hasError: boolean;
@@ -33,13 +34,20 @@ export class InsInputPhone {
   _iti: any;
   _errorMessage: string;
 
-  @Method()
-  async getValue(){
-    return this.value
+  @Watch('value')
+  valueHandler(newValue) {
+    console.log('valueChanged');
+    if (newValue) this.setValue(newValue);
   }
 
+  @Method()
+  async getValue(){
+    return this._iti.getNumber();
+  }
+
+  @Method()
   async setValue(value){
-    this.value = value;
+    this._iti.setNumber(value);
   }
 
   componentDidLoad() {
@@ -55,19 +63,19 @@ export class InsInputPhone {
   initintTel() {
     let input = this.el.querySelector('.ins-form-field');
     this._iti = intlTelInput(input, {
-      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/utils.min.js",
+      utilsScript: "/assets/js/ins-input-phone-utils.min.js",
       initialCountry: "au",
       preferredCountries: ['au']
     });
+
+    if (this.value) this.setValue(this.value);
   }
 
-  blurHandler(e){
+  blurHandler(){
     this.activated = false;
-    this.value = e.target.value;
-
-    if (!this.validate){
-      this.insValueChange.emit(this.value);
-    } else this.validateHandler();
+    this.value = this._iti.getNumber();
+    this.insValueChange.emit(this.value);
+    if (this.validate) this.validateHandler();
   }
 
   validateHandler(){
@@ -79,7 +87,9 @@ export class InsInputPhone {
 
     } else if (this.value){
       this.hasError = !this._iti.isValidNumber();
-      this.errorMessage = "Invalid number.";
+      this.errorMessage = this.invalidMessage
+      ? this.invalidMessage
+      : "Invalid number.";
     } else {
       this.hasError = false;
     }
@@ -121,17 +131,17 @@ export class InsInputPhone {
           </label>
         : ''}
 
+        <input type ="hidden" name={this.name} value={this.value} />
+
         <input class="ins-form-field"
           id={this.fieldId ? this.fieldId : null}
           type="tel"
-          name={this.name}
-          value={this.value}
           placeholder={this.placeholder}
           required={this.required}
           disabled={this.disabled}
           readonly={this.readonly}
           onFocus={() => this.activateLabel()}
-          onBlur={e => this.blurHandler(e)} />
+          onBlur={() => this.blurHandler()} />
 
         {this.hasError ?
           <div class="ins-form-error">
