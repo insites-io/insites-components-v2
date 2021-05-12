@@ -16,6 +16,7 @@ export class InsAccordionItem {
   componentDidLoad(){
     this.wrapper = this.insAccordionItemEl.querySelector('.ins-accordion-item');
     this.body = this.insAccordionItemEl.querySelector('.ins-accordion-item_content');
+    if (this.active) this.toggle();
   }
 
   renderHeading(){
@@ -65,7 +66,6 @@ export class InsAccordionItem {
   render() {
     return (
       <div class={`ins-accordion-item
-        ${this.active ? 'open':'closed'}
         ${this.arrowActivated ? 'arrow-activated' : ''}`}>
 
         <div class={`ins-accordion-item_header ${this.disabled ? 'disabled':''}`}>
