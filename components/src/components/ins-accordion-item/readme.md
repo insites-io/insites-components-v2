@@ -7,15 +7,17 @@
 
 ## Properties
 
-| Property         | Attribute         | Description | Type      | Default     |
-| ---------------- | ----------------- | ----------- | --------- | ----------- |
-| `active`         | `active`          |             | `boolean` | `false`     |
-| `arrowActivated` | `arrow-activated` |             | `boolean` | `false`     |
-| `disabled`       | `disabled`        |             | `boolean` | `false`     |
-| `heading`        | `heading`         |             | `string`  | `"Heading"` |
-| `icon`           | `icon`            |             | `string`  | `undefined` |
-| `link`           | `link`            |             | `string`  | `undefined` |
-| `linkTarget`     | `link-target`     |             | `string`  | `"_blank"`  |
+| Property         | Attribute         | Description | Type      | Default             |
+| ---------------- | ----------------- | ----------- | --------- | ------------------- |
+| `active`         | `active`          |             | `boolean` | `false`             |
+| `arrowActivated` | `arrow-activated` |             | `boolean` | `false`             |
+| `closeIcon`      | `close-icon`      |             | `string`  | `"icon-angle-up"`   |
+| `disabled`       | `disabled`        |             | `boolean` | `false`             |
+| `heading`        | `heading`         |             | `string`  | `"Heading"`         |
+| `icon`           | `icon`            |             | `string`  | `undefined`         |
+| `link`           | `link`            |             | `string`  | `undefined`         |
+| `linkTarget`     | `link-target`     |             | `string`  | `"_blank"`          |
+| `openIcon`       | `open-icon`       |             | `string`  | `"icon-angle-down"` |
 
 
 ## Methods

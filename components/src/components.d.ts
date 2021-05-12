@@ -13,11 +13,13 @@ export namespace Components {
     interface InsAccordionItem {
         "active": boolean;
         "arrowActivated": boolean;
+        "closeIcon": string;
         "disabled": boolean;
         "heading": string;
         "icon": string;
         "link": string;
         "linkTarget": string;
+        "openIcon": string;
         "toggle": () => Promise<void>;
         "udpateScrollHeight": (height: any) => Promise<void>;
     }
@@ -1640,11 +1642,13 @@ declare namespace LocalJSX {
     interface InsAccordionItem {
         "active"?: boolean;
         "arrowActivated"?: boolean;
+        "closeIcon"?: string;
         "disabled"?: boolean;
         "heading"?: string;
         "icon"?: string;
         "link"?: string;
         "linkTarget"?: string;
+        "openIcon"?: string;
     }
     interface InsAccordionLink {
         "active"?: boolean;

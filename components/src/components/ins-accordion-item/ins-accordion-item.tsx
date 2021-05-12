@@ -11,6 +11,9 @@ export class InsAccordionItem {
   @Prop({ mutable: true }) disabled: boolean = false;
   @Prop({ mutable: true }) arrowActivated: boolean = false;
 
+  @Prop({ mutable: true }) openIcon: string = "icon-angle-down";
+  @Prop({ mutable: true }) closeIcon: string = "icon-angle-up";
+
   wrapper: any; body: any;
 
   componentDidLoad(){
@@ -65,7 +68,7 @@ export class InsAccordionItem {
 
   render() {
     return (
-      <div class={`ins-accordion-item
+      <div class={`ins-accordion-item closed
         ${this.arrowActivated ? 'arrow-activated' : ''}`}>
 
         <div class={`ins-accordion-item_header ${this.disabled ? 'disabled':''}`}>
@@ -78,8 +81,8 @@ export class InsAccordionItem {
               : this.renderHeading() }
 
             <div class="ins-accordion-item_header_caret-wrap" onClick={() => this.toggle()}>
-              <span class="icon-angle-down"></span>
-              <span class="icon-angle-up"></span>
+              <span class={`open-icon ${this.openIcon}`}></span>
+              <span class={`close-icon ${this.closeIcon}`}></span>
             </div>
          </div>
         </div>

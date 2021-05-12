@@ -57,15 +57,15 @@ ins-accordion-item {
 
     &_caret-wrap {
       position: absolute;
-      top: calc(50% - 11px);
+      top: calc(50% - 13px);
       right: 12px;
     }
 
-    .icon-angle-down,
-    .icon-angle-up {
+    .open-icon, .close-icon {
       display: none;
       padding: 4px;
       cursor: pointer;
+      font-size: 18px;
     }
 
   }
@@ -94,14 +94,14 @@ ins-accordion-item {
 
   &.closed {
 
-    & > .ins-accordion-item_header > .inner-head > .ins-accordion-item_header_caret-wrap > .icon-angle-down {
+    & > .ins-accordion-item_header > .inner-head > .ins-accordion-item_header_caret-wrap > .open-icon {
       display: block;
     }
   }
 
   &.open {
 
-    & > .ins-accordion-item_header > .inner-head > .ins-accordion-item_header_caret-wrap > .icon-angle-up {
+    & > .ins-accordion-item_header > .inner-head > .ins-accordion-item_header_caret-wrap > .close-icon {
       display: block;
     }
 
