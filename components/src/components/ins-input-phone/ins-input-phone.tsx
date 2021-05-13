@@ -52,7 +52,7 @@ export class InsInputPhone {
 
   componentDidLoad() {
     this._errorMessage = this.errorMessage;
-    this.initintTel();
+    setTimeout(() => this.initintTel(), 500);
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
@@ -63,7 +63,7 @@ export class InsInputPhone {
   initintTel() {
     let input = this.el.querySelector('.ins-form-field');
     this._iti = intlTelInput(input, {
-      utilsScript: "/assets/js/ins-input-phone-utils.min.js",
+      utilsScript: "https://components.insites.io/assets/js/ins-input-phone-utils.min.js",
       initialCountry: "au",
       preferredCountries: ['au']
     });
@@ -88,8 +88,9 @@ export class InsInputPhone {
     } else if (this.value){
       this.hasError = !this._iti.isValidNumber();
       this.errorMessage = this.invalidMessage
-      ? this.invalidMessage
-      : "Invalid number.";
+        ? this.invalidMessage
+        : "Invalid number.";
+
     } else {
       this.hasError = false;
     }
