@@ -58,17 +58,46 @@
 
   <ins-renderer>
     <div>
+      <ins-accordion>
 
-      <ins-input-phone id="testEl" label="Test"
-        validate value="+61212345678" required
-        error-message="Please enter a number"
-        invalid-message="Please enter a valid number">
-      </ins-input-phone>
+        <ins-accordion-item active
+          link="https://www.google.com"
+          link-target="_blank"
+          heading="Information"
+          icon="icon-info"
+          open-icon="icon-plus"
+          close-icon="icon-minus">
 
-      <script>
-        var testEl = document.getElementById('testEl');
-        testEl.addEventListener('insValueChange', e => console.log(e.detail));
-      </script>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officiis omnis rem quas veniam? Obcaecati laborum, ullam veritatis alias quidem placeat tempora maiores quibusdam officiis dolorum aliquam ipsam neque ipsum!
+        </ins-accordion-item>
+
+        <ins-accordion-item
+          heading="Information"
+          icon="icon-info"
+          open-icon="icon-book"
+          close-icon="icon-book-open">
+
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officiis omnis rem quas veniam? Obcaecati laborum, ullam veritatis alias quidem placeat tempora maiores quibusdam officiis dolorum aliquam ipsam neque ipsum!
+        </ins-accordion-item>
+
+        <ins-accordion-item
+          heading="Information"
+          icon="icon-info"
+          open-icon="icon-mail1"
+          close-icon="icon-email-opened">
+
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officiis omnis rem quas veniam? Obcaecati laborum, ullam veritatis alias quidem placeat tempora maiores quibusdam officiis dolorum aliquam ipsam neque ipsum!
+        </ins-accordion-item>
+
+        <ins-accordion-item
+          heading="Information"
+          icon="icon-info"
+          open-icon="icon-download"
+          close-icon="icon-upload">
+
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officiis omnis rem quas veniam? Obcaecati laborum, ullam veritatis alias quidem placeat tempora maiores quibusdam officiis dolorum aliquam ipsam neque ipsum!
+        </ins-accordion-item>
+      </ins-accordion>
 
     </div>
   </ins-renderer>

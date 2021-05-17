@@ -73,14 +73,14 @@ export class InsAccordionItem {
 
         <div class={`ins-accordion-item_header ${this.disabled ? 'disabled':''}`}>
 
-          <div class="inner-head">
+          <div class="inner-head" onClick={() => this.toggle()}>
             {this.icon ? <span class={`icon ${this.icon}`}></span> : "" }
 
             {this.link
               ? this.renderHeadingLink()
               : this.renderHeading() }
 
-            <div class="ins-accordion-item_header_caret-wrap" onClick={() => this.toggle()}>
+            <div class="ins-accordion-item_header_caret-wrap">
               <span class={`open-icon ${this.openIcon}`}></span>
               <span class={`close-icon ${this.closeIcon}`}></span>
             </div>
