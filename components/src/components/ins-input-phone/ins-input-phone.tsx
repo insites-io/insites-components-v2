@@ -36,7 +36,6 @@ export class InsInputPhone {
 
   @Watch('value')
   valueHandler(newValue) {
-    console.log('valueChanged');
     if (newValue) this.setValue(newValue);
   }
 

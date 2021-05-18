@@ -53,7 +53,6 @@ export class InsButton {
   }
 
   addRippleEffect(startingPoint, target){
-    console.log()
     let rect = target.getBoundingClientRect();
     let ripple = target.querySelector('.ripple-wave');
 

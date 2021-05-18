@@ -112,7 +112,6 @@ export class InsInputMultiple {
   }
 
 	componentDidUpdate() {
-    console.log('componentDidUpdate')
 		this.insChange.emit({ value: this.value });
 		this.insInputMultipleEl.querySelector('input').focus();
 	}

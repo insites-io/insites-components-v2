@@ -62,7 +62,6 @@ export class InsAccordionItem {
     }
 
     let parent = this.insAccordionItemEl.parentElement.closest('ins-accordion-item') as any;
-    console.log('height', height)
     if (parent) parent.udpateScrollHeight(height || 0);
   }
 

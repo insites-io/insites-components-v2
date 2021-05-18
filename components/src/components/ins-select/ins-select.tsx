@@ -193,7 +193,6 @@ export class InsSelect {
   }
 
   setMultipleValue(val, options){
-    console.log('setMultipleValue', val)
     let values = [], selections = []
     this.loopThroughOptions(option => {
       option.activated = false;

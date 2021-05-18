@@ -73,7 +73,6 @@ export class Insimagepicker {
   displayImage(evt) {
     let tgt = evt.target || window.event.srcElement;
     this.openModal();
-    console.log('tgt.files', tgt.files);
     this.processImgFile(tgt.files);
   }
 
@@ -118,7 +117,6 @@ export class Insimagepicker {
         component.showImage(fr);
       }
 
-      console.log('files[0]', files[0]);
       fr.readAsDataURL(files[0]);
     }
   }
@@ -131,7 +129,6 @@ export class Insimagepicker {
     this.imagePreviewEl.classList.add('has-image');
     this.controllersEl.classList.add('has-image');
 
-    console.log('this.base64', this.base64);
     setTimeout(() => {
       if (this.imageEl.naturalHeight < 200){
         let marginTop = (200 - this.imageEl.naturalHeight) / 2;
