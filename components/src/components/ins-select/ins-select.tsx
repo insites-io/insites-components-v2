@@ -471,7 +471,7 @@ export class InsSelect {
     this.collapseSection();
     this.showHiddenOptions();
     this.labelOfValue = e.label;
-    this.insValueChange.emit(this.value);(e.value);
+    this.insValueChange.emit(e.value);
     this.updateValueEls(clickedOption);
     this.value = e.value;
   }
@@ -500,7 +500,7 @@ export class InsSelect {
   emitEvent(event_type){
     if (this.multiple) {
       this.emitForMultiple(event_type);
-    } else this.insValueChange.emit(this.value);(this.value);
+    } else this.insValueChange.emit(this.value);
   }
 
   emitForMultiple(event_type){
@@ -516,7 +516,7 @@ export class InsSelect {
       event_type, selected, selectedOptions
     });
 
-    this.insValueChange.emit(this.value);(selected);
+    this.insValueChange.emit(selected);
     this.selected_values = selected;
   }
 

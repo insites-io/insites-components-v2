@@ -455,6 +455,7 @@ export class InsTable {
   @Listen('insValueChange')
   @Listen('insInput')
   processEvent(event){
+
     if (event.target.id) {
       if (event.target.attributes["data-id"]){
         let dataId = event.target.attributes["data-id"].value;
@@ -469,8 +470,14 @@ export class InsTable {
         this.insFieldChange.emit(event);
         this.updateUpdatedRows(copy, prop);
       }
-    } else if (event.target.attributes["data-type"]
-      && event.target.attributes["data-type"].value === "bulk-action"){
+    } else if (
+        event.target.attributes["data-type"] &&
+        event.target.attributes["data-type"].value === "bulk-action"){
+
+      console.log('event', event);
+      console.log('target', event.target);
+      console.log('detail', event.detail);
+
       this.selectedBulkAction = event.detail.value || event.detail;
     }
   }
