@@ -58,7 +58,7 @@ export class InsGallery {
 
   componentDidLoad(){
     if (this.slidable && !this.zoomable) this.initSlider();
-    if (this.thumbnailLayout === "slider") this.initSliderThumbs();
+    if (this.thumbnailLayout === "slider" || this.slidable) this.initSliderThumbs();
     this.progress = this.el.querySelector('.ins-gallery_progress');
     this.setProgress(0);
     this.setDefaultImg();
