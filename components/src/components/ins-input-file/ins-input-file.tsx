@@ -127,6 +127,7 @@ export class InsInputFile {
   }
 
   addDownloadLink(file) {
+    if (!file.url) return;
     let parent = file.previewElement;
     let linkEl = document.createElement('a');
 
@@ -136,7 +137,6 @@ export class InsInputFile {
     linkEl.setAttribute('target', '_blank');
     linkEl.innerHTML = 'Download';
 
-    console.log('linkEl', linkEl)
     parent.appendChild(linkEl);
   }
 
@@ -167,8 +167,9 @@ export class InsInputFile {
 
   toastIt(type, message) {
     let parent = window as any;
-    if(this.showNotifications)
-        parent.toastr[type](message);
+    if (this.showNotifications)
+      if (parent.toastr) parent.toastr[type](message);
+      else console.warn(message);
   }
 
   @Method()
@@ -317,11 +318,9 @@ export class InsInputFile {
         "dictMaxFilesExceeded": `You cannot upload any more files. Maximum of ${this.maxFiles } files. `,
         init: function () {
           this.on('addedfile', (file) => {
-            console.log('this', this);
-            console.log('file', file);
               self.setFileIcon(file);
               self.checkFileSizeDisplay(file);
-              self.addDownloadLink(file);
+              // self.addDownloadLink(file);
           });
           this.on('removedfile', (file) => {
             self.emitFileRemoved(file);
