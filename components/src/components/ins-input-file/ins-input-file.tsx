@@ -126,6 +126,20 @@ export class InsInputFile {
     }
   }
 
+  addDownloadLink(file) {
+    let parent = file.previewElement;
+    let linkEl = document.createElement('a');
+
+    linkEl.setAttribute('class', 'dz-remove');
+    linkEl.setAttribute('href', file.url);
+    linkEl.setAttribute('download', '');
+    linkEl.setAttribute('target', '_blank');
+    linkEl.innerHTML = 'Download';
+
+    console.log('linkEl', linkEl)
+    parent.appendChild(linkEl);
+  }
+
   errorHandler(file, errorMessage) {
     if (errorMessage) {
       // Remove file on error
@@ -303,8 +317,11 @@ export class InsInputFile {
         "dictMaxFilesExceeded": `You cannot upload any more files. Maximum of ${this.maxFiles } files. `,
         init: function () {
           this.on('addedfile', (file) => {
+            console.log('this', this);
+            console.log('file', file);
               self.setFileIcon(file);
               self.checkFileSizeDisplay(file);
+              self.addDownloadLink(file);
           });
           this.on('removedfile', (file) => {
             self.emitFileRemoved(file);

@@ -24,85 +24,38 @@
       font-family: Open Sans, sans-serif;
       margin-bottom: 2px;
     }
+
+    body {
+      padding: 20px;
+    }
   </style>
 </head>
 
 <body>
-  <ins-sidebar>
-    <ins-sidebar-item label="Route 1" link="#/route-1" icon="icon-zap"></ins-sidebar-item>
-    <ins-sidebar-item label="Route 2" link="#/route-2" icon="icon-codepen"></ins-sidebar-item>
 
-    <ins-sidebar-item label="Route 3" with-submenu icon="icon-github">
-      <ins-sidebar-item label="Route 4" link="#/route-4"></ins-sidebar-item>
-      <ins-sidebar-item label="Route 5" link="#/route-5"></ins-sidebar-item>
-    </ins-sidebar-item>
+  <ins-input-file 
+    id="myEl"
+    label="Test File">
+  </ins-input-file>
 
-    <ins-sidebar-item label="Route 6 - iframe" link="/assets/styleguide/test.html" app icon="icon-chrome">
-    </ins-sidebar-item>
+  <script>
+    var myEl = document.getElementById('myEl');
 
-    <ins-sidebar-footer class="side-bar-footer">
+    async function setFiles(){
+      await myEl.setFiles([
+        {
+          id: '123',
+          name: 'Sample.jpg',
+          type: 'jpeg',
+          url: 'https://uploads.staging.oregon.platform-os.com/instances/5872/property_uploads/modules/ins_database/db_file/input_file/d8b98924-2194-48bf-9d26-c3570c3cb3fb/sample.pdf'
+        }
+      ]);
+    }
 
-      <ins-sidebar-footer-button id="toggleMenuButton" icon="icon-menu-collapse">
-      </ins-sidebar-footer-button>
-
-    </ins-sidebar-footer>
-  </ins-sidebar>
-
-  <ins-header support-link="www.google.com" id="insMenuBar">
-    <ins-header-user
-      name="John Smith"
-      logout-link="/"
-      profile-link="#/my-profile">
-    </ins-header-user>
-  </ins-header>
-
-  <ins-renderer>
-    <div>
-      <ins-accordion>
-
-        <ins-accordion-item active
-          link="https://www.google.com"
-          link-target="_blank"
-          heading="Information"
-          icon="icon-info"
-          open-icon="icon-plus"
-          close-icon="icon-minus">
-
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officiis omnis rem quas veniam? Obcaecati laborum, ullam veritatis alias quidem placeat tempora maiores quibusdam officiis dolorum aliquam ipsam neque ipsum!
-        </ins-accordion-item>
-
-        <ins-accordion-item
-          heading="Information"
-          icon="icon-info"
-          open-icon="icon-book"
-          close-icon="icon-book-open">
-
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officiis omnis rem quas veniam? Obcaecati laborum, ullam veritatis alias quidem placeat tempora maiores quibusdam officiis dolorum aliquam ipsam neque ipsum!
-        </ins-accordion-item>
-
-        <ins-accordion-item
-          heading="Information"
-          icon="icon-info"
-          open-icon="icon-mail1"
-          close-icon="icon-email-open">
-
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officiis omnis rem quas veniam? Obcaecati laborum, ullam veritatis alias quidem placeat tempora maiores quibusdam officiis dolorum aliquam ipsam neque ipsum!
-        </ins-accordion-item>
-
-        <ins-accordion-item
-          heading="Information"
-          icon="icon-info"
-          open-icon="icon-download"
-          close-icon="icon-upload">
-
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officiis omnis rem quas veniam? Obcaecati laborum, ullam veritatis alias quidem placeat tempora maiores quibusdam officiis dolorum aliquam ipsam neque ipsum!
-        </ins-accordion-item>
-      </ins-accordion>
-
-    </div>
-  </ins-renderer>
-
-
+    setTimeout(() => {
+      setFiles();
+    }, 2000)
+  </script>
 
 </body>
 
