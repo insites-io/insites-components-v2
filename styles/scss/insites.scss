@@ -106,3 +106,7 @@ ins-page.hydrated {
 html {
   -webkit-tap-highlight-color: initial;
 }
+
+body.no-transition * {
+  transition: none !important;
+}

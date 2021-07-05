@@ -10,7 +10,7 @@ export class InsSidebar {
   @Prop({ mutable: true }) fullLogo: string;
   @Prop({ mutable: true }) iconLogo: string;
 
-  @State() minimised: boolean;
+  @State() minimised: boolean = false;
   @State() noFooter: boolean = false;
 
   baseURL = "http://components.insites.io/assets/images";
@@ -20,6 +20,7 @@ export class InsSidebar {
   reroute: boolean = false;
 
   componentWillLoad(){
+    this.checkDeviceWidth();
     let hasFooter = this.insSidebarEl.querySelector('ins-sidebar-footer');
 
     if (!hasFooter){
@@ -42,6 +43,18 @@ export class InsSidebar {
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
       if (func) func(this.insSidebarEl);
+    }
+  }
+
+  checkDeviceWidth(){
+    const mq = window.matchMedia("(min-width: 1260px)");
+    if (!mq.matches) {
+      document.body.classList.add('no-transition');
+      document.body.classList.add('mini');
+
+      setTimeout(() => {
+        document.body.classList.remove('no-transition');
+      }, 1000)
     }
   }
 
