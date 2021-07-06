@@ -95,7 +95,7 @@ export class InsCarousel {
   }
 
   initPagination(){
-    if (this.noPagination && this.perPage === 0) return;
+    if (this.noPagination || this.perPage === 0) return;
 
     this.slideEls = this.slides.querySelectorAll(':scope > div > div');
     let paginationWrap = this.insCarouselEl.querySelector('.ins-carousel_paginations');
