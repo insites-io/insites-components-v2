@@ -237,13 +237,13 @@ export class InsInputTel {
 
         <div class="row-col-container">
 
-          <div class="col-container column-1">
+          <div class="col-container column-1" tabindex="1">
             <input type="tel" class="phone ins-form-field"
               disabled={this.disabled}
               readonly={this.readonly} />
           </div>
 
-          <div class="col-container column-2">
+          <div class="col-container column-2" tabindex="2">
 
             <input
               type="tel"
@@ -256,7 +256,7 @@ export class InsInputTel {
               disabled={this.disabled} readonly={this.readonly} />
           </div>
 
-          <div class="col-container column-3">
+          <div class="col-container column-3" tabindex="3">
             <input
               type="tel"
               maxlength="13"
