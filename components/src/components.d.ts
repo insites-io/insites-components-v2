@@ -470,6 +470,7 @@ export namespace Components {
         "hasLoad": string;
         "label": string;
         "name": string;
+        "placeholder": string;
         "readonly": boolean;
         "setValue": (value: any) => Promise<void>;
         "tooltip": string;
@@ -769,6 +770,7 @@ export namespace Components {
         "readonly": boolean;
         "reset": () => Promise<boolean>;
         "resetDynamicOption": () => Promise<void>;
+        "searchPlaceholder": string;
         "searchable": boolean;
         "selected_values": any;
         "setInsSelectDefaultValue": () => Promise<void>;
@@ -2098,6 +2100,7 @@ declare namespace LocalJSX {
         "onInsChange"?: (event: CustomEvent<any>) => void;
         "onInsInput"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "placeholder"?: string;
         "readonly"?: boolean;
         "tooltip"?: string;
         "value"?: any;
@@ -2391,6 +2394,7 @@ declare namespace LocalJSX {
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
         "readonly"?: boolean;
+        "searchPlaceholder"?: string;
         "searchable"?: boolean;
         "selected_values"?: any;
         "small"?: boolean;

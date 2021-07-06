@@ -23,6 +23,7 @@ export class InsSelect {
   @Prop({ mutable: true }) label: string;
   @Prop({ mutable: true }) value: any;
   @Prop({ mutable: true }) placeholder: string = "";
+  @Prop({ mutable: true }) searchPlaceholder: string = "";
   @Prop({ mutable: true }) disabled: boolean = false;
   @Prop({ mutable: true }) readonly: boolean = false;
   @Prop({ mutable: true }) searchable: boolean = false;
@@ -670,7 +671,9 @@ export class InsSelect {
         <input class="ins-select-value-input" value={this.tempSearch}
           readonly={this.readonly} disabled={this.disabled}
           placeholder={this.value.length
-            ? "Type here to search for options"
+            ? this.searchPlaceholder
+              ? this.searchPlaceholder
+              : "Type here to search for options"
             : this.placeholder} />
       </div>
     )

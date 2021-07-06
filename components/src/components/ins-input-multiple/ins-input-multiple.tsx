@@ -4,16 +4,17 @@ import { h, Component, Element, Prop, Method, Event, EventEmitter } from "@stenc
 export class InsInputMultiple {
 	@Element() insInputMultipleEl: HTMLElement;
 	@Event() insInput: EventEmitter;
-  @Event() insChange: EventEmitter;
-  @Event() insValueChange: EventEmitter;
-  @Event() didLoad: EventEmitter;
-  @Prop() hasLoad: string;
+	@Event() insChange: EventEmitter;
+	@Event() insValueChange: EventEmitter;
+	@Event() didLoad: EventEmitter;
+	@Prop() hasLoad: string;
 
 	@Prop({mutable: true}) label: string;
 	@Prop({mutable: true}) name: string;
 	@Prop({mutable: true}) disabled: boolean = false;
 	@Prop({mutable: true}) readonly: boolean = false;
 	@Prop({mutable: true}) value: any = [];
+  @Prop({mutable: true}) placeholder: string;
   @Prop({mutable: true}) tooltip: string = "";
 	@Prop({mutable: true}) hasError: boolean = false;
   @Prop({mutable: true}) errorMessage: string = "";
@@ -157,6 +158,7 @@ export class InsInputMultiple {
 							type="text"
 							readonly={this.readonly}
 							disabled={this.disabled}
+              placeholder={this.placeholder}
 							onFocus={() => this.onfocusHandler()}
 							onBlur={() => this.onblurHandler()}
 							onKeyUp={event => this.oninputHandler(event)}>
