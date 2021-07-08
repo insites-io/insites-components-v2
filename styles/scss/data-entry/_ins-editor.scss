@@ -638,6 +638,30 @@ ins-editor {
 		z-index: 32000;
 		margin-bottom: 0;
 	}
+
+	ul {
+		list-style-type: disc;
+	
+		ul {
+			list-style-type: circle;
+			
+			ul {
+				list-style-type: square;
+			}
+		}
+	}
+
+	ol {
+		list-style-type: decimal;
+	
+		ol {
+			list-style-type: lower-alpha;
+
+			ol {
+				list-style-type: lower-roman;
+			}
+		}
+	}
 }
 
 ins-editor.code-mode {
