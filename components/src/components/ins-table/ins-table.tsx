@@ -297,11 +297,17 @@ export class InsTable {
   }
 
   pageNumberChangeHandler(key?) {
-
+    
     if (key === 'prev') {
       this.pageNumber--;
     } else if (key === 'next') {
       this.pageNumber++;
+    } else if (key === 'first') {
+      this.pageNumber = 1;
+    } else if (key === 'last') {
+      this.pageNumber = this.totalCount / this.pageSize;
+    } else {
+      this.pageNumber = key;
     }
 
     // this.uncheckAll();
@@ -673,6 +679,22 @@ export class InsTable {
     )
   }
 
+  renderPageNumbers(){
+    if (!this.totalCount) return [];
+    
+    const pages = []
+    const totalPages = this.totalCount / this.pageSize;
+    let pageNumber = this.pageNumber;
+    if ((pageNumber + 4) > totalPages) pageNumber = totalPages - 4;
+
+    for (let i = 0; i < 5; i++){
+      const page = pageNumber + i;
+      if (page <= totalPages) pages.push(page);
+    }
+
+    return pages
+  }  
+
   render() {
     return (
       <div class={`ibt-table-wrap ibt-table-wrap__stripe ${this.heading ? '' : 'no-label'} ${this.noWrap ? 'no-wrap' : ''}`}>
@@ -969,16 +991,39 @@ export class InsTable {
 
                 <div class="ibt-table-wrap__prev-next">
 
-                  <button
-                    onClick={() => this.pageNumberChangeHandler('prev')}
+                  <button class="first"
+                    onClick={() => this.pageNumberChangeHandler('first')}
                     disabled={this.pageNumber === 1}>
-                    <i class={`icon-chevron-left`}></i>
+                    <i class={`icon-chevrons-left`}></i>
                   </button>
 
-                  <button
+                  <button class="prev"
+                    onClick={() => this.pageNumberChangeHandler('prev')}
+                    disabled={this.pageNumber === 1}>
+                    <i class={`icon-angle-left`}></i>
+                  </button>
+
+                  {this.renderPageNumbers().map(page => {
+                    return(
+                      <button class={`page ${this.pageNumber === page ? 'active': ''}`}
+                        onClick={() => this.pageNumberChangeHandler(page)}
+                        disabled={this.pageNumber === page}>
+
+                        { page }
+                      </button>
+                    )
+                  })}
+
+                  <button class="next"
                     onClick={() => this.pageNumberChangeHandler('next')}
                     disabled={(this.pageNumber * this.pageSize) >= this.totalCount}>
-                    <i class={`icon-chevron-right`}></i>
+                    <i class={`icon-angle-right`}></i>
+                  </button>
+
+                  <button class="last"
+                    onClick={() => this.pageNumberChangeHandler('last')}
+                    disabled={(this.pageNumber * this.pageSize) >= this.totalCount}>
+                    <i class={`icon-chevrons-right`}></i>
                   </button>
 
                 </div>
