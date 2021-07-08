@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - QA</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap">
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/css/foundation.min.css" />
+  <link rel="stylesheet" href="/assets/css/insites.css" />
+
+  <script type="module" src="/build/insites.esm.js"></script>
+  <script nomodule src="/build/insites.js"></script>
+  <style>
+    .liquid-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2c3148;
+      font-family: Open Sans, sans-serif;
+      margin-bottom: 2px;
+    }
+
+    #testEl button {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <ins-sidebar>
+    <ins-sidebar-item label="Route 1" link="#/route-1" icon="icon-zap"></ins-sidebar-item>
+    <ins-sidebar-item label="Route 2" link="#/route-2" icon="icon-codepen"></ins-sidebar-item>
+
+    <ins-sidebar-item label="Route 3" with-submenu icon="icon-github">
+      <ins-sidebar-item label="Route 4" link="#/route-4"></ins-sidebar-item>
+      <ins-sidebar-item label="Route 5" link="#/route-5"></ins-sidebar-item>
+    </ins-sidebar-item>
+
+    <ins-sidebar-item label="Route 6 - iframe" link="/assets/styleguide/test.html" app icon="icon-chrome">
+    </ins-sidebar-item>
+
+    <ins-sidebar-footer class="side-bar-footer">
+
+      <ins-sidebar-footer-button id="toggleMenuButton" icon="icon-menu-collapse">
+      </ins-sidebar-footer-button>
+
+    </ins-sidebar-footer>
+  </ins-sidebar>
+
+  <ins-header support-link="www.google.com" id="insMenuBar">
+    <ins-header-user
+      name="John Smith"
+      logout-link="/"
+      profile-link="#/my-profile">
+    </ins-header-user>
+  </ins-header>
+
+  <ins-renderer>
+    <div>
+      <ins-table
+        id="insBaseTable"
+        searchbar-placeholder="Search...">
+      </ins-table>
+
+      <script>
+        function fetchDataFromSrc () {
+
+          insBaseTable.loadingScreen = true;
+
+          insBaseTable.loaderTitle = "Processing Your Data";
+          insBaseTable.loaderMessage = "Just a moment, we're fetching and processing your data.";
+          insBaseTable.loaderIcon = "processing";
+
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+
+              var tableData = JSON.parse(this.responseText);
+              rawData = tableData.list.map(function(data){
+                data["Default Column_Img"] = '';
+                return data;
+              });
+
+              insBaseTable.totalCount = tableData.count;
+              insBaseTable.tableHeaders = [
+                { label: "Default Column", type: 'string', sortable: true, hasLink: true, hasImage: true}, //
+                { label: "Date Column", type: 'string', sortable: true },
+                { label: "Number Column", type: 'number', sortable: true },
+                { label: "Currency Column", type: 'currency', sortable: true }
+              ];
+
+              processTableData();
+            }
+          };
+          xhttp.open("GET", 'https://ag64gmtsc0.execute-api.us-east-2.amazonaws.com/insites-dummy-deployment/insites-dummy-get-table', true);
+          xhttp.send();
+        }
+        
+        var insBaseTable = document.getElementById('insBaseTable');
+        var rawData = [];
+        var filteredData = [];
+        var displayedData = [];
+        var tableHeaders = [];
+        var totalCount = 0;
+        var pageNumber = 1;
+        var pageSize = 10;
+        var searchKeyword = '';
+        var sortedKeyword = '';
+      
+        insBaseTable.loadingScreen = true;
+        insBaseTable.bulkActions = ['Archive'];
+        insBaseTable.rowActions = ['Archive'];
+        insBaseTable.addEventListener('insPaginationChange', tablePaginationHandler);
+        insBaseTable.addEventListener('insTableSearch', tableSearchHandler);
+        insBaseTable.addEventListener('insTableSort', tableSortHandler);
+        insBaseTable.addEventListener('insTableBulkAction', tableBulkActionHandler);
+        insBaseTable.addEventListener('insTableRowAction', tableRowActionHandler);
+        // insBaseTable.addEventListener('onFieldChange', event => console.log('onFieldChange', event));
+      
+        function tablePaginationHandler(event){
+          insBaseTable.loadingScreen = true;
+          pageSize = event.detail.pageSize;
+          pageNumber = event.detail.pageNumber;
+          processTableData()
+        }
+        function tableSearchHandler(event){
+          insBaseTable.loadingScreen = true;
+          searchKeyword = event.detail.value;
+      
+          if (!searchKeyword) {
+            processTableData();
+            return;
+          }
+      
+          filteredData = [];
+          rawData.forEach((value) => {
+            Object.keys(value).forEach((key) => {
+              if (key === 'Default Column'){
+                var match = value[key];
+                if (match.toLowerCase().includes(searchKeyword.toLowerCase())) {
+                  filteredData.push(value);
+                }
+              }
+            });
+          });
+      
+          if (sortedKeyword && filteredData.length > 1) {
+            filteredData.sort(dynamicKeySort(sortedKeyword));
+          }
+          insBaseTable.pageNumber = 1;
+          processTableData();
+      
+          if (!filteredData.length) {
+            insBaseTable.loadingScreen = true;
+            insBaseTable.loaderTitle = '';
+            insBaseTable.loaderMessage = 'No result found for "' + searchKeyword + '"';
+            insBaseTable.loaderIcon = '';
+          }
+        }
+        function tableSortHandler(event){
+          sortedKeyword = event.detail.order === 'asc' ? event.detail.keyword : `-${event.detail.keyword}`;
+          if (searchKeyword){
+            filteredData.sort(dynamicKeySort(sortedKeyword));
+          } else {
+            rawData.sort(dynamicKeySort(sortedKeyword));
+          }
+          processTableData();
+        }
+        function tableBulkActionHandler(event){
+          console.log('tableBulkActionHandler', event.detail);
+          if (event.detail.action === 'Archive'){
+            archiveSelection(event.detail.selections);
+          }
+        }
+        function tableRowActionHandler(event){
+          if (event.detail.action === 'Archive'){
+            archiveItem(event.detail.data);
+          }
+        }
+        function archiveItem(value){
+          if (window.swal){
+            swal({
+              title: '',
+              // text: "Are you sure you want to delete these items",
+              html: `
+                <ins-loader
+                  state-icon="warning"
+                  icon-color="warning"
+                  state-message="Are you sure you want to archive this item?">
+                </ins-loader>`,
+              type: '',
+              showCancelButton: true,
+              confirmButtonText: 'Archive'
+            }).then((result) => {
+              deleteItem(value);
+              processTableData();
+            });
+          }
+        }
+      
+        function archiveSelection(selections) {
+          if (window.swal){
+            swal({
+              title: '',
+              html: `
+              <ins-loader
+                state-icon="warning"
+                icon-color="warning"
+                state-message="Are you sure you want to archive these items?">
+              </ins-loader>`,
+              type: '',
+              showCancelButton: true,
+              confirmButtonText: 'Archive'
+            }).then((result) => {
+              if (result.value) {
+                  let counter = 0;
+                  selections.forEach(value => {
+      
+                    this.deleteItem(value);
+                    counter++;
+      
+                    if (selections.length === counter){
+                      insBaseTable.resetSelections();
+                      processTableData()
+                    }
+                  });
+                }
+            });
+          }
+        }
+      
+        function deleteItem(value) {
+          var selectionIndex;
+          var searchSelectionIndex;
+      
+          if (rawData) {
+            selectionIndex = rawData.findIndex(item => {
+              return item.Id === value;
+            });
+          }
+      
+          if (filteredData) {
+            searchSelectionIndex = filteredData.findIndex(item => {
+              return item.Id === value;
+            });
+          }
+      
+          if (selectionIndex > -1){
+            rawData.splice(selectionIndex, 1);
+          }
+      
+          if (searchSelectionIndex > -1){
+            filteredData.splice(searchSelectionIndex, 1);
+          }
+        }
+      
+        function processTableData(){
+          var last_index = pageNumber * pageSize;
+          var first_index = (last_index - pageSize);// + 1;
+      
+          displayedData = [];
+      
+          if (searchKeyword) {
+      
+            filteredData.forEach((value, index) => {
+              value['ArchiveLink'] = "https://www.google.com";
+      
+              if (index >= first_index && index <= last_index) {
+                displayedData.push(value);
+              } else if (filteredData.length < pageSize){
+                displayedData.push(value);
+              }
+            });
+            insBaseTable.totalCount = filteredData.length;
+      
+          } else {
+            rawData.forEach((value, index) => {
+              value['ArchiveLink'] = "https://www.google.com";
+              if (index >= first_index && index <= last_index) {
+                displayedData.push(value);
+              }
+            });
+      
+            insBaseTable.totalCount = rawData.length;
+      
+          }
+      
+          insBaseTable.tableData = displayedData;
+          insBaseTable.loadingScreen = false;
+        }
+        function dynamicKeySort(key) {
+          var OrderSortIndex = 1;
+      
+          if (key[0] === "-") {
+            OrderSortIndex = -1;
+            key = key.substr(1);
+          }
+      
+          return function (a, b) {
+            var num = (a[key] < b[key]) ? -1 : (a[key] > b[key]) ? 1 : 0;
+            return num * OrderSortIndex;
+          }
+        }
+        function fetchDataFromSrc () {
+      
+          insBaseTable.loadingScreen = true;
+      
+          insBaseTable.loaderTitle = "Processing Your Data";
+          insBaseTable.loaderMessage = "Just a moment, we're fetching and processing your data.";
+          insBaseTable.loaderIcon = "processing";
+      
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              var tableData = JSON.parse(this.responseText);
+              rawData = tableData.list.map(function(data){
+                data["Default Column_Img"] = '';
+                return data;
+              });
+              insBaseTable.totalCount = tableData.count;
+              insBaseTable.tableHeaders = [
+                { label: "Default Column", type: 'string', sortable: true, hasLink: true, hasImage: true },
+                { label: "Date Column", type: 'date', sortable: true, editable: true },
+                { label: "Number Column", type: 'number', sortable: true, editable: true },
+                { label: "Currency Column", type: 'currency', sortable: true, editable: true }
+              ];
+      
+              processTableData();
+            }
+          };
+          xhttp.open("GET", 'https://ag64gmtsc0.execute-api.us-east-2.amazonaws.com/insites-dummy-deployment/insites-dummy-get-table', true);
+          xhttp.send();
+        }
+      
+        fetchDataFromSrc();
+      </script>
+    </div>
+  </ins-renderer>
+</body>
+
+</html>
