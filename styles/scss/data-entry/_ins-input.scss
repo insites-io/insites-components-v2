@@ -51,11 +51,6 @@
     left: 10px;
   }
 
-  // .has-unit-left input {
-  //   padding-left: 20px;
-  // }
-
-  // &.has-unit-right,
   &.has-icon {
     input {
       padding-right: 32px;
@@ -70,6 +65,37 @@
 
     .unit-right {
       right: 30px;
+    }
+  }
+
+  &.has-color {
+    .ins-form-field {
+      width: calc(100% - 40px - 12px);
+      display: inline-block;
+    }
+
+    .ins-form-field.color {
+      width: 40px;
+      padding: 3px 5px;
+      float: right;
+
+      &[readonly] {
+        background-color: var(--ins-color-disabled_readonly_bg);
+      }
+    }
+
+    .unit-right {
+      right: 60px;
+    }
+
+    &.has-icon {
+      .icon-wrap {
+        right: 60px;
+      }
+
+      &.has-unit-right .unit-right {
+        right: 82px;
+      }
     }
   }
 }

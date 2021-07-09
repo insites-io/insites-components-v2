@@ -35,6 +35,8 @@ export class InsInput {
 
   @Prop({mutable: true}) tooltip: string = "";
 
+  invalidHexColor: string = "";
+
   @Method()
   async setValue(value){
     this.value = value;
@@ -72,20 +74,19 @@ export class InsInput {
   }
 
   onInputHandler(event){
-    let x = event.which || event.keyCode;
-    this.insInput.emit({
-      value: event.target.value,
-      keyCode: x
-    });
+    let value = event.target.value;
+    let keyCode = event.which || event.keyCode;
+    this.insInput.emit({ value, keyCode });
   }
 
   insBlurHandler(event){
-    let x = event.which || event.keyCode;
-    this.insBlur.emit({
-      value: event.target.value,
-      keyCode: x
-    });
+    const value = event.target.value;
+    const keyCode = event.which || event.keyCode;
+
+    this.insBlur.emit({ value, keyCode });
     this.deactivateLabel();
+
+    if (this.field === 'color') this.validateHexColor(value);
   }
 
   inputChanged(ev: any) {
@@ -113,11 +114,26 @@ export class InsInput {
     this.activated = false
   }
 
+  colorHandler(e){
+    this.validateHexColor(e.target.value);
+    this.onInputHandler(e);
+    this.inputChanged(e);
+  }
+
+  validateHexColor(color){
+    if (!color) return this.invalidHexColor = "";
+
+    const valid = color.match(/^#[0-9A-F]{6}$/i);
+    if (valid) this.invalidHexColor = "";
+    else this.invalidHexColor = "Invalid hex color.";
+  }
+
   render(){
     return (
       <div class={`ins-input-wrap ins-form-field-wrap
-        ${this.hasError ? 'is-invalid' : ''}
+        ${this.hasError || this.invalidHexColor ? 'is-invalid' : ''}
         ${this.icon ? "has-icon":""}
+        ${this.field === 'color' ? "has-color":""}
         ${this.unitLeft ? "has-unit-left":""}
         ${this.unitRight ? "has-unit-right":""}`}>
 
@@ -147,7 +163,7 @@ export class InsInput {
 
           <input class="ins-form-field"
             id={this.fieldId ? this.fieldId : null}
-            type={this.field}
+            type={this.field !== 'color' ? this.field : 'text'}
             name={this.name}
             placeholder={this.placeholder}
             value={this.value}
@@ -178,11 +194,20 @@ export class InsInput {
             </i>
           : ''}
 
+          {this.field === 'color' ?
+            <input type="color" 
+              class="ins-form-field color"
+              value={this.value}
+              disabled={this.disabled || this.readonly}
+              onInput={e => this.colorHandler(e)} 
+            />
+          : ''}
+
         </div>
 
-        { this.hasError ?
+        { this.hasError || this.invalidHexColor ?
           <div class="ins-form-error">
-            {this.errorMessage}
+            { this.invalidHexColor ? this.invalidHexColor : this.errorMessage }
           </div>
         : ''}
 

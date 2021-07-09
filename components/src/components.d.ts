@@ -764,8 +764,10 @@ export namespace Components {
         "infiniteScroll": boolean;
         "initializing": boolean;
         "label": string;
+        "labelKey": string;
         "multiple": boolean;
         "name": string;
+        "optionsData": Array<any>;
         "placeholder": string;
         "readonly": boolean;
         "reset": () => Promise<boolean>;
@@ -782,6 +784,7 @@ export namespace Components {
         "tooltip": string;
         "updateSelectedOptions": () => Promise<boolean>;
         "value": any;
+        "valueKey": string;
         "withDynamicOption": boolean;
         "withDynamicOptionValidate": boolean;
     }
@@ -2383,6 +2386,7 @@ declare namespace LocalJSX {
         "infiniteScroll"?: boolean;
         "initializing"?: boolean;
         "label"?: string;
+        "labelKey"?: string;
         "multiple"?: boolean;
         "name"?: string;
         "onDidLoad"?: (event: CustomEvent<any>) => void;
@@ -2392,6 +2396,7 @@ declare namespace LocalJSX {
         "onInsSearch"?: (event: CustomEvent<any>) => void;
         "onInsSubmit"?: (event: CustomEvent<any>) => void;
         "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "optionsData"?: Array<any>;
         "placeholder"?: string;
         "readonly"?: boolean;
         "searchPlaceholder"?: string;
@@ -2400,6 +2405,7 @@ declare namespace LocalJSX {
         "small"?: boolean;
         "tooltip"?: string;
         "value"?: any;
+        "valueKey"?: string;
         "withDynamicOption"?: boolean;
         "withDynamicOptionValidate"?: boolean;
     }

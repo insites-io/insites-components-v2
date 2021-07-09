@@ -29,6 +29,9 @@ export class InsSelect {
   @Prop({ mutable: true }) searchable: boolean = false;
   @Prop({ mutable: true }) hasError: boolean = false;
   @Prop({ mutable: true }) errorMessage: string = "";
+  @Prop({ mutable: true }) labelKey: string = "";
+  @Prop({ mutable: true }) valueKey: string = "";
+  @Prop({ mutable: true }) optionsData: Array<any> = [];
 
   // Multiple Mode
   @Prop({mutable: true}) multiple: boolean = false;
@@ -720,6 +723,15 @@ export class InsSelect {
 
           <div class="ins-select-slot-wrap">
             <slot />
+            {this.optionsData.map(option => {
+                return (
+                  <ins-select-option 
+                    label={option[this.labelKey]}
+                    value={option[this.valueKey]}>
+                  </ins-select-option>
+                )
+              }
+            )}
           </div>
 
           <div class="spinner-wrap">
