@@ -10,11 +10,10 @@ export class InsRenderer {
   @Prop({ mutable: true }) link: string;
   @Prop({ mutable: true }) app: boolean = false;
   @Prop({ mutable: true }) label: string;
-  /*@Prop({ mutable: true })*/ route: any = {
+  
+  route: any = {
     label: "", link: ""
   };
-  // @Prop({ context: 'formatUrl' }) formatUrl: any;
-  @State() pathname: string = window.location.pathname;
 
   rerouting: boolean = false;
   breadcrumbs: any = [];
