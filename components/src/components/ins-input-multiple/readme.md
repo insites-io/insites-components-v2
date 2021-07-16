@@ -15,6 +15,7 @@
 | `hasLoad`      | `has-load`      |             | `string`  | `undefined` |
 | `label`        | `label`         |             | `string`  | `undefined` |
 | `name`         | `name`          |             | `string`  | `undefined` |
+| `placeholder`  | `placeholder`   |             | `string`  | `undefined` |
 | `readonly`     | `readonly`      |             | `boolean` | `false`     |
 | `tooltip`      | `tooltip`       |             | `string`  | `""`        |
 | `value`        | `value`         |             | `any`     | `[]`        |

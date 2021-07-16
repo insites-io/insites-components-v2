@@ -320,7 +320,7 @@ export class InsInputFile {
           this.on('addedfile', (file) => {
               self.setFileIcon(file);
               self.checkFileSizeDisplay(file);
-              // self.addDownloadLink(file);
+              self.addDownloadLink(file);
           });
           this.on('removedfile', (file) => {
             self.emitFileRemoved(file);

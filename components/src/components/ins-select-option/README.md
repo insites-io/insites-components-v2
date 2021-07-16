@@ -71,11 +71,13 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [ins-select](../ins-select)
  - [ins-table](../ins-table)
 
 ### Graph
 ```mermaid
 graph TD;
+  ins-select --> ins-select-option
   ins-table --> ins-select-option
   style ins-select-option fill:#f9f,stroke:#333,stroke-width:4px
 ```

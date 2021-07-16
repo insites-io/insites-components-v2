@@ -22,15 +22,19 @@
 | `infiniteScroll`            | `infinite-scroll`              |             | `boolean` | `false`     |
 | `initializing`              | `initializing`                 |             | `boolean` | `false`     |
 | `label`                     | `label`                        |             | `string`  | `undefined` |
+| `labelKey`                  | `label-key`                    |             | `string`  | `""`        |
 | `multiple`                  | `multiple`                     |             | `boolean` | `false`     |
 | `name`                      | `name`                         |             | `string`  | `undefined` |
+| `optionsData`               | --                             |             | `any[]`   | `[]`        |
 | `placeholder`               | `placeholder`                  |             | `string`  | `""`        |
 | `readonly`                  | `readonly`                     |             | `boolean` | `false`     |
+| `searchPlaceholder`         | `search-placeholder`           |             | `string`  | `""`        |
 | `searchable`                | `searchable`                   |             | `boolean` | `false`     |
 | `selected_values`           | `selected_values`              |             | `any`     | `[]`        |
 | `small`                     | `small`                        |             | `boolean` | `false`     |
 | `tooltip`                   | `tooltip`                      |             | `string`  | `""`        |
 | `value`                     | `value`                        |             | `any`     | `undefined` |
+| `valueKey`                  | `value-key`                    |             | `string`  | `""`        |
 | `withDynamicOption`         | `with-dynamic-option`          |             | `boolean` | `false`     |
 | `withDynamicOptionValidate` | `with-dynamic-option-validate` |             | `boolean` | `false`     |
 
@@ -200,11 +204,13 @@ Type: `Promise<boolean>`
 ### Depends on
 
 - [ins-input-tooltip](../ins-input-tooltip)
+- [ins-select-option](../ins-select-option)
 
 ### Graph
 ```mermaid
 graph TD;
   ins-select --> ins-input-tooltip
+  ins-select --> ins-select-option
   ins-table --> ins-select
   style ins-select fill:#f9f,stroke:#333,stroke-width:4px
 ```

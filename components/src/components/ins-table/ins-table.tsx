@@ -681,13 +681,22 @@ export class InsTable {
 
   renderPageNumbers(){
     if (!this.totalCount) return [];
-    
-    const pages = []
-    const totalPages = this.totalCount / this.pageSize;
-    let pageNumber = this.pageNumber;
-    if ((pageNumber + 4) > totalPages) pageNumber = totalPages - 4;
+    if (this.totalCount < this.pageSize) return [1];
 
-    for (let i = 0; i < 5; i++){
+    const totalPages = this.totalCount / this.pageSize;
+    const pages = []
+
+    let pageNumber = this.pageNumber;
+    let length = 5;
+
+    if (totalPages < 5) {
+      length = totalPages;
+
+    } else if ((pageNumber + 4) > totalPages) {
+      pageNumber = totalPages - 4;
+    }
+     
+    for (let i = 0; i < length; i++){
       const page = pageNumber + i;
       if (page <= totalPages) pages.push(page);
     }

@@ -68,38 +68,7 @@
       </ins-table>
 
       <script>
-        function fetchDataFromSrc () {
-
-          insBaseTable.loadingScreen = true;
-
-          insBaseTable.loaderTitle = "Processing Your Data";
-          insBaseTable.loaderMessage = "Just a moment, we're fetching and processing your data.";
-          insBaseTable.loaderIcon = "processing";
-
-          var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-
-              var tableData = JSON.parse(this.responseText);
-              rawData = tableData.list.map(function(data){
-                data["Default Column_Img"] = '';
-                return data;
-              });
-
-              insBaseTable.totalCount = tableData.count;
-              insBaseTable.tableHeaders = [
-                { label: "Default Column", type: 'string', sortable: true, hasLink: true, hasImage: true}, //
-                { label: "Date Column", type: 'string', sortable: true },
-                { label: "Number Column", type: 'number', sortable: true },
-                { label: "Currency Column", type: 'currency', sortable: true }
-              ];
-
-              processTableData();
-            }
-          };
-          xhttp.open("GET", 'https://ag64gmtsc0.execute-api.us-east-2.amazonaws.com/insites-dummy-deployment/insites-dummy-get-table', true);
-          xhttp.send();
-        }
+        console.log('HELLO WORLD!')
         
         var insBaseTable = document.getElementById('insBaseTable');
         var rawData = [];
@@ -322,6 +291,9 @@
                 data["Default Column_Img"] = '';
                 return data;
               });
+
+              rawData = rawData.slice(0, 50);
+
               insBaseTable.totalCount = tableData.count;
               insBaseTable.tableHeaders = [
                 { label: "Default Column", type: 'string', sortable: true, hasLink: true, hasImage: true },

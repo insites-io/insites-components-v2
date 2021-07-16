@@ -723,15 +723,18 @@ export class InsSelect {
 
           <div class="ins-select-slot-wrap">
             <slot />
-            {this.optionsData.map(option => {
-                return (
-                  <ins-select-option 
-                    label={option[this.labelKey]}
-                    value={option[this.valueKey]}>
-                  </ins-select-option>
-                )
-              }
-            )}
+
+            {this.labelKey && this.valueKey 
+              ? this.optionsData.map(option => {
+                  return (
+                    <ins-select-option 
+                      label={option[this.labelKey]}
+                      value={option[this.valueKey]}>
+                    </ins-select-option>
+                  )
+                })
+              : ''
+            }
           </div>
 
           <div class="spinner-wrap">

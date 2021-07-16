@@ -237,28 +237,33 @@ export class InsInputTel {
 
         <div class="row-col-container">
 
-          <div class="col-container column-1" tabindex="1">
-            <input type="tel" class="phone ins-form-field"
+          <div class="col-container column-1">
+            <input 
+              type="tel"
+              class="phone ins-form-field"
               disabled={this.disabled}
-              readonly={this.readonly} />
+              readonly={this.readonly} 
+            />
           </div>
 
-          <div class="col-container column-2" tabindex="2">
-
+          <div class="col-container column-2">
             <input
               type="tel"
+              tabindex="0"
               maxlength="5"
               class="ins-form-field area-code"
               name={this.areaCode}
               placeholder={this.areacodePlaceholder}
               value={this.areacodeValue}
               required={this.required ? true : false}
-              disabled={this.disabled} readonly={this.readonly} />
+              disabled={this.disabled} readonly={this.readonly} 
+            />
           </div>
 
-          <div class="col-container column-3" tabindex="3">
+          <div class="col-container column-3">
             <input
               type="tel"
+              tabindex="0"
               maxlength="13"
               class="ins-form-field phone-number"
               name={this.phoneNumber}

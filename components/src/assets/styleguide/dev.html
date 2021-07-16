@@ -63,11 +63,30 @@
   <ins-renderer>
     <div>
 
-      <ins-input field="color" value="#cb2525"
-        unit-left="$" unit-right=".00" icon="icon-image"
-        label="Testing input with label and color"
-        disabled tooltip="Testing tooltip">
-      </ins-input>
+      <ins-input-file 
+        id="myEl"
+        label="Test File"
+        disabled>
+      </ins-input-file>
+
+      <script>
+        var myEl = document.getElementById('myEl');
+
+        async function setFiles(){
+          await myEl.setFiles([
+            {
+              id: '123',
+              name: 'sample.jpg',
+              type: 'jpeg',
+              url: 'https://uploads.staging.oregon.platform-os.com/instances/5872/property_uploads/modules/ins_database/db_file/input_file/d8b98924-2194-48bf-9d26-c3570c3cb3fb/sample.pdf'
+            }
+          ]);
+        }
+
+        setTimeout(() => {
+          setFiles();
+        }, 2000)
+      </script>
 
     </div>
   </ins-renderer>

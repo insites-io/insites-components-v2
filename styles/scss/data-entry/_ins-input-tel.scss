@@ -10,6 +10,10 @@
 // Flag dropdown z-index with ins-input-file
 
 .ins-input-tel-wrap {
+  .phone {
+    visibility: hidden;
+  }
+
   .iti {
     input {
       opacity: 0;

@@ -130,7 +130,9 @@ export class InsSidebarItem {
     if (checkIfSubMenu) {
       let parent = checkIfSubMenu.closest('ins-sidebar-item');
       await parent.activateParent();
-      await parent.showSubMenu();
+      
+      const mq = window.matchMedia("(min-width: 1260px)");
+      if (mq.matches) parent.showSubMenu();
     }
     return true;
   }

@@ -94,8 +94,6 @@ export class InsSidebar {
       label: 'My Profile',
       withSubmenu: false
     }], false);
-
-    // insHeaderUserEl.routePageHandler();
   }
 
   async hideSidebarItems(){
@@ -132,7 +130,6 @@ export class InsSidebar {
   showLandingPage(){
     for (let i = 0; i < this.sidebarItemEls.length; i++) {
       if (this.sidebarItemEls[i].landingPage){
-        // this.showSubmenu(this.sidebarItemEls[i]);
         this.sidebarItemEls[i].routePageHandler("landing");
         break;
       }
@@ -168,35 +165,8 @@ export class InsSidebar {
       sidebarItem.activate();
     }
 
-    // await this.hideSubmenus(sidebarItem);
-
-    // if (!this.insAdminEl.className.includes('mini')){
-    //   this.showSubmenu(sidebarItem);
-    // }
-
     return true;
   }
-
-  // showSubmenu(e) {
-  //   let withSubmenu = e.closest('ins-sidebar-item[with-submenu]');
-  //   if (withSubmenu) {
-  //     withSubmenu.showSubMenu();
-  //   }
-  // }
-
-  // async hideSubmenus(e){
-  //   let selectedSidebarItemParent = e.closest('ins-sidebar-item[with-submenu]');
-
-  //   for (let i = 0; i < this.sidebarItemEls.length; i++) {
-  //     let sidebarItemParent = this.sidebarItemEls[i].closest('ins-sidebar-item[with-submenu]');
-
-  //     if (selectedSidebarItemParent !== sidebarItemParent) {
-  //       if (sidebarItemParent){
-  //         await sidebarItemParent.hideSubMenu();
-  //       }
-  //     }
-  //   }
-  // }
 
   async checkHash(deeplink?){
     let route = this.checkIfRoot(true);
@@ -220,7 +190,8 @@ export class InsSidebar {
       let insSidebarItem = this.insSidebarEl
         .querySelector(`ins-sidebar-item[footer-link="${open}"]`) as any;
 
-      insSidebarItem.showSubMenu();
+      const mq = window.matchMedia("(min-width: 1260px)");
+      if (mq.matches) insSidebarItem.showSubMenu();
     }
   }
 
