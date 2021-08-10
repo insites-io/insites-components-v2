@@ -1,3 +1,6 @@
+# v2.10.2
+- Added new event `insFileUploaded`
+
 # v2.1.0
 - [TW#16925380] Updated styleUrls to styleUrl and combined basic.min.css to dropzone.min.css 
 - [TW#16925380] Added updateDropZone for componentDidUpdate lifecycle to prevent reinitialising dropzone
