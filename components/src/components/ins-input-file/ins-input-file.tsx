@@ -9,6 +9,7 @@ export class InsInputFile {
   @Event() insFileAdded: EventEmitter;
   @Event() insFileError: EventEmitter;
   @Event() insFileRemoved: EventEmitter;
+  @Event() insFileUploaded: EventEmitter;
   @Event() didLoad: EventEmitter;
   @Prop() hasLoad: string;
 
@@ -337,6 +338,11 @@ export class InsInputFile {
             let parser = new DOMParser();
             let xml = parser.parseFromString(response, "text/xml");
                 file.upload_url = xml.getElementsByTagName("Location")[0].textContent;
+
+            self.insFileUploaded.emit({
+              location: xml.getElementsByTagName("Location")[0].textContent,
+              key: xml.getElementsByTagName("Key")[0].textContent
+            });
           });
         },
         accept: function (file, done) {

@@ -39,12 +39,13 @@
 
 ## Events
 
-| Event            | Description | Type               |
-| ---------------- | ----------- | ------------------ |
-| `didLoad`        |             | `CustomEvent<any>` |
-| `insFileAdded`   |             | `CustomEvent<any>` |
-| `insFileError`   |             | `CustomEvent<any>` |
-| `insFileRemoved` |             | `CustomEvent<any>` |
+| Event             | Description | Type               |
+| ----------------- | ----------- | ------------------ |
+| `didLoad`         |             | `CustomEvent<any>` |
+| `insFileAdded`    |             | `CustomEvent<any>` |
+| `insFileError`    |             | `CustomEvent<any>` |
+| `insFileRemoved`  |             | `CustomEvent<any>` |
+| `insFileUploaded` |             | `CustomEvent<any>` |
 
 
 ## Methods

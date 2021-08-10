@@ -2082,6 +2082,7 @@ declare namespace LocalJSX {
         "onInsFileAdded"?: (event: CustomEvent<any>) => void;
         "onInsFileError"?: (event: CustomEvent<any>) => void;
         "onInsFileRemoved"?: (event: CustomEvent<any>) => void;
+        "onInsFileUploaded"?: (event: CustomEvent<any>) => void;
         "placeholder"?: string;
         "required"?: boolean;
         "s3Data"?: object;
