@@ -73,16 +73,38 @@ export class InsInput {
     }
   }
 
+  validateMinMax(value, type = "input") {
+    if (this.min !== "" && value !== "") {
+      let min = Number(this.min);
+      if (value < min) value = min;
+    }
+
+    if (this.max !== "" && value !== "") {
+      let max = Number(this.max);
+      if (value > max) value = max;
+    }
+
+    this.value = value;
+
+    if (type === "blur") {
+      let el = this.el.querySelector('.ins-form-field') as HTMLInputElement;
+      el.value = value;
+    }
+  }
+
   onInputHandler(event){
     let value = event.target.value;
     let keyCode = event.which || event.keyCode;
+
+    if (this.field === "number") this.validateMinMax(value);
     this.insInput.emit({ value, keyCode });
   }
 
   insBlurHandler(event){
-    const value = event.target.value;
-    const keyCode = event.which || event.keyCode;
-
+    let value = event.target.value;
+    let keyCode = event.which || event.keyCode;
+    
+    if (this.field === "number") this.validateMinMax(value, "blur");
     this.insBlur.emit({ value, keyCode });
     this.deactivateLabel();
 
@@ -166,7 +188,6 @@ export class InsInput {
             type={this.field !== 'color' ? this.field : 'text'}
             name={this.name}
             placeholder={this.placeholder}
-            value={this.value}
             required={this.required}
             onKeyUp={e => this.onInputHandler(e)}
             onInput={this.inputChanged.bind(this)}
@@ -177,7 +198,8 @@ export class InsInput {
             readonly={this.readonly}
             min={this.min}
             max={this.max}
-            step={this.step} />
+            step={this.step}
+            value={this.value} />
 
           {this.unitRight
             ? <div class="unit-right">

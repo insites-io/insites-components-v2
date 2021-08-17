@@ -68,6 +68,11 @@ export class InsHeader {
         : this.insSidebarEl.maximise();
     }
 
+    this.insAdminEl.classList.add('loading');
+    setTimeout(() => {
+      this.insAdminEl.classList.remove('loading');
+    }, 450);
+
     if (this.insAdminEl){
       this.insAdminEl.classList.toggle('mini');
     }

@@ -1,3 +1,6 @@
+# v2.10.3
+- [TW#18522067](https://pm.cbo.me/#tasks/18522067) Fix min and max value validation
+
 # v2.1.0
 - Implement new props from v1 `unit-left` and `unit-right`
 

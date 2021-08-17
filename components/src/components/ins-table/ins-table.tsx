@@ -305,7 +305,7 @@ export class InsTable {
     } else if (key === 'first') {
       this.pageNumber = 1;
     } else if (key === 'last') {
-      this.pageNumber = this.totalCount / this.pageSize;
+      this.pageNumber = Math.floor(this.totalCount / this.pageSize);
     } else {
       this.pageNumber = key;
     }
@@ -480,9 +480,9 @@ export class InsTable {
         event.target.attributes["data-type"] &&
         event.target.attributes["data-type"].value === "bulk-action"){
 
-      console.log('event', event);
-      console.log('target', event.target);
-      console.log('detail', event.detail);
+      // console.log('event', event);
+      // console.log('target', event.target);
+      // console.log('detail', event.detail);
 
       this.selectedBulkAction = event.detail.value || event.detail;
     }
@@ -683,7 +683,7 @@ export class InsTable {
     if (!this.totalCount) return [];
     if (this.totalCount < this.pageSize) return [1];
 
-    const totalPages = this.totalCount / this.pageSize;
+    const totalPages = Math.floor(this.totalCount / this.pageSize);
     const pages = []
 
     let pageNumber = this.pageNumber;

@@ -1,3 +1,6 @@
+# v2.10.3
+- [TW#18504517](https://pm.cbo.me/#tasks/18504517) Removed sidebar menu item 48px fixed height
+
 # 1.0.10 (06-18-2018)
 ### Bug Fixes
 - Added ins-sidebar-footer-menu in toggleSidebar
