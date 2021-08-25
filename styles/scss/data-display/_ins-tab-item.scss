@@ -9,9 +9,12 @@ ins-tab-item {
     &.active {
       display: block;
     }
-    
+
     @media screen and (max-width: 639px) {
       padding: 20px 10px;
+    }
+    .ins-tab {
+      border: none;
     }
   }
 }

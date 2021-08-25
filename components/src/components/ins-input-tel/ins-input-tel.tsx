@@ -180,9 +180,11 @@ export class InsInputTel {
 
     this.areacodeValue = area_code;
     this._area_code_value = area_code;
+    this._areaCode.value = area_code;
 
     this.phonenumValue = phone_number;
     this._phone_number_value = phone_number;
+    this._phoneNumber.value = phone_number;
 
     this.insValueChange.emit(this._getValue());
   }
@@ -238,11 +240,11 @@ export class InsInputTel {
         <div class="row-col-container">
 
           <div class="col-container column-1">
-            <input 
+            <input
               type="tel"
               class="phone ins-form-field"
               disabled={this.disabled}
-              readonly={this.readonly} 
+              readonly={this.readonly}
             />
           </div>
 
@@ -256,7 +258,7 @@ export class InsInputTel {
               placeholder={this.areacodePlaceholder}
               value={this.areacodeValue}
               required={this.required ? true : false}
-              disabled={this.disabled} readonly={this.readonly} 
+              disabled={this.disabled} readonly={this.readonly}
             />
           </div>
 

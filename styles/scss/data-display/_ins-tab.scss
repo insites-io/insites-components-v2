@@ -3,6 +3,7 @@ ins-tab {
 
   .ins-tab {
     border-radius: var(--ins-border-radius);
+    border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
     margin-top: 0;
 
     box-shadow:
