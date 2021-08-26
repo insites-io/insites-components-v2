@@ -297,7 +297,6 @@ export class InsTable {
   }
 
   pageNumberChangeHandler(key?) {
-    
     if (key === 'prev') {
       this.pageNumber--;
     } else if (key === 'next') {
@@ -305,7 +304,7 @@ export class InsTable {
     } else if (key === 'first') {
       this.pageNumber = 1;
     } else if (key === 'last') {
-      this.pageNumber = Math.floor(this.totalCount / this.pageSize);
+      this.pageNumber = Math.ceil(this.totalCount / this.pageSize);
     } else {
       this.pageNumber = key;
     }
@@ -683,7 +682,7 @@ export class InsTable {
     if (!this.totalCount) return [];
     if (this.totalCount < this.pageSize) return [1];
 
-    const totalPages = Math.floor(this.totalCount / this.pageSize);
+    const totalPages = Math.ceil(this.totalCount / this.pageSize);
     const pages = []
 
     let pageNumber = this.pageNumber;
@@ -695,14 +694,14 @@ export class InsTable {
     } else if ((pageNumber + 4) > totalPages) {
       pageNumber = totalPages - 4;
     }
-     
+
     for (let i = 0; i < length; i++){
       const page = pageNumber + i;
       if (page <= totalPages) pages.push(page);
     }
 
     return pages
-  }  
+  }
 
   render() {
     return (
