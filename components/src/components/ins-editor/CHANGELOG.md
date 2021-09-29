@@ -1,3 +1,6 @@
+# v2.10.5
+- Auto-disable rich editor when content has a liquid code
+
 # v2.1.0
 - Fixed editor adding contenteditable attribute
 

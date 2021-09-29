@@ -597,9 +597,9 @@ export class InsEditor {
 	sourceCodeViewOnly(html) {
 		if (this.searchFromCode(html, '<ins-') !== -1) {
 			this.disableVisualEditor = true;
-		// } else if (this.searchFromCode(html, '{{') !== -1 || this.searchFromCode(html, '{%') !== -1 ||
-		// 	this.searchFromCode(html, '}}') !== -1 || this.searchFromCode(html, '%}') !== -1) {
-		// 	this.disableVisualEditor = true;
+		} else if (this.searchFromCode(html, '{{') !== -1 || this.searchFromCode(html, '{%') !== -1 ||
+			this.searchFromCode(html, '}}') !== -1 || this.searchFromCode(html, '%}') !== -1) {
+			this.disableVisualEditor = true;
 		} else {
 			this.disableVisualEditor = false;
 		}
