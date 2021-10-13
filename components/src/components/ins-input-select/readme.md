@@ -9,6 +9,7 @@
 
 | Property                | Attribute                | Description | Type      | Default                             |
 | ----------------------- | ------------------------ | ----------- | --------- | ----------------------------------- |
+| `blankLabel`            | `blank-label`            |             | `boolean` | `false`                             |
 | `disabled`              | `disabled`               |             | `boolean` | `false`                             |
 | `dropUp`                | `drop-up`                |             | `boolean` | `false`                             |
 | `dynamicButtonLabel`    | `dynamic-button-label`   |             | `string`  | `"Add"`                             |

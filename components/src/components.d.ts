@@ -496,6 +496,7 @@ export namespace Components {
         "value": string;
     }
     interface InsInputSelect {
+        "blankLabel": boolean;
         "closeOptions": () => Promise<void>;
         "disableNoResult": () => Promise<boolean>;
         "disabled": boolean;
@@ -2130,6 +2131,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface InsInputSelect {
+        "blankLabel"?: boolean;
         "disabled"?: boolean;
         "dropUp"?: boolean;
         "dynamicButtonLabel"?: string;

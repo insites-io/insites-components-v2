@@ -33,6 +33,7 @@ export class InsInputSelect {
     @Prop({ mutable: true }) hasError: boolean = false;
     @Prop({ mutable: true }) errorMessage: string = "";
     @Prop({ mutable: true }) tooltip: string = "";
+    @Prop({ mutable: true }) blankLabel: boolean = false;
 
     // Multiple Mode
     @Prop({mutable: true}) multiple: boolean = false;
@@ -551,7 +552,7 @@ export class InsInputSelect {
                 onClick={() => this.expandSection()}>
                     { this.renderCaret() }
 
-                    <input class={`ins-select-value-input ${this.value ? 'has-value' : ''}`} value={this.labelOfValue}
+                    <input class={`ins-select-value-input ${this.value ? 'has-value' : ''}`} value={this.blankLabel && !this.value ? "" : this.labelOfValue}
                         readonly placeholder={this.placeholder} disabled={this.disabled} />
             </div>
         )
@@ -596,7 +597,7 @@ export class InsInputSelect {
             this.deactivateOption(option);
             if (value === option.value) {
                 this.value = option.value;
-                this.labelOfValue = option.label;
+                this.labelOfValue = this.blankLabel && !option.value ? "" : option.label;
                 this.activateOption(option);
                 this.updateValueEls(option);
                 this.checkForOptions();
@@ -605,7 +606,7 @@ export class InsInputSelect {
     }
 
     updateValueEls(option){
-        this.inputValueEl.value = option.label;
+        this.inputValueEl.value = this.blankLabel && !option.value ? "" : option.label;
     }
 
     isArray(value, isObject = false) {
