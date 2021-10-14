@@ -87,6 +87,7 @@ export class InsInputMultiple {
 
 		if (event.keyCode === 13 && eventValue.trim() && !this.readonly) {
 			this.updateValue(value, eventValue);
+			setTimeout(() => { this.insInputMultipleEl.querySelector('input').focus(); }, 200);
 		}
   }
 
@@ -96,6 +97,7 @@ export class InsInputMultiple {
 
 		if (eventValue.trim() && !this.readonly) {
 			this.updateValue(value, eventValue);
+			setTimeout(() => { this.insInputMultipleEl.querySelector('input').focus(); }, 200);
 		}
 	}
 
@@ -114,7 +116,7 @@ export class InsInputMultiple {
 
 	componentDidUpdate() {
 		this.insChange.emit({ value: this.value });
-		this.insInputMultipleEl.querySelector('input').focus();
+		// this.insInputMultipleEl.querySelector('input').focus();
 	}
 
 	render() {

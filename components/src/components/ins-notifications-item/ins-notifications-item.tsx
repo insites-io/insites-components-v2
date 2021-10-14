@@ -24,14 +24,10 @@ export class InsNotificationsItem {
         {this.heading ?
         <h3>
           {this.heading}
-
-          <span class="ins-niw-duration-wrap">
-            {this.duration}
-          </span>
-        </h3> :
-        <span class="ins-niw-duration-wrap">
+        </h3> : ''}
+        <p class="ins-niw-ago-wrap">
           {this.duration}
-        </span>}
+        </p>
 
         {this.desc ?
         <p>

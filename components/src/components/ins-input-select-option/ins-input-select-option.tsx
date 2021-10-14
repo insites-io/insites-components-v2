@@ -41,6 +41,7 @@ export class InsInputSelectOption {
     return (
       <div class={`
         ins-select-option-wrap
+        ${!this.value ? 'no-value': ''}
         ${this.activated ? 'selected': ''}
         ${this.hidden ? 'hidden': ''}
         ${this.disabled ? 'disabled': ''} `}

@@ -212,7 +212,7 @@ export class Insimagepicker {
           </span>
 
           <ins-button
-            label= {this.value ? 'CHANGE ' + this.imgType : 'UPLOAD ' + this.imgType}
+            label= {this.value ? 'Change ' + this.imgType : 'Upload ' + this.imgType}
             type="button"
             size="small"
             color={this.buttonColor}

@@ -70,7 +70,7 @@
 
   <ins-renderer>
     <div>
-      <ins-input-select label="test" value="" placeholder="Select or type to search for test" blank-label>
+      <ins-input-select label="test" value="" searchable placeholder="Select or type to search for test" blank-label>
         <div>
           <ins-input-select-option value="" label="-- Clear Option --"></ins-input-select-option>
           <ins-input-select-option value="1" label="1"></ins-input-select-option>
@@ -80,13 +80,17 @@
         </div>
       </ins-input-select>
 
+      <ins-image-picker img-type="SomethinG"></ins-image-picker>
+
       <ins-input-file 
         id="myEl"
         label="Test File"
         disabled>
       </ins-input-file>
 
+
       <script>
+
         var myEl = document.getElementById('myEl');
 
         async function setFiles(){
@@ -166,6 +170,24 @@
       </ins-accordion-item>
       
       </ins-accordion>
+
+        <ins-tab>
+          <ins-tab-item>
+            <div>
+
+              <ins-input-multiple id="test" label="Multiple"></ins-input-multiple>
+            </div>
+          </ins-tab-item>
+        </ins-tab>
+
+
+      <script>
+        var test = document.getElementById('test');
+
+        setTimeout(() => {
+          test.setValue([1]);
+        }, 500)
+      </script>
   </ins-renderer>
 </body>
 
