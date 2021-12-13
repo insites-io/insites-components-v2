@@ -137,7 +137,8 @@ export class InsFilter {
       this.toPicker.minDate = "";
 
     } else {
-
+      if(option.toLowerCase() === 'custom')
+        this.isAll = false;
       let from = new Date();
       let to = new Date();
       let curr = new Date();
