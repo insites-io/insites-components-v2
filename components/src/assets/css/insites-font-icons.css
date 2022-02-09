@@ -229,6 +229,18 @@
 .icon-arrow-up-right:before {
   content: "\e984";
 }
+.icon-angle-down:before {
+  content: "\f107";
+}
+.icon-angle-left:before {
+  content: "\f104";
+}
+.icon-angle-right:before {
+  content: "\f105";
+}
+.icon-angle-up:before {
+  content: "\f106";
+}
 .icon-arrow-back:before {
   content: "\e91f";
 }
@@ -276,6 +288,18 @@
 }
 .icon-arrow-up1:before {
   content: "\e985";
+}
+.icon-caret-down1:before {
+  content: "\f0d7";
+}
+.icon-caret-left1:before {
+  content: "\f0d9";
+}
+.icon-caret-right1:before {
+  content: "\f0da";
+}
+.icon-caret-up1:before {
+  content: "\f0d8";
 }
 .icon-chevrons-down:before {
   content: "\e99c";
@@ -328,6 +352,18 @@
 .icon-refresh-cw:before {
   content: "\ea2d";
 }
+.icon-cc-amex:before {
+  content: "\f1f3";
+}
+.icon-cc-discover:before {
+  content: "\f1f2";
+}
+.icon-cc-mastercard:before {
+  content: "\f1f1";
+}
+.icon-cc-visa:before {
+  content: "\f1f0";
+}
 .icon-chrome:before {
   content: "\e9a0";
 }
@@ -357,6 +393,9 @@
 }
 .icon-zap-off:before {
   content: "\ea7d";
+}
+.icon-insites-logo:before {
+  content: "\ea96";
 }
 .icon-dashboard-2:before {
   content: "\ea8b";
@@ -399,6 +438,9 @@
 }
 .icon-email-unsubscribe:before {
   content: "\ea95";
+}
+.icon-move-to-folder:before {
+  content: "\ea97";
 }
 .icon-cloud:before {
   content: "\e9a9";
@@ -496,6 +538,18 @@
 .icon-cancel:before {
   content: "\e924";
 }
+.icon-caret-down:before {
+  content: "\f0db";
+}
+.icon-caret-left:before {
+  content: "\f0dd";
+}
+.icon-caret-right:before {
+  content: "\f0de";
+}
+.icon-caret-up:before {
+  content: "\f0dc";
+}
 .icon-check:before {
   content: "\e926";
 }
@@ -553,6 +607,9 @@
 .icon-link:before {
   content: "\e936";
 }
+.icon-location-arrow:before {
+  content: "\f124";
+}
 .icon-lock:before {
   content: "\e937";
 }
@@ -588,6 +645,9 @@
 }
 .icon-today:before {
   content: "\e93f";
+}
+.icon-unlock:before {
+  content: "\f09c";
 }
 .icon-view:before {
   content: "\e940";
@@ -1129,14 +1189,26 @@
 .icon-truck:before {
   content: "\ea5e";
 }
+.icon-google-plus-square:before {
+  content: "\f0d4";
+}
 .icon-facebook:before {
   content: "\e9cb";
+}
+.icon-facebook-square:before {
+  content: "\f082";
+}
+.icon-instagram:before {
+  content: "\f16d";
 }
 .icon-instagram1:before {
   content: "\e9ed";
 }
 .icon-linkedin:before {
   content: "\e9f5";
+}
+.icon-linkedin-square:before {
+  content: "\f08c";
 }
 .icon-phone:before {
   content: "\e91b";
@@ -1153,9 +1225,15 @@
 .icon-twitter:before {
   content: "\ea60";
 }
+.icon-twitter-square:before {
+  content: "\f081";
+}
 .icon-youtube:before {
   content: "\ea7c";
   color: #43485d;
+}
+.icon-youtube-square:before {
+  content: "\f166";
 }
 .icon-link1:before {
   content: "\e9f4";
@@ -1243,76 +1321,4 @@
 }
 .icon-mouse-pointer:before {
   content: "\ea0f";
-}
-.icon-angle-down:before {
-  content: "\f107";
-}
-.icon-angle-left:before {
-  content: "\f104";
-}
-.icon-angle-right:before {
-  content: "\f105";
-}
-.icon-angle-up:before {
-  content: "\f106";
-}
-.icon-caret-down1:before {
-  content: "\f0d7";
-}
-.icon-caret-left1:before {
-  content: "\f0d9";
-}
-.icon-caret-right1:before {
-  content: "\f0da";
-}
-.icon-caret-up1:before {
-  content: "\f0d8";
-}
-.icon-cc-amex:before {
-  content: "\f1f3";
-}
-.icon-cc-discover:before {
-  content: "\f1f2";
-}
-.icon-cc-mastercard:before {
-  content: "\f1f1";
-}
-.icon-cc-visa:before {
-  content: "\f1f0";
-}
-.icon-caret-down:before {
-  content: "\f0db";
-}
-.icon-caret-left:before {
-  content: "\f0dd";
-}
-.icon-caret-right:before {
-  content: "\f0de";
-}
-.icon-caret-up:before {
-  content: "\f0dc";
-}
-.icon-location-arrow:before {
-  content: "\f124";
-}
-.icon-unlock:before {
-  content: "\f09c";
-}
-.icon-google-plus-square:before {
-  content: "\f0d4";
-}
-.icon-facebook-square:before {
-  content: "\f082";
-}
-.icon-instagram:before {
-  content: "\f16d";
-}
-.icon-linkedin-square:before {
-  content: "\f08c";
-}
-.icon-twitter-square:before {
-  content: "\f081";
-}
-.icon-youtube-square:before {
-  content: "\f166";
 }
