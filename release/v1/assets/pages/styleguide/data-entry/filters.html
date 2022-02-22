@@ -123,7 +123,7 @@
           <th>DESCRIPTION</th>
         </tr>
         <tr>
-          <td>onFilterApply</td>
+          <td>insFilterApply</td>
           <td>stateFrom, stateTo</td>
           <td>Execute a script when a date filter has been selected</td>
         </tr>
@@ -213,13 +213,13 @@
     <h2 class="section-title">Events</h2>
     <!-- valueChange -->
     <div class="ins-styleguide-wrap">
-      <div class="ins-styleguide-label-wrap">onFilterApply</div>
+      <div class="ins-styleguide-label-wrap">insFilterApply</div>
       <div class="ins-styleguide-cont">
         <div class="ins-styleguide-actual-slot-wrap">
           <ins-filter id="date-filter" with-date-filter date-from="05-26-2018" date-to="05-27-2018"></ins-filter>
           <script>
-            const onFilterApply = document.getElementById('date-filter')
-            onFilterApply.addEventListener('onFilterApply', event => {
+            const insFilterApply = document.getElementById('date-filter')
+            insFilterApply.addEventListener('insFilterApply', event => {
               console.log(event.detail["Date Period"]);
               console.log(event.detail["Date Period"].from);
               console.log(event.detail["Date Period"].to);
@@ -231,8 +231,8 @@
           <script type="text/plain" class="language-markup">
 <ins-filter id="date-filter" with-date-filter date-from="05-26-2018" date-to="05-27-2018"></ins-filter>
 <script>
-  const onFilterApply = document.getElementById('date-filter')
-  onFilterApply.addEventListener('onFilterApply', event => {
+  const insFilterApply = document.getElementById('date-filter')
+  insFilterApply.addEventListener('insFilterApply', event => {
     console.log(event.detail["Date Period"]);
     console.log(event.detail["Date Period"].from);
     console.log(event.detail["Date Period"].to);
