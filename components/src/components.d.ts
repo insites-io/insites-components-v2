@@ -82,6 +82,7 @@ export namespace Components {
         "size": string;
     }
     interface InsButtonSelect {
+        "blankLabel": boolean;
         "closeOptions": () => Promise<void>;
         "disableNoResult": () => Promise<boolean>;
         "disabled": boolean;
@@ -92,6 +93,7 @@ export namespace Components {
         "dynamicHasError": boolean;
         "dynamicOption": boolean;
         "dynamicPlaceholder": string;
+        "dynamicUpdateOptions": () => Promise<void>;
         "dynamicValue": string;
         "enableNoResult": () => Promise<boolean>;
         "errorMessage": string;
@@ -1722,6 +1724,7 @@ declare namespace LocalJSX {
         "size"?: string;
     }
     interface InsButtonSelect {
+        "blankLabel"?: boolean;
         "disabled"?: boolean;
         "dropUp"?: boolean;
         "dynamicButtonLabel"?: string;

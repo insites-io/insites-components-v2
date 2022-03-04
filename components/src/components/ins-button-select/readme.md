@@ -9,6 +9,7 @@
 
 | Property                | Attribute                | Description | Type      | Default            |
 | ----------------------- | ------------------------ | ----------- | --------- | ------------------ |
+| `blankLabel`            | `blank-label`            |             | `boolean` | `false`            |
 | `disabled`              | `disabled`               |             | `boolean` | `false`            |
 | `dropUp`                | `drop-up`                |             | `boolean` | `false`            |
 | `dynamicButtonLabel`    | `dynamic-button-label`   |             | `string`  | `"Add"`            |
@@ -69,6 +70,16 @@ Type: `Promise<boolean>`
 
 
 ### `dynamicCloseOptions() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `dynamicUpdateOptions() => Promise<void>`
 
 
 
