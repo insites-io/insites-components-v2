@@ -528,7 +528,7 @@ export class InsButtonSelect {
         return (
             <div class={`ins-select-label-wrap  ${!this.disabled? 'ripple' : ''}`}
                 onClick={() => this.expandSection()}>
-                { this.label } :
+                { this.label }:
                 <span>{this.blankLabel && !this.value ? "" : this.labelOfValue ? this.labelOfValue : this.placeholder}</span>
                 { this.renderCaret() }
             </div>

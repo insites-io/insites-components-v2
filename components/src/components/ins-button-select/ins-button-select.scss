@@ -35,8 +35,11 @@
                 min-width: 240px;
             }
             .ins-select-label-wrap {
+                i.icon-caret-down {
+                  width: 6px;
+                }
                 span {
-                    padding-right: 25px;
+                    padding-right: 14px;
                 }
             }
             .multiple.has-value {
@@ -154,7 +157,7 @@
         &.initializing {
             .icon-caret-down {
                 display: none;
-            }   
+            }
         }
 
         .ins-select-options-wrap {
@@ -175,7 +178,7 @@
             display: none;
         }
     }
-    
+
 
     &.activated {
         .ins-select-search {
