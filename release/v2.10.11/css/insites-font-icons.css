@@ -397,6 +397,12 @@
 .icon-insites-logo:before {
   content: "\ea96";
 }
+.icon-task-added:before {
+  content: "\ea98";
+}
+.icon-task-completed:before {
+  content: "\ea99";
+}
 .icon-dashboard-2:before {
   content: "\ea8b";
 }
