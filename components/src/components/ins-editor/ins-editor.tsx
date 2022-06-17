@@ -182,7 +182,14 @@ export class InsEditor {
   }
 
   removeEditableAttr(value){
-    return value.replace(/ contenteditable="true"/g, "")
+    return this.removeHTMLMarkers(value.replace(/ contenteditable="true"/g, ""));
+  }
+
+  redactorInput() {
+    this.firstLoadRedactor = false;
+    let sanitized = this.removeEditableAttr(this.getVal());
+    this.insInput.emit(sanitized);
+    this.insValueChange.emit(sanitized);
   }
 
 	redactorCallbacks() {
@@ -193,11 +200,41 @@ export class InsEditor {
 				self.firstLoadRedactor = true;
 			},
 			keyup: () => {
-        self.firstLoadRedactor = false;
-        let sanitized = self.removeEditableAttr(self.getVal());
-				self.insInput.emit(sanitized);
-				self.insValueChange.emit(sanitized);
+        // self.firstLoadRedactor = false;
+        // let sanitized = self.removeEditableAttr(self.getVal());
+				// self.insInput.emit(sanitized);
+				// self.insValueChange.emit(sanitized);
+        self.redactorInput();
 			},
+      // format: () => {
+      //   self.redactorInput();
+      // },
+      // link: {
+      //   inserted: () => {
+      //     self.redactorInput();
+      //   },
+      //   deleted: () => {
+      //     self.redactorInput();
+      //   },
+      //   changed: () => {
+      //     self.redactorInput();
+      //   }
+      // },
+      // autoparse: () => {
+      //   self.redactorInput();
+      // },
+      // undo: () => {
+      //   self.redactorInput();
+      // },
+      // redo: () => {
+      //   self.redactorInput();
+      // },
+      // inserted: () => {
+      //   self.redactorInput();
+      // },
+      synced: () => {
+        self.redactorInput();
+      },
 			source: {},
 			focus() {
 				self.activateLabel();
