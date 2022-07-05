@@ -1,6 +1,9 @@
-import { h, Component, Element, Prop, Method } from "@stencil/core";
+import { h, Component, Element, Prop, Method, State } from "@stencil/core";
 
-@Component({ tag: 'ins-accordion-item' })
+@Component({
+  tag: 'ins-accordion-item',
+  styleUrl: "./ins-accordion-item.scss"
+})
 export class InsAccordionItem {
   @Element() insAccordionItemEl: HTMLElement;
   @Prop({ mutable: true }) heading: string = "Heading";
@@ -14,17 +17,44 @@ export class InsAccordionItem {
   @Prop({ mutable: true }) openIcon: string = "icon-angle-down";
   @Prop({ mutable: true }) closeIcon: string = "icon-angle-up";
 
+  @State() itemHeading: any;
+  @State() hasItemHeading: boolean = false;
+
   wrapper: any; body: any;
+
+  componentWillLoad() {
+    let itemHeading = this.insAccordionItemEl.querySelectorAll(":scope ins-accordion-item-heading");
+
+    if (itemHeading.length) {
+      this.itemHeading = itemHeading[0].innerHTML;
+      this.hasItemHeading = true;
+
+      for (let index = 0; index < itemHeading.length; index++) {
+        let item = itemHeading[index];
+        item.innerHTML = "";
+      }
+    }
+  }
 
   componentDidLoad(){
     this.wrapper = this.insAccordionItemEl.querySelector('.ins-accordion-item');
     this.body = this.insAccordionItemEl.querySelector('.ins-accordion-item_content');
+
+    if (this.hasItemHeading) this.renderItemHeading();
     if (this.active) this.toggle();
   }
 
+  renderItemHeading() {
+    this.insAccordionItemEl.querySelector(':scope .ins-accordion-item-heading').innerHTML = this.itemHeading;
+  }
+
   renderHeading(){
-    if (!this.heading) return ""
-    return <span class="heading">{this.heading}</span>
+    if (this.hasItemHeading) {
+      return <div class="ins-accordion-item-heading"></div>;
+    } else {
+      if (!this.heading) return ""
+      return <span class="heading">{this.heading}</span>
+    }
   }
 
   renderHeadingLink(){
@@ -75,7 +105,7 @@ export class InsAccordionItem {
           <div class="inner-head" onClick={() => this.toggle()}>
             {this.icon ? <span class={`icon ${this.icon}`}></span> : "" }
 
-            {this.link
+            {this.link && !this.hasItemHeading
               ? this.renderHeadingLink()
               : this.renderHeading() }
 

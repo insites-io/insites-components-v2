@@ -23,6 +23,8 @@ export namespace Components {
         "toggle": () => Promise<void>;
         "udpateScrollHeight": (height: any) => Promise<void>;
     }
+    interface InsAccordionItemHeading {
+    }
     interface InsAccordionLink {
         "active": boolean;
         "disabled": boolean;
@@ -1049,6 +1051,12 @@ declare global {
         prototype: HTMLInsAccordionItemElement;
         new (): HTMLInsAccordionItemElement;
     };
+    interface HTMLInsAccordionItemHeadingElement extends Components.InsAccordionItemHeading, HTMLStencilElement {
+    }
+    var HTMLInsAccordionItemHeadingElement: {
+        prototype: HTMLInsAccordionItemHeadingElement;
+        new (): HTMLInsAccordionItemHeadingElement;
+    };
     interface HTMLInsAccordionLinkElement extends Components.InsAccordionLink, HTMLStencilElement {
     }
     var HTMLInsAccordionLinkElement: {
@@ -1556,6 +1564,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "ins-accordion": HTMLInsAccordionElement;
         "ins-accordion-item": HTMLInsAccordionItemElement;
+        "ins-accordion-item-heading": HTMLInsAccordionItemHeadingElement;
         "ins-accordion-link": HTMLInsAccordionLinkElement;
         "ins-admin": HTMLInsAdminElement;
         "ins-backdrop": HTMLInsBackdropElement;
@@ -1659,6 +1668,8 @@ declare namespace LocalJSX {
         "link"?: string;
         "linkTarget"?: string;
         "openIcon"?: string;
+    }
+    interface InsAccordionItemHeading {
     }
     interface InsAccordionLink {
         "active"?: boolean;
@@ -2664,6 +2675,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "ins-accordion": InsAccordion;
         "ins-accordion-item": InsAccordionItem;
+        "ins-accordion-item-heading": InsAccordionItemHeading;
         "ins-accordion-link": InsAccordionLink;
         "ins-admin": InsAdmin;
         "ins-backdrop": InsBackdrop;
@@ -2756,6 +2768,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "ins-accordion": LocalJSX.InsAccordion & JSXBase.HTMLAttributes<HTMLInsAccordionElement>;
             "ins-accordion-item": LocalJSX.InsAccordionItem & JSXBase.HTMLAttributes<HTMLInsAccordionItemElement>;
+            "ins-accordion-item-heading": LocalJSX.InsAccordionItemHeading & JSXBase.HTMLAttributes<HTMLInsAccordionItemHeadingElement>;
             "ins-accordion-link": LocalJSX.InsAccordionLink & JSXBase.HTMLAttributes<HTMLInsAccordionLinkElement>;
             "ins-admin": LocalJSX.InsAdmin & JSXBase.HTMLAttributes<HTMLInsAdminElement>;
             "ins-backdrop": LocalJSX.InsBackdrop & JSXBase.HTMLAttributes<HTMLInsBackdropElement>;
