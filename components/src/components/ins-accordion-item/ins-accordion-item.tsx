@@ -29,10 +29,10 @@ export class InsAccordionItem {
       this.itemHeading = itemHeading[0].innerHTML;
       this.hasItemHeading = true;
 
-      for (let index = 0; index < itemHeading.length; index++) {
-        let item = itemHeading[index];
-        item.innerHTML = "";
-      }
+      // for (let index = 0; index < itemHeading.length; index++) {
+      //   let item = itemHeading[index];
+      //   item.innerHTML = "";
+      // }
     }
   }
 
@@ -103,7 +103,7 @@ export class InsAccordionItem {
         <div class={`ins-accordion-item_header ${this.disabled ? 'disabled':''}`}>
 
           <div class="inner-head" onClick={() => this.toggle()}>
-            {this.icon ? <span class={`icon ${this.icon}`}></span> : "" }
+            {this.icon && !this.hasItemHeading ? <span class={`icon ${this.icon}`}></span> : "" }
 
             {this.link && !this.hasItemHeading
               ? this.renderHeadingLink()
