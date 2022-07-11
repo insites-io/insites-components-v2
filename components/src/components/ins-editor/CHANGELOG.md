@@ -1,3 +1,6 @@
+# v2.10.14
+- Fixed editor setting default value in code editor mode
+
 # v2.10.5
 - Auto-disable rich editor when content has a liquid code
 

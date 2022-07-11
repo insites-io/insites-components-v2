@@ -114,7 +114,7 @@ export class InsEditor {
 
     if (this.classId) {
 			this.stylesId = `id-${this.classId}`;
-			this.insEditorEl.querySelector('.redactor-styles').classList.add(this.stylesId);
+			if (this.insEditorEl.querySelector('.redactor-styles')) this.insEditorEl.querySelector('.redactor-styles').classList.add(this.stylesId);
 		}
 
 		if (this.value) {
