@@ -64,6 +64,7 @@
     <ins-header-user
       name="John Smith"
       logout-link="/"
+      profile-label="My Professional Profile"
       profile-link="#/my-profile">
     </ins-header-user>
   </ins-header>
@@ -72,36 +73,30 @@
     <div>
 
       <ins-accordion>
+        <ins-accordion-item link="/" heading="Head 1">
+          <!-- <ins-accordion-item-heading> <h3>Test 1</h3> </ins-accordion-item-heading> -->
+          Test Content 1
+          <!-- <ins-accordion-item-heading> <h3>Test 2</h3> </ins-accordion-item-heading> -->
 
-        <ins-accordion-item link="/">
-          <div>
-            <ins-accordion-item-heading> <h3>Test 1</h3> </ins-accordion-item-heading>
-            Test Content 1
-            <ins-accordion-item-heading> <h3>Test 2</h3> </ins-accordion-item-heading>
+          <ins-accordion-item link="/" heading="Head 2">
+              <ins-accordion-item-heading>
+                <h3>Test 1.1</h3>
+              </ins-accordion-item-heading>
+              <!-- <ins-accordion-item-heading> <h3>Test 2.1</h3> </ins-accordion-item-heading> -->
+              Test Content 1.1
 
-            <ins-accordion-item link="/">
-              <div>
-                <ins-accordion-item-heading>
-                  <h3>Test 1.1</h3>
-                </ins-accordion-item-heading>
-                <ins-accordion-item-heading> <h3>Test 2.1</h3> </ins-accordion-item-heading>
-                Test Content 1.1
-
-                <ins-accordion-item link="/">
-                  <div>
-                    <ins-accordion-item-heading>
-                      <h3>Test 1.1.1</h3>
-                    </ins-accordion-item-heading>
-                    <ins-accordion-item-heading> <h3>Test 2.1.1</h3> </ins-accordion-item-heading>
-                    Test Content 1.1
-                  </div>
-                </ins-accordion-item>
-              </div>
-            </ins-accordion-item>
-          </div>
+              <ins-accordion-item link="/" heading="Head 3">
+                <div>
+                  <ins-accordion-item-heading>
+                    <h3>Test 1.1.1</h3>
+                  </ins-accordion-item-heading>
+                  <ins-accordion-item-heading> <h3>Test 2.1.1</h3> </ins-accordion-item-heading>
+                  Test Content 1.1
+                </div>
+              </ins-accordion-item>
+          </ins-accordion-item>
         </ins-accordion-item>
       </ins-accordion>
-
 
       <ins-input-select label="test" value="" searchable placeholder="Select or type to search for test" blank-label>
         <div>

@@ -350,8 +350,10 @@ export namespace Components {
     interface InsHeaderUser {
         "app": boolean;
         "formattedRoute": string;
+        "logoutLabel": string;
         "logoutLink": string;
         "name": string;
+        "profileLabel": string;
         "profileLink": string;
         "renderMyProfile": () => Promise<void>;
         "routePageHandler": () => Promise<void>;
@@ -1993,9 +1995,11 @@ declare namespace LocalJSX {
     interface InsHeaderUser {
         "app"?: boolean;
         "formattedRoute"?: string;
+        "logoutLabel"?: string;
         "logoutLink"?: string;
         "name"?: string;
         "onRoutePage"?: (event: CustomEvent<any>) => void;
+        "profileLabel"?: string;
         "profileLink"?: string;
     }
     interface InsHeading {

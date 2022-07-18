@@ -4,6 +4,8 @@ import { h, Component, Prop, State, Event, Method, EventEmitter } from "@stencil
 export class InsHeaderUser {
   @Event() routePage: EventEmitter;
   @Prop({ mutable: true }) name: string = 'User';
+  @Prop({ mutable: true }) logoutLabel: string = 'Logout';
+  @Prop({ mutable: true }) profileLabel: string = 'My Profile';
   @Prop({ mutable: true }) logoutLink: string = '';
   @Prop({ mutable: true }) profileLink: string = '#/my-profile';
   @Prop({ mutable: true }) app: boolean;
@@ -97,7 +99,7 @@ export class InsHeaderUser {
                 <li>
                   <a id="myProfile" href={this.formattedRoute}
                     onClick={() => this.routePageHandler()}>
-                    <i class="icon-person"></i> My Profile
+                    <i class="icon-person"></i> {this.profileLabel}
                   </a>
                 </li>
 
@@ -105,7 +107,7 @@ export class InsHeaderUser {
 
                 <li>
                   <a href={this.logoutLink} onClick={() => this.toggleDropDown()}>
-                    <i class="icon-exit-to-app"></i> Logout
+                    <i class="icon-exit-to-app"></i> {this.logoutLabel}
                     </a>
                 </li>
               </ul>
@@ -126,7 +128,7 @@ export class InsHeaderUser {
 
           <div class="ins-header-mobile-view__logout">
             <i class="icon-logout-1"></i>
-            <a href={this.logoutLink}>Log out</a>
+            <a href={this.logoutLink}>{this.logoutLabel}</a>
           </div>
         </div>
       </div>

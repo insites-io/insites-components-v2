@@ -11,8 +11,10 @@
 | ---------------- | ----------------- | ----------- | --------- | ---------------- |
 | `app`            | `app`             |             | `boolean` | `undefined`      |
 | `formattedRoute` | `formatted-route` |             | `string`  | `undefined`      |
+| `logoutLabel`    | `logout-label`    |             | `string`  | `'Logout'`       |
 | `logoutLink`     | `logout-link`     |             | `string`  | `''`             |
 | `name`           | `name`            |             | `string`  | `'User'`         |
+| `profileLabel`   | `profile-label`   |             | `string`  | `'My Profile'`   |
 | `profileLink`    | `profile-link`    |             | `string`  | `'#/my-profile'` |
 
 

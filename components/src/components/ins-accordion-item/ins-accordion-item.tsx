@@ -23,7 +23,7 @@ export class InsAccordionItem {
   wrapper: any; body: any;
 
   componentWillLoad() {
-    let itemHeading = this.insAccordionItemEl.querySelectorAll(":scope ins-accordion-item-heading");
+    let itemHeading = this.insAccordionItemEl.querySelectorAll(":scope ins-accordion-item-heading:not(:scope ins-accordion-item ins-accordion-item-heading)");
 
     if (itemHeading.length) {
       this.itemHeading = itemHeading[0].innerHTML;
