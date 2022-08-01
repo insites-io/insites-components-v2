@@ -16,6 +16,7 @@ import "codemirror/mode/python/python";
 import "codemirror/mode/vue/vue";
 import "codemirror/mode/xml/xml";
 import "codemirror/mode/yaml/yaml";
+import "../../assets/js/liquid.js";
 
 @Component({
 	tag: 'ins-code-editor',
