@@ -9,6 +9,7 @@
 
 | Property             | Attribute              | Description | Type      | Default       |
 | -------------------- | ---------------------- | ----------- | --------- | ------------- |
+| `autoHeight`         | `auto-height`          |             | `boolean` | `false`       |
 | `disableLineNumbers` | `disable-line-numbers` |             | `boolean` | `false`       |
 | `errorMessage`       | `error-message`        |             | `string`  | `""`          |
 | `hasError`           | `has-error`            |             | `boolean` | `false`       |

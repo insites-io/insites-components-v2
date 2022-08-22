@@ -1,8 +1,20 @@
 @import "../../../node_modules/codemirror/lib/codemirror.css";
-@import "../../assets/css/liquid.css";
 @import "../../../node_modules/codemirror/addon/dialog/dialog.css";
 @import "../../../node_modules/codemirror/addon/display/fullscreen.css";
 @import "../../../node_modules/codemirror/theme/monokai.css";
 @import "../../../node_modules/codemirror/theme/neat.css";
 @import "../../../node_modules/codemirror/theme/the-matrix.css";
 @import "../../../node_modules/codemirror/theme/material.css";
+
+ins-code-editor {
+  .auto-height {
+    .CodeMirror,
+    .CodeMirror.cm-s-default.CodeMirror-focused {
+      height: auto;
+      width: 100%;
+    }
+    .CodeMirror-scroll {
+      height: auto;
+    }
+  }
+}

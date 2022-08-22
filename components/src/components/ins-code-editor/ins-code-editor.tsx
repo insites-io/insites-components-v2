@@ -37,6 +37,7 @@ export class InsCodeEditor {
 	@Prop({ mutable: true }) theme: string = "";
 	@Prop({ mutable: true }) mode: string = "htmlmixed";
 	@Prop({ mutable: true }) readonly: boolean = false;
+	@Prop({ mutable: true }) autoHeight: boolean = false;
 	@Prop({ mutable: true }) disableLineNumbers: boolean = false;
 	@Prop({ mutable: true }) hasError: boolean = false;
 	@Prop({ mutable: true }) errorMessage: string = "";
@@ -183,7 +184,7 @@ export class InsCodeEditor {
 	render() {
 		return (
 			<div class="ins-code-editor">
-				<div class={(this.hasError ? 'has-error ' : '') + (this.readonly ? 'readonly ' : '') + (this.activeLabel ? 'active' : '')}>
+				<div class={(this.hasError ? 'has-error ' : '') + (this.readonly ? 'readonly ' : '') + (this.activeLabel ? 'active ' : '') + (this.autoHeight ?  'auto-height' : '')}>
 
           { this.label || this.tooltip ?
             <label>

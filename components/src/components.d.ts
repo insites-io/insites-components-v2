@@ -197,6 +197,7 @@ export namespace Components {
         "value": string;
     }
     interface InsCodeEditor {
+        "autoHeight": boolean;
         "beautify": () => Promise<void>;
         "disableLineNumbers": boolean;
         "errorMessage": string;
@@ -1842,6 +1843,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface InsCodeEditor {
+        "autoHeight"?: boolean;
         "disableLineNumbers"?: boolean;
         "errorMessage"?: string;
         "hasError"?: boolean;
