@@ -1,0 +1,61 @@
+# ins-card-select-option
+
+
+
+<!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property    | Attribute   | Description | Type      | Default |
+| ----------- | ----------- | ----------- | --------- | ------- |
+| `activated` | `activated` |             | `boolean` | `false` |
+| `default`   | `default`   |             | `boolean` | `false` |
+| `disabled`  | `disabled`  |             | `boolean` | `false` |
+| `hidden`    | `hidden`    |             | `boolean` | `false` |
+| `value`     | `value`     |             | `string`  | `''`    |
+
+
+## Events
+
+| Event                        | Description | Type               |
+| ---------------------------- | ----------- | ------------------ |
+| `insCardSelectOptionClicked` |             | `CustomEvent<any>` |
+
+
+## Methods
+
+### `activate() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `deactivate() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `toggle() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

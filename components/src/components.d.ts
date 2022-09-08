@@ -140,6 +140,28 @@ export namespace Components {
         "outlined": boolean;
         "steady": boolean;
     }
+    interface InsCardSelect {
+        "disabled": boolean;
+        "errorMessage": string;
+        "getValue": () => Promise<any>;
+        "hasError": boolean;
+        "label": string;
+        "multiple": boolean;
+        "readonly": boolean;
+        "setValue": (value: any) => Promise<void>;
+        "tooltip": string;
+        "value": any;
+    }
+    interface InsCardSelectOption {
+        "activate": () => Promise<void>;
+        "activated": boolean;
+        "deactivate": () => Promise<void>;
+        "default": boolean;
+        "disabled": boolean;
+        "hidden": boolean;
+        "toggle": () => Promise<void>;
+        "value": string;
+    }
     interface InsCarousel {
         "autoplay": boolean;
         "autostop": boolean;
@@ -1126,6 +1148,18 @@ declare global {
         prototype: HTMLInsCardElement;
         new (): HTMLInsCardElement;
     };
+    interface HTMLInsCardSelectElement extends Components.InsCardSelect, HTMLStencilElement {
+    }
+    var HTMLInsCardSelectElement: {
+        prototype: HTMLInsCardSelectElement;
+        new (): HTMLInsCardSelectElement;
+    };
+    interface HTMLInsCardSelectOptionElement extends Components.InsCardSelectOption, HTMLStencilElement {
+    }
+    var HTMLInsCardSelectOptionElement: {
+        prototype: HTMLInsCardSelectOptionElement;
+        new (): HTMLInsCardSelectOptionElement;
+    };
     interface HTMLInsCarouselElement extends Components.InsCarousel, HTMLStencilElement {
     }
     var HTMLInsCarouselElement: {
@@ -1579,6 +1613,8 @@ declare global {
         "ins-button-select-group": HTMLInsButtonSelectGroupElement;
         "ins-button-select-option": HTMLInsButtonSelectOptionElement;
         "ins-card": HTMLInsCardElement;
+        "ins-card-select": HTMLInsCardSelectElement;
+        "ins-card-select-option": HTMLInsCardSelectOptionElement;
         "ins-carousel": HTMLInsCarouselElement;
         "ins-chart": HTMLInsChartElement;
         "ins-checkbox": HTMLInsCheckboxElement;
@@ -1785,6 +1821,26 @@ declare namespace LocalJSX {
         "noPadding"?: boolean;
         "outlined"?: boolean;
         "steady"?: boolean;
+    }
+    interface InsCardSelect {
+        "disabled"?: boolean;
+        "errorMessage"?: string;
+        "hasError"?: boolean;
+        "label"?: string;
+        "multiple"?: boolean;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onInsInput"?: (event: CustomEvent<any>) => void;
+        "readonly"?: boolean;
+        "tooltip"?: string;
+        "value"?: any;
+    }
+    interface InsCardSelectOption {
+        "activated"?: boolean;
+        "default"?: boolean;
+        "disabled"?: boolean;
+        "hidden"?: boolean;
+        "onInsCardSelectOptionClicked"?: (event: CustomEvent<any>) => void;
+        "value"?: string;
     }
     interface InsCarousel {
         "autoplay"?: boolean;
@@ -2693,6 +2749,8 @@ declare namespace LocalJSX {
         "ins-button-select-group": InsButtonSelectGroup;
         "ins-button-select-option": InsButtonSelectOption;
         "ins-card": InsCard;
+        "ins-card-select": InsCardSelect;
+        "ins-card-select-option": InsCardSelectOption;
         "ins-carousel": InsCarousel;
         "ins-chart": InsChart;
         "ins-checkbox": InsCheckbox;
@@ -2786,6 +2844,8 @@ declare module "@stencil/core" {
             "ins-button-select-group": LocalJSX.InsButtonSelectGroup & JSXBase.HTMLAttributes<HTMLInsButtonSelectGroupElement>;
             "ins-button-select-option": LocalJSX.InsButtonSelectOption & JSXBase.HTMLAttributes<HTMLInsButtonSelectOptionElement>;
             "ins-card": LocalJSX.InsCard & JSXBase.HTMLAttributes<HTMLInsCardElement>;
+            "ins-card-select": LocalJSX.InsCardSelect & JSXBase.HTMLAttributes<HTMLInsCardSelectElement>;
+            "ins-card-select-option": LocalJSX.InsCardSelectOption & JSXBase.HTMLAttributes<HTMLInsCardSelectOptionElement>;
             "ins-carousel": LocalJSX.InsCarousel & JSXBase.HTMLAttributes<HTMLInsCarouselElement>;
             "ins-chart": LocalJSX.InsChart & JSXBase.HTMLAttributes<HTMLInsChartElement>;
             "ins-checkbox": LocalJSX.InsCheckbox & JSXBase.HTMLAttributes<HTMLInsCheckboxElement>;

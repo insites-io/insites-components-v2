@@ -9,10 +9,13 @@
   <!-- Insites Essentials -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap">
-  <link rel="stylesheet" href="/assets/css/reset.css" />
-  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
   <link rel="stylesheet" href="/assets/css/foundation.min.css" />
-  <link rel="stylesheet" href="/assets/css/insites.css" />
+
+  <!-- Font Icons -->
+  <link rel="stylesheet" href="https://components.insites.io/v2/latest/css/insites-font-icons.css">
+
+  <!-- Components -->
+  <link rel="stylesheet" href="https://components.insites.io/v2/latest/css/insites.css" />
 
   <script type="module" src="/build/insites.esm.js"></script>
   <script nomodule src="/build/insites.js"></script>
@@ -71,6 +74,49 @@
 
   <ins-renderer>
     <div>
+
+      <ins-radio label="Test"></ins-radio>
+
+      <ins-card-select label="Card" error-message="Error">
+        <div>
+          <ins-card-select-option value="Tested 3">
+            <div>
+              <h1>Content 2</h1>
+              <p>Value 2 </p>
+              <p>Value 2 </p>
+              <p>Value 2 </p>
+              <p>Value 2 </p>
+              <p>Value 2 </p>
+              <p>Value 2 </p>
+              <p>Value 2 </p>
+            </div>
+          </ins-card-select-option>
+          <ins-card-select-option value="Tested 1">
+            <div>
+              <h1>Content 1</h1>
+              <p>Value 1</p>
+            </div>
+          </ins-card-select-option>
+          <ins-card-select-option value="Tested 0">
+            <div>
+              <h1>Content 1</h1>
+              <p>Value 1</p>
+            </div>
+          </ins-card-select-option>
+          <ins-card-select-option value="Tested 2">
+            <div>
+              <h1>Content 2</h1>
+              <p>Value 2</p>
+            </div>
+          </ins-card-select-option>
+          <ins-card-select-option value="Tested 4">
+            <div>
+              <h1>Content 2</h1>
+              <p>Value 2</p>
+            </div>
+          </ins-card-select-option>
+        </div>
+      </ins-card-select>
 
       <ins-accordion>
         <ins-accordion-item link="/" heading="Head 1">

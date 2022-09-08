@@ -16,6 +16,7 @@
 
 ### Used by
 
+ - [ins-card-select](../ins-card-select)
  - [ins-checkbox](../ins-checkbox)
  - [ins-code-editor](../ins-code-editor)
  - [ins-date-time](../ins-date-time)
@@ -37,6 +38,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  ins-card-select --> ins-input-tooltip
   ins-checkbox --> ins-input-tooltip
   ins-code-editor --> ins-input-tooltip
   ins-date-time --> ins-input-tooltip

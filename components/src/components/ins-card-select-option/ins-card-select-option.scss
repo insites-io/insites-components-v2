@@ -1,0 +1,65 @@
+ins-card-select-option {
+  width: 25%;
+  @media screen and (max-width: 1023px) {
+    width: 50%;
+  }
+  @media screen and (max-width: 639px) {
+    width: 100%;
+  }
+  .ins-card-option-wrap {
+    margin: 12px;
+    position: relative;
+    padding: 16px;
+    background: var(--ins-color-white);
+    border: 1px solid var(--ins-border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      border: 1px solid var(--ins-color-ink40);
+      box-shadow: 1px 1px 2px var(--ins-shadow-color);
+    }
+    &.selected {
+      border: 1px solid var(--ins-color-primary);
+
+      &::before {
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        display: inline-block;
+        font-size: 10px;
+        text-align: center;
+        content: "\e926";
+        font-family: insites-20-fonticon !important;
+        font-style: normal;
+        font-weight: 400;
+        font-variant: normal;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
+        z-index: 101;
+        color: var(--ins-color-white);
+      }
+
+      &::after {
+        background: var(--ins-color-primary);
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 100;
+        top: -8px;
+        right: -8px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+ins-card-select .ins-card-select-wrap.disabled {
+  .ins-card-option-wrap {
+    pointer-events: none;
+  }
+}
