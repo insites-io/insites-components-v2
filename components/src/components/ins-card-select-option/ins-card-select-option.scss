@@ -7,6 +7,7 @@ ins-card-select-option {
     width: 100%;
   }
   .ins-card-option-wrap {
+    height: calc(100% - 24px);
     margin: 12px;
     position: relative;
     padding: 16px;
@@ -61,5 +62,12 @@ ins-card-select-option {
 ins-card-select .ins-card-select-wrap.disabled {
   .ins-card-option-wrap {
     pointer-events: none;
+    background: var(--ins-color-disabled_readonly_bg);
+    color: var(--ins-color-ink40);
+  }
+
+  ins-card-select-option .ins-card-option-wrap.selected {
+    color: var(--ins-color-ink);
+    border-color: var(--ins-color-ink40);
   }
 }

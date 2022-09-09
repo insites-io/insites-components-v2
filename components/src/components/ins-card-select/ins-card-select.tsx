@@ -73,10 +73,11 @@ export class InsCardSelect {
   }
 
   componentDidLoad() {
-    this.didLoad.emit();
     this.cardOptions = this.insCardSelectEl.querySelectorAll('ins-card-select-option');
 
     if (!this.multiple && this.value) this.setValue(this.value);
+    if (this.multiple) this.value = [];
+    this.didLoad.emit();
   }
 
   render() {

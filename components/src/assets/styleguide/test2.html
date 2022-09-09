@@ -10,9 +10,8 @@
   <!-- Insites Essentials -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap">
-  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <!-- <link rel="stylesheet" href="/assets/css/reset.css" /> -->
   <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
-  <link rel="stylesheet" href="/assets/css/foundation.min.css" />
   <link rel="stylesheet" href="/assets/css/insites.css" />
 
   <script type="module" src="/build/insites.esm.js"></script>
@@ -22,11 +21,24 @@
       padding: 20px 20px 100px;
     }
   </style>
+
+  <style>
+    ins-card-select div,
+    ins-card-select label,
+    ins-card-select ins-card-select-option {
+      box-sizing: border-box;
+    }
+    /* ins-card-select {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    } */
+  </style>
 </head>
 
 <body>
 
-  <ins-card-select label="Card" value="Tested 3" error-message="Error" multiple tooltip="This is a toolip">
+  <ins-card-select label="Card" value="Tested 3" error-message="Error" multipletooltip="This is a toolip">
     <div>
       <ins-card-select-option value="Tested 3">
         <div>
