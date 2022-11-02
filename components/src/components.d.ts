@@ -767,6 +767,7 @@ export namespace Components {
     }
     interface InsRenderer {
         "app": boolean;
+        "disableBreadcrumbs": boolean;
         "hasLoad": string;
         "label": string;
         "link": string;
@@ -2446,6 +2447,7 @@ declare namespace LocalJSX {
     }
     interface InsRenderer {
         "app"?: boolean;
+        "disableBreadcrumbs"?: boolean;
         "hasLoad"?: string;
         "label"?: string;
         "link"?: string;

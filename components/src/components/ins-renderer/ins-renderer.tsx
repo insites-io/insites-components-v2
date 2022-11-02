@@ -8,9 +8,10 @@ export class InsRenderer {
 
   @State() insBreadCrumbsEl: any;
   @Prop({ mutable: true }) link: string;
+  @Prop({ mutable: true }) disableBreadcrumbs: boolean = false;
   @Prop({ mutable: true }) app: boolean = false;
   @Prop({ mutable: true }) label: string;
-  
+
   route: any = {
     label: "", link: ""
   };
@@ -26,7 +27,7 @@ export class InsRenderer {
 
   @Method()
   async updateRoute(newRoutes, noRedirect = false, iframe) {
-    if (newRoutes && newRoutes.length) {
+    if (newRoutes && newRoutes.length && !this.disableBreadcrumbs) {
       let last = newRoutes.length - 1;
       this.route = newRoutes[last];
       this.updateBreadcrumbs(newRoutes, noRedirect);
@@ -233,15 +234,24 @@ export class InsRenderer {
   render() {
     return (
       <div class={`ins-renderer-wrap content ${this.route.app ? "app" : ""}`}>
-        <h1 class="ins-renderer-wrap__title">
-          <span class="ins-renderer-wrap__title-span">
-            {this.route.label ? this.route.label : ""}
-          </span>
-        </h1>
 
-        <div class="ins-breadcrumbs-wrap">
-          {this.renderBreadcrumbs()}
-        </div>
+        {
+          this.disableBreadcrumbs ?
+          "" :
+          <h1 class="ins-renderer-wrap__title">
+            <span class="ins-renderer-wrap__title-span">
+              {this.route.label ? this.route.label : ""}
+            </span>
+          </h1>
+        }
+
+        {
+          this.disableBreadcrumbs ?
+          "" :
+          <div class="ins-breadcrumbs-wrap">
+            {this.renderBreadcrumbs()}
+          </div>
+        }
 
         <div class="ins-renderer__iframe-wrap">
           <iframe id="insRendererFrame"

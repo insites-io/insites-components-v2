@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property  | Attribute  | Description | Type      | Default     |
-| --------- | ---------- | ----------- | --------- | ----------- |
-| `app`     | `app`      |             | `boolean` | `false`     |
-| `hasLoad` | `has-load` |             | `string`  | `undefined` |
-| `label`   | `label`    |             | `string`  | `undefined` |
-| `link`    | `link`     |             | `string`  | `undefined` |
+| Property             | Attribute             | Description | Type      | Default     |
+| -------------------- | --------------------- | ----------- | --------- | ----------- |
+| `app`                | `app`                 |             | `boolean` | `false`     |
+| `disableBreadcrumbs` | `disable-breadcrumbs` |             | `boolean` | `false`     |
+| `hasLoad`            | `has-load`            |             | `string`  | `undefined` |
+| `label`              | `label`               |             | `string`  | `undefined` |
+| `link`               | `link`                |             | `string`  | `undefined` |
 
 
 ## Events
