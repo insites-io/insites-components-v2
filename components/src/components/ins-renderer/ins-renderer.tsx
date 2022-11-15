@@ -20,6 +20,7 @@ export class InsRenderer {
   breadcrumbs: any = [];
   insRendererFrameEl: any;
 
+  titleWrapEl: any;
   titleEl: any;
   breadcrumbsEl: any;
   wrapEl: any;
@@ -27,7 +28,7 @@ export class InsRenderer {
 
   @Method()
   async updateRoute(newRoutes, noRedirect = false, iframe) {
-    if (newRoutes && newRoutes.length && !this.disableBreadcrumbs) {
+    if (newRoutes && newRoutes.length) {
       let last = newRoutes.length - 1;
       this.route = newRoutes[last];
       this.updateBreadcrumbs(newRoutes, noRedirect);
@@ -45,9 +46,14 @@ export class InsRenderer {
     if (this.route.app) this.wrapEl.classList.add('app')
     else this.wrapEl.classList.remove('app');
 
-    this.titleEl.innerHTML = this.route.label;
+    if (!this.disableBreadcrumbs || (this.disableBreadcrumbs && this.route.app)) {
+      this.titleWrapEl.style.display = 'block';
+      this.titleEl.innerHTML = this.route.label;
+    } else if(this.disableBreadcrumbs){
+      this.titleWrapEl.style.display = 'none';
+    }
 
-    if (this.breadcrumbs.length > 1) {
+    if (this.breadcrumbs.length > 1 && !this.disableBreadcrumbs) {
       let divEl = document.createElement('div');
       divEl.className = "ins-breadcrumbs"
 
@@ -116,6 +122,7 @@ export class InsRenderer {
 
   getElements(){
     this.wrapEl = this.insRendererEl.querySelector('.ins-renderer-wrap');
+    this.titleWrapEl = this.insRendererEl.querySelector('.ins-renderer-wrap__title');
     this.titleEl = this.insRendererEl.querySelector('.ins-renderer-wrap__title-span');
     this.breadcrumbsEl = this.insRendererEl.querySelector('.ins-breadcrumbs-wrap');
   }
@@ -185,14 +192,16 @@ export class InsRenderer {
   }
 
   updateBreadcrumbs(newRoutes, noRedirect){
-    this.breadcrumbs = newRoutes;
-    let parsedCrumbs = JSON.stringify(newRoutes);
-    window.localStorage.setItem('ins_breadcrumbs', parsedCrumbs);
+    if(!this.disableBreadcrumbs){
+      this.breadcrumbs = newRoutes;
+      let parsedCrumbs = JSON.stringify(newRoutes);
+      window.localStorage.setItem('ins_breadcrumbs', parsedCrumbs);
 
-    let lastCrumb = JSON.parse(parsedCrumbs).pop();
-    if (!lastCrumb.app && !lastCrumb.withSubmenu){
-      if (!noRedirect) {
-        document.location.hash = lastCrumb.link;
+      let lastCrumb = JSON.parse(parsedCrumbs).pop();
+      if (!lastCrumb.app && !lastCrumb.withSubmenu){
+        if (!noRedirect) {
+          document.location.hash = lastCrumb.link;
+        }
       }
     }
   }
@@ -235,23 +244,15 @@ export class InsRenderer {
     return (
       <div class={`ins-renderer-wrap content ${this.route.app ? "app" : ""}`}>
 
-        {
-          this.disableBreadcrumbs ?
-          "" :
-          <h1 class="ins-renderer-wrap__title">
-            <span class="ins-renderer-wrap__title-span">
-              {this.route.label ? this.route.label : ""}
-            </span>
-          </h1>
-        }
+        <h1 class="ins-renderer-wrap__title">
+          <span class="ins-renderer-wrap__title-span">
+            {this.route.label ? this.route.label : ""}
+          </span>
+        </h1>
 
-        {
-          this.disableBreadcrumbs ?
-          "" :
-          <div class="ins-breadcrumbs-wrap">
-            {this.renderBreadcrumbs()}
-          </div>
-        }
+        <div class="ins-breadcrumbs-wrap">
+          {this.renderBreadcrumbs()}
+        </div>
 
         <div class="ins-renderer__iframe-wrap">
           <iframe id="insRendererFrame"
