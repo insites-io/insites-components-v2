@@ -517,7 +517,9 @@ export class InsInputSelect {
 
         if (i > -1) {
             this.value[i].activated = false;
+            this.value[i].el ? this.value[i].el.deactivate() : this.value[i].deactivate();
             this.value.splice(i, 1);
+
             this.emitEvent('remove');
         }
       }

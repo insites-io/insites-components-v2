@@ -419,7 +419,7 @@ export class InsButtonSelect {
     }
 
     @Method()
-    async dynamicCloseOptions() {
+    dynamicCloseOptions() {
         this.dynamicInputEl.value = "";
         this.dynamicHasError = false;
         this.closeOptions();
@@ -495,6 +495,7 @@ export class InsButtonSelect {
 
         if (i > -1) {
             this.value[i].activated = false;
+            this.value[i].el ? this.value[i].el.deactivate() : this.value[i].deactivate();
             this.value.splice(i, 1);
             this.emitEvent('remove');
         }

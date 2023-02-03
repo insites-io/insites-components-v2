@@ -17,6 +17,7 @@
 | `heading`              | `heading`               |             | `string`  | `''`               |
 | `initialSearch`        | `initial-search`        |             | `string`  | `''`               |
 | `loaderIcon`           | `loader-icon`           |             | `any`     | `undefined`        |
+| `loaderImageSource`    | `loader-image-source`   |             | `string`  | `null`             |
 | `loaderMessage`        | `loader-message`        |             | `any`     | `undefined`        |
 | `loaderTitle`          | `loader-title`          |             | `any`     | `undefined`        |
 | `loadingScreen`        | `loading-screen`        |             | `boolean` | `false`            |

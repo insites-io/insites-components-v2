@@ -949,6 +949,7 @@ export namespace Components {
         "heading": string;
         "initialSearch": string;
         "loaderIcon": any;
+        "loaderImageSource": string;
         "loaderMessage": any;
         "loaderTitle": any;
         "loadingScreen": boolean;
@@ -2615,6 +2616,7 @@ declare namespace LocalJSX {
         "heading"?: string;
         "initialSearch"?: string;
         "loaderIcon"?: any;
+        "loaderImageSource"?: string;
         "loaderMessage"?: any;
         "loaderTitle"?: any;
         "loadingScreen"?: boolean;

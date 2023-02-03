@@ -24,6 +24,7 @@ export class InsTable {
   @Prop({ mutable: true }) loaderTitle: any;
   @Prop({ mutable: true }) loaderMessage: any;
   @Prop({ mutable: true }) loaderIcon: any;
+  @Prop({ mutable: true }) loaderImageSource: string = null;
   @Prop({ mutable: true }) searchbarPlaceholder: string = '';
   @Prop({ mutable: true }) heading: string = '';
   @Prop({ mutable: true }) currency: string = '';
@@ -108,7 +109,6 @@ export class InsTable {
 
       let counter = 0;
       this.uncheckAll();
-
 
       for (let i = 0; i < tdCheckboxes.length; i++){
         let selectionIndex = this.selectedRows.findIndex(selected => {
@@ -243,7 +243,6 @@ export class InsTable {
   }
 
   updateSelectedRows(value){
-
     let selectionIndex = this.selectedRows.findIndex(item => {
       return item.id === value.id;
     });
@@ -475,14 +474,7 @@ export class InsTable {
         this.insFieldChange.emit(event);
         this.updateUpdatedRows(copy, prop);
       }
-    } else if (
-        event.target.attributes["data-type"] &&
-        event.target.attributes["data-type"].value === "bulk-action"){
-
-      // console.log('event', event);
-      // console.log('target', event.target);
-      // console.log('detail', event.detail);
-
+    } else if (event.target.attributes["data-type"] && event.target.attributes["data-type"].value === "bulk-action") {
       this.selectedBulkAction = event.detail.value || event.detail;
     }
   }
@@ -729,6 +721,7 @@ export class InsTable {
               {this.loadingScreen /* || !this.tableData.length */ ?
                 <div class={`loading-screen`}>
                   <ins-loader
+                    image-source={this.loaderImageSource}
                     state-title={this.loaderTitle}
                     state-message={this.loaderMessage}
                     state-icon={this.loaderIcon}>
@@ -939,6 +932,7 @@ export class InsTable {
               {this.loadingScreen /* || !this.tableData.length */ ?
                 <div class={`loading-screen`}>
                   <ins-loader
+                    image-source={this.loaderImageSource}
                     state-title={this.loaderTitle}
                     state-message={this.loaderMessage}
                     state-icon={this.loaderIcon}>

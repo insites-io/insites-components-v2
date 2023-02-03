@@ -160,6 +160,11 @@ export class InsTab {
   @Method()
   async activateTab(place){
     let index = place - 1;
+    this.insTabChange.emit({
+      event: this.insTabItems[index],
+      index: index,
+      label: this.insTabHeaders[index].innerText.trim()
+    });
     this.setActiveTab(index);
     this.setActiveTabItem(index);
   }
