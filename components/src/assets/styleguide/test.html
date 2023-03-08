@@ -68,6 +68,135 @@
   </ins-card-select>
 
 
+  <ins-kanban-board>
+    <ins-kanban-column
+      id="myColumn"
+      heading="TODO"
+      total-count="2"
+      heading-sub-detail="$308"
+      heading-color="#99df72"
+      add-item-button
+      column-max-height="200px" >
+      <ins-kanban-card id="columnItem" item-id="123" card-sortable-id="1">
+        <div class="card-title">
+          Item Name
+        </div>
+        <div class="sub-details-wrap">
+          <div class="sub-detail">
+            <i class="icon-calendar"></i>
+            <span>
+              2020-08-12
+            </span>
+          </div>
+          <div class="sub-detail">
+            <i class="icon-clock"></i>
+            <span>
+              2:12 PM
+            </span>
+          </div>
+        </div>
+        <div class="details-footer">
+          <div class="user-options">
+            <i class="icon-user-1"></i>
+            <span>
+              Courtney Henry
+            </span>
+          </div>
+          <div class="primary-detail">
+            $120
+          </div>
+        </div>
+      </ins-kanban-card>
+      <ins-kanban-card card-id="324" card-sortable-id="2">
+        column 1 item 2
+      </ins-kanban-card>
+      <ins-kanban-card card-id="897" card-sortable-id="3">
+        column 1 item 3
+      </ins-kanban-card>
+    </ins-kanban-column>
+
+    <ins-kanban-column
+      heading="In Progress (No Sort)"
+      heading-sub-detail="$123"
+      add-item-button
+      disable-sort >
+      <ins-kanban-card>
+        column 2 item 1
+      </ins-kanban-card>
+      <ins-kanban-card>
+        column 2 item 2
+      </ins-kanban-card>
+      <ins-kanban-card>
+        column 2 item 3
+      </ins-kanban-card>
+    </ins-kanban-column>
+
+    <ins-kanban-column
+      heading="For QA"
+      no-items >
+    </ins-kanban-column>
+
+    <ins-kanban-column
+      class="hide"
+      heading="For Review"
+      total-count="2"
+      heading-sub-detail="$123" >
+      <ins-kanban-card>
+        column 3 item 1
+      </ins-kanban-card>
+      <ins-kanban-card>
+        column 3 item 2
+      </ins-kanban-card>
+    </ins-kanban-column>
+  </ins-kanban-board>
+
+  <ins-kanban-board>
+    <ins-kanban-column
+      id="myColumn"
+      heading="TODO"
+      total-count="2"
+      heading-sub-detail="$308"
+      heading-color="#99df72"
+      add-item-button >
+      <ins-kanban-card id="columnItem" card-id="123" card-sortable-id="1">
+        <div class="card-title">
+          Item Name
+        </div>
+        <div class="sub-details-wrap">
+          <div class="sub-detail">
+            <i class="icon-calendar"></i>
+            <span>
+              2020-08-12
+            </span>
+          </div>
+          <div class="sub-detail">
+            <i class="icon-clock"></i>
+            <span>
+              2:12 PM
+            </span>
+          </div>
+        </div>
+        <div class="details-footer">
+          <div class="user-options">
+            <i class="icon-user-1"></i>
+            <span>
+              Courtney Henry
+            </span>
+          </div>
+          <div class="primary-detail">
+            $120
+          </div>
+        </div>
+      </ins-kanban-card>
+      <ins-kanban-card card-id="324" card-sortable-id="2">
+        column 1 item 2
+      </ins-kanban-card>
+      <ins-kanban-card card-id="897" card-sortable-id="3">
+        column 1 item 3
+      </ins-kanban-card>
+    </ins-kanban-column>
+  </ins-kanban-board>
+
   <ins-editor
     label="Liquid Code"
     id="liquidCode"
@@ -316,6 +445,58 @@
     }
 
     fetchDataFromSrc();
+
+
+
+    var myColumn = document.getElementById('myColumn');
+    myColumn.addEventListener('insColumnAdd', event => {
+      console.log(event.detail);
+      console.log(myColumn.getColumnCardsOrder())
+      
+      var order = ["2","1"]
+      myColumn.reorderCards(order);
+    });
+
+    myColumn.addEventListener('insDragStart', event => {
+      console.log("insDragStart: ", event.detail);
+    });
+
+    myColumn.addEventListener('insDragEnd', event => {
+      console.log("insDragEnd: ", event.detail);
+    });
+    
+    myColumn.addEventListener('insAdd', event => {
+      console.log("insAdd: ", event.detail);
+    });
+
+    myColumn.addEventListener('insSort', event => {
+      console.log("insSort: ", event.detail);
+    });
+
+    myColumn.addEventListener('insChoose', event => {
+      console.log("insChoose: ", event.detail);
+    });
+
+    myColumn.addEventListener('insUpdate', event => {
+      console.log("insUpdate: ", event.detail);
+    });
+    
+    myColumn.addEventListener('insMove', event => {
+      console.log("insMove: ", event.detail);
+    });
+
+    myColumn.addEventListener('insRemove', event => {
+      console.log("insRemove: ", event.detail);
+    });
+
+    myColumn.addEventListener('insPositionChanged', event => {
+      console.log("insPositionChanged: ", event.detail);
+    });
+
+    var columnItem = document.getElementById('columnItem');
+    columnItem.addEventListener('insClick', event => {
+      console.log(event.detail)
+    });
   </script>
 </body>
 

@@ -655,6 +655,29 @@ export namespace Components {
         "instance": string;
         "link": string;
     }
+    interface InsKanbanBoard {
+        "boardGroup": string;
+        "uniqueId": string;
+    }
+    interface InsKanbanCard {
+        "cardId": string;
+    }
+    interface InsKanbanColumn {
+        "addItemButton": boolean;
+        "addItemButtonLabel": string;
+        "disableDrop": boolean;
+        "disableSort": boolean;
+        "getColumnCardsOrder": () => Promise<{}>;
+        "heading": string;
+        "headingColor": string;
+        "headingSubDetail": string;
+        "noItems": boolean;
+        "noItemsDetail": string;
+        "noItemsHeading": string;
+        "reorderCards": (sortable: any) => Promise<void>;
+        "sortableItems": [];
+        "totalCount": string;
+    }
     interface InsLineChart {
         "categories": any;
         "chartData": any;
@@ -1372,6 +1395,24 @@ declare global {
         prototype: HTMLInsInstancesSubItemElement;
         new (): HTMLInsInstancesSubItemElement;
     };
+    interface HTMLInsKanbanBoardElement extends Components.InsKanbanBoard, HTMLStencilElement {
+    }
+    var HTMLInsKanbanBoardElement: {
+        prototype: HTMLInsKanbanBoardElement;
+        new (): HTMLInsKanbanBoardElement;
+    };
+    interface HTMLInsKanbanCardElement extends Components.InsKanbanCard, HTMLStencilElement {
+    }
+    var HTMLInsKanbanCardElement: {
+        prototype: HTMLInsKanbanCardElement;
+        new (): HTMLInsKanbanCardElement;
+    };
+    interface HTMLInsKanbanColumnElement extends Components.InsKanbanColumn, HTMLStencilElement {
+    }
+    var HTMLInsKanbanColumnElement: {
+        prototype: HTMLInsKanbanColumnElement;
+        new (): HTMLInsKanbanColumnElement;
+    };
     interface HTMLInsLineChartElement extends Components.InsLineChart, HTMLStencilElement {
     }
     var HTMLInsLineChartElement: {
@@ -1652,6 +1693,9 @@ declare global {
         "ins-instances": HTMLInsInstancesElement;
         "ins-instances-item": HTMLInsInstancesItemElement;
         "ins-instances-sub-item": HTMLInsInstancesSubItemElement;
+        "ins-kanban-board": HTMLInsKanbanBoardElement;
+        "ins-kanban-card": HTMLInsKanbanCardElement;
+        "ins-kanban-column": HTMLInsKanbanColumnElement;
         "ins-line-chart": HTMLInsLineChartElement;
         "ins-loader": HTMLInsLoaderElement;
         "ins-markdown": HTMLInsMarkdownElement;
@@ -2336,6 +2380,40 @@ declare namespace LocalJSX {
         "link"?: string;
         "onRouteInstanceSubItem"?: (event: CustomEvent<any>) => void;
     }
+    interface InsKanbanBoard {
+        "boardGroup"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "uniqueId"?: string;
+    }
+    interface InsKanbanCard {
+        "cardId"?: string;
+        "onInsClick"?: (event: CustomEvent<any>) => void;
+    }
+    interface InsKanbanColumn {
+        "addItemButton"?: boolean;
+        "addItemButtonLabel"?: string;
+        "disableDrop"?: boolean;
+        "disableSort"?: boolean;
+        "heading"?: string;
+        "headingColor"?: string;
+        "headingSubDetail"?: string;
+        "noItems"?: boolean;
+        "noItemsDetail"?: string;
+        "noItemsHeading"?: string;
+        "onInsAdd"?: (event: CustomEvent<Object>) => void;
+        "onInsChoose"?: (event: CustomEvent<Object>) => void;
+        "onInsColumnAdd"?: (event: CustomEvent<any>) => void;
+        "onInsDragEnd"?: (event: CustomEvent<Object>) => void;
+        "onInsDragStart"?: (event: CustomEvent<Object>) => void;
+        "onInsDrop"?: (event: CustomEvent<Object>) => void;
+        "onInsMove"?: (event: CustomEvent<Object>) => void;
+        "onInsPositionChanged"?: (event: CustomEvent<Object>) => void;
+        "onInsRemove"?: (event: CustomEvent<Object>) => void;
+        "onInsSort"?: (event: CustomEvent<Object>) => void;
+        "onInsUpdate"?: (event: CustomEvent<Object>) => void;
+        "sortableItems"?: [];
+        "totalCount"?: string;
+    }
     interface InsLineChart {
         "categories"?: any;
         "chartData"?: any;
@@ -2790,6 +2868,9 @@ declare namespace LocalJSX {
         "ins-instances": InsInstances;
         "ins-instances-item": InsInstancesItem;
         "ins-instances-sub-item": InsInstancesSubItem;
+        "ins-kanban-board": InsKanbanBoard;
+        "ins-kanban-card": InsKanbanCard;
+        "ins-kanban-column": InsKanbanColumn;
         "ins-line-chart": InsLineChart;
         "ins-loader": InsLoader;
         "ins-markdown": InsMarkdown;
@@ -2885,6 +2966,9 @@ declare module "@stencil/core" {
             "ins-instances": LocalJSX.InsInstances & JSXBase.HTMLAttributes<HTMLInsInstancesElement>;
             "ins-instances-item": LocalJSX.InsInstancesItem & JSXBase.HTMLAttributes<HTMLInsInstancesItemElement>;
             "ins-instances-sub-item": LocalJSX.InsInstancesSubItem & JSXBase.HTMLAttributes<HTMLInsInstancesSubItemElement>;
+            "ins-kanban-board": LocalJSX.InsKanbanBoard & JSXBase.HTMLAttributes<HTMLInsKanbanBoardElement>;
+            "ins-kanban-card": LocalJSX.InsKanbanCard & JSXBase.HTMLAttributes<HTMLInsKanbanCardElement>;
+            "ins-kanban-column": LocalJSX.InsKanbanColumn & JSXBase.HTMLAttributes<HTMLInsKanbanColumnElement>;
             "ins-line-chart": LocalJSX.InsLineChart & JSXBase.HTMLAttributes<HTMLInsLineChartElement>;
             "ins-loader": LocalJSX.InsLoader & JSXBase.HTMLAttributes<HTMLInsLoaderElement>;
             "ins-markdown": LocalJSX.InsMarkdown & JSXBase.HTMLAttributes<HTMLInsMarkdownElement>;

@@ -75,6 +75,54 @@
   <ins-renderer>
     <div>
 
+      <ins-kanban-board>
+        <ins-kanban-column
+          id="myColumn"
+          heading="TODO"
+          total-count="2"
+          heading-sub-detail="$308"
+          heading-color="#99df72"
+          add-item-button >
+          <ins-kanban-card id="columnItem" item-id="123" card-sortable-id="1">
+            <div class="card-title">
+              Item Name
+            </div>
+            <div class="sub-details-wrap">
+              <div class="sub-detail">
+                <i class="icon-calendar"></i>
+                <span>
+                  2020-08-12
+                </span>
+              </div>
+              <div class="sub-detail">
+                <i class="icon-clock"></i>
+                <span>
+                  2:12 PM
+                </span>
+              </div>
+            </div>
+            <div class="details-footer">
+              <div class="user-options">
+                <i class="icon-user-1"></i>
+                <span>
+                  Courtney Henry
+                </span>
+              </div>
+              <div class="primary-detail">
+                $120
+              </div>
+            </div>
+          </ins-kanban-card>
+          <ins-kanban-card card-id="324" card-sortable-id="2">
+            column 1 item 2
+          </ins-kanban-card>
+          <ins-kanban-card card-id="897" card-sortable-id="3">
+            column 1 item 3
+          </ins-kanban-card>
+        </ins-kanban-column>
+      </ins-kanban-board>
+      <br><br>
+
       <ins-radio label="Test"></ins-radio>
 
       <ins-card-select label="Card" error-message="Error">

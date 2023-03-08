@@ -1,0 +1,189 @@
+ins-kanban-board
+  font-family: var(--ins-font-family)
+  display: block
+  width: 100%
+  .ins-kanban-board-wrap
+    display: flex
+    width: 100%
+    overflow-x: auto
+  ins-kanban-column
+    &:not(:first-of-type)
+      margin-left: 40px
+  .ins-kanban-column-wrap
+    display: flex
+    flex-direction: column
+    max-width: 400px
+    width: 400px
+    height: 100%
+    background-color: var(--ins-bg-color5)
+    border: 1px solid var(--ins-border-color)
+    border-radius: 4px
+  .ins-kanban-column-header
+    font-weight: 600
+    font-size: 20px
+    line-height: 32px
+    padding: 16px
+    display: flex
+    border-bottom: 1px solid var(--ins-border-color)
+    .heading
+      display: block
+      flex-grow: 1
+      white-space: nowrap
+      text-overflow: ellipsis
+      overflow: hidden
+  .header-details
+    display: flex
+    margin-left: 40px
+    & > *
+      display: block
+    span:last-child
+      &:not(:first-child)
+        margin-left: 8px
+  .ins-kanban-cards-wrap
+    padding: 16px
+    height: inherit
+    max-height: 824px
+    overflow-y: auto
+  .moving, .moving *
+    cursor: move
+    cursor: -webkit-move
+    cursor: -moz-move
+    cursor: move
+  .no-items-wrap
+    text-align: center
+    span
+      display: block
+    .no-items-heading
+      font-weight: 600
+      font-size: 18px
+      line-height: 29px
+    .no-items-details
+      font-weight: 400
+      font-size: 16px
+      line-height: 26px
+      margin-top: 8px
+  .card-item-wrap
+    width: 100%
+    padding: 24px
+    color: var(--ins-color-ink40)
+  ins-kanban-card
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: flex-start
+    cursor: pointer
+    background-color: var(--ins-bg-color)
+    border: 1px solid var(--ins-border-color)
+    border-radius: 4px
+    cursor: move !important
+    cursor: -webkit-move !important
+    cursor: -moz-move !important
+    cursor: move !important
+    &:not(:first-of-type)
+      margin-top: 16px
+    .ins-kanban-card .ins-kanban-card
+      padding: 0
+    &.sortable-chosen.sortable-ghost
+      border: 1px solid var(--ins-bg-color3)
+      background-color: var(--ins-bg-color2)
+      *
+        opacity: 0 !important
+    &.sortable-chosen.sortable-drag
+      border: 1px solid var(--ins-color-ink40)
+      box-shadow: 0px 4px 14px 0px #E0E0E0
+      cursor: move !important
+      cursor: -webkit-move !important
+      cursor: -moz-move !important
+      cursor: move !important
+      -ms-transform: rotate(-2deg)
+      transform: rotate(-2deg)
+    &:hover
+      border: 1px solid var(--ins-color-ink40)
+      box-shadow: 0px 4px 14px 0px #E0E0E0
+    .card-title
+      color: var(--ins-color-ink)
+      font-weight: 600
+      font-size: 18px
+      line-height: 29px
+    .sub-details-wrap
+      margin-top: 16px
+      font-weight: 400
+      font-size: 14px
+      line-height: 22px
+      display: flex
+      flex-wrap: wrap
+      gap: 16px
+      padding-bottom: 24px
+      border-bottom: 1px solid var(--ins-border-color)
+      .sub-detail
+        display: flex
+        align-items: center
+        i, span
+          display: block
+        i
+          margin-right: 8px
+    .details-footer
+      display: flex
+      justify-content: space-between
+      font-weight: 400
+      font-size: 16px
+      line-height: 22px
+      padding-top: 24px
+      .user-options
+        display: flex
+        align-items: center
+        flex-grow: 1
+        overflow: hidden
+        i, span
+          display: block
+        i
+          margin-right: 8px
+        span
+          flex-grow: 1
+          white-space: nowrap
+          text-overflow: ellipsis
+          overflow: hidden
+      .primary-detail
+        font-weight: 600
+        margin-left: 40px
+        color: var(--ins-color-ink)
+  .ins-kanban-column-button
+    cursor: pointer
+    margin-top: auto
+    padding: 14px
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: var(--ins-bg-color)
+    color: var(--ins-color-blue)
+    border-top: 1px solid var(--ins-border-color)
+    font-weight: 600
+    font-size: 14px
+    line-height: 19px
+    &:hover
+      background-color: var(--ins-color-blue-10p)
+    i, span
+      display: block
+    i
+      margin-right: 8px
+  slot
+    display: none
+//scroll styling
+.ins-kanban-cards-wrap::-webkit-scrollbar
+  width: 6px
+  height: 6px
+.ins-kanban-cards-wrap:hover::-webkit-scrollbar-thumb
+  background-color: var(--ins-border-color)
+  border-radius: 4px
+.ins-kanban-cards-wrap::-webkit-scrollbar-thumb
+  background-color: rgba(0,0,0,0)
+  background-clip: initial
+  border: 0
+  min-height: initial
+  padding: initial
+  box-shadow: none
+.ins-kanban-cards-wrap::-webkit-scrollbar-track-piece
+  box-shadow: none
+  border-width: 0
+  background-color: transparent
+  border: 0
