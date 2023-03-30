@@ -7,15 +7,15 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type      | Default                                                            |
-| -------------- | --------------- | ----------- | --------- | ------------------------------------------------------------------ |
-| `hasLoad`      | `has-load`      |             | `string`  | `undefined`                                                        |
-| `iconColor`    | `icon-color`    |             | `string`  | `""`                                                               |
-| `imageSource`  | `image-source`  |             | `string`  | `"http://components.insites.io/assets/images/loading-loop-2x.gif"` |
-| `stateIcon`    | `state-icon`    |             | `string`  | `""`                                                               |
-| `stateMessage` | `state-message` |             | `string`  | `""`                                                               |
-| `stateTitle`   | `state-title`   |             | `string`  | `""`                                                               |
-| `useImage`     | `use-image`     |             | `boolean` | `true`                                                             |
+| Property       | Attribute       | Description | Type      | Default                                                             |
+| -------------- | --------------- | ----------- | --------- | ------------------------------------------------------------------- |
+| `hasLoad`      | `has-load`      |             | `string`  | `undefined`                                                         |
+| `iconColor`    | `icon-color`    |             | `string`  | `""`                                                                |
+| `imageSource`  | `image-source`  |             | `string`  | `"https://components.insites.io/assets/images/loading-loop-2x.gif"` |
+| `stateIcon`    | `state-icon`    |             | `string`  | `""`                                                                |
+| `stateMessage` | `state-message` |             | `string`  | `""`                                                                |
+| `stateTitle`   | `state-title`   |             | `string`  | `""`                                                                |
+| `useImage`     | `use-image`     |             | `boolean` | `true`                                                              |
 
 
 ## Events
