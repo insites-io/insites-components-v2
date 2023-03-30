@@ -10,7 +10,7 @@ export class InsLoader {
   @Prop({ mutable: true }) stateIcon: string = "";
   @Prop({ mutable: true }) iconColor: string = "";
 
-  @Prop({ mutable: true }) imageSource: string = "https://ins-styleguide.s3-us-west-2.amazonaws.com/assets/images/loading-loop-2x.gif";
+  @Prop({ mutable: true }) imageSource: string = "http://components.insites.io/assets/images/loading-loop-2x.gif";
   @Prop({ mutable: true }) useImage: boolean = true;
 
   componentDidLoad(){
