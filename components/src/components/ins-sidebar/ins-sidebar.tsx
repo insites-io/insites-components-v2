@@ -13,7 +13,7 @@ export class InsSidebar {
   @State() minimised: boolean = false;
   @State() noFooter: boolean = false;
 
-  baseURL = "http://components.insites.io/assets/images";
+  baseURL = "https://components.insites.io/assets/images";
   sidebarItemEls: any;
   insRenderer: any;
   insHeaderUserEl: any;

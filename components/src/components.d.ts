@@ -671,6 +671,7 @@ export namespace Components {
         "heading": string;
         "headingColor": string;
         "headingSubDetail": string;
+        "headingTextColor": string;
         "noItems": boolean;
         "noItemsDetail": string;
         "noItemsHeading": string;
@@ -2397,6 +2398,7 @@ declare namespace LocalJSX {
         "heading"?: string;
         "headingColor"?: string;
         "headingSubDetail"?: string;
+        "headingTextColor"?: string;
         "noItems"?: boolean;
         "noItemsDetail"?: string;
         "noItemsHeading"?: string;

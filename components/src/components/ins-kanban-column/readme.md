@@ -16,6 +16,7 @@
 | `heading`            | `heading`               |             | `string`  | `"Heading"`  |
 | `headingColor`       | `heading-color`         |             | `string`  | `'#fff'`     |
 | `headingSubDetail`   | `heading-sub-detail`    |             | `string`  | `''`         |
+| `headingTextColor`   | `heading-text-color`    |             | `string`  | `''`         |
 | `noItems`            | `no-items`              |             | `boolean` | `false`      |
 | `noItemsDetail`      | `no-items-detail`       |             | `string`  | `''`         |
 | `noItemsHeading`     | `no-items-heading`      |             | `string`  | `'No Items'` |

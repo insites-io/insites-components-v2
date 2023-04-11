@@ -9,6 +9,7 @@ export class InsKanbanColumn {
   @Prop() sortableItems: [];
   @Prop({ mutable: true }) heading: string = "Heading";
   @Prop({ mutable: true }) headingColor: string = '#fff';
+  @Prop({ mutable: true }) headingTextColor: string = '';
   @Prop({ mutable: true }) totalCount: string = '';
   @Prop({ mutable: true }) headingSubDetail: string = '';
   @Prop({ mutable: true }) noItems: boolean = false;
@@ -233,7 +234,7 @@ export class InsKanbanColumn {
   render() {
     return (
       <div class={`ins-kanban-column-wrap`}>
-        <div class={`ins-kanban-column-header ${!this.heading ? 'no-heading':''}`} style={{ 'background-color': this.headingColor }}>
+        <div class={`ins-kanban-column-header ${!this.heading ? 'no-heading':''}`} style={{ 'background-color': this.headingColor, 'color': this.headingTextColor }}>
           <span class="heading">
             {this.heading}
           </span>
