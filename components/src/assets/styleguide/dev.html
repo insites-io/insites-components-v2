@@ -75,6 +75,10 @@
   <ins-renderer>
     <div>
 
+      <ins-input-table id="inputTableEl" label="Test Table">
+
+      </ins-input-table>
+
       <ins-kanban-board>
         <ins-kanban-column
           id="myColumn"
@@ -307,10 +311,35 @@
 
       <script>
         var test = document.getElementById('test');
+        var inputTableEl = document.getElementById('inputTableEl');
 
         setTimeout(() => {
           test.setValue([1]);
-        }, 500)
+
+          console.log(inputTableEl.tableHeaders)
+          inputTableEl.tableHeaders = [
+            {
+              name: "date",
+              label: "Date"
+            },
+            {
+              name: "activity",
+              label: "Activity"
+            },
+            {
+              name: "is_enabled",
+              label: "Enabled"
+            }
+          ];
+
+          inputTableEl.tableData = [
+            {
+              date: "2023-11-16",
+              activity: "Activity 1",
+              is_enabled: "true"
+            }
+          ];
+        }, 1000)
       </script>
   </ins-renderer>
 </body>

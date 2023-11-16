@@ -611,6 +611,12 @@ export namespace Components {
         "tooltip": string;
         "value": string;
     }
+    interface InsInputTable {
+        "hasLoad": string;
+        "label": string;
+        "tableData": any;
+        "tableHeaders": any;
+    }
     interface InsInputTel {
         "areaCode": string;
         "areacodePlaceholder": string;
@@ -1366,6 +1372,12 @@ declare global {
         prototype: HTMLInsInputStepperElement;
         new (): HTMLInsInputStepperElement;
     };
+    interface HTMLInsInputTableElement extends Components.InsInputTable, HTMLStencilElement {
+    }
+    var HTMLInsInputTableElement: {
+        prototype: HTMLInsInputTableElement;
+        new (): HTMLInsInputTableElement;
+    };
     interface HTMLInsInputTelElement extends Components.InsInputTel, HTMLStencilElement {
     }
     var HTMLInsInputTelElement: {
@@ -1689,6 +1701,7 @@ declare global {
         "ins-input-select-option": HTMLInsInputSelectOptionElement;
         "ins-input-slider": HTMLInsInputSliderElement;
         "ins-input-stepper": HTMLInsInputStepperElement;
+        "ins-input-table": HTMLInsInputTableElement;
         "ins-input-tel": HTMLInsInputTelElement;
         "ins-input-tooltip": HTMLInsInputTooltipElement;
         "ins-instances": HTMLInsInstancesElement;
@@ -2336,6 +2349,13 @@ declare namespace LocalJSX {
         "tooltip"?: string;
         "value"?: string;
     }
+    interface InsInputTable {
+        "hasLoad"?: string;
+        "label"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "tableData"?: any;
+        "tableHeaders"?: any;
+    }
     interface InsInputTel {
         "areaCode"?: string;
         "areacodePlaceholder"?: string;
@@ -2865,6 +2885,7 @@ declare namespace LocalJSX {
         "ins-input-select-option": InsInputSelectOption;
         "ins-input-slider": InsInputSlider;
         "ins-input-stepper": InsInputStepper;
+        "ins-input-table": InsInputTable;
         "ins-input-tel": InsInputTel;
         "ins-input-tooltip": InsInputTooltip;
         "ins-instances": InsInstances;
@@ -2963,6 +2984,7 @@ declare module "@stencil/core" {
             "ins-input-select-option": LocalJSX.InsInputSelectOption & JSXBase.HTMLAttributes<HTMLInsInputSelectOptionElement>;
             "ins-input-slider": LocalJSX.InsInputSlider & JSXBase.HTMLAttributes<HTMLInsInputSliderElement>;
             "ins-input-stepper": LocalJSX.InsInputStepper & JSXBase.HTMLAttributes<HTMLInsInputStepperElement>;
+            "ins-input-table": LocalJSX.InsInputTable & JSXBase.HTMLAttributes<HTMLInsInputTableElement>;
             "ins-input-tel": LocalJSX.InsInputTel & JSXBase.HTMLAttributes<HTMLInsInputTelElement>;
             "ins-input-tooltip": LocalJSX.InsInputTooltip & JSXBase.HTMLAttributes<HTMLInsInputTooltipElement>;
             "ins-instances": LocalJSX.InsInstances & JSXBase.HTMLAttributes<HTMLInsInstancesElement>;
