@@ -419,7 +419,7 @@ export class InsButtonSelect {
     }
 
     @Method()
-    dynamicCloseOptions() {
+    async dynamicCloseOptions() {
         this.dynamicInputEl.value = "";
         this.dynamicHasError = false;
         this.closeOptions();

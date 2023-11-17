@@ -612,8 +612,18 @@ export namespace Components {
         "value": string;
     }
     interface InsInputTable {
+        "addButtonColor": string;
+        "addButtonIcon": string;
+        "disabled": boolean;
+        "errorMessage": string;
+        "getValue": () => Promise<any>;
+        "hasError": boolean;
         "hasLoad": string;
         "label": string;
+        "readonly": boolean;
+        "removeButtonColor": string;
+        "removeButtonIcon": string;
+        "setValue": (value: any) => Promise<any>;
         "tableData": any;
         "tableHeaders": any;
     }
@@ -2350,9 +2360,18 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface InsInputTable {
+        "addButtonColor"?: string;
+        "addButtonIcon"?: string;
+        "disabled"?: boolean;
+        "errorMessage"?: string;
+        "hasError"?: boolean;
         "hasLoad"?: string;
         "label"?: string;
         "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onInsInput"?: (event: CustomEvent<any>) => void;
+        "readonly"?: boolean;
+        "removeButtonColor"?: string;
+        "removeButtonIcon"?: string;
         "tableData"?: any;
         "tableHeaders"?: any;
     }
