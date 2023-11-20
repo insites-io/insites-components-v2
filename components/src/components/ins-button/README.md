@@ -44,6 +44,7 @@
  - [ins-filter](../ins-filter)
  - [ins-heading](../ins-heading)
  - [ins-image-picker](../ins-image-picker)
+ - [ins-input-table](../ins-input-table)
  - [ins-modal](../ins-modal)
  - [ins-table](../ins-table)
  - [ins-thumbnail](../ins-thumbnail)
@@ -55,6 +56,7 @@ graph TD;
   ins-filter --> ins-button
   ins-heading --> ins-button
   ins-image-picker --> ins-button
+  ins-input-table --> ins-button
   ins-modal --> ins-button
   ins-table --> ins-button
   ins-thumbnail --> ins-button

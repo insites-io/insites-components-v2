@@ -22588,6 +22588,35 @@ ins-input-table .ins-input-table.has-error .ins-input-table_column {
   color: var(--ins-color-negative);
 }
 
+@media screen and (max-width: 639px) {
+  ins-input-table .ins-input-table_header {
+    display: none;
+  }
+
+  ins-input-table .ins-input-table_column {
+    display: block;
+    width: 100% !important;
+    padding-right: 0;
+  }
+
+  ins-input-table ins-input .ins-form-field-wrap .ins-form-label {
+    display: block;
+    font-weight: 400;
+  }
+
+  ins-input-table .ins-input-table_label {
+    margin-bottom: 16px;
+  }
+
+  ins-input-table .ins-input-table_buttons {
+    display: block;
+    position: relative;
+    padding-top: 12px;
+    width: 100%;
+    text-align: right;
+  }
+}
+
 html {
   -webkit-tap-highlight-color: initial
 }
