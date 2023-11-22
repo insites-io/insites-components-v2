@@ -73,7 +73,6 @@ Type: `Promise<void>`
 ### Used by
 
  - [ins-heading](../ins-heading)
- - [ins-input-table](../ins-input-table)
  - [ins-instances](../ins-instances)
  - [ins-table](../ins-table)
 
@@ -86,7 +85,6 @@ Type: `Promise<void>`
 graph TD;
   ins-input --> ins-input-tooltip
   ins-heading --> ins-input
-  ins-input-table --> ins-input
   ins-instances --> ins-input
   ins-table --> ins-input
   style ins-input fill:#f9f,stroke:#333,stroke-width:4px

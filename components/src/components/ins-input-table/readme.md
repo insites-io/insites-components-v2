@@ -19,17 +19,16 @@
 | `readonly`          | `readonly`            |             | `boolean` | `undefined`    |
 | `removeButtonColor` | `remove-button-color` |             | `string`  | `"blue"`       |
 | `removeButtonIcon`  | `remove-button-icon`  |             | `string`  | `"icon-minus"` |
-| `tableData`         | `table-data`          |             | `any`     | `[]`           |
 | `tableHeaders`      | `table-headers`       |             | `any`     | `[]`           |
 | `tooltip`           | `tooltip`             |             | `string`  | `undefined`    |
 
 
 ## Events
 
-| Event       | Description | Type               |
-| ----------- | ----------- | ------------------ |
-| `didLoad`   |             | `CustomEvent<any>` |
-| `insChange` |             | `CustomEvent<any>` |
+| Event      | Description | Type               |
+| ---------- | ----------- | ------------------ |
+| `didLoad`  |             | `CustomEvent<any>` |
+| `insInput` |             | `CustomEvent<any>` |
 
 
 ## Methods
@@ -60,16 +59,13 @@ Type: `Promise<any>`
 ### Depends on
 
 - [ins-input-tooltip](../ins-input-tooltip)
-- [ins-input](../ins-input)
 - [ins-button](../ins-button)
 
 ### Graph
 ```mermaid
 graph TD;
   ins-input-table --> ins-input-tooltip
-  ins-input-table --> ins-input
   ins-input-table --> ins-button
-  ins-input --> ins-input-tooltip
   style ins-input-table fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
