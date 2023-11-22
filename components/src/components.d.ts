@@ -624,8 +624,8 @@ export namespace Components {
         "removeButtonColor": string;
         "removeButtonIcon": string;
         "setValue": (value: any) => Promise<any>;
-        "tableData": any;
         "tableHeaders": any;
+        "tooltip": string;
     }
     interface InsInputTel {
         "areaCode": string;
@@ -2372,8 +2372,8 @@ declare namespace LocalJSX {
         "readonly"?: boolean;
         "removeButtonColor"?: string;
         "removeButtonIcon"?: string;
-        "tableData"?: any;
         "tableHeaders"?: any;
+        "tooltip"?: string;
     }
     interface InsInputTel {
         "areaCode"?: string;

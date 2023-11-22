@@ -12,7 +12,8 @@ export class InsInputTable {
   @Prop() hasLoad: string;
   @Prop({ mutable: true }) label: string;
   @Prop({ mutable: true }) tableHeaders: any = [];
-  @Prop({ mutable: true }) tableData: any = [];
+  // @Prop({ mutable: true }) tableData: any = [];
+  @Prop({ mutable: true }) tooltip: string;
   @Prop({ mutable: true }) readonly: boolean;
   @Prop({ mutable: true }) disabled: boolean;
   @Prop({ mutable: true }) hasError: boolean;
@@ -22,7 +23,8 @@ export class InsInputTable {
   @Prop({ mutable: true }) addButtonColor: string = "blue";
   @Prop({ mutable: true }) removeButtonColor: string = "blue";
 
-  @State() elKey: number = 0;
+  @State() data: any = [];
+  // @State() elKey: number = 0;
 
   columnWidth;
 
@@ -32,6 +34,10 @@ export class InsInputTable {
       let func = window["Insites"].methods[this.hasLoad];
       if (func) func(this.insInputTableEl);
     }
+  }
+
+  componentWillRender() {
+    if (!this.data?.length) this.data = [this.emptyValue()];
   }
 
   componentDidUpdate() {
@@ -45,24 +51,29 @@ export class InsInputTable {
       if (el && el.setAttribute) el.setAttribute("style", this.columnWidth);
     }
 
-    this.elKey = this.tableData.length;
+    // if (this.tableData?.length) this.data = this.tableData;
 
-    if (!this.elKey) this.tableData = [this.emptyValue()];
+    // this.elKey = this.tableData?.length || 0;
+    // this.elKey = this.data?.length || 0;
+
+    // if (!this.elKey) this.tableData = [this.emptyValue()];
+    // if (!this.data.length) this.data = [this.emptyValue()];
   }
 
   @Method()
   async setValue(value) {
-    this.tableData = value;
+    // this.tableData = value;
+    this.data = value;
     return await value;
   }
 
   @Method()
   async getValue() {
-    return await this.tableData;
+    // return await this.tableData;
+    return await this.data;
   }
 
-  @Listen('insValueChange')
-  insInputHander(event) {
+  inputHander(event) {
     let childEl = event.target;
     let childIndex = 0;
 
@@ -88,8 +99,8 @@ export class InsInputTable {
       parentIndex = 0;
     }
 
-    this.tableData[parentIndex][this.tableHeaders[childIndex].name] = event.detail;
-    this.insInput.emit(this.tableData);
+    this.data[parentIndex][this.tableHeaders[childIndex].name] = event.target.value;
+    this.insInput.emit(this.data);
   }
 
   @Listen('insClick')
@@ -109,26 +120,56 @@ export class InsInputTable {
       parentIndex = 0;
     }
 
+    // if (action === "remove") {
+    //   this.tableData.splice(parentIndex, 1);
+
+    //   if (!this.tableData.length) {
+    //     this.tableData = [this.emptyValue()];
+    //     this.elKey = 0;
+    //   } else {
+    //     // this.elKey++;
+    //     this.elKey = this.tableData.length;
+    //   }
+    // } else {
+    //   if (parentIndex === this.tableData.length) {
+    //     this.tableData.push(this.emptyValue());
+    //   } else {
+    //     this.tableData.splice(parentIndex + 1, 0, this.emptyValue());
+    //   }
+    //   // this.elKey++;
+    //   this.elKey = this.tableData.length;
+    // }
+
+    // this.insInput.emit(this.tableData);
+
+    let updatedData = JSON.parse(JSON.stringify(this.data));
+
     if (action === "remove") {
-      this.tableData.splice(parentIndex, 1);
-
-      if (!this.tableData.length) {
-        this.tableData = [this.emptyValue()];
-      }
+      updatedData.splice(parentIndex, 1);
+      if (!updatedData.length) updatedData = [this.emptyValue()];
+      //   // this.elKey = 0;
+      // } else {
+      //   // this.elKey++;
+      //   // this.elKey = updatedData.length;
+      // }
     } else {
-      if (parentIndex === this.tableData.length) {
-        this.tableData.push(this.emptyValue());
+      if (parentIndex === updatedData.length) {
+        updatedData.push(this.emptyValue());
       } else {
-        this.tableData.splice(parentIndex + 1, 0, this.emptyValue());
+        updatedData.splice(parentIndex + 1, 0, this.emptyValue());
       }
+      // this.elKey++;
+      // this.elKey = this.data.length;
     }
-
-    this.elKey = this.tableData.length;
-    this.insInput.emit(this.tableData);
+    // const newData = this.data;
+    // this.data = [];
+    this.data = updatedData;
+    this.insInput.emit(this.data);
   }
 
   emptyValue() {
     let empty = {};
+
     for (const header of this.tableHeaders) {
       empty[header.name] = null;
     }
@@ -136,10 +177,33 @@ export class InsInputTable {
     return empty;
   }
 
+  // hasValue(values) {
+  //   let allValues = "";
+
+  //   if (values.length === 1) {
+  //     for (const key of Object.keys(values[0])) {
+  //       allValues += values[0][key] || "";
+  //     }
+  //   } else if (!values.length) {
+  //     return false;
+  //   } else {\
+  //     return true;
+  //   }
+
+
+  //   return allValues !== "";
+  // }
+
   render() {
     return (
       <div class={`ins-input-table ${this.hasError ? 'has-error' : ''}`}>
-        <div class="ins-input-table_label">{this.label}</div>
+        <div class="ins-input-table_label">
+          {this.label}
+          {this.tooltip
+            ? <ins-input-tooltip content={this.tooltip}></ins-input-tooltip>
+            : ''
+          }
+        </div>
         <div class="ins-input-table_header">
           {
             this.tableHeaders.map((item) => {
@@ -149,25 +213,26 @@ export class InsInputTable {
             })
           }
         </div>
-
         <div>
           {
-            this.elKey ?
-              this.tableData.map((item) => {
+            // this.hasValue(this.data) ?
+              this.data.map((item) => {
+                // this.tableData.map((item) => {
                 return (
                   <div class="ins-input-table_row">
                     {
                       this.tableHeaders.map((header, index) => {
                         return (
-                          <div class="ins-input-table_column">
-                            <ins-input
-                              label={header.label}
+                          <div class={`ins-input-table_column ins-form-field-wrap ${this.hasError ? 'is-invalid' : ''}`}>
+                            <label class="ins-form-label">{header.label}</label>
+                            <input
+                              class="ins-form-field"
                               key={index}
                               value={item[header.name]}
                               disabled={this.disabled}
                               readonly={this.readonly}
-                              hasError={this.hasError}>
-                            </ins-input>
+                              onInput={e => this.inputHander(e)}>
+                            </input>
                           </div>
                         )
                       })
@@ -190,38 +255,38 @@ export class InsInputTable {
                   </div>
                 )
               })
-            :
-            <div class="ins-input-table_row">
-              {
-                this.tableHeaders.map((header) => {
-                  return (
-                    <div class="ins-input-table_column">
-                      <ins-input
-                        label={header.label}
-                        disabled={this.disabled}
-                        readonly={this.readonly}
-                        hasError={this.hasError}>
-                      </ins-input>
-                    </div>
-                  )
-                })
-              }
-              {
-                !this.readonly && !this.disabled ?
-                <div class="ins-input-table_buttons">
-                  <ins-button
-                    icon={this.addButtonIcon}
-                    color={this.addButtonColor}
-                    label="">
-                  </ins-button>
-                  <ins-button
-                    icon={this.removeButtonIcon}
-                    color={this.removeButtonColor}
-                    label="">
-                  </ins-button>
-                </div> : ''
-              }
-            </div>
+            // :
+            // <div class="ins-input-table_row">
+            //   {
+            //     this.tableHeaders.map((header) => {
+            //       return (
+            //         <div class="ins-input-table_column">
+            //           <ins-input
+            //             label={header.label}
+            //             disabled={this.disabled}
+            //             readonly={this.readonly}
+            //             hasError={this.hasError}>
+            //           </ins-input>
+            //         </div>
+            //       )
+            //     })
+            //   }
+            //   {
+            //     !this.readonly && !this.disabled ?
+            //     <div class="ins-input-table_buttons">
+            //       <ins-button
+            //         icon={this.addButtonIcon}
+            //         color={this.addButtonColor}
+            //         label="">
+            //       </ins-button>
+            //       <ins-button
+            //         icon={this.removeButtonIcon}
+            //         color={this.removeButtonColor}
+            //         label="">
+            //       </ins-button>
+            //     </div> : ''
+            //   }
+            // </div>
           }
         </div>
 

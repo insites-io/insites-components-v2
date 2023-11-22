@@ -28,6 +28,7 @@
  - [ins-input-select](../ins-input-select)
  - [ins-input-slider](../ins-input-slider)
  - [ins-input-stepper](../ins-input-stepper)
+ - [ins-input-table](../ins-input-table)
  - [ins-input-tel](../ins-input-tel)
  - [ins-markdown-editor](../ins-markdown-editor)
  - [ins-radio](../ins-radio)
@@ -50,6 +51,7 @@ graph TD;
   ins-input-select --> ins-input-tooltip
   ins-input-slider --> ins-input-tooltip
   ins-input-stepper --> ins-input-tooltip
+  ins-input-table --> ins-input-tooltip
   ins-input-tel --> ins-input-tooltip
   ins-markdown-editor --> ins-input-tooltip
   ins-radio --> ins-input-tooltip

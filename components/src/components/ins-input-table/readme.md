@@ -21,14 +21,15 @@
 | `removeButtonIcon`  | `remove-button-icon`  |             | `string`  | `"icon-minus"` |
 | `tableData`         | `table-data`          |             | `any`     | `[]`           |
 | `tableHeaders`      | `table-headers`       |             | `any`     | `[]`           |
+| `tooltip`           | `tooltip`             |             | `string`  | `undefined`    |
 
 
 ## Events
 
-| Event      | Description | Type               |
-| ---------- | ----------- | ------------------ |
-| `didLoad`  |             | `CustomEvent<any>` |
-| `insInput` |             | `CustomEvent<any>` |
+| Event       | Description | Type               |
+| ----------- | ----------- | ------------------ |
+| `didLoad`   |             | `CustomEvent<any>` |
+| `insChange` |             | `CustomEvent<any>` |
 
 
 ## Methods
@@ -58,12 +59,14 @@ Type: `Promise<any>`
 
 ### Depends on
 
+- [ins-input-tooltip](../ins-input-tooltip)
 - [ins-input](../ins-input)
 - [ins-button](../ins-button)
 
 ### Graph
 ```mermaid
 graph TD;
+  ins-input-table --> ins-input-tooltip
   ins-input-table --> ins-input
   ins-input-table --> ins-button
   ins-input --> ins-input-tooltip

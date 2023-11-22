@@ -75,7 +75,7 @@
   <ins-renderer>
     <div>
 
-      <ins-input-table error-message="Requirement" id="inputTableEl" label="Test Table">
+      <ins-input-table error-message="Requirement" id="inputTableEl" label="Test Table" tooltip="this triggers extra re-renders">
 
       </ins-input-table>
 
@@ -343,7 +343,7 @@
           // ]);
 
           inputTableEl.addEventListener('insInput', (event) => {
-            console.log(event)
+            console.log(event.detail)
           });
         }, 1000)
       </script>
