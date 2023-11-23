@@ -129,11 +129,16 @@ export class InsInputTable {
       if (typeof el === "object") inputEls.push(el);
     }
 
-    let counter = 0;
-    for (const item of this.data) {
-      for (const header of this.tableHeaders) {
-        els[counter].value = item[header.name];
-        counter++;
+    if (els.length) {
+      let counter = 0;
+      for (const item of this.data) {
+        for (const header of this.tableHeaders) {
+          els[counter].value = item[header.name];
+          els[counter].parentNode.classList.remove('is-invalid');
+
+          if (this.hasError && !item[header.name]) els[counter].parentNode.classList.add('is-invalid');
+          counter++;
+        }
       }
     }
   }
@@ -184,7 +189,7 @@ export class InsInputTable {
                   {
                     this.tableHeaders.map((header, index) => {
                       return (
-                        <div class={`ins-input-table_column ins-form-field-wrap ${this.hasError ? 'is-invalid' : ''}`}>
+                        <div class={`ins-input-table_column ins-form-field-wrap`}>
                           <label class="ins-form-label">{header.label}</label>
                           <input
                             class="ins-form-field"
