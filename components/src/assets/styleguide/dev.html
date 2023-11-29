@@ -75,7 +75,7 @@
   <ins-renderer>
     <div>
 
-      <ins-input-table error-message="Requirement" id="inputTableEl" label="Test Table" tooltip="this triggers extra re-renders">
+      <ins-input-table error-message="Requirement" id="inputTableEl" label="Test Table" tooltip="this triggers extra re-renders" table-headers='[{"name":"date","label":"Date"},{"name":"activity","label":"Activity"},{"name":"is_enabled","label":"Enabled"}]'>
 
       </ins-input-table>
 
@@ -314,20 +314,20 @@
 
         setTimeout(() => {
           test.setValue([1]);
-          inputTableEl.tableHeaders = [
-            {
-              name: "date",
-              label: "Date"
-            },
-            {
-              name: "activity",
-              label: "Activity"
-            },
-            {
-              name: "is_enabled",
-              label: "Enabled"
-            }
-          ];
+          // inputTableEl.tableHeaders = [
+          //   {
+          //     "name": "date",
+          //     "label": "Date"
+          //   },
+          //   {
+          //     "name": "activity",
+          //     "label": "Activity"
+          //   },
+          //   {
+          //     "name": "is_enabled",
+          //     "label": "Enabled"
+          //   }
+          // ];
 
           // inputTableEl.setValue([
           //   {

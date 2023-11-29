@@ -26,15 +26,29 @@ export class InsInputTable {
 
   columnWidth;
 
+  componentWillLoad() {
+    if (typeof this.tableHeaders === "string") {
+      try {
+        this.tableHeaders = JSON.parse(this.tableHeaders);
+      } catch {}
+    }
+  }
+
   componentDidLoad() {
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
       if (func) func(this.insInputTableEl);
     }
+
+    this.updateColumnWidth();
   }
 
   componentDidUpdate() {
+    this.updateColumnWidth();
+  }
+
+  updateColumnWidth() {
     this.columnWidth = !this.readonly && !this.disabled ?
       `width: calc(${100 / (this.tableHeaders.length)}% - ${80 / (this.tableHeaders.length)}px)` :
       `width: ${100 / (this.tableHeaders.length)}%`;
@@ -207,11 +221,13 @@ export class InsInputTable {
                     !this.readonly && !this.disabled ?
                     <div class="ins-input-table_buttons">
                       <ins-button
+                        type="button"
                         icon={this.addButtonIcon}
                         color={this.addButtonColor}
                         label="">
                       </ins-button>
                       <ins-button
+                        type="button"
                         icon={this.removeButtonIcon}
                         color={this.removeButtonColor}
                         label="">

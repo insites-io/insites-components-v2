@@ -5775,8 +5775,8 @@ ins-input-table .ins-input-table_buttons {
   right: 0;
 }
 
-ins-input-table ins-input .ins-form-field-wrap .ins-form-label,
-ins-input-table ins-input .ins-form-field-wrap.is-invalid .ins-form-error {
+ins-input-table .ins-form-field-wrap .ins-form-label,
+ins-input-table .ins-form-field-wrap.is-invalid .ins-form-error {
   display: none;
 }
 
@@ -5805,7 +5805,7 @@ ins-input-table .ins-input-table.has-error .ins-input-table_column {
     padding-right: 0;
   }
 
-  ins-input-table ins-input .ins-form-field-wrap .ins-form-label {
+  ins-input-table .ins-form-field-wrap .ins-form-label {
     display: block;
     font-weight: 400;
   }
