@@ -1,1 +1,0 @@
-import{r as s,h as t}from"./p-37460138.js";const o=class{constructor(t){s(this,t),this.label="Options Group"}render(){return t("div",{class:"ins-select-group"},t("div",{class:"ins-select-group_label"},this.label),t("div",{class:"ins-select-group_options"},t("slot",null)))}};export{o as ins_button_select_group}

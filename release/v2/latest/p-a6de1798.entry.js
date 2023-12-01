@@ -1,1 +1,0 @@
-import{r,h as s}from"./p-37460138.js";const n=class{constructor(s){r(this,s)}render(){return s("div",null,s("slot",null))}};export{n as ins_accordion_item_heading}

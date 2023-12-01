@@ -1,1 +1,0 @@
-import{r as s,h as r}from"./p-37460138.js";const t=class{constructor(r){s(this,r)}render(){return r("div",{class:"ins-page-wrap"},r("slot",null))}};export{t as ins_page}
