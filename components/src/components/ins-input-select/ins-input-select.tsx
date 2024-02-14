@@ -648,7 +648,9 @@ export class InsInputSelect {
             this.value = [];
         } else if (typeof this.value === 'string' && this.multiple){
             this.value = this.isArray(this.value)
-        }
+        } else if (!this.multiple && !this.value) {
+			this.value = "";
+		}
 
         if (!this.placeholder && this.searchable){
             this.placeholder = "Please select or type to search for an option";

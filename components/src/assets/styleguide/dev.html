@@ -200,11 +200,54 @@
       <ins-input-select label="test" value="" searchable placeholder="Select or type to search for test" blank-label>
         <div>
           <ins-input-select-option value="" label="-- Clear Option --"></ins-input-select-option>
-          <ins-input-select-option value="1" label="1"></ins-input-select-option>
-          <ins-input-select-option value="2" label="2"></ins-input-select-option>
-          <ins-input-select-option value="3" label="3"></ins-input-select-option>
-          <ins-input-select-option value="4" label="4"></ins-input-select-option>
+          <ins-input-select-group label="Test">
+            <ins-input-select-option value="1" label="1"></ins-input-select-option>
+            <ins-input-select-option value="2" label="2"></ins-input-select-option>
+            <ins-input-select-option value="3" label="3"></ins-input-select-option>
+            <ins-input-select-option value="4" label="4"></ins-input-select-option>
+          </ins-input-select-group>
         </div>
+      </ins-input-select>
+
+      <ins-input-select
+        label="Cars"
+        placeholder="Please select a car"
+        tooltip="This is a sample tooltip content. It also support html content."
+        blank-label>
+
+        <ins-input-select-option label="-- Clear Option --"></ins-input-select-option>
+
+        <ins-input-select-group
+          label="Swedish Cars">
+
+          <ins-input-select-option
+            value="volvo"
+            label="Volvo">
+          </ins-input-select-option>
+
+          <ins-input-select-option
+            value="saab"
+            label="Saab">
+          </ins-input-select-option>
+
+        </ins-input-select-group>
+
+
+        <ins-input-select-group
+          label="German Cars">
+
+          <ins-input-select-option
+            value="mercedes"
+            label="Mercedes">
+          </ins-input-select-option>
+
+          <ins-input-select-option
+            value="audi"
+            label="Audi">
+          </ins-input-select-option>
+
+        </ins-input-select-group>
+
       </ins-input-select>
 
       <ins-image-picker img-type="SomethinG"></ins-image-picker>
