@@ -34,6 +34,7 @@ export class InsCarousel {
   @Prop({ mutable: true }) perPage: number = 1;
   @Prop({ mutable: true }) noPagination: boolean = false;
   @Prop({ mutable: true }) noCarouselButton: boolean = false;
+  @Prop({ mutable: true }) dragDisabled: boolean = false;
 
   slider: any;
   slides: any;
@@ -58,7 +59,7 @@ export class InsCarousel {
     this.slider = new Siema({
       selector: this.slides,
       perPage: this.perPage,
-      draggable: true,
+      draggable: !this.dragDisabled,
       duration: this.transition,
       startIndex: this.startIndex,
       loop: this.loop,

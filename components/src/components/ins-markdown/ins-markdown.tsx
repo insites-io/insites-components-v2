@@ -8,9 +8,10 @@ export class InsMarkdown {
   @Prop() hasLoad: string;
   @Prop({ mutable: true }) label: string = "";
   @Prop({ mutable: true }) value: string = "";
+  @Prop({ mutable: true }) replaceLineBreaks: boolean;
 
   setMarkdownValue() {
-    this.insMarkdownEl.querySelector('.markdown').innerHTML = marked(this.value);
+    this.insMarkdownEl.querySelector('.markdown').innerHTML = marked(this.replaceLineBreaks ? this.value.replace(/(?:\r\n|\r|\n)/g, '<br>') : this.value);
   }
 
   componentDidLoad() {

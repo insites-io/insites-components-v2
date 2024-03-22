@@ -172,6 +172,7 @@ export namespace Components {
         "ctaLabel": string;
         "ctaLink": string;
         "ctaLinkTarget": string;
+        "dragDisabled": boolean;
         "duration": number;
         "goTo": (slide: any) => Promise<void>;
         "hasLoad": string;
@@ -713,6 +714,7 @@ export namespace Components {
     interface InsMarkdown {
         "hasLoad": string;
         "label": string;
+        "replaceLineBreaks": boolean;
         "value": string;
     }
     interface InsMarkdownEditor {
@@ -1922,6 +1924,7 @@ declare namespace LocalJSX {
         "ctaLabel"?: string;
         "ctaLink"?: string;
         "ctaLinkTarget"?: string;
+        "dragDisabled"?: boolean;
         "duration"?: number;
         "hasLoad"?: string;
         "heading"?: string;
@@ -2476,6 +2479,7 @@ declare namespace LocalJSX {
         "hasLoad"?: string;
         "label"?: string;
         "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "replaceLineBreaks"?: boolean;
         "value"?: string;
     }
     interface InsMarkdownEditor {

@@ -18,6 +18,7 @@
 | `ctaLabel`         | `cta-label`          |             | `string`  | `""`        |
 | `ctaLink`          | `cta-link`           |             | `string`  | `""`        |
 | `ctaLinkTarget`    | `cta-link-target`    |             | `string`  | `"_blank"`  |
+| `dragDisabled`     | `drag-disabled`      |             | `boolean` | `false`     |
 | `duration`         | `duration`           |             | `number`  | `3000`      |
 | `hasLoad`          | `has-load`           |             | `string`  | `undefined` |
 | `heading`          | `heading`            |             | `string`  | `""`        |

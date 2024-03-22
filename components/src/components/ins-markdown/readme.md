@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property  | Attribute  | Description | Type     | Default     |
-| --------- | ---------- | ----------- | -------- | ----------- |
-| `hasLoad` | `has-load` |             | `string` | `undefined` |
-| `label`   | `label`    |             | `string` | `""`        |
-| `value`   | `value`    |             | `string` | `""`        |
+| Property            | Attribute             | Description | Type      | Default     |
+| ------------------- | --------------------- | ----------- | --------- | ----------- |
+| `hasLoad`           | `has-load`            |             | `string`  | `undefined` |
+| `label`             | `label`               |             | `string`  | `""`        |
+| `replaceLineBreaks` | `replace-line-breaks` |             | `boolean` | `undefined` |
+| `value`             | `value`               |             | `string`  | `""`        |
 
 
 ## Events
