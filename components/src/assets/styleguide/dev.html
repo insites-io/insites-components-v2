@@ -17,8 +17,10 @@
   <!-- Components -->
   <link rel="stylesheet" href="/assets/css/insites.css" />
 
-  <script type="module" src="/build/insites.esm.js"></script>
-  <script nomodule src="/build/insites.js"></script>
+  <!-- <script type="module" src="/build/insites.esm.js"></script>
+  <script nomodule src="/build/insites.js"></script> -->
+  <script type="module" src="https://components.insites.io/v2.13.2/insites.esm.js"></script>
+  <script nomodule src="https://components.insites.io/v2.13.2/insites.js"></script>
   <style>
     .liquid-label {
       font-size: 12px;
@@ -333,6 +335,30 @@
             </div>
           </div>
         </div>
+      </ins-carousel>
+      <ins-carousel
+        autoplay loop
+        bind-to="myCarousel6">
+
+          <div id="myCarousel6">
+
+          <div class="img-wrap">
+            <img src="https://cdn.staging.oregon.platform-os.com/instances/4836/property_uploads/modules/website/homepage_slider/image/26bd8706-18a1-4e16-a9ef-7bb443e6aab6/Desktop_Hero%201.jpg" alt="sliders" />
+            <ins-button solid label="Learn More 1"></ins-button>
+          </div>
+
+          <div class="img-wrap">
+            <img src="https://cdn.staging.oregon.platform-os.com/instances/4836/property_uploads/modules/website/homepage_slider/image/26bd8706-18a1-4e16-a9ef-7bb443e6aab6/Desktop_Hero%201.jpg" alt="sliders" />
+            <ins-button solid label="Learn More 2"></ins-button>
+          </div>
+
+          <div class="img-wrap">
+            <img src="https://cdn.staging.oregon.platform-os.com/instances/4836/property_uploads/modules/website/homepage_slider/image/26bd8706-18a1-4e16-a9ef-7bb443e6aab6/Desktop_Hero%201.jpg" alt="sliders" />
+            <ins-button solid label="Learn More 3"></ins-button>
+          </div>
+
+        </div>
+
       </ins-carousel>
 
       <ins-gallery thumbnail-layout="slider">
