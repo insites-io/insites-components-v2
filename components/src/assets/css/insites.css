@@ -13232,12 +13232,6 @@ html [type=button] {
   max-width: 432px
 }
 
-
-
-
-
-
-
 .ins-credit-card-compact-size {
   max-width: none;
   max-height: 98px;
@@ -13275,6 +13269,7 @@ html [type=button] {
   color: var(--ins-color-ink);
 }
 
+.ins-credit-card-main-wrap.active.compact .close-btn,
 .ins-credit-card-main-wrap.compact .close-btn {
   position: absolute;
   right: 40px;
@@ -13282,6 +13277,7 @@ html [type=button] {
   color: var(--ins-color-ink40);
 }
 
+.ins-credit-card-main-wrap.active.compact .close-btn:hover,
 .ins-credit-card-main-wrap.compact .close-btn:hover {
   color: var(--ins-color-negative)
 }
@@ -13332,11 +13328,6 @@ html [type=button] {
   height: 40px;
   width: auto;
 }
-
-
-
-
-
 
 ins-code-editor textarea.codemirror {
   display: none

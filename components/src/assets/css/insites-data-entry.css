@@ -4165,6 +4165,7 @@ ins-date-time .ins-datepicker-wrap .flatpickr-calendar.showTimeInput.hasTime .fl
 .ins-credit-card-max-size {
   max-width: 432px
 }
+
 .ins-credit-card-compact-size {
   max-width: none;
   max-height: 98px;
@@ -4202,6 +4203,7 @@ ins-date-time .ins-datepicker-wrap .flatpickr-calendar.showTimeInput.hasTime .fl
   color: var(--ins-color-ink);
 }
 
+.ins-credit-card-main-wrap.active.compact .close-btn,
 .ins-credit-card-main-wrap.compact .close-btn {
   position: absolute;
   right: 40px;
@@ -4209,6 +4211,7 @@ ins-date-time .ins-datepicker-wrap .flatpickr-calendar.showTimeInput.hasTime .fl
   color: var(--ins-color-ink40);
 }
 
+.ins-credit-card-main-wrap.active.compact .close-btn:hover,
 .ins-credit-card-main-wrap.compact .close-btn:hover {
   color: var(--ins-color-negative)
 }
