@@ -244,6 +244,7 @@ export namespace Components {
     interface InsCreditCard {
         "active": boolean;
         "brand": string;
+        "compact": boolean;
         "expired": boolean;
         "expiryMonth": string;
         "expiryYear": string;
@@ -1994,6 +1995,7 @@ declare namespace LocalJSX {
     interface InsCreditCard {
         "active"?: boolean;
         "brand"?: string;
+        "compact"?: boolean;
         "expired"?: boolean;
         "expiryMonth"?: string;
         "expiryYear"?: string;
@@ -2105,6 +2107,7 @@ declare namespace LocalJSX {
     interface InsGallery {
         "imgAlt"?: string;
         "imgTitle"?: string;
+        "onDidLoad"?: (event: CustomEvent<any>) => void;
         "slidable"?: boolean;
         "thumbnailLayout"?: string;
         "withIndicator"?: boolean;

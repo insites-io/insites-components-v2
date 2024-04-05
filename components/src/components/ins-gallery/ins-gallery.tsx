@@ -1,9 +1,10 @@
-import { h, Component, Listen, Element, Prop } from "@stencil/core";
+import { h, Component, Listen, Element, Prop, Event, EventEmitter } from "@stencil/core";
 import Siema from "siema";
 
 @Component({ tag: 'ins-gallery' })
 export class InsGallery {
   @Element() el: HTMLElement;
+  @Event() didLoad: EventEmitter;
   @Prop({ mutable: true }) imgAlt: string;
   @Prop({ mutable: true }) imgTitle: string;
   @Prop({ mutable: true }) zoomable: boolean;
@@ -62,6 +63,7 @@ export class InsGallery {
     this.progress = this.el.querySelector('.ins-gallery_progress');
     this.setProgress(0);
     this.setDefaultImg();
+    this.didLoad.emit();
   }
 
   onSlideHandler(){

@@ -77,6 +77,63 @@
   <ins-renderer>
     <div>
 
+
+      <ins-credit-card
+        id="creditEl"
+        last-four="1234"
+        expiry-month="12"
+        expiry-year="2029"
+        brand="amex"
+        compact
+        active
+        expired
+        full-year>
+      </ins-credit-card>
+      <ins-credit-card
+        last-four="1234"
+        expiry-month="12"
+        expiry-year="2023"
+        brand="discover"
+        compact
+        expired
+        full-year>
+      </ins-credit-card>
+      <ins-credit-card
+        id="creditEl2"
+        last-four="1234"
+        expiry-month="12"
+        expiry-year="2023"
+        brand="unionpay"
+        expired
+        full-year>
+      </ins-credit-card>
+
+      <script>
+
+
+        setTimeout(() => {
+          var cEl = document.getElementById('creditEl');
+          var cEl2 = document.getElementById('creditEl2');
+
+          cEl.addEventListener('insClick', el => {
+            cEl.active = !cEl.active;
+          })
+
+          cEl.addEventListener('insClose', el => {
+            console.log(el);
+          })
+
+          cEl2.addEventListener('insClick', el => {
+            cEl2.active = !cEl2.active;
+          })
+
+          cEl2.addEventListener('insClose', el => {
+            console.log(el);
+          })
+        }, 500)
+
+      </script>
+
       <ins-input-table error-message="Requirement" id="inputTableEl" label="Test Table" tooltip="this triggers extra re-renders" table-headers='[{"name":"date","label":"Date"},{"name":"activity","label":"Activity"},{"name":"is_enabled","label":"Enabled"}]'>
 
       </ins-input-table>
@@ -267,41 +324,7 @@
         width="692px" height="600px"
         prevent-click-outside
         no-button>
-        <div>
-          <ins-gallery thumbnail-layout="slider">
-            <ins-gallery-image
-              thumbnail="https://cdn-std.droplr.net/files/acc_1288012/UfgJ9c"
-              image="https://cdn-std.droplr.net/files/acc_1288012/UfgJ9c">
-            </ins-gallery-image>
-            <ins-gallery-image
-              thumbnail="https://cdn-std.droplr.net/files/acc_1288012/t38IY5"
-              image="https://cdn-std.droplr.net/files/acc_1288012/t38IY5">
-            </ins-gallery-image>
-            <ins-gallery-image
-              thumbnail="https://placehold.co/600x400"
-              image="https://placehold.co/600x400">
-            </ins-gallery-image>
-            <ins-gallery-image
-              thumbnail="https://placehold.co/600x401"
-              image="https://placehold.co/600x401">
-            </ins-gallery-image>
-            <ins-gallery-image
-              thumbnail="https://placehold.co/600x402"
-              image="https://placehold.co/600x402">
-            </ins-gallery-image>
-            <ins-gallery-image
-              thumbnail="https://placehold.co/600x403"
-              image="https://placehold.co/600x403">
-            </ins-gallery-image>
-            <ins-gallery-image
-              thumbnail="https://placehold.co/600x404"
-              image="https://placehold.co/600x404">
-            </ins-gallery-image>
-            <ins-gallery-image
-              thumbnail="https://placehold.co/600x405"
-              image="https://placehold.co/600x405">
-            </ins-gallery-image>
-          </ins-gallery>
+        <div id="galleryModalContent">
         </div>
       </ins-modal>
 
@@ -428,17 +451,91 @@
 
       <script>
         // value = "Test MARKDOWN\n\n\n\n\nempty"
-        var test = `Test MARKDOWN\n\n\n\n\nempty`;
+        var test = `Test MARKDOWN
+1. test
+
+2. 2
+
+
+
+
+
+
+
+Test Another List
+- 1
+- 2
+
+
+
+- 3
+
+
+
+
+
+
+
+
+NEXT`;
 
         var el = document.getElementById('markdown');
         el.value = test;
       </script>
+      <ins-modal
+        id="galleryModal"
+        data=""
+        with-backdrop
+        width="692px" height="600px"
+        prevent-click-outside
+        no-button>
+        <div id="galleryModalContent">
+        </div>
+      </ins-modal>
+
+      <script type="text/javascript">
+        setTimeout(() => {
+          // document.getElementById('galleryModal').open()
+          document.getElementById('galleryModalContent').innerHTML = `
+          <ins-gallery thumbnail-layout="slider">
+            <ins-gallery-image
+              thumbnail="https://cdn-std.droplr.net/files/acc_1288012/UfgJ9c"
+              image="https://cdn-std.droplr.net/files/acc_1288012/UfgJ9c">
+            </ins-gallery-image>
+            <ins-gallery-image
+              thumbnail="https://placehold.co/600x399"
+              image="https://placehold.co/600x399">
+            </ins-gallery-image>
+            <ins-gallery-image
+              thumbnail="https://placehold.co/600x400"
+              image="https://placehold.co/600x400">
+            </ins-gallery-image>
+            <ins-gallery-image
+              thumbnail="https://placehold.co/600x401"
+              image="https://placehold.co/600x401">
+            </ins-gallery-image>
+            <ins-gallery-image
+              thumbnail="https://placehold.co/600x402"
+              image="https://placehold.co/600x402">
+            </ins-gallery-image>
+            <ins-gallery-image
+              thumbnail="https://placehold.co/600x403"
+              image="https://placehold.co/600x403">
+            </ins-gallery-image>
+            <ins-gallery-image
+              thumbnail="https://placehold.co/600x404"
+              image="https://placehold.co/600x404">
+            </ins-gallery-image>
+            <ins-gallery-image
+              thumbnail="https://placehold.co/600x405"
+              image="https://placehold.co/600x405">
+            </ins-gallery-image>
+          </ins-gallery>`;
+        }, 300);
+      </script>
 
       <script>
-
         var myEl = document.getElementById('myEl');
-
-        // setTimeout(() => { document.getElementById('galleryModal').open() }, 1000)
 
         async function setFiles(){
           await myEl.setFiles([

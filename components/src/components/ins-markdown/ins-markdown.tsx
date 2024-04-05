@@ -11,7 +11,10 @@ export class InsMarkdown {
   @Prop({ mutable: true }) replaceLineBreaks: boolean;
 
   setMarkdownValue() {
-    this.insMarkdownEl.querySelector('.markdown').innerHTML = marked(this.replaceLineBreaks ? this.value.replace(/(?:\r\n|\r|\n)/g, '<br>') : this.value);
+    this.insMarkdownEl.querySelector('.markdown').innerHTML = this.replaceLineBreaks ? marked.parse(this.value, {
+      "breaks": true,
+      "gfm": true,
+    }) : this.value;
   }
 
   componentDidLoad() {

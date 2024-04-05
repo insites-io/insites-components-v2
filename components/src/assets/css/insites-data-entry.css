@@ -4165,6 +4165,100 @@ ins-date-time .ins-datepicker-wrap .flatpickr-calendar.showTimeInput.hasTime .fl
 .ins-credit-card-max-size {
   max-width: 432px
 }
+.ins-credit-card-compact-size {
+  max-width: none;
+  max-height: 98px;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.ins-credit-card-main-wrap.compact {
+  padding-bottom: 0;
+}
+
+.ins-credit-card-main-wrap.compact .ins-credit-card-wrap {
+  position: relative;
+  padding: 24px;
+  border-radius: 4px;
+  box-shadow: none;
+  border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
+  -webkit-transition: border-color .25s ease-in-out;
+  transition: border-color .25s ease-in-out;
+  min-height: 90px;
+  margin-bottom: 0;
+}
+
+.ins-credit-card-compact-size:hover .ins-credit-card-main-wrap.compact .ins-credit-card-wrap {
+  border-color: var(--ins-color-ink40);
+  cursor: pointer
+}
+
+.ins-credit-card-compact-size .ins-credit-card-main-wrap.compact.active .ins-credit-card-wrap {
+  background: #fff;
+  border-color: var(--ins-color-blue);
+}
+
+.ins-credit-card-main-wrap.compact.active .insites-user-card-details {
+  color: var(--ins-color-ink);
+}
+
+.ins-credit-card-main-wrap.compact .close-btn {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  color: var(--ins-color-ink40);
+}
+
+.ins-credit-card-main-wrap.compact .close-btn:hover {
+  color: var(--ins-color-negative)
+}
+
+.ins-credit-card-main-wrap.compact ins-radio {
+  position: absolute;
+  top: 30px;
+  left: 24px;
+}
+
+.ins-credit-card-main-wrap.compact .insites-user-card-details-expiry {
+  color: var(--ins-color-ink40);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.ins-credit-card-main-wrap.compact .insites-user-card-details-expiry.expired {
+  font-weight: 600;
+  color: var(--ins-color-negative)
+}
+
+.ins-credit-card-main-wrap.compact .insites-user-card-details {
+  position: absolute;
+  left: 138px;
+  top: 28px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  margin-left: 40px;
+  color: var(--ins-color-ink);
+  font-family: var(--ins-font-family);
+  margin-left: 0;
+}
+
+.ins-credit-card-main-wrap.compact ins-radio .ins-radio.ins-radio-checkbox {
+  padding: 0
+}
+
+.ins-credit-card-main-wrap.compact .ins-credit-card-wrap_brand {
+  position: absolute;
+  top: 24px;
+  left: 56px;
+  height: 40px;
+  min-height: 0;
+}
+
+.ins-credit-card-main-wrap.compact .ins-credit-card-wrap_brand svg {
+  height: 40px;
+  width: auto;
+}
 
 .ins-checkbox-card-wrap {
   position: relative;
