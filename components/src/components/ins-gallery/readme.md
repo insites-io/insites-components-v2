@@ -17,6 +17,13 @@
 | `zoomable`        | `zoomable`         |             | `boolean` | `undefined` |
 
 
+## Events
+
+| Event     | Description | Type               |
+| --------- | ----------- | ------------------ |
+| `didLoad` |             | `CustomEvent<any>` |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

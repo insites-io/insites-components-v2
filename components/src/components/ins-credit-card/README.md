@@ -11,6 +11,7 @@
 | ------------- | -------------- | ----------- | --------- | ----------- |
 | `active`      | `active`       |             | `boolean` | `undefined` |
 | `brand`       | `brand`        |             | `string`  | `undefined` |
+| `compact`     | `compact`      |             | `boolean` | `undefined` |
 | `expired`     | `expired`      |             | `boolean` | `undefined` |
 | `expiryMonth` | `expiry-month` |             | `string`  | `undefined` |
 | `expiryYear`  | `expiry-year`  |             | `string`  | `undefined` |
@@ -52,6 +53,20 @@ Type: `Promise<void>`
 
 
 
+
+## Dependencies
+
+### Depends on
+
+- [ins-radio](../ins-radio)
+
+### Graph
+```mermaid
+graph TD;
+  ins-credit-card --> ins-radio
+  ins-radio --> ins-input-tooltip
+  style ins-credit-card fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

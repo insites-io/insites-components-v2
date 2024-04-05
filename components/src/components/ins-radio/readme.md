@@ -63,6 +63,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [ins-credit-card](../ins-credit-card)
+
 ### Depends on
 
 - [ins-input-tooltip](../ins-input-tooltip)
@@ -71,6 +75,7 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   ins-radio --> ins-input-tooltip
+  ins-credit-card --> ins-radio
   style ins-radio fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -22,17 +22,20 @@
 | `hasError`              | `has-error`              |             | `boolean` | `false`            |
 | `hasLoad`               | `has-load`               |             | `string`  | `undefined`        |
 | `label`                 | `label`                  |             | `string`  | `undefined`        |
+| `labelKey`              | `label-key`              |             | `string`  | `""`               |
 | `lookup`                | `lookup`                 |             | `boolean` | `false`            |
 | `lookupLoading`         | `lookup-loading`         |             | `boolean` | `false`            |
 | `lookupScrolling`       | `lookup-scrolling`       |             | `boolean` | `false`            |
 | `multiple`              | `multiple`               |             | `boolean` | `false`            |
 | `name`                  | `name`                   |             | `string`  | `undefined`        |
+| `optionsData`           | --                       |             | `any[]`   | `[]`               |
 | `placeholder`           | `placeholder`            |             | `string`  | `""`               |
 | `readonly`              | `readonly`               |             | `boolean` | `false`            |
 | `searchable`            | `searchable`             |             | `boolean` | `false`            |
 | `searchablePlaceholder` | `searchable-placeholder` |             | `string`  | `"Search options"` |
 | `selectedValues`        | `selected-values`        |             | `any`     | `[]`               |
 | `value`                 | `value`                  |             | `any`     | `undefined`        |
+| `valueKey`              | `value-key`              |             | `string`  | `""`               |
 
 
 ## Events
@@ -159,6 +162,19 @@ Type: `Promise<boolean>`
 
 
 
+
+## Dependencies
+
+### Depends on
+
+- [ins-button-select-option](../ins-button-select-option)
+
+### Graph
+```mermaid
+graph TD;
+  ins-button-select --> ins-button-select-option
+  style ins-button-select fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

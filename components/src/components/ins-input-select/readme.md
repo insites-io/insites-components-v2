@@ -22,11 +22,13 @@
 | `hasError`              | `has-error`              |             | `boolean` | `false`                             |
 | `hasLoad`               | `has-load`               |             | `string`  | `undefined`                         |
 | `label`                 | `label`                  |             | `string`  | `undefined`                         |
+| `labelKey`              | `label-key`              |             | `string`  | `""`                                |
 | `lookup`                | `lookup`                 |             | `boolean` | `false`                             |
 | `lookupLoading`         | `lookup-loading`         |             | `boolean` | `false`                             |
 | `lookupScrolling`       | `lookup-scrolling`       |             | `boolean` | `false`                             |
 | `multiple`              | `multiple`               |             | `boolean` | `false`                             |
 | `name`                  | `name`                   |             | `string`  | `undefined`                         |
+| `optionsData`           | --                       |             | `any[]`   | `[]`                                |
 | `placeholder`           | `placeholder`            |             | `string`  | `""`                                |
 | `readonly`              | `readonly`               |             | `boolean` | `false`                             |
 | `searchable`            | `searchable`             |             | `boolean` | `false`                             |
@@ -34,6 +36,7 @@
 | `selectedValues`        | `selected-values`        |             | `any`     | `[]`                                |
 | `tooltip`               | `tooltip`                |             | `string`  | `""`                                |
 | `value`                 | `value`                  |             | `any`     | `undefined`                         |
+| `valueKey`              | `value-key`              |             | `string`  | `""`                                |
 
 
 ## Events
@@ -166,11 +169,13 @@ Type: `Promise<boolean>`
 ### Depends on
 
 - [ins-input-tooltip](../ins-input-tooltip)
+- [ins-input-select-option](../ins-input-select-option)
 
 ### Graph
 ```mermaid
 graph TD;
   ins-input-select --> ins-input-tooltip
+  ins-input-select --> ins-input-select-option
   style ins-input-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

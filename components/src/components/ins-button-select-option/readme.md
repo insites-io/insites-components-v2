@@ -67,6 +67,19 @@ Type: `Promise<void>`
 
 
 
+## Dependencies
+
+### Used by
+
+ - [ins-button-select](../ins-button-select)
+
+### Graph
+```mermaid
+graph TD;
+  ins-button-select --> ins-button-select-option
+  style ins-button-select-option fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
