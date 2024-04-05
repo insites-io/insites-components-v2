@@ -37,7 +37,7 @@
     "history": "^5.0.0",
     "intl-tel-input": "^16.0.7",
     "lodash": "^4.17.15",
-    "marked": "^0.7.0",
+    "marked": "^3.0.8",
     "rangeslider-pure": "^0.4.11",
     "siema": "^1.5.1",
     "simplemde": "^1.11.2",

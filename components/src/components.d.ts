@@ -104,11 +104,13 @@ export namespace Components {
         "hasError": boolean;
         "hasLoad": string;
         "label": string;
+        "labelKey": string;
         "lookup": boolean;
         "lookupLoading": boolean;
         "lookupScrolling": boolean;
         "multiple": boolean;
         "name": string;
+        "optionsData": Array<any>;
         "placeholder": string;
         "readonly": boolean;
         "resetValue": () => Promise<void>;
@@ -119,6 +121,7 @@ export namespace Components {
         "setSearchingState": (state: any) => Promise<boolean>;
         "setValue": (value?: any) => Promise<boolean>;
         "value": any;
+        "valueKey": string;
     }
     interface InsButtonSelectGroup {
         "label": string;
@@ -547,11 +550,13 @@ export namespace Components {
         "hasError": boolean;
         "hasLoad": string;
         "label": string;
+        "labelKey": string;
         "lookup": boolean;
         "lookupLoading": boolean;
         "lookupScrolling": boolean;
         "multiple": boolean;
         "name": string;
+        "optionsData": Array<any>;
         "placeholder": string;
         "readonly": boolean;
         "resetValue": () => Promise<void>;
@@ -563,6 +568,7 @@ export namespace Components {
         "setValue": (value?: any) => Promise<boolean>;
         "tooltip": string;
         "value": any;
+        "valueKey": string;
     }
     interface InsInputSelectGroup {
         "label": string;
@@ -1860,6 +1866,7 @@ declare namespace LocalJSX {
         "hasError"?: boolean;
         "hasLoad"?: string;
         "label"?: string;
+        "labelKey"?: string;
         "lookup"?: boolean;
         "lookupLoading"?: boolean;
         "lookupScrolling"?: boolean;
@@ -1871,12 +1878,14 @@ declare namespace LocalJSX {
         "onInsLoadMore"?: (event: CustomEvent<any>) => void;
         "onInsOptionSelect"?: (event: CustomEvent<any>) => void;
         "onInsSearch"?: (event: CustomEvent<any>) => void;
+        "optionsData"?: Array<any>;
         "placeholder"?: string;
         "readonly"?: boolean;
         "searchable"?: boolean;
         "searchablePlaceholder"?: string;
         "selectedValues"?: any;
         "value"?: any;
+        "valueKey"?: string;
     }
     interface InsButtonSelectGroup {
         "label"?: string;
@@ -2296,6 +2305,7 @@ declare namespace LocalJSX {
         "hasError"?: boolean;
         "hasLoad"?: string;
         "label"?: string;
+        "labelKey"?: string;
         "lookup"?: boolean;
         "lookupLoading"?: boolean;
         "lookupScrolling"?: boolean;
@@ -2307,6 +2317,7 @@ declare namespace LocalJSX {
         "onInsLoadMore"?: (event: CustomEvent<any>) => void;
         "onInsOptionSelect"?: (event: CustomEvent<any>) => void;
         "onInsSearch"?: (event: CustomEvent<any>) => void;
+        "optionsData"?: Array<any>;
         "placeholder"?: string;
         "readonly"?: boolean;
         "searchable"?: boolean;
@@ -2314,6 +2325,7 @@ declare namespace LocalJSX {
         "selectedValues"?: any;
         "tooltip"?: string;
         "value"?: any;
+        "valueKey"?: string;
     }
     interface InsInputSelectGroup {
         "label"?: string;

@@ -76,6 +76,27 @@
 
   <ins-renderer>
     <div>
+      <ins-button-select id="insSelectEl" label-key="name" value-key="value">
+        <ins-button-select-option
+        label="Static 2"
+        value="Static 2">
+      </ins-button-select-option>
+
+      <ins-button-select-option
+        label="Static 1"
+        value="Static 2">
+      </ins-button-select-option>
+
+    </ins-button-select>
+    <script>
+      const insSelectEl = document.getElementById('insSelectEl');
+      insSelectEl.optionsData = [
+        { name: "John Doe", value: 1 },
+        { name: "Jane Doe", value: 2 },
+        { name: "James Smith", value: 3 },
+        { name: "Julia Smith", value: 4 },
+      ]
+    </script>
 
 
       <ins-credit-card
@@ -446,41 +467,65 @@
           image="https://placehold.co/600x414">
         </ins-gallery-image>
       </ins-gallery>
-
-      <ins-markdown id='markdown' replace-line-breaks><ins-markdown>
-
+      <div class="m1">
+        <h1>Line breaks</h1>
+        <ins-markdown id='markdown' replace-line-breaks></ins-markdown>
+      </div>
+      <br><br>
+      <div class="m2">
+        <h1>NO Line breaks</h1>
+        <ins-markdown id='markdown2'><ins-markdown>
+      </div>
       <script>
         // value = "Test MARKDOWN\n\n\n\n\nempty"
-        var test = `Test MARKDOWN
-1. test
+        var test = `Marked - Markdown Parser
+========================
 
-2. 2
-
-
+[Marked] lets you convert [Markdown] into HTML.
 
 
+Markdown is a simple text format whose goal is to be very easy to read and write, even when not converted to HTML.
+This demo page will let you type anything you like and see how it gets converted.
 
 
+Live.  No more waiting around.
 
-Test Another List
-- 1
-- 2
+How To Use The Demo
+-------------------
 
+1. Type in stuff on the left.
+2. See the live updates on the right.
 
+That's it.  Pretty simple.  There's also a drop-down option above to switch between various views:
 
-- 3
+- **Preview:**  A live display of the generated HTML as it would render in a browser.
+- **HTML Source:**  The generated HTML before your browser makes it pretty.
+- **Lexer Data:**  What [marked] uses internally, in case you like gory stuff like this.
+- **Quick Reference:**  A brief run-down of how to format things using markdown.
 
+Why Markdown?
+-------------
 
+It's easy.  It's not overly bloated, unlike HTML.  Also, as the creator of [markdown] says,
 
+> The overriding design goal for Markdown's
+> formatting syntax is to make it as readable
+> as possible. The idea is that a
+> Markdown-formatted document should be
+> publishable as-is, as plain text, without
+> looking like it's been marked up with tags
+> or formatting instructions.
 
+Ready to start writing?  Either start changing stuff on the left or
+[clear everything](/demo/?text=) with a simple click.
 
-
-
-
-NEXT`;
+[Marked]: https://github.com/markedjs/marked/
+[Markdown]: http://daringfireball.net/projects/markdown/`;
 
         var el = document.getElementById('markdown');
+        var el2 = document.getElementById('markdown2');
         el.value = test;
+        el2.value = test;
       </script>
       <ins-modal
         id="galleryModal"

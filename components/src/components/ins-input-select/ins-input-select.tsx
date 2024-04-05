@@ -34,6 +34,9 @@ export class InsInputSelect {
     @Prop({ mutable: true }) errorMessage: string = "";
     @Prop({ mutable: true }) tooltip: string = "";
     @Prop({ mutable: true }) blankLabel: boolean = false;
+    @Prop({ mutable: true }) labelKey: string = "";
+    @Prop({ mutable: true }) valueKey: string = "";
+    @Prop({ mutable: true }) optionsData: Array<any> = [];
 
     // Multiple Mode
     @Prop({mutable: true}) multiple: boolean = false;
@@ -398,6 +401,18 @@ export class InsInputSelect {
 
                     <div class="ins-select-slot-wrap">
                         <slot />
+
+                        {this.labelKey && this.valueKey
+                          ? this.optionsData.map(option => {
+                              return (
+                                <ins-input-select-option
+                                  label={option[this.labelKey]}
+                                  value={option[this.valueKey]}>
+                                </ins-input-select-option>
+                              )
+                            })
+                          : ''
+                        }
                     </div>
 
                     <div class="spinner-wrap">

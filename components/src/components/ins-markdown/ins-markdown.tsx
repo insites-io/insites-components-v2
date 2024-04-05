@@ -12,9 +12,9 @@ export class InsMarkdown {
 
   setMarkdownValue() {
     this.insMarkdownEl.querySelector('.markdown').innerHTML = this.replaceLineBreaks ? marked.parse(this.value, {
-      "breaks": true,
-      "gfm": true,
-    }) : this.value;
+      breaks: true,
+      gfm: true
+    }) : marked.parse(this.value);
   }
 
   componentDidLoad() {
