@@ -120,6 +120,7 @@ export namespace Components {
         "setLoadingState": (state: any) => Promise<boolean>;
         "setSearchingState": (state: any) => Promise<boolean>;
         "setValue": (value?: any) => Promise<boolean>;
+        "small": boolean;
         "value": any;
         "valueKey": string;
     }
@@ -1884,6 +1885,7 @@ declare namespace LocalJSX {
         "searchable"?: boolean;
         "searchablePlaceholder"?: string;
         "selectedValues"?: any;
+        "small"?: boolean;
         "value"?: any;
         "valueKey"?: string;
     }

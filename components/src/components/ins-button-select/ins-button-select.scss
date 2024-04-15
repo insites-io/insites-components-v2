@@ -96,6 +96,16 @@
                     top: -1px;
                 }
             }
+            &.small {
+                .ins-select-label-wrap,
+                .ins-select-label-wrap span,
+                .ins-select-value-wrap {
+                    font-size: .625rem
+                }
+                .ins-select-option-wrap {
+                    font-size: .75rem
+                }
+            }
         }
         .ins-select-value-wrap {
             i.icon-caret-down {

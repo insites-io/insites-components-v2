@@ -5891,6 +5891,10 @@ ins-input-table .ins-input-table.has-error .ins-input-table_column {
   color: var(--ins-color-negative);
 }
 
+ins-input-table ins-button+ins-button button {
+  margin-left: 0;
+}
+
 @media screen and (max-width: 639px) {
   ins-input-table .ins-input-table_header {
     display: none;

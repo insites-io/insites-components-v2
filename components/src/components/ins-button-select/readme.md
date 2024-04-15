@@ -34,6 +34,7 @@
 | `searchable`            | `searchable`             |             | `boolean` | `false`            |
 | `searchablePlaceholder` | `searchable-placeholder` |             | `string`  | `"Search options"` |
 | `selectedValues`        | `selected-values`        |             | `any`     | `[]`               |
+| `small`                 | `small`                  |             | `boolean` | `false`            |
 | `value`                 | `value`                  |             | `any`     | `undefined`        |
 | `valueKey`              | `value-key`              |             | `string`  | `""`               |
 

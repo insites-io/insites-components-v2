@@ -37,6 +37,7 @@ export class InsButtonSelect {
     @Prop({ mutable: true }) labelKey: string = "";
     @Prop({ mutable: true }) valueKey: string = "";
     @Prop({ mutable: true }) optionsData: Array<any> = [];
+    @Prop({ mutable: true }) small: boolean = false;
 
     // Multiple Mode
     @Prop({mutable: true}) multiple: boolean = false;
@@ -684,7 +685,8 @@ export class InsButtonSelect {
                 ${this.readonly ? 'readonly' : ''}
                 ${this.disabled ? 'disabled' : ''}
                 ${this.hasError ? 'is-invalid' : ''}
-                ${this.lookupLoading ? 'initializing' : ''}`}>
+                ${this.lookupLoading ? 'initializing' : ''}
+                ${this.small ? 'small' : ''}`}>
 
                 { this.renderHiddenFields() }
                 { this.renderValueWrap() }
