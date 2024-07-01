@@ -1,0 +1,1 @@
+{"file":"ins-table-td.entry.esm.js","mappings":";;MAGa,UAAU;;;;IAErB,MAAM;QACJ,OAAO,8DAAQ,CAAA;KAChB;;;;;","names":[],"sources":["src/components/ins-table-td/ins-table-td.tsx"],"sourcesContent":["import { h, Component } from \"@stencil/core\";\n\n@Component({ tag: 'ins-table-td' })\nexport class InsTableTd {\n\n  render() {\n    return <slot />\n  }\n}\n"],"version":3}
