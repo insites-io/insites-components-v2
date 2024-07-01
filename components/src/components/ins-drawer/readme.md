@@ -37,6 +37,12 @@
 
 
 
+#### Parameters
+
+| Name     | Type  | Description |
+| -------- | ----- | ----------- |
+| `status` | `any` |             |
+
 #### Returns
 
 Type: `Promise<void>`

@@ -36,6 +36,12 @@ Type: `Promise<void>`
 
 
 
+#### Parameters
+
+| Name     | Type  | Description |
+| -------- | ----- | ----------- |
+| `height` | `any` |             |
+
 #### Returns
 
 Type: `Promise<void>`

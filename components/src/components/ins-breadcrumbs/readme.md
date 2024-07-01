@@ -27,6 +27,13 @@
 
 
 
+#### Parameters
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| `crumbs`     | `any`     |             |
+| `noRedirect` | `boolean` |             |
+
 #### Returns
 
 Type: `Promise<void>`

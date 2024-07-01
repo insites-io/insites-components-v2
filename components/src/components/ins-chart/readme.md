@@ -11,6 +11,13 @@
 
 
 
+#### Parameters
+
+| Name    | Type  | Description |
+| ------- | ----- | ----------- |
+| `color` | `any` |             |
+| `count` | `any` |             |
+
 #### Returns
 
 Type: `Promise<ColorType>`
@@ -20,6 +27,12 @@ Type: `Promise<ColorType>`
 ### `renderChart(options: any) => Promise<void>`
 
 
+
+#### Parameters
+
+| Name      | Type  | Description |
+| --------- | ----- | ----------- |
+| `options` | `any` |             |
 
 #### Returns
 

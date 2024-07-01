@@ -45,6 +45,12 @@
 
 
 
+#### Parameters
+
+| Name   | Type  | Description |
+| ------ | ----- | ----------- |
+| `date` | `any` |             |
+
 #### Returns
 
 Type: `Promise<any>`
@@ -64,6 +70,12 @@ Type: `Promise<string>`
 ### `setValue(value: any) => Promise<void>`
 
 
+
+#### Parameters
+
+| Name    | Type  | Description |
+| ------- | ----- | ----------- |
+| `value` | `any` |             |
 
 #### Returns
 
