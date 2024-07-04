@@ -9,6 +9,7 @@ export const config: Config = {
     { type: 'www', serviceWorker: null }
   ],
   enableCache: true,
+  sourceMap: false,
   plugins: [
     sass()
   ]
