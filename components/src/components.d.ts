@@ -1116,8 +1116,296 @@ export namespace Components {
         "width": string;
     }
 }
+export interface InsAccordionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsAccordionElement;
+}
+export interface InsAccordionLinkCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsAccordionLinkElement;
+}
+export interface InsBarChartCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsBarChartElement;
+}
+export interface InsBreadcrumbsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsBreadcrumbsElement;
+}
+export interface InsButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsButtonElement;
+}
+export interface InsButtonGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsButtonGroupElement;
+}
+export interface InsButtonSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsButtonSelectElement;
+}
+export interface InsButtonSelectOptionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsButtonSelectOptionElement;
+}
+export interface InsCardSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsCardSelectElement;
+}
+export interface InsCardSelectOptionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsCardSelectOptionElement;
+}
+export interface InsCarouselCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsCarouselElement;
+}
+export interface InsCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsCheckboxElement;
+}
+export interface InsCheckboxCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsCheckboxCardElement;
+}
+export interface InsCodeEditorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsCodeEditorElement;
+}
+export interface InsCreditCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsCreditCardElement;
+}
+export interface InsDateTimeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsDateTimeElement;
+}
+export interface InsDrawerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsDrawerElement;
+}
+export interface InsEditorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsEditorElement;
+}
+export interface InsFilterCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsFilterElement;
+}
+export interface InsFilterItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsFilterItemElement;
+}
+export interface InsGalleryCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsGalleryElement;
+}
+export interface InsGalleryImageCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsGalleryImageElement;
+}
+export interface InsHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsHeaderElement;
+}
+export interface InsHeaderUserCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsHeaderUserElement;
+}
+export interface InsHeadingCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsHeadingElement;
+}
+export interface InsImagePickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsImagePickerElement;
+}
+export interface InsInfoTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInfoTableElement;
+}
+export interface InsInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInputElement;
+}
+export interface InsInputFileCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInputFileElement;
+}
+export interface InsInputMultipleCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInputMultipleElement;
+}
+export interface InsInputPhoneCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInputPhoneElement;
+}
+export interface InsInputSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInputSelectElement;
+}
+export interface InsInputSelectOptionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInputSelectOptionElement;
+}
+export interface InsInputSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInputSliderElement;
+}
+export interface InsInputStepperCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInputStepperElement;
+}
+export interface InsInputTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInputTableElement;
+}
+export interface InsInputTelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInputTelElement;
+}
+export interface InsInstancesCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInstancesElement;
+}
+export interface InsInstancesItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInstancesItemElement;
+}
+export interface InsInstancesSubItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInstancesSubItemElement;
+}
+export interface InsKanbanBoardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsKanbanBoardElement;
+}
+export interface InsKanbanCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsKanbanCardElement;
+}
+export interface InsKanbanColumnCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsKanbanColumnElement;
+}
+export interface InsLineChartCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsLineChartElement;
+}
+export interface InsLoaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsLoaderElement;
+}
+export interface InsMarkdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsMarkdownElement;
+}
+export interface InsMarkdownEditorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsMarkdownEditorElement;
+}
+export interface InsModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsModalElement;
+}
+export interface InsPieChartCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsPieChartElement;
+}
+export interface InsProgressBarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsProgressBarElement;
+}
+export interface InsRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsRadioElement;
+}
+export interface InsRendererCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsRendererElement;
+}
+export interface InsSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsSelectElement;
+}
+export interface InsSelectOptionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsSelectOptionElement;
+}
+export interface InsSidebarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsSidebarElement;
+}
+export interface InsSidebarFooterCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsSidebarFooterElement;
+}
+export interface InsSidebarFooterButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsSidebarFooterButtonElement;
+}
+export interface InsSidebarItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsSidebarItemElement;
+}
+export interface InsSortCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsSortElement;
+}
+export interface InsSparklineCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsSparklineElement;
+}
+export interface InsStepCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsStepElement;
+}
+export interface InsStepsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsStepsElement;
+}
+export interface InsTabCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsTabElement;
+}
+export interface InsTabItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsTabItemElement;
+}
+export interface InsTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsTableElement;
+}
+export interface InsTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsTextareaElement;
+}
+export interface InsThumbnailCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsThumbnailElement;
+}
+export interface InsTimelineCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsTimelineElement;
+}
+export interface InsToggleSwitchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsToggleSwitchElement;
+}
 declare global {
+    interface HTMLInsAccordionElementEventMap {
+        "insToggle": any;
+        "didLoad": any;
+    }
     interface HTMLInsAccordionElement extends Components.InsAccordion, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsAccordionElementEventMap>(type: K, listener: (this: HTMLInsAccordionElement, ev: InsAccordionCustomEvent<HTMLInsAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsAccordionElementEventMap>(type: K, listener: (this: HTMLInsAccordionElement, ev: InsAccordionCustomEvent<HTMLInsAccordionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsAccordionElement: {
         prototype: HTMLInsAccordionElement;
@@ -1135,7 +1423,18 @@ declare global {
         prototype: HTMLInsAccordionItemHeadingElement;
         new (): HTMLInsAccordionItemHeadingElement;
     };
+    interface HTMLInsAccordionLinkElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsAccordionLinkElement extends Components.InsAccordionLink, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsAccordionLinkElementEventMap>(type: K, listener: (this: HTMLInsAccordionLinkElement, ev: InsAccordionLinkCustomEvent<HTMLInsAccordionLinkElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsAccordionLinkElementEventMap>(type: K, listener: (this: HTMLInsAccordionLinkElement, ev: InsAccordionLinkCustomEvent<HTMLInsAccordionLinkElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsAccordionLinkElement: {
         prototype: HTMLInsAccordionLinkElement;
@@ -1153,31 +1452,95 @@ declare global {
         prototype: HTMLInsBackdropElement;
         new (): HTMLInsBackdropElement;
     };
+    interface HTMLInsBarChartElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsBarChartElement extends Components.InsBarChart, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsBarChartElementEventMap>(type: K, listener: (this: HTMLInsBarChartElement, ev: InsBarChartCustomEvent<HTMLInsBarChartElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsBarChartElementEventMap>(type: K, listener: (this: HTMLInsBarChartElement, ev: InsBarChartCustomEvent<HTMLInsBarChartElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsBarChartElement: {
         prototype: HTMLInsBarChartElement;
         new (): HTMLInsBarChartElement;
     };
+    interface HTMLInsBreadcrumbsElementEventMap {
+        "routePage": any;
+        "didLoad": any;
+    }
     interface HTMLInsBreadcrumbsElement extends Components.InsBreadcrumbs, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsBreadcrumbsElementEventMap>(type: K, listener: (this: HTMLInsBreadcrumbsElement, ev: InsBreadcrumbsCustomEvent<HTMLInsBreadcrumbsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsBreadcrumbsElementEventMap>(type: K, listener: (this: HTMLInsBreadcrumbsElement, ev: InsBreadcrumbsCustomEvent<HTMLInsBreadcrumbsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsBreadcrumbsElement: {
         prototype: HTMLInsBreadcrumbsElement;
         new (): HTMLInsBreadcrumbsElement;
     };
+    interface HTMLInsButtonElementEventMap {
+        "insClick": any;
+        "insClickOption": any;
+        "didLoad": any;
+    }
     interface HTMLInsButtonElement extends Components.InsButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsButtonElementEventMap>(type: K, listener: (this: HTMLInsButtonElement, ev: InsButtonCustomEvent<HTMLInsButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsButtonElementEventMap>(type: K, listener: (this: HTMLInsButtonElement, ev: InsButtonCustomEvent<HTMLInsButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsButtonElement: {
         prototype: HTMLInsButtonElement;
         new (): HTMLInsButtonElement;
     };
+    interface HTMLInsButtonGroupElementEventMap {
+        "insClick": any;
+        "didLoad": any;
+    }
     interface HTMLInsButtonGroupElement extends Components.InsButtonGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsButtonGroupElementEventMap>(type: K, listener: (this: HTMLInsButtonGroupElement, ev: InsButtonGroupCustomEvent<HTMLInsButtonGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsButtonGroupElementEventMap>(type: K, listener: (this: HTMLInsButtonGroupElement, ev: InsButtonGroupCustomEvent<HTMLInsButtonGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsButtonGroupElement: {
         prototype: HTMLInsButtonGroupElement;
         new (): HTMLInsButtonGroupElement;
     };
+    interface HTMLInsButtonSelectElementEventMap {
+        "insChange": any;
+        "insOptionSelect": any;
+        "insDynamicSubmit": any;
+        "insSearch": any;
+        "insLoadMore": any;
+        "didLoad": any;
+    }
     interface HTMLInsButtonSelectElement extends Components.InsButtonSelect, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsButtonSelectElementEventMap>(type: K, listener: (this: HTMLInsButtonSelectElement, ev: InsButtonSelectCustomEvent<HTMLInsButtonSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsButtonSelectElementEventMap>(type: K, listener: (this: HTMLInsButtonSelectElement, ev: InsButtonSelectCustomEvent<HTMLInsButtonSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsButtonSelectElement: {
         prototype: HTMLInsButtonSelectElement;
@@ -1189,7 +1552,18 @@ declare global {
         prototype: HTMLInsButtonSelectGroupElement;
         new (): HTMLInsButtonSelectGroupElement;
     };
+    interface HTMLInsButtonSelectOptionElementEventMap {
+        "insButtonSelectOptionClicked": any;
+    }
     interface HTMLInsButtonSelectOptionElement extends Components.InsButtonSelectOption, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsButtonSelectOptionElementEventMap>(type: K, listener: (this: HTMLInsButtonSelectOptionElement, ev: InsButtonSelectOptionCustomEvent<HTMLInsButtonSelectOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsButtonSelectOptionElementEventMap>(type: K, listener: (this: HTMLInsButtonSelectOptionElement, ev: InsButtonSelectOptionCustomEvent<HTMLInsButtonSelectOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsButtonSelectOptionElement: {
         prototype: HTMLInsButtonSelectOptionElement;
@@ -1201,19 +1575,54 @@ declare global {
         prototype: HTMLInsCardElement;
         new (): HTMLInsCardElement;
     };
+    interface HTMLInsCardSelectElementEventMap {
+        "didLoad": any;
+        "insInput": any;
+    }
     interface HTMLInsCardSelectElement extends Components.InsCardSelect, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsCardSelectElementEventMap>(type: K, listener: (this: HTMLInsCardSelectElement, ev: InsCardSelectCustomEvent<HTMLInsCardSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsCardSelectElementEventMap>(type: K, listener: (this: HTMLInsCardSelectElement, ev: InsCardSelectCustomEvent<HTMLInsCardSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsCardSelectElement: {
         prototype: HTMLInsCardSelectElement;
         new (): HTMLInsCardSelectElement;
     };
+    interface HTMLInsCardSelectOptionElementEventMap {
+        "insCardSelectOptionClicked": any;
+    }
     interface HTMLInsCardSelectOptionElement extends Components.InsCardSelectOption, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsCardSelectOptionElementEventMap>(type: K, listener: (this: HTMLInsCardSelectOptionElement, ev: InsCardSelectOptionCustomEvent<HTMLInsCardSelectOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsCardSelectOptionElementEventMap>(type: K, listener: (this: HTMLInsCardSelectOptionElement, ev: InsCardSelectOptionCustomEvent<HTMLInsCardSelectOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsCardSelectOptionElement: {
         prototype: HTMLInsCardSelectOptionElement;
         new (): HTMLInsCardSelectOptionElement;
     };
+    interface HTMLInsCarouselElementEventMap {
+        "insSlide": any;
+        "didLoad": any;
+    }
     interface HTMLInsCarouselElement extends Components.InsCarousel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsCarouselElementEventMap>(type: K, listener: (this: HTMLInsCarouselElement, ev: InsCarouselCustomEvent<HTMLInsCarouselElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsCarouselElementEventMap>(type: K, listener: (this: HTMLInsCarouselElement, ev: InsCarouselCustomEvent<HTMLInsCarouselElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsCarouselElement: {
         prototype: HTMLInsCarouselElement;
@@ -1225,19 +1634,59 @@ declare global {
         prototype: HTMLInsChartElement;
         new (): HTMLInsChartElement;
     };
+    interface HTMLInsCheckboxElementEventMap {
+        "insCheck": any;
+        "insValueChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsCheckboxElement extends Components.InsCheckbox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsCheckboxElementEventMap>(type: K, listener: (this: HTMLInsCheckboxElement, ev: InsCheckboxCustomEvent<HTMLInsCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsCheckboxElementEventMap>(type: K, listener: (this: HTMLInsCheckboxElement, ev: InsCheckboxCustomEvent<HTMLInsCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsCheckboxElement: {
         prototype: HTMLInsCheckboxElement;
         new (): HTMLInsCheckboxElement;
     };
+    interface HTMLInsCheckboxCardElementEventMap {
+        "insClick": any;
+        "insValueChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsCheckboxCardElement extends Components.InsCheckboxCard, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsCheckboxCardElementEventMap>(type: K, listener: (this: HTMLInsCheckboxCardElement, ev: InsCheckboxCardCustomEvent<HTMLInsCheckboxCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsCheckboxCardElementEventMap>(type: K, listener: (this: HTMLInsCheckboxCardElement, ev: InsCheckboxCardCustomEvent<HTMLInsCheckboxCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsCheckboxCardElement: {
         prototype: HTMLInsCheckboxCardElement;
         new (): HTMLInsCheckboxCardElement;
     };
+    interface HTMLInsCodeEditorElementEventMap {
+        "insBlur": any;
+        "insInput": any;
+        "insValueChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsCodeEditorElement extends Components.InsCodeEditor, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsCodeEditorElementEventMap>(type: K, listener: (this: HTMLInsCodeEditorElement, ev: InsCodeEditorCustomEvent<HTMLInsCodeEditorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsCodeEditorElementEventMap>(type: K, listener: (this: HTMLInsCodeEditorElement, ev: InsCodeEditorCustomEvent<HTMLInsCodeEditorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsCodeEditorElement: {
         prototype: HTMLInsCodeEditorElement;
@@ -1249,19 +1698,58 @@ declare global {
         prototype: HTMLInsContentElement;
         new (): HTMLInsContentElement;
     };
+    interface HTMLInsCreditCardElementEventMap {
+        "insClick": any;
+        "insClose": any;
+        "insValueChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsCreditCardElement extends Components.InsCreditCard, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsCreditCardElementEventMap>(type: K, listener: (this: HTMLInsCreditCardElement, ev: InsCreditCardCustomEvent<HTMLInsCreditCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsCreditCardElementEventMap>(type: K, listener: (this: HTMLInsCreditCardElement, ev: InsCreditCardCustomEvent<HTMLInsCreditCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsCreditCardElement: {
         prototype: HTMLInsCreditCardElement;
         new (): HTMLInsCreditCardElement;
     };
+    interface HTMLInsDateTimeElementEventMap {
+        "insInput": any;
+        "insValueChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsDateTimeElement extends Components.InsDateTime, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsDateTimeElementEventMap>(type: K, listener: (this: HTMLInsDateTimeElement, ev: InsDateTimeCustomEvent<HTMLInsDateTimeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsDateTimeElementEventMap>(type: K, listener: (this: HTMLInsDateTimeElement, ev: InsDateTimeCustomEvent<HTMLInsDateTimeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsDateTimeElement: {
         prototype: HTMLInsDateTimeElement;
         new (): HTMLInsDateTimeElement;
     };
+    interface HTMLInsDrawerElementEventMap {
+        "insToggle": any;
+        "didLoad": any;
+    }
     interface HTMLInsDrawerElement extends Components.InsDrawer, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsDrawerElementEventMap>(type: K, listener: (this: HTMLInsDrawerElement, ev: InsDrawerCustomEvent<HTMLInsDrawerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsDrawerElementEventMap>(type: K, listener: (this: HTMLInsDrawerElement, ev: InsDrawerCustomEvent<HTMLInsDrawerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsDrawerElement: {
         prototype: HTMLInsDrawerElement;
@@ -1279,91 +1767,282 @@ declare global {
         prototype: HTMLInsDropdownItemElement;
         new (): HTMLInsDropdownItemElement;
     };
+    interface HTMLInsEditorElementEventMap {
+        "insBlur": any;
+        "insInput": any;
+        "insUpload": any;
+        "insValueChange": any;
+    }
     interface HTMLInsEditorElement extends Components.InsEditor, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsEditorElementEventMap>(type: K, listener: (this: HTMLInsEditorElement, ev: InsEditorCustomEvent<HTMLInsEditorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsEditorElementEventMap>(type: K, listener: (this: HTMLInsEditorElement, ev: InsEditorCustomEvent<HTMLInsEditorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsEditorElement: {
         prototype: HTMLInsEditorElement;
         new (): HTMLInsEditorElement;
     };
+    interface HTMLInsFilterElementEventMap {
+        "insFilterApply": any;
+        "didLoad": any;
+    }
     interface HTMLInsFilterElement extends Components.InsFilter, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsFilterElementEventMap>(type: K, listener: (this: HTMLInsFilterElement, ev: InsFilterCustomEvent<HTMLInsFilterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsFilterElementEventMap>(type: K, listener: (this: HTMLInsFilterElement, ev: InsFilterCustomEvent<HTMLInsFilterElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsFilterElement: {
         prototype: HTMLInsFilterElement;
         new (): HTMLInsFilterElement;
     };
+    interface HTMLInsFilterItemElementEventMap {
+        "insSelect": any;
+        "didLoad": any;
+    }
     interface HTMLInsFilterItemElement extends Components.InsFilterItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsFilterItemElementEventMap>(type: K, listener: (this: HTMLInsFilterItemElement, ev: InsFilterItemCustomEvent<HTMLInsFilterItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsFilterItemElementEventMap>(type: K, listener: (this: HTMLInsFilterItemElement, ev: InsFilterItemCustomEvent<HTMLInsFilterItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsFilterItemElement: {
         prototype: HTMLInsFilterItemElement;
         new (): HTMLInsFilterItemElement;
     };
+    interface HTMLInsGalleryElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsGalleryElement extends Components.InsGallery, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsGalleryElementEventMap>(type: K, listener: (this: HTMLInsGalleryElement, ev: InsGalleryCustomEvent<HTMLInsGalleryElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsGalleryElementEventMap>(type: K, listener: (this: HTMLInsGalleryElement, ev: InsGalleryCustomEvent<HTMLInsGalleryElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsGalleryElement: {
         prototype: HTMLInsGalleryElement;
         new (): HTMLInsGalleryElement;
     };
+    interface HTMLInsGalleryImageElementEventMap {
+        "insGalleryUpdate": any;
+    }
     interface HTMLInsGalleryImageElement extends Components.InsGalleryImage, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsGalleryImageElementEventMap>(type: K, listener: (this: HTMLInsGalleryImageElement, ev: InsGalleryImageCustomEvent<HTMLInsGalleryImageElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsGalleryImageElementEventMap>(type: K, listener: (this: HTMLInsGalleryImageElement, ev: InsGalleryImageCustomEvent<HTMLInsGalleryImageElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsGalleryImageElement: {
         prototype: HTMLInsGalleryImageElement;
         new (): HTMLInsGalleryImageElement;
     };
+    interface HTMLInsHeaderElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsHeaderElement extends Components.InsHeader, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsHeaderElementEventMap>(type: K, listener: (this: HTMLInsHeaderElement, ev: InsHeaderCustomEvent<HTMLInsHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsHeaderElementEventMap>(type: K, listener: (this: HTMLInsHeaderElement, ev: InsHeaderCustomEvent<HTMLInsHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsHeaderElement: {
         prototype: HTMLInsHeaderElement;
         new (): HTMLInsHeaderElement;
     };
+    interface HTMLInsHeaderUserElementEventMap {
+        "routePage": any;
+    }
     interface HTMLInsHeaderUserElement extends Components.InsHeaderUser, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsHeaderUserElementEventMap>(type: K, listener: (this: HTMLInsHeaderUserElement, ev: InsHeaderUserCustomEvent<HTMLInsHeaderUserElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsHeaderUserElementEventMap>(type: K, listener: (this: HTMLInsHeaderUserElement, ev: InsHeaderUserCustomEvent<HTMLInsHeaderUserElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsHeaderUserElement: {
         prototype: HTMLInsHeaderUserElement;
         new (): HTMLInsHeaderUserElement;
     };
+    interface HTMLInsHeadingElementEventMap {
+        "insChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsHeadingElement extends Components.InsHeading, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsHeadingElementEventMap>(type: K, listener: (this: HTMLInsHeadingElement, ev: InsHeadingCustomEvent<HTMLInsHeadingElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsHeadingElementEventMap>(type: K, listener: (this: HTMLInsHeadingElement, ev: InsHeadingCustomEvent<HTMLInsHeadingElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsHeadingElement: {
         prototype: HTMLInsHeadingElement;
         new (): HTMLInsHeadingElement;
     };
+    interface HTMLInsImagePickerElementEventMap {
+        "insValueChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsImagePickerElement extends Components.InsImagePicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsImagePickerElementEventMap>(type: K, listener: (this: HTMLInsImagePickerElement, ev: InsImagePickerCustomEvent<HTMLInsImagePickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsImagePickerElementEventMap>(type: K, listener: (this: HTMLInsImagePickerElement, ev: InsImagePickerCustomEvent<HTMLInsImagePickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsImagePickerElement: {
         prototype: HTMLInsImagePickerElement;
         new (): HTMLInsImagePickerElement;
     };
+    interface HTMLInsInfoTableElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsInfoTableElement extends Components.InsInfoTable, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInfoTableElementEventMap>(type: K, listener: (this: HTMLInsInfoTableElement, ev: InsInfoTableCustomEvent<HTMLInsInfoTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInfoTableElementEventMap>(type: K, listener: (this: HTMLInsInfoTableElement, ev: InsInfoTableCustomEvent<HTMLInsInfoTableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsInfoTableElement: {
         prototype: HTMLInsInfoTableElement;
         new (): HTMLInsInfoTableElement;
     };
+    interface HTMLInsInputElementEventMap {
+        "insInput": any;
+        "insBlur": any;
+        "insIconClick": any;
+        "insValueChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsInputElement extends Components.InsInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInputElementEventMap>(type: K, listener: (this: HTMLInsInputElement, ev: InsInputCustomEvent<HTMLInsInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInputElementEventMap>(type: K, listener: (this: HTMLInsInputElement, ev: InsInputCustomEvent<HTMLInsInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsInputElement: {
         prototype: HTMLInsInputElement;
         new (): HTMLInsInputElement;
     };
+    interface HTMLInsInputFileElementEventMap {
+        "insFileAdded": any;
+        "insFileError": any;
+        "insFileRemoved": any;
+        "insFileUploaded": any;
+        "didLoad": any;
+    }
     interface HTMLInsInputFileElement extends Components.InsInputFile, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInputFileElementEventMap>(type: K, listener: (this: HTMLInsInputFileElement, ev: InsInputFileCustomEvent<HTMLInsInputFileElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInputFileElementEventMap>(type: K, listener: (this: HTMLInsInputFileElement, ev: InsInputFileCustomEvent<HTMLInsInputFileElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsInputFileElement: {
         prototype: HTMLInsInputFileElement;
         new (): HTMLInsInputFileElement;
     };
+    interface HTMLInsInputMultipleElementEventMap {
+        "insInput": any;
+        "insChange": any;
+        "insValueChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsInputMultipleElement extends Components.InsInputMultiple, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInputMultipleElementEventMap>(type: K, listener: (this: HTMLInsInputMultipleElement, ev: InsInputMultipleCustomEvent<HTMLInsInputMultipleElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInputMultipleElementEventMap>(type: K, listener: (this: HTMLInsInputMultipleElement, ev: InsInputMultipleCustomEvent<HTMLInsInputMultipleElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsInputMultipleElement: {
         prototype: HTMLInsInputMultipleElement;
         new (): HTMLInsInputMultipleElement;
     };
+    interface HTMLInsInputPhoneElementEventMap {
+        "insInput": any;
+        "insValueChange": any;
+        "insValidation": any;
+        "didLoad": any;
+    }
     interface HTMLInsInputPhoneElement extends Components.InsInputPhone, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInputPhoneElementEventMap>(type: K, listener: (this: HTMLInsInputPhoneElement, ev: InsInputPhoneCustomEvent<HTMLInsInputPhoneElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInputPhoneElementEventMap>(type: K, listener: (this: HTMLInsInputPhoneElement, ev: InsInputPhoneCustomEvent<HTMLInsInputPhoneElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsInputPhoneElement: {
         prototype: HTMLInsInputPhoneElement;
         new (): HTMLInsInputPhoneElement;
     };
+    interface HTMLInsInputSelectElementEventMap {
+        "insChange": any;
+        "insOptionSelect": any;
+        "insDynamicSubmit": any;
+        "insSearch": any;
+        "insLoadMore": any;
+        "didLoad": any;
+    }
     interface HTMLInsInputSelectElement extends Components.InsInputSelect, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInputSelectElementEventMap>(type: K, listener: (this: HTMLInsInputSelectElement, ev: InsInputSelectCustomEvent<HTMLInsInputSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInputSelectElementEventMap>(type: K, listener: (this: HTMLInsInputSelectElement, ev: InsInputSelectCustomEvent<HTMLInsInputSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsInputSelectElement: {
         prototype: HTMLInsInputSelectElement;
@@ -1375,31 +2054,95 @@ declare global {
         prototype: HTMLInsInputSelectGroupElement;
         new (): HTMLInsInputSelectGroupElement;
     };
+    interface HTMLInsInputSelectOptionElementEventMap {
+        "insInputSelectOptionClicked": any;
+    }
     interface HTMLInsInputSelectOptionElement extends Components.InsInputSelectOption, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInputSelectOptionElementEventMap>(type: K, listener: (this: HTMLInsInputSelectOptionElement, ev: InsInputSelectOptionCustomEvent<HTMLInsInputSelectOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInputSelectOptionElementEventMap>(type: K, listener: (this: HTMLInsInputSelectOptionElement, ev: InsInputSelectOptionCustomEvent<HTMLInsInputSelectOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsInputSelectOptionElement: {
         prototype: HTMLInsInputSelectOptionElement;
         new (): HTMLInsInputSelectOptionElement;
     };
+    interface HTMLInsInputSliderElementEventMap {
+        "insSlide": any;
+        "insSlideStart": any;
+        "insSlideEnd": any;
+        "insValueChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsInputSliderElement extends Components.InsInputSlider, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInputSliderElementEventMap>(type: K, listener: (this: HTMLInsInputSliderElement, ev: InsInputSliderCustomEvent<HTMLInsInputSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInputSliderElementEventMap>(type: K, listener: (this: HTMLInsInputSliderElement, ev: InsInputSliderCustomEvent<HTMLInsInputSliderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsInputSliderElement: {
         prototype: HTMLInsInputSliderElement;
         new (): HTMLInsInputSliderElement;
     };
+    interface HTMLInsInputStepperElementEventMap {
+        "insBlur": any;
+        "insValueChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsInputStepperElement extends Components.InsInputStepper, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInputStepperElementEventMap>(type: K, listener: (this: HTMLInsInputStepperElement, ev: InsInputStepperCustomEvent<HTMLInsInputStepperElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInputStepperElementEventMap>(type: K, listener: (this: HTMLInsInputStepperElement, ev: InsInputStepperCustomEvent<HTMLInsInputStepperElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsInputStepperElement: {
         prototype: HTMLInsInputStepperElement;
         new (): HTMLInsInputStepperElement;
     };
+    interface HTMLInsInputTableElementEventMap {
+        "didLoad": any;
+        "insInput": any;
+    }
     interface HTMLInsInputTableElement extends Components.InsInputTable, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInputTableElementEventMap>(type: K, listener: (this: HTMLInsInputTableElement, ev: InsInputTableCustomEvent<HTMLInsInputTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInputTableElementEventMap>(type: K, listener: (this: HTMLInsInputTableElement, ev: InsInputTableCustomEvent<HTMLInsInputTableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsInputTableElement: {
         prototype: HTMLInsInputTableElement;
         new (): HTMLInsInputTableElement;
     };
+    interface HTMLInsInputTelElementEventMap {
+        "insInput": any;
+        "insValueChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsInputTelElement extends Components.InsInputTel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInputTelElementEventMap>(type: K, listener: (this: HTMLInsInputTelElement, ev: InsInputTelCustomEvent<HTMLInsInputTelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInputTelElementEventMap>(type: K, listener: (this: HTMLInsInputTelElement, ev: InsInputTelCustomEvent<HTMLInsInputTelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsInputTelElement: {
         prototype: HTMLInsInputTelElement;
@@ -1411,67 +2154,201 @@ declare global {
         prototype: HTMLInsInputTooltipElement;
         new (): HTMLInsInputTooltipElement;
     };
+    interface HTMLInsInstancesElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsInstancesElement extends Components.InsInstances, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInstancesElementEventMap>(type: K, listener: (this: HTMLInsInstancesElement, ev: InsInstancesCustomEvent<HTMLInsInstancesElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInstancesElementEventMap>(type: K, listener: (this: HTMLInsInstancesElement, ev: InsInstancesCustomEvent<HTMLInsInstancesElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsInstancesElement: {
         prototype: HTMLInsInstancesElement;
         new (): HTMLInsInstancesElement;
     };
+    interface HTMLInsInstancesItemElementEventMap {
+        "routeInstance": any;
+        "activeSubItem": any;
+    }
     interface HTMLInsInstancesItemElement extends Components.InsInstancesItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInstancesItemElementEventMap>(type: K, listener: (this: HTMLInsInstancesItemElement, ev: InsInstancesItemCustomEvent<HTMLInsInstancesItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInstancesItemElementEventMap>(type: K, listener: (this: HTMLInsInstancesItemElement, ev: InsInstancesItemCustomEvent<HTMLInsInstancesItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsInstancesItemElement: {
         prototype: HTMLInsInstancesItemElement;
         new (): HTMLInsInstancesItemElement;
     };
+    interface HTMLInsInstancesSubItemElementEventMap {
+        "routeInstanceSubItem": any;
+    }
     interface HTMLInsInstancesSubItemElement extends Components.InsInstancesSubItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInstancesSubItemElementEventMap>(type: K, listener: (this: HTMLInsInstancesSubItemElement, ev: InsInstancesSubItemCustomEvent<HTMLInsInstancesSubItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInstancesSubItemElementEventMap>(type: K, listener: (this: HTMLInsInstancesSubItemElement, ev: InsInstancesSubItemCustomEvent<HTMLInsInstancesSubItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsInstancesSubItemElement: {
         prototype: HTMLInsInstancesSubItemElement;
         new (): HTMLInsInstancesSubItemElement;
     };
+    interface HTMLInsKanbanBoardElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsKanbanBoardElement extends Components.InsKanbanBoard, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsKanbanBoardElementEventMap>(type: K, listener: (this: HTMLInsKanbanBoardElement, ev: InsKanbanBoardCustomEvent<HTMLInsKanbanBoardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsKanbanBoardElementEventMap>(type: K, listener: (this: HTMLInsKanbanBoardElement, ev: InsKanbanBoardCustomEvent<HTMLInsKanbanBoardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsKanbanBoardElement: {
         prototype: HTMLInsKanbanBoardElement;
         new (): HTMLInsKanbanBoardElement;
     };
+    interface HTMLInsKanbanCardElementEventMap {
+        "insClick": any;
+    }
     interface HTMLInsKanbanCardElement extends Components.InsKanbanCard, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsKanbanCardElementEventMap>(type: K, listener: (this: HTMLInsKanbanCardElement, ev: InsKanbanCardCustomEvent<HTMLInsKanbanCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsKanbanCardElementEventMap>(type: K, listener: (this: HTMLInsKanbanCardElement, ev: InsKanbanCardCustomEvent<HTMLInsKanbanCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsKanbanCardElement: {
         prototype: HTMLInsKanbanCardElement;
         new (): HTMLInsKanbanCardElement;
     };
+    interface HTMLInsKanbanColumnElementEventMap {
+        "insColumnAdd": any;
+        "insDragStart": Object;
+        "insDragEnd": Object;
+        "insAdd": Object;
+        "insSort": Object;
+        "insChoose": Object;
+        "insUpdate": Object;
+        "insMove": Object;
+        "insRemove": Object;
+        "insPositionChanged": Object;
+        "insDrop": Object;
+    }
     interface HTMLInsKanbanColumnElement extends Components.InsKanbanColumn, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsKanbanColumnElementEventMap>(type: K, listener: (this: HTMLInsKanbanColumnElement, ev: InsKanbanColumnCustomEvent<HTMLInsKanbanColumnElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsKanbanColumnElementEventMap>(type: K, listener: (this: HTMLInsKanbanColumnElement, ev: InsKanbanColumnCustomEvent<HTMLInsKanbanColumnElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsKanbanColumnElement: {
         prototype: HTMLInsKanbanColumnElement;
         new (): HTMLInsKanbanColumnElement;
     };
+    interface HTMLInsLineChartElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsLineChartElement extends Components.InsLineChart, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsLineChartElementEventMap>(type: K, listener: (this: HTMLInsLineChartElement, ev: InsLineChartCustomEvent<HTMLInsLineChartElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsLineChartElementEventMap>(type: K, listener: (this: HTMLInsLineChartElement, ev: InsLineChartCustomEvent<HTMLInsLineChartElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsLineChartElement: {
         prototype: HTMLInsLineChartElement;
         new (): HTMLInsLineChartElement;
     };
+    interface HTMLInsLoaderElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsLoaderElement extends Components.InsLoader, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsLoaderElementEventMap>(type: K, listener: (this: HTMLInsLoaderElement, ev: InsLoaderCustomEvent<HTMLInsLoaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsLoaderElementEventMap>(type: K, listener: (this: HTMLInsLoaderElement, ev: InsLoaderCustomEvent<HTMLInsLoaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsLoaderElement: {
         prototype: HTMLInsLoaderElement;
         new (): HTMLInsLoaderElement;
     };
+    interface HTMLInsMarkdownElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsMarkdownElement extends Components.InsMarkdown, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsMarkdownElementEventMap>(type: K, listener: (this: HTMLInsMarkdownElement, ev: InsMarkdownCustomEvent<HTMLInsMarkdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsMarkdownElementEventMap>(type: K, listener: (this: HTMLInsMarkdownElement, ev: InsMarkdownCustomEvent<HTMLInsMarkdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsMarkdownElement: {
         prototype: HTMLInsMarkdownElement;
         new (): HTMLInsMarkdownElement;
     };
+    interface HTMLInsMarkdownEditorElementEventMap {
+        "insValueChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsMarkdownEditorElement extends Components.InsMarkdownEditor, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsMarkdownEditorElementEventMap>(type: K, listener: (this: HTMLInsMarkdownEditorElement, ev: InsMarkdownEditorCustomEvent<HTMLInsMarkdownEditorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsMarkdownEditorElementEventMap>(type: K, listener: (this: HTMLInsMarkdownEditorElement, ev: InsMarkdownEditorCustomEvent<HTMLInsMarkdownEditorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsMarkdownEditorElement: {
         prototype: HTMLInsMarkdownEditorElement;
         new (): HTMLInsMarkdownEditorElement;
     };
+    interface HTMLInsModalElementEventMap {
+        "insClose": any;
+        "didLoad": any;
+    }
     interface HTMLInsModalElement extends Components.InsModal, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsModalElementEventMap>(type: K, listener: (this: HTMLInsModalElement, ev: InsModalCustomEvent<HTMLInsModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsModalElementEventMap>(type: K, listener: (this: HTMLInsModalElement, ev: InsModalCustomEvent<HTMLInsModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsModalElement: {
         prototype: HTMLInsModalElement;
@@ -1495,31 +2372,94 @@ declare global {
         prototype: HTMLInsPageElement;
         new (): HTMLInsPageElement;
     };
+    interface HTMLInsPieChartElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsPieChartElement extends Components.InsPieChart, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsPieChartElementEventMap>(type: K, listener: (this: HTMLInsPieChartElement, ev: InsPieChartCustomEvent<HTMLInsPieChartElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsPieChartElementEventMap>(type: K, listener: (this: HTMLInsPieChartElement, ev: InsPieChartCustomEvent<HTMLInsPieChartElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsPieChartElement: {
         prototype: HTMLInsPieChartElement;
         new (): HTMLInsPieChartElement;
     };
+    interface HTMLInsProgressBarElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsProgressBarElement extends Components.InsProgressBar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsProgressBarElementEventMap>(type: K, listener: (this: HTMLInsProgressBarElement, ev: InsProgressBarCustomEvent<HTMLInsProgressBarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsProgressBarElementEventMap>(type: K, listener: (this: HTMLInsProgressBarElement, ev: InsProgressBarCustomEvent<HTMLInsProgressBarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsProgressBarElement: {
         prototype: HTMLInsProgressBarElement;
         new (): HTMLInsProgressBarElement;
     };
+    interface HTMLInsRadioElementEventMap {
+        "insCheck": any;
+        "insValueChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsRadioElement extends Components.InsRadio, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsRadioElementEventMap>(type: K, listener: (this: HTMLInsRadioElement, ev: InsRadioCustomEvent<HTMLInsRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsRadioElementEventMap>(type: K, listener: (this: HTMLInsRadioElement, ev: InsRadioCustomEvent<HTMLInsRadioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsRadioElement: {
         prototype: HTMLInsRadioElement;
         new (): HTMLInsRadioElement;
     };
+    interface HTMLInsRendererElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsRendererElement extends Components.InsRenderer, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsRendererElementEventMap>(type: K, listener: (this: HTMLInsRendererElement, ev: InsRendererCustomEvent<HTMLInsRendererElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsRendererElementEventMap>(type: K, listener: (this: HTMLInsRendererElement, ev: InsRendererCustomEvent<HTMLInsRendererElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsRendererElement: {
         prototype: HTMLInsRendererElement;
         new (): HTMLInsRendererElement;
     };
+    interface HTMLInsSelectElementEventMap {
+        "insValueChange": any;
+        "insOptionSelect": any;
+        "insClose": any;
+        "insSubmit": any;
+        "insSearch": any;
+        "insLoadMore": any;
+        "didLoad": any;
+    }
     interface HTMLInsSelectElement extends Components.InsSelect, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsSelectElementEventMap>(type: K, listener: (this: HTMLInsSelectElement, ev: InsSelectCustomEvent<HTMLInsSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsSelectElementEventMap>(type: K, listener: (this: HTMLInsSelectElement, ev: InsSelectCustomEvent<HTMLInsSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsSelectElement: {
         prototype: HTMLInsSelectElement;
@@ -1531,25 +2471,71 @@ declare global {
         prototype: HTMLInsSelectGroupElement;
         new (): HTMLInsSelectGroupElement;
     };
+    interface HTMLInsSelectOptionElementEventMap {
+        "insSelectOptionClicked": any;
+    }
     interface HTMLInsSelectOptionElement extends Components.InsSelectOption, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsSelectOptionElementEventMap>(type: K, listener: (this: HTMLInsSelectOptionElement, ev: InsSelectOptionCustomEvent<HTMLInsSelectOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsSelectOptionElementEventMap>(type: K, listener: (this: HTMLInsSelectOptionElement, ev: InsSelectOptionCustomEvent<HTMLInsSelectOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsSelectOptionElement: {
         prototype: HTMLInsSelectOptionElement;
         new (): HTMLInsSelectOptionElement;
     };
+    interface HTMLInsSidebarElementEventMap {
+        "insSidebarAction": any;
+        "didLoad": any;
+    }
     interface HTMLInsSidebarElement extends Components.InsSidebar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsSidebarElementEventMap>(type: K, listener: (this: HTMLInsSidebarElement, ev: InsSidebarCustomEvent<HTMLInsSidebarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsSidebarElementEventMap>(type: K, listener: (this: HTMLInsSidebarElement, ev: InsSidebarCustomEvent<HTMLInsSidebarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsSidebarElement: {
         prototype: HTMLInsSidebarElement;
         new (): HTMLInsSidebarElement;
     };
+    interface HTMLInsSidebarFooterElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsSidebarFooterElement extends Components.InsSidebarFooter, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsSidebarFooterElementEventMap>(type: K, listener: (this: HTMLInsSidebarFooterElement, ev: InsSidebarFooterCustomEvent<HTMLInsSidebarFooterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsSidebarFooterElementEventMap>(type: K, listener: (this: HTMLInsSidebarFooterElement, ev: InsSidebarFooterCustomEvent<HTMLInsSidebarFooterElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsSidebarFooterElement: {
         prototype: HTMLInsSidebarFooterElement;
         new (): HTMLInsSidebarFooterElement;
     };
+    interface HTMLInsSidebarFooterButtonElementEventMap {
+        "insSidebarFooterButtonEvent": any;
+        "didLoad": any;
+    }
     interface HTMLInsSidebarFooterButtonElement extends Components.InsSidebarFooterButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsSidebarFooterButtonElementEventMap>(type: K, listener: (this: HTMLInsSidebarFooterButtonElement, ev: InsSidebarFooterButtonCustomEvent<HTMLInsSidebarFooterButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsSidebarFooterButtonElementEventMap>(type: K, listener: (this: HTMLInsSidebarFooterButtonElement, ev: InsSidebarFooterButtonCustomEvent<HTMLInsSidebarFooterButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsSidebarFooterButtonElement: {
         prototype: HTMLInsSidebarFooterButtonElement;
@@ -1561,31 +2547,97 @@ declare global {
         prototype: HTMLInsSidebarFooterMenuElement;
         new (): HTMLInsSidebarFooterMenuElement;
     };
+    interface HTMLInsSidebarItemElementEventMap {
+        "routePage": any;
+        "didLoad": any;
+    }
     interface HTMLInsSidebarItemElement extends Components.InsSidebarItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsSidebarItemElementEventMap>(type: K, listener: (this: HTMLInsSidebarItemElement, ev: InsSidebarItemCustomEvent<HTMLInsSidebarItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsSidebarItemElementEventMap>(type: K, listener: (this: HTMLInsSidebarItemElement, ev: InsSidebarItemCustomEvent<HTMLInsSidebarItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsSidebarItemElement: {
         prototype: HTMLInsSidebarItemElement;
         new (): HTMLInsSidebarItemElement;
     };
+    interface HTMLInsSortElementEventMap {
+        "didLoad": any;
+        "insDragStart": Object;
+        "insDragEnd": Object;
+        "insChoose": Object;
+        "insUpdate": Object;
+        "insMove": Object;
+        "insAdd": Object;
+        "insRemove": Object;
+        "insClone": Object;
+        "insPositionChanged": Object;
+        "insDrop": Object;
+    }
     interface HTMLInsSortElement extends Components.InsSort, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsSortElementEventMap>(type: K, listener: (this: HTMLInsSortElement, ev: InsSortCustomEvent<HTMLInsSortElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsSortElementEventMap>(type: K, listener: (this: HTMLInsSortElement, ev: InsSortCustomEvent<HTMLInsSortElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsSortElement: {
         prototype: HTMLInsSortElement;
         new (): HTMLInsSortElement;
     };
+    interface HTMLInsSparklineElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsSparklineElement extends Components.InsSparkline, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsSparklineElementEventMap>(type: K, listener: (this: HTMLInsSparklineElement, ev: InsSparklineCustomEvent<HTMLInsSparklineElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsSparklineElementEventMap>(type: K, listener: (this: HTMLInsSparklineElement, ev: InsSparklineCustomEvent<HTMLInsSparklineElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsSparklineElement: {
         prototype: HTMLInsSparklineElement;
         new (): HTMLInsSparklineElement;
     };
+    interface HTMLInsStepElementEventMap {
+        "insStepClick": any;
+    }
     interface HTMLInsStepElement extends Components.InsStep, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsStepElementEventMap>(type: K, listener: (this: HTMLInsStepElement, ev: InsStepCustomEvent<HTMLInsStepElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsStepElementEventMap>(type: K, listener: (this: HTMLInsStepElement, ev: InsStepCustomEvent<HTMLInsStepElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsStepElement: {
         prototype: HTMLInsStepElement;
         new (): HTMLInsStepElement;
     };
+    interface HTMLInsStepsElementEventMap {
+        "insClick": any;
+    }
     interface HTMLInsStepsElement extends Components.InsSteps, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsStepsElementEventMap>(type: K, listener: (this: HTMLInsStepsElement, ev: InsStepsCustomEvent<HTMLInsStepsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsStepsElementEventMap>(type: K, listener: (this: HTMLInsStepsElement, ev: InsStepsCustomEvent<HTMLInsStepsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsStepsElement: {
         prototype: HTMLInsStepsElement;
@@ -1597,19 +2649,60 @@ declare global {
         prototype: HTMLInsStyleguideElement;
         new (): HTMLInsStyleguideElement;
     };
+    interface HTMLInsTabElementEventMap {
+        "insTabChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsTabElement extends Components.InsTab, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsTabElementEventMap>(type: K, listener: (this: HTMLInsTabElement, ev: InsTabCustomEvent<HTMLInsTabElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsTabElementEventMap>(type: K, listener: (this: HTMLInsTabElement, ev: InsTabCustomEvent<HTMLInsTabElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsTabElement: {
         prototype: HTMLInsTabElement;
         new (): HTMLInsTabElement;
     };
+    interface HTMLInsTabItemElementEventMap {
+        "insTabError": any;
+        "insTabDisableToggle": any;
+    }
     interface HTMLInsTabItemElement extends Components.InsTabItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsTabItemElementEventMap>(type: K, listener: (this: HTMLInsTabItemElement, ev: InsTabItemCustomEvent<HTMLInsTabItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsTabItemElementEventMap>(type: K, listener: (this: HTMLInsTabItemElement, ev: InsTabItemCustomEvent<HTMLInsTabItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsTabItemElement: {
         prototype: HTMLInsTabItemElement;
         new (): HTMLInsTabItemElement;
     };
+    interface HTMLInsTableElementEventMap {
+        "insPaginationChange": any;
+        "insTableSearch": any;
+        "insTableSort": any;
+        "insTableBulkAction": any;
+        "insTableRowAction": any;
+        "insFieldChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsTableElement extends Components.InsTable, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsTableElementEventMap>(type: K, listener: (this: HTMLInsTableElement, ev: InsTableCustomEvent<HTMLInsTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsTableElementEventMap>(type: K, listener: (this: HTMLInsTableElement, ev: InsTableCustomEvent<HTMLInsTableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsTableElement: {
         prototype: HTMLInsTableElement;
@@ -1639,19 +2732,54 @@ declare global {
         prototype: HTMLInsTagElement;
         new (): HTMLInsTagElement;
     };
+    interface HTMLInsTextareaElementEventMap {
+        "insInput": any;
+        "insValueChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsTextareaElement extends Components.InsTextarea, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsTextareaElementEventMap>(type: K, listener: (this: HTMLInsTextareaElement, ev: InsTextareaCustomEvent<HTMLInsTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsTextareaElementEventMap>(type: K, listener: (this: HTMLInsTextareaElement, ev: InsTextareaCustomEvent<HTMLInsTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsTextareaElement: {
         prototype: HTMLInsTextareaElement;
         new (): HTMLInsTextareaElement;
     };
+    interface HTMLInsThumbnailElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsThumbnailElement extends Components.InsThumbnail, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsThumbnailElementEventMap>(type: K, listener: (this: HTMLInsThumbnailElement, ev: InsThumbnailCustomEvent<HTMLInsThumbnailElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsThumbnailElementEventMap>(type: K, listener: (this: HTMLInsThumbnailElement, ev: InsThumbnailCustomEvent<HTMLInsThumbnailElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsThumbnailElement: {
         prototype: HTMLInsThumbnailElement;
         new (): HTMLInsThumbnailElement;
     };
+    interface HTMLInsTimelineElementEventMap {
+        "didLoad": any;
+    }
     interface HTMLInsTimelineElement extends Components.InsTimeline, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsTimelineElementEventMap>(type: K, listener: (this: HTMLInsTimelineElement, ev: InsTimelineCustomEvent<HTMLInsTimelineElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsTimelineElementEventMap>(type: K, listener: (this: HTMLInsTimelineElement, ev: InsTimelineCustomEvent<HTMLInsTimelineElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsTimelineElement: {
         prototype: HTMLInsTimelineElement;
@@ -1663,7 +2791,20 @@ declare global {
         prototype: HTMLInsTimelineItemElement;
         new (): HTMLInsTimelineItemElement;
     };
+    interface HTMLInsToggleSwitchElementEventMap {
+        "insToggle": any;
+        "insValueChange": any;
+        "didLoad": any;
+    }
     interface HTMLInsToggleSwitchElement extends Components.InsToggleSwitch, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsToggleSwitchElementEventMap>(type: K, listener: (this: HTMLInsToggleSwitchElement, ev: InsToggleSwitchCustomEvent<HTMLInsToggleSwitchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsToggleSwitchElementEventMap>(type: K, listener: (this: HTMLInsToggleSwitchElement, ev: InsToggleSwitchCustomEvent<HTMLInsToggleSwitchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInsToggleSwitchElement: {
         prototype: HTMLInsToggleSwitchElement;
@@ -1775,8 +2916,8 @@ declare namespace LocalJSX {
     interface InsAccordion {
         "hasLoad"?: string;
         "menu"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsToggle"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsAccordionCustomEvent<any>) => void;
+        "onInsToggle"?: (event: InsAccordionCustomEvent<any>) => void;
     }
     interface InsAccordionItem {
         "active"?: boolean;
@@ -1800,7 +2941,7 @@ declare namespace LocalJSX {
         "link"?: string;
         "linkTarget"?: string;
         "linkTitle"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsAccordionLinkCustomEvent<any>) => void;
     }
     interface InsAdmin {
     }
@@ -1813,14 +2954,14 @@ declare namespace LocalJSX {
         "hasLoad"?: string;
         "horizontal"?: boolean;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsBarChartCustomEvent<any>) => void;
         "stacked"?: boolean;
     }
     interface InsBreadcrumbs {
         "breadcrumbs"?: Array<any>;
         "hasLoad"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onRoutePage"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsBreadcrumbsCustomEvent<any>) => void;
+        "onRoutePage"?: (event: InsBreadcrumbsCustomEvent<any>) => void;
     }
     interface InsButton {
         "color"?: string;
@@ -1833,9 +2974,9 @@ declare namespace LocalJSX {
         "iconRight"?: string;
         "label"?: string;
         "loading"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsClick"?: (event: CustomEvent<any>) => void;
-        "onInsClickOption"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsButtonCustomEvent<any>) => void;
+        "onInsClick"?: (event: InsButtonCustomEvent<any>) => void;
+        "onInsClickOption"?: (event: InsButtonCustomEvent<any>) => void;
         "options"?: string;
         "outlined"?: boolean;
         "size"?: string;
@@ -1849,8 +2990,8 @@ declare namespace LocalJSX {
         "color"?: string;
         "disabled"?: boolean;
         "hasLoad"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsClick"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsButtonGroupCustomEvent<any>) => void;
+        "onInsClick"?: (event: InsButtonGroupCustomEvent<any>) => void;
         "options"?: string;
         "size"?: string;
     }
@@ -1874,12 +3015,12 @@ declare namespace LocalJSX {
         "lookupScrolling"?: boolean;
         "multiple"?: boolean;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsChange"?: (event: CustomEvent<any>) => void;
-        "onInsDynamicSubmit"?: (event: CustomEvent<any>) => void;
-        "onInsLoadMore"?: (event: CustomEvent<any>) => void;
-        "onInsOptionSelect"?: (event: CustomEvent<any>) => void;
-        "onInsSearch"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsButtonSelectCustomEvent<any>) => void;
+        "onInsChange"?: (event: InsButtonSelectCustomEvent<any>) => void;
+        "onInsDynamicSubmit"?: (event: InsButtonSelectCustomEvent<any>) => void;
+        "onInsLoadMore"?: (event: InsButtonSelectCustomEvent<any>) => void;
+        "onInsOptionSelect"?: (event: InsButtonSelectCustomEvent<any>) => void;
+        "onInsSearch"?: (event: InsButtonSelectCustomEvent<any>) => void;
         "optionsData"?: Array<any>;
         "placeholder"?: string;
         "readonly"?: boolean;
@@ -1899,7 +3040,7 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "hidden"?: boolean;
         "label"?: string;
-        "onInsButtonSelectOptionClicked"?: (event: CustomEvent<any>) => void;
+        "onInsButtonSelectOptionClicked"?: (event: InsButtonSelectOptionCustomEvent<any>) => void;
         "value"?: string;
     }
     interface InsCard {
@@ -1913,8 +3054,8 @@ declare namespace LocalJSX {
         "hasError"?: boolean;
         "label"?: string;
         "multiple"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsInput"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsCardSelectCustomEvent<any>) => void;
+        "onInsInput"?: (event: InsCardSelectCustomEvent<any>) => void;
         "readonly"?: boolean;
         "tooltip"?: string;
         "value"?: any;
@@ -1924,7 +3065,7 @@ declare namespace LocalJSX {
         "default"?: boolean;
         "disabled"?: boolean;
         "hidden"?: boolean;
-        "onInsCardSelectOptionClicked"?: (event: CustomEvent<any>) => void;
+        "onInsCardSelectOptionClicked"?: (event: InsCardSelectOptionCustomEvent<any>) => void;
         "value"?: string;
     }
     interface InsCarousel {
@@ -1946,8 +3087,8 @@ declare namespace LocalJSX {
         "loop"?: boolean;
         "noCarouselButton"?: boolean;
         "noPagination"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsSlide"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsCarouselCustomEvent<any>) => void;
+        "onInsSlide"?: (event: InsCarouselCustomEvent<any>) => void;
         "perPage"?: number;
         "startIndex"?: number;
         "subHeading"?: string;
@@ -1963,9 +3104,9 @@ declare namespace LocalJSX {
         "hasLoad"?: string;
         "label"?: string;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsCheck"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsCheckboxCustomEvent<any>) => void;
+        "onInsCheck"?: (event: InsCheckboxCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsCheckboxCustomEvent<any>) => void;
         "tooltip"?: string;
         "trueValue"?: string;
         "value"?: string;
@@ -1976,9 +3117,9 @@ declare namespace LocalJSX {
         "label"?: string;
         "name"?: string;
         "noPadding"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsClick"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsCheckboxCardCustomEvent<any>) => void;
+        "onInsClick"?: (event: InsCheckboxCardCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsCheckboxCardCustomEvent<any>) => void;
         "selected"?: boolean;
         "selectedColor"?: string;
         "tabOrder"?: string;
@@ -1993,10 +3134,10 @@ declare namespace LocalJSX {
         "label"?: string;
         "mode"?: string;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsBlur"?: (event: CustomEvent<any>) => void;
-        "onInsInput"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsCodeEditorCustomEvent<any>) => void;
+        "onInsBlur"?: (event: InsCodeEditorCustomEvent<any>) => void;
+        "onInsInput"?: (event: InsCodeEditorCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsCodeEditorCustomEvent<any>) => void;
         "readonly"?: boolean;
         "theme"?: string;
         "tooltip"?: string;
@@ -2014,10 +3155,10 @@ declare namespace LocalJSX {
         "fullYear"?: boolean;
         "hasLoad"?: string;
         "lastFour"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsClick"?: (event: CustomEvent<any>) => void;
-        "onInsClose"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsCreditCardCustomEvent<any>) => void;
+        "onInsClick"?: (event: InsCreditCardCustomEvent<any>) => void;
+        "onInsClose"?: (event: InsCreditCardCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsCreditCardCustomEvent<any>) => void;
         "value"?: string;
     }
     interface InsDateTime {
@@ -2036,9 +3177,9 @@ declare namespace LocalJSX {
         "mode"?: string;
         "name"?: string;
         "noMeridiem"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsInput"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsDateTimeCustomEvent<any>) => void;
+        "onInsInput"?: (event: InsDateTimeCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsDateTimeCustomEvent<any>) => void;
         "placeholder"?: string;
         "readonly"?: boolean;
         "tooltip"?: string;
@@ -2053,8 +3194,8 @@ declare namespace LocalJSX {
         "isOpen"?: boolean;
         "label"?: string;
         "noPadding"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsToggle"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsDrawerCustomEvent<any>) => void;
+        "onInsToggle"?: (event: InsDrawerCustomEvent<any>) => void;
         "position"?: string;
         "showCloseButton"?: boolean;
         "showHeader"?: boolean;
@@ -2085,10 +3226,10 @@ declare namespace LocalJSX {
         "label"?: string;
         "mode"?: string;
         "name"?: string;
-        "onInsBlur"?: (event: CustomEvent<any>) => void;
-        "onInsInput"?: (event: CustomEvent<any>) => void;
-        "onInsUpload"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onInsBlur"?: (event: InsEditorCustomEvent<any>) => void;
+        "onInsInput"?: (event: InsEditorCustomEvent<any>) => void;
+        "onInsUpload"?: (event: InsEditorCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsEditorCustomEvent<any>) => void;
         "pluginsList"?: any;
         "readonly"?: boolean;
         "showSource"?: boolean;
@@ -2104,22 +3245,22 @@ declare namespace LocalJSX {
         "defaultDate"?: string;
         "hasLoad"?: string;
         "label"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsFilterApply"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsFilterCustomEvent<any>) => void;
+        "onInsFilterApply"?: (event: InsFilterCustomEvent<any>) => void;
         "withDateFilter"?: boolean;
     }
     interface InsFilterItem {
         "hasLoad"?: string;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsSelect"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsFilterItemCustomEvent<any>) => void;
+        "onInsSelect"?: (event: InsFilterItemCustomEvent<any>) => void;
         "options"?: any;
         "selected"?: any;
     }
     interface InsGallery {
         "imgAlt"?: string;
         "imgTitle"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsGalleryCustomEvent<any>) => void;
         "slidable"?: boolean;
         "thumbnailLayout"?: string;
         "withIndicator"?: boolean;
@@ -2129,13 +3270,13 @@ declare namespace LocalJSX {
         "image"?: string;
         "imgAlt"?: string;
         "imgTitle"?: string;
-        "onInsGalleryUpdate"?: (event: CustomEvent<any>) => void;
+        "onInsGalleryUpdate"?: (event: InsGalleryImageCustomEvent<any>) => void;
         "thumbnail"?: string;
     }
     interface InsHeader {
         "hasLoad"?: string;
         "hasMenuToggle"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsHeaderCustomEvent<any>) => void;
         "supportLink"?: string;
     }
     interface InsHeaderUser {
@@ -2144,7 +3285,7 @@ declare namespace LocalJSX {
         "logoutLabel"?: string;
         "logoutLink"?: string;
         "name"?: string;
-        "onRoutePage"?: (event: CustomEvent<any>) => void;
+        "onRoutePage"?: (event: InsHeaderUserCustomEvent<any>) => void;
         "profileLabel"?: string;
         "profileLink"?: string;
     }
@@ -2157,8 +3298,8 @@ declare namespace LocalJSX {
         "level"?: number;
         "maxlength"?: string;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsHeadingCustomEvent<any>) => void;
+        "onInsChange"?: (event: InsHeadingCustomEvent<any>) => void;
         "withoutLine"?: boolean;
     }
     interface InsImagePicker {
@@ -2170,8 +3311,8 @@ declare namespace LocalJSX {
         "label"?: string;
         "name"?: string;
         "notImageFile"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsImagePickerCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsImagePickerCustomEvent<any>) => void;
         "placeholder"?: string;
         "uploadImgContainer"?: string;
         "uploadImgFileFormats"?: string;
@@ -2190,7 +3331,7 @@ declare namespace LocalJSX {
         "loaderTitle"?: any;
         "loadingScreen"?: boolean;
         "noWrap"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsInfoTableCustomEvent<any>) => void;
         "renderHtml"?: boolean;
         "tableData"?: any;
         "textOverflow"?: string;
@@ -2211,11 +3352,11 @@ declare namespace LocalJSX {
         "maxlength"?: string;
         "min"?: string;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsBlur"?: (event: CustomEvent<any>) => void;
-        "onInsIconClick"?: (event: CustomEvent<any>) => void;
-        "onInsInput"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsInputCustomEvent<any>) => void;
+        "onInsBlur"?: (event: InsInputCustomEvent<any>) => void;
+        "onInsIconClick"?: (event: InsInputCustomEvent<any>) => void;
+        "onInsInput"?: (event: InsInputCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsInputCustomEvent<any>) => void;
         "placeholder"?: string;
         "readonly"?: boolean;
         "required"?: boolean;
@@ -2243,11 +3384,11 @@ declare namespace LocalJSX {
         "maxFiles"?: number;
         "maxFilesLabel"?: string;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsFileAdded"?: (event: CustomEvent<any>) => void;
-        "onInsFileError"?: (event: CustomEvent<any>) => void;
-        "onInsFileRemoved"?: (event: CustomEvent<any>) => void;
-        "onInsFileUploaded"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsInputFileCustomEvent<any>) => void;
+        "onInsFileAdded"?: (event: InsInputFileCustomEvent<any>) => void;
+        "onInsFileError"?: (event: InsInputFileCustomEvent<any>) => void;
+        "onInsFileRemoved"?: (event: InsInputFileCustomEvent<any>) => void;
+        "onInsFileUploaded"?: (event: InsInputFileCustomEvent<any>) => void;
         "placeholder"?: string;
         "required"?: boolean;
         "s3Data"?: object;
@@ -2265,10 +3406,10 @@ declare namespace LocalJSX {
         "hasLoad"?: string;
         "label"?: string;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsChange"?: (event: CustomEvent<any>) => void;
-        "onInsInput"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsInputMultipleCustomEvent<any>) => void;
+        "onInsChange"?: (event: InsInputMultipleCustomEvent<any>) => void;
+        "onInsInput"?: (event: InsInputMultipleCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsInputMultipleCustomEvent<any>) => void;
         "placeholder"?: string;
         "readonly"?: boolean;
         "tooltip"?: string;
@@ -2283,10 +3424,10 @@ declare namespace LocalJSX {
         "invalidMessage"?: string;
         "label"?: string;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsInput"?: (event: CustomEvent<any>) => void;
-        "onInsValidation"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsInputPhoneCustomEvent<any>) => void;
+        "onInsInput"?: (event: InsInputPhoneCustomEvent<any>) => void;
+        "onInsValidation"?: (event: InsInputPhoneCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsInputPhoneCustomEvent<any>) => void;
         "placeholder"?: string;
         "readonly"?: boolean;
         "required"?: boolean;
@@ -2314,12 +3455,12 @@ declare namespace LocalJSX {
         "lookupScrolling"?: boolean;
         "multiple"?: boolean;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsChange"?: (event: CustomEvent<any>) => void;
-        "onInsDynamicSubmit"?: (event: CustomEvent<any>) => void;
-        "onInsLoadMore"?: (event: CustomEvent<any>) => void;
-        "onInsOptionSelect"?: (event: CustomEvent<any>) => void;
-        "onInsSearch"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsInputSelectCustomEvent<any>) => void;
+        "onInsChange"?: (event: InsInputSelectCustomEvent<any>) => void;
+        "onInsDynamicSubmit"?: (event: InsInputSelectCustomEvent<any>) => void;
+        "onInsLoadMore"?: (event: InsInputSelectCustomEvent<any>) => void;
+        "onInsOptionSelect"?: (event: InsInputSelectCustomEvent<any>) => void;
+        "onInsSearch"?: (event: InsInputSelectCustomEvent<any>) => void;
         "optionsData"?: Array<any>;
         "placeholder"?: string;
         "readonly"?: boolean;
@@ -2339,7 +3480,7 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "hidden"?: boolean;
         "label"?: string;
-        "onInsInputSelectOptionClicked"?: (event: CustomEvent<any>) => void;
+        "onInsInputSelectOptionClicked"?: (event: InsInputSelectOptionCustomEvent<any>) => void;
         "value"?: string;
     }
     interface InsInputSlider {
@@ -2351,11 +3492,11 @@ declare namespace LocalJSX {
         "max"?: number;
         "min"?: number;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsSlide"?: (event: CustomEvent<any>) => void;
-        "onInsSlideEnd"?: (event: CustomEvent<any>) => void;
-        "onInsSlideStart"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsInputSliderCustomEvent<any>) => void;
+        "onInsSlide"?: (event: InsInputSliderCustomEvent<any>) => void;
+        "onInsSlideEnd"?: (event: InsInputSliderCustomEvent<any>) => void;
+        "onInsSlideStart"?: (event: InsInputSliderCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsInputSliderCustomEvent<any>) => void;
         "position"?: string;
         "sliderOnly"?: boolean;
         "step"?: number;
@@ -2371,9 +3512,9 @@ declare namespace LocalJSX {
         "max"?: string;
         "min"?: string;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsBlur"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsInputStepperCustomEvent<any>) => void;
+        "onInsBlur"?: (event: InsInputStepperCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsInputStepperCustomEvent<any>) => void;
         "readonly"?: boolean;
         "required"?: boolean;
         "step"?: string;
@@ -2388,8 +3529,8 @@ declare namespace LocalJSX {
         "hasError"?: boolean;
         "hasLoad"?: string;
         "label"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsInput"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsInputTableCustomEvent<any>) => void;
+        "onInsInput"?: (event: InsInputTableCustomEvent<any>) => void;
         "readonly"?: boolean;
         "removeButtonColor"?: string;
         "removeButtonIcon"?: string;
@@ -2407,9 +3548,9 @@ declare namespace LocalJSX {
         "hasLoad"?: string;
         "label"?: string;
         "noAreacode"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsInput"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsInputTelCustomEvent<any>) => void;
+        "onInsInput"?: (event: InsInputTelCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsInputTelCustomEvent<any>) => void;
         "phoneNumber"?: string;
         "phonenumPlaceholder"?: string;
         "phonenumValue"?: string;
@@ -2426,29 +3567,29 @@ declare namespace LocalJSX {
         "instanceLink"?: string;
         "logoLink"?: string;
         "newTab"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsInstancesCustomEvent<any>) => void;
     }
     interface InsInstancesItem {
         "instance"?: string;
         "instanceLink"?: string;
         "logoLink"?: string;
-        "onActiveSubItem"?: (event: CustomEvent<any>) => void;
-        "onRouteInstance"?: (event: CustomEvent<any>) => void;
+        "onActiveSubItem"?: (event: InsInstancesItemCustomEvent<any>) => void;
+        "onRouteInstance"?: (event: InsInstancesItemCustomEvent<any>) => void;
         "withSubItem"?: boolean;
     }
     interface InsInstancesSubItem {
         "instance"?: string;
         "link"?: string;
-        "onRouteInstanceSubItem"?: (event: CustomEvent<any>) => void;
+        "onRouteInstanceSubItem"?: (event: InsInstancesSubItemCustomEvent<any>) => void;
     }
     interface InsKanbanBoard {
         "boardGroup"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsKanbanBoardCustomEvent<any>) => void;
         "uniqueId"?: string;
     }
     interface InsKanbanCard {
         "cardId"?: string;
-        "onInsClick"?: (event: CustomEvent<any>) => void;
+        "onInsClick"?: (event: InsKanbanCardCustomEvent<any>) => void;
     }
     interface InsKanbanColumn {
         "addItemButton"?: boolean;
@@ -2462,17 +3603,17 @@ declare namespace LocalJSX {
         "noItems"?: boolean;
         "noItemsDetail"?: string;
         "noItemsHeading"?: string;
-        "onInsAdd"?: (event: CustomEvent<Object>) => void;
-        "onInsChoose"?: (event: CustomEvent<Object>) => void;
-        "onInsColumnAdd"?: (event: CustomEvent<any>) => void;
-        "onInsDragEnd"?: (event: CustomEvent<Object>) => void;
-        "onInsDragStart"?: (event: CustomEvent<Object>) => void;
-        "onInsDrop"?: (event: CustomEvent<Object>) => void;
-        "onInsMove"?: (event: CustomEvent<Object>) => void;
-        "onInsPositionChanged"?: (event: CustomEvent<Object>) => void;
-        "onInsRemove"?: (event: CustomEvent<Object>) => void;
-        "onInsSort"?: (event: CustomEvent<Object>) => void;
-        "onInsUpdate"?: (event: CustomEvent<Object>) => void;
+        "onInsAdd"?: (event: InsKanbanColumnCustomEvent<Object>) => void;
+        "onInsChoose"?: (event: InsKanbanColumnCustomEvent<Object>) => void;
+        "onInsColumnAdd"?: (event: InsKanbanColumnCustomEvent<any>) => void;
+        "onInsDragEnd"?: (event: InsKanbanColumnCustomEvent<Object>) => void;
+        "onInsDragStart"?: (event: InsKanbanColumnCustomEvent<Object>) => void;
+        "onInsDrop"?: (event: InsKanbanColumnCustomEvent<Object>) => void;
+        "onInsMove"?: (event: InsKanbanColumnCustomEvent<Object>) => void;
+        "onInsPositionChanged"?: (event: InsKanbanColumnCustomEvent<Object>) => void;
+        "onInsRemove"?: (event: InsKanbanColumnCustomEvent<Object>) => void;
+        "onInsSort"?: (event: InsKanbanColumnCustomEvent<Object>) => void;
+        "onInsUpdate"?: (event: InsKanbanColumnCustomEvent<Object>) => void;
         "sortableItems"?: [];
         "totalCount"?: string;
     }
@@ -2481,13 +3622,13 @@ declare namespace LocalJSX {
         "chartData"?: any;
         "hasLoad"?: string;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsLineChartCustomEvent<any>) => void;
     }
     interface InsLoader {
         "hasLoad"?: string;
         "iconColor"?: string;
         "imageSource"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsLoaderCustomEvent<any>) => void;
         "stateIcon"?: string;
         "stateMessage"?: string;
         "stateTitle"?: string;
@@ -2496,7 +3637,7 @@ declare namespace LocalJSX {
     interface InsMarkdown {
         "hasLoad"?: string;
         "label"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsMarkdownCustomEvent<any>) => void;
         "replaceLineBreaks"?: boolean;
         "value"?: string;
     }
@@ -2506,8 +3647,8 @@ declare namespace LocalJSX {
         "hasLoad"?: string;
         "label"?: string;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsMarkdownEditorCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsMarkdownEditorCustomEvent<any>) => void;
         "readonly"?: boolean;
         "required"?: boolean;
         "tooltip"?: string;
@@ -2528,8 +3669,8 @@ declare namespace LocalJSX {
         "height"?: string;
         "light"?: boolean;
         "noButton"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsClose"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsModalCustomEvent<any>) => void;
+        "onInsClose"?: (event: InsModalCustomEvent<any>) => void;
         "parentRender"?: string;
         "preventClickOutside"?: boolean;
         "value"?: any;
@@ -2561,7 +3702,7 @@ declare namespace LocalJSX {
         "innerSize"?: string;
         "innerTitle"?: boolean;
         "legends"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsPieChartCustomEvent<any>) => void;
         "size"?: string;
         "startAngle"?: number;
         "titleOffset"?: number;
@@ -2569,7 +3710,7 @@ declare namespace LocalJSX {
     interface InsProgressBar {
         "hasLoad"?: string;
         "hidden"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsProgressBarCustomEvent<any>) => void;
         "progress"?: number;
         "text"?: string;
         "total"?: number;
@@ -2580,9 +3721,9 @@ declare namespace LocalJSX {
         "hasLoad"?: string;
         "label"?: any;
         "name"?: any;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsCheck"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsRadioCustomEvent<any>) => void;
+        "onInsCheck"?: (event: InsRadioCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsRadioCustomEvent<any>) => void;
         "staticValue"?: any;
         "tooltip"?: string;
         "value"?: any;
@@ -2593,7 +3734,7 @@ declare namespace LocalJSX {
         "hasLoad"?: string;
         "label"?: string;
         "link"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsRendererCustomEvent<any>) => void;
     }
     interface InsSelect {
         "button"?: boolean;
@@ -2612,13 +3753,13 @@ declare namespace LocalJSX {
         "labelKey"?: string;
         "multiple"?: boolean;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsClose"?: (event: CustomEvent<any>) => void;
-        "onInsLoadMore"?: (event: CustomEvent<any>) => void;
-        "onInsOptionSelect"?: (event: CustomEvent<any>) => void;
-        "onInsSearch"?: (event: CustomEvent<any>) => void;
-        "onInsSubmit"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsSelectCustomEvent<any>) => void;
+        "onInsClose"?: (event: InsSelectCustomEvent<any>) => void;
+        "onInsLoadMore"?: (event: InsSelectCustomEvent<any>) => void;
+        "onInsOptionSelect"?: (event: InsSelectCustomEvent<any>) => void;
+        "onInsSearch"?: (event: InsSelectCustomEvent<any>) => void;
+        "onInsSubmit"?: (event: InsSelectCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsSelectCustomEvent<any>) => void;
         "optionsData"?: Array<any>;
         "placeholder"?: string;
         "readonly"?: boolean;
@@ -2641,25 +3782,25 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "hidden"?: boolean;
         "label"?: string;
-        "onInsSelectOptionClicked"?: (event: CustomEvent<any>) => void;
+        "onInsSelectOptionClicked"?: (event: InsSelectOptionCustomEvent<any>) => void;
         "value"?: string;
     }
     interface InsSidebar {
         "fullLogo"?: string;
         "hasLoad"?: string;
         "iconLogo"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsSidebarAction"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsSidebarCustomEvent<any>) => void;
+        "onInsSidebarAction"?: (event: InsSidebarCustomEvent<any>) => void;
     }
     interface InsSidebarFooter {
         "hasLoad"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsSidebarFooterCustomEvent<any>) => void;
     }
     interface InsSidebarFooterButton {
         "hasLoad"?: string;
         "icon"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsSidebarFooterButtonEvent"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsSidebarFooterButtonCustomEvent<any>) => void;
+        "onInsSidebarFooterButtonEvent"?: (event: InsSidebarFooterButtonCustomEvent<any>) => void;
         "open"?: string;
     }
     interface InsSidebarFooterMenu {
@@ -2674,8 +3815,8 @@ declare namespace LocalJSX {
         "label"?: string;
         "landingPage"?: boolean;
         "link"?: any;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onRoutePage"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsSidebarItemCustomEvent<any>) => void;
+        "onRoutePage"?: (event: InsSidebarItemCustomEvent<any>) => void;
         "withSubmenu"?: boolean;
     }
     interface InsSort {
@@ -2685,17 +3826,17 @@ declare namespace LocalJSX {
         "hasLoad"?: string;
         "ignoreElements"?: string;
         "insDraggable"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsAdd"?: (event: CustomEvent<Object>) => void;
-        "onInsChoose"?: (event: CustomEvent<Object>) => void;
-        "onInsClone"?: (event: CustomEvent<Object>) => void;
-        "onInsDragEnd"?: (event: CustomEvent<Object>) => void;
-        "onInsDragStart"?: (event: CustomEvent<Object>) => void;
-        "onInsDrop"?: (event: CustomEvent<Object>) => void;
-        "onInsMove"?: (event: CustomEvent<Object>) => void;
-        "onInsPositionChanged"?: (event: CustomEvent<Object>) => void;
-        "onInsRemove"?: (event: CustomEvent<Object>) => void;
-        "onInsUpdate"?: (event: CustomEvent<Object>) => void;
+        "onDidLoad"?: (event: InsSortCustomEvent<any>) => void;
+        "onInsAdd"?: (event: InsSortCustomEvent<Object>) => void;
+        "onInsChoose"?: (event: InsSortCustomEvent<Object>) => void;
+        "onInsClone"?: (event: InsSortCustomEvent<Object>) => void;
+        "onInsDragEnd"?: (event: InsSortCustomEvent<Object>) => void;
+        "onInsDragStart"?: (event: InsSortCustomEvent<Object>) => void;
+        "onInsDrop"?: (event: InsSortCustomEvent<Object>) => void;
+        "onInsMove"?: (event: InsSortCustomEvent<Object>) => void;
+        "onInsPositionChanged"?: (event: InsSortCustomEvent<Object>) => void;
+        "onInsRemove"?: (event: InsSortCustomEvent<Object>) => void;
+        "onInsUpdate"?: (event: InsSortCustomEvent<Object>) => void;
         "sort"?: boolean;
         "sortGroup"?: string;
         "wrapperClass"?: string;
@@ -2707,7 +3848,7 @@ declare namespace LocalJSX {
         "icon"?: string;
         "movement"?: any;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsSparklineCustomEvent<any>) => void;
         "percentage"?: any;
         "value"?: string;
     }
@@ -2719,14 +3860,14 @@ declare namespace LocalJSX {
         "hasError"?: boolean;
         "icon"?: string;
         "indicator"?: string;
-        "onInsStepClick"?: (event: CustomEvent<any>) => void;
+        "onInsStepClick"?: (event: InsStepCustomEvent<any>) => void;
     }
     interface InsSteps {
         "clickable"?: boolean;
         "complete"?: boolean;
         "indicator"?: string;
         "inline"?: boolean;
-        "onInsClick"?: (event: CustomEvent<any>) => void;
+        "onInsClick"?: (event: InsStepsCustomEvent<any>) => void;
         "withValidation"?: boolean;
     }
     interface InsStyleguide {
@@ -2734,8 +3875,8 @@ declare namespace LocalJSX {
     }
     interface InsTab {
         "hasLoad"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsTabChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsTabCustomEvent<any>) => void;
+        "onInsTabChange"?: (event: InsTabCustomEvent<any>) => void;
         "tabs"?: any;
     }
     interface InsTabItem {
@@ -2745,8 +3886,8 @@ declare namespace LocalJSX {
         "icon"?: string;
         "label"?: string;
         "noPadding"?: boolean;
-        "onInsTabDisableToggle"?: (event: CustomEvent<any>) => void;
-        "onInsTabError"?: (event: CustomEvent<any>) => void;
+        "onInsTabDisableToggle"?: (event: InsTabItemCustomEvent<any>) => void;
+        "onInsTabError"?: (event: InsTabItemCustomEvent<any>) => void;
     }
     interface InsTable {
         "bulkActions"?: any;
@@ -2762,13 +3903,13 @@ declare namespace LocalJSX {
         "loaderTitle"?: any;
         "loadingScreen"?: boolean;
         "noWrap"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsFieldChange"?: (event: CustomEvent<any>) => void;
-        "onInsPaginationChange"?: (event: CustomEvent<any>) => void;
-        "onInsTableBulkAction"?: (event: CustomEvent<any>) => void;
-        "onInsTableRowAction"?: (event: CustomEvent<any>) => void;
-        "onInsTableSearch"?: (event: CustomEvent<any>) => void;
-        "onInsTableSort"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsTableCustomEvent<any>) => void;
+        "onInsFieldChange"?: (event: InsTableCustomEvent<any>) => void;
+        "onInsPaginationChange"?: (event: InsTableCustomEvent<any>) => void;
+        "onInsTableBulkAction"?: (event: InsTableCustomEvent<any>) => void;
+        "onInsTableRowAction"?: (event: InsTableCustomEvent<any>) => void;
+        "onInsTableSearch"?: (event: InsTableCustomEvent<any>) => void;
+        "onInsTableSort"?: (event: InsTableCustomEvent<any>) => void;
         "pageNumber"?: number;
         "pageSize"?: number;
         "pageSizeOptions"?: any;
@@ -2813,9 +3954,9 @@ declare namespace LocalJSX {
         "label"?: string;
         "maxlength"?: string;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsInput"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsTextareaCustomEvent<any>) => void;
+        "onInsInput"?: (event: InsTextareaCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsTextareaCustomEvent<any>) => void;
         "placeholder"?: string;
         "readonly"?: boolean;
         "required"?: boolean;
@@ -2831,7 +3972,7 @@ declare namespace LocalJSX {
         "hasLoad"?: string;
         "label"?: string;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsThumbnailCustomEvent<any>) => void;
         "src"?: string;
         "thumbnail"?: string;
     }
@@ -2839,7 +3980,7 @@ declare namespace LocalJSX {
         "hasLoad"?: string;
         "label"?: string;
         "loadingScreen"?: boolean;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsTimelineCustomEvent<any>) => void;
         "staticTimeline"?: boolean;
         "timelineData"?: any;
     }
@@ -2860,9 +4001,9 @@ declare namespace LocalJSX {
         "hasLoad"?: string;
         "label"?: string;
         "name"?: string;
-        "onDidLoad"?: (event: CustomEvent<any>) => void;
-        "onInsToggle"?: (event: CustomEvent<any>) => void;
-        "onInsValueChange"?: (event: CustomEvent<any>) => void;
+        "onDidLoad"?: (event: InsToggleSwitchCustomEvent<any>) => void;
+        "onInsToggle"?: (event: InsToggleSwitchCustomEvent<any>) => void;
+        "onInsValueChange"?: (event: InsToggleSwitchCustomEvent<any>) => void;
         "tooltip"?: string;
         "trueValue"?: string;
         "value"?: string;
