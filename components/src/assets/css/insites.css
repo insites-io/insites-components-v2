@@ -11103,6 +11103,13 @@ html {
   color: var(--ins-color-negative)
 }
 
+/* .ibt-table .action-item.restore,
+.ibt-table .action-item.restore:active,
+.ibt-table .action-item.restore:focus,
+.ibt-table .action-item.restore:hover {
+  color: var(--ins-color-positive)
+} */
+
 .ibt-table .action-item:first-child,
 .ibt-table-accordion .action-item:first-child {
   padding-left: 0
@@ -22456,6 +22463,13 @@ html {
 .ibt-table-accordion .action-item.archive:hover {
   color: var(--ins-color-negative)
 }
+
+/* .ibt-table .action-item.restore,
+.ibt-table .action-item.restore:active,
+.ibt-table .action-item.restore:focus,
+.ibt-table .action-item.restore:hover {
+  color: var(--ins-color-success)
+} */
 
 .ibt-table .action-item:first-child,
 .ibt-table-accordion .action-item:first-child {
