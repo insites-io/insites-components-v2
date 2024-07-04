@@ -36,6 +36,7 @@ export class InsTable {
   @Prop({ mutable: true }) totalCount: any = 0;
   @Prop({ mutable: true }) bulkActions: any = [];
   @Prop({ mutable: true }) rowActions: any = [];
+  @Prop({ mutable: true }) rowActionsSettings: any;
   @Prop({ mutable: true }) selectedRows: any = [];
   @Prop({ mutable: true }) updatedRows: any = [];
   @Prop({ mutable: true }) emptyValue: string = '-';
@@ -566,32 +567,67 @@ export class InsTable {
       ? tableHeader.label
       : '';
 
-    if (item[`${rowAction}Link`]){
-      return (
-      <a class={`action-item
-        ${rowAction === 'Archive' ||
-        rowAction === 'Remove' ||
-        rowAction === 'Delete' ||
-        rowAction === 'Disable' ? 'archive' : ''}`}
-        href={item[`${rowAction}Link`]}>
 
-        {rowAction}
-      </a>
-      )
-    }
+    if (this.rowActionsSettings) {
+      if (this.rowActionsSettings.rowActions[item["Status"]].indexOf(rowAction) !== -1) {
 
-    return (
-      <span
-        class={`action-item
-          ${rowAction === 'Archive' ||
+        if (item[`${rowAction}Link`]) {
+          return (
+          <a class={`action-item
+            ${rowAction === 'Archive' ||
             rowAction === 'Remove' ||
             rowAction === 'Delete' ||
-            rowAction === 'Disable' ? 'archive':''}`}
-        onClick={() => this.rowActionHandler(rowAction, item, header)}>
+            rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : ''}`}
+            href={item[`${rowAction}Link`]}>
 
-        {rowAction}
-      </span>
-    )
+            {rowAction}
+          </a>
+          )
+        }
+
+        return (
+          <span
+            class={`action-item
+              ${rowAction === 'Archive' ||
+                rowAction === 'Remove' ||
+                rowAction === 'Delete' ||
+                rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : ''}`}
+            onClick={() => this.rowActionHandler(rowAction, item, header)}>
+
+            {rowAction}
+          </span>
+        )
+      }
+
+    } else {
+
+      if (item[`${rowAction}Link`]){
+        return (
+        <a class={`action-item
+          ${rowAction === 'Archive' ||
+          rowAction === 'Remove' ||
+          rowAction === 'Delete' ||
+          rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : ''}`}
+          href={item[`${rowAction}Link`]}>
+
+          {rowAction}
+        </a>
+        )
+      }
+
+      return (
+        <span
+          class={`action-item
+            ${rowAction === 'Archive' ||
+              rowAction === 'Remove' ||
+              rowAction === 'Delete' ||
+              rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : ''}`}
+          onClick={() => this.rowActionHandler(rowAction, item, header)}>
+
+          {rowAction}
+        </span>
+      )
+    }
   }
 
   renderMobileImage(item, headerLabel, mobileHeader, hasImage){

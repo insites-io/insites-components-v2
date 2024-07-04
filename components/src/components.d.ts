@@ -1010,6 +1010,7 @@ export namespace Components {
         "paginationText": string;
         "resetSelections": () => Promise<void>;
         "rowActions": any;
+        "rowActionsSettings": any;
         "searchPosition": string;
         "searchbarPlaceholder": string;
         "selectedRows": any;
@@ -2773,6 +2774,7 @@ declare namespace LocalJSX {
         "pageSizeOptions"?: any;
         "paginationText"?: string;
         "rowActions"?: any;
+        "rowActionsSettings"?: any;
         "searchPosition"?: string;
         "searchbarPlaceholder"?: string;
         "selectedRows"?: any;

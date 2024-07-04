@@ -27,6 +27,7 @@
 | `pageSizeOptions`      | `page-size-options`     |             | `any`     | `[10, 20, 50]`     |
 | `paginationText`       | `pagination-text`       |             | `string`  | `'Rows per page:'` |
 | `rowActions`           | `row-actions`           |             | `any`     | `[]`               |
+| `rowActionsSettings`   | `row-actions-settings`  |             | `any`     | `undefined`        |
 | `searchPosition`       | `search-position`       |             | `string`  | `"right"`          |
 | `searchbarPlaceholder` | `searchbar-placeholder` |             | `string`  | `''`               |
 | `selectedRows`         | `selected-rows`         |             | `any`     | `[]`               |
