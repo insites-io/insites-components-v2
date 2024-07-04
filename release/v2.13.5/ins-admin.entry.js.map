@@ -1,1 +1,0 @@
-{"file":"ins-admin.entry.esm.js","mappings":";;MAGa,QAAQ;;;;IACnB,MAAM;QACJ,OAAO,8DAAK,8DAAQ,CAAM,CAAA;KAC3B;;;;;","names":[],"sources":["src/components/ins-admin/ins-admin.tsx"],"sourcesContent":["import { h, Component } from \"@stencil/core\";\n\n@Component({ tag: 'ins-admin' })\nexport class InsAdmin {\n  render() {\n    return <div><slot /></div>\n  }\n}\n"],"version":3}
