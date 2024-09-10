@@ -54,12 +54,6 @@ Type: `Promise<void>`
 
 
 
-#### Parameters
-
-| Name    | Type  | Description |
-| ------- | ----- | ----------- |
-| `value` | `any` |             |
-
 #### Returns
 
 Type: `Promise<void>`

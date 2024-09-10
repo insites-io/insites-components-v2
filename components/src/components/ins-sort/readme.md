@@ -43,12 +43,6 @@
 
 
 
-#### Parameters
-
-| Name       | Type  | Description |
-| ---------- | ----- | ----------- |
-| `sortable` | `any` |             |
-
 #### Returns
 
 Type: `Promise<void>`

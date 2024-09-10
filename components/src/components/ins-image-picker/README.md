@@ -51,13 +51,6 @@ Type: `Promise<any>`
 
 
 
-#### Parameters
-
-| Name        | Type  | Description |
-| ----------- | ----- | ----------- |
-| `value`     | `any` |             |
-| `file_name` | `any` |             |
-
 #### Returns
 
 Type: `Promise<void>`

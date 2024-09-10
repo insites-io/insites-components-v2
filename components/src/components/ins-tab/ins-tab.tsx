@@ -109,7 +109,7 @@ export class InsTab {
     this.insTabItems.forEach(item => {
       item.deactivate();
     });
-    this.insTabItems[index].activate();
+    this.insTabItems[index]?.activate();
   }
 
   setScrollableHeaders() {

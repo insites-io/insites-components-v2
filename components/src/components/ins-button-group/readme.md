@@ -42,12 +42,6 @@ Type: `Promise<{ index: number; label: any; }>`
 
 
 
-#### Parameters
-
-| Name     | Type  | Description |
-| -------- | ----- | ----------- |
-| `option` | `any` |             |
-
 #### Returns
 
 Type: `Promise<void>`

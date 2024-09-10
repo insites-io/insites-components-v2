@@ -148,12 +148,6 @@ Type: `Promise<void>`
 
 
 
-#### Parameters
-
-| Name    | Type  | Description |
-| ------- | ----- | ----------- |
-| `state` | `any` |             |
-
 #### Returns
 
 Type: `Promise<boolean>`
@@ -163,12 +157,6 @@ Type: `Promise<boolean>`
 ### `setSearchingState(state: any) => Promise<boolean>`
 
 
-
-#### Parameters
-
-| Name    | Type  | Description |
-| ------- | ----- | ----------- |
-| `state` | `any` |             |
 
 #### Returns
 
@@ -180,12 +168,6 @@ Type: `Promise<boolean>`
 
 
 
-#### Parameters
-
-| Name    | Type  | Description |
-| ------- | ----- | ----------- |
-| `value` | `any` |             |
-
 #### Returns
 
 Type: `Promise<boolean>`
@@ -195,12 +177,6 @@ Type: `Promise<boolean>`
 ### `setValue(value: any) => Promise<void>`
 
 
-
-#### Parameters
-
-| Name    | Type  | Description |
-| ------- | ----- | ----------- |
-| `value` | `any` |             |
 
 #### Returns
 

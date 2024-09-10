@@ -22,6 +22,15 @@ export class InsSidebar {
   componentWillLoad(){
     this.checkDeviceWidth();
     let hasFooter = this.insSidebarEl.querySelector('ins-sidebar-footer');
+    let classBody = document.querySelector('body').classList;
+
+    // check if mobile view
+    for (let counter = 0; counter < classBody.length; counter++) {
+      if (classBody[counter] === 'mini') {
+        this.minimised = true;
+        break;
+      }
+    }
 
     if (!hasFooter){
       this.noFooter = true;
@@ -230,7 +239,7 @@ export class InsSidebar {
         <div class="insites-logo-wrap">
         { this.minimised
             ? <img src={ this.getIcon() } />
-            : <img src={ this.getLogo() }/>
+            : <img src={ this.getLogo() } />
           }
         </div>
 

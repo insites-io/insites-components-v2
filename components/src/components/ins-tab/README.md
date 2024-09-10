@@ -27,12 +27,6 @@
 
 
 
-#### Parameters
-
-| Name    | Type  | Description |
-| ------- | ----- | ----------- |
-| `place` | `any` |             |
-
 #### Returns
 
 Type: `Promise<void>`

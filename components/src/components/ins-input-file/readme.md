@@ -54,13 +54,6 @@
 
 
 
-#### Parameters
-
-| Name       | Type  | Description |
-| ---------- | ----- | ----------- |
-| `s3Data`   | `any` |             |
-| `formData` | `any` |             |
-
 #### Returns
 
 Type: `Promise<void>`
@@ -111,12 +104,6 @@ Type: `Promise<any>`
 
 
 
-#### Parameters
-
-| Name   | Type  | Description |
-| ------ | ----- | ----------- |
-| `file` | `any` |             |
-
 #### Returns
 
 Type: `Promise<void>`
@@ -136,12 +123,6 @@ Type: `Promise<void>`
 ### `setFiles(files: any) => Promise<boolean>`
 
 
-
-#### Parameters
-
-| Name    | Type  | Description |
-| ------- | ----- | ----------- |
-| `files` | `any` |             |
 
 #### Returns
 

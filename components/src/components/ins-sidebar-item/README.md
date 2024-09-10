@@ -83,12 +83,6 @@ Type: `Promise<boolean>`
 
 
 
-#### Parameters
-
-| Name | Type  | Description |
-| ---- | ----- | ----------- |
-| `e`  | `any` |             |
-
 #### Returns
 
 Type: `Promise<{ crumbs: any[]; }>`

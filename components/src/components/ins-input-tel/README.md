@@ -72,12 +72,6 @@ Type: `Promise<{ country_code: any; area_code: any; phone_number: any; }>`
 
 
 
-#### Parameters
-
-| Name      | Type  | Description |
-| --------- | ----- | ----------- |
-| `country` | `any` |             |
-
 #### Returns
 
 Type: `Promise<void>`
@@ -88,12 +82,6 @@ Type: `Promise<void>`
 
 
 
-#### Parameters
-
-| Name   | Type  | Description |
-| ------ | ----- | ----------- |
-| `code` | `any` |             |
-
 #### Returns
 
 Type: `Promise<void>`
@@ -103,12 +91,6 @@ Type: `Promise<void>`
 ### `setValue({ country, country_code, area_code, phone_number }: { country: any; country_code: any; area_code: any; phone_number: any; }) => Promise<void>`
 
 
-
-#### Parameters
-
-| Name  | Type                                                                      | Description |
-| ----- | ------------------------------------------------------------------------- | ----------- |
-| `__0` | `{ country: any; country_code: any; area_code: any; phone_number: any; }` |             |
 
 #### Returns
 

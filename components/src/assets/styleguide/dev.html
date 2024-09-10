@@ -105,6 +105,8 @@
       ]
     </script>
 
+<ins-input label="InPut" has-error error-message="Required."></ins-input>
+      <ins-markdown-editor label="MarkDown" has-error error-message="Required."></ins-markdown-editor>
       <ins-button-select label="Small" searchable small>
 
         <ins-button-select-option label="Option 1" value="option_1"></ins-button-select-option>
@@ -358,6 +360,90 @@
         prevent-click-outside
         no-button>
         <div id="galleryModalContent">
+            <p>For V1 documentation please go <a href="/v1/index.html" target="_blank">here</a>.</p>
+  <h2 class="section-title">Step 1: Update dependencies</h2>
+  <div class="ins-styleguide-wrap">
+    <h2 class="section-title">Remove this</h2>
+    <div class="ins-styleguide-code-slot-wrap full">
+        <script type="text/plain" class="language-markup">
+<!-- Font Icons -->
+<link rel="preload" href="https://components.insites.io/assets/css/insites-font-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://components.insites.io/assets/css/insites-font-icons.css"></noscript>
+
+<!-- Plugin Assets -->
+<link rel="preload" href="https://components.insites.io/assets/css/insites-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://components.insites.io/assets/css/insites-plugins.css"></noscript>
+<script src="https://components.insites.io/assets/js/insites-plugins.js" defer>&lt;/script&gt;
+
+<!-- Components -->
+<script src="https://components.insites.io/build/insites.js">&lt;/script&gt;
+      </script>
+    </div>
+  </div>
+
+  <div class="ins-styleguide-wrap">
+    <h2 class="section-title">Replace with</h2>
+    <div class="ins-styleguide-code-slot-wrap full">
+      <script type="text/plain" class="language-markup"><!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+<!-- Font Icons -->
+<link rel="stylesheet" href="https://components.insites.io/v2/latest/css/insites-font-icons.css">
+
+<!-- Components -->
+<link rel="stylesheet" href="https://components.insites.io/v2/latest/css/insites.css" />
+<script type="module" src="https://components.insites.io/v2/latest/insites.esm.js">&lt;/script&gt;
+<script nomodule src="https://components.insites.io/v2/latest/insites.js">&lt;/script&gt;</script>
+    </div>
+  </div>
+
+  <h2 class="section-title">Step 2: Update component tags</h2>
+  <div class="spacer"></div>
+
+  <ul>
+    <li>Update <code>ins-base-table</code> to <code>ins-table</code></li>
+    <li>Update <code>ins-datepicker</code> to <code>ins-date-time</code> with <a href="/#/app/data-entry/date-and-time" target="_blank" title="ins-date-time Documentation">mode</a> attribute set to datepicker </li>
+    <li>Update <code>ins-timepicker</code> to <code>ins-date-time</code> with <a href="/#/app/data-entry/date-and-time" target="_blank" title="ins-date-time Documentation">mode</a> attribute set to timepicker </li>
+  </ul>
+  <div class="spacer"></div>
+
+  <h2 class="section-title">Step 3: Update events in event listeners</h2>
+  <p>Component events has been updated to have `ins` prefix and removed the `on` prefix to avoid conflict with the native DOM events. Please check V2 component documentation to update your event listeners from v1.</p>
+
+  <h2 class="section-title">Step 4: Update Component API calls</h2>
+  <p>If you have use a component API and expecting a return, please use async await operation as component APIs are now asynchronous to avoid race condition.</p>
+  <div class="ins-styleguide-code-slot-wrap full">
+    <script type="text/plain" class="language-markup"><script>
+  <!-- V1 -->
+  function getFiles(){
+    let files = insInputFile.getFilesList()
+  }
+
+  <!-- V2 -->
+  async function getFiles(){
+    let files = await insInputFile.getFilesList();
+  }
+&lt;/script&gt;</script>
+  </div>
+
+  <h2 class="section-title">Step 5: Update Plugins</h2>
+  <p>If your project have used the following plugins directly from insites-plugins.js outside of the component, please replace it with a CDN source as some of these plugins are now built in the component or has been replaced.</p>
+
+  <ul>
+    <li>Cropper JS</li>
+    <li>jQuery v1.12.4</li>
+    <li>jQuery UI</li>
+    <li>highcharts JS</li>
+    <li>jquery.timepicker</li>
+    <li>intlTelInput/utils.js</li>
+    <li>intlTelInput/min JS</li>
+    <li>sweetalert v7.26.11</li>
+    <li>toastr</li>
+    <li>jQuery Validate JS</li>
+    <li>simpleMDE</li>
+    <li>moment JS v2.24.0</li>
+    <li>Redactor</li>
+  </ul>
         </div>
       </ins-modal>
 
@@ -547,47 +633,132 @@ Ready to start writing?  Either start changing stuff on the left or
         prevent-click-outside
         no-button>
         <div id="galleryModalContent">
+
+          <p>For V1 documentation please go <a href="/v1/index.html" target="_blank">here</a>.</p>
+          <h2 class="section-title">Step 1: Update dependencies</h2>
+          <div class="ins-styleguide-wrap">
+            <h2 class="section-title">Remove this</h2>
+            <div class="ins-styleguide-code-slot-wrap full">
+                <script type="text/plain" class="language-markup">
+        <!-- Font Icons -->
+        <link rel="preload" href="https://components.insites.io/assets/css/insites-font-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://components.insites.io/assets/css/insites-font-icons.css"></noscript>
+
+        <!-- Plugin Assets -->
+        <link rel="preload" href="https://components.insites.io/assets/css/insites-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://components.insites.io/assets/css/insites-plugins.css"></noscript>
+        <script src="https://components.insites.io/assets/js/insites-plugins.js" defer>&lt;/script&gt;
+
+        <!-- Components -->
+        <script src="https://components.insites.io/build/insites.js">&lt;/script&gt;
+              </script>
+            </div>
+          </div>
+
+          <div class="ins-styleguide-wrap">
+            <h2 class="section-title">Replace with</h2>
+            <div class="ins-styleguide-code-slot-wrap full">
+              <script type="text/plain" class="language-markup"><!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+        <!-- Font Icons -->
+        <link rel="stylesheet" href="https://components.insites.io/v2/latest/css/insites-font-icons.css">
+
+        <!-- Components -->
+        <link rel="stylesheet" href="https://components.insites.io/v2/latest/css/insites.css" />
+        <script type="module" src="https://components.insites.io/v2/latest/insites.esm.js">&lt;/script&gt;
+        <script nomodule src="https://components.insites.io/v2/latest/insites.js">&lt;/script&gt;</script>
+            </div>
+          </div>
+
+          <h2 class="section-title">Step 2: Update component tags</h2>
+          <div class="spacer"></div>
+
+          <ul>
+            <li>Update <code>ins-base-table</code> to <code>ins-table</code></li>
+            <li>Update <code>ins-datepicker</code> to <code>ins-date-time</code> with <a href="/#/app/data-entry/date-and-time" target="_blank" title="ins-date-time Documentation">mode</a> attribute set to datepicker </li>
+            <li>Update <code>ins-timepicker</code> to <code>ins-date-time</code> with <a href="/#/app/data-entry/date-and-time" target="_blank" title="ins-date-time Documentation">mode</a> attribute set to timepicker </li>
+          </ul>
+          <div class="spacer"></div>
+
+          <h2 class="section-title">Step 3: Update events in event listeners</h2>
+          <p>Component events has been updated to have `ins` prefix and removed the `on` prefix to avoid conflict with the native DOM events. Please check V2 component documentation to update your event listeners from v1.</p>
+
+          <h2 class="section-title">Step 4: Update Component API calls</h2>
+          <p>If you have use a component API and expecting a return, please use async await operation as component APIs are now asynchronous to avoid race condition.</p>
+          <div class="ins-styleguide-code-slot-wrap full">
+            <script type="text/plain" class="language-markup"><script>
+          <!-- V1 -->
+          function getFiles(){
+            let files = insInputFile.getFilesList()
+          }
+
+          <!-- V2 -->
+          async function getFiles(){
+            let files = await insInputFile.getFilesList();
+          }
+        &lt;/script&gt;</script>
+          </div>
+
+          <h2 class="section-title">Step 5: Update Plugins</h2>
+          <p>If your project have used the following plugins directly from insites-plugins.js outside of the component, please replace it with a CDN source as some of these plugins are now built in the component or has been replaced.</p>
+
+          <ul>
+            <li>Cropper JS</li>
+            <li>jQuery v1.12.4</li>
+            <li>jQuery UI</li>
+            <li>highcharts JS</li>
+            <li>jquery.timepicker</li>
+            <li>intlTelInput/utils.js</li>
+            <li>intlTelInput/min JS</li>
+            <li>sweetalert v7.26.11</li>
+            <li>toastr</li>
+            <li>jQuery Validate JS</li>
+            <li>simpleMDE</li>
+            <li>moment JS v2.24.0</li>
+            <li>Redactor</li>
+          </ul>
         </div>
       </ins-modal>
 
       <script type="text/javascript">
         setTimeout(() => {
-          // document.getElementById('galleryModal').open()
-          document.getElementById('galleryModalContent').innerHTML = `
-          <ins-gallery thumbnail-layout="slider">
-            <ins-gallery-image
-              thumbnail="https://cdn-std.droplr.net/files/acc_1288012/UfgJ9c"
-              image="https://cdn-std.droplr.net/files/acc_1288012/UfgJ9c">
-            </ins-gallery-image>
-            <ins-gallery-image
-              thumbnail="https://placehold.co/600x399"
-              image="https://placehold.co/600x399">
-            </ins-gallery-image>
-            <ins-gallery-image
-              thumbnail="https://placehold.co/600x400"
-              image="https://placehold.co/600x400">
-            </ins-gallery-image>
-            <ins-gallery-image
-              thumbnail="https://placehold.co/600x401"
-              image="https://placehold.co/600x401">
-            </ins-gallery-image>
-            <ins-gallery-image
-              thumbnail="https://placehold.co/600x402"
-              image="https://placehold.co/600x402">
-            </ins-gallery-image>
-            <ins-gallery-image
-              thumbnail="https://placehold.co/600x403"
-              image="https://placehold.co/600x403">
-            </ins-gallery-image>
-            <ins-gallery-image
-              thumbnail="https://placehold.co/600x404"
-              image="https://placehold.co/600x404">
-            </ins-gallery-image>
-            <ins-gallery-image
-              thumbnail="https://placehold.co/600x405"
-              image="https://placehold.co/600x405">
-            </ins-gallery-image>
-          </ins-gallery>`;
+          document.getElementById('galleryModal').open()
+        //   document.getElementById('galleryModalContent').innerHTML = `
+        //   <ins-gallery thumbnail-layout="slider">
+        //     <ins-gallery-image
+        //       thumbnail="https://cdn-std.droplr.net/files/acc_1288012/UfgJ9c"
+        //       image="https://cdn-std.droplr.net/files/acc_1288012/UfgJ9c">
+        //     </ins-gallery-image>
+        //     <ins-gallery-image
+        //       thumbnail="https://placehold.co/600x399"
+        //       image="https://placehold.co/600x399">
+        //     </ins-gallery-image>
+        //     <ins-gallery-image
+        //       thumbnail="https://placehold.co/600x400"
+        //       image="https://placehold.co/600x400">
+        //     </ins-gallery-image>
+        //     <ins-gallery-image
+        //       thumbnail="https://placehold.co/600x401"
+        //       image="https://placehold.co/600x401">
+        //     </ins-gallery-image>
+        //     <ins-gallery-image
+        //       thumbnail="https://placehold.co/600x402"
+        //       image="https://placehold.co/600x402">
+        //     </ins-gallery-image>
+        //     <ins-gallery-image
+        //       thumbnail="https://placehold.co/600x403"
+        //       image="https://placehold.co/600x403">
+        //     </ins-gallery-image>
+        //     <ins-gallery-image
+        //       thumbnail="https://placehold.co/600x404"
+        //       image="https://placehold.co/600x404">
+        //     </ins-gallery-image>
+        //     <ins-gallery-image
+        //       thumbnail="https://placehold.co/600x405"
+        //       image="https://placehold.co/600x405">
+        //     </ins-gallery-image>
+        //   </ins-gallery>`;
         }, 300);
       </script>
 
@@ -679,6 +850,11 @@ Ready to start writing?  Either start changing stuff on the left or
               <ins-input-multiple id="test" label="Multiple"></ins-input-multiple>
             </div>
           </ins-tab-item>
+          <ins-tab-item>
+            <div>
+              <ins-input-multiple id="test2" label="Multiple"></ins-input-multiple>
+            </div>
+          </ins-tab-item>
         </ins-tab>
 
 
@@ -721,6 +897,250 @@ Ready to start writing?  Either start changing stuff on the left or
           });
         }, 1000)
       </script>
+
+
+  <ins-table
+  id="insBaseTable"
+  searchbar-placeholder="Search..."
+  default-bulk-action="Archive">
+</ins-table>
+<script>
+  var insBaseTable = document.getElementById('insBaseTable');
+  var rawData = [];
+  var filteredData = [];
+  var displayedData = [];
+  var tableHeaders = [];
+  var totalCount = 0;
+  var pageNumber = 1;
+  var pageSize = 10;
+  var searchKeyword = '';
+  var sortedKeyword = '';
+
+  insBaseTable.loadingScreen = true;
+  insBaseTable.bulkActions = ['Archive', 'Restore'];
+  insBaseTable.rowActions = ['Archive'];
+  insBaseTable.addEventListener('insPaginationChange', tablePaginationHandler);
+  insBaseTable.addEventListener('insTableSearch', tableSearchHandler);
+  insBaseTable.addEventListener('insTableSort', tableSortHandler);
+  insBaseTable.addEventListener('insTableBulkAction', tableBulkActionHandler);
+  insBaseTable.addEventListener('insTableRowAction', tableRowActionHandler);
+  // insBaseTable.addEventListener('onFieldChange', event => console.log('onFieldChange', event));
+
+  function tablePaginationHandler(event) {
+    insBaseTable.loadingScreen = true;
+    pageSize = event.detail.pageSize;
+    pageNumber = event.detail.pageNumber;
+    processTableData()
+  }
+  function tableSearchHandler(event) {
+    insBaseTable.loadingScreen = true;
+    searchKeyword = event.detail.value;
+
+    if (!searchKeyword) {
+      processTableData();
+      return;
+    }
+
+    filteredData = [];
+    rawData.forEach((value) => {
+      Object.keys(value).forEach((key) => {
+        if (key === 'Default Column') {
+          var match = value[key];
+          if (match.toLowerCase().includes(searchKeyword.toLowerCase())) {
+            filteredData.push(value);
+          }
+        }
+      });
+    });
+
+    if (sortedKeyword && filteredData.length > 1) {
+      filteredData.sort(dynamicKeySort(sortedKeyword));
+    }
+    insBaseTable.pageNumber = 1;
+    processTableData();
+
+    if (!filteredData.length) {
+      insBaseTable.loadingScreen = true;
+      insBaseTable.loaderTitle = '';
+      insBaseTable.loaderMessage = 'No result found for "' + searchKeyword + '"';
+      insBaseTable.loaderIcon = '';
+    }
+  }
+  function tableSortHandler(event) {
+    sortedKeyword = event.detail.order === 'asc' ? event.detail.keyword : `-${event.detail.keyword}`;
+    if (searchKeyword) {
+      filteredData.sort(dynamicKeySort(sortedKeyword));
+    } else {
+      rawData.sort(dynamicKeySort(sortedKeyword));
+    }
+    processTableData();
+  }
+  function tableBulkActionHandler(event) {
+    console.log('tableBulkActionHandler', event.detail);
+    if (event.detail.action === 'Archive') {
+      archiveSelection(event.detail.selections);
+    }
+  }
+  function tableRowActionHandler(event) {
+    if (event.detail.action === 'Archive') {
+      archiveItem(event.detail.data);
+    }
+  }
+  function archiveItem(value) {
+    if (window.swal) {
+      swal({
+        title: '',
+        // text: "Are you sure you want to delete these items",
+        html: `
+            <ins-loader
+              state-icon="warning"
+              icon-color="warning"
+              state-message="Are you sure you want to archive this item?">
+            </ins-loader>`,
+        type: '',
+        showCancelButton: true,
+        confirmButtonText: 'Archive'
+      }).then((result) => {
+        deleteItem(value);
+        processTableData();
+      });
+    }
+  }
+
+  function archiveSelection(selections) {
+    if (window.swal) {
+      swal({
+        title: '',
+        html: `
+          <ins-loader
+            state-icon="warning"
+            icon-color="warning"
+            state-message="Are you sure you want to archive these items?">
+          </ins-loader>`,
+        type: '',
+        showCancelButton: true,
+        confirmButtonText: 'Archive'
+      }).then((result) => {
+        if (result.value) {
+          let counter = 0;
+          selections.forEach(value => {
+
+            this.deleteItem(value);
+            counter++;
+
+            if (selections.length === counter) {
+              insBaseTable.resetSelections();
+              processTableData()
+            }
+          });
+        }
+      });
+    }
+  }
+
+  function deleteItem(value) {
+    var selectionIndex;
+    var searchSelectionIndex;
+
+    if (rawData) {
+      selectionIndex = rawData.findIndex(item => {
+        return item.Id === value;
+      });
+    }
+
+    if (filteredData) {
+      searchSelectionIndex = filteredData.findIndex(item => {
+        return item.Id === value;
+      });
+    }
+
+    if (selectionIndex > -1) {
+      rawData.splice(selectionIndex, 1);
+    }
+
+    if (searchSelectionIndex > -1) {
+      filteredData.splice(searchSelectionIndex, 1);
+    }
+  }
+
+  function processTableData() {
+    var last_index = pageNumber * pageSize;
+    var first_index = (last_index - pageSize);// + 1;
+
+    displayedData = [];
+
+    if (searchKeyword) {
+
+      filteredData.forEach((value, index) => {
+        value['ArchiveLink'] = "https://www.google.com";
+
+        if (index >= first_index && index <= last_index) {
+          displayedData.push(value);
+        } else if (filteredData.length < pageSize) {
+          displayedData.push(value);
+        }
+      });
+      insBaseTable.totalCount = filteredData.length;
+
+    } else {
+      rawData.forEach((value, index) => {
+        value['ArchiveLink'] = "https://www.google.com";
+        if (index >= first_index && index <= last_index) {
+          displayedData.push(value);
+        }
+      });
+
+      insBaseTable.totalCount = rawData.length;
+
+    }
+
+    insBaseTable.tableData = displayedData;
+    insBaseTable.loadingScreen = false;
+  }
+  function dynamicKeySort(key) {
+    var OrderSortIndex = 1;
+
+    if (key[0] === "-") {
+      OrderSortIndex = -1;
+      key = key.substr(1);
+    }
+
+    return function (a, b) {
+      var num = (a[key] < b[key]) ? -1 : (a[key] > b[key]) ? 1 : 0;
+      return num * OrderSortIndex;
+    }
+  }
+  function fetchDataFromSrc() {
+
+    insBaseTable.loadingScreen = true;
+
+    insBaseTable.loaderTitle = "Processing Your Data";
+    insBaseTable.loaderMessage = "Just a moment, we're fetching and processing your data.";
+    insBaseTable.loaderIcon = "processing";
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        var tableData = JSON.parse(this.responseText);
+        rawData = tableData.list.map(function (data) {
+          data["Default Column_Img"] = '';
+          return data;
+        });
+        insBaseTable.totalCount = tableData.count;
+        insBaseTable.tableHeaders = [
+          { label: "Default Column", type: 'string', sortable: true, hasLink: true, hasImage: true, columnWidth: "200px" },
+          { label: "Date Column", type: 'date', sortable: true, editable: true, columnWidth: "15%" }
+        ];
+
+        processTableData();
+      }
+    };
+    xhttp.open("GET", 'https://ag64gmtsc0.execute-api.us-east-2.amazonaws.com/insites-dummy-deployment/insites-dummy-get-table', true);
+    xhttp.send();
+  }
+
+  fetchDataFromSrc();
+</script>
   </ins-renderer>
 </body>
 
