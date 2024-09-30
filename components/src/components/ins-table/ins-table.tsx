@@ -569,7 +569,7 @@ export class InsTable {
 
 
     if (this.rowActionsSettings) {
-      if (this.rowActionsSettings.rowActions[item["Status"]].indexOf(rowAction) !== -1) {
+      if (this.rowActionsSettings.rowActions[item[this.rowActionsSettings.column]].indexOf(rowAction) !== -1) {
 
         if (item[`${rowAction}Link`]) {
           return (
