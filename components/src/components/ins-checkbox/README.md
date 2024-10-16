@@ -45,6 +45,14 @@ Type: `Promise<{ value: string; trueValue: string; falseValue: string; }>`
 
 
 
+#### Parameters
+
+| Name         | Type  | Description |
+| ------------ | ----- | ----------- |
+| `value`      | `any` |             |
+| `trueValue`  | `any` |             |
+| `falseValue` | `any` |             |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -54,6 +62,12 @@ Type: `Promise<void>`
 ### `updateCheckState(state: any) => Promise<void>`
 
 
+
+#### Parameters
+
+| Name    | Type  | Description |
+| ------- | ----- | ----------- |
+| `state` | `any` |             |
 
 #### Returns
 

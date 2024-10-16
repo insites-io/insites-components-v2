@@ -39,6 +39,14 @@ Type: `Promise<void>`
 
 
 
+#### Parameters
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| `newRoutes`  | `any`     |             |
+| `noRedirect` | `boolean` |             |
+| `iframe`     | `any`     |             |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -48,6 +56,12 @@ Type: `Promise<void>`
 ### `updateRouteLabel(value: any) => Promise<void>`
 
 
+
+#### Parameters
+
+| Name    | Type  | Description |
+| ------- | ----- | ----------- |
+| `value` | `any` |             |
 
 #### Returns
 

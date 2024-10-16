@@ -8,8 +8,11 @@ export const config: Config = {
     { type: 'docs-readme' },
     { type: 'www', serviceWorker: null }
   ],
-  enableCache: true,
+  enableCache: false,
   sourceMap: false,
+  extras: {
+    enableImportInjection: true,
+  },
   plugins: [
     sass()
   ]

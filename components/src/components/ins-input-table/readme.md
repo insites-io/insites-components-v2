@@ -47,6 +47,12 @@ Type: `Promise<any>`
 
 
 
+#### Parameters
+
+| Name    | Type  | Description |
+| ------- | ----- | ----------- |
+| `value` | `any` |             |
+
 #### Returns
 
 Type: `Promise<any>`

@@ -28,6 +28,12 @@
 
 
 
+#### Parameters
+
+| Name    | Type  | Description |
+| ------- | ----- | ----------- |
+| `event` | `any` |             |
+
 #### Returns
 
 Type: `Promise<void>`

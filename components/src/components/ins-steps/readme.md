@@ -89,6 +89,12 @@ Type: `Promise<boolean>`
 
 
 
+#### Parameters
+
+| Name | Type  | Description |
+| ---- | ----- | ----------- |
+| `i`  | `any` |             |
+
 #### Returns
 
 Type: `Promise<{ previousStep: any; currentStep: any; }>`

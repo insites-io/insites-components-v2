@@ -2,6 +2,8 @@ import {
   h, Component, Prop, Event, EventEmitter, State, Listen, Element, Method, Watch
 } from "@stencil/core";
 
+import _ from "lodash"
+
 @Component({ tag: 'ins-table' })
 export class InsTable {
   @Element() insTableEl: HTMLElement;
@@ -574,10 +576,10 @@ export class InsTable {
         if (item[`${rowAction}Link`]) {
           return (
           <a class={`action-item
-            ${rowAction === 'Archive' ||
+            ${
             rowAction === 'Remove' ||
             rowAction === 'Delete' ||
-            rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : ''}`}
+            rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : _.kebabCase(rowAction)}`}
             href={item[`${rowAction}Link`]}>
 
             {rowAction}

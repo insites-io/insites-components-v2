@@ -37,6 +37,12 @@
 
 
 
+#### Parameters
+
+| Name        | Type  | Description |
+| ----------- | ----- | ----------- |
+| `chartData` | `any` |             |
+
 #### Returns
 
 Type: `Promise<void>`

@@ -48,6 +48,12 @@
 
 
 
+#### Parameters
+
+| Name    | Type  | Description |
+| ------- | ----- | ----------- |
+| `slide` | `any` |             |
+
 #### Returns
 
 Type: `Promise<void>`
