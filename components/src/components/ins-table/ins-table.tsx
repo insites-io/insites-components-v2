@@ -2,8 +2,6 @@ import {
   h, Component, Prop, Event, EventEmitter, State, Listen, Element, Method, Watch
 } from "@stencil/core";
 
-import _ from "lodash"
-
 @Component({ tag: 'ins-table' })
 export class InsTable {
   @Element() insTableEl: HTMLElement;
@@ -564,6 +562,11 @@ export class InsTable {
     )
   }
 
+  updateKebabCase(value) {
+    if (value) return value.trim().toLowerCase().replace(/\s+/g, "-").replace(/\/+/g, "");
+    return "";
+  }
+
   rowActionMapper(rowAction, item, tableHeader){
     let header = tableHeader
       ? tableHeader.label
@@ -579,9 +582,8 @@ export class InsTable {
             ${
             rowAction === 'Remove' ||
             rowAction === 'Delete' ||
-            rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : _.kebabCase(rowAction)}`}
+            rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : this.updateKebabCase(rowAction)}`}
             href={item[`${rowAction}Link`]}>
-
             {rowAction}
           </a>
           )
@@ -593,7 +595,7 @@ export class InsTable {
               ${rowAction === 'Archive' ||
                 rowAction === 'Remove' ||
                 rowAction === 'Delete' ||
-                rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : ''}`}
+                rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : this.updateKebabCase(rowAction)}`}
             onClick={() => this.rowActionHandler(rowAction, item, header)}>
 
             {rowAction}
@@ -609,7 +611,7 @@ export class InsTable {
           ${rowAction === 'Archive' ||
           rowAction === 'Remove' ||
           rowAction === 'Delete' ||
-          rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : ''}`}
+          rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : this.updateKebabCase(rowAction)}`}
           href={item[`${rowAction}Link`]}>
 
           {rowAction}
@@ -623,7 +625,7 @@ export class InsTable {
             ${rowAction === 'Archive' ||
               rowAction === 'Remove' ||
               rowAction === 'Delete' ||
-              rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : ''}`}
+              rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : this.updateKebabCase(rowAction)}`}
           onClick={() => this.rowActionHandler(rowAction, item, header)}>
 
           {rowAction}
