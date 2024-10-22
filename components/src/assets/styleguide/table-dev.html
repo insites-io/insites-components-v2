@@ -10,9 +10,9 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap">
   <link rel="stylesheet" href="/assets/css/reset.css" />
-  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/insites/css/insites-font-icons.css" />
   <link rel="stylesheet" href="/assets/css/foundation.min.css" />
-  <link rel="stylesheet" href="/assets/css/insites.css" />
+  <link rel="stylesheet" href="/assets/insites/css/insites.css" />
 
   <script type="module" src="/build/insites.esm.js"></script>
   <script nomodule src="/build/insites.js"></script>
@@ -73,7 +73,7 @@
 
       <script>
         console.log('HELLO WORLD!')
-        
+
         var insBaseTable = document.getElementById('insBaseTable');
         var rawData = [];
         var filteredData = [];
@@ -84,7 +84,7 @@
         var pageSize = 10;
         var searchKeyword = '';
         var sortedKeyword = '';
-      
+
         insBaseTable.loadingScreen = true;
         insBaseTable.bulkActions = ['Archive'];
         insBaseTable.rowActions = ['Archive'];
@@ -94,7 +94,7 @@
         insBaseTable.addEventListener('insTableBulkAction', tableBulkActionHandler);
         insBaseTable.addEventListener('insTableRowAction', tableRowActionHandler);
         // insBaseTable.addEventListener('onFieldChange', event => console.log('onFieldChange', event));
-      
+
         function tablePaginationHandler(event){
           insBaseTable.loadingScreen = true;
           pageSize = event.detail.pageSize;
@@ -104,12 +104,12 @@
         function tableSearchHandler(event){
           insBaseTable.loadingScreen = true;
           searchKeyword = event.detail.value;
-      
+
           if (!searchKeyword) {
             processTableData();
             return;
           }
-      
+
           filteredData = [];
           rawData.forEach((value) => {
             Object.keys(value).forEach((key) => {
@@ -121,13 +121,13 @@
               }
             });
           });
-      
+
           if (sortedKeyword && filteredData.length > 1) {
             filteredData.sort(dynamicKeySort(sortedKeyword));
           }
           insBaseTable.pageNumber = 1;
           processTableData();
-      
+
           if (!filteredData.length) {
             insBaseTable.loadingScreen = true;
             insBaseTable.loaderTitle = '';
@@ -175,7 +175,7 @@
             });
           }
         }
-      
+
         function archiveSelection(selections) {
           if (window.swal){
             swal({
@@ -193,10 +193,10 @@
               if (result.value) {
                   let counter = 0;
                   selections.forEach(value => {
-      
+
                     this.deleteItem(value);
                     counter++;
-      
+
                     if (selections.length === counter){
                       insBaseTable.resetSelections();
                       processTableData()
@@ -206,43 +206,43 @@
             });
           }
         }
-      
+
         function deleteItem(value) {
           var selectionIndex;
           var searchSelectionIndex;
-      
+
           if (rawData) {
             selectionIndex = rawData.findIndex(item => {
               return item.Id === value;
             });
           }
-      
+
           if (filteredData) {
             searchSelectionIndex = filteredData.findIndex(item => {
               return item.Id === value;
             });
           }
-      
+
           if (selectionIndex > -1){
             rawData.splice(selectionIndex, 1);
           }
-      
+
           if (searchSelectionIndex > -1){
             filteredData.splice(searchSelectionIndex, 1);
           }
         }
-      
+
         function processTableData(){
           var last_index = pageNumber * pageSize;
           var first_index = (last_index - pageSize);// + 1;
-      
+
           displayedData = [];
-      
+
           if (searchKeyword) {
-      
+
             filteredData.forEach((value, index) => {
               value['ArchiveLink'] = "https://www.google.com";
-      
+
               if (index >= first_index && index <= last_index) {
                 displayedData.push(value);
               } else if (filteredData.length < pageSize){
@@ -250,7 +250,7 @@
               }
             });
             insBaseTable.totalCount = filteredData.length;
-      
+
           } else {
             rawData.forEach((value, index) => {
               value['ArchiveLink'] = "https://www.google.com";
@@ -258,35 +258,35 @@
                 displayedData.push(value);
               }
             });
-      
+
             insBaseTable.totalCount = rawData.length;
-      
+
           }
-      
+
           insBaseTable.tableData = displayedData;
           insBaseTable.loadingScreen = false;
         }
         function dynamicKeySort(key) {
           var OrderSortIndex = 1;
-      
+
           if (key[0] === "-") {
             OrderSortIndex = -1;
             key = key.substr(1);
           }
-      
+
           return function (a, b) {
             var num = (a[key] < b[key]) ? -1 : (a[key] > b[key]) ? 1 : 0;
             return num * OrderSortIndex;
           }
         }
         function fetchDataFromSrc () {
-      
+
           insBaseTable.loadingScreen = true;
-      
+
           insBaseTable.loaderTitle = "Processing Your Data";
           insBaseTable.loaderMessage = "Just a moment, we're fetching and processing your data.";
           insBaseTable.loaderIcon = "processing";
-      
+
           var xhttp = new XMLHttpRequest();
           xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -305,14 +305,14 @@
                 { label: "Number Column", type: 'number', sortable: true, editable: true },
                 { label: "Currency Column", type: 'currency', sortable: true, editable: true }
               ];
-      
+
               processTableData();
             }
           };
           xhttp.open("GET", 'https://ag64gmtsc0.execute-api.us-east-2.amazonaws.com/insites-dummy-deployment/insites-dummy-get-table', true);
           xhttp.send();
         }
-      
+
         fetchDataFromSrc();
       </script>
     </div>

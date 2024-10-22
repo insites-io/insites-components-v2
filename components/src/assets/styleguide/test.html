@@ -11,9 +11,9 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap">
   <link rel="stylesheet" href="/assets/css/reset.css" />
-  <link rel="stylesheet" href="/assets/css/insites-font-icons.css" />
+  <link rel="stylesheet" href="/assets/insites/css/insites-font-icons.css" />
   <link rel="stylesheet" href="/assets/css/foundation.min.css" />
-  <link rel="stylesheet" href="/assets/css/insites.css" />
+  <link rel="stylesheet" href="/assets/insites/css/insites.css" />
 
   <script type="module" src="/build/insites.esm.js"></script>
   <script nomodule src="/build/insites.js"></script>
@@ -452,7 +452,7 @@
     myColumn.addEventListener('insColumnAdd', event => {
       console.log(event.detail);
       console.log(myColumn.getColumnCardsOrder())
-      
+
       var order = ["2","1"]
       myColumn.reorderCards(order);
     });
@@ -464,7 +464,7 @@
     myColumn.addEventListener('insDragEnd', event => {
       console.log("insDragEnd: ", event.detail);
     });
-    
+
     myColumn.addEventListener('insAdd', event => {
       console.log("insAdd: ", event.detail);
     });
@@ -480,7 +480,7 @@
     myColumn.addEventListener('insUpdate', event => {
       console.log("insUpdate: ", event.detail);
     });
-    
+
     myColumn.addEventListener('insMove', event => {
       console.log("insMove: ", event.detail);
     });
