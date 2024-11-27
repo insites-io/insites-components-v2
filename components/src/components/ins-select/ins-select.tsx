@@ -32,6 +32,10 @@ export class InsSelect {
   @Prop({ mutable: true }) labelKey: string = "";
   @Prop({ mutable: true }) valueKey: string = "";
   @Prop({ mutable: true }) optionsData: Array<any> = [];
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
+  @Prop({mutable: true}) description: string = "";
+  @Prop({mutable: true}) htmlDescription: boolean = false;
 
   // Multiple Mode
   @Prop({mutable: true}) multiple: boolean = false;
@@ -106,6 +110,7 @@ export class InsSelect {
     this.initInfiniteScroll();
     this.checkForOptions();
 
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
@@ -724,10 +729,10 @@ export class InsSelect {
           <div class="ins-select-slot-wrap">
             <slot />
 
-            {this.labelKey && this.valueKey 
+            {this.labelKey && this.valueKey
               ? this.optionsData.map(option => {
                   return (
-                    <ins-select-option 
+                    <ins-select-option
                       label={option[this.labelKey]}
                       value={option[this.valueKey]}>
                     </ins-select-option>
@@ -812,25 +817,44 @@ export class InsSelect {
     )
   }
 
+  validateDescription(value) {
+    let allowed = '<a>,<abbr>,<acronym>,<address>,<article>,<aside>,<b>,<base>,<bdi>,<bdo>,<blockquote>,<br>,<caption>,<code>,<dd>,<del>,<details>,<dfn>,<dir>,<div>,<dl>,<dt>,<em>,<font>,<h1>,<h2>,<h3>,<h4>,<h5>,<h6>,<hr>,<i>,<ins>,<label>,<li>,<link>,<mark>,<menu>,<meter>,<nav>,<ol>,<p>,<pre>,<q>,<s>,<samp>,<section>,<small>,<span>,<strike>,<strong>,<sub>,<summary>,<sup>,<table>,<tbody>,<td>,<tfoot>,<th>,<thead>,<time>,<tr>,<tt>,<u>,<ul>,<wbr>';
+    allowed = (((allowed || '') + '').toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
+
+    var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+    commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+    return value.replace(commentsAndPhpTags, '').replace(tags, ($0, $1) => {
+      return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
+    });
+  }
+
 	render() {
     return (
-      <div class={`ins-select-wrap
-        ${this.readonly ? 'readonly' : ''}
-        ${this.disabled ? 'disabled' : ''}
-        ${this.hasError ? 'is-invalid' : ''}
-        ${this.small ? 'small' : ''}
-        ${this.initializing ? 'initializing' : ''}
-        ${this.button && !this.multiple ? 'buttonise' : ''}`}>
+      <div class="ins-select">
+        <div class={`ins-select-wrap
+          ${this.readonly ? 'readonly' : ''}
+          ${this.disabled ? 'disabled' : ''}
+          ${this.hasError ? 'is-invalid' : ''}
+          ${this.small ? 'small' : ''}
+          ${this.initializing ? 'initializing' : ''}
+          ${this.button && !this.multiple ? 'buttonise' : ''}`}>
 
-        { this.renderHiddenFields() }
-        { this.renderLabelWrap() }
-        { this.renderValueWrap() }
-        { this.renderErrorWrap() }
-        { this.renderOptionsWrap() }
+          { this.renderHiddenFields() }
+          { this.renderLabelWrap() }
+          { this.renderValueWrap() }
+          { this.renderErrorWrap() }
 
-        <div class="main-spinner-wrap">
-          <div class="spinner"></div>
+
+          { this.renderOptionsWrap() }
+
+          <div class="main-spinner-wrap">
+            <div class="spinner"></div>
+          </div>
         </div>
+
+        { this.description ? this.htmlDescription ?
+          <div class="ins-description" innerHTML={this.validateDescription(this.description)}></div> : <div class="ins-description">{this.description}</div>
+        : ''}
       </div>
     );
 	}

@@ -10,6 +10,7 @@
 | Property      | Attribute      | Description | Type      | Default       |
 | ------------- | -------------- | ----------- | --------- | ------------- |
 | `chartData`   | --             |             | `any[]`   | `[]`          |
+| `checkLoad`   | `check-load`   |             | `boolean` | `false`       |
 | `colors`      | --             |             | `any[]`   | `undefined`   |
 | `dataLabels`  | `data-labels`  |             | `boolean` | `true`        |
 | `endAngle`    | `end-angle`    |             | `number`  | `undefined`   |
@@ -19,6 +20,7 @@
 | `innerSize`   | `inner-size`   |             | `string`  | `undefined`   |
 | `innerTitle`  | `inner-title`  |             | `boolean` | `false`       |
 | `legends`     | `legends`      |             | `boolean` | `false`       |
+| `load`        | `load`         |             | `boolean` | `false`       |
 | `size`        | `size`         |             | `string`  | `undefined`   |
 | `startAngle`  | `start-angle`  |             | `number`  | `undefined`   |
 | `titleOffset` | `title-offset` |             | `number`  | `20`          |

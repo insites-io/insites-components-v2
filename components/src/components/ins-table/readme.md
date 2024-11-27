@@ -10,12 +10,14 @@
 | Property               | Attribute               | Description | Type      | Default            |
 | ---------------------- | ----------------------- | ----------- | --------- | ------------------ |
 | `bulkActions`          | `bulk-actions`          |             | `any`     | `[]`               |
+| `checkLoad`            | `check-load`            |             | `boolean` | `false`            |
 | `currency`             | `currency`              |             | `string`  | `''`               |
 | `defaultBulkAction`    | `default-bulk-action`   |             | `string`  | `''`               |
 | `emptyValue`           | `empty-value`           |             | `string`  | `'-'`              |
 | `hasLoad`              | `has-load`              |             | `string`  | `undefined`        |
 | `heading`              | `heading`               |             | `string`  | `''`               |
 | `initialSearch`        | `initial-search`        |             | `string`  | `''`               |
+| `load`                 | `load`                  |             | `boolean` | `false`            |
 | `loaderIcon`           | `loader-icon`           |             | `any`     | `undefined`        |
 | `loaderImageSource`    | `loader-image-source`   |             | `string`  | `null`             |
 | `loaderMessage`        | `loader-message`        |             | `any`     | `undefined`        |

@@ -12,12 +12,17 @@
 | `areaCode`            | `area-code`            |             | `string`  | `""`        |
 | `areacodePlaceholder` | `areacode-placeholder` |             | `string`  | `""`        |
 | `areacodeValue`       | `areacode-value`       |             | `string`  | `""`        |
+| `checkLoad`           | `check-load`           |             | `boolean` | `false`     |
+| `checkValue`          | `check-value`          |             | `boolean` | `false`     |
 | `countryCode`         | `country-code`         |             | `string`  | `"61"`      |
+| `description`         | `description`          |             | `string`  | `""`        |
 | `disabled`            | `disabled`             |             | `boolean` | `undefined` |
 | `errorMessage`        | `error-message`        |             | `string`  | `""`        |
 | `hasError`            | `has-error`            |             | `boolean` | `undefined` |
 | `hasLoad`             | `has-load`             |             | `string`  | `undefined` |
+| `htmlDescription`     | `html-description`     |             | `boolean` | `false`     |
 | `label`               | `label`                |             | `string`  | `""`        |
+| `load`                | `load`                 |             | `boolean` | `false`     |
 | `noAreacode`          | `no-areacode`          |             | `boolean` | `undefined` |
 | `phoneNumber`         | `phone-number`         |             | `string`  | `""`        |
 | `phonenumPlaceholder` | `phonenum-placeholder` |             | `string`  | `""`        |
@@ -65,6 +70,26 @@ Type: `Promise<string>`
 #### Returns
 
 Type: `Promise<{ country_code: any; area_code: any; phone_number: any; }>`
+
+
+
+### `insRecover() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `insReset() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

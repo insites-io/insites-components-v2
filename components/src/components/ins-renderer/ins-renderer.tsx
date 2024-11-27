@@ -11,6 +11,8 @@ export class InsRenderer {
   @Prop({ mutable: true }) disableBreadcrumbs: boolean = false;
   @Prop({ mutable: true }) app: boolean = false;
   @Prop({ mutable: true }) label: string;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   route: any = {
     label: "", link: ""
@@ -113,6 +115,7 @@ export class InsRenderer {
   componentDidLoad() {
     this.getElements();
     this.bindIframeListener();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

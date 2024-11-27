@@ -7,22 +7,26 @@
 
 ## Properties
 
-| Property         | Attribute         | Description | Type      | Default     |
-| ---------------- | ----------------- | ----------- | --------- | ----------- |
-| `disabled`       | `disabled`        |             | `boolean` | `undefined` |
-| `errorMessage`   | `error-message`   |             | `string`  | `""`        |
-| `fieldId`        | `field-id`        |             | `string`  | `""`        |
-| `hasError`       | `has-error`       |             | `boolean` | `undefined` |
-| `hasLoad`        | `has-load`        |             | `string`  | `undefined` |
-| `invalidMessage` | `invalid-message` |             | `string`  | `""`        |
-| `label`          | `label`           |             | `string`  | `""`        |
-| `name`           | `name`            |             | `string`  | `""`        |
-| `placeholder`    | `placeholder`     |             | `string`  | `""`        |
-| `readonly`       | `readonly`        |             | `boolean` | `undefined` |
-| `required`       | `required`        |             | `boolean` | `undefined` |
-| `tooltip`        | `tooltip`         |             | `string`  | `""`        |
-| `validate`       | `validate`        |             | `boolean` | `undefined` |
-| `value`          | `value`           |             | `string`  | `""`        |
+| Property          | Attribute          | Description | Type      | Default     |
+| ----------------- | ------------------ | ----------- | --------- | ----------- |
+| `checkLoad`       | `check-load`       |             | `boolean` | `false`     |
+| `description`     | `description`      |             | `string`  | `""`        |
+| `disabled`        | `disabled`         |             | `boolean` | `undefined` |
+| `errorMessage`    | `error-message`    |             | `string`  | `""`        |
+| `fieldId`         | `field-id`         |             | `string`  | `""`        |
+| `hasError`        | `has-error`        |             | `boolean` | `undefined` |
+| `hasLoad`         | `has-load`         |             | `string`  | `undefined` |
+| `htmlDescription` | `html-description` |             | `boolean` | `false`     |
+| `invalidMessage`  | `invalid-message`  |             | `string`  | `""`        |
+| `label`           | `label`            |             | `string`  | `""`        |
+| `load`            | `load`             |             | `boolean` | `false`     |
+| `name`            | `name`             |             | `string`  | `""`        |
+| `placeholder`     | `placeholder`      |             | `string`  | `""`        |
+| `readonly`        | `readonly`         |             | `boolean` | `undefined` |
+| `required`        | `required`         |             | `boolean` | `undefined` |
+| `tooltip`         | `tooltip`          |             | `string`  | `""`        |
+| `validate`        | `validate`         |             | `boolean` | `undefined` |
+| `value`           | `value`            |             | `string`  | `""`        |
 
 
 ## Events

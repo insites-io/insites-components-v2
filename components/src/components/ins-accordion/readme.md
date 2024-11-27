@@ -7,10 +7,12 @@
 
 ## Properties
 
-| Property  | Attribute  | Description | Type      | Default     |
-| --------- | ---------- | ----------- | --------- | ----------- |
-| `hasLoad` | `has-load` |             | `string`  | `undefined` |
-| `menu`    | `menu`     |             | `boolean` | `false`     |
+| Property    | Attribute    | Description | Type      | Default     |
+| ----------- | ------------ | ----------- | --------- | ----------- |
+| `checkLoad` | `check-load` |             | `boolean` | `false`     |
+| `hasLoad`   | `has-load`   |             | `string`  | `undefined` |
+| `load`      | `load`       |             | `boolean` | `false`     |
+| `menu`      | `menu`       |             | `boolean` | `false`     |
 
 
 ## Events

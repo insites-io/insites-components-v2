@@ -11,10 +11,12 @@
 | ----------------- | ------------------ | ----------- | --------- | ----------- |
 | `backgroundColor` | `background-color` |             | `string`  | `'#fff'`    |
 | `change`          | `change`           |             | `string`  | `""`        |
+| `checkLoad`       | `check-load`       |             | `boolean` | `false`     |
 | `editable`        | `editable`         |             | `boolean` | `false`     |
 | `hasLoad`         | `has-load`         |             | `string`  | `undefined` |
 | `label`           | `label`            |             | `string`  | `""`        |
 | `level`           | `level`            |             | `number`  | `6`         |
+| `load`            | `load`             |             | `boolean` | `false`     |
 | `maxlength`       | `maxlength`        |             | `string`  | `""`        |
 | `name`            | `name`             |             | `string`  | `""`        |
 | `withoutLine`     | `without-line`     |             | `boolean` | `false`     |

@@ -15,6 +15,8 @@ export class InsHeading {
   @Prop({mutable: true}) editable: boolean = false;
   @Prop({mutable: true}) withoutLine: boolean = false;
   @Prop({mutable: true}) maxlength: string = "";
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   @State() editMode: boolean = false;
   @State() tempLabel: string = '';
@@ -67,6 +69,7 @@ export class InsHeading {
         inputWrapEl.style.backgroundColor = this.backgroundColor;
       }
     }
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

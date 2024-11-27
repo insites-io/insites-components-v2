@@ -12,6 +12,8 @@ export class InsTab {
   @State() activeTabIndex: number = 0;
   @State() insTabItems: any = [];
   @State() insTabHeaders: any = [];
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   onchangeTabHandler(event, index) {
     if (
@@ -68,7 +70,7 @@ export class InsTab {
 
   getActiveTabLabelIndex() {
     for (let i = 0; i < this.insTabItems.length; i++) {
-      let item = this.insTabItems[i] as any;
+    let item = this.insTabItems[i] as any;
 
       if (item.active) {
         this.activeTab = item.label ?
@@ -150,6 +152,7 @@ export class InsTab {
     this.setDisabledTabs();
     this.setActiveTabItem(this.activeTabIndex);
     this.setScrollableHeaders();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

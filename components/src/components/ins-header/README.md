@@ -9,8 +9,10 @@
 
 | Property        | Attribute         | Description | Type      | Default     |
 | --------------- | ----------------- | ----------- | --------- | ----------- |
+| `checkLoad`     | `check-load`      |             | `boolean` | `false`     |
 | `hasLoad`       | `has-load`        |             | `string`  | `undefined` |
 | `hasMenuToggle` | `has-menu-toggle` |             | `boolean` | `true`      |
+| `load`          | `load`            |             | `boolean` | `false`     |
 | `supportLink`   | `support-link`    |             | `string`  | `undefined` |
 
 

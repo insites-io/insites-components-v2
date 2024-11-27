@@ -9,8 +9,10 @@
 
 | Property         | Attribute         | Description | Type      | Default     |
 | ---------------- | ----------------- | ----------- | --------- | ----------- |
+| `checkLoad`      | `check-load`      |             | `boolean` | `false`     |
 | `hasLoad`        | `has-load`        |             | `string`  | `undefined` |
 | `label`          | `label`           |             | `string`  | `undefined` |
+| `load`           | `load`            |             | `boolean` | `false`     |
 | `loadingScreen`  | `loading-screen`  |             | `boolean` | `false`     |
 | `staticTimeline` | `static-timeline` |             | `boolean` | `false`     |
 | `timelineData`   | `timeline-data`   |             | `any`     | `[]`        |

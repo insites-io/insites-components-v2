@@ -6,6 +6,8 @@ export class InsThumbnail {
   @Event() didLoad: EventEmitter;
   @Prop() hasLoad: string;
 
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
     @Prop({ mutable: true }) name: string;
     @Prop({ mutable: true }) alt: string;
     @Prop({ mutable: true }) src: string;
@@ -23,6 +25,7 @@ export class InsThumbnail {
     componentDidLoad(){
       this.buttonEl = this.insThumbnailEl.querySelector('ins-button');
       this.setButtonType();
+      if (this.checkLoad) this.load = true;
       this.didLoad.emit();
       if (this.hasLoad && window["Insites"]){
         let func = window["Insites"].methods[this.hasLoad];

@@ -18,6 +18,21 @@ export class InsInputMultiple {
   @Prop({mutable: true}) tooltip: string = "";
 	@Prop({mutable: true}) hasError: boolean = false;
   @Prop({mutable: true}) errorMessage: string = "";
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
+  @Prop({mutable: true}) description: string = "";
+  @Prop({mutable: true}) htmlDescription: boolean = false;
+
+  @Prop({ mutable: true }) checkValue: boolean = false;
+  @Method()
+  async insReset() {
+    if (this.checkValue) this.insInput.emit({ value: [] });
+  }
+
+  @Method()
+  async insRecover() {
+    if (this.checkValue) this.insInput.emit({ value: await this.getValue() });
+  }
 
   componentWillLoad(){
     if (!Array.isArray(this.value)){
@@ -37,6 +52,7 @@ export class InsInputMultiple {
   }
 
   componentDidLoad(){
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
@@ -90,7 +106,7 @@ export class InsInputMultiple {
 			setTimeout(() => {
         this.insInputMultipleEl.querySelector('input').value = null;
         this.insInputMultipleEl.querySelector('input').focus();
-      }, 200);
+      }, 100);
 		}
   }
 
@@ -122,6 +138,17 @@ export class InsInputMultiple {
 		this.insChange.emit({ value: this.value });
 		// this.insInputMultipleEl.querySelector('input').focus();
 	}
+
+  validateDescription(value) {
+    let allowed = '<a>,<abbr>,<acronym>,<address>,<article>,<aside>,<b>,<base>,<bdi>,<bdo>,<blockquote>,<br>,<caption>,<code>,<dd>,<del>,<details>,<dfn>,<dir>,<div>,<dl>,<dt>,<em>,<font>,<h1>,<h2>,<h3>,<h4>,<h5>,<h6>,<hr>,<i>,<ins>,<label>,<li>,<link>,<mark>,<menu>,<meter>,<nav>,<ol>,<p>,<pre>,<q>,<s>,<samp>,<section>,<small>,<span>,<strike>,<strong>,<sub>,<summary>,<sup>,<table>,<tbody>,<td>,<tfoot>,<th>,<thead>,<time>,<tr>,<tt>,<u>,<ul>,<wbr>';
+    allowed = (((allowed || '') + '').toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
+
+    var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+    commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+    return value.replace(commentsAndPhpTags, '').replace(tags, ($0, $1) => {
+      return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
+    });
+  }
 
 	render() {
 		return (
@@ -180,6 +207,10 @@ export class InsInputMultiple {
 				<span class="error-message">
           {this.errorMessage}
         </span>
+
+        { this.description ? this.htmlDescription ?
+          <div class="ins-description" innerHTML={this.validateDescription(this.description)}></div> : <div class="ins-description">{this.description}</div>
+        : ''}
 			</div>
 		)
 	}

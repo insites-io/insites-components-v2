@@ -11,11 +11,17 @@
 | ------------------- | --------------------- | ----------- | --------- | -------------- |
 | `addButtonColor`    | `add-button-color`    |             | `string`  | `"blue"`       |
 | `addButtonIcon`     | `add-button-icon`     |             | `string`  | `"icon-plus"`  |
+| `blankValues`       | `blank-values`        |             | `boolean` | `undefined`    |
+| `checkLoad`         | `check-load`          |             | `boolean` | `false`        |
+| `checkValue`        | `check-value`         |             | `boolean` | `false`        |
+| `description`       | `description`         |             | `string`  | `""`           |
 | `disabled`          | `disabled`            |             | `boolean` | `undefined`    |
 | `errorMessage`      | `error-message`       |             | `string`  | `undefined`    |
 | `hasError`          | `has-error`           |             | `boolean` | `undefined`    |
 | `hasLoad`           | `has-load`            |             | `string`  | `undefined`    |
+| `htmlDescription`   | `html-description`    |             | `boolean` | `false`        |
 | `label`             | `label`               |             | `string`  | `undefined`    |
+| `load`              | `load`                |             | `boolean` | `false`        |
 | `readonly`          | `readonly`            |             | `boolean` | `undefined`    |
 | `removeButtonColor` | `remove-button-color` |             | `string`  | `"blue"`       |
 | `removeButtonIcon`  | `remove-button-icon`  |             | `string`  | `"icon-minus"` |
@@ -40,6 +46,26 @@
 #### Returns
 
 Type: `Promise<any>`
+
+
+
+### `insRecover() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `insReset() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

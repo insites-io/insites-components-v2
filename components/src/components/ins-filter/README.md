@@ -9,6 +9,7 @@
 
 | Property         | Attribute          | Description | Type      | Default                                                                                                                                              |
 | ---------------- | ------------------ | ----------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `checkLoad`      | `check-load`       |             | `boolean` | `false`                                                                                                                                              |
 | `dateFrom`       | `date-from`        |             | `string`  | `""`                                                                                                                                                 |
 | `dateOpt`        | `date-opt`         |             | `any`     | `[     'All',     'Today',     'This Week',     'Last Week',     'This Month',     'Last Month',     'This Year',     'Last Year',     'Custom'   ]` |
 | `dateTitle`      | `date-title`       |             | `any`     | `"Date Period"`                                                                                                                                      |
@@ -16,6 +17,7 @@
 | `defaultDate`    | `default-date`     |             | `string`  | `""`                                                                                                                                                 |
 | `hasLoad`        | `has-load`         |             | `string`  | `undefined`                                                                                                                                          |
 | `label`          | `label`            |             | `string`  | `"Filter:"`                                                                                                                                          |
+| `load`           | `load`             |             | `boolean` | `false`                                                                                                                                              |
 | `withDateFilter` | `with-date-filter` |             | `boolean` | `false`                                                                                                                                              |
 
 

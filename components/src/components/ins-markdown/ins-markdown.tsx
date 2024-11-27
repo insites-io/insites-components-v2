@@ -9,6 +9,8 @@ export class InsMarkdown {
   @Prop({ mutable: true }) label: string = "";
   @Prop({ mutable: true }) value: string = "";
   @Prop({ mutable: true }) replaceLineBreaks: boolean;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   setMarkdownValue() {
     this.insMarkdownEl.querySelector('.markdown').innerHTML = this.replaceLineBreaks ? marked.parse(this.value, {
@@ -19,6 +21,7 @@ export class InsMarkdown {
 
   componentDidLoad() {
     this.setMarkdownValue();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

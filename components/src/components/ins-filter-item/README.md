@@ -7,12 +7,14 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type     | Default                                      |
-| ---------- | ---------- | ----------- | -------- | -------------------------------------------- |
-| `hasLoad`  | `has-load` |             | `string` | `undefined`                                  |
-| `name`     | `name`     |             | `string` | `'Category Label'`                           |
-| `options`  | `options`  |             | `any`    | `["Category 1", "Category 2", "Category 3"]` |
-| `selected` | `selected` |             | `any`    | `undefined`                                  |
+| Property    | Attribute    | Description | Type      | Default                                      |
+| ----------- | ------------ | ----------- | --------- | -------------------------------------------- |
+| `checkLoad` | `check-load` |             | `boolean` | `false`                                      |
+| `hasLoad`   | `has-load`   |             | `string`  | `undefined`                                  |
+| `load`      | `load`       |             | `boolean` | `false`                                      |
+| `name`      | `name`       |             | `string`  | `'Category Label'`                           |
+| `options`   | `options`    |             | `any`     | `["Category 1", "Category 2", "Category 3"]` |
+| `selected`  | `selected`   |             | `any`     | `undefined`                                  |
 
 
 ## Events

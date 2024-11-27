@@ -23,6 +23,8 @@ export class InsFilter {
     'Last Year',
     'Custom'
   ];
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   @State() dateFilterState: any;
   @State() selectedRange: any = "All";
@@ -255,6 +257,7 @@ export class InsFilter {
       this.dateOptEHandler(this.currentFilter, true);
     }
 
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]) {
       let func = window["Insites"].methods[this.hasLoad];

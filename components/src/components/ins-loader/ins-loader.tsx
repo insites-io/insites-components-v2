@@ -9,11 +9,14 @@ export class InsLoader {
   @Prop({ mutable: true }) stateMessage: string = "";
   @Prop({ mutable: true }) stateIcon: string = "";
   @Prop({ mutable: true }) iconColor: string = "";
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   @Prop({ mutable: true }) imageSource: string = "https://components.insites.io/assets/images/loading-loop-2x.gif";
   @Prop({ mutable: true }) useImage: boolean = true;
 
   componentDidLoad(){
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

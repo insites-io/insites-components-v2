@@ -7,13 +7,15 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type      | Default     |
-| ---------- | ---------- | ----------- | --------- | ----------- |
-| `hasLoad`  | `has-load` |             | `string`  | `undefined` |
-| `hidden`   | `hidden`   |             | `boolean` | `false`     |
-| `progress` | `progress` |             | `number`  | `0`         |
-| `text`     | `text`     |             | `string`  | `""`        |
-| `total`    | `total`    |             | `number`  | `1`         |
+| Property    | Attribute    | Description | Type      | Default     |
+| ----------- | ------------ | ----------- | --------- | ----------- |
+| `checkLoad` | `check-load` |             | `boolean` | `false`     |
+| `hasLoad`   | `has-load`   |             | `string`  | `undefined` |
+| `hidden`    | `hidden`     |             | `boolean` | `false`     |
+| `load`      | `load`       |             | `boolean` | `false`     |
+| `progress`  | `progress`   |             | `number`  | `0`         |
+| `text`      | `text`       |             | `string`  | `""`        |
+| `total`     | `total`      |             | `number`  | `1`         |
 
 
 ## Events

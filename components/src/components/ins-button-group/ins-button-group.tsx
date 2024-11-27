@@ -14,10 +14,13 @@ export class InsButtonGroup {
   @Prop({ mutable: true }) color: string = 'blue';
   @Prop({ mutable: true }) disabled: boolean;
   @Prop({ mutable: true }) activeIndex: number = 0;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   @State() buttonOptions = []
 
   componentDidLoad(){
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

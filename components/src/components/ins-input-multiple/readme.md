@@ -7,18 +7,23 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type      | Default     |
-| -------------- | --------------- | ----------- | --------- | ----------- |
-| `disabled`     | `disabled`      |             | `boolean` | `false`     |
-| `errorMessage` | `error-message` |             | `string`  | `""`        |
-| `hasError`     | `has-error`     |             | `boolean` | `false`     |
-| `hasLoad`      | `has-load`      |             | `string`  | `undefined` |
-| `label`        | `label`         |             | `string`  | `undefined` |
-| `name`         | `name`          |             | `string`  | `undefined` |
-| `placeholder`  | `placeholder`   |             | `string`  | `undefined` |
-| `readonly`     | `readonly`      |             | `boolean` | `false`     |
-| `tooltip`      | `tooltip`       |             | `string`  | `""`        |
-| `value`        | `value`         |             | `any`     | `[]`        |
+| Property          | Attribute          | Description | Type      | Default     |
+| ----------------- | ------------------ | ----------- | --------- | ----------- |
+| `checkLoad`       | `check-load`       |             | `boolean` | `false`     |
+| `checkValue`      | `check-value`      |             | `boolean` | `false`     |
+| `description`     | `description`      |             | `string`  | `""`        |
+| `disabled`        | `disabled`         |             | `boolean` | `false`     |
+| `errorMessage`    | `error-message`    |             | `string`  | `""`        |
+| `hasError`        | `has-error`        |             | `boolean` | `false`     |
+| `hasLoad`         | `has-load`         |             | `string`  | `undefined` |
+| `htmlDescription` | `html-description` |             | `boolean` | `false`     |
+| `label`           | `label`            |             | `string`  | `undefined` |
+| `load`            | `load`             |             | `boolean` | `false`     |
+| `name`            | `name`             |             | `string`  | `undefined` |
+| `placeholder`     | `placeholder`      |             | `string`  | `undefined` |
+| `readonly`        | `readonly`         |             | `boolean` | `false`     |
+| `tooltip`         | `tooltip`          |             | `string`  | `""`        |
+| `value`           | `value`            |             | `any`     | `[]`        |
 
 
 ## Events
@@ -40,6 +45,26 @@
 #### Returns
 
 Type: `Promise<any>`
+
+
+
+### `insRecover() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `insReset() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

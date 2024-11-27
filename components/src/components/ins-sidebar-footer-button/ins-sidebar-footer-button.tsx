@@ -8,8 +8,11 @@ export class InsSidebarFooterButton {
   @Prop() hasLoad: string;
   @Prop({ mutable: true }) icon: string = '';
   @Prop({ mutable: true }) open: string = '';
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   componentDidLoad(){
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

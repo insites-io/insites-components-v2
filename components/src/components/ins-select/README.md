@@ -11,6 +11,8 @@
 | --------------------------- | ------------------------------ | ----------- | --------- | ----------- |
 | `button`                    | `button`                       |             | `boolean` | `false`     |
 | `buttonLabel`               | `button-label`                 |             | `string`  | `"Add"`     |
+| `checkLoad`                 | `check-load`                   |             | `boolean` | `false`     |
+| `description`               | `description`                  |             | `string`  | `""`        |
 | `disabled`                  | `disabled`                     |             | `boolean` | `false`     |
 | `dynamicErrorMessage`       | `dynamic-error-message`        |             | `string`  | `""`        |
 | `dynamicHasError`           | `dynamic-has-error`            |             | `boolean` | `false`     |
@@ -19,10 +21,12 @@
 | `errorMessage`              | `error-message`                |             | `string`  | `""`        |
 | `hasError`                  | `has-error`                    |             | `boolean` | `false`     |
 | `hasLoad`                   | `has-load`                     |             | `string`  | `undefined` |
+| `htmlDescription`           | `html-description`             |             | `boolean` | `false`     |
 | `infiniteScroll`            | `infinite-scroll`              |             | `boolean` | `false`     |
 | `initializing`              | `initializing`                 |             | `boolean` | `false`     |
 | `label`                     | `label`                        |             | `string`  | `undefined` |
 | `labelKey`                  | `label-key`                    |             | `string`  | `""`        |
+| `load`                      | `load`                         |             | `boolean` | `false`     |
 | `multiple`                  | `multiple`                     |             | `boolean` | `false`     |
 | `name`                      | `name`                         |             | `string`  | `undefined` |
 | `optionsData`               | --                             |             | `any[]`   | `[]`        |

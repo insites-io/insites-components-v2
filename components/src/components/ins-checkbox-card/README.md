@@ -9,9 +9,11 @@
 
 | Property        | Attribute        | Description | Type      | Default     |
 | --------------- | ---------------- | ----------- | --------- | ----------- |
+| `checkLoad`     | `check-load`     |             | `boolean` | `false`     |
 | `disabled`      | `disabled`       |             | `boolean` | `undefined` |
 | `hasLoad`       | `has-load`       |             | `string`  | `undefined` |
 | `label`         | `label`          |             | `string`  | `undefined` |
+| `load`          | `load`           |             | `boolean` | `false`     |
 | `name`          | `name`           |             | `string`  | `undefined` |
 | `noPadding`     | `no-padding`     |             | `boolean` | `undefined` |
 | `selected`      | `selected`       |             | `boolean` | `undefined` |

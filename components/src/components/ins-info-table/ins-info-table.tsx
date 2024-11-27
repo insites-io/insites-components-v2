@@ -16,8 +16,11 @@ export class InsInfoTable {
   @Prop({ mutable: true }) emptyValue: string = '-';
   @Prop({ mutable: true }) textOverflow: string = 'ellipsis';
   @Prop({ mutable: true }) renderHtml: boolean = false;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   componentDidLoad(){
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

@@ -83,6 +83,56 @@
 
   <ins-renderer>
     <div>
+      <ins-alert-box type="warning" close-icon="icon-close-1">
+        <div>
+          <b>Warning</b><br/>
+          <ul>
+            <li>Before stepping into the tutorial, make sure you have backup the template first.Before stepping into the
+              tutorial, make sure you have backup the template first.</li>
+          </ul>
+        </div>
+      </ins-alert-box>
+      <ins-toggle-switch input-label="Test" label="test" value="test" has-error error-message="Errour!" tooltip="tester"></ins-toggle-switch>
+
+      <ins-checkbox-group id="checkGroupEl" label="Check Group" has-error error-message="Error!" tooltip="tester">
+        <div>
+          <ins-checkbox label="1" value="1"></ins-checkbox>
+          <ins-checkbox label="2" value="2"></ins-checkbox>
+        </div>
+      </ins-checkbox-group>
+
+      <script>
+        const checkGroupEl = document.getElementById('checkGroupEl');
+
+        checkGroupEl.addEventListener('insInput', event => {
+          console.log(event)
+        });
+
+        setTimeout(() => {
+          checkGroupEl.setValue(['1', '2']);
+        }, 200);
+      </script>
+
+
+      <ins-radio-group id="radioGroupEl" label="Radio Group" readonly tooltip="tester">
+        <div>
+          <ins-radio label="1" value="1"></ins-radio>
+          <ins-radio label="2" value="2"></ins-radio>
+        </div>
+      </ins-radio-group>
+
+      <script>
+        const radioGroupEl = document.getElementById('radioGroupEl');
+
+        radioGroupEl.addEventListener('insInput', event => {
+          console.log(event)
+        });
+
+        setTimeout(() => {
+          radioGroupEl.setValue('2');
+        }, 200);
+      </script>
+
       <ins-button-select id="insSelectEl" label-key="name" value-key="value">
         <ins-button-select-option
         label="Static 2"
@@ -104,8 +154,9 @@
         { name: "Julia Smith", value: 4 },
       ]
     </script>
+    <ins-input-stepper label="test"></ins-input-stepper>
 
-<ins-input label="InPut" has-error error-message="Required."></ins-input>
+<ins-input label="InPut" has-error error-message="Required." html-description description="<i>I tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-input>
       <ins-markdown-editor label="MarkDown" has-error error-message="Required."></ins-markdown-editor>
       <ins-button-select label="Small" searchable small>
 

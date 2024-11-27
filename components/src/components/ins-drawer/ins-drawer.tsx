@@ -18,6 +18,8 @@ export class InsDrawer {
   @Prop({ mutable: true }) showCloseButton: boolean = true;
   @Prop({ mutable: true }) backdropCanClose: boolean = true;
   @Prop({ mutable: true }) customWidth: string;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   @Watch('isOpen')
   watchStatusHandler(){
@@ -96,6 +98,7 @@ export class InsDrawer {
     this.customWidth ? this.setStyleWidth() : '';
     this.setBodyCSS();
     this.rebindHeaderCSS();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

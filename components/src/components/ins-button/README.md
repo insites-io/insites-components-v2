@@ -9,6 +9,7 @@
 
 | Property        | Attribute        | Description | Type      | Default     |
 | --------------- | ---------------- | ----------- | --------- | ----------- |
+| `checkLoad`     | `check-load`     |             | `boolean` | `false`     |
 | `color`         | `color`          |             | `string`  | `'blue'`    |
 | `cursor`        | `cursor`         |             | `string`  | `''`        |
 | `data`          | `data`           |             | `string`  | `''`        |
@@ -18,6 +19,7 @@
 | `icon`          | `icon`           |             | `string`  | `''`        |
 | `iconRight`     | `icon-right`     |             | `string`  | `''`        |
 | `label`         | `label`          |             | `string`  | `'BUTTON'`  |
+| `load`          | `load`           |             | `boolean` | `false`     |
 | `loading`       | `loading`        |             | `boolean` | `false`     |
 | `options`       | `options`        |             | `string`  | `''`        |
 | `outlined`      | `outlined`       |             | `boolean` | `false`     |

@@ -7,6 +7,7 @@ export class InsTabItem {
 
   @Event() insTabError: EventEmitter;
   @Event() insTabDisableToggle: EventEmitter;
+  @Event() insTabLoad: EventEmitter;
 
   @Prop({ mutable: true }) active: boolean;
   @Prop({ mutable: true }) label: string = "";
@@ -33,6 +34,10 @@ export class InsTabItem {
   @Watch('disabled')
   disabledWatcher() {
     this.insTabDisableToggle.emit(this.disabled);
+  }
+
+  componentDidLoad() {
+    this.insTabLoad.emit();
   }
 
   render() {

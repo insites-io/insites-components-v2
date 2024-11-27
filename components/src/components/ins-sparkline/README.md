@@ -7,16 +7,18 @@
 
 ## Properties
 
-| Property      | Attribute     | Description | Type     | Default     |
-| ------------- | ------------- | ----------- | -------- | ----------- |
-| `chartData`   | `chart-data`  |             | `any`    | `undefined` |
-| `description` | `description` |             | `string` | `""`        |
-| `hasLoad`     | `has-load`    |             | `string` | `undefined` |
-| `icon`        | `icon`        |             | `string` | `""`        |
-| `movement`    | `movement`    |             | `any`    | `""`        |
-| `name`        | `name`        |             | `string` | `""`        |
-| `percentage`  | `percentage`  |             | `any`    | `""`        |
-| `value`       | `value`       |             | `string` | `""`        |
+| Property      | Attribute     | Description | Type      | Default     |
+| ------------- | ------------- | ----------- | --------- | ----------- |
+| `chartData`   | `chart-data`  |             | `any`     | `undefined` |
+| `checkLoad`   | `check-load`  |             | `boolean` | `false`     |
+| `description` | `description` |             | `string`  | `""`        |
+| `hasLoad`     | `has-load`    |             | `string`  | `undefined` |
+| `icon`        | `icon`        |             | `string`  | `""`        |
+| `load`        | `load`        |             | `boolean` | `false`     |
+| `movement`    | `movement`    |             | `any`     | `""`        |
+| `name`        | `name`        |             | `string`  | `""`        |
+| `percentage`  | `percentage`  |             | `any`     | `""`        |
+| `value`       | `value`       |             | `string`  | `""`        |
 
 
 ## Events

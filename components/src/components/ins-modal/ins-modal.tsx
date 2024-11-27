@@ -12,6 +12,8 @@ export class InsModal {
   @Prop({ mutable: true }) confirmation: boolean;
   @Prop({ mutable: true }) heading: string;
   @Prop({ mutable: true }) value: any;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   @Prop({ mutable: true }) parentRender: string;
   @Prop({ mutable: true }) childModal: any;
@@ -36,6 +38,7 @@ export class InsModal {
 
   componentDidLoad() {
     this.adjustPosition();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

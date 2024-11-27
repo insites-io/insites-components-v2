@@ -1,8 +1,7 @@
 import { h, Component, Prop, Element, Method, Listen, Event, EventEmitter } from "@stencil/core";
 
 @Component({
-    tag: 'ins-button-select',
-    styleUrl: "./ins-button-select.scss"
+    tag: 'ins-button-select'
 })
 
 export class InsButtonSelect {
@@ -38,6 +37,11 @@ export class InsButtonSelect {
     @Prop({ mutable: true }) valueKey: string = "";
     @Prop({ mutable: true }) optionsData: Array<any> = [];
     @Prop({ mutable: true }) small: boolean = false;
+    @Prop({ mutable: true }) load: boolean = false;
+    @Prop({ mutable: true }) checkLoad: boolean = false;
+
+    @Prop({mutable: true}) description: string = "";
+    @Prop({mutable: true}) htmlDescription: boolean = false;
 
     // Multiple Mode
     @Prop({mutable: true}) multiple: boolean = false;
@@ -60,7 +64,7 @@ export class InsButtonSelect {
     @Prop({ mutable: true }) lookupScrolling: boolean = false;
 
     // Mutable Controllers
-    @Prop({ mutable: true }) dropUp: boolean = false
+    @Prop({ mutable: true }) dropUp: boolean = false;
     @Prop({ mutable: true }) selectedValues: any = [];
     dynamicInputEl; scrollWrapEl;
     loading: boolean = false;
@@ -655,6 +659,7 @@ export class InsButtonSelect {
         this.initOptions();
         this.setValue(this.value);
 
+        if (this.checkLoad) this.load = true;
         this.didLoad.emit();
         this.checkDropUp();
 
@@ -678,8 +683,28 @@ export class InsButtonSelect {
         this.mainWrapEl.classList.remove("activated");
     }
 
+    validateDescription(value) {
+      let allowed = '<a>,<abbr>,<acronym>,<address>,<article>,<aside>,<b>,<base>,<bdi>,<bdo>,<blockquote>,<br>,<caption>,<code>,<dd>,<del>,<details>,<dfn>,<dir>,<div>,<dl>,<dt>,<em>,<font>,<h1>,<h2>,<h3>,<h4>,<h5>,<h6>,<hr>,<i>,<ins>,<label>,<li>,<link>,<mark>,<menu>,<meter>,<nav>,<ol>,<p>,<pre>,<q>,<s>,<samp>,<section>,<small>,<span>,<strike>,<strong>,<sub>,<summary>,<sup>,<table>,<tbody>,<td>,<tfoot>,<th>,<thead>,<time>,<tr>,<tt>,<u>,<ul>,<wbr>';
+      allowed = (((allowed || '') + '').toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
+
+      var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+      commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+      return value.replace(commentsAndPhpTags, '').replace(tags, ($0, $1) => {
+        return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
+      });
+    }
+
+    renderDescriptionWrap() {
+      return (
+        this.description ? this.htmlDescription ?
+          <div class="ins-description" innerHTML={this.validateDescription(this.description)}></div> : <div class="ins-description">{this.description}</div>
+        : ''
+      )
+    }
+
     render() {
         return (
+          <div class="ins-button-select-wrap">
             <div class={`ins-button-select ins-select-wrap buttonise
                 ${this.dropUp ? 'drop-up' : ''}
                 ${this.readonly ? 'readonly' : ''}
@@ -690,13 +715,15 @@ export class InsButtonSelect {
 
                 { this.renderHiddenFields() }
                 { this.renderValueWrap() }
-                { this.renderErrorWrap() }
                 { this.renderOptionsWrap() }
 
                 <div class="main-spinner-wrap">
                     <div class="spinner"></div>
                 </div>
             </div>
+            { this.renderErrorWrap() }
+            { this.renderDescriptionWrap() }
+          </div>
         );
     }
 }

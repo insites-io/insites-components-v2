@@ -7,21 +7,25 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type      | Default     |
-| -------------- | --------------- | ----------- | --------- | ----------- |
-| `disabled`     | `disabled`      |             | `boolean` | `false`     |
-| `errorMessage` | `error-message` |             | `string`  | `undefined` |
-| `hasError`     | `has-error`     |             | `boolean` | `false`     |
-| `hasLoad`      | `has-load`      |             | `string`  | `undefined` |
-| `label`        | `label`         |             | `string`  | `undefined` |
-| `max`          | `max`           |             | `number`  | `undefined` |
-| `min`          | `min`           |             | `number`  | `0`         |
-| `name`         | `name`          |             | `string`  | `undefined` |
-| `position`     | `position`      |             | `string`  | `"right"`   |
-| `sliderOnly`   | `slider-only`   |             | `boolean` | `false`     |
-| `step`         | `step`          |             | `number`  | `1`         |
-| `tooltip`      | `tooltip`       |             | `string`  | `""`        |
-| `value`        | `value`         |             | `any`     | `0`         |
+| Property          | Attribute          | Description | Type      | Default     |
+| ----------------- | ------------------ | ----------- | --------- | ----------- |
+| `checkLoad`       | `check-load`       |             | `boolean` | `false`     |
+| `description`     | `description`      |             | `string`  | `""`        |
+| `disabled`        | `disabled`         |             | `boolean` | `false`     |
+| `errorMessage`    | `error-message`    |             | `string`  | `undefined` |
+| `hasError`        | `has-error`        |             | `boolean` | `false`     |
+| `hasLoad`         | `has-load`         |             | `string`  | `undefined` |
+| `htmlDescription` | `html-description` |             | `boolean` | `false`     |
+| `label`           | `label`            |             | `string`  | `undefined` |
+| `load`            | `load`             |             | `boolean` | `false`     |
+| `max`             | `max`              |             | `number`  | `undefined` |
+| `min`             | `min`              |             | `number`  | `0`         |
+| `name`            | `name`             |             | `string`  | `undefined` |
+| `position`        | `position`         |             | `string`  | `"right"`   |
+| `sliderOnly`      | `slider-only`      |             | `boolean` | `false`     |
+| `step`            | `step`             |             | `number`  | `1`         |
+| `tooltip`         | `tooltip`          |             | `string`  | `""`        |
+| `value`           | `value`            |             | `any`     | `0`         |
 
 
 ## Events

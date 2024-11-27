@@ -7,19 +7,27 @@
 
 ## Properties
 
-| Property        | Attribute        | Description | Type      | Default     |
-| --------------- | ---------------- | ----------- | --------- | ----------- |
-| `checked`       | `checked`        |             | `boolean` | `undefined` |
-| `disabled`      | `disabled`       |             | `boolean` | `undefined` |
-| `disabledLabel` | `disabled-label` |             | `string`  | `undefined` |
-| `enabledLabel`  | `enabled-label`  |             | `string`  | `undefined` |
-| `falseValue`    | `false-value`    |             | `string`  | `""`        |
-| `hasLoad`       | `has-load`       |             | `string`  | `undefined` |
-| `label`         | `label`          |             | `string`  | `undefined` |
-| `name`          | `name`           |             | `string`  | `undefined` |
-| `tooltip`       | `tooltip`        |             | `string`  | `""`        |
-| `trueValue`     | `true-value`     |             | `string`  | `""`        |
-| `value`         | `value`          |             | `string`  | `undefined` |
+| Property          | Attribute          | Description | Type      | Default     |
+| ----------------- | ------------------ | ----------- | --------- | ----------- |
+| `checkLoad`       | `check-load`       |             | `boolean` | `false`     |
+| `checkValue`      | `check-value`      |             | `boolean` | `false`     |
+| `checked`         | `checked`          |             | `boolean` | `undefined` |
+| `description`     | `description`      |             | `string`  | `""`        |
+| `disabled`        | `disabled`         |             | `boolean` | `undefined` |
+| `disabledLabel`   | `disabled-label`   |             | `string`  | `undefined` |
+| `enabledLabel`    | `enabled-label`    |             | `string`  | `undefined` |
+| `errorMessage`    | `error-message`    |             | `string`  | `undefined` |
+| `falseValue`      | `false-value`      |             | `string`  | `""`        |
+| `hasError`        | `has-error`        |             | `boolean` | `undefined` |
+| `hasLoad`         | `has-load`         |             | `string`  | `undefined` |
+| `htmlDescription` | `html-description` |             | `boolean` | `false`     |
+| `inputLabel`      | `input-label`      |             | `string`  | `undefined` |
+| `label`           | `label`            |             | `string`  | `undefined` |
+| `load`            | `load`             |             | `boolean` | `false`     |
+| `name`            | `name`             |             | `string`  | `undefined` |
+| `tooltip`         | `tooltip`          |             | `string`  | `""`        |
+| `trueValue`       | `true-value`       |             | `string`  | `""`        |
+| `value`           | `value`            |             | `string`  | `undefined` |
 
 
 ## Events
@@ -40,6 +48,26 @@
 #### Returns
 
 Type: `Promise<{ value: string; trueValue: string; falseValue: string; }>`
+
+
+
+### `insRecover() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `insReset() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

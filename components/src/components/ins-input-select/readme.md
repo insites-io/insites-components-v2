@@ -10,6 +10,9 @@
 | Property                | Attribute                | Description | Type      | Default                             |
 | ----------------------- | ------------------------ | ----------- | --------- | ----------------------------------- |
 | `blankLabel`            | `blank-label`            |             | `boolean` | `false`                             |
+| `checkLoad`             | `check-load`             |             | `boolean` | `false`                             |
+| `checkValue`            | `check-value`            |             | `boolean` | `false`                             |
+| `description`           | `description`            |             | `string`  | `""`                                |
 | `disabled`              | `disabled`               |             | `boolean` | `false`                             |
 | `dropUp`                | `drop-up`                |             | `boolean` | `false`                             |
 | `dynamicButtonLabel`    | `dynamic-button-label`   |             | `string`  | `"Add"`                             |
@@ -21,8 +24,10 @@
 | `errorMessage`          | `error-message`          |             | `string`  | `""`                                |
 | `hasError`              | `has-error`              |             | `boolean` | `false`                             |
 | `hasLoad`               | `has-load`               |             | `string`  | `undefined`                         |
+| `htmlDescription`       | `html-description`       |             | `boolean` | `false`                             |
 | `label`                 | `label`                  |             | `string`  | `undefined`                         |
 | `labelKey`              | `label-key`              |             | `string`  | `""`                                |
+| `load`                  | `load`                   |             | `boolean` | `false`                             |
 | `lookup`                | `lookup`                 |             | `boolean` | `false`                             |
 | `lookupLoading`         | `lookup-loading`         |             | `boolean` | `false`                             |
 | `lookupScrolling`       | `lookup-scrolling`       |             | `boolean` | `false`                             |
@@ -120,6 +125,26 @@ Type: `Promise<NodeListOf<HTMLInsInputSelectOptionElement>>`
 #### Returns
 
 Type: `Promise<any>`
+
+
+
+### `insRecover() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `insReset() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

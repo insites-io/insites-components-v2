@@ -14,9 +14,12 @@ export class InsAccordionLink {
   @Prop({ mutable: true }) icon: string = "";
   @Prop({ mutable: true }) active: boolean = false;
   @Prop({ mutable: true }) disabled: boolean = false;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   componentDidLoad(){
     this.checkSiblings();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

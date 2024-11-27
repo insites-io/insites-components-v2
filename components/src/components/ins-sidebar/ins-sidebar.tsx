@@ -9,6 +9,8 @@ export class InsSidebar {
   @Prop() hasLoad: string;
   @Prop({ mutable: true }) fullLogo: string;
   @Prop({ mutable: true }) iconLogo: string;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   @State() minimised: boolean = false;
   @State() noFooter: boolean = false;
@@ -48,6 +50,7 @@ export class InsSidebar {
       await this.checkHash();
     };
 
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

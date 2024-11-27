@@ -23,6 +23,7 @@
 | --------------------- | ----------- | ------------------ |
 | `insTabDisableToggle` |             | `CustomEvent<any>` |
 | `insTabError`         |             | `CustomEvent<any>` |
+| `insTabLoad`          |             | `CustomEvent<any>` |
 
 
 ## Methods

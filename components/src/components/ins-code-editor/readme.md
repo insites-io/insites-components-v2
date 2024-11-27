@@ -10,11 +10,16 @@
 | Property             | Attribute              | Description | Type      | Default       |
 | -------------------- | ---------------------- | ----------- | --------- | ------------- |
 | `autoHeight`         | `auto-height`          |             | `boolean` | `false`       |
+| `checkLoad`          | `check-load`           |             | `boolean` | `false`       |
+| `checkValue`         | `check-value`          |             | `boolean` | `false`       |
+| `description`        | `description`          |             | `string`  | `""`          |
 | `disableLineNumbers` | `disable-line-numbers` |             | `boolean` | `false`       |
 | `errorMessage`       | `error-message`        |             | `string`  | `""`          |
 | `hasError`           | `has-error`            |             | `boolean` | `false`       |
 | `hasLoad`            | `has-load`             |             | `string`  | `undefined`   |
+| `htmlDescription`    | `html-description`     |             | `boolean` | `false`       |
 | `label`              | `label`                |             | `string`  | `""`          |
+| `load`               | `load`                 |             | `boolean` | `false`       |
 | `mode`               | `mode`                 |             | `string`  | `"htmlmixed"` |
 | `name`               | `name`                 |             | `string`  | `""`          |
 | `readonly`           | `readonly`             |             | `boolean` | `false`       |
@@ -52,6 +57,26 @@ Type: `Promise<void>`
 #### Returns
 
 Type: `Promise<any>`
+
+
+
+### `insRecover() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `insReset() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

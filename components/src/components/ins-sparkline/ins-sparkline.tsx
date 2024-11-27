@@ -12,6 +12,8 @@ export class InsSparkline {
   @Prop({ mutable: true }) percentage: any = "";
   @Prop({ mutable: true }) description: string = "";
   @Prop({ mutable: true }) movement: any = "";
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   insChartEl: any;
   chartContainerEl: any;
@@ -24,6 +26,7 @@ export class InsSparkline {
     this.insChartEl = this.insSparklineEl.querySelector('ins-chart');
     this.chartContainerEl = this.insChartEl.querySelector('.chart-container');
     this.renderChart();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

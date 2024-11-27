@@ -11,9 +11,11 @@
 | -------------- | --------------- | ----------- | --------- | ----------- |
 | `activeIndex`  | `active-index`  |             | `number`  | `0`         |
 | `activeOption` | `active-option` |             | `string`  | `""`        |
+| `checkLoad`    | `check-load`    |             | `boolean` | `false`     |
 | `color`        | `color`         |             | `string`  | `'blue'`    |
 | `disabled`     | `disabled`      |             | `boolean` | `undefined` |
 | `hasLoad`      | `has-load`      |             | `string`  | `undefined` |
+| `load`         | `load`          |             | `boolean` | `false`     |
 | `options`      | `options`       |             | `string`  | `""`        |
 | `size`         | `size`          |             | `string`  | `'normal'`  |
 

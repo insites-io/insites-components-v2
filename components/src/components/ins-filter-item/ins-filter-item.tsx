@@ -9,6 +9,8 @@ export class InsFilterItem {
     @Prop({ mutable: true }) name: string = 'Category Label';
     @Prop({ mutable: true }) options: any = ["Category 1", "Category 2", "Category 3"];
     @Prop({ mutable: true }) selected: any;
+    @Prop({ mutable: true }) load: boolean = false;
+    @Prop({ mutable: true }) checkLoad: boolean = false;
 
     @State() dropDownState: boolean = false;
 
@@ -57,6 +59,7 @@ export class InsFilterItem {
       this.optionsWrapEl = this.el.querySelector('.filter-item__button');
       this.addClickOutside();
 
+      if (this.checkLoad) this.load = true;
       this.didLoad.emit();
       if (this.hasLoad && window["Insites"]){
         let func = window["Insites"].methods[this.hasLoad];

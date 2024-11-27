@@ -25,6 +25,8 @@ export class InsButton {
   @Prop({ mutable: true }) cursor: string  = '';
   @Prop({ mutable: true }) textTransform: string  = '';
   @Prop({ mutable: true }) loading: boolean  = false;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   buttonOptions = [];
   target: any;
@@ -88,6 +90,7 @@ export class InsButton {
   componentDidLoad() {
     this.checkTarget();
     this.closeMenu();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

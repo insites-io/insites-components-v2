@@ -15,6 +15,8 @@ export class InsTable {
   @Event() didLoad: EventEmitter;
   @Prop() hasLoad: string;
 
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
   @Prop({ mutable: true }) noWrap: boolean = false;
   @Prop({ mutable: true }) searchPosition: string = "right";
   @Prop({ mutable: true }) withoutSearch: boolean = false;
@@ -90,6 +92,7 @@ export class InsTable {
   }
 
   componentDidLoad(){
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

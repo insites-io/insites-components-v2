@@ -18,7 +18,8 @@ export class InsCreditCard {
   @Prop({mutable: true}) compact: boolean;
   @Prop({mutable: true}) expired: boolean;
   @Prop({mutable: true}) fullYear: boolean;
-
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   @Method()
   async setValue(value){
@@ -40,6 +41,7 @@ export class InsCreditCard {
   }
 
   componentDidLoad(){
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

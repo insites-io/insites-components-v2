@@ -8,6 +8,8 @@ export class InsLineChart {
   @Prop({ mutable: true }) name: string = "";
   @Prop({ mutable: true }) categories: any = [];
   @Prop({ mutable: true }) chartData: any = [];
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   insChartEl: any;
   chartContainerEl: any;
@@ -16,6 +18,7 @@ export class InsLineChart {
     this.insChartEl = this.insLineChartEl.querySelector('ins-chart');
     this.chartContainerEl = this.insChartEl.querySelector('.chart-container');
     this.renderChart();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

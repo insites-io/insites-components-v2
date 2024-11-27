@@ -11,8 +11,10 @@
 | ------------ | ------------ | ----------- | --------- | ----------- |
 | `categories` | --           |             | `any[]`   | `[]`        |
 | `chartData`  | --           |             | `any[]`   | `[]`        |
+| `checkLoad`  | `check-load` |             | `boolean` | `false`     |
 | `hasLoad`    | `has-load`   |             | `string`  | `undefined` |
 | `horizontal` | `horizontal` |             | `boolean` | `false`     |
+| `load`       | `load`       |             | `boolean` | `false`     |
 | `name`       | `name`       |             | `string`  | `""`        |
 | `stacked`    | `stacked`    |             | `boolean` | `false`     |
 

@@ -12,7 +12,10 @@
 | `acceptedFiles`     | `accepted-files`      |             | `string`  | `null`                                |
 | `autoUpload`        | `auto-upload`         |             | `boolean` | `false`                               |
 | `capture`           | `capture`             |             | `string`  | `null`                                |
+| `checkLoad`         | `check-load`          |             | `boolean` | `false`                               |
+| `checkValue`        | `check-value`         |             | `boolean` | `false`                               |
 | `credentialsUrl`    | `credentials-url`     |             | `string`  | `undefined`                           |
+| `description`       | `description`         |             | `string`  | `""`                                  |
 | `disabled`          | `disabled`            |             | `boolean` | `false`                               |
 | `errorMessage`      | `error-message`       |             | `string`  | `""`                                  |
 | `fieldName`         | `field-name`          |             | `string`  | `undefined`                           |
@@ -20,7 +23,9 @@
 | `fileIcon`          | `file-icon`           |             | `string`  | `"icon-notepad"`                      |
 | `hasError`          | `has-error`           |             | `boolean` | `false`                               |
 | `hasLoad`           | `has-load`            |             | `string`  | `undefined`                           |
+| `htmlDescription`   | `html-description`    |             | `boolean` | `false`                               |
 | `label`             | `label`               |             | `string`  | `"Attachment(s)"`                     |
+| `load`              | `load`                |             | `boolean` | `false`                               |
 | `maxFileSize`       | `max-file-size`       |             | `number`  | `10`                                  |
 | `maxFileSizeLabel`  | `max-file-size-label` |             | `string`  | `"Max file size"`                     |
 | `maxFiles`          | `max-files`           |             | `number`  | `1`                                   |
@@ -43,6 +48,7 @@
 | ----------------- | ----------- | ------------------ |
 | `didLoad`         |             | `CustomEvent<any>` |
 | `insFileAdded`    |             | `CustomEvent<any>` |
+| `insFileChange`   |             | `CustomEvent<any>` |
 | `insFileError`    |             | `CustomEvent<any>` |
 | `insFileRemoved`  |             | `CustomEvent<any>` |
 | `insFileUploaded` |             | `CustomEvent<any>` |
@@ -104,6 +110,26 @@ Type: `Promise<unknown>`
 #### Returns
 
 Type: `Promise<any>`
+
+
+
+### `insRecover() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `insReset() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

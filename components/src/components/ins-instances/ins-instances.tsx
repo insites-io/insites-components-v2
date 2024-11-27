@@ -9,6 +9,8 @@ export class InsInstances {
   @Prop({ mutable: true }) instance: string = "";
   @Prop({ mutable: true }) instanceLink: string = "";
   @Prop({ mutable: true }) newTab: boolean = false;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   @State() dropDownState: boolean;
   @State() hasItems: boolean;
@@ -40,6 +42,7 @@ export class InsInstances {
       });
     }
 
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

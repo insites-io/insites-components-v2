@@ -10,12 +10,15 @@ export class InsProgressBar {
   @Prop({mutable: true}) progress: number = 0;
   @Prop({mutable: true}) total: number = 1;
   @Prop({mutable: true}) hidden: boolean = false;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   progressEl: any;
 
   componentDidLoad(){
     this.progressEl = this.el.querySelector('.progress')
-    this.calculateProgress()
+    this.calculateProgress();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

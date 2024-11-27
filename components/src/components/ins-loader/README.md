@@ -9,9 +9,11 @@
 
 | Property       | Attribute       | Description | Type      | Default                                                             |
 | -------------- | --------------- | ----------- | --------- | ------------------------------------------------------------------- |
+| `checkLoad`    | `check-load`    |             | `boolean` | `false`                                                             |
 | `hasLoad`      | `has-load`      |             | `string`  | `undefined`                                                         |
 | `iconColor`    | `icon-color`    |             | `string`  | `""`                                                                |
 | `imageSource`  | `image-source`  |             | `string`  | `"https://components.insites.io/assets/images/loading-loop-2x.gif"` |
+| `load`         | `load`          |             | `boolean` | `false`                                                             |
 | `stateIcon`    | `state-icon`    |             | `string`  | `""`                                                                |
 | `stateMessage` | `state-message` |             | `string`  | `""`                                                                |
 | `stateTitle`   | `state-title`   |             | `string`  | `""`                                                                |

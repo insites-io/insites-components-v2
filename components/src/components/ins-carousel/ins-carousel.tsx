@@ -35,6 +35,8 @@ export class InsCarousel {
   @Prop({ mutable: true }) noPagination: boolean = false;
   @Prop({ mutable: true }) noCarouselButton: boolean = false;
   @Prop({ mutable: true }) dragDisabled: boolean = false;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   slider: any;
   slides: any;
@@ -45,6 +47,7 @@ export class InsCarousel {
 
   componentDidLoad(){
     this.initSiema();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

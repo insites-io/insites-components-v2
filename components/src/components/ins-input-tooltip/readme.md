@@ -18,6 +18,7 @@
 
  - [ins-card-select](../ins-card-select)
  - [ins-checkbox](../ins-checkbox)
+ - [ins-checkbox-group](../ins-checkbox-group)
  - [ins-code-editor](../ins-code-editor)
  - [ins-date-time](../ins-date-time)
  - [ins-editor](../ins-editor)
@@ -32,6 +33,7 @@
  - [ins-input-tel](../ins-input-tel)
  - [ins-markdown-editor](../ins-markdown-editor)
  - [ins-radio](../ins-radio)
+ - [ins-radio-group](../ins-radio-group)
  - [ins-select](../ins-select)
  - [ins-textarea](../ins-textarea)
  - [ins-toggle-switch](../ins-toggle-switch)
@@ -41,6 +43,7 @@
 graph TD;
   ins-card-select --> ins-input-tooltip
   ins-checkbox --> ins-input-tooltip
+  ins-checkbox-group --> ins-input-tooltip
   ins-code-editor --> ins-input-tooltip
   ins-date-time --> ins-input-tooltip
   ins-editor --> ins-input-tooltip
@@ -55,6 +58,7 @@ graph TD;
   ins-input-tel --> ins-input-tooltip
   ins-markdown-editor --> ins-input-tooltip
   ins-radio --> ins-input-tooltip
+  ins-radio-group --> ins-input-tooltip
   ins-select --> ins-input-tooltip
   ins-textarea --> ins-input-tooltip
   ins-toggle-switch --> ins-input-tooltip

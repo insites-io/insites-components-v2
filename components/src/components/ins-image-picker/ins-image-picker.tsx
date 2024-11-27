@@ -26,6 +26,8 @@ export class Insimagepicker {
   @Prop({mutable: true}) uploadImgRecFileSizeType: string = "KB";
   @Prop({mutable: true}) uploadImgFileFormats: string = "JPG, JPEG, PNG or SVG.";
   @Prop({mutable: true}) errorMessage: string = "Invalid image file.";
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   cropper;
   base64;
@@ -55,6 +57,7 @@ export class Insimagepicker {
 
   componentDidLoad () {
     this.initEls();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

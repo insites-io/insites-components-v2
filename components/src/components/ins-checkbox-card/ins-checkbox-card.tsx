@@ -16,6 +16,8 @@ export class InsCheckboxCard {
   @Prop({mutable:true}) value: string;
   @Prop({mutable:true}) label: string;
   @Prop({mutable:true}) name: string;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   addColorStyles(){
     let insCardWrap = this.insCheckboxCardEl.querySelector('.ins-checkbox-card-wrap');
@@ -47,7 +49,8 @@ export class InsCheckboxCard {
   }
 
   componentDidLoad(){
-    this.addColorStyles()
+    this.addColorStyles();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

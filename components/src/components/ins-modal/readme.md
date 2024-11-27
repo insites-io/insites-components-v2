@@ -10,6 +10,7 @@
 | Property              | Attribute               | Description | Type      | Default     |
 | --------------------- | ----------------------- | ----------- | --------- | ----------- |
 | `buttonAlignment`     | `button-alignment`      |             | `string`  | `"center"`  |
+| `checkLoad`           | `check-load`            |             | `boolean` | `false`     |
 | `childModal`          | `child-modal`           |             | `any`     | `undefined` |
 | `closeButtonColor`    | `close-button-color`    |             | `string`  | `undefined` |
 | `closeButtonIcon`     | `close-button-icon`     |             | `string`  | `undefined` |
@@ -22,6 +23,7 @@
 | `heading`             | `heading`               |             | `string`  | `undefined` |
 | `height`              | `height`                |             | `string`  | `"80%"`     |
 | `light`               | `light`                 |             | `boolean` | `undefined` |
+| `load`                | `load`                  |             | `boolean` | `false`     |
 | `noButton`            | `no-button`             |             | `boolean` | `false`     |
 | `parentRender`        | `parent-render`         |             | `string`  | `undefined` |
 | `preventClickOutside` | `prevent-click-outside` |             | `boolean` | `false`     |

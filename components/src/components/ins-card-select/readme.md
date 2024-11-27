@@ -7,16 +7,21 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type      | Default     |
-| -------------- | --------------- | ----------- | --------- | ----------- |
-| `disabled`     | `disabled`      |             | `boolean` | `undefined` |
-| `errorMessage` | `error-message` |             | `string`  | `undefined` |
-| `hasError`     | `has-error`     |             | `boolean` | `undefined` |
-| `label`        | `label`         |             | `string`  | `undefined` |
-| `multiple`     | `multiple`      |             | `boolean` | `undefined` |
-| `readonly`     | `readonly`      |             | `boolean` | `undefined` |
-| `tooltip`      | `tooltip`       |             | `string`  | `undefined` |
-| `value`        | `value`         |             | `any`     | `undefined` |
+| Property          | Attribute          | Description | Type      | Default     |
+| ----------------- | ------------------ | ----------- | --------- | ----------- |
+| `checkLoad`       | `check-load`       |             | `boolean` | `false`     |
+| `checkValue`      | `check-value`      |             | `boolean` | `false`     |
+| `description`     | `description`      |             | `string`  | `""`        |
+| `disabled`        | `disabled`         |             | `boolean` | `undefined` |
+| `errorMessage`    | `error-message`    |             | `string`  | `undefined` |
+| `hasError`        | `has-error`        |             | `boolean` | `undefined` |
+| `htmlDescription` | `html-description` |             | `boolean` | `false`     |
+| `label`           | `label`            |             | `string`  | `undefined` |
+| `load`            | `load`             |             | `boolean` | `false`     |
+| `multiple`        | `multiple`         |             | `boolean` | `undefined` |
+| `readonly`        | `readonly`         |             | `boolean` | `undefined` |
+| `tooltip`         | `tooltip`          |             | `string`  | `undefined` |
+| `value`           | `value`            |             | `any`     | `undefined` |
 
 
 ## Events
@@ -36,6 +41,26 @@
 #### Returns
 
 Type: `Promise<any>`
+
+
+
+### `insRecover() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `insReset() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

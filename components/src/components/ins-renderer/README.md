@@ -10,10 +10,12 @@
 | Property             | Attribute             | Description | Type      | Default     |
 | -------------------- | --------------------- | ----------- | --------- | ----------- |
 | `app`                | `app`                 |             | `boolean` | `false`     |
+| `checkLoad`          | `check-load`          |             | `boolean` | `false`     |
 | `disableBreadcrumbs` | `disable-breadcrumbs` |             | `boolean` | `false`     |
 | `hasLoad`            | `has-load`            |             | `string`  | `undefined` |
 | `label`              | `label`               |             | `string`  | `undefined` |
 | `link`               | `link`                |             | `string`  | `undefined` |
+| `load`               | `load`                |             | `boolean` | `false`     |
 
 
 ## Events

@@ -31,10 +31,31 @@ export class InsDateTime {
   @Prop({ mutable: true }) mode: string = "";
   @Prop({ mutable: true }) inline: boolean = false;
   @Prop({mutable: true}) tooltip: string = "";
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
+
+  @Prop({mutable: true}) description: string = "";
+  @Prop({mutable: true}) htmlDescription: boolean = false;
 
   pickerInstance: any;
   locFormat: any;
   locNoMeridiem: any;
+  selectedDates: any;
+
+  @Prop({ mutable: true }) checkValue: boolean = false;
+  @Method()
+  async insReset() {
+    if (this.checkValue) this.insInput.emit({ selected_dates: undefined });
+  }
+
+  @Method()
+  async insRecover() {
+    if (this.checkValue) {
+      this.insInput.emit({
+        selected_dates: this.selectedDates
+      });
+    }
+  }
 
   @Method()
   async setValue(value){
@@ -58,6 +79,7 @@ export class InsDateTime {
 
   componentDidLoad(){
     this.initInsDateTime();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
@@ -132,6 +154,7 @@ export class InsDateTime {
   }
 
   insInputHandler(selected_dates, date_string) {
+    this.selectedDates = selected_dates;
     this.value = date_string;
     this.insInput.emit({
       label: this.label,
@@ -140,6 +163,14 @@ export class InsDateTime {
       date_string
     });
     this.insValueChange.emit(date_string);
+  }
+
+  @Method()
+  async getDate() {
+    return {
+      value: this.value,
+      selected_dates: this.selectedDates
+    };
   }
 
   activateLabel(){
@@ -171,6 +202,17 @@ export class InsDateTime {
       case "YYYY-MM-DD": return `Y-m-d${this.checkTimeFormat()}`;
       default: return this.locFormat
     }
+  }
+
+  validateDescription(value) {
+    let allowed = '<a>,<abbr>,<acronym>,<address>,<article>,<aside>,<b>,<base>,<bdi>,<bdo>,<blockquote>,<br>,<caption>,<code>,<dd>,<del>,<details>,<dfn>,<dir>,<div>,<dl>,<dt>,<em>,<font>,<h1>,<h2>,<h3>,<h4>,<h5>,<h6>,<hr>,<i>,<ins>,<label>,<li>,<link>,<mark>,<menu>,<meter>,<nav>,<ol>,<p>,<pre>,<q>,<s>,<samp>,<section>,<small>,<span>,<strike>,<strong>,<sub>,<summary>,<sup>,<table>,<tbody>,<td>,<tfoot>,<th>,<thead>,<time>,<tr>,<tt>,<u>,<ul>,<wbr>';
+    allowed = (((allowed || '') + '').toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
+
+    var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+    commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+    return value.replace(commentsAndPhpTags, '').replace(tags, ($0, $1) => {
+      return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
+    });
   }
 
 	render() {
@@ -208,6 +250,10 @@ export class InsDateTime {
           <div class="ins-form-error">
             {this.errorMessage}
           </div>
+        : ''}
+
+        { this.description ? this.htmlDescription ?
+          <div class="ins-description" innerHTML={this.validateDescription(this.description)}></div> : <div class="ins-description">{this.description}</div>
         : ''}
       </div>
     )

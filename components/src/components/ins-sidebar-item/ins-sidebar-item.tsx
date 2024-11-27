@@ -14,6 +14,8 @@ export class InsSidebarItem {
   @Prop({mutable: true}) withSubmenu: boolean = false;
   @Prop({mutable: true}) label: string = 'Label';
   @Prop({mutable: true}) landingPage: boolean = false;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
   // @Prop({ context: 'formatUrl' }) formatUrl: any = () => {};
   // @Prop({ context: 'addRippleEffect' }) addRippleEffect: any;
 
@@ -130,7 +132,7 @@ export class InsSidebarItem {
     if (checkIfSubMenu) {
       let parent = checkIfSubMenu.closest('ins-sidebar-item');
       await parent.activateParent();
-      
+
       const mq = window.matchMedia("(min-width: 1260px)");
       if (mq.matches) parent.showSubMenu();
     }
@@ -213,6 +215,7 @@ export class InsSidebarItem {
       }
     });
 
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

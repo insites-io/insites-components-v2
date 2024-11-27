@@ -10,11 +10,13 @@
 | Property                   | Attribute                       | Description | Type      | Default                                    |
 | -------------------------- | ------------------------------- | ----------- | --------- | ------------------------------------------ |
 | `buttonColor`              | `button-color`                  |             | `string`  | `'blue'`                                   |
+| `checkLoad`                | `check-load`                    |             | `boolean` | `false`                                    |
 | `errorMessage`             | `error-message`                 |             | `string`  | `"Invalid image file."`                    |
 | `fileName`                 | `file-name`                     |             | `any`     | `undefined`                                |
 | `hasLoad`                  | `has-load`                      |             | `string`  | `undefined`                                |
 | `imgType`                  | `img-type`                      |             | `string`  | `'picture'`                                |
 | `label`                    | `label`                         |             | `string`  | `'CHANGE PICTURE'`                         |
+| `load`                     | `load`                          |             | `boolean` | `false`                                    |
 | `name`                     | `name`                          |             | `string`  | `undefined`                                |
 | `notImageFile`             | `not-image-file`                |             | `boolean` | `undefined`                                |
 | `placeholder`              | `placeholder`                   |             | `string`  | `'Drag and drop the file or add an image'` |

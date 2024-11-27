@@ -10,6 +10,7 @@ export class InsInputFile {
   @Event() insFileError: EventEmitter;
   @Event() insFileRemoved: EventEmitter;
   @Event() insFileUploaded: EventEmitter;
+  @Event() insFileChange: EventEmitter;
   @Event() didLoad: EventEmitter;
   @Prop() hasLoad: string;
 
@@ -43,6 +44,33 @@ export class InsInputFile {
   @Prop({ mutable: true }) s3Data: object;
 
   @Prop({mutable: true}) tooltip: string = "";
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
+  @Prop({mutable: true}) description: string = "";
+  @Prop({mutable: true}) htmlDescription: boolean = false;
+
+  @Prop({ mutable: true }) checkValue: boolean = false;
+  @Method()
+  async insReset() {
+    if (this.checkValue) this.insFileChange.emit({ value: null });
+  }
+
+  @Method()
+  async insRecover() {
+    if (this.checkValue) {
+
+      if (this.maxFiles > 1) {
+        this.insFileChange.emit({ value: await this.getFilesList() });
+      } else {
+        const files = await this.getFilesList();
+        if (files.length) {
+          this.insFileChange.emit({ value: await this.getFilesList()[0] });
+        } else {
+          this.insFileChange.emit({ value: null });
+        }
+      }
+    }
+  }
 
   /* @State() */ dropZone: any;
 
@@ -53,6 +81,7 @@ export class InsInputFile {
 
   componentDidLoad() {
     this.initDropZone();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
@@ -190,19 +219,24 @@ export class InsInputFile {
     file.errorMessage = errorMessage;
     this.insFileError.emit(file);
   }
-  emitFileAdded(file) {
+  async emitFileAdded(file) {
     if (!this.value || typeof this.value === "string") {
       this.value = [];
     }
     this.value.push(file);
     this.insFileAdded.emit(file);
+
+    this.insFileChange.emit({ value: await this.getFilesList() });
   }
 
-  emitFileRemoved(file) {
-    if (file.status !== 'error')
+  async emitFileRemoved(file) {
+    if (file.status !== 'error') {
       this.insFileRemoved.emit(file);
-    else
+    } else {
       this.emitFileError(file, file.errorMessage);
+    }
+
+    this.insFileChange.emit({ value: await this.getFilesList() });
   }
 
   processFiles(files) {
@@ -357,6 +391,17 @@ export class InsInputFile {
     return true
   }
 
+  validateDescription(value) {
+    let allowed = '<a>,<abbr>,<acronym>,<address>,<article>,<aside>,<b>,<base>,<bdi>,<bdo>,<blockquote>,<br>,<caption>,<code>,<dd>,<del>,<details>,<dfn>,<dir>,<div>,<dl>,<dt>,<em>,<font>,<h1>,<h2>,<h3>,<h4>,<h5>,<h6>,<hr>,<i>,<ins>,<label>,<li>,<link>,<mark>,<menu>,<meter>,<nav>,<ol>,<p>,<pre>,<q>,<s>,<samp>,<section>,<small>,<span>,<strike>,<strong>,<sub>,<summary>,<sup>,<table>,<tbody>,<td>,<tfoot>,<th>,<thead>,<time>,<tr>,<tt>,<u>,<ul>,<wbr>';
+    allowed = (((allowed || '') + '').toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
+
+    var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+    commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+    return value.replace(commentsAndPhpTags, '').replace(tags, ($0, $1) => {
+      return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
+    });
+  }
+
   render() {
     return (
       <div class={`ins-input-file-wrapper ins-form-field-wrap ${this.hasError ? 'is-invalid' : ''}`}>
@@ -395,6 +440,9 @@ export class InsInputFile {
           <div class="ins-form-error">
               {this.errorMessage}
           </div> : '' }
+        { this.description ? this.htmlDescription ?
+          <div class="ins-description" innerHTML={this.validateDescription(this.description)}></div> : <div class="ins-description">{this.description}</div>
+        : ''}
       </div>
     )
   }

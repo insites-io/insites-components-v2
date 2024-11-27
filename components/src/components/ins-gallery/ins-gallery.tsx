@@ -11,6 +11,8 @@ export class InsGallery {
   @Prop({ mutable: true }) slidable: boolean;
   @Prop({ mutable: true }) withIndicator: boolean;
   @Prop({ mutable: true }) thumbnailLayout: string = "inline";
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   imgEl; thumbs; sliderThumbs; slider; slides; progress; viewports;
 
@@ -63,6 +65,7 @@ export class InsGallery {
     this.progress = this.el.querySelector('.ins-gallery_progress');
     this.setProgress(0);
     this.setDefaultImg();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
   }
 

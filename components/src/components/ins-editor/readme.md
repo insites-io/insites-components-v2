@@ -9,14 +9,20 @@
 
 | Property             | Attribute              | Description | Type      | Default                                                |
 | -------------------- | ---------------------- | ----------- | --------- | ------------------------------------------------------ |
+| `blankValues`        | `blank-values`         |             | `boolean` | `false`                                                |
+| `checkLoad`          | `check-load`           |             | `boolean` | `false`                                                |
+| `checkValue`         | `check-value`          |             | `boolean` | `false`                                                |
 | `classId`            | `class-id`             |             | `string`  | `""`                                                   |
+| `description`        | `description`          |             | `string`  | `""`                                                   |
 | `disableLineNumbers` | `disable-line-numbers` |             | `boolean` | `false`                                                |
 | `errorMessage`       | `error-message`        |             | `string`  | `""`                                                   |
 | `hasCodeEditor`      | `has-code-editor`      |             | `boolean` | `false`                                                |
 | `hasError`           | `has-error`            |             | `boolean` | `false`                                                |
+| `htmlDescription`    | `html-description`     |             | `boolean` | `false`                                                |
 | `imageUpload`        | `image-upload`         |             | `boolean` | `false`                                                |
 | `images`             | `images`               |             | `string`  | `""`                                                   |
 | `label`              | `label`                |             | `string`  | `""`                                                   |
+| `load`               | `load`                 |             | `boolean` | `false`                                                |
 | `mode`               | `mode`                 |             | `string`  | `"htmlmixed"`                                          |
 | `name`               | `name`                 |             | `string`  | `""`                                                   |
 | `pluginsList`        | `plugins-list`         |             | `any`     | `['alignment', 'table', 'imagemanager', 'fullscreen']` |
@@ -46,6 +52,26 @@
 #### Returns
 
 Type: `Promise<any>`
+
+
+
+### `insRecover() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `insReset() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

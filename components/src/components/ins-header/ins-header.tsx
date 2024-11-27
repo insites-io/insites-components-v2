@@ -8,6 +8,8 @@ export class InsHeader {
 
   @Prop({ mutable: true }) supportLink: string;
   @Prop({ mutable: true }) hasMenuToggle: boolean = true;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   @State() sidebarMini: boolean;
   @State() hasSidebar: boolean;
@@ -34,6 +36,7 @@ export class InsHeader {
       $this.toggleMinimise();
     };
 
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

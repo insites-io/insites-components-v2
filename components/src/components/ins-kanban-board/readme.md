@@ -7,10 +7,12 @@
 
 ## Properties
 
-| Property     | Attribute     | Description | Type     | Default     |
-| ------------ | ------------- | ----------- | -------- | ----------- |
-| `boardGroup` | `board-group` |             | `string` | `undefined` |
-| `uniqueId`   | `unique-id`   |             | `string` | `undefined` |
+| Property     | Attribute     | Description | Type      | Default     |
+| ------------ | ------------- | ----------- | --------- | ----------- |
+| `boardGroup` | `board-group` |             | `string`  | `undefined` |
+| `checkLoad`  | `check-load`  |             | `boolean` | `false`     |
+| `load`       | `load`        |             | `boolean` | `false`     |
+| `uniqueId`   | `unique-id`   |             | `string`  | `undefined` |
 
 
 ## Events

@@ -13,6 +13,7 @@
 | `autostop`         | `autostop`           |             | `boolean` | `false`     |
 | `bindTo`           | `bind-to`            |             | `string`  | `""`        |
 | `bodyText`         | `body-text`          |             | `string`  | `""`        |
+| `checkLoad`        | `check-load`         |             | `boolean` | `false`     |
 | `ctaColor`         | `cta-color`          |             | `string`  | `"blue"`    |
 | `ctaDisabled`      | `cta-disabled`       |             | `boolean` | `false`     |
 | `ctaLabel`         | `cta-label`          |             | `string`  | `""`        |
@@ -24,6 +25,7 @@
 | `heading`          | `heading`            |             | `string`  | `""`        |
 | `height`           | `height`             |             | `string`  | `"auto"`    |
 | `layout`           | `layout`             |             | `number`  | `1`         |
+| `load`             | `load`               |             | `boolean` | `false`     |
 | `loop`             | `loop`               |             | `boolean` | `false`     |
 | `noCarouselButton` | `no-carousel-button` |             | `boolean` | `false`     |
 | `noPagination`     | `no-pagination`      |             | `boolean` | `false`     |

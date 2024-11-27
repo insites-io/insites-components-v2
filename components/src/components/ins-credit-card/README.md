@@ -11,6 +11,7 @@
 | ------------- | -------------- | ----------- | --------- | ----------- |
 | `active`      | `active`       |             | `boolean` | `undefined` |
 | `brand`       | `brand`        |             | `string`  | `undefined` |
+| `checkLoad`   | `check-load`   |             | `boolean` | `false`     |
 | `compact`     | `compact`      |             | `boolean` | `undefined` |
 | `expired`     | `expired`      |             | `boolean` | `undefined` |
 | `expiryMonth` | `expiry-month` |             | `string`  | `undefined` |
@@ -18,6 +19,7 @@
 | `fullYear`    | `full-year`    |             | `boolean` | `undefined` |
 | `hasLoad`     | `has-load`     |             | `string`  | `undefined` |
 | `lastFour`    | `last-four`    |             | `string`  | `undefined` |
+| `load`        | `load`         |             | `boolean` | `false`     |
 | `value`       | `value`        |             | `string`  | `undefined` |
 
 

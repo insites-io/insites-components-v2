@@ -15,6 +15,7 @@
 | `hasLoad`        | `has-load`        |             | `string`  | `undefined`            |
 | `ignoreElements` | `ignore-elements` |             | `string`  | `null`                 |
 | `insDraggable`   | `ins-draggable`   |             | `boolean` | `true`                 |
+| `loaded`         | `loaded`          |             | `boolean` | `false`                |
 | `sort`           | `sort`            |             | `boolean` | `true`                 |
 | `sortGroup`      | `sort-group`      |             | `string`  | `"insites-sort-group"` |
 | `wrapperClass`   | `wrapper-class`   |             | `string`  | `"insites-sortable"`   |

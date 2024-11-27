@@ -34,8 +34,26 @@ export class InsInput {
   @Prop({mutable: true}) unitLeft: string = "";
 
   @Prop({mutable: true}) tooltip: string = "";
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
+
+  @Prop({ mutable: true }) description: string = "";
+  @Prop({ mutable: true }) htmlDescription: boolean = false;
 
   invalidHexColor: string = "";
+  active = false;
+  colorEl;
+
+  @Prop({ mutable: true }) checkValue: boolean = false;
+  @Method()
+  async insReset() {
+    if (this.checkValue) this.insInput.emit({ value: null });
+  }
+
+  @Method()
+  async insRecover() {
+    if (this.checkValue) this.insInput.emit({ value: await this.getValue() });
+  }
 
   @Method()
   async setValue(value){
@@ -50,6 +68,7 @@ export class InsInput {
 
   componentDidLoad(){
     this.adjustInputPadding();
+    if (this.checkLoad) if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
@@ -103,7 +122,7 @@ export class InsInput {
   insBlurHandler(event){
     let value = event.target.value;
     let keyCode = event.which || event.keyCode;
-    
+
     if (this.field === "number") this.validateMinMax(value, "blur");
     this.insBlur.emit({ value, keyCode });
     this.deactivateLabel();
@@ -142,12 +161,37 @@ export class InsInput {
     this.inputChanged(e);
   }
 
-  validateHexColor(color){
+  validateHexColor(color) {
     if (!color) return this.invalidHexColor = "";
 
     const valid = color.match(/^#[0-9A-F]{6}$/i);
     if (valid) this.invalidHexColor = "";
     else this.invalidHexColor = "Invalid hex color.";
+  }
+
+  validateDescription(value) {
+    let allowed = '<a>,<abbr>,<acronym>,<address>,<article>,<aside>,<b>,<base>,<bdi>,<bdo>,<blockquote>,<br>,<caption>,<code>,<dd>,<del>,<details>,<dfn>,<dir>,<div>,<dl>,<dt>,<em>,<font>,<h1>,<h2>,<h3>,<h4>,<h5>,<h6>,<hr>,<i>,<ins>,<label>,<li>,<link>,<mark>,<menu>,<meter>,<nav>,<ol>,<p>,<pre>,<q>,<s>,<samp>,<section>,<small>,<span>,<strike>,<strong>,<sub>,<summary>,<sup>,<table>,<tbody>,<td>,<tfoot>,<th>,<thead>,<time>,<tr>,<tt>,<u>,<ul>,<wbr>';
+    allowed = (((allowed || '') + '').toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
+
+    var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+    commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+    return value.replace(commentsAndPhpTags, '').replace(tags, ($0, $1) => {
+      return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
+    });
+  }
+
+  onClickHandler(e) {
+    this.colorEl = e.target.parentNode.querySelector('.ins-form-field.color');
+    this.colorEl?.click();
+    this.colorEl?.focus();
+  }
+
+  colorFocusHandler(e) {
+    e.target.parentNode.parentNode.classList.add('input-active');
+  }
+
+  colorBlurHandler(e) {
+    e.target.parentNode.parentNode.classList.remove('input-active');
   }
 
   render(){
@@ -157,7 +201,8 @@ export class InsInput {
         ${this.icon ? "has-icon":""}
         ${this.field === 'color' ? "has-color":""}
         ${this.unitLeft ? "has-unit-left":""}
-        ${this.unitRight ? "has-unit-right":""}`}>
+        ${this.unitRight ? "has-unit-right":""}
+        ${this.field === 'color' && this.active ? "input-active" : ""}`}>
 
         { this.label || this.tooltip?
           <label htmlFor={this.name}
@@ -189,13 +234,14 @@ export class InsInput {
             name={this.name}
             placeholder={this.placeholder}
             required={this.required}
+            onClick={e => this.onClickHandler(e)}
             onKeyUp={e => this.onInputHandler(e)}
             onInput={this.inputChanged.bind(this)}
             onFocus={() => this.activateLabel()}
             onBlur={e => this.insBlurHandler(e)}
             disabled={this.disabled}
             maxlength={this.maxlength}
-            readonly={this.readonly}
+            readonly={this.readonly || this.field === 'color'}
             min={this.min}
             max={this.max}
             step={this.step}
@@ -217,11 +263,13 @@ export class InsInput {
           : ''}
 
           {this.field === 'color' ?
-            <input type="color" 
+            <input type="color"
               class="ins-form-field color"
               value={this.value}
               disabled={this.disabled || this.readonly}
-              onInput={e => this.colorHandler(e)} 
+              onInput={e => this.colorHandler(e)}
+              onFocus={e => this.colorFocusHandler(e)}
+              onBlur={e => this.colorBlurHandler(e)}
             />
           : ''}
 
@@ -233,6 +281,9 @@ export class InsInput {
           </div>
         : ''}
 
+        { this.description ? this.htmlDescription ?
+          <div class="ins-description" innerHTML={this.validateDescription(this.description)}></div> : <div class="ins-description">{this.description}</div>
+        : ''}
       </div>
     )
   }

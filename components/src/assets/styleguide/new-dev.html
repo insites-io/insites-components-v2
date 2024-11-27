@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - QA</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap">
+  <link rel="stylesheet" href="/assets/css/foundation.min.css" />
+
+  <!-- Components -->
+<link rel="stylesheet" href="/assets/insites/css/insites.css" />
+
+ <script type="module" src="/build/insites.esm.js"></script>
+  <script nomodule src="/build/insites.js"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Font Icons -->
+  <link rel="stylesheet" href="https://components.insites.io/v2/latest/css/insites-font-icons.css">
+
+  <!-- Components -->
+  <!-- <link rel="stylesheet" href="https://components.insites.io/v2/latest/css/insites.css" />
+  <script type="module" src="https://components.insites.io/v2/latest/insites.esm.js"></script>
+  <script nomodule src="https://components.insites.io/v2/latest/insites.js"></script> -->
+</head>
+
+<body>
+
+  <ins-sidebar>
+    <ins-sidebar-item label="Route 1" link="#/route-1" icon="icon-move-to-folder"></ins-sidebar-item>
+    <ins-sidebar-item label="Route 2" link="#/route-2" icon="icon-codepen"></ins-sidebar-item>
+
+    <ins-sidebar-item label="Route 3 Route 3 Route 3 Route 3 Route 3 Route 3 Route 3 Route 3" with-submenu icon="icon-github">
+      <ins-sidebar-item label="Route 4" link="#/route-4"></ins-sidebar-item>
+      <ins-sidebar-item label="Route 5" link="#/route-5"></ins-sidebar-item>
+    </ins-sidebar-item>
+
+    <ins-sidebar-item label="Route 6 - iframe" link="/assets/styleguide/test.html" app icon="icon-chrome">
+    </ins-sidebar-item>
+
+    <ins-sidebar-footer class="side-bar-footer">
+
+      <ins-sidebar-footer-button id="toggleMenuButton" icon="icon-menu-collapse">
+      </ins-sidebar-footer-button>
+
+      <ins-sidebar-footer-button
+        id="lockButton"
+        icon="icon-lock-1">
+      </ins-sidebar-footer-button> <ins-sidebar-footer-button
+
+          icon="icon-logout-1">
+        </ins-sidebar-footer-button>
+    </ins-sidebar-footer>
+
+  </ins-sidebar>
+
+  <ins-header support-link="www.google.com" id="insMenuBar">
+    <ins-header-user
+      name="John Smith"
+      logout-link="/"
+      profile-label="My Professional Profile"
+      profile-link="#/my-profile">
+    </ins-header-user>
+  </ins-header>
+
+  <ins-renderer>
+    <div>
+      <ins-markdown-editor label="Editor" id="editorEl"></ins-markdown-editor>
+
+      <ins-radio-group id="radioGroupEl" has-none label="Radio Group" readonly tooltip="tester" error-message="Required." html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>">
+        <div>
+          <ins-radio label="1" value="1"></ins-radio>
+          <ins-radio label="2" value="2"></ins-radio>
+        </div>
+      </ins-radio-group>
+
+      <ins-tab>
+        <ins-tab-item disabled>
+          <div>
+            <ins-input-multiple id="test"  label="Multiple"></ins-input-multiple>
+          </div>
+        </ins-tab-item>
+        <ins-tab-item>
+          <div>
+            <ins-input-multiple id="test2" label="Multiple"></ins-input-multiple>
+          </div>
+        </ins-tab-item>
+      </ins-tab>
+
+      <ins-input-table error-message="Requirement" blank-values error-message="Error" id="inputTableEl" label="Test Table" tooltip="this triggers extra re-renders" table-headers='[{"name":"date","label":"Date"},{"name":"activity","label":"Activity"},{"name":"is_enabled","label":"Enabled"}]' html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>">
+
+      </ins-input-table>
+
+      <script>
+        const inputTableEl = document.getElementById('inputTableEl');
+
+        inputTableEl.addEventListener('insInput', event => {
+          console.log('input', event)
+        });
+
+      </script>
+
+      <ins-editor label="Editor" id="editorEl" blank-values has-code-editor></ins-editor>
+
+      <script>
+        const editorEl = document.getElementById('editorEl');
+
+        editorEl.addEventListener('insInput', event => {
+          console.log('input', event)
+        });
+
+        editorEl.addEventListener('insBlur', event => {
+          console.log('blur', event)
+        });
+
+        // setTimeout(() => {
+        //   checkGroupEl.setValue(['1', '2']);
+        // }, 200);
+      </script>
+
+      <ins-input label="Color" field="color" has-error error-message="Error!" tooltip="tester" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-input>
+
+      <ins-checkbox-group id="checkGroupEl" label="Check Group" has-error error-message="Error!" horizontal tooltip="tester" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>">
+        <div>
+          <ins-checkbox label="1" value="1"></ins-checkbox>
+          <ins-checkbox label="2" value="2"></ins-checkbox>
+        </div>
+      </ins-checkbox-group>
+
+      <ins-code-editor label="Code Editor" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>" ></ins-code-editor>
+
+      <ins-select label="insselect" value="" searchable placeholder="Select or type to search for test" has-error error-message="Error" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>" blank-label>
+        <div>
+          <ins-select-option value="" label="-- Clear Option --"></ins-select-option>
+          <ins-select-group label="Test">
+            <ins-select-option value="1" label="1"></ins-select-option>
+            <ins-select-option value="2" label="2"></ins-select-option>
+            <ins-select-option value="3" label="3"></ins-select-option>
+            <ins-select-option value="4" label="4"></ins-select-option>
+          </ins-select-group>
+        </div>
+      </ins-select>
+
+      <ins-input-select label="test" value="" searchable placeholder="Select or type to search for test" has-error error-message="Error"  html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>" blank-label>
+        <div>
+          <ins-input-select-option value="" label="-- Clear Option --"></ins-input-select-option>
+          <ins-input-select-group label="Test">
+            <ins-input-select-option value="1" label="1"></ins-input-select-option>
+            <ins-input-select-option value="2" label="2"></ins-input-select-option>
+            <ins-input-select-option value="3" label="3"></ins-input-select-option>
+            <ins-input-select-option value="4" label="4"></ins-input-select-option>
+          </ins-input-select-group>
+        </div>
+      </ins-input-select>
+
+      <ins-toggle-switch enabled-label="Toggle True" disabled-label="Toggle False" input-label="Toggle" has-error error-message="Error" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-toggle-switch>
+
+      <ins-input-slider
+      position="right"
+      label="Range"
+      min="0"
+      max="100"
+      step="10"
+      value="50"  has-error error-message="Error" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>">
+    </ins-input-slider>
+
+      <ins-input-tel id="test" label="tel" has-error error-message="Error" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-input-tel>
+
+      <ins-input-multiple id="test" label="Multiple" has-error error-message="Error" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-input-multiple>
+
+      <ins-input-file
+        id="myEl"
+        label="Test File"
+        has-error error-message="Error" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>">
+      </ins-input-file>
+
+
+      <ins-date-time label="Date Picker Mode" has-error error-message="Error" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-date-time>
+
+      <ins-card-select multiple label="Card" has-error error-message="Error" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>">
+        <div>
+          <ins-card-select-option value="Tested 3">
+            <div>
+              <h1>Content 2</h1>
+              <p>Value 2 </p>
+              <p>Value 2 </p>
+              <p>Value 2 </p>
+              <p>Value 2 </p>
+              <p>Value 2 </p>
+              <p>Value 2 </p>
+              <p>Value 2 </p>
+            </div>
+          </ins-card-select-option>
+          <ins-card-select-option value="Tested 1">
+            <div>
+              <h1>Content 1</h1>
+              <p>Value 1</p>
+            </div>
+          </ins-card-select-option>
+          <ins-card-select-option value="Tested 0">
+            <div>
+              <h1>Content 1</h1>
+              <p>Value 1</p>
+            </div>
+          </ins-card-select-option>
+          <ins-card-select-option value="Tested 2">
+            <div>
+              <h1>Content 2</h1>
+              <p>Value 2</p>
+            </div>
+          </ins-card-select-option>
+          <ins-card-select-option value="Tested 4">
+            <div>
+              <h1>Content 2</h1>
+              <p>Value 2</p>
+            </div>
+          </ins-card-select-option>
+        </div>
+      </ins-card-select>
+
+      <!-- <ins-editor label="TEST" has-error has-code-editor error-message="ERrorks" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-editor> -->
+
+      <ins-button-select id="insSelectEl" has-error error-message="ERrorks" label-key="name" value-key="value" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>">
+        <ins-button-select-option
+          label="Static 2"
+          value="Static 2">
+        </ins-button-select-option>
+
+        <ins-button-select-option
+          label="Static 1"
+          value="Static 1">
+        </ins-button-select-option>
+
+    </ins-button-select>
+      <ins-alert-box type="warning" close-icon="icon-close-1">
+        <div>
+          <b>Warning</b><br/>
+          <ul>
+            <li>Before stepping into the tutorial, make sure you have backup the template first.Before stepping into the
+              tutorial, make sure you have backup the template first.</li>
+          </ul>
+        </div>
+      </ins-alert-box>
+      <ins-toggle-switch input-label="Test" label="test" value="test" has-error error-message="Errour!" tooltip="tester"></ins-toggle-switch>
+
+      <script>
+        const checkGroupEl = document.getElementById('checkGroupEl');
+
+        checkGroupEl.addEventListener('insInput', event => {
+          console.log(event)
+        });
+
+        setTimeout(() => {
+          checkGroupEl.setValue(['1', '2']);
+        }, 200);
+      </script>
+
+
+
+      <script>
+        const radioGroupEl = document.getElementById('radioGroupEl');
+
+        radioGroupEl.addEventListener('insInput', event => {
+          console.log(event)
+        });
+
+        // setTimeout(() => {
+        //   radioGroupEl.setValue('2');
+        // }, 200);
+      </script>
+
+      <ins-input label="InPut" has-error error-message="Required." html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-input>
+
+
+      <ins-textarea label="TextArea" has-error error-message="Required." html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-textarea>
+
+
+
+      <ins-input-stepper label="test" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-input-stepper>
+
+    </div>
+  </ins-renderer>
+</body>
+
+</html>

@@ -17,6 +17,8 @@ export class InsPieChart {
   @Prop({ mutable: true }) legends: boolean = false;
   @Prop({ mutable: true }) startAngle: number;
   @Prop({ mutable: true }) endAngle: number;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   insChartEl: any;
   chartContainerEl: any;
@@ -32,6 +34,7 @@ export class InsPieChart {
     this.chartContainerEl = this.insChartEl.querySelector('.chart-container');
     this.checkColors();
     this.checkProps();
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

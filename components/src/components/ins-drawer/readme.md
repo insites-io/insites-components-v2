@@ -11,11 +11,13 @@
 | ------------------ | -------------------- | ----------- | --------- | ----------- |
 | `backdropCanClose` | `backdrop-can-close` |             | `boolean` | `true`      |
 | `bordered`         | `bordered`           |             | `boolean` | `true`      |
+| `checkLoad`        | `check-load`         |             | `boolean` | `false`     |
 | `customWidth`      | `custom-width`       |             | `string`  | `undefined` |
 | `hasLoad`          | `has-load`           |             | `string`  | `undefined` |
 | `icon`             | `icon`               |             | `string`  | `undefined` |
 | `isOpen`           | `is-open`            |             | `boolean` | `false`     |
 | `label`            | `label`              |             | `string`  | `undefined` |
+| `load`             | `load`               |             | `boolean` | `false`     |
 | `noPadding`        | `no-padding`         |             | `boolean` | `false`     |
 | `position`         | `position`           |             | `string`  | `""`        |
 | `showCloseButton`  | `show-close-button`  |             | `boolean` | `true`      |

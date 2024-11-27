@@ -16,15 +16,31 @@ export class InsInputTable {
   @Prop({ mutable: true }) readonly: boolean;
   @Prop({ mutable: true }) disabled: boolean;
   @Prop({ mutable: true }) hasError: boolean;
+  @Prop({ mutable: true }) blankValues: boolean;
   @Prop({ mutable: true }) errorMessage: string;
   @Prop({ mutable: true }) addButtonIcon: string = "icon-plus";
   @Prop({ mutable: true }) removeButtonIcon: string = "icon-minus";
   @Prop({ mutable: true }) addButtonColor: string = "blue";
   @Prop({ mutable: true }) removeButtonColor: string = "blue";
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
+  @Prop({mutable: true}) description: string = "";
+  @Prop({mutable: true}) htmlDescription: boolean = false;
 
   @State() data: any = [{}];
 
   columnWidth;
+
+  @Prop({ mutable: true }) checkValue: boolean = false;
+  @Method()
+  async insReset() {
+    if (this.checkValue) this.insInput.emit([]);
+  }
+
+  @Method()
+  async insRecover() {
+    if (this.checkValue) this.insInput.emit(await this.getValue());
+  }
 
   componentWillLoad() {
     if (typeof this.tableHeaders === "string") {
@@ -35,6 +51,7 @@ export class InsInputTable {
   }
 
   componentDidLoad() {
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];
@@ -68,7 +85,9 @@ export class InsInputTable {
 
   @Method()
   async getValue() {
-    return await this.data;
+    let values = this.data;
+    if (this.blankValues) values = this.fixBlankValues(values);
+    return await values;
   }
 
   inputHander(event) {
@@ -98,7 +117,22 @@ export class InsInputTable {
     }
 
     this.data[parentIndex][this.tableHeaders[childIndex].name] = event.target.value;
-    this.insInput.emit(this.data);
+
+    let values = this.data;
+    if (this.blankValues) values = this.fixBlankValues(values);
+    this.insInput.emit(values);
+  }
+
+  fixBlankValues(values) {
+    let nullValue = true;
+    for (const value of values) {
+      for (const key in Object.keys(value)) {
+        const item = value[Object.keys(value)[key]];
+        if (item) nullValue = false;
+      }
+    }
+
+    return nullValue ? [] : values;
   }
 
   @Listen('insClick')
@@ -132,7 +166,9 @@ export class InsInputTable {
     }
 
     this.data = updatedData;
-    this.insInput.emit(this.data);
+    let values = this.data;
+    if (this.blankValues) values = this.fixBlankValues(values);
+    this.insInput.emit(values);
   }
 
   updateValue(els) {
@@ -175,6 +211,16 @@ export class InsInputTable {
     this.updateValue(this.insInputTableEl.querySelectorAll('input'));
   }
 
+  validateDescription(value) {
+    let allowed = '<a>,<abbr>,<acronym>,<address>,<article>,<aside>,<b>,<base>,<bdi>,<bdo>,<blockquote>,<br>,<caption>,<code>,<dd>,<del>,<details>,<dfn>,<dir>,<div>,<dl>,<dt>,<em>,<font>,<h1>,<h2>,<h3>,<h4>,<h5>,<h6>,<hr>,<i>,<ins>,<label>,<li>,<link>,<mark>,<menu>,<meter>,<nav>,<ol>,<p>,<pre>,<q>,<s>,<samp>,<section>,<small>,<span>,<strike>,<strong>,<sub>,<summary>,<sup>,<table>,<tbody>,<td>,<tfoot>,<th>,<thead>,<time>,<tr>,<tt>,<u>,<ul>,<wbr>';
+    allowed = (((allowed || '') + '').toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
+
+    var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+    commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+    return value.replace(commentsAndPhpTags, '').replace(tags, ($0, $1) => {
+      return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
+    });
+  }
 
   render() {
     return (
@@ -244,6 +290,10 @@ export class InsInputTable {
           <div class="ins-form-error">
             { this.errorMessage }
           </div>
+        : ''}
+
+        { this.description ? this.htmlDescription ?
+          <div class="ins-description" innerHTML={this.validateDescription(this.description)}></div> : <div class="ins-description">{this.description}</div>
         : ''}
       </div>
     );

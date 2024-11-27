@@ -9,9 +9,11 @@
 
 | Property        | Attribute        | Description | Type      | Default                            |
 | --------------- | ---------------- | ----------- | --------- | ---------------------------------- |
+| `checkLoad`     | `check-load`     |             | `boolean` | `false`                            |
 | `emptyValue`    | `empty-value`    |             | `string`  | `'-'`                              |
 | `hasLoad`       | `has-load`       |             | `string`  | `undefined`                        |
 | `heading`       | `heading`        |             | `string`  | `undefined`                        |
+| `load`          | `load`           |             | `boolean` | `false`                            |
 | `loaderIcon`    | `loader-icon`    |             | `any`     | `"processing"`                     |
 | `loaderMessage` | `loader-message` |             | `any`     | `"We are processing your request"` |
 | `loaderTitle`   | `loader-title`   |             | `any`     | `"Just a moment"`                  |

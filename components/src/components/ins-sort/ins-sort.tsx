@@ -18,6 +18,7 @@ export class InsSort {
   @Prop() sortGroup: string = "insites-sort-group"
   @Prop() wrapperClass: string = "insites-sortable"
   @Prop() sort: boolean = true
+  @Prop({ mutable: true }) loaded: boolean = false;
 
   insitesSortable
   group: ISortableGroup = new SortableGroup();
@@ -172,6 +173,7 @@ export class InsSort {
   componentDidLoad() {
     this.loadSortGroupConfig()
     this.initSortable()
+    this.loaded = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

@@ -9,10 +9,12 @@
 
 | Property      | Attribute      | Description | Type      | Default     |
 | ------------- | -------------- | ----------- | --------- | ----------- |
+| `checkLoad`   | `check-load`   |             | `boolean` | `false`     |
 | `checked`     | `checked`      |             | `boolean` | `undefined` |
 | `disabled`    | `disabled`     |             | `boolean` | `undefined` |
 | `hasLoad`     | `has-load`     |             | `string`  | `undefined` |
 | `label`       | `label`        |             | `any`     | `undefined` |
+| `load`        | `load`         |             | `boolean` | `false`     |
 | `name`        | `name`         |             | `any`     | `undefined` |
 | `staticValue` | `static-value` |             | `any`     | `undefined` |
 | `tooltip`     | `tooltip`      |             | `string`  | `""`        |
@@ -73,6 +75,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [ins-credit-card](../ins-credit-card)
+ - [ins-radio-group](../ins-radio-group)
 
 ### Depends on
 
@@ -83,6 +86,7 @@ Type: `Promise<void>`
 graph TD;
   ins-radio --> ins-input-tooltip
   ins-credit-card --> ins-radio
+  ins-radio-group --> ins-radio
   style ins-radio fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -5,6 +5,8 @@ export class InsSidebarFooter {
   @Element() InsSidebarFooter: HTMLElement;
   @Event() didLoad: EventEmitter;
   @Prop() hasLoad: string;
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   componentDidLoad(){
     let items = this.InsSidebarFooter
@@ -14,6 +16,7 @@ export class InsSidebarFooter {
       items[i].style.width = `${100 / items.length}%`;
     }
 
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

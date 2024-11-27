@@ -7,10 +7,12 @@
 
 ## Properties
 
-| Property      | Attribute  | Description | Type     | Default     |
-| ------------- | ---------- | ----------- | -------- | ----------- |
-| `breadcrumbs` | --         |             | `any[]`  | `[]`        |
-| `hasLoad`     | `has-load` |             | `string` | `undefined` |
+| Property      | Attribute    | Description | Type      | Default     |
+| ------------- | ------------ | ----------- | --------- | ----------- |
+| `breadcrumbs` | --           |             | `any[]`   | `[]`        |
+| `checkLoad`   | `check-load` |             | `boolean` | `false`     |
+| `hasLoad`     | `has-load`   |             | `string`  | `undefined` |
+| `load`        | `load`       |             | `boolean` | `false`     |
 
 
 ## Events

@@ -16,8 +16,11 @@ export class InsCheckbox {
   @Prop({mutable: true}) label: string;
   @Prop({mutable: true}) name: string = "";
   @Prop({mutable: true}) tooltip: string = "";
+  @Prop({ mutable: true }) load: boolean = false;
+  @Prop({ mutable: true }) checkLoad: boolean = false;
 
   componentDidLoad(){
+    if (this.checkLoad) this.load = true;
     this.didLoad.emit();
     if (this.hasLoad && window["Insites"]){
       let func = window["Insites"].methods[this.hasLoad];

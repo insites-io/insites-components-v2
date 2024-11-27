@@ -7,11 +7,13 @@
 
 ## Properties
 
-| Property   | Attribute   | Description | Type     | Default     |
-| ---------- | ----------- | ----------- | -------- | ----------- |
-| `fullLogo` | `full-logo` |             | `string` | `undefined` |
-| `hasLoad`  | `has-load`  |             | `string` | `undefined` |
-| `iconLogo` | `icon-logo` |             | `string` | `undefined` |
+| Property    | Attribute    | Description | Type      | Default     |
+| ----------- | ------------ | ----------- | --------- | ----------- |
+| `checkLoad` | `check-load` |             | `boolean` | `false`     |
+| `fullLogo`  | `full-logo`  |             | `string`  | `undefined` |
+| `hasLoad`   | `has-load`   |             | `string`  | `undefined` |
+| `iconLogo`  | `icon-logo`  |             | `string`  | `undefined` |
+| `load`      | `load`       |             | `boolean` | `false`     |
 
 
 ## Events
