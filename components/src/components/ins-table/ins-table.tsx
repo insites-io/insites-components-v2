@@ -581,7 +581,7 @@ export class InsTable {
 
         if (item[`${rowAction}Link`]) {
           return (
-          <a class={`action-item
+          <a class={`action-item row-action-${this.updateKebabCase(rowAction)}
             ${
             rowAction === 'Remove' ||
             rowAction === 'Delete' ||
@@ -594,7 +594,7 @@ export class InsTable {
 
         return (
           <span
-            class={`action-item
+            class={`action-item row-action-${this.updateKebabCase(rowAction)}
               ${rowAction === 'Archive' ||
                 rowAction === 'Remove' ||
                 rowAction === 'Delete' ||
@@ -610,7 +610,7 @@ export class InsTable {
 
       if (item[`${rowAction}Link`]){
         return (
-        <a class={`action-item
+        <a class={`action-item row-action-${this.updateKebabCase(rowAction)}
           ${rowAction === 'Archive' ||
           rowAction === 'Remove' ||
           rowAction === 'Delete' ||
@@ -624,7 +624,7 @@ export class InsTable {
 
       return (
         <span
-          class={`action-item
+          class={`action-item row-action-${this.updateKebabCase(rowAction)}
             ${rowAction === 'Archive' ||
               rowAction === 'Remove' ||
               rowAction === 'Delete' ||

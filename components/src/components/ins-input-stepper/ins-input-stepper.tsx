@@ -140,6 +140,14 @@ export class InsStepper {
     this.value = value;
   }
 
+  insInputHandler(event) {
+    if (event.target.value) {
+      this.insValueChange.emit(Number(event.target.value));
+    } else {
+      this.insValueChange.emit(null);
+    }
+  }
+
   addClickOutside(){
     window.addEventListener("click", e => {
       let target = e.target as any;
@@ -201,11 +209,12 @@ export class InsStepper {
               required={this.required}
               disabled={this.disabled}
               readonly={this.readonly}
+              onInput={e => this.insInputHandler(e)}
               onFocus={() => this.activateLabel()}
               onBlur={e => this.insBlurHandler(e)}
               // onKeyUp={e => this.onInputHandler(e)}
               // onInput={e => this.inputChanged(e)}
-/>
+              />
           </div>
 
           <div class="ins-input-stepper_plus"

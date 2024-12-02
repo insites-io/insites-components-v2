@@ -70,6 +70,22 @@
 
   <ins-renderer>
     <div>
+      <ins-input-stepper id="stepperEl" label="test" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-input-stepper>
+
+      <script>
+        const stepperEl = document.getElementById('stepperEl');
+
+        stepperEl.addEventListener('insValueChange', event => {
+          console.log('input', event)
+        });
+
+
+        // setTimeout(() => {
+        //   checkGroupEl.setValue(['1', '2']);
+        // }, 200);
+      </script>
+
+
       <ins-markdown-editor label="Editor" id="editorEl"></ins-markdown-editor>
 
       <ins-radio-group id="radioGroupEl" has-none label="Radio Group" readonly tooltip="tester" error-message="Required." html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>">
@@ -280,8 +296,6 @@
       <ins-textarea label="TextArea" has-error error-message="Required." html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-textarea>
 
 
-
-      <ins-input-stepper label="test" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-input-stepper>
 
     </div>
   </ins-renderer>

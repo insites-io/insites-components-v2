@@ -89,6 +89,7 @@ export class InsInputMultiple {
 		value.splice(index, 1);
 		this.value = [];
 		this.value = value;
+    this.insInput.emit({ value });
 	}
 
 	onclickContainer(event) {
