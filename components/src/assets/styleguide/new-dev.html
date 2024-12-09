@@ -70,6 +70,20 @@
 
   <ins-renderer>
     <div>
+      <ins-input label="Not Color"></ins-input>
+      <ins-input id="colorEl" label="Color" field="color" tooltip="tester" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-input>
+
+      <script>
+        const colorEl = document.getElementById('colorEl');
+
+        colorEl.addEventListener('insColorChange', async (event) => {
+          console.log('input', event.detail)
+          console.log(await colorEl.getValue());
+        });
+
+      </script>
+
+
       <ins-input-stepper id="stepperEl" label="test" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-input-stepper>
 
       <script>
@@ -134,13 +148,7 @@
           console.log('blur', event)
         });
 
-        // setTimeout(() => {
-        //   checkGroupEl.setValue(['1', '2']);
-        // }, 200);
       </script>
-
-      <ins-input label="Color" field="color" has-error error-message="Error!" tooltip="tester" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-input>
-
       <ins-checkbox-group id="checkGroupEl" label="Check Group" has-error error-message="Error!" horizontal tooltip="tester" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>">
         <div>
           <ins-checkbox label="1" value="1"></ins-checkbox>
@@ -239,8 +247,6 @@
         </div>
       </ins-card-select>
 
-      <!-- <ins-editor label="TEST" has-error has-code-editor error-message="ERrorks" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-editor> -->
-
       <ins-button-select id="insSelectEl" has-error error-message="ERrorks" label-key="name" value-key="value" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>">
         <ins-button-select-option
           label="Static 2"
@@ -277,17 +283,12 @@
       </script>
 
 
-
       <script>
         const radioGroupEl = document.getElementById('radioGroupEl');
 
         radioGroupEl.addEventListener('insInput', event => {
           console.log(event)
         });
-
-        // setTimeout(() => {
-        //   radioGroupEl.setValue('2');
-        // }, 200);
       </script>
 
       <ins-input label="InPut" has-error error-message="Required." html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-input>

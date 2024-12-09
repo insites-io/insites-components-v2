@@ -45,6 +45,7 @@
 | ---------------- | ----------- | ------------------ |
 | `didLoad`        |             | `CustomEvent<any>` |
 | `insBlur`        |             | `CustomEvent<any>` |
+| `insColorChange` |             | `CustomEvent<any>` |
 | `insIconClick`   |             | `CustomEvent<any>` |
 | `insInput`       |             | `CustomEvent<any>` |
 | `insValueChange` |             | `CustomEvent<any>` |
@@ -52,13 +53,13 @@
 
 ## Methods
 
-### `getValue() => Promise<string>`
+### `getValue() => Promise<any>`
 
 
 
 #### Returns
 
-Type: `Promise<string>`
+Type: `Promise<any>`
 
 
 

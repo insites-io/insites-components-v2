@@ -7,6 +7,7 @@ export class InsInput {
   @Event() insBlur: EventEmitter;
   @Event() insIconClick: EventEmitter;
   @Event() insValueChange: EventEmitter;
+  @Event() insColorChange: EventEmitter;
   @Event() didLoad: EventEmitter;
   @Prop() hasLoad: string;
 
@@ -40,6 +41,7 @@ export class InsInput {
   @Prop({ mutable: true }) description: string = "";
   @Prop({ mutable: true }) htmlDescription: boolean = false;
 
+  hexValue;
   invalidHexColor: string = "";
   active = false;
   colorEl;
@@ -47,23 +49,63 @@ export class InsInput {
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
   async insReset() {
-    if (this.checkValue) this.insInput.emit({ value: null });
+    if (this.checkValue) {
+      if (this.field === 'color') {
+        this.insColorChange.emit({ value: null, valid: false });
+      } else {
+        this.insInput.emit({ value: null });
+      }
+    }
   }
 
   @Method()
   async insRecover() {
-    if (this.checkValue) this.insInput.emit({ value: await this.getValue() });
+    if (this.checkValue) {
+      if (this.field === 'color') {
+        const value = await this.getValue();
+        this.insColorChange.emit({ value, valid: value.length });
+      } else {
+        this.insInput.emit({ value: await this.getValue() });
+      }
+    }
   }
 
   @Method()
   async setValue(value){
-    this.value = value;
-    this.insValueChange.emit(this.value);
+    if (this.field === 'color') {
+      let color = value;
+      if (color?.length < 7 && color?.length > 3) {
+        let tempColor = color.slice(1).split('');
+        for (let counter = 0; counter < tempColor.length; counter++) {
+          const item = tempColor[counter];
+          tempColor[counter] = item + item;
+          if (tempColor.join('').length === 6) break;
+        }
+
+        color = `#${tempColor.join('')}`;
+      }
+      const valid = color?.match(/^#[0-9A-F]{6}$/i);
+
+      if (valid) {
+        this.hexValue = color;
+        this.value = color.slice(1);
+      } else {
+        this.hexValue = null;
+        this.value = null;
+      }
+    } else {
+      this.value = value;
+      this.insValueChange.emit(this.value);
+    }
   }
 
   @Method()
   async getValue(){
-    return this.value;
+    if (this.field === 'color') {
+      return this.hexValue;
+    } else {
+      return this.value;
+    }
   }
 
   componentDidLoad(){
@@ -112,11 +154,13 @@ export class InsInput {
   }
 
   onInputHandler(event){
-    let value = event.target.value;
-    let keyCode = event.which || event.keyCode;
+    if (this.field !== "color") {
+      let value = event.target.value;
+      let keyCode = event.which || event.keyCode;
 
-    if (this.field === "number") this.validateMinMax(value);
-    this.insInput.emit({ value, keyCode });
+      if (this.field === "number") this.validateMinMax(value);
+      this.insInput.emit({ value, keyCode });
+    }
   }
 
   insBlurHandler(event){
@@ -124,14 +168,32 @@ export class InsInput {
     let keyCode = event.which || event.keyCode;
 
     if (this.field === "number") this.validateMinMax(value, "blur");
-    this.insBlur.emit({ value, keyCode });
-    this.deactivateLabel();
 
-    if (this.field === 'color') this.validateHexColor(value);
+    if (this.field === 'color') {
+      this.validateHexColor(`#${value}`);
+    } else {
+      this.insBlur.emit({ value, keyCode });
+    }
+    this.deactivateLabel();
   }
 
-  inputChanged(ev: any) {
-    let val = ev.target && ev.target.value;
+  inputChanged(event: any) {
+    let val = event.target && event.target.value;
+    if (this.field === "color") {
+      val = val.replace(/[^A-Fa-f0-9]/g, "");
+      event.target.value = val;
+      if (val.length === 6) {
+        this.hexValue = `#${val}`;
+      } else if (val.length === 0) {
+        this.hexValue = null;
+      }
+
+      this.insColorChange.emit({
+        value: val ? val.length === 6 ? `#${val}` : val : null,
+        valid: val.length === 6
+      });
+    }
+
     this.value = val;
     this.insValueChange.emit(this.value);
   }
@@ -157,16 +219,38 @@ export class InsInput {
 
   colorHandler(e){
     this.validateHexColor(e.target.value);
-    this.onInputHandler(e);
-    this.inputChanged(e);
   }
 
   validateHexColor(color) {
-    if (!color) return this.invalidHexColor = "";
+    if (color?.length < 7 && color?.length > 3) {
+      let tempColor = color.slice(1).split('');
+      for (let counter = 0; counter < tempColor.length; counter++) {
+        const item = tempColor[counter];
+        tempColor[counter] = item + item;
+        if (tempColor.join('').length === 6) break;
+      }
 
-    const valid = color.match(/^#[0-9A-F]{6}$/i);
-    if (valid) this.invalidHexColor = "";
-    else this.invalidHexColor = "Invalid hex color.";
+      color = `#${tempColor.join('')}`;
+    }
+    const valid = color?.match(/^#[0-9A-F]{6}$/i);
+
+    if (valid) {
+      this.hexValue = color;
+      this.value = color.slice(1);
+      this.insValueChange.emit(color.slice(1));
+      this.insColorChange.emit({
+        value: color,
+        valid: true
+      });
+    } else {
+      this.hexValue = null;
+      this.value = null;
+      this.insValueChange.emit(null);
+      this.insColorChange.emit({
+        value: null,
+        valid: false
+      });
+    }
   }
 
   validateDescription(value) {
@@ -178,12 +262,6 @@ export class InsInput {
     return value.replace(commentsAndPhpTags, '').replace(tags, ($0, $1) => {
       return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
     });
-  }
-
-  onClickHandler(e) {
-    this.colorEl = e.target.parentNode.querySelector('.ins-form-field.color');
-    this.colorEl?.click();
-    this.colorEl?.focus();
   }
 
   colorFocusHandler(e) {
@@ -198,7 +276,7 @@ export class InsInput {
     return (
       <div class={`ins-input-wrap ins-form-field-wrap
         ${this.hasError || this.invalidHexColor ? 'is-invalid' : ''}
-        ${this.icon ? "has-icon":""}
+        ${this.icon || this.field === 'color' ? "has-icon":""}
         ${this.field === 'color' ? "has-color":""}
         ${this.unitLeft ? "has-unit-left":""}
         ${this.unitRight ? "has-unit-right":""}
@@ -234,14 +312,13 @@ export class InsInput {
             name={this.name}
             placeholder={this.placeholder}
             required={this.required}
-            onClick={e => this.onClickHandler(e)}
             onKeyUp={e => this.onInputHandler(e)}
             onInput={this.inputChanged.bind(this)}
             onFocus={() => this.activateLabel()}
             onBlur={e => this.insBlurHandler(e)}
             disabled={this.disabled}
-            maxlength={this.maxlength}
-            readonly={this.readonly || this.field === 'color'}
+            maxlength={this.field === 'color' ? 6 : this.maxlength}
+            readonly={this.readonly}
             min={this.min}
             max={this.max}
             step={this.step}
@@ -263,9 +340,13 @@ export class InsInput {
           : ''}
 
           {this.field === 'color' ?
+            <i class="icon-wrap color-wrap icon-hash">
+            </i>: ''}
+
+          {this.field === 'color' ?
             <input type="color"
               class="ins-form-field color"
-              value={this.value}
+              value={this.hexValue || "#000000"}
               disabled={this.disabled || this.readonly}
               onInput={e => this.colorHandler(e)}
               onFocus={e => this.colorFocusHandler(e)}

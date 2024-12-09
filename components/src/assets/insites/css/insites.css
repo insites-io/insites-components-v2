@@ -3858,6 +3858,15 @@ ins-editor .redactor-toolbar .re-fullscreen i {
   right: 82px
 }
 
+ins-input .ins-form-field-wrap.ins-input-wrap.has-icon.has-color input[type="text"].ins-form-field {
+  padding-left: 32px;
+  padding-right: 10px;
+}
+ins-input .ins-form-field-wrap.ins-input-wrap.has-icon.has-color .icon-wrap.color-wrap {
+  left: 10px;
+  width: 16px;
+}
+
 ins-input-file .ins-form-label .ins-input-tooltip {
   margin-bottom: 6px
 }
@@ -11486,6 +11495,11 @@ ins-table-th {
   color: var(--ins-color-ink);
   font-size: 14px;
   font-weight: 600
+}
+
+ins-table .ibt-table-action-container ins-select .ins-select {
+  display: inline-block;
+  margin-bottom: 0;
 }
 
 ins-page {

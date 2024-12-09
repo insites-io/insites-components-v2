@@ -40,13 +40,13 @@
 
 ## Methods
 
-### `getValue() => Promise<string>`
+### `getValue() => Promise<number>`
 
 
 
 #### Returns
 
-Type: `Promise<string>`
+Type: `Promise<number>`
 
 
 

@@ -12,6 +12,7 @@
 | `autoWidth`    | `auto-width`     |             | `boolean` | `false`    |
 | `background`   | `background`     |             | `boolean` | `true`     |
 | `closeOnClick` | `close-on-click` |             | `boolean` | `true`     |
+| `container`    | `container`      |             | `any`     | `false`    |
 | `content`      | `content`        |             | `string`  | `""`       |
 | `html`         | `html`           |             | `boolean` | `false`    |
 | `icon`         | `icon`           |             | `any`     | `''`       |

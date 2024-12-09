@@ -101,7 +101,7 @@ export class InsRadioGroup {
           }
           </label>
         <div class={`ins-radio-group-option-wrap ${this.horizontal ? 'radio-horizontal' : ''}`}>
-          {this.hasNone ? <ins-radio value={null} label={this.noneLabel} checked={this.value === null} null-value></ins-radio> : ''}
+          {this.hasNone ? <ins-radio value={null} label={this.noneLabel} checked null-value></ins-radio> : ''}
           <slot />
         </div>
 

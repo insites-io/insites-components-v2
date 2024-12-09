@@ -1,1 +1,0 @@
-import{r,h as s}from"./p-2e981197.js";const c=class{constructor(s){r(this,s)}render(){return s("slot",{key:"9a66d845bec69e55cc20b5681ff4d47f15ac5dac"})}};export{c as ins_table_row}

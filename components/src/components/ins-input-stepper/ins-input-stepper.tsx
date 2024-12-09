@@ -45,12 +45,16 @@ export class InsStepper {
   }
 
   @Method()
-  async getValue(){
-    return this.value
+  async getValue() {
+    if (this.value) {
+      return Number(this.value);
+    } else {
+      return null;
+    }
   }
 
   @Method()
-  async setValue(value){
+  async setValue(value) {
     this.value = value;
     this.insValueChange.emit(this.value);
   }
@@ -136,7 +140,14 @@ export class InsStepper {
 
     this.deactivateLabel();
     this.insBlur.emit({ value, keyCode });
-    this.insValueChange.emit(+value);
+    // this.insValueChange.emit(+value);
+
+    if (event.target.value) {
+      this.insValueChange.emit(Number(event.target.value));
+    } else {
+      this.insValueChange.emit(null);
+    }
+
     this.value = value;
   }
 

@@ -16,10 +16,12 @@ export class InsTooltip {
     @Prop({mutable: true}) closeOnClick: boolean = true;
     @Prop({mutable: true}) width: string = "";
     @Prop({mutable: true}) autoWidth: boolean = false;
+    @Prop({mutable: true}) container: any = false;
 
     componentDidLoad() {
         let el = this.insTooltipEl.querySelector('.tooltip-label') as HTMLElement;
         new Tooltip(el, {
+            container: this.container,
             placement: this.position,
             title: this.content,
             trigger: this.trigger,

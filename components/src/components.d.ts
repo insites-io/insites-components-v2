@@ -537,7 +537,7 @@ export namespace Components {
         "errorMessage": string;
         "field": string;
         "fieldId": string;
-        "getValue": () => Promise<string>;
+        "getValue": () => Promise<any>;
         "hasError": boolean;
         "hasLoad": string;
         "htmlDescription": boolean;
@@ -742,7 +742,7 @@ export namespace Components {
         "description": string;
         "disabled": boolean;
         "errorMessage": string;
-        "getValue": () => Promise<string>;
+        "getValue": () => Promise<number>;
         "hasError": boolean;
         "hasLoad": string;
         "htmlDescription": boolean;
@@ -1350,6 +1350,7 @@ export namespace Components {
         "autoWidth": boolean;
         "background": boolean;
         "closeOnClick": boolean;
+        "container": any;
         "content": string;
         "html": boolean;
         "icon": any;
@@ -2240,6 +2241,7 @@ declare global {
         "insBlur": any;
         "insIconClick": any;
         "insValueChange": any;
+        "insColorChange": any;
         "didLoad": any;
     }
     interface HTMLInsInputElement extends Components.InsInput, HTMLStencilElement {
@@ -3760,6 +3762,7 @@ declare namespace LocalJSX {
         "name"?: string;
         "onDidLoad"?: (event: InsInputCustomEvent<any>) => void;
         "onInsBlur"?: (event: InsInputCustomEvent<any>) => void;
+        "onInsColorChange"?: (event: InsInputCustomEvent<any>) => void;
         "onInsIconClick"?: (event: InsInputCustomEvent<any>) => void;
         "onInsInput"?: (event: InsInputCustomEvent<any>) => void;
         "onInsValueChange"?: (event: InsInputCustomEvent<any>) => void;
@@ -4540,6 +4543,7 @@ declare namespace LocalJSX {
         "autoWidth"?: boolean;
         "background"?: boolean;
         "closeOnClick"?: boolean;
+        "container"?: any;
         "content"?: string;
         "html"?: boolean;
         "icon"?: any;
