@@ -29,12 +29,20 @@ export class InsRadioGroup {
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
   async insReset() {
-    if (this.checkValue) this.insInput.emit({ value: null });
+    if (this.checkValue) {
+      this.insRadioGroupEl.dataset.insReset = "true";
+      this.insRadioGroupEl.removeAttribute("data-ins-recover");
+      this.insInput.emit({ value: null });
+    }
   }
 
   @Method()
   async insRecover() {
-    if (this.checkValue) this.insInput.emit({ value: await this.getValue() });
+    if (this.checkValue) {
+      this.insRadioGroupEl.dataset.insRecover = "true";
+      this.insRadioGroupEl.removeAttribute("data-ins-reset");
+      this.insInput.emit({ value: await this.getValue() });
+    }
   }
 
   @Listen('insCheck')

@@ -34,12 +34,20 @@ export class InsInputTable {
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
   async insReset() {
-    if (this.checkValue) this.insInput.emit([]);
+    if (this.checkValue) {
+      this.insInputTableEl.dataset.insReset = "true";
+      this.insInputTableEl.removeAttribute("data-ins-recover");
+      this.insInput.emit([]);
+    }
   }
 
   @Method()
   async insRecover() {
-    if (this.checkValue) this.insInput.emit(await this.getValue());
+    if (this.checkValue) {
+      this.insInputTableEl.dataset.insRecover = "true";
+      this.insInputTableEl.removeAttribute("data-ins-reset");
+      this.insInput.emit(await this.getValue());
+    }
   }
 
   componentWillLoad() {

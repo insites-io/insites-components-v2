@@ -48,12 +48,18 @@ export class InsInputTel {
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
   async insReset() {
-    if (this.checkValue) this.insInput.emit({ field: "phone_number", value: null });
+    if (this.checkValue) {
+      this.insInputTelEl.dataset.insReset = "true";
+      this.insInputTelEl.removeAttribute("data-ins-recover");
+      this.insInput.emit({ field: "phone_number", value: null });
+    }
   }
 
   @Method()
   async insRecover() {
     if (this.checkValue) {
+      this.insInputTelEl.dataset.insRecover = "true";
+      this.insInputTelEl.removeAttribute("data-ins-reset");
       const valuePhone = await this.getValues() as any;
       this.insInput.emit({ field: "phone_number", value: valuePhone.phone_number });
     }

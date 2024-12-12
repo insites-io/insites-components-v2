@@ -45,12 +45,18 @@ export class InsDateTime {
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
   async insReset() {
-    if (this.checkValue) this.insInput.emit({ selected_dates: undefined });
+    if (this.checkValue) {
+      this.insDateTimeEl.dataset.insReset = "true";
+      this.insDateTimeEl.removeAttribute("data-ins-recover");
+      this.insInput.emit({ selected_dates: undefined });
+    }
   }
 
   @Method()
   async insRecover() {
     if (this.checkValue) {
+      this.insDateTimeEl.dataset.insRecover = "true";
+      this.insDateTimeEl.removeAttribute("data-ins-reset");
       this.insInput.emit({
         selected_dates: this.selectedDates
       });

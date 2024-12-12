@@ -38,12 +38,20 @@ export class InsToggleSwitch {
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
   async insReset() {
-    if (this.checkValue) this.insToggle.emit({ checked: false, value: this.value });
+    if (this.checkValue) {
+      this.insToggleSwitchEl.dataset.insReset = "true";
+      this.insToggleSwitchEl.removeAttribute("data-ins-recover");
+      this.insToggle.emit({ checked: false, value: this.value });
+    }
   }
 
   @Method()
   async insRecover() {
-    if (this.checkValue) this.insToggle.emit({ checked: this.checked, value: this.value });
+    if (this.checkValue) {
+      this.insToggleSwitchEl.dataset.insRecover = "true";
+      this.insToggleSwitchEl.removeAttribute("data-ins-reset");
+      this.insToggle.emit({ checked: this.checked, value: this.value });
+    }
   }
 
   @Method()

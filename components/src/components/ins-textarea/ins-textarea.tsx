@@ -33,12 +33,20 @@ export class InsTextarea {
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
   async insReset() {
-    if (this.checkValue) this.insInput.emit({ value: null });
+    if (this.checkValue) {
+      this.insTextareaEl.dataset.insReset = "true";
+      this.insTextareaEl.removeAttribute("data-ins-recover");
+      this.insInput.emit({ value: null });
+    }
   }
 
   @Method()
   async insRecover() {
-    if (this.checkValue) this.insInput.emit({ value: await this.getValue() });
+    if (this.checkValue) {
+      this.insTextareaEl.dataset.insRecover = "true";
+      this.insTextareaEl.removeAttribute("data-ins-reset");
+      this.insInput.emit({ value: await this.getValue() });
+    }
   }
 
   @Method()

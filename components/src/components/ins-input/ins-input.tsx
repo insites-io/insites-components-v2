@@ -50,6 +50,8 @@ export class InsInput {
   @Method()
   async insReset() {
     if (this.checkValue) {
+      this.el.dataset.insReset = "true";
+      this.el.removeAttribute("data-ins-recover");
       if (this.field === 'color') {
         this.insColorChange.emit({ value: null, valid: false });
       } else {
@@ -61,9 +63,11 @@ export class InsInput {
   @Method()
   async insRecover() {
     if (this.checkValue) {
+      this.el.dataset.insRecover = "true";
+      this.el.removeAttribute("data-ins-reset");
       if (this.field === 'color') {
         const value = await this.getValue();
-        this.insColorChange.emit({ value, valid: value.length });
+        this.insColorChange.emit({ value, valid: !!value?.length });
       } else {
         this.insInput.emit({ value: await this.getValue() });
       }

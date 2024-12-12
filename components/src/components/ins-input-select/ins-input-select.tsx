@@ -71,12 +71,20 @@ export class InsInputSelect {
     @Prop({ mutable: true }) checkValue: boolean = false;
     @Method()
     async insReset() {
-      if (this.checkValue) this.insChange.emit(this.multiple ? [] : null);
+      if (this.checkValue) {
+        this.insInputSelectEl.dataset.insReset = "true";
+        this.insInputSelectEl.removeAttribute("data-ins-recover");
+        this.insChange.emit(this.multiple ? [] : null);
+      }
     }
 
     @Method()
     async insRecover() {
-      if (this.checkValue) this.insChange.emit(await this.getValue());
+      if (this.checkValue) {
+        this.insInputSelectEl.dataset.insRecover = "true";
+        this.insInputSelectEl.removeAttribute("data-ins-reset");
+        this.insChange.emit(await this.getValue());
+      }
     }
 
     @Method()

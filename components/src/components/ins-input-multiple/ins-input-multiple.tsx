@@ -26,12 +26,20 @@ export class InsInputMultiple {
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
   async insReset() {
-    if (this.checkValue) this.insInput.emit({ value: [] });
+    if (this.checkValue) {
+      this.insInputMultipleEl.dataset.insReset = "true";
+      this.insInputMultipleEl.removeAttribute("data-ins-recover");
+      this.insInput.emit({ value: [] });
+    }
   }
 
   @Method()
   async insRecover() {
-    if (this.checkValue) this.insInput.emit({ value: await this.getValue() });
+    if (this.checkValue) {
+      this.insInputMultipleEl.dataset.insRecover = "true";
+      this.insInputMultipleEl.removeAttribute("data-ins-reset");
+      this.insInput.emit({ value: await this.getValue() });
+    }
   }
 
   componentWillLoad(){

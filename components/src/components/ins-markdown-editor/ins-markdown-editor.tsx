@@ -31,12 +31,20 @@ export class InsMarkdownEditor {
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
   async insReset() {
-    if (this.checkValue) this.insValueChange.emit(null);
+    if (this.checkValue) {
+      this.insMarkdownEditorEl.dataset.insReset = "true";
+      this.insMarkdownEditorEl.removeAttribute("data-ins-recover");
+      this.insValueChange.emit(null);
+    }
   }
 
   @Method()
   async insRecover() {
-    if (this.checkValue) this.insValueChange.emit(await this.getValue());
+    if (this.checkValue) {
+      this.insMarkdownEditorEl.dataset.insRecover = "true";
+      this.insMarkdownEditorEl.removeAttribute("data-ins-reset");
+      this.insValueChange.emit(await this.getValue());
+    }
   }
 
   @Method()

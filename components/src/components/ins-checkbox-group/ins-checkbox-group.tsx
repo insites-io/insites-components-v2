@@ -27,12 +27,20 @@ export class InsCheckboxGroup {
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
   async insReset() {
-    if (this.checkValue) this.insInput.emit({ value: [] });
+    if (this.checkValue) {
+      this.insCheckboxGroupEl.dataset.insReset = "true";
+      this.insCheckboxGroupEl.removeAttribute("data-ins-recover");
+      this.insInput.emit({ value: [] });
+    }
   }
 
   @Method()
   async insRecover() {
-    if (this.checkValue) this.insInput.emit({ value: await this.getValue() });
+    if (this.checkValue) {
+      this.insCheckboxGroupEl.dataset.insRecover = "true";
+      this.insCheckboxGroupEl.removeAttribute("data-ins-reset");
+      this.insInput.emit({ value: await this.getValue() });
+    }
   }
 
   @Listen('insCheck')

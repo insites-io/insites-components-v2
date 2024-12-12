@@ -27,12 +27,20 @@ export class InsCardSelect {
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
   async insReset() {
-    if (this.checkValue) this.insInput.emit({ value: this.multiple ? [] : null });
+    if (this.checkValue) {
+      this.insCardSelectEl.dataset.insReset = "true";
+      this.insCardSelectEl.removeAttribute("data-ins-recover");
+      this.insInput.emit({ value: this.multiple ? [] : null });
+    }
   }
 
   @Method()
   async insRecover() {
-    if (this.checkValue) this.insInput.emit({ value: await this.getValue() });
+    if (this.checkValue) {
+      this.insCardSelectEl.dataset.insRecover = "true";
+      this.insCardSelectEl.removeAttribute("data-ins-reset");
+      this.insInput.emit({ value: await this.getValue() });
+    }
   }
 
   @Listen('insCardSelectOptionClicked')

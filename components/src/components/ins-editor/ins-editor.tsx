@@ -73,12 +73,20 @@ export class InsEditor {
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
   async insReset() {
-    if (this.checkValue) this.insInput.emit(null);
+    if (this.checkValue) {
+      this.insEditorEl.dataset.insReset = "true";
+      this.insEditorEl.removeAttribute("data-ins-recover");
+      this.insInput.emit(null);
+    }
   }
 
   @Method()
   async insRecover() {
-    if (this.checkValue) this.insInput.emit(await this.getValue());
+    if (this.checkValue) {
+      this.insEditorEl.dataset.insRecover = "true";
+      this.insEditorEl.removeAttribute("data-ins-reset");
+      this.insInput.emit(await this.getValue());
+    }
   }
 
 	componentWillLoad() {

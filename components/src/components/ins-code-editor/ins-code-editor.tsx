@@ -50,12 +50,20 @@ export class InsCodeEditor {
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
   async insReset() {
-    if (this.checkValue) this.insInput.emit({ value: null });
+    if (this.checkValue) {
+      this.insCodeEditorEl.dataset.insReset = "true";
+      this.insCodeEditorEl.removeAttribute("data-ins-recover");
+      this.insInput.emit({ value: null });
+    }
   }
 
   @Method()
   async insRecover() {
-    if (this.checkValue) this.insInput.emit({ value: await this.getValue() });
+    if (this.checkValue) {
+      this.insCodeEditorEl.dataset.insRecover = "true";
+      this.insCodeEditorEl.removeAttribute("data-ins-reset");
+      this.insInput.emit({ value: await this.getValue() });
+    }
   }
 
 	/*@State()*/ codeMirrorEl: any;

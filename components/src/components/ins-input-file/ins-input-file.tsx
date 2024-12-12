@@ -52,13 +52,18 @@ export class InsInputFile {
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
   async insReset() {
-    if (this.checkValue) this.insFileChange.emit({ value: null });
+    if (this.checkValue) {
+      this.insInputFileEl.dataset.insReset = "true";
+      this.insInputFileEl.removeAttribute("data-ins-recover");
+      this.insFileChange.emit({ value: null });
+    }
   }
 
   @Method()
   async insRecover() {
     if (this.checkValue) {
-
+      this.insInputFileEl.dataset.insRecover = "true";
+      this.insInputFileEl.removeAttribute("data-ins-reset");
       if (this.maxFiles > 1) {
         this.insFileChange.emit({ value: await this.getFilesList() });
       } else {

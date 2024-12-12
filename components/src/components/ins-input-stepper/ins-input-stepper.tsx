@@ -36,12 +36,20 @@ export class InsStepper {
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
   async insReset() {
-    if (this.checkValue) this.insValueChange.emit(null);
+    if (this.checkValue) {
+      this.el.dataset.insReset = "true";
+      this.el.removeAttribute("data-ins-recover");
+      this.insValueChange.emit(null);
+    }
   }
 
   @Method()
   async insRecover() {
-    if (this.checkValue) this.insValueChange.emit(await this.getValue());
+    if (this.checkValue) {
+      this.el.dataset.insRecover = "true";
+      this.el.removeAttribute("data-ins-reset");
+      this.insValueChange.emit(await this.getValue());
+    }
   }
 
   @Method()
