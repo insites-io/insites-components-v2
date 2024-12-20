@@ -9,6 +9,11 @@ export class InsChart {
   @Method()
   async renderChart(options) {
     Highcharts.chart(options);
+    Highcharts.setOptions({
+      lang: {
+        thousandsSep: ','
+      }
+    });
   }
 
   @Method()
