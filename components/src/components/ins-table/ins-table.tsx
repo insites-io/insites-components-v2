@@ -538,30 +538,40 @@ export class InsTable {
   }
 
   rowDataRenderer(item, tableHeader) {
+    const slotName = `column-${this.updateKebabCase(tableHeader.label)}`;
+    const slotContent = document.querySelector(`[slot="${slotName}"]`);
+
+    if (slotContent) {
+      return (
+        <div innerHTML={slotContent.innerHTML} data-item={JSON.stringify(item)} data-header={JSON.stringify(tableHeader)}></div>
+      );
+    }
+
     if (item[`${tableHeader.label}Link`]) {
       return (
-        <a class={`ibt-link`}
-          href={item[`${tableHeader.label}Link`]}>
+          <a class={`ibt-link`}
+            href={item[`${tableHeader.label}Link`]}>
+              {tableHeader.type === 'currency'
+                ? `${this.currency
+                  ? this.currency
+                  : '$'}${item[tableHeader.label]}`
+                : item[tableHeader.label]}
+          </a>
+      )
+    }
+
+    return (
+
+        <span class="ibt-link" onClick={() => {
+          !this.rowActions.length ?
+          this.rowActionHandler('rowItemClick', item, item[tableHeader.label]) : ''
+        }}>
           {tableHeader.type === 'currency'
             ? `${this.currency
               ? this.currency
               : '$'}${item[tableHeader.label]}`
             : item[tableHeader.label]}
-        </a>
-      )
-    }
-
-    return (
-      <span class="ibt-link" onClick={() => {
-        !this.rowActions.length ?
-        this.rowActionHandler('rowItemClick', item, item[tableHeader.label]) : ''
-      }}>
-        {tableHeader.type === 'currency'
-          ? `${this.currency
-            ? this.currency
-            : '$'}${item[tableHeader.label]}`
-          : item[tableHeader.label]}
-      </span>
+        </span>
     )
   }
 
