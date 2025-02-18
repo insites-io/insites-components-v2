@@ -3907,19 +3907,19 @@ ins-input-file[disabled] .ins-input-file-wrapper label {
   color: var(--ins-color-ink40)
 }
 
-ins-input-file[has-error] .ins-dropzone {
+ins-input-file[has-error="true"] .ins-dropzone {
   border-color: var(--ins-color-negative);
   background-color: var(--ins-color-red-10p)
 }
 
-ins-input-file[has-error] .dz-message,
-ins-input-file[has-error] .ins-input-file-wrapper.is-invalid .file-restrictions,
-ins-input-file[has-error] .ins-input-file-wrapper.is-invalid .ins-form-error,
-ins-input-file[has-error] label {
+ins-input-file[has-error="true"] .dz-message,
+ins-input-file[has-error="true"] .ins-input-file-wrapper.is-invalid .file-restrictions,
+ins-input-file[has-error="true"] .ins-input-file-wrapper.is-invalid .ins-form-error,
+ins-input-file[has-error="true"] label {
   color: var(--ins-color-negative)
 }
 
-ins-input-file[has-error] .ins-input-file-wrapper.is-invalid .ins-form-error {
+ins-input-file[has-error="true"] .ins-input-file-wrapper.is-invalid .ins-form-error {
   display: block;
 }
 

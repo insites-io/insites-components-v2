@@ -11,12 +11,12 @@
 | ---------------------- | ----------------------- | ----------- | --------- | ------------------ |
 | `bulkActions`          | `bulk-actions`          |             | `any`     | `[]`               |
 | `checkLoad`            | `check-load`            |             | `boolean` | `false`            |
-| `currency`             | `currency`              |             | `string`  | `''`               |
-| `defaultBulkAction`    | `default-bulk-action`   |             | `string`  | `''`               |
-| `emptyValue`           | `empty-value`           |             | `string`  | `'-'`              |
+| `currency`             | `currency`              |             | `string`  | `""`               |
+| `defaultBulkAction`    | `default-bulk-action`   |             | `string`  | `""`               |
+| `emptyValue`           | `empty-value`           |             | `string`  | `"-"`              |
 | `hasLoad`              | `has-load`              |             | `string`  | `undefined`        |
-| `heading`              | `heading`               |             | `string`  | `''`               |
-| `initialSearch`        | `initial-search`        |             | `string`  | `''`               |
+| `heading`              | `heading`               |             | `string`  | `""`               |
+| `initialSearch`        | `initial-search`        |             | `string`  | `""`               |
 | `load`                 | `load`                  |             | `boolean` | `false`            |
 | `loaderIcon`           | `loader-icon`           |             | `any`     | `undefined`        |
 | `loaderImageSource`    | `loader-image-source`   |             | `string`  | `null`             |
@@ -27,18 +27,18 @@
 | `pageNumber`           | `page-number`           |             | `number`  | `1`                |
 | `pageSize`             | `page-size`             |             | `number`  | `10`               |
 | `pageSizeOptions`      | `page-size-options`     |             | `any`     | `[10, 20, 50]`     |
-| `paginationText`       | `pagination-text`       |             | `string`  | `'Rows per page:'` |
+| `paginationText`       | `pagination-text`       |             | `string`  | `"Rows per page:"` |
 | `rowActions`           | `row-actions`           |             | `any`     | `[]`               |
 | `rowActionsSettings`   | `row-actions-settings`  |             | `any`     | `undefined`        |
 | `searchPosition`       | `search-position`       |             | `string`  | `"right"`          |
-| `searchbarPlaceholder` | `searchbar-placeholder` |             | `string`  | `''`               |
+| `searchbarPlaceholder` | `searchbar-placeholder` |             | `string`  | `""`               |
 | `selectedRows`         | `selected-rows`         |             | `any`     | `[]`               |
-| `sortKeyword`          | `sort-keyword`          |             | `string`  | `''`               |
+| `sortKeyword`          | `sort-keyword`          |             | `string`  | `""`               |
 | `sortOrder`            | `sort-order`            |             | `boolean` | `false`            |
 | `staticTable`          | `static-table`          |             | `boolean` | `false`            |
 | `tableData`            | `table-data`            |             | `any`     | `[]`               |
 | `tableHeaders`         | `table-headers`         |             | `any`     | `[]`               |
-| `textOverflow`         | `text-overflow`         |             | `string`  | `''`               |
+| `textOverflow`         | `text-overflow`         |             | `string`  | `""`               |
 | `totalCount`           | `total-count`           |             | `any`     | `0`                |
 | `updatedRows`          | `updated-rows`          |             | `any`     | `[]`               |
 | `withoutPagination`    | `without-pagination`    |             | `boolean` | `false`            |

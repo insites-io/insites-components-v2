@@ -1115,13 +1115,18 @@ window.addEventListener('load', () => {
       fieldTable.bulkActions = ["Update"];
       fieldTable.tableHeaders = [
         { label: 'Name', type: "string", editable: true, textAlign: "center" },
-        { label: 'Birthday', type: "date", editable: true, textAlign: "center" },
+        { label: 'Birthday', type: "date", editable: true, textAlign: "center", type: "date", date_format: {
+        device_time: "Manila - PHT",
+        instance_time: "Sydney - AEDT",
+        date_time_format: "MM-DD-YYYY h:mm A",
+        instance_timezone: "+0100@Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna",
+      }, },
         { label: 'Status', type: "select", hasTag: true, editable: true, textAlign: "center",
             selectOptions: ['Active', 'Inactive'] }
         ]
       fieldTable.tableData = [
-        { "id": "sample-001", "Name": "John Doe", "Birthday": "01/29/1990", "Status": "Active" },
-        { "id": "sample-002", "Name": "Derek de Guzman", "Birthday": "11/29/1990", "Status": "Inactive" }
+        { "id": "sample-001", "Name": "John Doe", "Birthday": "(01-29-1990 3:30 PM)", "Status": "Active" },
+        { "id": "sample-002", "Name": "Derek de Guzman", "Birthday": "(11/29/1990)", "Status": "Inactive" }
       ]
       fieldTable.addEventListener('insTableBulkAction', function(event) {
         console.log('Edit table event', event.detail);

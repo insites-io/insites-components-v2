@@ -1,8 +1,22 @@
 import {
-  h, Component, Prop, Event, EventEmitter, State, Listen, Element, Method, Watch
+  h,
+  Component,
+  Prop,
+  Event,
+  EventEmitter,
+  State,
+  Listen,
+  Element,
+  Method,
+  Watch,
 } from "@stencil/core";
 
-@Component({ tag: 'ins-table' })
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+
+dayjs.extend(utc);
+
+@Component({ tag: "ins-table" })
 export class InsTable {
   @Element() insTableEl: HTMLElement;
 
@@ -27,9 +41,9 @@ export class InsTable {
   @Prop({ mutable: true }) loaderMessage: any;
   @Prop({ mutable: true }) loaderIcon: any;
   @Prop({ mutable: true }) loaderImageSource: string = null;
-  @Prop({ mutable: true }) searchbarPlaceholder: string = '';
-  @Prop({ mutable: true }) heading: string = '';
-  @Prop({ mutable: true }) currency: string = '';
+  @Prop({ mutable: true }) searchbarPlaceholder: string = "";
+  @Prop({ mutable: true }) heading: string = "";
+  @Prop({ mutable: true }) currency: string = "";
   @Prop({ mutable: true }) tableHeaders: any = [];
   @Prop({ mutable: true }) tableData: any = [];
   @Prop({ mutable: true }) pageNumber: number = 1;
@@ -41,36 +55,35 @@ export class InsTable {
   @Prop({ mutable: true }) rowActionsSettings: any;
   @Prop({ mutable: true }) selectedRows: any = [];
   @Prop({ mutable: true }) updatedRows: any = [];
-  @Prop({ mutable: true }) emptyValue: string = '-';
+  @Prop({ mutable: true }) emptyValue: string = "-";
   @Prop({ mutable: true }) sortOrder: boolean = false;
-  @Prop({ mutable: true }) sortKeyword: string = '';
-  @Prop({ mutable: true }) textOverflow: string = '';
-  @Prop({ mutable: true }) defaultBulkAction: string = '';
-  @Prop({ mutable: true }) paginationText: string = 'Rows per page:';
-  @Prop({ mutable: true }) initialSearch: string = '';
+  @Prop({ mutable: true }) sortKeyword: string = "";
+  @Prop({ mutable: true }) textOverflow: string = "";
+  @Prop({ mutable: true }) defaultBulkAction: string = "";
+  @Prop({ mutable: true }) paginationText: string = "Rows per page:";
+  @Prop({ mutable: true }) initialSearch: string = "";
 
-  @State() pageInfo: any = '0-0 of 0';
+  @State() pageInfo: any = "0-0 of 0";
   @State() nextDisabled: boolean = false;
   @State() tableUpdated: boolean = false;
 
   @State() hasImage: boolean = false;
   @State() hasRowActions: boolean = false;
 
-  @State() tableDataCopy: any = []
+  @State() tableDataCopy: any = [];
 
   selectedBulkAction: string = "";
 
-  @Watch('tableData')
-  tableDataChangeHandler(){
+  @Watch("tableData")
+  tableDataChangeHandler() {
     this.tableUpdated = true;
   }
 
-  @Watch('bulkActions')
-  bulkActionsChangeHandler(){
-    let bulkActionEl = this.insTableEl
-      .querySelector(
-        'ins-select[data-type="bulk-action"]'
-      ) as any;
+  @Watch("bulkActions")
+  bulkActionsChangeHandler() {
+    let bulkActionEl = this.insTableEl.querySelector(
+      'ins-select[data-type="bulk-action"]'
+    ) as any;
     if (bulkActionEl) {
       bulkActionEl.reset();
       // this.selectedBulkAction = "";
@@ -78,60 +91,66 @@ export class InsTable {
     }
   }
 
-  componentWillLoad(){
+  componentWillLoad() {
     this.updatePageInfo();
   }
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     this.updateBulkActionEl();
   }
 
-  async updateBulkActionEl(){
-    let bulkActionEl = this.insTableEl.querySelector('ins-select[data-type="bulk-action"]') as any;
-    if (bulkActionEl) await bulkActionEl.setSelectedFromValue(this.selectedBulkAction);
+  async updateBulkActionEl() {
+    let bulkActionEl = this.insTableEl.querySelector(
+      'ins-select[data-type="bulk-action"]'
+    ) as any;
+    if (bulkActionEl)
+      await bulkActionEl.setSelectedFromValue(this.selectedBulkAction);
   }
 
-  componentDidLoad(){
+  componentDidLoad() {
     if (this.checkLoad) this.load = true;
     this.didLoad.emit();
-    if (this.hasLoad && window["Insites"]){
+    if (this.hasLoad && window["Insites"]) {
       let func = window["Insites"].methods[this.hasLoad];
       if (func) func(this.insTableEl);
     }
 
-    if (this.defaultBulkAction){
+    if (this.defaultBulkAction) {
       this.selectedBulkAction = this.defaultBulkAction;
       this.updateBulkActionEl();
     }
   }
 
-  componentWillUpdate(){
-    if (this.tableUpdated){
-      let tdCheckboxes = this.insTableEl.querySelectorAll('ins-checkbox') as any;
-      let insCheckboxAll = this.insTableEl.querySelector('#checkAll') as any;
-      let insCheckboxAllAccordion = this.insTableEl.querySelector('#checkAllAccordion') as any;
+  componentWillUpdate() {
+    if (this.tableUpdated) {
+      let tdCheckboxes = this.insTableEl.querySelectorAll(
+        "ins-checkbox"
+      ) as any;
+      let insCheckboxAll = this.insTableEl.querySelector("#checkAll") as any;
+      let insCheckboxAllAccordion = this.insTableEl.querySelector(
+        "#checkAllAccordion"
+      ) as any;
 
       let counter = 0;
       this.uncheckAll();
 
-      for (let i = 0; i < tdCheckboxes.length; i++){
-        let selectionIndex = this.selectedRows.findIndex(selected => {
+      for (let i = 0; i < tdCheckboxes.length; i++) {
+        let selectionIndex = this.selectedRows.findIndex((selected) => {
           return tdCheckboxes[i].value.id === selected.id;
         });
 
-        if (selectionIndex >= 0){
+        if (selectionIndex >= 0) {
           tdCheckboxes[i].updateCheckState(true);
           counter++;
         }
       }
-      if (counter === (tdCheckboxes.length - 2)){
-
+      if (counter === tdCheckboxes.length - 2) {
         insCheckboxAll.updateCheckState(true);
         insCheckboxAllAccordion.updateCheckState(true);
       }
       this.hasImage = false;
-      this.tableHeaders.forEach(header => {
-        if (header.hasImage){
+      this.tableHeaders.forEach((header) => {
+        if (header.hasImage) {
           this.hasImage = true;
         }
       });
@@ -140,119 +159,125 @@ export class InsTable {
     this.updatePageInfo();
   }
 
-  numberWithCommas(x){
+  numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  @Listen('insInput')
+  @Listen("insInput")
   onSearchHandler(event) {
-    if (event.target.icon === "icon-search"){
+    if (event.target.icon === "icon-search") {
       this.insTableSearch.emit(event.detail);
     }
   }
 
-  @Listen('insClick')
-  onClickInsButtonHandler(event){
-    if (event.target.className.includes('insTableBulkButton')){
-      this.bulkActionHandler()
+  @Listen("insClick")
+  onClickInsButtonHandler(event) {
+    if (event.target.className.includes("insTableBulkButton")) {
+      this.bulkActionHandler();
     }
   }
 
-  @Listen('insCheck')
-  onCheckInsCheckbox(event){
+  @Listen("insCheck")
+  onCheckInsCheckbox(event) {
     let self = this;
-    if (event.detail.value === 'checkAll'){
+    if (event.detail.value === "checkAll") {
       // this.selectedRows = [];
-      let tdCheckboxes = this.insTableEl.querySelectorAll('ins-checkbox') as any;
+      let tdCheckboxes = this.insTableEl.querySelectorAll(
+        "ins-checkbox"
+      ) as any;
       // [...tdCheckboxes].forEach(checkbox => {
-      if (event.detail.checked){
-        for (let i = 0; i < tdCheckboxes.length; i++){
-          if (tdCheckboxes[i].value !== 'checkAll'){
+      if (event.detail.checked) {
+        for (let i = 0; i < tdCheckboxes.length; i++) {
+          if (tdCheckboxes[i].value !== "checkAll") {
             tdCheckboxes[i].updateCheckState(event.detail.checked);
 
             if (event.detail.checked) {
-
-              let selectionIndex = self.selectedRows.findIndex(item => {
+              let selectionIndex = self.selectedRows.findIndex((item) => {
                 return item.id === tdCheckboxes[i].value.id;
               });
 
-              if (selectionIndex === -1){
+              if (selectionIndex === -1) {
                 self.selectedRows.push(tdCheckboxes[i].value);
               }
-
             }
 
-            this.enterEditMode(tdCheckboxes[i], event.detail.checked, tdCheckboxes[i].value);
+            this.enterEditMode(
+              tdCheckboxes[i],
+              event.detail.checked,
+              tdCheckboxes[i].value
+            );
           }
         }
       } else {
-
-        for (let i = 0; i < tdCheckboxes.length; i++){
-          if (tdCheckboxes[i].value !== 'checkAll'){
+        for (let i = 0; i < tdCheckboxes.length; i++) {
+          if (tdCheckboxes[i].value !== "checkAll") {
             tdCheckboxes[i].updateCheckState(event.detail.checked);
             if (!event.detail.checked) {
-
-              let selectionIndex = self.selectedRows.findIndex(item => {
+              let selectionIndex = self.selectedRows.findIndex((item) => {
                 return item.id === tdCheckboxes[i].value.id;
               });
 
-              if (selectionIndex >= 0){
+              if (selectionIndex >= 0) {
                 self.selectedRows.splice(selectionIndex, 1);
               }
             }
-            this.enterEditMode(tdCheckboxes[i], event.detail.checked, tdCheckboxes[i].value);
+            this.enterEditMode(
+              tdCheckboxes[i],
+              event.detail.checked,
+              tdCheckboxes[i].value
+            );
           }
         }
-
       }
       this.selectedRows = this.selectedRows.slice();
       // });
     } else {
-      let checkAllEl = this.insTableEl.querySelector('#checkAll') as any;
+      let checkAllEl = this.insTableEl.querySelector("#checkAll") as any;
       checkAllEl.updateCheckState(false);
       this.updateSelectedRows(event.detail.value);
-      this.enterEditMode(event.target, event.detail.checked, event.detail.value);
+      this.enterEditMode(
+        event.target,
+        event.detail.checked,
+        event.detail.value
+      );
     }
-
   }
 
-  enterEditMode(el, checked, item){
+  enterEditMode(el, checked, item) {
+    let trEl = el.closest(".ibt-table_tr");
+    let trAccEl = el.closest(".ibt-table-accordion_row-td");
 
-    let trEl = el.closest('.ibt-table_tr');
-    let trAccEl = el.closest('.ibt-table-accordion_row-td');
-
-    if (trEl || trAccEl){
+    if (trEl || trAccEl) {
       let elToUse = trEl ? trEl : trAccEl;
-      let hasEditable = elToUse.querySelector('.editable');
+      let hasEditable = elToUse.querySelector(".editable");
 
-      if (hasEditable){
+      if (hasEditable) {
         checked
-          ? elToUse.classList.add('edit-mode')
-          : elToUse.classList.remove('edit-mode');
+          ? elToUse.classList.add("edit-mode")
+          : elToUse.classList.remove("edit-mode");
 
-          item.__editing_ins_base_table_item = checked;
+        item.__editing_ins_base_table_item = checked;
       }
 
-      if (!checked){
+      if (!checked) {
         this.removeUpdatedRow(item);
       }
     }
   }
 
-  uncheckAll(){
-    let tdCheckboxes = this.insTableEl.querySelectorAll('ins-checkbox') as any;
-      for (let i = 0; i < tdCheckboxes.length; i++){
-        tdCheckboxes[i].updateCheckState(false);
-      }
+  uncheckAll() {
+    let tdCheckboxes = this.insTableEl.querySelectorAll("ins-checkbox") as any;
+    for (let i = 0; i < tdCheckboxes.length; i++) {
+      tdCheckboxes[i].updateCheckState(false);
+    }
   }
 
-  updateSelectedRows(value){
-    let selectionIndex = this.selectedRows.findIndex(item => {
+  updateSelectedRows(value) {
+    let selectionIndex = this.selectedRows.findIndex((item) => {
       return item.id === value.id;
     });
 
-    if (selectionIndex === -1){
-
+    if (selectionIndex === -1) {
       let copy = JSON.parse(JSON.stringify(value));
       delete copy.__editing_ins_base_table_item;
       this.selectedRows.push(copy);
@@ -263,24 +288,24 @@ export class InsTable {
     this.selectedRows = [...this.selectedRows];
   }
 
-  updateUpdatedRows(value, prop){
-    let selectionIndex = this.updatedRows.findIndex(item => {
+  updateUpdatedRows(value, prop) {
+    let selectionIndex = this.updatedRows.findIndex((item) => {
       return item.id === value.id;
     });
 
-    if (selectionIndex >= 0){
+    if (selectionIndex >= 0) {
       this.updatedRows[selectionIndex][prop] = value[prop];
     } else {
       this.updatedRows.push(value);
     }
   }
 
-  removeUpdatedRow(value){
-    let selectionIndex = this.updatedRows.findIndex(item => {
+  removeUpdatedRow(value) {
+    let selectionIndex = this.updatedRows.findIndex((item) => {
       return item.id === value.id;
     });
 
-    if (selectionIndex >= 0){
+    if (selectionIndex >= 0) {
       this.updatedRows.splice(selectionIndex, 1);
     }
   }
@@ -289,24 +314,24 @@ export class InsTable {
   //   this.updatePageInfo();
   // }
 
-  pageSizeChangeHandler(event){
+  pageSizeChangeHandler(event) {
     this.pageNumber = 1;
     this.pageSize = parseInt(event.target.value);
 
     this.insPaginationChange.emit({
       pageSize: this.pageSize,
-      pageNumber: this.pageNumber
+      pageNumber: this.pageNumber,
     });
   }
 
   pageNumberChangeHandler(key?) {
-    if (key === 'prev') {
+    if (key === "prev") {
       this.pageNumber--;
-    } else if (key === 'next') {
+    } else if (key === "next") {
       this.pageNumber++;
-    } else if (key === 'first') {
+    } else if (key === "first") {
       this.pageNumber = 1;
-    } else if (key === 'last') {
+    } else if (key === "last") {
       this.pageNumber = Math.ceil(this.totalCount / this.pageSize);
     } else {
       this.pageNumber = key;
@@ -317,22 +342,22 @@ export class InsTable {
 
     this.insPaginationChange.emit({
       pageSize: this.pageSize,
-      pageNumber: this.pageNumber
+      pageNumber: this.pageNumber,
     });
   }
 
   @Method()
   async updatePageInfo() {
-    let from = (this.pageSize * this.pageNumber) - (this.pageSize - 1);
+    let from = this.pageSize * this.pageNumber - (this.pageSize - 1);
     let to = this.pageSize * this.pageNumber;
-    to = (to > this.totalCount) ? this.totalCount : to;
+    to = to > this.totalCount ? this.totalCount : to;
 
     if (!this.staticTable && !this.tableData.length) from = 0;
-    this.pageInfo = from + '-' + to + ' of ' + this.numberWithCommas(this.totalCount);
+    this.pageInfo =
+      from + "-" + to + " of " + this.numberWithCommas(this.totalCount);
   }
 
-  sortTable(column){
-
+  sortTable(column) {
     if (this.sortKeyword === column) {
       this.sortOrder = !this.sortOrder;
     } else {
@@ -343,61 +368,61 @@ export class InsTable {
 
     this.insTableSort.emit({
       keyword: this.sortKeyword,
-      order: this.sortOrder ? 'asc':'desc',
-    })
+      order: this.sortOrder ? "asc" : "desc",
+    });
   }
 
-  bulkActionHandler(){
-    if (this.selectedBulkAction){
+  bulkActionHandler() {
+    if (this.selectedBulkAction) {
       this.insTableBulkAction.emit({
         action: this.selectedBulkAction,
         selections: this.selectedRows,
-        updated_items: this.updatedRows
+        updated_items: this.updatedRows,
       });
     }
   }
 
-  rowActionHandler(action, data, header){
+  rowActionHandler(action, data, header) {
     this.insTableRowAction.emit({ action, header, data });
   }
 
   @Method()
-  async resetSelections(){
+  async resetSelections() {
     this.selectedRows = [];
-    let tdCheckboxes = this.insTableEl.querySelectorAll('ins-checkbox') as any;
-    for (let i = 0; i < tdCheckboxes.length; i++){
-      tdCheckboxes[i].updateCheckState(false)
+    let tdCheckboxes = this.insTableEl.querySelectorAll("ins-checkbox") as any;
+    for (let i = 0; i < tdCheckboxes.length; i++) {
+      tdCheckboxes[i].updateCheckState(false);
     }
   }
   @Method()
-  async setBulkAction(value){
-    let bulkActionEl = this.insTableEl.querySelector('ins-select[data-type="bulk-action"]') as any;
+  async setBulkAction(value) {
+    let bulkActionEl = this.insTableEl.querySelector(
+      'ins-select[data-type="bulk-action"]'
+    ) as any;
     bulkActionEl.setSelectedFromValue(value);
   }
 
-  toggleSelectOptionsWrap(event){
-
+  toggleSelectOptionsWrap(event) {
     let section;
     let parent = event.target.parentNode;
     let classes = parent.className;
 
-    if (classes.includes('ibt-table-accordion_row-head')) {
+    if (classes.includes("ibt-table-accordion_row-head")) {
       section = parent.nextSibling;
-    } else if (classes.includes('ibt-table-accordion_row-td')) {
-      section = parent.querySelector('.ibt-table-accordion_row-body');
-    } else if (classes.includes('first-td')){
+    } else if (classes.includes("ibt-table-accordion_row-td")) {
+      section = parent.querySelector(".ibt-table-accordion_row-body");
+    } else if (classes.includes("first-td")) {
       section = parent.parentNode.nextSibling;
-    } else if (classes.includes('img-wrap')){
+    } else if (classes.includes("img-wrap")) {
       section = parent.parentNode.parentNode.nextSibling;
-    } else if (classes.includes('text-label')){
+    } else if (classes.includes("text-label")) {
       section = parent.parentNode.parentNode.nextSibling;
     }
 
-    if (section){
+    if (section) {
+      let opened = section.getAttribute("data-opened");
 
-      let opened = section.getAttribute('data-opened');
-
-      if (opened === 'false') {
+      if (opened === "false") {
         this.openBody(section);
       } else {
         this.closeBody(section);
@@ -406,684 +431,996 @@ export class InsTable {
   }
 
   closeBody(element) {
-
-    let sectionHeight = (element.scrollHeight > 400 ? 400 : element.scrollHeight);
+    let sectionHeight = element.scrollHeight > 400 ? 400 : element.scrollHeight;
     let elementTransition = element.style.transition;
-    element.style.transition = '';
-    requestAnimationFrame(function() {
-      element.style.height = sectionHeight + 'px';
+    element.style.transition = "";
+    requestAnimationFrame(function () {
+      element.style.height = sectionHeight + "px";
       element.style.transition = elementTransition;
 
-      requestAnimationFrame(function() {
-        element.style.height = 0 + 'px';
+      requestAnimationFrame(function () {
+        element.style.height = 0 + "px";
       });
     });
-    element.classList.remove('opened');
-    element.setAttribute('data-opened', 'false');
-    element.parentNode.classList.remove('activated');
+    element.classList.remove("opened");
+    element.setAttribute("data-opened", "false");
+    element.parentNode.classList.remove("activated");
   }
 
   openBody(element) {
     let sectionHeight = element.scrollHeight + 26;
-    if (element.getAttribute('data-opened') != 'true') {
-      element.style.height = sectionHeight + 'px';
+    if (element.getAttribute("data-opened") != "true") {
+      element.style.height = sectionHeight + "px";
     }
-    element.classList.add('opened');
-    element.setAttribute('data-opened', 'true');
-    element.parentNode.classList.add('activated');
+    element.classList.add("opened");
+    element.setAttribute("data-opened", "true");
+    element.parentNode.classList.add("activated");
   }
 
-  getInitials(value){
+  getInitials(value) {
+    if (value) {
+      let split = value.split(" ");
 
-    if (value){
-      let split = value.split(' ');
-
-      if (split.length > 1){
+      if (split.length > 1) {
         return `${split[0][0]}${split[1][0]}`;
-      } else if (split.length === 1){
+      } else if (split.length === 1) {
         return `${split[0][0]}${split[0][1]}`;
       } else {
         return this.emptyValue;
       }
-
     } else {
       return this.emptyValue;
     }
   }
 
-  canHaveRowActions(index, tableHeader /*, item */){
-    if ((index === 0 || tableHeader.hasColumnAction) /*&&
-    (item[tableHeader.label] && item[tableHeader.label] !== this.emptyValue)*/) {
+  canHaveRowActions(index, tableHeader /*, item */) {
+    if (
+      index === 0 ||
+      tableHeader.hasColumnAction /*&&
+    (item[tableHeader.label] && item[tableHeader.label] !== this.emptyValue)*/
+    ) {
       return true;
     } else {
       return false;
     }
   }
 
-  @Listen('insValueChange')
-  @Listen('insInput')
-  processEvent(event){
-
+  @Listen("insValueChange")
+  @Listen("insInput")
+  processEvent(event) {
     if (event.target.id) {
-      if (event.target.attributes["data-id"]){
+      if (event.target.attributes["data-id"]) {
         let dataId = event.target.attributes["data-id"].value;
-        let item = this.tableData.find(item => item.id === dataId);
+        let item = this.tableData.find((item) => item.id === dataId);
         let copy = JSON.parse(JSON.stringify(item));
-        let prop = event.target.getAttribute('data-property');
+        let prop = event.target.getAttribute("data-property");
 
         copy[prop] = event.detail.value || event.detail;
 
         delete copy.__editing_ins_base_table_item;
-        event.table_detail = { label: prop, rowData: copy }
+        event.table_detail = { label: prop, rowData: copy };
         this.insFieldChange.emit(event);
         this.updateUpdatedRows(copy, prop);
       }
-    } else if (event.target.attributes["data-type"] && event.target.attributes["data-type"].value === "bulk-action") {
+    } else if (
+      event.target.attributes["data-type"] &&
+      event.target.attributes["data-type"].value === "bulk-action"
+    ) {
       this.selectedBulkAction = event.detail.value || event.detail;
     }
   }
 
-  checkEditedItems(item){
-    let res = this.updatedRows.find(editedItem => item.id === editedItem.id);
+  checkEditedItems(item) {
+    let res = this.updatedRows.find((editedItem) => item.id === editedItem.id);
     return res ? res : item;
   }
 
-  renderField(item, tableHeader){
+  renderField(item, tableHeader) {
     let editedItem = this.checkEditedItems(item);
 
-    switch (tableHeader.type){
-      case 'date':
+    switch (tableHeader.type) {
+      case "date":
         return (
           <div class="input-wrap">
             <ins-date-time
-              id={`${editedItem.id}_${tableHeader.label.split(' ').join('_')}`}
+              id={`${editedItem.id}_${tableHeader.label.split(" ").join("_")}`}
               data-id={editedItem.id}
               data-property={tableHeader.label}
               value={editedItem[tableHeader.label]}
-              icon="icon-today" format={tableHeader.dateFormat}
-              mode="datepicker">
-            </ins-date-time>
+              icon="icon-today"
+              format={tableHeader.dateFormat}
+              mode="datepicker"
+            ></ins-date-time>
           </div>
-        )
+        );
 
-      case 'select':
+      case "select":
         return (
           <div class="input-wrap">
             <ins-select
-              id={`${editedItem.id}_${tableHeader.label.split(' ').join('_')}`}
+              id={`${editedItem.id}_${tableHeader.label.split(" ").join("_")}`}
               data-id={editedItem.id}
               data-property={tableHeader.label}
-              value={editedItem[tableHeader.label]}>
-
-              {tableHeader.selectOptions && tableHeader.selectOptions.length ?
-                tableHeader.selectOptions.map(option => <ins-select-option value={option} label={option}></ins-select-option>)
-              : <ins-select-option value="" label="No options" disabled></ins-select-option>}
-
+              value={editedItem[tableHeader.label]}
+            >
+              {tableHeader.selectOptions && tableHeader.selectOptions.length ? (
+                tableHeader.selectOptions.map((option) => (
+                  <ins-select-option
+                    value={option}
+                    label={option}
+                  ></ins-select-option>
+                ))
+              ) : (
+                <ins-select-option
+                  value=""
+                  label="No options"
+                  disabled
+                ></ins-select-option>
+              )}
             </ins-select>
           </div>
-        )
+        );
 
       default:
         return (
           <div class="input-wrap">
             <ins-input
-              id={`${editedItem.id}_${tableHeader.label.split(' ').join('_')}`}
+              id={`${editedItem.id}_${tableHeader.label.split(" ").join("_")}`}
               data-id={editedItem.id}
               data-property={tableHeader.label}
-              value={editedItem[tableHeader.label]}>
-            </ins-input>
+              value={editedItem[tableHeader.label]}
+            ></ins-input>
           </div>
-        )
+        );
     }
   }
 
-  rowDataRenderer(item, tableHeader) {
-    const slotName = `column-${this.updateKebabCase(tableHeader.label)}`;
-    const slotContent = document.querySelector(`[slot="${slotName}"]`);
+  extractDate(dateString) {
+    return dateString.match(/\(([^)]+)\)/)?.[1];
+  }
 
-    if (slotContent) {
+  toUTC(date, format) {
+    const localDate = dayjs(date);
+    const utcDate = localDate.utc();
+    const utcString = utcDate.format(format);
+    return utcString;
+  }
+
+  offsetDateTime(date, offset, format) {
+    const localDate = dayjs(date);
+    const utcDate = localDate.utc();
+    const offsetDate = utcDate
+      .utcOffset(offset?.split("@")[0] || "+0000")
+      .format(format);
+    return offsetDate;
+  }
+
+  rowDataRenderer(item, tableHeader) {
+    if (tableHeader.type === "date") {
       return (
-        <div innerHTML={slotContent.innerHTML} data-item={JSON.stringify(item)} data-header={JSON.stringify(tableHeader)}></div>
+        <div class="timezone-overlay">
+          <div class="overlay-container">
+            <i class="icon-clock timezone-icon"></i>
+            <span
+              class="ibt-link"
+              onClick={() => {
+                !this.rowActions.length
+                  ? this.rowActionHandler(
+                      "rowItemClick",
+                      item,
+                      item[tableHeader.label]
+                    )
+                  : "";
+              }}
+            >
+              {item[tableHeader.label]}
+            </span>
+            <div class="overlay-tooltip">
+              <div class="timezones">
+                <p class="paragraph-medium main-text">
+                  Device Time ({tableHeader?.date_format?.device_time || "UTC"})
+                </p>
+                <p class="paragraph-medium">
+                  {this.extractDate(item[tableHeader.label])}
+                </p>
+              </div>
+              <div class="timezones">
+                <p class="paragraph-medium main-text">
+                  Instance Time (
+                  {tableHeader?.date_format?.instance_time || "UTC"})
+                </p>
+                <p class="paragraph-medium">
+                  {this.offsetDateTime(
+                    this.extractDate(item[tableHeader.label]),
+                    tableHeader?.date_format?.instance_timezone,
+                    tableHeader?.date_format?.date_time_format
+                  )}
+                </p>
+              </div>
+              <div class="timezones last">
+                <p class="paragraph-medium main-text">UTC</p>
+                <p class="paragraph-medium">
+                  {this.toUTC(
+                    this.extractDate(item[tableHeader.label]),
+                    tableHeader?.date_format?.date_time_format
+                  )}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       );
     }
 
     if (item[`${tableHeader.label}Link`]) {
       return (
-          <a class={`ibt-link`}
-            href={item[`${tableHeader.label}Link`]}>
-              {tableHeader.type === 'currency'
-                ? `${this.currency
-                  ? this.currency
-                  : '$'}${item[tableHeader.label]}`
-                : item[tableHeader.label]}
-          </a>
-      )
+        <a class={`ibt-link`} href={item[`${tableHeader.label}Link`]}>
+          {tableHeader.type === "currency"
+            ? `${this.currency ? this.currency : "$"}${item[tableHeader.label]}`
+            : item[tableHeader.label]}
+        </a>
+      );
     }
 
     return (
-
-        <span class="ibt-link" onClick={() => {
-          !this.rowActions.length ?
-          this.rowActionHandler('rowItemClick', item, item[tableHeader.label]) : ''
-        }}>
-          {tableHeader.type === 'currency'
-            ? `${this.currency
-              ? this.currency
-              : '$'}${item[tableHeader.label]}`
-            : item[tableHeader.label]}
-        </span>
-    )
+      <span
+        class="ibt-link"
+        onClick={() => {
+          !this.rowActions.length
+            ? this.rowActionHandler(
+                "rowItemClick",
+                item,
+                item[tableHeader.label]
+              )
+            : "";
+        }}
+      >
+        {tableHeader.type === "currency"
+          ? `${this.currency ? this.currency : "$"}${item[tableHeader.label]}`
+          : item[tableHeader.label]}
+      </span>
+    );
   }
 
   updateKebabCase(value) {
-    if (value) return value.trim().toLowerCase().replace(/\s+/g, "-").replace(/\/+/g, "");
+    if (value)
+      return value
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/\/+/g, "");
     return "";
   }
 
-  rowActionMapper(rowAction, item, tableHeader){
-    let header = tableHeader
-      ? tableHeader.label
-      : '';
-
+  rowActionMapper(rowAction, item, tableHeader) {
+    let header = tableHeader ? tableHeader.label : "";
 
     if (this.rowActionsSettings) {
-      if (this.rowActionsSettings.rowActions[item[this.rowActionsSettings.column]].indexOf(rowAction) !== -1) {
-
+      if (
+        this.rowActionsSettings.rowActions[
+          item[this.rowActionsSettings.column]
+        ].indexOf(rowAction) !== -1
+      ) {
         if (item[`${rowAction}Link`]) {
           return (
-          <a class={`action-item row-action-${this.updateKebabCase(rowAction)}
+            <a
+              class={`action-item row-action-${this.updateKebabCase(rowAction)}
             ${
-            rowAction === 'Remove' ||
-            rowAction === 'Delete' ||
-            rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : this.updateKebabCase(rowAction)}`}
-            href={item[`${rowAction}Link`]}>
-            {rowAction}
-          </a>
-          )
+              rowAction === "Remove" ||
+              rowAction === "Delete" ||
+              rowAction === "Disable"
+                ? "archive"
+                : rowAction === "Restore" || rowAction === "Enable"
+                ? "restore"
+                : this.updateKebabCase(rowAction)
+            }`}
+              href={item[`${rowAction}Link`]}
+            >
+              {rowAction}
+            </a>
+          );
         }
 
         return (
           <span
             class={`action-item row-action-${this.updateKebabCase(rowAction)}
-              ${rowAction === 'Archive' ||
-                rowAction === 'Remove' ||
-                rowAction === 'Delete' ||
-                rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : this.updateKebabCase(rowAction)}`}
-            onClick={() => this.rowActionHandler(rowAction, item, header)}>
-
+              ${
+                rowAction === "Archive" ||
+                rowAction === "Remove" ||
+                rowAction === "Delete" ||
+                rowAction === "Disable"
+                  ? "archive"
+                  : rowAction === "Restore" || rowAction === "Enable"
+                  ? "restore"
+                  : this.updateKebabCase(rowAction)
+              }`}
+            onClick={() => this.rowActionHandler(rowAction, item, header)}
+          >
             {rowAction}
           </span>
-        )
+        );
       }
-
     } else {
-
-      if (item[`${rowAction}Link`]){
+      if (item[`${rowAction}Link`]) {
         return (
-        <a class={`action-item row-action-${this.updateKebabCase(rowAction)}
-          ${rowAction === 'Archive' ||
-          rowAction === 'Remove' ||
-          rowAction === 'Delete' ||
-          rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : this.updateKebabCase(rowAction)}`}
-          href={item[`${rowAction}Link`]}>
-
-          {rowAction}
-        </a>
-        )
+          <a
+            class={`action-item row-action-${this.updateKebabCase(rowAction)}
+          ${
+            rowAction === "Archive" ||
+            rowAction === "Remove" ||
+            rowAction === "Delete" ||
+            rowAction === "Disable"
+              ? "archive"
+              : rowAction === "Restore" || rowAction === "Enable"
+              ? "restore"
+              : this.updateKebabCase(rowAction)
+          }`}
+            href={item[`${rowAction}Link`]}
+          >
+            {rowAction}
+          </a>
+        );
       }
 
       return (
         <span
           class={`action-item row-action-${this.updateKebabCase(rowAction)}
-            ${rowAction === 'Archive' ||
-              rowAction === 'Remove' ||
-              rowAction === 'Delete' ||
-              rowAction === 'Disable' ? 'archive' : rowAction === 'Restore' || rowAction === 'Enable' ? 'restore' : this.updateKebabCase(rowAction)}`}
-          onClick={() => this.rowActionHandler(rowAction, item, header)}>
-
+            ${
+              rowAction === "Archive" ||
+              rowAction === "Remove" ||
+              rowAction === "Delete" ||
+              rowAction === "Disable"
+                ? "archive"
+                : rowAction === "Restore" || rowAction === "Enable"
+                ? "restore"
+                : this.updateKebabCase(rowAction)
+            }`}
+          onClick={() => this.rowActionHandler(rowAction, item, header)}
+        >
           {rowAction}
         </span>
-      )
+      );
     }
   }
 
-  renderMobileImage(item, headerLabel, mobileHeader, hasImage){
-    return (hasImage && item[headerLabel] && !mobileHeader ?
-        <div class="img-wrap">
-          { item[`${headerLabel}_Img`] ?
-            <img src={item[`${headerLabel}_Img`]} />
-          :
-            <div class="img-fallback-wrap">
-              {this.getInitials(item[headerLabel])}
-            </div>
-          }
-        </div>
-      : ''
-    )
+  renderMobileImage(item, headerLabel, mobileHeader, hasImage) {
+    return hasImage && item[headerLabel] && !mobileHeader ? (
+      <div class="img-wrap">
+        {item[`${headerLabel}_Img`] ? (
+          <img src={item[`${headerLabel}_Img`]} />
+        ) : (
+          <div class="img-fallback-wrap">
+            {this.getInitials(item[headerLabel])}
+          </div>
+        )}
+      </div>
+    ) : (
+      ""
+    );
   }
 
-  renderMobileHeader(item, headerLabel){
+  renderMobileHeader(item, headerLabel) {
     return (
       <div class="text-label">
-        <span>{item[headerLabel]
-          ? item[headerLabel]
-          : '-'}
-        </span>
+        <span>{item[headerLabel] ? item[headerLabel] : "-"}</span>
       </div>
-    )
+    );
   }
 
-  renderMobileRowHeader(item){
-    let firstHeader = this.tableHeaders[0]
-    let mobileHeader = this.tableHeaders.find(item => item.mobileHeader === true);
+  renderMobileRowHeader(item) {
+    let firstHeader = this.tableHeaders[0];
+    let mobileHeader = this.tableHeaders.find(
+      (item) => item.mobileHeader === true
+    );
     let hasImage = firstHeader.hasImage;
-    let headerLabel = mobileHeader
-      ? mobileHeader.label
-      : firstHeader.label
+    let headerLabel = mobileHeader ? mobileHeader.label : firstHeader.label;
 
-    return(
-      <div class={`first-td ${hasImage && !mobileHeader ? 'has-image' : ''}`}>
+    return (
+      <div class={`first-td ${hasImage && !mobileHeader ? "has-image" : ""}`}>
         {this.renderMobileImage(item, headerLabel, mobileHeader, hasImage)}
         {this.renderMobileHeader(item, headerLabel)}
       </div>
-    )
+    );
   }
 
-  renderMainMobileHeader(){
-    let header = this.tableHeaders.find(item => item.mobileHeader === true);
-    let mobileHeader = header
-      ? header.label
-      : this.tableHeaders[0].label;
+  renderMainMobileHeader() {
+    let header = this.tableHeaders.find((item) => item.mobileHeader === true);
+    let mobileHeader = header ? header.label : this.tableHeaders[0].label;
 
-    return(
+    return (
       <div class="ibt-table-accordion_th has-checkbox">
-
-        {this.bulkActions.length
-          ? <div class="checkbox-wrap">
-            {this.loadingScreen
-              ? ''
-              : <ins-checkbox id="checkAllAccordion" value="checkAll"></ins-checkbox>}
+        {this.bulkActions.length ? (
+          <div class="checkbox-wrap">
+            {this.loadingScreen ? (
+              ""
+            ) : (
+              <ins-checkbox
+                id="checkAllAccordion"
+                value="checkAll"
+              ></ins-checkbox>
+            )}
           </div>
-          : ''}
+        ) : (
+          ""
+        )}
 
         <div class="first-th">
+          <span
+            onClick={() => this.sortTable(mobileHeader)}
+            class={`label-wrap ${
+              this.sortKeyword === mobileHeader ? "sorted" : ""
+            }`}
+          >
+            {mobileHeader}
 
-          <span onClick={() => this.sortTable(mobileHeader)}
-            class={`label-wrap ${this.sortKeyword === mobileHeader ? 'sorted' : ''}`}>
-
-            { mobileHeader }
-
-            {this.sortKeyword === mobileHeader
-              ? <span class={`icon-arrow-up ${this.sortOrder ? '' : 'go-down'}`}></span>
-              : ''}
+            {this.sortKeyword === mobileHeader ? (
+              <span
+                class={`icon-arrow-up ${this.sortOrder ? "" : "go-down"}`}
+              ></span>
+            ) : (
+              ""
+            )}
           </span>
-
         </div>
       </div>
-    )
+    );
   }
 
-  renderPageNumbers(){
+  renderPageNumbers() {
     if (!this.totalCount) return [];
     if (this.totalCount < this.pageSize) return [1];
 
     const totalPages = Math.ceil(this.totalCount / this.pageSize);
-    const pages = []
+    const pages = [];
 
     let pageNumber = this.pageNumber;
     let length = 5;
 
     if (totalPages < 5) {
       length = totalPages;
-
-    } else if ((pageNumber + 4) > totalPages) {
+    } else if (pageNumber + 4 > totalPages) {
       pageNumber = totalPages - 4;
     }
 
-    for (let i = 0; i < length; i++){
+    for (let i = 0; i < length; i++) {
       const page = pageNumber + i;
       if (page <= totalPages) pages.push(page);
     }
 
-    return pages
+    return pages;
   }
 
   render() {
     return (
-      <div class={`ibt-table-wrap ibt-table-wrap__stripe ${this.heading ? '' : 'no-label'} ${this.noWrap ? 'no-wrap' : ''}`}>
-        {this.heading || !this.withoutSearch ?
+      <div
+        class={`ibt-table-wrap ibt-table-wrap__stripe ${
+          this.heading ? "" : "no-label"
+        } ${this.noWrap ? "no-wrap" : ""}`}
+      >
+        {this.heading || !this.withoutSearch ? (
           <div class="ibt-table-header-wrap">
-            {this.heading ? <div class="ibt-table-wrap__title">{this.heading}</div> : ''}
+            {this.heading ? (
+              <div class="ibt-table-wrap__title">{this.heading}</div>
+            ) : (
+              ""
+            )}
 
-            {this.withoutSearch ? '' : // || this.loadingScreen
-              <div class={`ins-searchbar-container ${this.searchPosition === 'left' ? 'left' : ''}`}>
-                <ins-input placeholder={this.searchbarPlaceholder}
-                  value={this.initialSearch} icon="icon-search">
-                </ins-input>
+            {this.withoutSearch ? (
+              "" // || this.loadingScreen
+            ) : (
+              <div
+                class={`ins-searchbar-container ${
+                  this.searchPosition === "left" ? "left" : ""
+                }`}
+              >
+                <ins-input
+                  placeholder={this.searchbarPlaceholder}
+                  value={this.initialSearch}
+                  icon="icon-search"
+                ></ins-input>
               </div>
-            }
+            )}
           </div>
-        : ''}
-        <div class={`ibt-table-wrap__no-heading ${this.noWrap ? 'no-wrap' : ''}`}>
-
-          {this.staticTable ?
+        ) : (
+          ""
+        )}
+        <div
+          class={`ibt-table-wrap__no-heading ${this.noWrap ? "no-wrap" : ""}`}
+        >
+          {this.staticTable ? (
             <div class="static-wrap">
-              <div class={`ibt-table ${this.staticTable ? 'static' : ''}`}>
+              <div class={`ibt-table ${this.staticTable ? "static" : ""}`}>
                 <slot />
               </div>
-              {this.loadingScreen /* || !this.tableData.length */ ?
+              {this.loadingScreen /* || !this.tableData.length */ ? (
                 <div class={`loading-screen`}>
                   <ins-loader
                     image-source={this.loaderImageSource}
                     state-title={this.loaderTitle}
                     state-message={this.loaderMessage}
-                    state-icon={this.loaderIcon}>
-                  </ins-loader>
+                    state-icon={this.loaderIcon}
+                  ></ins-loader>
                 </div>
-              : ''}
+              ) : (
+                ""
+              )}
             </div>
-            :
+          ) : (
             <div class="dynamic-wrap">
               <div class="ibt-table">
+                {this.tableHeaders.length ? (
+                  <div class="ibt-table_tr">
+                    {this.bulkActions.length ? (
+                      <div class="ibt-table_th checkbox">
+                        {this.loadingScreen ? (
+                          ""
+                        ) : (
+                          <ins-checkbox
+                            id="checkAll"
+                            value="checkAll"
+                          ></ins-checkbox>
+                        )}
+                      </div>
+                    ) : (
+                      ""
+                    )}
 
-            {this.tableHeaders.length ?
-              <div class="ibt-table_tr">
+                    {this.tableHeaders.map((tableHeader) => {
+                      return (
+                        <div
+                          class={`ibt-table_th
+                      ${
+                        tableHeader.type === "number" ||
+                        tableHeader.type === "currency"
+                          ? "text-right"
+                          : ""
+                      }
+                      ${tableHeader.sortable ? "" : "not-sortable"}
+                      ${
+                        tableHeader.textAlign
+                          ? `text-${tableHeader.textAlign}`
+                          : ""
+                      }`}
+                          style={{ width: tableHeader.columnWidth || "auto" }}
+                        >
+                          <span
+                            onClick={() => {
+                              if (tableHeader.sortable) {
+                                this.sortTable(tableHeader.label);
+                              }
+                            }}
+                            class={`label-wrap
+                            ${
+                              this.sortKeyword === tableHeader.label
+                                ? "sorted"
+                                : ""
+                            }
+                            ${tableHeader.sortable ? "sortable" : ""}`}
+                          >
+                            {tableHeader.label}
+                            {tableHeader.sortable ||
+                            this.sortKeyword === tableHeader.label ? (
+                              <span
+                                class={`icon-arrow-up
+                              ${
+                                this.sortKeyword === tableHeader.label
+                                  ? "active"
+                                  : ""
+                              }
+                              ${
+                                !this.sortOrder &&
+                                this.sortKeyword === tableHeader.label
+                                  ? "go-down"
+                                  : ""
+                              }`}
+                              ></span>
+                            ) : (
+                              ""
+                            )}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  ""
+                )}
 
-                {this.bulkActions.length ?
-                <div class="ibt-table_th checkbox">
-                  {this.loadingScreen ? '': <ins-checkbox id="checkAll" value="checkAll"></ins-checkbox>}
-                </div> : '' }
-
-                {this.tableHeaders.map(tableHeader => {
-                  return (
-                    <div class={`ibt-table_th
-                      ${(tableHeader.type === 'number' || tableHeader.type === 'currency') ? 'text-right' : ''}
-                      ${tableHeader.sortable ? '' : 'not-sortable'}
-                      ${tableHeader.textAlign ? `text-${tableHeader.textAlign}`: ''}`}
-
-                      style={{ width: tableHeader.columnWidth || "auto" }}>
-
-                        <span onClick={() => { if (tableHeader.sortable){this.sortTable(tableHeader.label)}}}
-                          class={`label-wrap
-                            ${this.sortKeyword === tableHeader.label ? 'sorted':''}
-                            ${tableHeader.sortable ? 'sortable':''}`}>
-
-                          {tableHeader.label}
-                          {tableHeader.sortable || this.sortKeyword === tableHeader.label ?
-                            <span class={`icon-arrow-up
-                              ${this.sortKeyword === tableHeader.label ? 'active' : ''}
-                              ${!this.sortOrder && this.sortKeyword === tableHeader.label ? 'go-down' : ''}`}>
-                            </span>
-                          : ''}
-                        </span>
-                    </div>
-                  )
-                })}
-              </div>
-            : ''}
-
-            {this.tableData.length && !this.loadingScreen ? this.tableData.map(item => {
-              return (
-                <div class="ibt-table_tr">
-
-                  {this.bulkActions.length ?
-                    <div class={`
+                {this.tableData.length && !this.loadingScreen
+                  ? this.tableData.map((item) => {
+                      return (
+                        <div class="ibt-table_tr">
+                          {this.bulkActions.length ? (
+                            <div
+                              class={`
                       ibt-table_td
                       checkbox
-                      ${this.hasImage ? 'has-image' : ''}
-                      ${this.rowActions.length ? 'has-row-actions' : ''}
-                    `}>
-                      <ins-checkbox value={item}></ins-checkbox>
-                    </div>
-                  : ''}
+                      ${this.hasImage ? "has-image" : ""}
+                      ${this.rowActions.length ? "has-row-actions" : ""}
+                    `}
+                            >
+                              <ins-checkbox value={item}></ins-checkbox>
+                            </div>
+                          ) : (
+                            ""
+                          )}
 
-                  {this.tableHeaders.map((tableHeader, index) => {
-                    return (
-                      <div class={
-                        `ibt-table_td
-                        ${(tableHeader.type === 'number' || tableHeader.type === 'currency') ? 'text-right' : ''}
-                        ${tableHeader.hasLink ? 'has-link' : ''}
+                          {this.tableHeaders.map((tableHeader, index) => {
+                            return (
+                              <div
+                                class={`ibt-table_td
+                        ${
+                          tableHeader.type === "number" ||
+                          tableHeader.type === "currency"
+                            ? "text-right"
+                            : ""
+                        }
+                        ${tableHeader.hasLink ? "has-link" : ""}
 
-                        ${tableHeader.hasImage &&
+                        ${
+                          tableHeader.hasImage &&
                           (item[`${tableHeader.label}_Img`] ||
-                            (item[tableHeader.label] && item[tableHeader.label] !== this.emptyValue)
-                          ) ? 'has-image' : ''}
-
-                        ${tableHeader.hasTag ? `tagged ${item[`${tableHeader.label}_tagClass`] ? item[`${tableHeader.label}_tagClass`] :item[tableHeader.label]}` : ''}
-                        ${tableHeader.editable ? `editable` : ''}
-                        ${this.rowActions.length ? 'has-row-actions' : ''}
-                        ${this.textOverflow === "ellipsis" ? 'overflow-ellipsis' : ''}
-                        ${tableHeader.textAlign ? `text-${tableHeader.textAlign}`: ''}
-                      `}>
-
-                        {tableHeader.hasImage && (item[tableHeader.label] || item[`${tableHeader.label}_Img`]) ?
-                          <div class={`img-wrap ${item[`${tableHeader.label}_Img`] ? '' : 'use-fallback' }`}>
-                            {item[`${tableHeader.label}_Img`] ?
-                              <img src={item[`${tableHeader.label}_Img`]} /> :
-                              <div class="img-fallback-wrap">
-                                {this.getInitials(item[tableHeader.label])}
-                              </div>
-                            }
-                          </div>
-                        : ''}
-
-                        {item[tableHeader.label] ?
-                          <div class="input-label-wrap">
-                            {!this.rowActions.length && item['RowLink'] && (index === 0)
-                            ? <a href={item['RowLink']} class="ibt-link">
-                              {tableHeader.type === 'currency'
-                                ? `${this.currency
-                                    ? this.currency
-                                    : '$'}${item[tableHeader.label]}`
-                                : item[tableHeader.label]}
-                            </a>
-                              : this.rowDataRenderer(item, tableHeader)
-                            }
-
-                            {tableHeader.editable && item.__editing_ins_base_table_item ?
-                              this.renderField(item, tableHeader)
-                            : ''}
-                          </div>
-                        :
-                          <div class="input-label-wrap 2">
-                            {tableHeader.editable && item.__editing_ins_base_table_item ?
-                              this.renderField(item, tableHeader)
-                            : this.emptyValue }
-                          </div>
+                            (item[tableHeader.label] &&
+                              item[tableHeader.label] !== this.emptyValue))
+                            ? "has-image"
+                            : ""
                         }
 
-                        {this.rowActions && this.canHaveRowActions(index, tableHeader/*, item*/) ?
+                        ${
+                          tableHeader.hasTag
+                            ? `tagged ${
+                                item[`${tableHeader.label}_tagClass`]
+                                  ? item[`${tableHeader.label}_tagClass`]
+                                  : item[tableHeader.label]
+                              }`
+                            : ""
+                        }
+                        ${tableHeader.editable ? `editable` : ""}
+                        ${this.rowActions.length ? "has-row-actions" : ""}
+                        ${
+                          this.textOverflow === "ellipsis"
+                            ? "overflow-ellipsis"
+                            : ""
+                        }
+                        ${
+                          tableHeader.textAlign
+                            ? `text-${tableHeader.textAlign}`
+                            : ""
+                        }
+                      `}
+                              >
+                                {tableHeader.hasImage &&
+                                (item[tableHeader.label] ||
+                                  item[`${tableHeader.label}_Img`]) ? (
+                                  <div
+                                    class={`img-wrap ${
+                                      item[`${tableHeader.label}_Img`]
+                                        ? ""
+                                        : "use-fallback"
+                                    }`}
+                                  >
+                                    {item[`${tableHeader.label}_Img`] ? (
+                                      <img
+                                        src={item[`${tableHeader.label}_Img`]}
+                                      />
+                                    ) : (
+                                      <div class="img-fallback-wrap">
+                                        {this.getInitials(
+                                          item[tableHeader.label]
+                                        )}
+                                      </div>
+                                    )}
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
 
-                          <div class="action-wrap">
-                            {this.rowActions.map(rowAction => this.rowActionMapper(rowAction, item, tableHeader))}
-                          </div>
-                        : ''}
-                      </div>
-                    )
-                  })}
-                </div>
-              )
-            }) : ''}
+                                {item[tableHeader.label] ? (
+                                  <div class="input-label-wrap">
+                                    {!this.rowActions.length &&
+                                    item["RowLink"] &&
+                                    index === 0 ? (
+                                      <a
+                                        href={item["RowLink"]}
+                                        class="ibt-link"
+                                      >
+                                        {tableHeader.type === "currency"
+                                          ? `${
+                                              this.currency
+                                                ? this.currency
+                                                : "$"
+                                            }${item[tableHeader.label]}`
+                                          : item[tableHeader.label]}
+                                      </a>
+                                    ) : (
+                                      this.rowDataRenderer(item, tableHeader)
+                                    )}
 
-          </div>
+                                    {tableHeader.editable &&
+                                    item.__editing_ins_base_table_item
+                                      ? this.renderField(item, tableHeader)
+                                      : ""}
+                                  </div>
+                                ) : (
+                                  <div class="input-label-wrap 2">
+                                    {tableHeader.editable &&
+                                    item.__editing_ins_base_table_item
+                                      ? this.renderField(item, tableHeader)
+                                      : this.emptyValue}
+                                  </div>
+                                )}
 
-          <div class={`ibt-table-accordion ${this.staticTable ? 'static' : ''}`}>
-            {this.tableHeaders.length
-              ? this.renderMainMobileHeader()
-              : '' }
+                                {this.rowActions &&
+                                this.canHaveRowActions(
+                                  index,
+                                  tableHeader /*, item*/
+                                ) ? (
+                                  <div class="action-wrap">
+                                    {this.rowActions.map((rowAction) =>
+                                      this.rowActionMapper(
+                                        rowAction,
+                                        item,
+                                        tableHeader
+                                      )
+                                    )}
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      );
+                    })
+                  : ""}
+              </div>
 
-            {this.tableData.length && !this.loadingScreen ? this.tableData.map(item => {
-              return (
+              <div
+                class={`ibt-table-accordion ${
+                  this.staticTable ? "static" : ""
+                }`}
+              >
+                {this.tableHeaders.length ? this.renderMainMobileHeader() : ""}
 
-                <div class="ibt-table-accordion_row-td">
-
-                  <div class={`
+                {this.tableData.length && !this.loadingScreen
+                  ? this.tableData.map((item) => {
+                      return (
+                        <div class="ibt-table-accordion_row-td">
+                          <div
+                            class={`
                     ibt-table-accordion_row-head
-                    ${this.bulkActions.length ? 'has-checkbox' : ''}`}
-                    onClick={event => this.toggleSelectOptionsWrap(event)}>
+                    ${this.bulkActions.length ? "has-checkbox" : ""}`}
+                            onClick={(event) =>
+                              this.toggleSelectOptionsWrap(event)
+                            }
+                          >
+                            {this.bulkActions.length ? (
+                              <div class="checkbox-wrap">
+                                <ins-checkbox value={item}></ins-checkbox>
+                              </div>
+                            ) : (
+                              ""
+                            )}
 
-                    {this.bulkActions.length ?
-                    <div class="checkbox-wrap">
-                      <ins-checkbox value={item}></ins-checkbox>
-                    </div> : ''}
+                            {this.renderMobileRowHeader(item)}
 
-                    {this.renderMobileRowHeader(item)}
+                            <i class="icon-caret-down"></i>
+                            <i class="icon-caret-up"></i>
+                          </div>
 
-                    <i class="icon-caret-down"></i>
-                    <i class="icon-caret-up"></i>
+                          <div
+                            class="ibt-table-accordion_row-body"
+                            data-opened="false"
+                          >
+                            <table>
+                              {this.tableHeaders.map((tableHeader) => {
+                                return (
+                                  <tr>
+                                    <td class="column-label">
+                                      {tableHeader.label}
+                                    </td>
+                                    <td
+                                      class={`
+                              ${tableHeader.editable ? "editable" : ""}
+                              ${tableHeader.hasLink ? "ibta-td-has-link" : ""}
+                              ${
+                                tableHeader.hasTag
+                                  ? `tagged ${
+                                      item[`${tableHeader.label}_tagClass`]
+                                        ? item[`${tableHeader.label}_tagClass`]
+                                        : item[tableHeader.label]
+                                    }`
+                                  : ""
+                              }`}
+                                    >
+                                      {item[tableHeader.label] ? (
+                                        <div>
+                                          {!this.rowActions.length &&
+                                          item["RowLink"] ? (
+                                            <a
+                                              href={item["RowLink"]}
+                                              class="ibt-link"
+                                            >
+                                              {tableHeader.type === "currency"
+                                                ? `${
+                                                    this.currency
+                                                      ? this.currency
+                                                      : "$"
+                                                  }${item[tableHeader.label]}`
+                                                : item[tableHeader.label]}
+                                            </a>
+                                          ) : (
+                                            this.rowDataRenderer(
+                                              item,
+                                              tableHeader
+                                            )
+                                          )}
+                                          {tableHeader.editable &&
+                                          item.__editing_ins_base_table_item
+                                            ? this.renderField(
+                                                item,
+                                                tableHeader
+                                              )
+                                            : ""}
+                                        </div>
+                                      ) : (
+                                        <span>-</span>
+                                      )}
+                                    </td>
+                                  </tr>
+                                );
+                              })}
+                            </table>
 
-                  </div>
+                            {this.rowActions ? (
+                              <div class="action-wrap">
+                                {this.rowActions.map((rowAction) =>
+                                  this.rowActionMapper(rowAction, item, "")
+                                )}
+                              </div>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })
+                  : ""}
+              </div>
 
-                  <div class="ibt-table-accordion_row-body" data-opened="false">
-
-                    <table>
-                      {this.tableHeaders.map((tableHeader) => {
-                        return (
-                          <tr>
-                            <td class="column-label">{tableHeader.label}</td>
-                            <td class={`
-                              ${tableHeader.editable ? 'editable' : ''}
-                              ${tableHeader.hasLink ? 'ibta-td-has-link' : ''}
-                              ${tableHeader.hasTag ? `tagged ${item[`${tableHeader.label}_tagClass`] ? item[`${tableHeader.label}_tagClass`] : item[tableHeader.label]}` : ''}`}>
-                              {item[tableHeader.label] ?
-                                <div>
-                                  {!this.rowActions.length && item['RowLink']
-                                    ? <a href={item['RowLink']} class="ibt-link">
-                                      {tableHeader.type === 'currency'
-                                        ? `${this.currency
-                                            ? this.currency
-                                            : '$'}${item[tableHeader.label]}`
-                                        : item[tableHeader.label]}
-                                    </a>
-
-                                    : this.rowDataRenderer(item, tableHeader)
-                                  }
-                                  {tableHeader.editable && item.__editing_ins_base_table_item ?
-                                    this.renderField(item, tableHeader)
-                                  : ''}
-                                </div> :
-                                <span>-</span>}
-                            </td>
-                          </tr>
-                        )
-                      })}
-                    </table>
-
-                    {this.rowActions ?
-                      <div class="action-wrap">
-                        {this.rowActions.map(rowAction => this.rowActionMapper(rowAction, item, ''))}
-                      </div>
-                    : ''}
-                  </div>
-
-                </div>
-              )
-            }) : ''}
-
-          </div>
-
-              {this.loadingScreen /* || !this.tableData.length */ ?
+              {this.loadingScreen /* || !this.tableData.length */ ? (
                 <div class={`loading-screen`}>
                   <ins-loader
                     image-source={this.loaderImageSource}
                     state-title={this.loaderTitle}
                     state-message={this.loaderMessage}
-                    state-icon={this.loaderIcon}>
-                  </ins-loader>
+                    state-icon={this.loaderIcon}
+                  ></ins-loader>
                 </div>
-              : ''}
+              ) : (
+                ""
+              )}
             </div>
-          }
+          )}
 
           {/* Pagination */}
-          <div class={`ibt-table-wrap__settings
-            ${this.withoutPagination ? "no-pagination":""}`}>
-
-            {this.bulkActions.length ?
-            <div class="ibt-table-action-container">
-              <ins-select data-type="bulk-action"
-                disabled={!this.selectedRows.length}
-                placeholder="Bulk Actions"
-                small button>
-                {
-                  this.bulkActions.map(action => {
+          <div
+            class={`ibt-table-wrap__settings
+            ${this.withoutPagination ? "no-pagination" : ""}`}
+          >
+            {this.bulkActions.length ? (
+              <div class="ibt-table-action-container">
+                <ins-select
+                  data-type="bulk-action"
+                  disabled={!this.selectedRows.length}
+                  placeholder="Bulk Actions"
+                  small
+                  button
+                >
+                  {this.bulkActions.map((action) => {
                     return (
                       <ins-select-option
                         label={action}
                         value={action}
-                        default={this.selectedBulkAction === action}>
-                      </ins-select-option>
-                    )
-                  })
-                }
-              </ins-select>
-              <ins-button
-                class="insTableBulkButton"
-                label="Apply"
-                size="small"
-                solid
-                disabled={!this.selectedRows.length}>
-              </ins-button>
-            </div> : ''}
-            {this.withoutPagination ? '' :
-              <div class={`pagination-wrap ${this.bulkActions.length ? '' : 'full'}`}>
+                        default={this.selectedBulkAction === action}
+                      ></ins-select-option>
+                    );
+                  })}
+                </ins-select>
+                <ins-button
+                  class="insTableBulkButton"
+                  label="Apply"
+                  size="small"
+                  solid
+                  disabled={!this.selectedRows.length}
+                ></ins-button>
+              </div>
+            ) : (
+              ""
+            )}
+            {this.withoutPagination ? (
+              ""
+            ) : (
+              <div
+                class={`pagination-wrap ${
+                  this.bulkActions.length ? "" : "full"
+                }`}
+              >
                 <div class="ibt-table-wrap__pagination">
                   <span>{this.paginationText}</span>
-                  <select class="ibt-table-wrap__pagination--option"
-                    onChange={(event) => this.pageSizeChangeHandler(event)}>
-
-                    {this.pageSizeOptions ? this.pageSizeOptions.map((option) =>
-                      <option value={option} selected={this.pageSize == option}>
-                        {option}
-                      </option>
-                    ) : ''}
+                  <select
+                    class="ibt-table-wrap__pagination--option"
+                    onChange={(event) => this.pageSizeChangeHandler(event)}
+                  >
+                    {this.pageSizeOptions
+                      ? this.pageSizeOptions.map((option) => (
+                          <option
+                            value={option}
+                            selected={this.pageSize == option}
+                          >
+                            {option}
+                          </option>
+                        ))
+                      : ""}
                   </select>
                 </div>
 
-                <div class="ibt-table-wrap__page">
-                  {this.pageInfo}
-                </div>
+                <div class="ibt-table-wrap__page">{this.pageInfo}</div>
 
                 <div class="ibt-table-wrap__prev-next">
-
-                  <button class="first"
-                    onClick={() => this.pageNumberChangeHandler('first')}
-                    disabled={this.pageNumber === 1}>
+                  <button
+                    class="first"
+                    onClick={() => this.pageNumberChangeHandler("first")}
+                    disabled={this.pageNumber === 1}
+                  >
                     <i class={`icon-chevrons-left`}></i>
                   </button>
 
-                  <button class="prev"
-                    onClick={() => this.pageNumberChangeHandler('prev')}
-                    disabled={this.pageNumber === 1}>
+                  <button
+                    class="prev"
+                    onClick={() => this.pageNumberChangeHandler("prev")}
+                    disabled={this.pageNumber === 1}
+                  >
                     <i class={`icon-angle-left`}></i>
                   </button>
 
-                  {this.renderPageNumbers().map(page => {
-                    return(
-                      <button class={`page ${this.pageNumber === page ? 'active': ''}`}
+                  {this.renderPageNumbers().map((page) => {
+                    return (
+                      <button
+                        class={`page ${
+                          this.pageNumber === page ? "active" : ""
+                        }`}
                         onClick={() => this.pageNumberChangeHandler(page)}
-                        disabled={this.pageNumber === page}>
-
-                        { page }
+                        disabled={this.pageNumber === page}
+                      >
+                        {page}
                       </button>
-                    )
+                    );
                   })}
 
-                  <button class="next"
-                    onClick={() => this.pageNumberChangeHandler('next')}
-                    disabled={(this.pageNumber * this.pageSize) >= this.totalCount}>
+                  <button
+                    class="next"
+                    onClick={() => this.pageNumberChangeHandler("next")}
+                    disabled={
+                      this.pageNumber * this.pageSize >= this.totalCount
+                    }
+                  >
                     <i class={`icon-angle-right`}></i>
                   </button>
 
-                  <button class="last"
-                    onClick={() => this.pageNumberChangeHandler('last')}
-                    disabled={(this.pageNumber * this.pageSize) >= this.totalCount}>
+                  <button
+                    class="last"
+                    onClick={() => this.pageNumberChangeHandler("last")}
+                    disabled={
+                      this.pageNumber * this.pageSize >= this.totalCount
+                    }
+                  >
                     <i class={`icon-chevrons-right`}></i>
                   </button>
-
                 </div>
               </div>
-            }
+            )}
           </div>
         </div>
       </div>
