@@ -11,6 +11,8 @@ export class InsSidebarItem {
   @Prop({mutable: true}) footerLink: string = '';
   @Prop({mutable: true}) icon: any = 'no-icon';
   @Prop({mutable: true}) app: boolean = false;
+  @Prop({mutable: true}) externalLink: boolean = false;
+  @Prop({mutable: true}) externalLinkIcon: string = 'icon-external-link-1';
   @Prop({mutable: true}) withSubmenu: boolean = false;
   @Prop({mutable: true}) label: string = 'Label';
   @Prop({mutable: true}) landingPage: boolean = false;
@@ -316,8 +318,19 @@ export class InsSidebarItem {
                   </i>
                   <span class="ins-sidebar-item-label">{this.label}</span>
                 </a>
-                :
-                <a class="ins-ripple-link"
+                : this.externalLink ?
+                  <a class="ins-ripple-link"
+                    href={`${this.formattedRoute}`} target="_blank">
+
+                    <i class={`fas ${this.icon}`}
+                      onMouseEnter={() => this.toggleTooltip(true)}
+                      onMouseLeave={() => this.toggleTooltip(false)}>
+
+                    </i>
+                    <span class="ins-sidebar-item-label">{this.label}<span class={`ext-icon ${this.externalLinkIcon}`}></span></span>
+                  </a>
+                  :
+                  <a class="ins-ripple-link"
                   href={this.link ? this.link : ''}>
 
                   <i class={`fas ${this.icon}`}></i>
