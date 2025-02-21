@@ -10269,6 +10269,10 @@ ins-sidebar-item div.ins-sidebar-item-wrap a .ins-sidebar-item-label {
   width: 83%
 }
 
+ins-sidebar-item div.ins-sidebar-item-wrap a .ins-sidebar-item-label .ext-icon {
+  margin-left: 16px
+}
+
 ins-sidebar-item div.ins-sidebar-item-wrap .fas.icon-chevron-right {
   font-size: 10px;
   color: var(--ins-color-ink40);
