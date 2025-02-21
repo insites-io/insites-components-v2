@@ -617,19 +617,19 @@ export class InsTable {
             </span>
             <div class="overlay-tooltip">
               <div class="timezones">
-                <p class="paragraph-medium main-text">
+                <p class="paragraph-medium main-text time-info">
                   Device Time ({tableHeader?.date_format?.device_time || "UTC"})
                 </p>
-                <p class="paragraph-medium">
+                <p class="paragraph-medium time">
                   {this.extractDate(item[tableHeader.label])}
                 </p>
               </div>
               <div class="timezones">
-                <p class="paragraph-medium main-text">
+                <p class="paragraph-medium main-text time-info">
                   Instance Time (
                   {tableHeader?.date_format?.instance_time || "UTC"})
                 </p>
-                <p class="paragraph-medium">
+                <p class="paragraph-medium time">
                   {this.offsetDateTime(
                     this.extractDate(item[tableHeader.label]),
                     tableHeader?.date_format?.instance_timezone,
@@ -638,8 +638,8 @@ export class InsTable {
                 </p>
               </div>
               <div class="timezones last">
-                <p class="paragraph-medium main-text">UTC</p>
-                <p class="paragraph-medium">
+                <p class="paragraph-medium main-text time-info">UTC</p>
+                <p class="paragraph-medium time">
                   {this.toUTC(
                     this.extractDate(item[tableHeader.label]),
                     tableHeader?.date_format?.date_time_format
