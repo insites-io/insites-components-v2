@@ -282,6 +282,7 @@ export namespace Components {
     interface InsCodeEditor {
         "autoHeight": boolean;
         "beautify": () => Promise<void>;
+        "beautifyJson": boolean;
         "checkLoad": boolean;
         "checkValue": boolean;
         "description": string;
@@ -1129,6 +1130,8 @@ export namespace Components {
         "app": boolean;
         "checkLoad": boolean;
         "deactivate": () => Promise<boolean>;
+        "externalLink": boolean;
+        "externalLinkIcon": string;
         "footerLink": string;
         "formatRoute": () => Promise<any>;
         "hasLoad": string;
@@ -3496,6 +3499,7 @@ declare namespace LocalJSX {
     }
     interface InsCodeEditor {
         "autoHeight"?: boolean;
+        "beautifyJson"?: boolean;
         "checkLoad"?: boolean;
         "checkValue"?: boolean;
         "description"?: string;
@@ -4314,6 +4318,8 @@ declare namespace LocalJSX {
     interface InsSidebarItem {
         "app"?: boolean;
         "checkLoad"?: boolean;
+        "externalLink"?: boolean;
+        "externalLinkIcon"?: string;
         "footerLink"?: string;
         "hasLoad"?: string;
         "icon"?: any;

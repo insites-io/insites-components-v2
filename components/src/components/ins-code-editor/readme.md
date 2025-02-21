@@ -10,6 +10,7 @@
 | Property             | Attribute              | Description | Type      | Default       |
 | -------------------- | ---------------------- | ----------- | --------- | ------------- |
 | `autoHeight`         | `auto-height`          |             | `boolean` | `false`       |
+| `beautifyJson`       | `beautify-json`        |             | `boolean` | `false`       |
 | `checkLoad`          | `check-load`           |             | `boolean` | `false`       |
 | `checkValue`         | `check-value`          |             | `boolean` | `false`       |
 | `description`        | `description`          |             | `string`  | `""`          |

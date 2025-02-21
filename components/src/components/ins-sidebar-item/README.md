@@ -7,18 +7,20 @@
 
 ## Properties
 
-| Property      | Attribute      | Description | Type      | Default     |
-| ------------- | -------------- | ----------- | --------- | ----------- |
-| `app`         | `app`          |             | `boolean` | `false`     |
-| `checkLoad`   | `check-load`   |             | `boolean` | `false`     |
-| `footerLink`  | `footer-link`  |             | `string`  | `''`        |
-| `hasLoad`     | `has-load`     |             | `string`  | `undefined` |
-| `icon`        | `icon`         |             | `any`     | `'no-icon'` |
-| `label`       | `label`        |             | `string`  | `'Label'`   |
-| `landingPage` | `landing-page` |             | `boolean` | `false`     |
-| `link`        | `link`         |             | `any`     | `''`        |
-| `load`        | `load`         |             | `boolean` | `false`     |
-| `withSubmenu` | `with-submenu` |             | `boolean` | `false`     |
+| Property           | Attribute            | Description | Type      | Default                  |
+| ------------------ | -------------------- | ----------- | --------- | ------------------------ |
+| `app`              | `app`                |             | `boolean` | `false`                  |
+| `checkLoad`        | `check-load`         |             | `boolean` | `false`                  |
+| `externalLink`     | `external-link`      |             | `boolean` | `false`                  |
+| `externalLinkIcon` | `external-link-icon` |             | `string`  | `'icon-external-link-1'` |
+| `footerLink`       | `footer-link`        |             | `string`  | `''`                     |
+| `hasLoad`          | `has-load`           |             | `string`  | `undefined`              |
+| `icon`             | `icon`               |             | `any`     | `'no-icon'`              |
+| `label`            | `label`              |             | `string`  | `'Label'`                |
+| `landingPage`      | `landing-page`       |             | `boolean` | `false`                  |
+| `link`             | `link`               |             | `any`     | `''`                     |
+| `load`             | `load`               |             | `boolean` | `false`                  |
+| `withSubmenu`      | `with-submenu`       |             | `boolean` | `false`                  |
 
 
 ## Events

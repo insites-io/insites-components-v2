@@ -46,6 +46,7 @@ export class InsCodeEditor {
   @Prop({ mutable: true }) checkLoad: boolean = false;
   @Prop({mutable: true}) description: string = "";
   @Prop({mutable: true}) htmlDescription: boolean = false;
+  @Prop({ mutable: true }) beautifyJson: boolean = false;
 
   @Prop({ mutable: true }) checkValue: boolean = false;
   @Method()
@@ -91,7 +92,13 @@ export class InsCodeEditor {
 
 	@Method()
 	async setValue(value) {
-		this.codeMirrorEl.setValue(value);
+    let nextValue = value;
+    if (this.beautifyJson) {
+      try {
+        nextValue = JSON.stringify(JSON.parse(nextValue), null, 2);
+      } catch {}
+    }
+		this.codeMirrorEl.setValue(nextValue);
     this.insValueChange.emit(this.codeMirrorEl.getValue());
 	}
 
@@ -171,7 +178,13 @@ export class InsCodeEditor {
 		}
 
 		if (this.value) {
-			this.codeMirrorEl.setValue(this.value);
+      let defaultValue = this.value;
+      if (this.beautifyJson) {
+        try {
+          defaultValue = JSON.stringify(JSON.parse(defaultValue), null, 2);
+        } catch {}
+      }
+			this.codeMirrorEl.setValue(defaultValue);
 		}
 
 		this.codeMirrorEl.on('focus', () => {
