@@ -13,8 +13,10 @@ import {
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import customParseFormat from "dayjs/plugin/customParseFormat"
 
 dayjs.extend(utc);
+dayjs.extend(customParseFormat)
 
 @Component({ tag: "ins-table" })
 export class InsTable {
@@ -580,14 +582,14 @@ export class InsTable {
   }
 
   toUTC(date, format) {
-    const localDate = dayjs(date);
+    const localDate = dayjs(date, format);
     const utcDate = localDate.utc();
     const utcString = utcDate.format(format);
     return utcString;
   }
 
   offsetDateTime(date, offset, format) {
-    const localDate = dayjs(date);
+    const localDate = dayjs(date, format);
     const utcDate = localDate.utc();
     const offsetDate = utcDate
       .utcOffset(offset?.split("@")[0] || "+0000")
