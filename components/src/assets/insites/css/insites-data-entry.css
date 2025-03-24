@@ -1736,6 +1736,76 @@ ins-button .ripple-wave.show {
   animation: ripple .75s ease-out
 }
 
+ins-button[options-only="true"] .btn__label.v-align,
+ins-button[options-only] .btn__label.v-align {
+  display: none;
+}
+
+ins-button[options-only="true"] .ins-button-options-wrap .carets,
+ins-button[options-only] .ins-button-options-wrap .carets {
+  width: 38px;
+  right: auto;
+  left: 0;
+  border-left: none
+}
+
+ins-button[options-only="true"] .ins-button-options-wrap button.size--small+.carets,
+ins-button[options-only] .ins-button-options-wrap button.size--small+.carets {
+  width: 24px
+}
+
+ins-button[options-only="true"] .ins-button-options-wrap button.size--large+.carets,
+ins-button[options-only] .ins-button-options-wrap button.size--large+.carets {
+  width: 48px
+}
+
+ins-button[options-only="true"] .carets::before,
+ins-button[options-only] .carets::before {
+  display: none
+}
+
+ins-button[options-only="true"] button .btn__icon,
+ins-button[options-only] button .btn__icon {
+  margin-right: 0
+}
+
+ins-button[options-only="true"] .ins-button-options-wrap button.has-options,
+ins-button[options-only] .ins-button-options-wrap button.has-options {
+  padding: 0;
+  min-width: 38px
+}
+
+ins-button[options-only="true"] .ins-button-options-wrap button.size--small,
+ins-button[options-only] .ins-button-options-wrap button.size--small {
+  min-width: 24px
+}
+
+ins-button[options-only="true"] .ins-button-options-wrap button.size--large,
+ins-button[options-only] .ins-button-options-wrap button.size--large {
+  min-width: 48px
+}
+
+ins-button[options-only="true"] button .btn__icon,
+ins-button[options-only="true"] button[type=button] .btn__icon,
+ins-button[options-only="true"] button[type=reset] .btn__icon,
+ins-button[options-only="true"] button[type=submit] .btn__icon,
+ins-button[options-only] button .btn__icon,
+ins-button[options-only] button[type=button] .btn__icon,
+ins-button[options-only] button[type=reset] .btn__icon,
+ins-button[options-only] button[type=submit] .btn__icon {
+  margin-right: 0;
+  letter-spacing: normal;
+  width: auto;
+  height: auto
+}
+
+
+ins-button[options-only="true"] .ins-button-options-wrap .options-wrap,
+ins-button[options-only] .ins-button-options-wrap .options-wrap {
+  width: auto;
+  right: 0
+}
+
 @-webkit-keyframes ripple {
   to {
     transform: scale(2);
@@ -4241,6 +4311,18 @@ ins-date-time .ins-datepicker-wrap .flatpickr-calendar.showTimeInput.hasTime .fl
   margin-bottom: 16px
 }
 
+.ins-credit-card-compact-size.has-tag {
+  max-height: 110px;
+}
+
+.ins-credit-card-compact-size.has-label {
+  max-height: 108px;
+}
+
+.ins-credit-card-compact-size.has-tag.has-label {
+  max-height: 132px;
+}
+
 .ins-credit-card-main-wrap.compact {
   padding-bottom: 0
 }
@@ -4301,9 +4383,13 @@ ins-date-time .ins-datepicker-wrap .flatpickr-calendar.showTimeInput.hasTime .fl
   color: var(--ins-color-negative)
 }
 
+.ins-credit-card-main-wrap:not(.compact) .insites-user-card-details {
+  width: 100%;
+}
+
 .ins-credit-card-main-wrap.compact .insites-user-card-details {
-  position: absolute;
-  left: 138px;
+  position: static;
+  padding-left: 114px;
   top: 28px;
   font-size: 14px;
   line-height: 18px;
@@ -4329,6 +4415,77 @@ ins-date-time .ins-datepicker-wrap .flatpickr-calendar.showTimeInput.hasTime .fl
 .ins-credit-card-main-wrap.compact .ins-credit-card-wrap_brand svg {
   height: 40px;
   width: auto
+}
+
+ins-credit-card .has-tag .ins-credit-card-main-wrap:not(.compact) .insites-user-card-tag {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 48px;
+  width: 100%
+}
+
+ins-credit-card .has-tag .ins-credit-card-main-wrap.compact .insites-user-card-tag {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 48px
+}
+
+ins-credit-card .has-tag .ins-credit-card-main-wrap .insites-user-card-tag ins-tag span.ins-tag,
+ins-credit-card .has-tag .ins-credit-card-main-wrap .insites-user-card-tag ins-tag span.tagged {
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 18px;
+  padding: 0 8px;
+  min-width: 0;
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+ins-credit-card .has-tag .ins-credit-card-main-wrap.compact .insites-user-card-tag ins-tag span.ins-tag > span,
+ins-credit-card .has-tag .ins-credit-card-main-wrap.compact .insites-user-card-tag ins-tag span.tagged > span {
+  font-size: 8px
+}
+
+ins-credit-card .has-label .ins-credit-card-main-wrap.compact .insites-user-card-label {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 4px;
+  padding-right: 48px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+ins-credit-card .has-label .ins-credit-card-main-wrap:not(.compact) .insites-user-card-label {
+  padding-right: 48px;
+  line-height: 18px;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+ins-credit-card .ins-credit-card-main-wrap.compact .options-btn {
+  position: absolute;
+  top: 23px;
+  right: 29px;
+}
+
+ins-credit-card .ins-credit-card-main-wrap:not(.compact) .options-btn {
+  position: absolute;
+  right: 3%;
+  top: 5%;
+}
+
+ins-credit-card .ins-credit-card-main-wrap .options-btn ins-button button.grey {
+  color: var(--ins-color-ink40)
 }
 
 .ins-checkbox-card-wrap {

@@ -1,9 +1,10 @@
-import { h, Component, Prop, Event, EventEmitter, Element, Method } from "@stencil/core";
+import { h, Component, Prop, Event, EventEmitter, Element, Method, Listen } from "@stencil/core";
 
 @Component({ tag: 'ins-credit-card' })
 export class InsCreditCard {
   @Element() insCreditCardEl: HTMLElement;
   @Event() insClick: EventEmitter;
+  @Event() insOption: EventEmitter;
   @Event({ bubbles: false }) insClose: EventEmitter;
 	@Event() insValueChange: EventEmitter;
   @Event() didLoad: EventEmitter;
@@ -17,9 +18,21 @@ export class InsCreditCard {
   @Prop({mutable: true}) active: boolean;
   @Prop({mutable: true}) compact: boolean;
   @Prop({mutable: true}) expired: boolean;
+  @Prop({mutable: true}) expiredLabel: string = "Expired";
   @Prop({mutable: true}) fullYear: boolean;
   @Prop({ mutable: true }) load: boolean = false;
   @Prop({ mutable: true }) checkLoad: boolean = false;
+  @Prop({mutable: true}) tag: string;
+  @Prop({mutable: true}) tagIcon: string;
+  @Prop({mutable: true}) tagLight: boolean = false;
+  @Prop({mutable: true}) tagOutlined: boolean = false;
+  @Prop({mutable: true}) tagColor: string;
+  @Prop({mutable: true}) tagFontColor: string;
+  @Prop({mutable: true}) tagBackgroundColor: string;
+  @Prop({mutable: true}) label: string;
+  @Prop({ mutable: true }) options: string = '';
+  @Prop({ mutable: true }) optionsIcon: string = 'icon-more-vertical';
+  @Prop({ mutable: true }) optionsColor: string = 'grey';
 
   @Method()
   async setValue(value){
@@ -529,7 +542,7 @@ export class InsCreditCard {
       : this.checkAttrVal(this.expiryYear, 1, 99);
 
       if (this.compact && this.expired) {
-        return "Expired"
+        return this.expiredLabel;
       } else {
         return `${month}/${year}`
       }
@@ -539,9 +552,34 @@ export class InsCreditCard {
     event.target.checked = this.active;
   }
 
+  constructOptions() {
+    return (
+      <div class="options-btn">
+        <ins-button options={this.options} icon={this.optionsIcon} color={this.optionsColor} options-only></ins-button>
+      </div>
+    )
+  }
+
+  @Listen('insClickOption')
+  optionClickHandler(event) {
+    this.insOption.emit(event.detail);
+  }
+
+  constructButton() {
+    if (this.compact) {
+      return (
+        this.options ? this.constructOptions() : <span class="icon-trash-2 close-btn" onClick={() => this.triggerCloseEvent()}></span>
+      )
+    } else {
+      return (
+        this.options ? this.constructOptions() : <span class="close-btn" onClick={() => this.triggerCloseEvent()}>&times;</span>
+      )
+    }
+  }
+
   render() {
     return (
-      <div class={this.compact ? "ins-credit-card-compact-size" : "ins-credit-card-max-size"}>
+      <div class={`${this.compact ? "ins-credit-card-compact-size" : "ins-credit-card-max-size"} ${this.tag ? "has-tag" : ""} ${this.label ? "has-label" : ""}`}>
         <div class={`ins-credit-card-main-wrap ${this.active ? "active":""} ${this.compact ? "compact" : ""}`}>
           <div class="ins-credit-card-wrap"
             onClick={() => this.triggerClickEvent()}>
@@ -549,13 +587,28 @@ export class InsCreditCard {
             <div class="ins-credit-card-wrap_brand">{this.renderBrand()}</div>
             { !this.compact && this.expired ?<div class="ins-credit-card-wrap_expired">Expired</div>:""}
             <div class="insites-user-card-details">
-              <div>{this.compact ? "****" : "**** **** ****"} {this.checkLastFour()}</div>
+              <div>{this.tag ?
+                <div class="insites-user-card-tag">
+                  <ins-tag
+                    label={this.tag}
+                    icon={this.tagIcon}
+                    light={this.tagLight}
+                    outlined={this.tagOutlined}
+                    color={this.tagColor}
+                    font-color={this.tagFontColor}
+                    background-color={this.tagBackgroundColor}>
+                  </ins-tag>
+                </div>
+                : ''}
+                {this.label ?
+                  <div class="insites-user-card-label">{this.label}</div>
+                : ''}
+                {this.compact ? "****" : "**** **** ****"} {this.checkLastFour()}
+              </div>
               <div class={`insites-user-card-details-expiry ${this.compact && this.expired ? "expired" : ""}`}>{this.constructExpiry()}</div>
             </div>
           </div>
-          { !this.compact ?
-            <span class="close-btn" onClick={() => this.triggerCloseEvent()}>&times;</span> :
-            <span class="icon-trash-2 close-btn" onClick={() => this.triggerCloseEvent()}></span> }
+          {this.constructButton()}
         </div>
       </div>
     );

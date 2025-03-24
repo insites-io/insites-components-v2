@@ -71,6 +71,145 @@
 
   <ins-renderer>
     <div>
+
+      <ins-button label="click" icon="icon-plus"></ins-button>
+      <ins-button label="click" options="Test1 testerererer,Test2" icon="icon-plus" outlined></ins-button>
+      <ins-button label="click" options="Delete,Archive,Restore" options-only icon="icon-plus"></ins-button>
+      <ins-button label="click" options="Delete,Archive,Restore" options-only outlined icon="icon-plus"></ins-button>
+      <ins-button label="click" size="small" options="Delete,Archive,Restore" options-only outlined icon="icon-plus"></ins-button>
+      <ins-button label="click" size="large" options="Delete,Archive,Restore" options-only outlined icon="icon-plus"></ins-button>
+
+      <ins-credit-card
+        id="creditElz"
+        last-four="1234"
+        expiry-month="12"
+        expiry-year="2029"
+        brand="amex"
+        options="Delete,Archive,Restore"
+        options-icon="icon-more-horizontal"
+        options-color="green"
+        tag="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        tag-color="blue"
+        tag-outlined
+        label="It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        compact
+        active
+        expired
+        full-year>
+      </ins-credit-card>
+
+      <script>
+        const creditElz = document.getElementById('creditElz');
+
+        creditElz.addEventListener('insOption', event => {
+          console.log('insOption', event)
+        });
+      </script>
+      <ins-credit-card
+        last-four="1234"
+        expiry-month="12"
+        expiry-year="2023"
+        brand="discover"
+        tag="Lorem Ipsum"
+        tag-color="red"
+        tag-icon="icon-close"
+        tag-light
+        label="It was popularised"
+        compact
+        expired
+        full-year>
+      </ins-credit-card>
+      <ins-credit-card
+        id="creditEl2"
+        last-four="1234"
+        expiry-month="12"
+        expiry-year="2023"
+        brand="unionpay"
+        tag="Danger"
+        tag-color="red"
+        tag-outlined
+        options="Delete,Archive,Restore"
+        options-icon="icon-trash-2"
+        label="Label of this Credit Card"
+        expired
+        full-year>
+      </ins-credit-card>
+      <ins-credit-card
+        id="creditEl2"
+        last-four="1234"
+        expiry-month="12"
+        expiry-year="2023"
+        brand="unionpay"
+        tag="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        tag-color="green"
+        tag-outlined
+        label="It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        expired
+        full-year>
+      </ins-credit-card>
+
+
+      <ins-gallery
+      id="galleryEl"
+      thumbnail-layout="slider"
+      slidable
+      zoomable
+      with-indicator
+      tooltip="This is a sample tooltip content. It also support html content.">
+
+      <ins-gallery-image
+        thumbnail="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/e9da5e14-1172-4fef-9268-4142a55c90a7/t1.jpg?updated=1722590369"
+        image="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/eda7d8ce-1e7d-4618-93ce-481fcdb8712b/1.jpg?updated=1722590364">
+      </ins-gallery-image>
+
+      <ins-gallery-image
+        thumbnail="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/eddbcc27-8497-4d9c-aa32-982ce778ff9a/t2.jpg?updated=1722590370"
+        image="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/391f34de-ff82-417f-ad0d-4a05f2ecb3ec/2.jpg?updated=1722590365">
+      </ins-gallery-image>
+
+      <ins-gallery-image
+        thumbnail="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/3adab618-fc83-432b-8548-cbb6db4c115d/t3.jpg?updated=1722590372"
+        image="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/95bc68c2-a6e6-4800-8489-bd04394f6c11/3.jpg?updated=1722590366">
+      </ins-gallery-image>
+
+      <ins-gallery-image
+        thumbnail="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/d3cf37dd-de54-4397-814a-5ea45706405a/4.jpg?updated=1722590368"
+        image="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/547a24d4-6ee7-4ddf-af89-5326bd867773/t4.jpg?updated=1722590373">
+      </ins-gallery-image>
+
+      <ins-gallery-image
+        thumbnail="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/e9da5e14-1172-4fef-9268-4142a55c90a7/t1.jpg?updated=1722590369"
+        image="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/eda7d8ce-1e7d-4618-93ce-481fcdb8712b/1.jpg?updated=1722590364">
+      </ins-gallery-image>
+
+      <ins-gallery-image
+        thumbnail="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/eddbcc27-8497-4d9c-aa32-982ce778ff9a/t2.jpg?updated=1722590370"
+        image="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/391f34de-ff82-417f-ad0d-4a05f2ecb3ec/2.jpg?updated=1722590365">
+      </ins-gallery-image>
+
+      <ins-gallery-image
+        thumbnail="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/3adab618-fc83-432b-8548-cbb6db4c115d/t3.jpg?updated=1722590372"
+        image="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/95bc68c2-a6e6-4800-8489-bd04394f6c11/3.jpg?updated=1722590366">
+      </ins-gallery-image>
+
+      <ins-gallery-image
+        thumbnail="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/d3cf37dd-de54-4397-814a-5ea45706405a/4.jpg?updated=1722590368"
+        image="https://uploads.prod01.sydney.platformos.com/instances/630/property_uploads/modules/insites_assets/assets_upload/asset/547a24d4-6ee7-4ddf-af89-5326bd867773/t4.jpg?updated=1722590373">
+      </ins-gallery-image>
+    </ins-gallery>
+
+    <script>
+
+      const galleryEl = document.getElementById('galleryEl');
+
+
+      galleryEl.addEventListener('insChange', event => {
+          console.log('insChange', event.detail)
+        });
+
+    </script>
+
+
       <ins-input label="Not Color"></ins-input>
       <ins-input id="colorEl" label="Color" field="color" tooltip="tester" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>"></ins-input>
 

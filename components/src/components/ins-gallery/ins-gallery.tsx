@@ -1,10 +1,11 @@
-import { h, Component, Listen, Element, Prop, Event, EventEmitter } from "@stencil/core";
+import { h, Component, Listen, Element, Prop, Event, Method, EventEmitter } from "@stencil/core";
 import Siema from "siema";
 
 @Component({ tag: 'ins-gallery' })
 export class InsGallery {
   @Element() el: HTMLElement;
   @Event() didLoad: EventEmitter;
+  @Event() insChange: EventEmitter;
   @Prop({ mutable: true }) imgAlt: string;
   @Prop({ mutable: true }) imgTitle: string;
   @Prop({ mutable: true }) zoomable: boolean;
@@ -15,6 +16,7 @@ export class InsGallery {
   @Prop({ mutable: true }) checkLoad: boolean = false;
 
   imgEl; thumbs; sliderThumbs; slider; slides; progress; viewports;
+  hasLoad = false;
 
   @Listen('insGalleryUpdate')
   insUpdateSrcHandler(e){
@@ -56,6 +58,14 @@ export class InsGallery {
   }
 
   setProgress(i){
+    if (this.hasLoad) {
+      this.insChange.emit({
+        index: i,
+        src: this.thumbs[i].image,
+        target: this.thumbs[i]
+      });
+    }
+
     this.progress.innerHTML = `${i+1} / ${this.thumbs.length}`;
   }
 
@@ -67,6 +77,7 @@ export class InsGallery {
     this.setDefaultImg();
     if (this.checkLoad) this.load = true;
     this.didLoad.emit();
+    this.hasLoad = true;
   }
 
   onSlideHandler(){
@@ -277,6 +288,11 @@ export class InsGallery {
         <slot />
       </div>
     )
+  }
+
+  @Method()
+  async activate(index) {
+    this.thumbs[index]?.querySelector('.ins-gallery-image')?.click();
   }
 
   render() {

@@ -1482,6 +1482,78 @@ ins-button .ripple-wave.show {
   animation: ripple .75s ease-out
 }
 
+ins-button[options-only="true"] .btn__label.v-align,
+ins-button[options-only] .btn__label.v-align {
+  display: none;
+}
+
+ins-button[options-only="true"] .ins-button-options-wrap .carets,
+ins-button[options-only] .ins-button-options-wrap .carets {
+  width: 38px;
+  right: auto;
+  left: 0;
+  border-left: none
+}
+
+ins-button[options-only="true"] .ins-button-options-wrap button.size--small+.carets,
+ins-button[options-only] .ins-button-options-wrap button.size--small+.carets {
+  width: 24px
+}
+
+ins-button[options-only="true"] .ins-button-options-wrap button.size--large+.carets,
+ins-button[options-only] .ins-button-options-wrap button.size--large+.carets {
+  width: 48px
+}
+
+ins-button[options-only="true"] .carets::before,
+ins-button[options-only] .carets::before {
+  display: none
+}
+
+ins-button[options-only="true"] button .btn__icon,
+ins-button[options-only] button .btn__icon {
+  margin-right: 0
+}
+
+ins-button[options-only="true"] .ins-button-options-wrap button.has-options,
+ins-button[options-only] .ins-button-options-wrap button.has-options {
+  padding: 0;
+  min-width: 38px
+}
+
+ins-button[options-only="true"] .ins-button-options-wrap button.size--small,
+ins-button[options-only] .ins-button-options-wrap button.size--small {
+  min-width: 24px
+}
+
+ins-button[options-only="true"] .ins-button-options-wrap button.size--large,
+ins-button[options-only] .ins-button-options-wrap button.size--large {
+  min-width: 48px
+}
+
+ins-button[options-only="true"] button .btn__icon,
+ins-button[options-only="true"] button[type=button] .btn__icon,
+ins-button[options-only="true"] button[type=reset] .btn__icon,
+ins-button[options-only="true"] button[type=submit] .btn__icon,
+ins-button[options-only] button .btn__icon,
+ins-button[options-only] button[type=button] .btn__icon,
+ins-button[options-only] button[type=reset] .btn__icon,
+ins-button[options-only] button[type=submit] .btn__icon {
+  margin-right: 0;
+  letter-spacing: normal;
+  width: auto;
+  height: auto
+}
+
+
+ins-button[options-only="true"] .ins-button-options-wrap .options-wrap,
+ins-button[options-only] .ins-button-options-wrap .options-wrap {
+  width: auto;
+  right: 0
+}
+
+
+
 @-webkit-keyframes ripple {
   to {
     transform: scale(2);
@@ -1955,6 +2027,18 @@ html [type=button] {
   margin-bottom: 16px
 }
 
+.ins-credit-card-compact-size.has-tag {
+  max-height: 110px;
+}
+
+.ins-credit-card-compact-size.has-label {
+  max-height: 108px;
+}
+
+.ins-credit-card-compact-size.has-tag.has-label {
+  max-height: 132px;
+}
+
 .ins-credit-card-main-wrap.compact {
   padding-bottom: 0
 }
@@ -2015,9 +2099,13 @@ html [type=button] {
   color: var(--ins-color-negative)
 }
 
+.ins-credit-card-main-wrap:not(.compact) .insites-user-card-details {
+  width: 100%;
+}
+
 .ins-credit-card-main-wrap.compact .insites-user-card-details {
-  position: absolute;
-  left: 138px;
+  position: static;
+  padding-left: 114px;
   top: 28px;
   font-size: 14px;
   line-height: 18px;
@@ -2045,8 +2133,79 @@ html [type=button] {
   width: auto
 }
 
+ins-credit-card .has-tag .ins-credit-card-main-wrap:not(.compact) .insites-user-card-tag {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 48px;
+  width: 100%
+}
+
+ins-credit-card .has-tag .ins-credit-card-main-wrap.compact .insites-user-card-tag {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 48px
+}
+
+ins-credit-card .has-tag .ins-credit-card-main-wrap .insites-user-card-tag ins-tag span.ins-tag,
+ins-credit-card .has-tag .ins-credit-card-main-wrap .insites-user-card-tag ins-tag span.tagged {
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 18px;
+  padding: 0 8px;
+  min-width: 0;
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+ins-credit-card .has-tag .ins-credit-card-main-wrap.compact .insites-user-card-tag ins-tag span.ins-tag > span,
+ins-credit-card .has-tag .ins-credit-card-main-wrap.compact .insites-user-card-tag ins-tag span.tagged > span {
+  font-size: 8px
+}
+
+ins-credit-card .has-label .ins-credit-card-main-wrap.compact .insites-user-card-label {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 4px;
+  padding-right: 48px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+ins-credit-card .has-label .ins-credit-card-main-wrap:not(.compact) .insites-user-card-label {
+  padding-right: 48px;
+  line-height: 18px;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+ins-credit-card .ins-credit-card-main-wrap.compact .options-btn {
+  position: absolute;
+  top: 23px;
+  right: 29px;
+}
+
+ins-credit-card .ins-credit-card-main-wrap:not(.compact) .options-btn {
+  position: absolute;
+  right: 3%;
+  top: 5%;
+}
+
+ins-credit-card .ins-credit-card-main-wrap .options-btn ins-button button.grey {
+  color: var(--ins-color-ink40)
+}
+
 ins-code-editor .ins-code-editor {
-  margin-bottom: 20px;
+  margin-bottom: 20px
 }
 
 ins-code-editor textarea.codemirror {
@@ -7666,6 +7825,100 @@ ins-tag span.tagged.light.valid {
   color: var(--ins-color-green)
 }
 
+ins-tag span.ins-tag.outlined,
+ins-tag span.tagged.outlined {
+  background-color: transparent;
+  color: var(--ins-bg-color3);
+  border: 1px solid var(--ins-bg-color3)
+}
+
+ins-tag span.ins-tag.outlined.blue,
+ins-tag span.tagged.outlined.blue {
+  background-color: transparent;
+  color: var(--ins-color-blue);
+  border: 1px solid var(--ins-color-blue)
+}
+
+ins-tag span.ins-tag.outlined.yellow,
+ins-tag span.tagged.outlined.yellow {
+  background-color: transparent;
+  color: var(--ins-color-yellow);
+  border: 1px solid var(--ins-color-yellow)
+}
+
+ins-tag span.ins-tag.outlined.new,
+ins-tag span.ins-tag.outlined.orange,
+ins-tag span.tagged.outlined.new,
+ins-tag span.tagged.outlined.orange {
+  background-color: transparent;
+  color: var(--ins-color-orange);
+  border: 1px solid var(--ins-color-orange)
+}
+
+ins-tag span.ins-tag.outlined.closed,
+ins-tag span.ins-tag.outlined.grey,
+ins-tag span.tagged.outlined.closed,
+ins-tag span.tagged.outlined.grey {
+  background-color: transparent;
+  color: var(--ins-color-grey);
+  border: 1px solid var(--ins-color-grey)
+}
+
+ins-tag span.ins-tag.outlined.pending ins-tag span.ins-tag.outlined.yellow,
+ins-tag span.ins-tag.outlined.pending ins-tag span.tagged.outlined.yellow,
+ins-tag span.tagged.outlined.pending ins-tag span.ins-tag.outlined.yellow,
+ins-tag span.tagged.outlined.pending ins-tag span.tagged.outlined.yellow {
+  background-color: transparent;
+  color: var(--ins-color-yellow);
+  border: 1px solid var(--ins-color-yellow)
+}
+
+ins-tag span.ins-tag.outlined.archived,
+ins-tag span.ins-tag.outlined.disabled,
+ins-tag span.ins-tag.outlined.error,
+ins-tag span.ins-tag.outlined.flagged,
+ins-tag span.ins-tag.outlined.invalid,
+ins-tag span.ins-tag.outlined.negative,
+ins-tag span.ins-tag.outlined.red,
+ins-tag span.tagged.outlined.archived,
+ins-tag span.tagged.outlined.disabled,
+ins-tag span.tagged.outlined.error,
+ins-tag span.tagged.outlined.flagged,
+ins-tag span.tagged.outlined.invalid,
+ins-tag span.tagged.outlined.negative,
+ins-tag span.tagged.outlined.red {
+  background-color: transparent;
+  color: var(--ins-color-red);
+  border: 1px solid var(--ins-color-red)
+}
+
+ins-tag span.ins-tag.outlined.active,
+ins-tag span.ins-tag.outlined.enabled,
+ins-tag span.ins-tag.outlined.green,
+ins-tag span.ins-tag.outlined.open,
+ins-tag span.ins-tag.outlined.positive,
+ins-tag span.ins-tag.outlined.published,
+ins-tag span.ins-tag.outlined.valid,
+ins-tag span.tagged.outlined.active,
+ins-tag span.tagged.outlined.enabled,
+ins-tag span.tagged.outlined.green,
+ins-tag span.tagged.outlined.open,
+ins-tag span.tagged.outlined.positive,
+ins-tag span.tagged.outlined.published,
+ins-tag span.tagged.outlined.valid {
+  background-color: transparent;
+  color: var(--ins-color-green);
+  border: 1px solid var(--ins-color-green)
+}
+
+
+
+
+
+
+
+
+
 .ins-timeline-wrap {
   background-color: var(--ins-bg-color)
 }
@@ -8421,6 +8674,62 @@ ins-drawer .ins-drawer-header .ins-drawer-close-btn {
 
 .ins-modal-wrap {
   display: none
+}
+
+ins-modal .ins-modal-wrap.show-modal.full-height.full-height {
+  overflow: hidden
+}
+
+ins-modal .ins-modal-wrap.show-modal.full-height ins-card .ins-card-wrap {
+  margin: 30px auto 1.75rem
+}
+
+ins-modal .ins-modal-wrap.show-modal.full-height .ins-modal-body {
+  max-height: calc(100vh - 161px)
+}
+
+ins-modal .ins-modal-wrap.show-modal.full-height.has-heading:not(.no-button) .ins-modal-body {
+  max-height: calc(100vh - 195px)
+}
+
+ins-modal .ins-modal-wrap.show-modal.full-height.no-button:not(.has-heading) .ins-modal-body {
+  max-height: calc(100vh - 92px)
+}
+
+ins-modal .ins-modal-wrap.show-modal.full-height.no-button.has-heading .ins-modal-body {
+  max-height: calc(100vh - 126px)
+}
+
+ins-modal .ins-modal-wrap.show-modal.full-height .ins-modal-button-wrap.text-center {
+  position: static
+}
+
+ins-modal .ins-modal-wrap.show-modal.full-height .ins-modal-head-h1 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap
+}
+
+@media screen and (max-width: 639px) {
+  ins-modal .ins-modal-wrap.show-modal.full-height ins-card .ins-card-wrap {
+    margin: 0
+  }
+
+  ins-modal .ins-modal-wrap.show-modal.full-height .ins-modal-body {
+    max-height: calc(100dvh - 101px)
+  }
+
+  ins-modal .ins-modal-wrap.show-modal.full-height.has-heading:not(.no-button) .ins-modal-body {
+    max-height: calc(100dvh - 135px)
+  }
+
+  ins-modal .ins-modal-wrap.show-modal.full-height.no-button:not(.has-heading) .ins-modal-body {
+    max-height: calc(100dvh - 32px)
+  }
+
+  ins-modal .ins-modal-wrap.show-modal.full-height.no-button.has-heading .ins-modal-body {
+    max-height: calc(100dvh - 68px)
+  }
 }
 
 .ins-accordion.menu {

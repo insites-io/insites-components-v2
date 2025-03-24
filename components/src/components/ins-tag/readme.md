@@ -16,7 +16,22 @@
 | `icon`            | `icon`             |             | `string`  | `undefined` |
 | `label`           | `label`            |             | `string`  | `undefined` |
 | `light`           | `light`            |             | `boolean` | `true`      |
+| `outlineColor`    | `outline-color`    |             | `string`  | `undefined` |
+| `outlined`        | `outlined`         |             | `boolean` | `false`     |
 
+
+## Dependencies
+
+### Used by
+
+ - [ins-credit-card](../ins-credit-card)
+
+### Graph
+```mermaid
+graph TD;
+  ins-credit-card --> ins-tag
+  style ins-tag fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

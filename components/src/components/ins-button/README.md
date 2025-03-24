@@ -22,6 +22,7 @@
 | `load`          | `load`           |             | `boolean` | `false`     |
 | `loading`       | `loading`        |             | `boolean` | `false`     |
 | `options`       | `options`        |             | `string`  | `''`        |
+| `optionsOnly`   | `options-only`   |             | `boolean` | `false`     |
 | `outlined`      | `outlined`       |             | `boolean` | `false`     |
 | `size`          | `size`           |             | `string`  | `'normal'`  |
 | `solid`         | `solid`          |             | `boolean` | `false`     |
@@ -43,6 +44,7 @@
 ### Used by
 
  - [ins-carousel](../ins-carousel)
+ - [ins-credit-card](../ins-credit-card)
  - [ins-filter](../ins-filter)
  - [ins-heading](../ins-heading)
  - [ins-image-picker](../ins-image-picker)
@@ -55,6 +57,7 @@
 ```mermaid
 graph TD;
   ins-carousel --> ins-button
+  ins-credit-card --> ins-button
   ins-filter --> ins-button
   ins-heading --> ins-button
   ins-image-picker --> ins-button
