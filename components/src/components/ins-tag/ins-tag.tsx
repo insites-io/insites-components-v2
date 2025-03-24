@@ -10,6 +10,8 @@ export class InsTag {
   @Prop({ mutable: true }) fontInherit: boolean = false;
   @Prop({ mutable: true }) fontColor: string;
   @Prop({ mutable: true }) backgroundColor: string;
+  @Prop({ mutable: true }) outlined: boolean = false;
+  @Prop({ mutable: true }) outlineColor: string;
 
   componentDidLoad() {
     this.addColorStyles();
@@ -34,12 +36,19 @@ export class InsTag {
           insTag['style']['background-color'] = this.backgroundColor;
         }
       }
+
+      if (this.outlined && this.outlineColor && this.outlineColor[0] === '#') {
+        if (insTag) {
+          insTag['style']['outline'] = `1px solid ${this.outlineColor}`;
+        }
+      }
     }
   }
 
   render() {
     return (
       <span class={`ins-tag
+        ${this.outlined ? 'outlined' : ''}
         ${this.light ? 'light' : ''}
         ${this.color} ${this.fontInherit ? 'font-inherit' : ''}`}>
 

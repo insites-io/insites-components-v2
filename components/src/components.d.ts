@@ -83,6 +83,7 @@ export namespace Components {
         "load": boolean;
         "loading": boolean;
         "options": string;
+        "optionsOnly": boolean;
         "outlined": boolean;
         "size": string;
         "solid": boolean;
@@ -315,14 +316,26 @@ export namespace Components {
         "checkLoad": boolean;
         "compact": boolean;
         "expired": boolean;
+        "expiredLabel": string;
         "expiryMonth": string;
         "expiryYear": string;
         "fullYear": boolean;
         "getValue": () => Promise<string>;
         "hasLoad": string;
+        "label": string;
         "lastFour": string;
         "load": boolean;
+        "options": string;
+        "optionsColor": string;
+        "optionsIcon": string;
         "setValue": (value: any) => Promise<void>;
+        "tag": string;
+        "tagBackgroundColor": string;
+        "tagColor": string;
+        "tagFontColor": string;
+        "tagIcon": string;
+        "tagLight": boolean;
+        "tagOutlined": boolean;
         "value": string;
     }
     interface InsDateTime {
@@ -442,6 +455,7 @@ export namespace Components {
         "selected": any;
     }
     interface InsGallery {
+        "activate": (index: any) => Promise<void>;
         "checkLoad": boolean;
         "imgAlt": string;
         "imgTitle": string;
@@ -925,6 +939,7 @@ export namespace Components {
         "confirmButtonIcon": string;
         "confirmButtonLabel": string;
         "confirmation": boolean;
+        "fullHeight": boolean;
         "hasLoad": string;
         "heading": string;
         "height": string;
@@ -1267,6 +1282,8 @@ export namespace Components {
         "icon": string;
         "label": string;
         "light": boolean;
+        "outlineColor": string;
+        "outlined": boolean;
     }
     interface InsTextarea {
         "checkLoad": boolean;
@@ -1995,6 +2012,7 @@ declare global {
     };
     interface HTMLInsCreditCardElementEventMap {
         "insClick": any;
+        "insOption": any;
         "insClose": any;
         "insValueChange": any;
         "didLoad": any;
@@ -2120,6 +2138,7 @@ declare global {
     };
     interface HTMLInsGalleryElementEventMap {
         "didLoad": any;
+        "insChange": any;
     }
     interface HTMLInsGalleryElement extends Components.InsGallery, HTMLStencilElement {
         addEventListener<K extends keyof HTMLInsGalleryElementEventMap>(type: K, listener: (this: HTMLInsGalleryElement, ev: InsGalleryCustomEvent<HTMLInsGalleryElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3315,6 +3334,7 @@ declare namespace LocalJSX {
         "onInsClick"?: (event: InsButtonCustomEvent<any>) => void;
         "onInsClickOption"?: (event: InsButtonCustomEvent<any>) => void;
         "options"?: string;
+        "optionsOnly"?: boolean;
         "outlined"?: boolean;
         "size"?: string;
         "solid"?: boolean;
@@ -3529,16 +3549,29 @@ declare namespace LocalJSX {
         "checkLoad"?: boolean;
         "compact"?: boolean;
         "expired"?: boolean;
+        "expiredLabel"?: string;
         "expiryMonth"?: string;
         "expiryYear"?: string;
         "fullYear"?: boolean;
         "hasLoad"?: string;
+        "label"?: string;
         "lastFour"?: string;
         "load"?: boolean;
         "onDidLoad"?: (event: InsCreditCardCustomEvent<any>) => void;
         "onInsClick"?: (event: InsCreditCardCustomEvent<any>) => void;
         "onInsClose"?: (event: InsCreditCardCustomEvent<any>) => void;
+        "onInsOption"?: (event: InsCreditCardCustomEvent<any>) => void;
         "onInsValueChange"?: (event: InsCreditCardCustomEvent<any>) => void;
+        "options"?: string;
+        "optionsColor"?: string;
+        "optionsIcon"?: string;
+        "tag"?: string;
+        "tagBackgroundColor"?: string;
+        "tagColor"?: string;
+        "tagFontColor"?: string;
+        "tagIcon"?: string;
+        "tagLight"?: boolean;
+        "tagOutlined"?: boolean;
         "value"?: string;
     }
     interface InsDateTime {
@@ -3660,6 +3693,7 @@ declare namespace LocalJSX {
         "imgTitle"?: string;
         "load"?: boolean;
         "onDidLoad"?: (event: InsGalleryCustomEvent<any>) => void;
+        "onInsChange"?: (event: InsGalleryCustomEvent<any>) => void;
         "slidable"?: boolean;
         "thumbnailLayout"?: string;
         "withIndicator"?: boolean;
@@ -4133,6 +4167,7 @@ declare namespace LocalJSX {
         "confirmButtonIcon"?: string;
         "confirmButtonLabel"?: string;
         "confirmation"?: boolean;
+        "fullHeight"?: boolean;
         "hasLoad"?: string;
         "heading"?: string;
         "height"?: string;
@@ -4464,6 +4499,8 @@ declare namespace LocalJSX {
         "icon"?: string;
         "label"?: string;
         "light"?: boolean;
+        "outlineColor"?: string;
+        "outlined"?: boolean;
     }
     interface InsTextarea {
         "checkLoad"?: boolean;

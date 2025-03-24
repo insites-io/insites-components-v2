@@ -16,6 +16,7 @@ export class InsButton {
   @Prop({ mutable: true }) data: string = '';
   @Prop({ mutable: true }) type: string = '';
   @Prop({ mutable: true }) options: string = '';
+  @Prop({ mutable: true }) optionsOnly: boolean = false;
 
   @Prop({ mutable: true }) dropdown: boolean = false;
   @Prop({ mutable: true }) solid: boolean = false;
@@ -50,7 +51,8 @@ export class InsButton {
   optionOnClickHandler(option) {
     this.toggleOption = false;
     this.insClickOption.emit({
-      label: this.label, option
+      label: this.optionsOnly ? null : this.label,
+      option
     });
   }
 
@@ -187,7 +189,7 @@ export class InsButton {
                 ${this.loading ? 'is-loading' : ''}
                 ${this.size ? 'size--' + this.size : ''}
                 ${this.solid || this.loading ? 'solid' :''}
-                ${this.outlined || (this.options && !this.solid)? 'outlined' :''}
+                ${this.outlined || (this.options && !this.solid && !this.optionsOnly) ? 'outlined' :''}
                 ${this.cursor ? 'cursor--' + this.cursor : ''}
                 ${this.textTransform ? 'text-transform--' + this.textTransform : ''}
                 ${this.color}
@@ -249,7 +251,8 @@ export class InsButton {
             ${this.cursor ? 'cursor--' + this.cursor : ''}
             ${this.textTransform ? 'text-transform--' + this.textTransform : ''}
             ${this.color}
-            ${this.label == '' && this.icon && !this.iconRight ? 'round' : ''}`
+            ${this.label == '' && this.icon && !this.iconRight ? 'round' : ''}
+            ${this.optionsOnly ? 'hide--label' : ''}`
           }
         >
           {this.loading

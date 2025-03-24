@@ -31,6 +31,7 @@ export class InsModal {
 
   @Prop({ mutable: true }) width: string = "80%";
   @Prop({ mutable: true }) height: string = "80%";
+  @Prop({ mutable: true }) fullHeight: boolean;
 
   @State() showModal: boolean = false;
 
@@ -155,6 +156,9 @@ export class InsModal {
     return (
       <div class={`ins-modal-wrap ${this.height === 'auto' ? 'auto' : ''}
         ${this.showModal ? 'show-modal' : ''} ${this.light ? 'light' : ''}
+        ${this.noButton ? 'no-button' : ''}
+        ${this.fullHeight ? 'full-height' : ''}
+        ${this.heading ? 'has-heading' : ''}
         ${this.noButton ? 'no-button' : ''}`} onClick={e => this.clickOutsideHandler(e)}>
 
         {this.withBackdrop ? <ins-backdrop light={this.light}></ins-backdrop> : ''}
@@ -163,7 +167,7 @@ export class InsModal {
           <div class="ins-modal-content">
 
             <div class={`ins-modal-head ${!this.heading ? 'no-heading':''}`}>
-              <h1>{this.heading}</h1>
+              <h1 class="ins-modal-head-h1">{this.heading}</h1>
               <span class="icon-close-1"
                 onClick={() => this.closeConfirmModal('canceled')}>
               </span>

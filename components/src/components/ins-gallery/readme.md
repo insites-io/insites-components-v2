@@ -21,9 +21,29 @@
 
 ## Events
 
-| Event     | Description | Type               |
-| --------- | ----------- | ------------------ |
-| `didLoad` |             | `CustomEvent<any>` |
+| Event       | Description | Type               |
+| ----------- | ----------- | ------------------ |
+| `didLoad`   |             | `CustomEvent<any>` |
+| `insChange` |             | `CustomEvent<any>` |
+
+
+## Methods
+
+### `activate(index: any) => Promise<void>`
+
+
+
+#### Parameters
+
+| Name    | Type  | Description |
+| ------- | ----- | ----------- |
+| `index` | `any` |             |
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ----------------------------------------------
