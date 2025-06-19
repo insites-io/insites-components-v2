@@ -83,134 +83,6 @@
 
   <ins-renderer>
     <div>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<ins-table
-  id="fieldTable4"
-  default-bulk-action="Update"
-  no-wrap
-  heading="Field Table"
-  page-size="3"
-  page-number="1"
-  without-search>
-</ins-table>
-
-      <ins-select label="insselect" multiple value="" searchable placeholder="Select or type to search for test" has-error error-message="Error" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>" blank-label>
-        <div>
-          <ins-select-option value="" label="-- Clear Option --"></ins-select-option>
-          <ins-select-group label="Test">
-            <ins-select-option value="1" label="1"></ins-select-option>
-            <ins-select-option value="2" label="2"></ins-select-option>
-            <ins-select-option value="3" label="3"></ins-select-option>
-            <ins-select-option value="4" label="4"></ins-select-option>
-            <ins-select-option value="11" label="11"></ins-select-option>
-            <ins-select-option value="21" label="21"></ins-select-option>
-            <ins-select-option value="31" label="31"></ins-select-option>
-            <ins-select-option value="41" label="41"></ins-select-option>
-            <ins-select-option value="12" label="12"></ins-select-option>
-            <ins-select-option value="22" label="22"></ins-select-option>
-            <ins-select-option value="32" label="32"></ins-select-option>
-            <ins-select-option value="42" label="42"></ins-select-option>
-          </ins-select-group>
-        </div>
-      </ins-select>
-<style>
-  #fieldTable4 .ibt-tag.Active { background-color: #24be8d; color: #fff; }
-  #fieldTable4 .ibt-tag { background-color: #d4d4d4; color: #636363; padding: 6px 10px; font-size: 11px; border-radius: 4px; }
-</style>
-
-
-<script>
-  var fieldTable4 = document.getElementById('fieldTable4');
-  var dateFormat = "MM/DD/YYYY"
-
-  // set table bulk actions
-  // fieldTable4.bulkActions = ["Update", "Enable", "Disable", "Restore", "Delete"];
-  fieldTable4.bulkActions = ["Archive", "Assign", "Change Status", "Delete", "Download", "Duplicate", "Export", "Merge"];
-  fieldTable4.rowActions = ["Enable", "Disable", "Restore", "Delete"]
-
-  fieldTable4.rowActionsSettings = {
-    column: "Only Status",
-    rowActions: {
-      Enable: ["Disable", "Restore", "Delete"],
-      Disable: ["Enable", "Archive", "Delete"],
-    },
-  };
-
-  // set table headers
-  fieldTable4.tableHeaders = [
-    { label: 'Name', type: "string", editable: false, hasImage: true },
-    { label: 'Birthday', type: "date", editable: false },
-    { label: 'Status', type: "select", hasTag: true, multipleTags: true, editable: false, selectOptions: ['Active', 'Inactive'] },
-    { label: 'Image', image: true },
-    { label: 'Only Status', type: "select", hasTag: true }
-  ];
-
-  // set table data
-  fieldTable4.tableData = [
-    { "id": "sample-001", "Name": "John Doe", "Birthday": "01/02/1990", "Status": ["Active", "Inactive"],"Image": "https://placehold.co/1600x400", "Only Status": "Enable" },
-    { "id": "sample-002", "Name": "Derek de Guzman", "Birthday": "11/29/1990", "Status": ["Inactive"], "Image": "https://placehold.co/600x1400", "Only Status": "Disable" },
-    { "id": "sample-003", "Name": "Juan Daw", "Birthday": "02/02/1992", "Status": null, "Image": null, "Only Status": null }
-  ];
-
-  // add table event listener
-  fieldTable4.addEventListener('insTableBulkAction', function(event) {
-    console.log('Edit table event', event.detail);
-    alert("Check console log for event data");
-  });
-</script>
-
-
-    <h1> Modal </h1>
-    <ins-button
-      label="OPEN MODAL"
-      solid id="myButton">
-    </ins-button>
-
-    <ins-modal
-      id="myModal"
-      heading="Hello World"
-      full-height="true"
-      with-backdrop
-      light
-      confirmation
-      value="DATA"
-      width="400px"
-      height="400px"
-      close-button-label="CLOSE"
-      close-button-icon="icon-close-1"
-      close-button-color="secondary"
-      confirm-button-label="ACCEPT"
-      confirm-button-icon="icon-check1"
-      confirm-button-color="positive"
-      prevent-click-outside
-	  button-alignment="left">
-
-      <div id="myModalContent"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices eros at nisi ullamcorper venenatis. Fusce quis sapien facilisis ipsum mollis scelerisque. Aliquam a cursus mi. Aliquam eu massa quis risus cursus faucibus at a justo. Sed vel mauris odio. Vestibulum vitae lacinia nisl, eget congue quam. Nullam aliquet, nulla in egestas tempor, magna metus semper leo, accumsan accumsan lectus dolor iaculis sapien. Vivamus quis ipsum ut odio cursus mollis. Sed ultrices nisi ut sodales tempus. Cras accumsan ut risus dictum gravida. Mauris placerat enim eget urna cursus, nec tempus leo blandit. Praesent venenatis id nisi nec porta. Pellentesque metus nunc, tempor eu risus non, pretium eleifend justo.</p><p>Nullam aliquet dapibus urna, id pharetra nulla mattis a. Praesent leo augue, vehicula in scelerisque at, volutpat vel turpis. Suspendisse risus ligula, auctor auctor dignissim eget, fringilla quis odio. Duis sit amet mauris imperdiet, volutpat ante a, blandit eros. Maecenas et viverra turpis. Mauris massa tellus, tincidunt eu velit eget, elementum mattis tellus. Nam fringilla lectus risus, vitae sollicitudin ligula fringilla a. Praesent auctor urna lacus. Morbi et aliquet tortor. Nunc dignissim eget dui tempus eleifend.</p>Nullam quis nisl vitae turpis rutrum aliquet finibus at lectus. In id massa enim. Ut vestibulum magna nec dapibus volutpat. Mauris aliquam sit amet tortor nec vehicula. Sed a elementum nibh. Maecenas ac arcu ullamcorper, luctus nunc sed, hendrerit elit. Cras in mattis nulla. Aliquam sed tortor molestie erat viverra fringilla ac id sem. Curabitur congue malesuada faucibus. Donec quam mauris, ultricies a mollis vitae, efficitur vitae mi. Duis dapibus nulla tellus, id luctus justo aliquet non.<p>Ut auctor nibh rhoncus, sodales arcu ut, convallis enim. Integer egestas mi massa, et placerat nisi consectetur at. Donec et est eu erat tempor commodo a nec dolor. Donec dolor purus, convallis ut lobortis at, maximus non dolor. Cras ut consequat erat. In cursus varius magna, quis scelerisque urna lacinia luctus. Quisque interdum vulputate tortor, pharetra euismod massa porttitor eu. Nulla facilisi. Vestibulum ex diam, dignissim id urna nec, aliquet interdum leo.</p><p>Phasellus porta fringilla lorem, et maximus enim laoreet a. Suspendisse pharetra pretium ex, at tincidunt nulla rhoncus in. Curabitur egestas justo nec elementum venenatis. Nam nec ex diam. Mauris nisl mi, lobortis ac tellus malesuada, aliquam congue nibh. Donec rutrum elit non malesuada euismod. Mauris eros velit, fermentum auctor ante ac, condimentum congue est. Integer vitae faucibus enim. Aliquam ac mattis magna, quis bibendum est. Ut nec ex viverra, sollicitudin mi nec, aliquet risus. Proin blandit eleifend faucibus. Pellentesque sit amet sem enim.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices eros at nisi ullamcorper venenatis. Fusce quis sapien facilisis ipsum mollis scelerisque. Aliquam a cursus mi. Aliquam eu massa quis risus cursus faucibus at a justo. Sed vel mauris odio. Vestibulum vitae lacinia nisl, eget congue quam. Nullam aliquet, nulla in egestas tempor, magna metus semper leo, accumsan accumsan lectus dolor iaculis sapien. Vivamus quis ipsum ut odio cursus mollis. Sed ultrices nisi ut sodales tempus. Cras accumsan ut risus dictum gravida. Mauris placerat enim eget urna cursus, nec tempus leo blandit. Praesent venenatis id nisi nec porta. Pellentesque metus nunc, tempor eu risus non, pretium eleifend justo.</p><p>Nullam aliquet dapibus urna, id pharetra nulla mattis a. Praesent leo augue, vehicula in scelerisque at, volutpat vel turpis. Suspendisse risus ligula, auctor auctor dignissim eget, fringilla quis odio. Duis sit amet mauris imperdiet, volutpat ante a, blandit eros. Maecenas et viverra turpis. Mauris massa tellus, tincidunt eu velit eget, elementum mattis tellus. Nam fringilla lectus risus, vitae sollicitudin ligula fringilla a. Praesent auctor urna lacus. Morbi et aliquet tortor. Nunc dignissim eget dui tempus eleifend.</p>Nullam quis nisl vitae turpis rutrum aliquet finibus at lectus. In id massa enim. Ut vestibulum magna nec dapibus volutpat. Mauris aliquam sit amet tortor nec vehicula. Sed a elementum nibh. Maecenas ac arcu ullamcorper, luctus nunc sed, hendrerit elit. Cras in mattis nulla. Aliquam sed tortor molestie erat viverra fringilla ac id sem. Curabitur congue malesuada faucibus. Donec quam mauris, ultricies a mollis vitae, efficitur vitae mi. Duis dapibus nulla tellus, id luctus justo aliquet non.<p>Ut auctor nibh rhoncus, sodales arcu ut, convallis enim. Integer egestas mi massa, et placerat nisi consectetur at. Donec et est eu erat tempor commodo a nec dolor. Donec dolor purus, convallis ut lobortis at, maximus non dolor. Cras ut consequat erat. In cursus varius magna, quis scelerisque urna lacinia luctus. Quisque interdum vulputate tortor, pharetra euismod massa porttitor eu. Nulla facilisi. Vestibulum ex diam, dignissim id urna nec, aliquet interdum leo.</p><p>Phasellus porta fringilla lorem, et maximus enim laoreet a. Suspendisse pharetra pretium ex, at tincidunt nulla rhoncus in. Curabitur egestas justo nec elementum venenatis. Nam nec ex diam. Mauris nisl mi, lobortis ac tellus malesuada, aliquam congue nibh. Donec rutrum elit non malesuada euismod. Mauris eros velit, fermentum auctor ante ac, condimentum congue est. Integer vitae faucibus enim. Aliquam ac mattis magna, quis bibendum est. Ut nec ex viverra, sollicitudin mi nec, aliquet risus. Proin blandit eleifend faucibus. Pellentesque sit amet sem enim.</p></div>
-
-    </ins-modal>
-
-
-    <script>
-      var myModal = document.getElementById('myModal');
-      var myButton = document.getElementById('myButton');
-      myButton.addEventListener('insClick', () => {
-        myModal.open();
-      });
-    </script>
 
       <ins-date-time
         label="Meeting Schedule"
@@ -222,7 +94,7 @@
         icon="icon-clock">
       </ins-date-time>
 
-      <ins-input-select label="ins-input-select" value="" searchable placeholder="Select or type to search for test" searchable>
+      <ins-input-select label="insselect" value="" searchable placeholder="Select or type to search for test" searchable>
         <div>
           <ins-input-select-option value="1" label="1"></ins-input-select-option>
           <ins-input-select-option value="2" label="2"></ins-input-select-option>
@@ -231,7 +103,7 @@
         </div>
       </ins-input-select>
 
-      <ins-input-select label="ins-input-select multiple" value="" multiple searchable placeholder="Select or type to search for test" searchable>
+      <ins-input-select label="insselects" value="" multiple searchable placeholder="Select or type to search for test" searchable>
         <div>
           <ins-input-select-option value="1" label="1"></ins-input-select-option>
           <ins-input-select-option value="2" label="2"></ins-input-select-option>
@@ -258,7 +130,7 @@
       <br/>
       <br/>
       <br/>
-      <ins-input-search html-description description="<i>I tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>" id="insSearchEl1" label="Single Value" placeholder="Search One" tooltip="Test Tooltip" has-error error-message="Test Error"></ins-input-search>
+      <ins-input-search loading html-description description="<i>I tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>" id="insSearchEl1" label="Single Value" placeholder="Search One" tooltip="Test Tooltip" has-error error-message="Test Error"></ins-input-search>
       <ins-input-search id="insSearchEl2" label="Multiple Value" placeholder="Search Multiple" tooltip="Test Tooltip" has-error error-message="Test Error" multiple value='[{ "labels": "Test 1", "values": "1" },{ "label": "Test 1222", "value": "1" },{"value":"asjkdhasjkd"}]'></ins-input-search>
       <ins-input-search label="Multiple Value" placeholder="Search Multiple" tooltip="Test Tooltip" disabled multiple value='[{ "labels": "Test 1", "values": "1" },{ "label": "Test 1222", "value": "1" },{"value":"asjkdhasjkd"}]'></ins-input-search>
 
@@ -278,44 +150,16 @@
             insSearchEl1.setOptions(
               [
                 {
-                  "label": "Test Account",
-                  "value": "1"
+                  label: "Test 1",
+                  value: "1"
                 },
                 {
-                  "label": "Test User",
-                  "value": "2"
+                  label: "Test 2",
+                  value: "2"
                 },
                 {
-                  "label": "Test Data Set",
-                  "value": "3"
-                },
-                {
-                  "label": "Performance Test",
-                  "value": "4"
-                },
-                {
-                  "label": "Security Test",
-                  "value": "5"
-                },
-                {
-                  "label": "Integration Test",
-                  "value": "6"
-                },
-                {
-                  "label": "Test Environment",
-                  "value": "7"
-                },
-                {
-                  "label": "Test Report",
-                  "value": "8"
-                },
-                {
-                  "label": "Load Test",
-                  "value": "9"
-                },
-                {
-                  "label": "System Test",
-                  "value": "10"
+                  label: "Test 3",
+                  value: "3"
                 }
               ]
             )
@@ -335,44 +179,16 @@
               insSearchEl2.setOptions(
                 [
                   {
-                    "label": "Test Account",
-                    "value": "1"
+                    label: "Test 1",
+                    value: "1"
                   },
                   {
-                    "label": "Test User",
-                    "value": "2"
+                    label: "Test 2",
+                    value: "2"
                   },
                   {
-                    "label": "Test Data Set",
-                    "value": "3"
-                  },
-                  {
-                    "label": "Performance Test",
-                    "value": "4"
-                  },
-                  {
-                    "label": "Security Test",
-                    "value": "5"
-                  },
-                  {
-                    "label": "Integration Test",
-                    "value": "6"
-                  },
-                  {
-                    "label": "Test Environment",
-                    "value": "7"
-                  },
-                  {
-                    "label": "Test Report",
-                    "value": "8"
-                  },
-                  {
-                    "label": "Load Test",
-                    "value": "9"
-                  },
-                  {
-                    "label": "System Test",
-                    "value": "10"
+                    label: "Test 3",
+                    value: "3"
                   }
                 ]
               )

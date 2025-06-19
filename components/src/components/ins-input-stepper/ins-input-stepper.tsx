@@ -30,6 +30,7 @@ export class InsStepper {
 
   @Prop({mutable: true}) description: string = "";
   @Prop({mutable: true}) htmlDescription: boolean = false;
+  @Prop({mutable: true}) noValueChangeOnBlur: boolean = false;
 
   labelEl; inputEl; active;
 
@@ -150,10 +151,12 @@ export class InsStepper {
     this.insBlur.emit({ value, keyCode });
     // this.insValueChange.emit(+value);
 
-    if (event.target.value) {
-      this.insValueChange.emit(Number(event.target.value));
-    } else {
-      this.insValueChange.emit(null);
+    if (!this.noValueChangeOnBlur) {
+      if (event.target.value) {
+        this.insValueChange.emit(Number(event.target.value));
+      } else {
+        this.insValueChange.emit(null);
+      }
     }
 
     this.value = value;

@@ -667,6 +667,39 @@ export namespace Components {
         "validate": boolean;
         "value": string;
     }
+    interface InsInputSearch {
+        "checkLoad": boolean;
+        "checkValue": boolean;
+        "description": string;
+        "disabled": boolean;
+        "dropUp": boolean;
+        "errorMessage": string;
+        "getValue": () => Promise<any>;
+        "hasError": boolean;
+        "hasLoad": string;
+        "htmlDescription": boolean;
+        "icon": string;
+        "insRecover": () => Promise<void>;
+        "insReset": () => Promise<void>;
+        "label": string;
+        "load": boolean;
+        "loading": boolean;
+        "multiple": boolean;
+        "name": string;
+        "optionsData": any;
+        "placeholder": string;
+        "readonly": boolean;
+        "resetValue": () => Promise<void>;
+        "searchValue": string;
+        "setOptions": (value: any) => Promise<void>;
+        "setValue": (value: any) => Promise<void>;
+        "tooltip": string;
+        "value": any;
+    }
+    interface InsInputSearchOption {
+        "label": string;
+        "value": string;
+    }
     interface InsInputSelect {
         "blankLabel": boolean;
         "checkLoad": boolean;
@@ -768,6 +801,7 @@ export namespace Components {
         "max": string;
         "min": string;
         "name": string;
+        "noValueChangeOnBlur": boolean;
         "readonly": boolean;
         "required": boolean;
         "setValue": (value: any) => Promise<void>;
@@ -1512,6 +1546,14 @@ export interface InsInputMultipleCustomEvent<T> extends CustomEvent<T> {
 export interface InsInputPhoneCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLInsInputPhoneElement;
+}
+export interface InsInputSearchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInputSearchElement;
+}
+export interface InsInputSearchOptionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInsInputSearchOptionElement;
 }
 export interface InsInputSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2341,6 +2383,43 @@ declare global {
     var HTMLInsInputPhoneElement: {
         prototype: HTMLInsInputPhoneElement;
         new (): HTMLInsInputPhoneElement;
+    };
+    interface HTMLInsInputSearchElementEventMap {
+        "insInput": any;
+        "insOptionSelect": any;
+        "insSearch": any;
+        "didLoad": any;
+    }
+    interface HTMLInsInputSearchElement extends Components.InsInputSearch, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInputSearchElementEventMap>(type: K, listener: (this: HTMLInsInputSearchElement, ev: InsInputSearchCustomEvent<HTMLInsInputSearchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInputSearchElementEventMap>(type: K, listener: (this: HTMLInsInputSearchElement, ev: InsInputSearchCustomEvent<HTMLInsInputSearchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLInsInputSearchElement: {
+        prototype: HTMLInsInputSearchElement;
+        new (): HTMLInsInputSearchElement;
+    };
+    interface HTMLInsInputSearchOptionElementEventMap {
+        "insInputSearchOptionClicked": any;
+    }
+    interface HTMLInsInputSearchOptionElement extends Components.InsInputSearchOption, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInsInputSearchOptionElementEventMap>(type: K, listener: (this: HTMLInsInputSearchOptionElement, ev: InsInputSearchOptionCustomEvent<HTMLInsInputSearchOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInsInputSearchOptionElementEventMap>(type: K, listener: (this: HTMLInsInputSearchOptionElement, ev: InsInputSearchOptionCustomEvent<HTMLInsInputSearchOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLInsInputSearchOptionElement: {
+        prototype: HTMLInsInputSearchOptionElement;
+        new (): HTMLInsInputSearchOptionElement;
     };
     interface HTMLInsInputSelectElementEventMap {
         "insChange": any;
@@ -3195,6 +3274,8 @@ declare global {
         "ins-input-file": HTMLInsInputFileElement;
         "ins-input-multiple": HTMLInsInputMultipleElement;
         "ins-input-phone": HTMLInsInputPhoneElement;
+        "ins-input-search": HTMLInsInputSearchElement;
+        "ins-input-search-option": HTMLInsInputSearchOptionElement;
         "ins-input-select": HTMLInsInputSelectElement;
         "ins-input-select-group": HTMLInsInputSelectGroupElement;
         "ins-input-select-option": HTMLInsInputSelectOptionElement;
@@ -3897,6 +3978,38 @@ declare namespace LocalJSX {
         "validate"?: boolean;
         "value"?: string;
     }
+    interface InsInputSearch {
+        "checkLoad"?: boolean;
+        "checkValue"?: boolean;
+        "description"?: string;
+        "disabled"?: boolean;
+        "dropUp"?: boolean;
+        "errorMessage"?: string;
+        "hasError"?: boolean;
+        "hasLoad"?: string;
+        "htmlDescription"?: boolean;
+        "icon"?: string;
+        "label"?: string;
+        "load"?: boolean;
+        "loading"?: boolean;
+        "multiple"?: boolean;
+        "name"?: string;
+        "onDidLoad"?: (event: InsInputSearchCustomEvent<any>) => void;
+        "onInsInput"?: (event: InsInputSearchCustomEvent<any>) => void;
+        "onInsOptionSelect"?: (event: InsInputSearchCustomEvent<any>) => void;
+        "onInsSearch"?: (event: InsInputSearchCustomEvent<any>) => void;
+        "optionsData"?: any;
+        "placeholder"?: string;
+        "readonly"?: boolean;
+        "searchValue"?: string;
+        "tooltip"?: string;
+        "value"?: any;
+    }
+    interface InsInputSearchOption {
+        "label"?: string;
+        "onInsInputSearchOptionClicked"?: (event: InsInputSearchOptionCustomEvent<any>) => void;
+        "value"?: string;
+    }
     interface InsInputSelect {
         "blankLabel"?: boolean;
         "checkLoad"?: boolean;
@@ -3988,6 +4101,7 @@ declare namespace LocalJSX {
         "max"?: string;
         "min"?: string;
         "name"?: string;
+        "noValueChangeOnBlur"?: boolean;
         "onDidLoad"?: (event: InsInputStepperCustomEvent<any>) => void;
         "onInsBlur"?: (event: InsInputStepperCustomEvent<any>) => void;
         "onInsValueChange"?: (event: InsInputStepperCustomEvent<any>) => void;
@@ -4640,6 +4754,8 @@ declare namespace LocalJSX {
         "ins-input-file": InsInputFile;
         "ins-input-multiple": InsInputMultiple;
         "ins-input-phone": InsInputPhone;
+        "ins-input-search": InsInputSearch;
+        "ins-input-search-option": InsInputSearchOption;
         "ins-input-select": InsInputSelect;
         "ins-input-select-group": InsInputSelectGroup;
         "ins-input-select-option": InsInputSelectOption;
@@ -4742,6 +4858,8 @@ declare module "@stencil/core" {
             "ins-input-file": LocalJSX.InsInputFile & JSXBase.HTMLAttributes<HTMLInsInputFileElement>;
             "ins-input-multiple": LocalJSX.InsInputMultiple & JSXBase.HTMLAttributes<HTMLInsInputMultipleElement>;
             "ins-input-phone": LocalJSX.InsInputPhone & JSXBase.HTMLAttributes<HTMLInsInputPhoneElement>;
+            "ins-input-search": LocalJSX.InsInputSearch & JSXBase.HTMLAttributes<HTMLInsInputSearchElement>;
+            "ins-input-search-option": LocalJSX.InsInputSearchOption & JSXBase.HTMLAttributes<HTMLInsInputSearchOptionElement>;
             "ins-input-select": LocalJSX.InsInputSelect & JSXBase.HTMLAttributes<HTMLInsInputSelectElement>;
             "ins-input-select-group": LocalJSX.InsInputSelectGroup & JSXBase.HTMLAttributes<HTMLInsInputSelectGroupElement>;
             "ins-input-select-option": LocalJSX.InsInputSelectOption & JSXBase.HTMLAttributes<HTMLInsInputSelectOptionElement>;

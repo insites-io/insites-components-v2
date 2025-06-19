@@ -26,6 +26,7 @@
  - [ins-input-file](../ins-input-file)
  - [ins-input-multiple](../ins-input-multiple)
  - [ins-input-phone](../ins-input-phone)
+ - [ins-input-search](../ins-input-search)
  - [ins-input-select](../ins-input-select)
  - [ins-input-slider](../ins-input-slider)
  - [ins-input-stepper](../ins-input-stepper)
@@ -51,6 +52,7 @@ graph TD;
   ins-input-file --> ins-input-tooltip
   ins-input-multiple --> ins-input-tooltip
   ins-input-phone --> ins-input-tooltip
+  ins-input-search --> ins-input-tooltip
   ins-input-select --> ins-input-tooltip
   ins-input-slider --> ins-input-tooltip
   ins-input-stepper --> ins-input-tooltip

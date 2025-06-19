@@ -46,7 +46,7 @@ export class InsSelect {
 
   // Static Controllers
   @Prop({ mutable: true }) selected_values: any = [];
-  activated: boolean = false;
+  activated: boolean = false; options = [];
   labelOfValue = ""; tempSearch = "";
   inputValueEl; optionsWrapEl; mainWrapEl; labelWrapEl;
 
@@ -108,6 +108,7 @@ export class InsSelect {
     this.initValue();
     this.initDynamicOption();
     this.initInfiniteScroll();
+    this.initOptions();
     this.checkForOptions();
 
     if (this.checkLoad) this.load = true;
@@ -123,6 +124,7 @@ export class InsSelect {
     this.initSearchInput();
     this.initDynamicOption();
     this.initInfiniteScroll();
+    this.initOptions();
     this.checkForOptions();
   }
 
@@ -345,9 +347,21 @@ export class InsSelect {
     this.dynamicHasError = false;
   }
 
-  checkDropUp(){
+  checkDropUp() {
     let pos = this.insSelectEl.getBoundingClientRect();
-    if ((window.innerHeight - pos.bottom) < 65) {
+    let height = 65;
+
+    if (this.value) height = height - 45;
+    if (this.options.length) {
+        let len = 0;
+        this.options.map(item => {
+            if (!item.el.activated) len++;
+        });
+        len = len > 5 ? 5 : !len ? 1 : len;
+        height = height + (len * 45)
+    }
+
+    if ((window.innerHeight - pos.bottom) < height) {
       this.mainWrapEl.classList.add('drop-up');
 
       let offset = this.labelWrapEl.offsetHeight + 4;
@@ -826,6 +840,22 @@ export class InsSelect {
     return value.replace(commentsAndPhpTags, '').replace(tags, ($0, $1) => {
       return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
     });
+  }
+
+
+  async initOptions() {
+    this.options = [];
+    let options = this.insSelectEl.querySelectorAll('ins-select-option');
+
+    this.loopThroughOptions(option => {
+      this.options.push({
+        el: option,
+        label: option.label,
+        value: option.value,
+        activated: false,
+        hidden: false
+      });
+    }, options);
   }
 
 	render() {

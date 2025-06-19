@@ -543,7 +543,8 @@ export class InsTable {
               id={`${editedItem.id}_${tableHeader.label.split(" ").join("_")}`}
               data-id={editedItem.id}
               data-property={tableHeader.label}
-              value={editedItem[tableHeader.label]}
+              value={tableHeader.hasTag && tableHeader.multipleTags ? typeof editedItem[tableHeader.label] === "object" && editedItem[tableHeader.label]?.length ? editedItem[tableHeader.label] : [] : editedItem[tableHeader.label]}
+              multiple={tableHeader.hasTag && tableHeader.multipleTags}
             >
               {tableHeader.selectOptions && tableHeader.selectOptions.length ? (
                 tableHeader.selectOptions.map((option) => (
@@ -664,23 +665,40 @@ export class InsTable {
       );
     }
 
+    if (tableHeader.image) {
+      return (
+        item[tableHeader.label] ?
+          <img class="ibt-image" src={item[tableHeader.label]} />
+          : ""
+      )
+    }
+
     return (
-      <span
-        class="ibt-link"
-        onClick={() => {
-          !this.rowActions.length
-            ? this.rowActionHandler(
-                "rowItemClick",
-                item,
-                item[tableHeader.label]
-              )
-            : "";
-        }}
-      >
-        {tableHeader.type === "currency"
-          ? `${this.currency ? this.currency : "$"}${item[tableHeader.label]}`
-          : item[tableHeader.label]}
-      </span>
+      tableHeader.hasTag
+        && tableHeader.multipleTags ?
+          item[tableHeader.label].length > 0 && typeof item[tableHeader.label] === "object" ?
+          item[tableHeader.label].map((tag) => (
+            <span class={`ibt-link ibt-tag ${tag}`}>{tag}</span>
+          ))
+          :
+          <span class="ibt-link">-</span>
+        :
+        <span
+          class="ibt-link"
+          onClick={() => {
+            !this.rowActions.length
+              ? this.rowActionHandler(
+                  "rowItemClick",
+                  item,
+                  item[tableHeader.label]
+                )
+              : "";
+          }}
+        >
+          {tableHeader.type === "currency"
+            ? `${this.currency ? this.currency : "$"}${item[tableHeader.label]}`
+            : item[tableHeader.label]}
+        </span>
     );
   }
 
@@ -701,7 +719,7 @@ export class InsTable {
       if (
         this.rowActionsSettings.rowActions[
           item[this.rowActionsSettings.column]
-        ].indexOf(rowAction) !== -1
+        ]?.indexOf(rowAction) !== -1
       ) {
         if (item[`${rowAction}Link`]) {
           return (
@@ -1073,7 +1091,7 @@ export class InsTable {
                             ? `tagged ${
                                 item[`${tableHeader.label}_tagClass`]
                                   ? item[`${tableHeader.label}_tagClass`]
-                                  : item[tableHeader.label]
+                                  : tableHeader.multipleTags ? "multiple-tags" : item[tableHeader.label]
                               }`
                             : ""
                         }
@@ -1231,7 +1249,7 @@ export class InsTable {
                                   ? `tagged ${
                                       item[`${tableHeader.label}_tagClass`]
                                         ? item[`${tableHeader.label}_tagClass`]
-                                        : item[tableHeader.label]
+                                        : tableHeader.multipleTags ? "multiple-tags" : item[tableHeader.label]
                                     }`
                                   : ""
                               }`}
@@ -1372,7 +1390,8 @@ export class InsTable {
 
                 <div class="ibt-table-wrap__prev-next">
                   <button
-                    class="first"
+                    name="ibt-table-btn_first"
+                    class="first ibt-table-btn_first"
                     onClick={() => this.pageNumberChangeHandler("first")}
                     disabled={this.pageNumber === 1}
                   >
@@ -1380,7 +1399,8 @@ export class InsTable {
                   </button>
 
                   <button
-                    class="prev"
+                    name="ibt-table-btn_previous"
+                    class="prev ibt-table-btn_previous"
                     onClick={() => this.pageNumberChangeHandler("prev")}
                     disabled={this.pageNumber === 1}
                   >
@@ -1390,7 +1410,8 @@ export class InsTable {
                   {this.renderPageNumbers().map((page) => {
                     return (
                       <button
-                        class={`page ${
+                        name={`ibt-table-btn_pages_${page}`}
+                        class={`page ibt-table-btn_pages ${
                           this.pageNumber === page ? "active" : ""
                         }`}
                         onClick={() => this.pageNumberChangeHandler(page)}
@@ -1402,7 +1423,8 @@ export class InsTable {
                   })}
 
                   <button
-                    class="next"
+                    name="ibt-table-btn_next"
+                    class="next ibt-table-btn_next"
                     onClick={() => this.pageNumberChangeHandler("next")}
                     disabled={
                       this.pageNumber * this.pageSize >= this.totalCount
@@ -1412,7 +1434,8 @@ export class InsTable {
                   </button>
 
                   <button
-                    class="last"
+                    name="ibt-table-btn_last"
+                    class="last ibt-table-btn_last"
                     onClick={() => this.pageNumberChangeHandler("last")}
                     disabled={
                       this.pageNumber * this.pageSize >= this.totalCount
