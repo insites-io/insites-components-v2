@@ -5371,7 +5371,8 @@ ins-checkbox .ins-radio-checkbox .ripple-check:checked::before {
   border-radius: var(--ins-border-radius);
   font-size: .875rem;
   background: var(--ins-bg-color);
-  color: var(--ins-color-ink)
+  color: var(--ins-color-ink);
+  font-family: var(--ins-font-family)
 }
 
 .ins-select-wrap .ins-select-value-input::-webkit-input-placeholder {
@@ -5681,7 +5682,7 @@ ins-checkbox .ins-radio-checkbox .ripple-check:checked::before {
   top: inherit;
   bottom: 39px;
   border-top: var(--ins-border-style) var(--ins-border-thickness) var(--ins-color-blue);
-  margin: 0
+  margin: 0;
 }
 
 .ins-select-wrap.is-invalid label {
@@ -8646,7 +8647,6 @@ ins-drawer .ins-drawer-header .ins-drawer-close-btn {
 
 .ins-modal-wrap.show-modal .ins-modal-button-wrap {
   box-sizing: border-box;
-  /* position: absolute; */
   bottom: 0;
   width: 100%;
   left: 0;
@@ -11110,6 +11110,10 @@ html {
   z-index: 1
 }
 
+.ibt-table-wrap .pagination-wrap * {
+  font-family: var(--ins-font-family);
+}
+
 .ibt-table-wrap .ibt-table {
   display: table;
   table-layout: fixed;
@@ -11293,7 +11297,6 @@ html {
 .ibt-table-wrap .ibt-table_td.has-image .img-wrap {
   position: absolute;
   left: 10px;
-  /* top: calc(50% - 16px) */
 }
 
 .ibt-table-wrap .ibt-table_td.has-image .img-wrap img {
@@ -11331,12 +11334,17 @@ html {
 }
 
 .ibt-table-wrap .ibt-image {
-  max-width: 300px;
-  width: 100%
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .ibt-table-accordion .ibt-image {
-  max-width: 200px;
+  max-width: 250px;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .ibt-table-wrap .ibt-table_tr.edit-mode .editable .input-wrap {
@@ -11603,7 +11611,6 @@ ins-table .ibt-table-action-container .ins-select-wrap.small.drop-up.activated .
 }
 
 .ibt-table-accordion_row-head {
-  /* width: 100%; */
   padding: 20px;
   border-bottom: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
   position: relative;
@@ -12270,6 +12277,16 @@ ins-button-select .ins-button-select .no-result .ins-select-slot-wrap ins-button
 ins-button-select .ins-button-select.activated .ins-select-search {
   display: block
 }
+
+ins-button-select .ins-select-wrap.buttonise.is-invalid .ins-select-label-wrap.ripple:hover,
+ins-button-select .ins-button-select.ins-select-wrap.is-invalid {
+  background: var(--ins-color-red-10p);
+}
+
+.ins-button-select.is-invalid.activated .ins-select-options-wrap {
+  top: calc(100% - -7px)
+}
+
 .ins-input-select-wrap {
   margin-bottom: 20px;
 }
@@ -12291,7 +12308,8 @@ ins-input-select .ins-input-select .ins-select-search .ins-select-search-input {
   font-size: .875rem;
   background: var(--ins-bg-color);
   color: var(--ins-color-ink);
-  outline: 0
+  outline: 0;
+  font-family: var(--ins-font-family);
 }
 
 ins-input-select .ins-input-select .ins-select-search .icon-search {
@@ -12307,7 +12325,8 @@ ins-input-select .ins-input-select.ins-select-wrap .ins-select-value-wrap i.icon
 
 ins-input-select .ins-input-select.ins-select-wrap .ins-select-value-wrap .ins-select-value-input {
   display: block;
-  cursor: pointer
+  cursor: pointer;
+  font-family: var(--ins-font-family);
 }
 
 ins-input-select .ins-input-select.ins-select-wrap .multiple-item {
@@ -12330,7 +12349,8 @@ ins-input-select .ins-input-select.ins-select-wrap.activated.drop-up .ins-select
 ins-input-select .ins-input-select.ins-select-wrap.activated.drop-up:not(.no-options) .ins-select-options-wrap {
   border-top: 1px solid var(--ins-color-blue);
   bottom: calc(100% - 24px);
-  border-bottom: none
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
 }
 
 ins-input-select .ins-input-select.ins-select-wrap.activated.drop-up .dynamic-option-wrap,
@@ -12369,9 +12389,9 @@ ins-input-select .ins-input-select.ins-select-wrap.searchable .ins-select-option
   top: 56px
 }
 
-ins-input-select .ins-input-select.ins-select-wrap.searchable.activated .ins-select-value-wrap {
-  min-height: 40px
-}
+/* ins-input-select .ins-input-select.ins-select-wrap.searchable.activated .ins-select-value-wrap {
+  min-height: 39px
+} */
 
 ins-input-select .ins-input-select .no-result .ins-select-slot-wrap ins-input-select-group {
   display: none
@@ -12379,6 +12399,11 @@ ins-input-select .ins-input-select .no-result .ins-select-slot-wrap ins-input-se
 
 ins-input-select .ins-input-select.activated .ins-select-search {
   display: block
+}
+
+ins-input-select[multiple] .ins-input-select.ins-select-wrap:not(.searchable) .ins-select-value-wrap .ins-select-value-input,
+ins-input-select[multiple="true"] .ins-input-select.ins-select-wrap:not(.searchable) .ins-select-value-wrap .ins-select-value-input {
+  display: none
 }
 
 .ins-input-select-wrap .ins-description {
@@ -12668,8 +12693,6 @@ ins-input-search .ins-input-search .error-message {
 }
 
 ins-input-search .ins-input-search-container {
-  /* padding: 6px 10px; */
-  /* width: 100%; */
   background-color: var(--ins-bg-color);
   border-radius: var(--ins-border-radius);
   border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
@@ -12678,8 +12701,10 @@ ins-input-search .ins-input-search-container {
   position: relative;
   color: var(--ins-color-ink40);
   cursor: pointer;
-  -webkit-transition: border-color .15s ease-in, border-radius .15s ease-in;
-  transition: border-color .15s ease-in, border-radius .15s ease-in
+  /* -webkit-transition: border-color .15s ease-in, border-radius .15s ease-in;
+  transition: border-color .15s ease-in, border-radius .15s ease-in */
+  /* -webkit-transition: border-radius .15s ease-in;
+  transition: border-radius .15s ease-in */
 }
 
 ins-input-search .ins-input-search-container input {
@@ -12717,10 +12742,6 @@ ins-input-search .ins-input-search.has-error .ins-input-search-container {
 ins-input-search .ins-input-search.has-error .ins-input-search-container input {
   background: var(--ins-color-negative-10p)
 }
-
-/* ins-input-search .ins-input-search.disabled label {
-  color: var(--ins-color-ink40)
-} */
 
 ins-input-search .ins-input-search-choice {
   display: inline-block;
@@ -12766,6 +12787,7 @@ ins-input-search .ins-input-search-text input:focus {
   border-radius: var(--ins-border-radius);
   color: var(--ins-color-ink);
   font-family: var(--ins-font-family);
+  padding-right: 75px;
 }
 
 ins-input-search .ins-input-search-text input:-moz-placeholder,
@@ -12783,24 +12805,24 @@ ins-input-search .ins-input-search-text input::-webkit-input-placeholder {
 
 ins-input-search .ins-input-search-text .clear-icon {
   position: absolute;
-  right: 37px;
-  top: 3px;
-  line-height: 14px;
+  right: 35px;
+  top: 4px;
+  line-height: 19px;
   font-size: 14px;
-  padding: 10px;
+  padding: 6px 8.5px;
   border-radius: 4px;
-  color: var(--ins-color-ink40)
+  color: var(--ins-color-ink40);
 }
 
 ins-input-search .ins-input-search-text .search-icon {
   position: absolute;
-  right: 3px;
-  top: 3px;
-  line-height: 14px;
+  right: 4px;
+  top: 4px;
   font-size: 14px;
-  padding: 10px;
+  padding: 6px 8.5px;
   border-radius: 4px;
-  color: var(--ins-color-ink40)
+  line-height: 19px;
+  color: var(--ins-color-ink40);
 }
 
 ins-input-search .ins-input-search-text .clear-icon:hover,
@@ -12814,11 +12836,6 @@ ins-input-search .ins-input-search.disabled .ins-input-search-choice,
 ins-input-search .ins-input-search.readonly .ins-input-search-choice {
   padding-right: 8px
 }
-
-/* ins-input-search .ins-input-search.disabled .has-value-readonly,
-ins-input-search .ins-input-search.readonly .has-value-readonly {
-  display: none
-} */
 
 ins-input-search .ins-input-search.disabled input,
 ins-input-search .ins-input-search.readonly input {
@@ -12866,12 +12883,6 @@ ins-input-search-option .ins-input-search-option-wrap:hover {
   background-color: var(--ins-bg-color2)
 }
 
-/* .ins-input-search-option-wrap.selected {
-  color: var(--ins-color-ink);
-  background-color: var(--ins-bg-color5);
-  display: none
-} */
-
 ins-input-search-option .ins-input-search-option-wrap.disabled {
   color: #e4e6ec;
   cursor: initial
@@ -12892,10 +12903,40 @@ ins-input-search .ins-input-search.activated .ins-input-search-option-wrap {
 ins-input-search .ins-input-search-value {
   box-sizing: border-box;
   line-height: 21px;
+  padding-right: 40px;
+}
+
+ins-input-search .ins-input-search-value.has-value {
+  margin: 3.5px;
 }
 
 ins-input-search .ins-input-search-value.has-value+.ins-input-search-text {
   position: relative;
+}
+
+ins-input-search[multiple="true"] .ins-input-search:not(.active) .has-value+.ins-input-search-text,
+ins-input-search[multiple] .ins-input-search:not(.active) .has-value+.ins-input-search-text {
+  border: none;
+}
+
+ins-input-search[multiple="true"] .ins-input-search-value.has-value+.ins-input-search-text,
+ins-input-search[multiple] .ins-input-search-value.has-value+.ins-input-search-text,
+ins-input-search[multiple="true"] .ins-input-search.activated .has-value+.ins-input-search-text,
+ins-input-search[multiple] .ins-input-search.activated .has-value+.ins-input-search-text {
+  width: calc(100% + 2px);
+  left: -1px;
+  position: absolute;
+  border-radius: 0 0 4px 4px;
+  border: 1px solid var(--ins-color-blue);
+  border-top-color: transparent;
+  z-index: 990;
+}
+
+ins-input-search[multiple="true"] .ins-input-search:not(.drop-up) .ins-input-search-options-wrap.has-options+.ins-input-search-container.has-value .ins-input-search-text,
+ins-input-search[multiple] .ins-input-search:not(.drop-up) .ins-input-search-options-wrap.has-options+.ins-input-search-container.has-value .ins-input-search-text {
+  border-radius: 0;
+  border-bottom-color: transparent;
+  border-top-color: transparent;
 }
 
 ins-input-search .ins-input-search-value.has-value+.ins-input-search-text input {
@@ -12906,7 +12947,7 @@ ins-input-search .ins-input-search-value.has-value+.ins-input-search-text input 
   font-size: .875rem;
   background: var(--ins-bg-color);
   color: var(--ins-color-ink);
-  transition: height 0.05s ease-in;
+  transition: border-color .15s ease-in, border-radius .05s ease-in;
   opacity: 1;
 }
 
@@ -12917,8 +12958,6 @@ ins-input-search[multiple] .ins-input-search:not(.active) .ins-input-search-valu
 
 ins-input-search[multiple="true"] .ins-input-search:not(.active) .ins-input-search-value.has-value+.ins-input-search-text input,
 ins-input-search[multiple] .ins-input-search:not(.active) .ins-input-search-value.has-value+.ins-input-search-text input {
-  /* display: none;
-  height: 0; */
   height: 0;
   opacity: 0;
   padding: 0;
@@ -12926,12 +12965,11 @@ ins-input-search[multiple] .ins-input-search:not(.active) .ins-input-search-valu
 
 ins-input-search[multiple="true"] .ins-input-search.activated .ins-input-search-value.has-value+.ins-input-search-text,
 ins-input-search[multiple] .ins-input-search.activated .ins-input-search-value.has-value+.ins-input-search-text {
-  position: relative;
+  position: absolute;
 }
 
 ins-input-search[multiple="true"] .ins-input-search.activated .ins-input-search-value.has-value+.ins-input-search-text input,
 ins-input-search[multiple] .ins-input-search.activated .ins-input-search-value.has-value+.ins-input-search-text input {
-  /* display: block; */
   opacity: 1;
   height: 39px;
   padding: 11px 10px;
@@ -12941,7 +12979,8 @@ ins-input-search .ins-input-search-value .input-search-items-wrap {
   display: inline-block;
   background-color: var(--ins-bg-color2);
   border-radius: var(--ins-border-radius);
-  margin: 7px 4px;
+  /* margin: 7px 0 7px 7px; */
+  margin: 3.5px;
   font-size: 14px;
   padding: 2px 8px;
   position: relative;
@@ -12987,7 +13026,6 @@ ins-input-search .ins-input-search-options-wrap {
   z-index: 990;
   width: 100%;
   top: 68px;
-  transition: top 0.02s linear;
 }
 
 ins-input-search .ins-input-search-options-wrap.has-multiple-value {
@@ -13004,6 +13042,21 @@ ins-input-search .ins-input-search.activated:not(.drop-up) .ins-input-search-opt
   border-radius: 4px;
 }
 
+ins-input-search .ins-input-search.has-error.activated:not(.drop-up) .ins-input-search-options-wrap.no-result~.ins-input-search-container {
+  border-bottom-color: var(--ins-color-negative);
+
+}
+
+ins-input-search .ins-input-search.activated.no-results.drop-up .ins-input-search-options-wrap.no-result~.ins-input-search-container,
+ins-input-search .ins-input-search.activated.loading.drop-up .ins-input-search-options-wrap.no-result~.ins-input-search-container {
+  border-radius: 0 0 4px 4px;
+}
+
+ins-input-search .ins-input-search.activated.no-results.drop-up .ins-input-search-options-wrap.no-result~.ins-input-search-container,
+ins-input-search .ins-input-search.activated.loading:not(.drop-up) .ins-input-search-options-wrap.no-result~.ins-input-search-container {
+  border-radius: 4px 4px 0 0;
+}
+
 ins-input-search .ins-input-search.activated.drop-up .ins-input-search-options-wrap.no-result~.ins-input-search-container {
   border-top-color: var(--ins-color-blue);
   border-radius: 4px;
@@ -13016,6 +13069,11 @@ ins-input-search .ins-input-search.activated .ins-input-search-container {
   border-radius: 4px 4px 0 0;
   cursor: initial;
   position: relative;
+}
+
+ins-input-search .ins-input-search.active .ins-input-search-container.has-value {
+  border-radius: 4px 4px 0 0;
+  border-bottom-color: transparent;
 }
 
 ins-input-search .activated.drop-up .ins-input-search-container {
@@ -13098,6 +13156,7 @@ ins-input-search .ins-input-search .spinner:after {
   height: 16px
 }
 
+ins-input-search .ins-input-search.no-results .ins-input-search-container,
 ins-input-search .ins-input-search.loading .ins-input-search-container {
   position: relative;
 }
@@ -13131,6 +13190,116 @@ ins-input-search .ins-input-search.readonly .ins-input-search-container {
 
 ins-input-search .ins-input-search.disabled > label {
   color: var(--ins-color-ink40)
+}
+
+ins-input-search .ins-input-search .no-results-found,
+ins-input-search .ins-input-search .loading-searching {
+  padding: 11px 10px;
+  left: -1px;
+  text-align: center;
+  width: calc(100% + 2px);
+  background-color: var(--ins-bg-color);
+  font-size: .875rem;
+  font-family: var(--ins-font-family);
+  color: var(--ins-color-ink);
+  z-index: 990;
+}
+
+ins-input-search .ins-input-search .ins-input-search-container:hover .no-results-found,
+ins-input-search .ins-input-search .ins-input-search-container:hover .loading-searching {
+  border-color: var(--ins-bg-color3)
+}
+
+ins-input-search .ins-input-search.activated .ins-input-search-container .no-results-found,
+ins-input-search .ins-input-search.active .ins-input-search-container .no-results-found,
+ins-input-search .ins-input-search.activated .ins-input-search-container .loading-searching,
+ins-input-search .ins-input-search.active .ins-input-search-container .loading-searching {
+  border-color: var(--ins-color-blue);
+}
+
+ins-input-search .ins-input-search.activated.has-error .ins-input-search-container .no-results-found,
+ins-input-search .ins-input-search.active.has-error .ins-input-search-container .no-results-found,
+ins-input-search .ins-input-search.activated.has-error .ins-input-search-container .loading-searching,
+ins-input-search .ins-input-search.active.has-error .ins-input-search-container .loading-searching {
+  border-color: var(--ins-color-negative);
+}
+
+ins-input-search[multiple="true"] .has-error .ins-input-search-value.has-value+.ins-input-search-text,
+ins-input-search[multiple] .has-error .ins-input-search-value.has-value+.ins-input-search-text {
+  border-color: var(--ins-color-negative);
+  border-top-color: transparent;
+}
+
+/* ins-input-search .ins-input-search.drop-up .no-results-found,
+ins-input-search .ins-input-search.drop-up .loading-searching {
+  border: var(--ins-border-style) var(--ins-border-thickness);
+  border-color: var(--ins-border-color);
+  border-bottom-color: transparent;
+} */
+
+
+ins-input-search .ins-input-search.has-error.active .ins-input-search-container input {
+  background: var(--ins-bg-color);
+}
+
+ins-input-search-option .ins-input-search-option-wrap.selected {
+  background: var(--ins-color-blue);
+  color: var(--ins-color-ink1)
+}
+
+ins-input-search .ins-input-search.has-error.activated .ins-input-search-container .no-results-found,
+ins-input-search .ins-input-search.has-error.active .ins-input-search-container .no-results-found,
+ins-input-search .ins-input-search.has-error.activated .ins-input-search-container .loading-searching,
+ins-input-search .ins-input-search.has-error.active .ins-input-search-container .loading-searching,
+ins-input-search .ins-input-search.has-error.activated .ins-input-search-container,
+ins-input-search .ins-input-search.has-error.activated .ins-input-search-options-wrap {
+  border-color: var(--ins-color-negative);
+}
+
+ins-input-search .ins-input-search.loading:not(.drop-up) .ins-input-search-container,
+ins-input-search .ins-input-search.no-results:not(.drop-up) .ins-input-search-container {
+  border-bottom-color: transparent;
+}
+
+ins-input-search[multiple="true"] .ins-input-search.activated.loading:not(.drop-up) .ins-input-search-text,
+ins-input-search[multiple] .ins-input-search.activated.loading:not(.drop-up) .ins-input-search-text,
+ins-input-search[multiple="true"] .ins-input-search.activated.no-results:not(.drop-up) .ins-input-search-text,
+ins-input-search[multiple] .ins-input-search.activated.no-results:not(.drop-up) .ins-input-search-text {
+  border-bottom-color: transparent;
+  border-radius: 0;
+}
+
+ins-input-search .ins-input-search.drop-up.no-results .ins-input-search-container,
+ins-input-search .ins-input-search.drop-up.loading .ins-input-search-container {
+  border-top-color: transparent;
+}
+
+ins-input-search .ins-input-search.has-error.activated:not(.drop-up) .ins-input-search-container {
+  border-bottom-color: transparent;
+}
+
+ins-input-search[multiple="true"] .ins-input-search.has-error:not(.drop-up) .ins-input-search-options-wrap.has-options+.ins-input-search-container.has-value .ins-input-search-text,
+ins-input-search[multiple] .ins-input-search.has-error:not(.drop-up) .ins-input-search-options-wrap.has-options+.ins-input-search-container.has-value .ins-input-search-text {
+  border-color: var(--ins-color-negative);
+  border-bottom-color: transparent;
+  border-top-color: transparent;
+}
+
+ins-input-search[multiple="true"] .ins-input-search.has-error.drop-up .ins-input-search-options-wrap.has-options+.ins-input-search-container.has-value .ins-input-search-text,
+ins-input-search[multiple] .ins-input-search.has-error.drop-up .ins-input-search-options-wrap.has-options+.ins-input-search-container.has-value .ins-input-search-text {
+  border-color: var(--ins-color-negative);
+  border-top-color: transparent;
+}
+
+ins-input-search[multiple="true"] .has-error.activated.drop-up .ins-input-search-container,
+ins-input-search[multiple] .has-error.activated.drop-up .ins-input-search-container {
+  border-radius: 4px 4px 0 0;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+
+ins-input-search .ins-input-search.has-error.activated.drop-up .ins-input-search-container {
+  border-top-color: transparent;
 }
 
 html {

@@ -668,7 +668,7 @@ export class InsTable {
     if (tableHeader.image) {
       return (
         item[tableHeader.label] ?
-          <img class="ibt-image" src={item[tableHeader.label]} />
+          <img class="ibt-image" alt={item[tableHeader.label]} src={item[tableHeader.label]} />
           : ""
       )
     }
@@ -1390,19 +1390,21 @@ export class InsTable {
 
                 <div class="ibt-table-wrap__prev-next">
                   <button
-                    name="ibt-table-btn_first"
-                    class="first ibt-table-btn_first"
+                    name="button-table_first"
+                    class="first button-table_first"
                     onClick={() => this.pageNumberChangeHandler("first")}
                     disabled={this.pageNumber === 1}
+                    aria-label="first"
                   >
                     <i class={`icon-chevrons-left`}></i>
                   </button>
 
                   <button
-                    name="ibt-table-btn_previous"
-                    class="prev ibt-table-btn_previous"
+                    name="button-table_previous"
+                    class="prev button-table_previous"
                     onClick={() => this.pageNumberChangeHandler("prev")}
                     disabled={this.pageNumber === 1}
+                    aria-label="previous"
                   >
                     <i class={`icon-angle-left`}></i>
                   </button>
@@ -1410,12 +1412,13 @@ export class InsTable {
                   {this.renderPageNumbers().map((page) => {
                     return (
                       <button
-                        name={`ibt-table-btn_pages_${page}`}
-                        class={`page ibt-table-btn_pages ${
+                        name={`button-page_${page}`}
+                        class={`page button-pages ${
                           this.pageNumber === page ? "active" : ""
                         }`}
                         onClick={() => this.pageNumberChangeHandler(page)}
                         disabled={this.pageNumber === page}
+                        aria-label={`page-${page}`}
                       >
                         {page}
                       </button>
@@ -1423,23 +1426,25 @@ export class InsTable {
                   })}
 
                   <button
-                    name="ibt-table-btn_next"
-                    class="next ibt-table-btn_next"
+                    name="button-table_next"
+                    class="next button-table_next"
                     onClick={() => this.pageNumberChangeHandler("next")}
                     disabled={
                       this.pageNumber * this.pageSize >= this.totalCount
                     }
+                    aria-label="next"
                   >
                     <i class={`icon-angle-right`}></i>
                   </button>
 
                   <button
-                    name="ibt-table-btn_last"
-                    class="last ibt-table-btn_last"
+                    name="button-table_last"
+                    class="last button-table_last"
                     onClick={() => this.pageNumberChangeHandler("last")}
                     disabled={
                       this.pageNumber * this.pageSize >= this.totalCount
                     }
+                    aria-label="last"
                   >
                     <i class={`icon-chevrons-right`}></i>
                   </button>

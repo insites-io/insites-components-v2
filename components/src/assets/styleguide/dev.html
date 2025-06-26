@@ -82,6 +82,17 @@
   </ins-header>
 
   <ins-renderer>
+
+    <ins-date-time mode="timepicker" label="Time" id="timeEl"></ins-date-time>
+    <button onclick="getValTime()">Click Me</button>
+    <script>
+      async function getValTime() {
+        var timeEl = document.getElementById('timeEl');
+
+
+        console.log(await timeEl.getDate());
+      }
+    </script>
     <div>
 <br />
 <br />
@@ -107,6 +118,70 @@
   page-number="1"
   without-search>
 </ins-table>
+<ins-input-select
+  label="Operating System"
+  searchable
+  placeholder="Select Something">
+
+  <ins-input-select-option
+    label="iOS"
+    value="iOS">
+  </ins-input-select-option>
+
+  <ins-input-select-option
+    label="Android"
+    value="Android">
+  </ins-input-select-option>
+
+  <ins-input-select-option
+    label="macOS"
+    value="macOS">
+  </ins-input-select-option>
+
+  <ins-input-select-option
+    label="Windows"
+    value="Windows">
+  </ins-input-select-option>
+
+  <ins-input-select-option
+    label="Linux"
+    value="Linux">
+  </ins-input-select-option>
+
+</ins-input-select>
+
+<ins-input-select
+  label="Operating Systems"
+  multiple
+  searchable
+  placeholder="Select Something">
+
+  <ins-input-select-option
+    label="iOS"
+    value="iOS">
+  </ins-input-select-option>
+
+  <ins-input-select-option
+    label="Android"
+    value="Android">
+  </ins-input-select-option>
+
+  <ins-input-select-option
+    label="macOS"
+    value="macOS">
+  </ins-input-select-option>
+
+  <ins-input-select-option
+    label="Windows"
+    value="Windows">
+  </ins-input-select-option>
+
+  <ins-input-select-option
+    label="Linux"
+    value="Linux">
+  </ins-input-select-option>
+
+</ins-input-select>
 
       <ins-select label="insselect" multiple value="" searchable placeholder="Select or type to search for test" has-error error-message="Error" html-description description="<i><abbr>I have</abbr> <script>console.log('test')</script>tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>" blank-label>
         <div>
@@ -258,8 +333,9 @@
       <br/>
       <br/>
       <br/>
-      <ins-input-search html-description description="<i>I tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>" id="insSearchEl1" label="Single Value" placeholder="Search One" tooltip="Test Tooltip" has-error error-message="Test Error"></ins-input-search>
-      <ins-input-search id="insSearchEl2" label="Multiple Value" placeholder="Search Multiple" tooltip="Test Tooltip" has-error error-message="Test Error" multiple value='[{ "labels": "Test 1", "values": "1" },{ "label": "Test 1222", "value": "1" },{"value":"asjkdhasjkd"}]'></ins-input-search>
+<!-- value='[{ "labels": "Test 1", "values": "1" },{ "label": "Test 1222", "value": "1" },{"value":"asjkdhasjkd"}]' -->
+      <ins-input-search html-description description="<i>I tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>" id="insSearchEl1" label="Single Value" placeholder="Search One" tooltip="Test Tooltip" error-message="Test Error"></ins-input-search>
+      <ins-input-search value='[{ "labels": "Test 1", "values": "1" },{ "label": "Test 1222", "value": "1" },{"value":"asjkdhasjkd"}]' id="insSearchEl2" html-description description="<i>I tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>" label="Multiple Value" placeholder="Search Multiple" tooltip="Test Tooltip" error-message="Test Error" multiple ></ins-input-search>
       <ins-input-search label="Multiple Value" placeholder="Search Multiple" tooltip="Test Tooltip" disabled multiple value='[{ "labels": "Test 1", "values": "1" },{ "label": "Test 1222", "value": "1" },{"value":"asjkdhasjkd"}]'></ins-input-search>
 
       <script>
@@ -275,52 +351,58 @@
 
         insSearchEl1.addEventListener('insSearch', event => {
           if (event.detail.value === "test") {
-            insSearchEl1.setOptions(
-              [
-                {
-                  "label": "Test Account",
-                  "value": "1"
-                },
-                {
-                  "label": "Test User",
-                  "value": "2"
-                },
-                {
-                  "label": "Test Data Set",
-                  "value": "3"
-                },
-                {
-                  "label": "Performance Test",
-                  "value": "4"
-                },
-                {
-                  "label": "Security Test",
-                  "value": "5"
-                },
-                {
-                  "label": "Integration Test",
-                  "value": "6"
-                },
-                {
-                  "label": "Test Environment",
-                  "value": "7"
-                },
-                {
-                  "label": "Test Report",
-                  "value": "8"
-                },
-                {
-                  "label": "Load Test",
-                  "value": "9"
-                },
-                {
-                  "label": "System Test",
-                  "value": "10"
-                }
-              ]
-            )
+            insSearchEl1.loading = true;
+            setTimeout(() => {
+              insSearchEl1.setOptions(
+                [
+                  {
+                    "label": "Test Account",
+                    "value": "1"
+                  },
+                  {
+                    "label": "Test User",
+                    "value": "2"
+                  },
+                  {
+                    "label": "Test Data Set",
+                    "value": "3"
+                  },
+                  {
+                    "label": "Performance Test",
+                    "value": "4"
+                  },
+                  {
+                    "label": "Security Test",
+                    "value": "5"
+                  },
+                  {
+                    "label": "Integration Test",
+                    "value": "6"
+                  },
+                  {
+                    "label": "Test Environment",
+                    "value": "7"
+                  },
+                  {
+                    "label": "Test Report",
+                    "value": "8"
+                  },
+                  {
+                    "label": "Load Test",
+                    "value": "9"
+                  },
+                  {
+                    "label": "System Test",
+                    "value": "10"
+                  }
+                ]
+              )
+
+              insSearchEl1.loading = false;
+            }, 1500);
           } else {
             insSearchEl1.setOptions([]);
+              insSearchEl1.loading = false;
           }
         });
 
@@ -376,11 +458,12 @@
                   }
                 ]
               )
-              insSearchEl2.loading = false;
-            }, 1500);
+            insSearchEl2.loading = false;
+            }, 2000);
 
           } else {
             insSearchEl2.setOptions([]);
+            insSearchEl2.loading = false;
           }
         });
       </script>
@@ -1548,6 +1631,66 @@ Ready to start writing?  Either start changing stuff on the left or
 
   fetchDataFromSrc();
 </script>
+
+
+
+<div class="section">
+    <h1> Input Select </h1>
+
+    <ins-input-select label="Model" placeholder="Select or type to search for a Model" searchable>
+        <ins-input-select-group label="BMW">
+            <ins-input-select-option label="3 Series" value="3 Series"></ins-input-select-option>
+            <ins-input-select-option label="5 Series" value="5 Series"></ins-input-select-option>
+            <ins-input-select-option label="M4" value="M4"></ins-input-select-option>
+            <ins-input-select-option label="X5" value="X5"></ins-input-select-option>
+            <ins-input-select-option label="i4" value="i4"></ins-input-select-option>
+        </ins-input-select-group>
+
+        <ins-input-select-group label="Ford">
+            <ins-input-select-option label="Escape" value="Escape"></ins-input-select-option>
+            <ins-input-select-option label="Explorer" value="Explorer"></ins-input-select-option>
+            <ins-input-select-option label="F-150" value="F-150"></ins-input-select-option>
+            <ins-input-select-option label="Mustang" value="Mustang"></ins-input-select-option>
+            <ins-input-select-option label="Ranger" value="Ranger"></ins-input-select-option>
+        </ins-input-select-group>
+
+        <ins-input-select-group label="Toyota">
+            <ins-input-select-option label="Camry" value="Camry"></ins-input-select-option>
+            <ins-input-select-option label="Corolla" value="Corolla"></ins-input-select-option>
+            <ins-input-select-option label="GR Supra" value="GR Supra"></ins-input-select-option>
+            <ins-input-select-option label="Hilux" value="Hilux"></ins-input-select-option>
+            <ins-input-select-option label="RAV4" value="RAV4"></ins-input-select-option>
+        </ins-input-select-group>
+    </ins-input-select>
+
+    <ins-input-select label="Model" placeholder="Select or type to search for a Model" searchable>
+        <ins-input-select-option label="Accord" value="Accord"></ins-input-select-option>
+        <ins-input-select-option label="BR-V" value="BR-V"></ins-input-select-option>
+      <ins-input-select-option label="City" value="City"></ins-input-select-option>
+      <ins-input-select-option label="City Hatchback" value="City Hatchback"></ins-input-select-option>
+        <ins-input-select-option label="Civic" value="Civic"></ins-input-select-option>
+        <ins-input-select-option label="CR-V" value="CR-V"></ins-input-select-option>
+        <ins-input-select-option label="Fit" value="Fit"></ins-input-select-option>
+        <ins-input-select-option label="HR-V" value="HR-V"></ins-input-select-option>
+        <ins-input-select-option label="Insight" value="Insight"></ins-input-select-option>
+        <ins-input-select-option label="Odyssey" value="Odyssey"></ins-input-select-option>
+        <ins-input-select-option label="Pilot" value="Pilot"></ins-input-select-option>
+        <ins-input-select-option label="Ridgeline" value="Ridgeline"></ins-input-select-option>
+    </ins-input-select>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
   </ins-renderer>
 </body>
 

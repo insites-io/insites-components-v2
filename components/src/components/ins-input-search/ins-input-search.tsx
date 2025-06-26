@@ -1,4 +1,4 @@
-import { h, Component, Prop, Element, Listen, Method, Event, EventEmitter } from "@stencil/core";
+import { h, Component, Prop, Element, Listen, Method, Watch, Event, EventEmitter } from "@stencil/core";
 
 @Component({
     tag: 'ins-input-search'
@@ -37,12 +37,16 @@ export class InsInputSearch {
   @Prop({ mutable: true }) optionsData: any = [];
   @Prop({ mutable: true }) dropUp: boolean = false;
   @Prop({ mutable: true }) icon: string = "icon-search-1";
+  @Prop({ mutable: true }) noResults: boolean = false;
+  @Prop({ mutable: true }) noResultsText: string = 'No results found.';
+  @Prop({ mutable: true }) loadingText: string = 'Searching...';
 
   activated = false;
   empty = true;
   mainWrapEl;
   searchClicked = false;
   optionClicked = false;
+  clearClicked = false;
 
   @Method()
   async insReset() {
@@ -111,13 +115,18 @@ export class InsInputSearch {
       let closestEl = clickedEl.closest('ins-input-search');
 
       if (closestEl !== this.insInputSearchEl) {
+        let searchInput = this.insInputSearchEl.querySelector('.ins-input-search-text input') as HTMLInputElement;
+
         if (this.mainWrapEl.className.indexOf('activated') !== -1) this.closeSearchResults();
         if (this.mainWrapEl.className.indexOf('active') !== -1) {
           this.mainWrapEl.classList.remove("active");
-          let searchInput = this.insInputSearchEl.querySelector('.ins-input-search-text input') as HTMLInputElement;
-          searchInput.value = "";
+          searchInput.value = this.value?.label || this.value?.value || "";
         }
-        this.searchValue = "";
+
+        if (this.multiple || !this.value) this.searchValue = "";
+
+        this.loading = false;
+        if (!searchInput.value) this.noResults = false;
       }
     });
   }
@@ -134,16 +143,25 @@ export class InsInputSearch {
   }
 
 	onfocusHandler() {
-		if (!this.readonly && !this.disabled) this.insInputSearchEl.querySelector('.ins-input-search').classList.add('active');
+		if (!this.readonly && !this.disabled) {
+      this.insInputSearchEl.querySelector('.ins-input-search').classList.add('active');
+
+      if (!this.multiple) {
+        let searchInput = this.insInputSearchEl.querySelector('.ins-input-search-text input') as HTMLInputElement;
+        searchInput.value = "";
+        this.searchValue = null;
+      }
+    }
 	}
 
 	onblurHandler() {
-    if (!this.searchClicked && !this.optionClicked) {
+    if (!this.searchClicked && !this.optionClicked && !this.clearClicked) {
       let searchInput = this.insInputSearchEl.querySelector('.ins-input-search-text input') as HTMLInputElement;
       this.insInputSearchEl.querySelector('.ins-input-search').classList.remove('active');
 
       if (!this.multiple) {
         searchInput.value = this.value?.label ? this.value?.label : null;
+        this.searchValue = searchInput.value;
       } else {
         searchInput.value = null;
       }
@@ -151,6 +169,7 @@ export class InsInputSearch {
 
     this.searchClicked = false;
     if (this.multiple) this.optionClicked = false;
+    this.clearClicked = false;
 	}
 
 	oninputHandler(event) {
@@ -159,6 +178,9 @@ export class InsInputSearch {
     let eventValue = event.target.value;
 
 		if (event.keyCode === 13) {
+      // this.dropUp = false;
+      this.clearSearchResults();
+      this.checkDropUp();
       if (eventValue.trim() && !this.readonly) {
         setTimeout(() => {
           this.insInputSearchEl.querySelector('input').focus();
@@ -169,7 +191,6 @@ export class InsInputSearch {
         this.empty = false;
         this.mainWrapEl.classList.add('activated');
       } else {
-        this.clearSearchResults();
         this.mainWrapEl.classList.remove('activated');
       }
 
@@ -180,6 +201,8 @@ export class InsInputSearch {
   }
 
   onclearSearch() {
+    this.clearClicked = true;
+
     let searchInput = this.insInputSearchEl.querySelector('.ins-input-search-text input') as HTMLInputElement;
     searchInput.value = "";
     this.searchValue = "";
@@ -187,6 +210,10 @@ export class InsInputSearch {
     if (!this.multiple) this.value = null;
 
     this.clearSearchResults();
+
+    setTimeout(() => {
+      searchInput.focus();
+    }, 100);
   }
 
   onclickSearch() {
@@ -215,27 +242,23 @@ export class InsInputSearch {
         let values = this.value.map(item => item.value)
         if (values.indexOf(option.value) === -1) options.push(option);
       } else {
-        if (this.value?.value !== option.value) options.push(option);
+        // if (this.value?.value !== option.value) options.push(option);
+        options.push(option);
       }
     }
-
+// ${!options.length ? 'no-result' : ''}
     return (
-      <div class={`ins-input-search-options-wrap ${!options.length ? 'no-result' : ''} ${this.multiple && this.value.length ? 'has-multiple-value' : ''}`}>
-        <div class="scroll-wrap">
-          {/* { !this.empty && this.optionsData?.length < 1 ?
-            <div class="no-result-text">No result found</div>
-            : ''
-          } */}
-          <div class="ins-input-search-slot-wrap">
-            {/* { !this.multiple && this.value ?
-              <ins-input-search-option
-                label="-- Clear --"
-                value="">
-              </ins-input-search-option> : "" } */}
+      <div class={`ins-input-search-options-wrap ${options.length ? 'has-options' : ''} ${this.multiple && this.value.length ? 'has-multiple-value' : ''}`}>
 
+        {this.loading ? <div class="loading-searching">{this.loadingText}</div> : ''}
+        {this.noResults && !this.loading ? <div class="no-results-found">{this.noResultsText}</div> : ''}
+
+        <div class="scroll-wrap">
+          <div class="ins-input-search-slot-wrap">
             { options.map(option => {
               return (
                 <ins-input-search-option
+                  activated={!this.multiple && this.value?.value === option.value}
                   label={option.label}
                   value={option.value}>
                 </ins-input-search-option>
@@ -289,9 +312,9 @@ export class InsInputSearch {
 
     if (this.value) height = height + 45;
     if (this.optionsData.length) {
-        let len = this.optionsData.length;
-        len = len > 3 ? 3 : !len ? 1 : len;
-        height = height + (len * 45)
+      let len = this.optionsData.length;
+      len = len > 3 ? 3 : !len ? 1 : len;
+      height = height + (len * 45)
     }
 
     this.dropUp = (window.innerHeight - pos.bottom) < height;
@@ -304,12 +327,22 @@ export class InsInputSearch {
   }
 
   setOptionsPosition() {
+    let fieldEl = this.insInputSearchEl.querySelector('.ins-input-search .ins-input-search-text') as HTMLInputElement;
+    let labelWrap = this.insInputSearchEl.querySelector('.ins-input-search label.ins-form-label') as HTMLInputElement;
     let searchOptions = this.insInputSearchEl.querySelector('.ins-input-search-options-wrap') as HTMLInputElement;
     let searchValueWrap = this.insInputSearchEl.querySelector('.ins-input-search-value') as HTMLInputElement;
+    let descriptionWrap = this.insInputSearchEl.querySelector('.ins-description') as HTMLInputElement;
     let errorWrap = this.insInputSearchEl.querySelector('.ins-input-search.has-error .error-message') as HTMLInputElement;
-    let insDescription = this.insInputSearchEl.querySelector('.ins-input-search .ins-description') as HTMLInputElement;
+    // let searchingOptions = this.insInputSearchEl.querySelector('.loading-searching') as HTMLInputElement;
+    // let noResultsFound = this.insInputSearchEl.querySelector('.no-results-found') as HTMLInputElement;
 
-    searchOptions.setAttribute('style', `top: ${52 + searchValueWrap.offsetHeight + errorWrap.offsetHeight + (insDescription?.offsetHeight || 0)}px`);
+    if (!this.dropUp) {
+      searchOptions.setAttribute('style', `top: ${(fieldEl?.offsetHeight + 6) + (labelWrap?.offsetHeight ? labelWrap?.offsetHeight + 3 : 0) + (searchValueWrap?.offsetHeight ? searchValueWrap?.offsetHeight - 1 : 0)}px`);
+    } else {
+      // if (searchingOptions) searchingOptions.setAttribute('style', `bottom: ${(fieldEl?.offsetHeight) + (searchValueWrap?.offsetHeight || 0)}px`);
+      // if (noResultsFound) noResultsFound.setAttribute('style', `bottom: ${(fieldEl?.offsetHeight) + (searchValueWrap?.offsetHeight || 0)}px`);
+      searchOptions.setAttribute('style', `bottom: ${(!this.multiple ? fieldEl?.offsetHeight + 1 : 0) + (searchValueWrap?.offsetHeight || 0) + (errorWrap?.offsetHeight ? errorWrap?.offsetHeight + 4 : 0) + (descriptionWrap?.offsetHeight + 4 || 0)}px`);
+    }
   }
 
   @Listen('insInputSearchOptionClicked')
@@ -325,6 +358,11 @@ export class InsInputSearch {
       if (event.detail.value) {
         this.value = event.detail;
         searchInput.value = event.detail.label;
+
+        const optionEls = this.insInputSearchEl.querySelectorAll('ins-input-select-option') as any;
+        for (const item of optionEls) item.activated = false;
+        const optionEl = event.target as any;
+        optionEl.activated = true;
       } else {
         this.value = null;
         searchInput.value = null;
@@ -335,8 +373,6 @@ export class InsInputSearch {
 
     this.resetOptions();
     this.checkDropUp();
-
-    // if (this.multiple) this.setOptionsPosition();
   }
 
   componentWillLoad() {
@@ -382,10 +418,21 @@ export class InsInputSearch {
     this.setOptionsPosition();
   }
 
+  @Watch('loading')
+  checkLoading() {
+    this.dropUp = false;
+    if (this.loading) {
+      this.checkDropUp();
+    }
+  }
+
   @Method()
   async setOptions(value) {
     this.optionsData = value;
     this.checkDropUp();
+    this.noResults = false;
+
+    if (!this.optionsData?.length) this.noResults = true;
   }
 
   render() {
@@ -395,6 +442,7 @@ export class InsInputSearch {
         ${this.disabled ? 'disabled' : ''}
         ${this.readonly ? 'readonly' : ''}
         ${this.hasError ? 'has-error' : ''}
+        ${this.noResults ? 'no-results' : ''}
         ${this.loading ? 'loading' : ''}`}>
 
         { this.label || this.tooltip ?
@@ -409,10 +457,9 @@ export class InsInputSearch {
 
         { this.renderSearchResults() }
 
-        <div class="ins-input-search-container" onClick={() => this.activate()}>
+        <div class={`ins-input-search-container ${this.multiple && this.value.length ? 'has-value' : ''}`} onClick={() => this.activate()}>
           { this.multiple ? this.renderMultipleValues() : '' }
 
-          {/* <div class={`ins-input-search-text ${(this.readonly || this.disabled) && this.value.length ? 'has-value-readonly' : ''}`}> */}
           <div class="ins-input-search-text">
 						<input
 							type="text"
@@ -444,6 +491,7 @@ export class InsInputSearch {
               <div class="spinner"></div>
             </div>
             : ''}
+
           </div>
         </div>
 

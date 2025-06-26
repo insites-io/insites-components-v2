@@ -7,28 +7,32 @@
 
 ## Properties
 
-| Property          | Attribute          | Description | Type      | Default         |
-| ----------------- | ------------------ | ----------- | --------- | --------------- |
-| `checkLoad`       | `check-load`       |             | `boolean` | `false`         |
-| `checkValue`      | `check-value`      |             | `boolean` | `false`         |
-| `description`     | `description`      |             | `string`  | `""`            |
-| `disabled`        | `disabled`         |             | `boolean` | `false`         |
-| `dropUp`          | `drop-up`          |             | `boolean` | `false`         |
-| `errorMessage`    | `error-message`    |             | `string`  | `""`            |
-| `hasError`        | `has-error`        |             | `boolean` | `false`         |
-| `hasLoad`         | `has-load`         |             | `string`  | `undefined`     |
-| `htmlDescription` | `html-description` |             | `boolean` | `false`         |
-| `icon`            | `icon`             |             | `string`  | `"icon-search"` |
-| `label`           | `label`            |             | `string`  | `undefined`     |
-| `load`            | `load`             |             | `boolean` | `false`         |
-| `loading`         | `loading`          |             | `boolean` | `false`         |
-| `multiple`        | `multiple`         |             | `boolean` | `false`         |
-| `name`            | `name`             |             | `string`  | `undefined`     |
-| `optionsData`     | `options-data`     |             | `any`     | `[]`            |
-| `placeholder`     | `placeholder`      |             | `string`  | `""`            |
-| `readonly`        | `readonly`         |             | `boolean` | `false`         |
-| `tooltip`         | `tooltip`          |             | `string`  | `""`            |
-| `value`           | `value`            |             | `any`     | `undefined`     |
+| Property          | Attribute          | Description | Type      | Default               |
+| ----------------- | ------------------ | ----------- | --------- | --------------------- |
+| `checkLoad`       | `check-load`       |             | `boolean` | `false`               |
+| `checkValue`      | `check-value`      |             | `boolean` | `false`               |
+| `description`     | `description`      |             | `string`  | `""`                  |
+| `disabled`        | `disabled`         |             | `boolean` | `false`               |
+| `dropUp`          | `drop-up`          |             | `boolean` | `false`               |
+| `errorMessage`    | `error-message`    |             | `string`  | `""`                  |
+| `hasError`        | `has-error`        |             | `boolean` | `false`               |
+| `hasLoad`         | `has-load`         |             | `string`  | `undefined`           |
+| `htmlDescription` | `html-description` |             | `boolean` | `false`               |
+| `icon`            | `icon`             |             | `string`  | `"icon-search-1"`     |
+| `label`           | `label`            |             | `string`  | `undefined`           |
+| `load`            | `load`             |             | `boolean` | `false`               |
+| `loading`         | `loading`          |             | `boolean` | `false`               |
+| `loadingText`     | `loading-text`     |             | `string`  | `'Searching...'`      |
+| `multiple`        | `multiple`         |             | `boolean` | `false`               |
+| `name`            | `name`             |             | `string`  | `undefined`           |
+| `noResults`       | `no-results`       |             | `boolean` | `false`               |
+| `noResultsText`   | `no-results-text`  |             | `string`  | `'No results found.'` |
+| `optionsData`     | `options-data`     |             | `any`     | `[]`                  |
+| `placeholder`     | `placeholder`      |             | `string`  | `""`                  |
+| `readonly`        | `readonly`         |             | `boolean` | `false`               |
+| `searchValue`     | `search-value`     |             | `string`  | `""`                  |
+| `tooltip`         | `tooltip`          |             | `string`  | `""`                  |
+| `value`           | `value`            |             | `any`     | `undefined`           |
 
 
 ## Events

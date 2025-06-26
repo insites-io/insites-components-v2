@@ -7,6 +7,7 @@ export class InsInputSearchOption {
 
   @Prop({mutable: true}) label: string = 'Option';
   @Prop({mutable: true}) value: string = '';
+  @Prop({mutable: true}) activated: boolean = false;
 
   insInputSearchOptionClickHandler() {
     this.insInputSearchOptionClicked.emit({
@@ -19,6 +20,7 @@ export class InsInputSearchOption {
     return (
       <div class={`
         ins-input-search-option-wrap
+        ${this.activated ? 'selected': '' }
         ${!this.value ? 'no-value': ''}`}
         onMouseDown={() => this.insInputSearchOptionClickHandler()}>
         {this.label}

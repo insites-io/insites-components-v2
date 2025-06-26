@@ -683,9 +683,9 @@ export class InsInputSelect {
 
     checkDropUp() {
         let pos = this.insInputSelectEl.getBoundingClientRect();
-        let height = 65;
+        let height = 110;
 
-        if (this.value) height = height + 45;
+        // if (this.value) height = height + 45;
         if (this.options.length) {
             let len = 0;
             this.options.map(item => {
@@ -695,6 +695,12 @@ export class InsInputSelect {
             height = height + (len * 45)
         }
         if (this.dynamicOption) height = height + 70;
+
+        if (this.searchable) {
+          height = height + 100;
+        } else if (!this.searchable) {
+          height = height + 45;
+        }
 
         this.dropUp = (window.innerHeight - pos.bottom) < height;
     }

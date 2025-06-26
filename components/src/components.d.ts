@@ -684,8 +684,11 @@ export namespace Components {
         "label": string;
         "load": boolean;
         "loading": boolean;
+        "loadingText": string;
         "multiple": boolean;
         "name": string;
+        "noResults": boolean;
+        "noResultsText": string;
         "optionsData": any;
         "placeholder": string;
         "readonly": boolean;
@@ -697,6 +700,7 @@ export namespace Components {
         "value": any;
     }
     interface InsInputSearchOption {
+        "activated": boolean;
         "label": string;
         "value": string;
     }
@@ -3992,8 +3996,11 @@ declare namespace LocalJSX {
         "label"?: string;
         "load"?: boolean;
         "loading"?: boolean;
+        "loadingText"?: string;
         "multiple"?: boolean;
         "name"?: string;
+        "noResults"?: boolean;
+        "noResultsText"?: string;
         "onDidLoad"?: (event: InsInputSearchCustomEvent<any>) => void;
         "onInsInput"?: (event: InsInputSearchCustomEvent<any>) => void;
         "onInsOptionSelect"?: (event: InsInputSearchCustomEvent<any>) => void;
@@ -4006,6 +4013,7 @@ declare namespace LocalJSX {
         "value"?: any;
     }
     interface InsInputSearchOption {
+        "activated"?: boolean;
         "label"?: string;
         "onInsInputSearchOptionClicked"?: (event: InsInputSearchOptionCustomEvent<any>) => void;
         "value"?: string;
