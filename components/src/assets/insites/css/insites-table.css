@@ -1,34 +1,34 @@
 ﻿:root {
   --ins-color-ink: #2c3148;
   --ins-color-ink40: #8c94a4;
-  --ins-color-ink10: #E4E6EC;
+  --ins-color-ink10: #e4e6ec;
   --ins-color-ink5: #f2f4f8;
   --ins-color-ink1: #ffffff;
   --ins-color-white: #fff;
   --ins-color-blue: #1e86e3;
-  --ins-color-blue2: #1A78CB;
-  --ins-color-blue-20p: #CEE2F6;
+  --ins-color-blue2: #1a78cb;
+  --ins-color-blue-20p: #cee2f6;
   --ins-color-blue-10p: #e8f3fc;
   --ins-color-green: #24be8d;
-  --ins-color-green2: #20AA7E;
-  --ins-color-green-10p: #E9F8F4;
+  --ins-color-green2: #20aa7e;
+  --ins-color-green-10p: #e9f8f4;
   --ins-color-orange: #ffa639;
   --ins-color-orange2: #ff9b20;
-  --ins-color-orange-10p: #FFF6EB;
+  --ins-color-orange-10p: #fff6eb;
   --ins-color-red: #f27474;
   --ins-color-red2: #f05d5d;
-  --ins-color-red-10p: #F8EDEE;
+  --ins-color-red-10p: #f8edee;
   --ins-color-pink: #ff3366;
   --ins-color-pink2: #ff1a53;
-  --ins-color-pink-10p: #FEEBF0;
+  --ins-color-pink-10p: #feebf0;
   --ins-color-yellow: #fdd835;
   --ins-color-yellow2: #fdd31c;
-  --ins-color-yellow-10p: #FFFBEB;
+  --ins-color-yellow-10p: #fffbeb;
   --ins-color-turquoise: #2bbad9;
   --ins-color-turquoise2: #24aac7;
-  --ins-color-turquoise-10p: #EAF8FB;
-  --ins-color-purple: #694FCD;
-  --ins-color-fushcia: #C65BBB;
+  --ins-color-turquoise-10p: #eaf8fb;
+  --ins-color-purple: #694fcd;
+  --ins-color-fushcia: #c65bbb;
   --ins-color-grey: #e4e6ec;
   --ins-color-grey2: #d5d8e1;
   --ins-color-grey-10p: #edeef2;
@@ -36,25 +36,26 @@
   --ins-color-success: #24be8d;
   --ins-color-warning: #ffa639;
   --ins-color-negative: #f27474;
+  --ins-color-negative-10p: #fef1f1;
   --ins-color-information1: #ff3366;
   --ins-color-information2: #fdd835;
-  --ins-color-table-odd: #FFF;
-  --ins-color-table-even: #FAFBFC;
-  --ins-color-disabled_readonly_bg: #FAFBFC;
+  --ins-color-table-odd: #fff;
+  --ins-color-table-even: #fafbfc;
+  --ins-color-disabled_readonly_bg: #fafbfc;
   --ins-bg-color: #ffffff;
-  --ins-bg-color2: #E4E6EC;
+  --ins-bg-color2: #e4e6ec;
   --ins-bg-color3: #8c94a4;
   --ins-bg-color4: #f2f4f8;
-  --ins-bg-color5: #FAFBFC;
+  --ins-bg-color5: #fafbfc;
   --ins-border-radius: 4px;
   --ins-border-thickness: 1px;
   --ins-border-style: solid;
-  --ins-border-color: #E4E6EC;
+  --ins-border-color: #e4e6ec;
   --ins-shadow-x: 1px;
   --ins-shadow-y: 1px;
   --ins-shadow-blur: 2px;
-  --ins-shadow-color: #E4E6EC;
-  --ins-font-family: 'Open Sans', sans-serif
+  --ins-shadow-color: #e4e6ec;
+  --ins-font-family: "Open Sans", sans-serif
 }
 
 [class=hydrated] {
@@ -129,11 +130,12 @@
   display: flex;
   align-items: center;
   padding: 14px ​20px;
-  padding-right: 16px
+  padding-right: 20px
 }
 
 .ibt-table-wrap .pagination-wrap.full {
   width: 100%;
+  justify-content: end;
   float: none
 }
 
@@ -158,10 +160,6 @@
 .ibt-table-wrap .ibt-table-action-container .ins-select-wrap.buttonise .ins-select-options-wrap {
   width: 100%;
   min-width: auto
-}
-
-.ibt-table-wrap .ibt-table-action-container .ins-select-wrap.buttonise.activated .ins-select-options-wrap {
-  box-shadow: 0 2px 4px 0 rgba(15, 21, 38, .14), 1px 1px 3px 0 rgba(140, 148, 164, .2)
 }
 
 .ibt-table-wrap .pagination-wrap {
@@ -281,10 +279,15 @@
   z-index: 1
 }
 
+.ibt-table-wrap .pagination-wrap * {
+  font-family: var(--ins-font-family);
+}
+
 .ibt-table-wrap .ibt-table {
   display: table;
   table-layout: fixed;
-  width: 100%
+  width: 100%;
+  font-family: var(--ins-font-family)
 }
 
 .ibt-table-wrap .ibt-table_tr {
@@ -448,6 +451,10 @@
   vertical-align: middle
 }
 
+.ibt-table-wrap .ibt-table_td.has-row-actions:first-child {
+  vertical-align: middle !important
+}
+
 .ibt-table-wrap .ibt-table_td.has-row-actions {
   vertical-align: top !important
 }
@@ -486,6 +493,32 @@
   vertical-align: middle !important
 }
 
+.ibt-table-accordion .ibt-table-accordion_row-td .tagged.multiple-tags .ibt-tag,
+.ibt-table-wrap .ibt-table_td.tagged.multiple-tags .input-label-wrap .ibt-tag {
+  margin-right: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.ibt-table-accordion .ibt-table-accordion_row-td .tagged.multiple-tags .ibt-tag:last-child,
+.ibt-table-wrap .ibt-table_td.tagged.multiple-tags .input-label-wrap .ibt-tag:last-child {
+  margin-right: 0
+}
+
+.ibt-table-wrap .ibt-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.ibt-table-accordion .ibt-image {
+  max-width: 250px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .ibt-table-wrap .ibt-table_tr.edit-mode .editable .input-wrap {
   display: block
 }
@@ -516,7 +549,7 @@
   border: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color)
 }
 
-.ibt-table-wrap.no-label .ibt-table-wrap__no-heading.no-wrap {
+.ibt-table-wrap.no-wrap {
   box-shadow: none;
   border: none;
   border-radius: 0
@@ -641,6 +674,77 @@
 
 .ibt-table-accordion_row-td.edit-mode .editable span {
   display: none
+}
+
+.ibt-table-accordion_row-td.edit-mode .editable .multiple-item-wrap span {
+  display: block
+}
+
+.ibt-table-accordion .ibt-table-accordion_row-td.edit-mode .ibt-table-accordion_row-body.opened {
+  height: auto !important;
+}
+
+ins-table .timezone-overlay-container ins-input-tooltip .ins-input-tooltip {
+  width: auto;
+  background-color: transparent;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+ins-table .timezone-overlay-container ins-input-tooltip .ins-input-tooltip .tooltip-label {
+  width: 100%;
+}
+
+ins-table .timezone-overlay-container ins-input-tooltip .ins-input-tooltip,
+ins-table .timezone-overlay-container ins-input-tooltip .ins-input-tooltip:hover {
+  color: var(--ins-color-ink);
+  font-size: 14px;
+  word-wrap: break-word;
+  font-family: var(--ins-font-family);
+  font-weight: 400;
+}
+
+ins-table .timezone-overlay-container ins-input-tooltip .overlay-tooltip {
+  width: 400px;
+  padding: 8px 12px;
+}
+
+ins-table .timezone-overlay-container ins-input-tooltip .tippy-box {
+  padding: 0;
+  max-width: none !important;
+}
+
+ins-table .timezone-overlay-container  ins-input-tooltip .tippy-content {
+  padding: 0;
+}
+
+ins-table .timezones {
+  padding: 12px 0;
+  gap: 16px;
+  border-bottom: 1px solid var(--ins-border-color);
+  display: flex;
+  justify-content: space-between
+}
+
+ins-table .timezones .time {
+  margin: 0
+}
+
+ins-table .timezones .time-info {
+  font-weight: 600;
+  margin: 0
+}
+
+ins-table .timezones.last {
+  border-bottom: none
+}
+
+ins-table .ibt-table-wrap .edit-mode .timezone-overlay {
+  display: none;
+}
+
+ins-table .ibt-table-action-container .ins-select-wrap.small.drop-up.activated .ins-select-options-wrap {
+  bottom: calc(100% - -8px) !important;
 }
 
 .ibt-table-accordion_row-head {
@@ -835,6 +939,35 @@
   color: var(--ins-color-blue)
 }
 
+.ibt-table-wrap .pagination-wrap>div.ibt-table-wrap__page-nav {
+  display: flex;
+}
+
+.ibt-table-wrap__page-nav .ibt-table-wrap__page,
+.ibt-table-wrap__page-nav .ibt-table-wrap__prev-next {
+  align-self: center;
+}
+
+@media screen and (max-width: 1023px) {
+  .ibt-table-wrap__settings {
+    flex-direction: column;
+  }
+
+  .ibt-table-wrap .ibt-table-action-container {
+    justify-content: center;
+    padding-bottom: 0;
+  }
+
+  .ibt-table-wrap__pagination {
+    margin-left: 0;
+  }
+
+  .ibt-table-wrap .pagination-wrap {
+    justify-content: center;
+    padding: 20px 20px;
+  }
+}
+
 @media screen and (max-width:992px) {
   .ibt-table-wrap .ibt-table-wrap__settings {
     display: block
@@ -862,7 +995,7 @@
   .ibt-table-wrap .pagination-wrap {
     width: 100%;
     float: none;
-    padding: 20px 20px;
+    /* padding: 20px 20px; */
     box-sizing: border-box
   }
 
@@ -879,7 +1012,8 @@
   }
 
   .ibt-table-wrap .ibt-table-accordion {
-    display: block
+    display: block;
+    font-family: var(--ins-font-family)
   }
 
   .ibt-table-wrap .ibt-table-accordion.static {
@@ -892,6 +1026,20 @@
 
   .ibt-table-accordion .action-item {
     padding: 0 8px
+  }
+
+  .ibt-table-accordion .text-label span {
+    margin-left: 12px
+  }
+}
+
+@media (max-width: 639px) {
+  .ibt-table-wrap .pagination-wrap {
+    flex-direction: column;
+  }
+
+  .ibt-table-wrap .pagination-wrap>div.ibt-table-wrap__page-nav {
+    padding-bottom: 20px;
   }
 }
 
@@ -973,7 +1121,8 @@ ins-table-td {
   padding: 11px 10px;
   border-bottom: var(--ins-border-style) var(--ins-border-thickness) var(--ins-border-color);
   color: var(--ins-color-ink);
-  font-size: 14px
+  font-size: 14px;
+  vertical-align: middle
 }
 
 ins-table-td .text-right {

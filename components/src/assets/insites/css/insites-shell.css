@@ -1,34 +1,34 @@
 :root {
   --ins-color-ink: #2c3148;
   --ins-color-ink40: #8c94a4;
-  --ins-color-ink10: #E4E6EC;
+  --ins-color-ink10: #e4e6ec;
   --ins-color-ink5: #f2f4f8;
   --ins-color-ink1: #ffffff;
   --ins-color-white: #fff;
   --ins-color-blue: #1e86e3;
-  --ins-color-blue2: #1A78CB;
-  --ins-color-blue-20p: #CEE2F6;
+  --ins-color-blue2: #1a78cb;
+  --ins-color-blue-20p: #cee2f6;
   --ins-color-blue-10p: #e8f3fc;
   --ins-color-green: #24be8d;
-  --ins-color-green2: #20AA7E;
-  --ins-color-green-10p: #E9F8F4;
+  --ins-color-green2: #20aa7e;
+  --ins-color-green-10p: #e9f8f4;
   --ins-color-orange: #ffa639;
   --ins-color-orange2: #ff9b20;
-  --ins-color-orange-10p: #FFF6EB;
+  --ins-color-orange-10p: #fff6eb;
   --ins-color-red: #f27474;
   --ins-color-red2: #f05d5d;
-  --ins-color-red-10p: #F8EDEE;
+  --ins-color-red-10p: #f8edee;
   --ins-color-pink: #ff3366;
   --ins-color-pink2: #ff1a53;
-  --ins-color-pink-10p: #FEEBF0;
+  --ins-color-pink-10p: #feebf0;
   --ins-color-yellow: #fdd835;
   --ins-color-yellow2: #fdd31c;
-  --ins-color-yellow-10p: #FFFBEB;
+  --ins-color-yellow-10p: #fffbeb;
   --ins-color-turquoise: #2bbad9;
   --ins-color-turquoise2: #24aac7;
-  --ins-color-turquoise-10p: #EAF8FB;
-  --ins-color-purple: #694FCD;
-  --ins-color-fushcia: #C65BBB;
+  --ins-color-turquoise-10p: #eaf8fb;
+  --ins-color-purple: #694fcd;
+  --ins-color-fushcia: #c65bbb;
   --ins-color-grey: #e4e6ec;
   --ins-color-grey2: #d5d8e1;
   --ins-color-grey-10p: #edeef2;
@@ -36,25 +36,26 @@
   --ins-color-success: #24be8d;
   --ins-color-warning: #ffa639;
   --ins-color-negative: #f27474;
+  --ins-color-negative-10p: #fef1f1;
   --ins-color-information1: #ff3366;
   --ins-color-information2: #fdd835;
-  --ins-color-table-odd: #FFF;
-  --ins-color-table-even: #FAFBFC;
-  --ins-color-disabled_readonly_bg: #FAFBFC;
+  --ins-color-table-odd: #fff;
+  --ins-color-table-even: #fafbfc;
+  --ins-color-disabled_readonly_bg: #fafbfc;
   --ins-bg-color: #ffffff;
-  --ins-bg-color2: #E4E6EC;
+  --ins-bg-color2: #e4e6ec;
   --ins-bg-color3: #8c94a4;
   --ins-bg-color4: #f2f4f8;
-  --ins-bg-color5: #FAFBFC;
+  --ins-bg-color5: #fafbfc;
   --ins-border-radius: 4px;
   --ins-border-thickness: 1px;
   --ins-border-style: solid;
-  --ins-border-color: #E4E6EC;
+  --ins-border-color: #e4e6ec;
   --ins-shadow-x: 1px;
   --ins-shadow-y: 1px;
   --ins-shadow-blur: 2px;
-  --ins-shadow-color: #E4E6EC;
-  --ins-font-family: 'Open Sans', sans-serif
+  --ins-shadow-color: #e4e6ec;
+  --ins-font-family: "Open Sans", sans-serif
 }
 
 [class=hydrated] {
