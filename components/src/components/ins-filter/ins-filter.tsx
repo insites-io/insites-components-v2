@@ -1,4 +1,5 @@
 import { h, Component, Element, Event, EventEmitter, Prop, State, Listen, Method } from "@stencil/core";
+import dayjs from "dayjs";
 
 @Component({ tag: 'ins-filter' })
 export class InsFilter {
@@ -9,6 +10,7 @@ export class InsFilter {
   @Prop({ mutable: true }) label: string = "Filter:";
   @Prop({ mutable: true }) withDateFilter: boolean = false;
   @Prop({ mutable: true }) dateTitle: any = "Date Period";
+  @Prop({ mutable: true }) dateFormat: string = "YYYY-MM-DD";
   @Prop({ mutable: true }) defaultDate: string = "";
   @Prop({ mutable: true }) dateFrom: string = "";
   @Prop({ mutable: true }) dateTo: string = "";
@@ -72,13 +74,27 @@ export class InsFilter {
 
   @Method()
   async getDate() {
-    return this.getLocDate();
+    let from = this.fromInput.value;
+    let to = this.toInput.value;
+
+    if (from && to) {
+      if (this.dateFormat) {
+        return {
+          from: dayjs(from, 'YYYY-MM-DD').format(this.dateFormat),
+          to: dayjs(to, 'YYYY-MM-DD').format(this.dateFormat),
+        }
+      }
+      return { from, to }
+    }
+    return 'All';
   }
 
   @Listen('insInput')
   datePickerChanged(e){
     let name = e.detail.name;
-    let date = e.detail.date_string;
+    // let date = e.detail.date_string;
+    let date = dayjs(e.detail.selected_dates).format("YYYY-MM-DD");
+
     this[`${name}Input`].value = date;
 
     if (name === "from"){
@@ -123,7 +139,6 @@ export class InsFilter {
   }
 
   async dateOptEHandler(option, settingDefault?: Boolean) {
-
     this.selectedRange = option;
     this.selectedCustom = false;
 
@@ -220,7 +235,7 @@ export class InsFilter {
     if (!this.isAll) {
       this.selectedCustom = true;
       let filter = this.getLocDate() as any;
-      return `Custom (${filter.from} to ${filter.to})`;
+      return `Custom (${dayjs(filter.from, 'YYYY-MM-DD').format(this.dateFormat)} to ${dayjs(filter.to, 'YYYY-MM-DD').format(this.dateFormat)})`;
     } return 'All'
   }
 
@@ -283,7 +298,12 @@ export class InsFilter {
         this.selectedRange = this.currentFilter;
       }
 
-    } else if (this.dateFrom && this.dateTo){
+    } else if (this.dateFrom && this.dateTo) {
+      if (this.dateFormat) {
+        this.dateFrom = dayjs(this.dateFrom, this.dateFormat).format('YYYY-MM-DD');
+        this.dateTo = dayjs(this.dateTo, this.dateFormat).format('YYYY-MM-DD');
+      }
+
       this.currentFilter = 'Custom';
       this.selectedRange = 'Custom';
       this.isAll = false;
@@ -348,29 +368,31 @@ export class InsFilter {
                 </div>
 
                 <div class="from input-wrap">
-                  {this.dateFrom}
+                  {/* {this.dateFrom ? dayjs(this.dateFrom, 'YYYY-MM-DD').format(this.dateFormat) : ""} */}
                   <ins-date-time mode="datepicker" name="from"
                     inline value={this.dateFrom}>
                   </ins-date-time>
                 </div>
 
                 <div class="to input-wrap">
-                  {this.dateTo}
+                  {/* {this.dateTo ? dayjs(this.dateTo, 'YYYY-MM-DD').format(this.dateFormat) : ""} */}
                   <ins-date-time mode="datepicker" name="to"
                     inline value={this.dateTo}>
                   </ins-date-time>
                 </div>
 
                 <div class="date-range__action">
-                  <label class="ins-label">From</label>
-                  <input type="date" class="ins-date-from"
-                    onChange={(e) => this.updatePickers(e, 'from')} />
+                  <div class="date-range__input">
+                    <label class="ins-label">From</label>
+                    <input type="date" class="ins-date-from"
+                      onChange={(e) => this.updatePickers(e, 'from')} />
 
-                  <span class="d-spacer">&nbsp; - &nbsp;</span>
+                    <span class="d-spacer">&nbsp; - &nbsp;</span>
 
-                  <label class="ins-label">To</label>
-                  <input type="date" class="ins-date-to"
-                    onChange={(e) => this.updatePickers(e, 'to')} />
+                    <label class="ins-label">To</label>
+                    <input type="date" class="ins-date-to"
+                      onChange={(e) => this.updatePickers(e, 'to')} />
+                  </div>
 
                   <div class="date-range__cancel-apply">
                     <ins-button label="cancel" size="small"

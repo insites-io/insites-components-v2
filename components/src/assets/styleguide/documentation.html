@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Insites Components - QA</title>
+
+  <!-- Insites Essentials -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap">
+  <link rel="stylesheet" href="/assets/css/foundation.min.css" />
+
+  <!-- Components -->
+<link rel="stylesheet" href="/assets/insites/css/insites.css" />
+
+ <script type="module" src="/build/insites.esm.js"></script>
+  <script nomodule src="/build/insites.js"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Font Icons -->
+  <link rel="stylesheet" href="https://components.insites.io/v2/latest/css/insites-font-icons.css">
+
+  <!-- Components -->
+  <!-- <link rel="stylesheet" href="https://components.insites.io/v2/latest/css/insites.css" />
+  <script type="module" src="https://components.insites.io/v2/latest/insites.esm.js"></script>
+  <script nomodule src="https://components.insites.io/v2/latest/insites.js"></script> -->
+
+  <style>
+    .liquid-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2c3148;
+      font-family: Open Sans, sans-serif;
+      margin-bottom: 2px;
+    }
+
+    #testEl button {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <ins-sidebar>
+    <ins-sidebar-item label="Route 1" link="#/route-1" icon="icon-move-to-folder"></ins-sidebar-item>
+    <ins-sidebar-item label="Route 2" link="#/route-2" icon="icon-codepen"></ins-sidebar-item>
+
+    <ins-sidebar-item label="Route 3 Route 3 Route 3 Route 3 Route 3 Route 3 Route 3 Route 3" with-submenu icon="icon-github">
+      <ins-sidebar-item label="Route 4" link="#/route-4"></ins-sidebar-item>
+      <ins-sidebar-item label="Route 5" link="#/route-5"></ins-sidebar-item>
+    </ins-sidebar-item>
+
+    <ins-sidebar-item label="Route 6 - iframe" link="/assets/styleguide/test.html" app icon="icon-chrome">
+    </ins-sidebar-item>
+
+    <ins-sidebar-footer class="side-bar-footer">
+
+      <ins-sidebar-footer-button id="toggleMenuButton" icon="icon-menu-collapse">
+      </ins-sidebar-footer-button>
+
+      <ins-sidebar-footer-button
+        id="lockButton"
+        icon="icon-lock-1">
+      </ins-sidebar-footer-button> <ins-sidebar-footer-button
+
+          icon="icon-logout-1">
+        </ins-sidebar-footer-button>
+    </ins-sidebar-footer>
+
+  </ins-sidebar>
+
+  <ins-header support-link="www.google.com" id="insMenuBar">
+    <ins-header-user
+      name="John Smith"
+      logout-link="/"
+      profile-label="My Professional Profile"
+      profile-link="#/my-profile">
+    </ins-header-user>
+  </ins-header>
+
+  <ins-renderer>
+
+    <ins-table
+  id="insBaseTable"
+  heading="Table"
+  search bar-placeholder="Search..."
+  tooltip="This is a sample tooltip content. It also support html content.">
+</ins-table>
+
+<script>
+  var insBaseTable = document.getElementById('insBaseTable');
+  var rawData = [];
+  var filteredData = [];
+  var displayedData = [];
+  var tableHeaders = [];
+  var totalCount = 0;
+  var pageNumber = 1;
+  var pageSize = 10;
+  var searchKeyword = '';
+  var sortedKeyword = '';
+  insBaseTable.loadingScreen = true;
+  insBaseTable.bulkActions = ['Archive'];
+  insBaseTable.rowActions = ['Archive'];
+  insBaseTable.addEventListener('insPaginationChange', tablePaginationHandler);
+  insBaseTable.addEventListener('insTableSearch', tableSearchHandler);
+  insBaseTable.addEventListener('insTableSort', tableSortHandler);
+  insBaseTable.addEventListener('insTableBulkAction', tableBulkActionHandler);
+  insBaseTable.addEventListener('insTableRowAction', tableRowActionHandler);
+
+  function tablePaginationHandler(event){
+    insBaseTable.loadingScreen = true;
+    pageSize = event.detail.pageSize;
+    pageNumber = event.detail.pageNumber;
+    processTableData()
+  }
+
+  function tableSearchHandler(event){
+    insBaseTable.loadingScreen = true;
+    searchKeyword = event.detail.value;
+    if (!searchKeyword) {
+      processTableData();
+      return;
+    }
+    filteredData = [];
+    rawData.forEach((value) => {
+      Object.keys(value).forEach((key) => {
+        if (key === 'Default Column'){
+          var match = value[key];
+          if (match.toLowerCase().includes(searchKeyword.toLowerCase())) {
+            filteredData.push(value);
+          }
+        }
+      });
+    });
+    if (sortedKeyword && filteredData.length > 1) {
+      filteredData.sort(dynamicKeySort(sortedKeyword));
+    }
+    insBaseTable.pageNumber = 1;
+    processTableData();
+    if (!filteredData.length) {
+      insBaseTable.loadingScreen = true;
+      insBaseTable.loaderTitle = '';
+      insBaseTable.loaderMessage = 'No result found for "' + searchKeyword + '"';
+      insBaseTable.loaderIcon = '';
+    }
+  }
+
+  function tableSortHandler(event){
+    sortedKeyword = event.detail.order === 'asc' ? event.detail.keyword : `-${event.detail.keyword}`;
+    if (searchKeyword){
+      filteredData.sort(dynamicKeySort(sortedKeyword));
+    } else {
+      rawData.sort(dynamicKeySort(sortedKeyword));
+    }
+    processTableData();
+  }
+
+  function tableBulkActionHandler(event){
+    if (event.detail.action === 'Archive'){
+      archiveSelection(event.detail.selections);
+    }
+  }
+
+  function tableRowActionHandler(event){
+    if (event.detail.action === 'Archive'){
+      archiveItem(event.detail.data);
+    }
+  }
+
+  function archiveItem(value){
+    swal({
+      title: '',
+      // text: "Are you sure you want to delete these items",
+      html: `
+        <ins-loader
+          state-icon="warning"
+          icon-color="warning"
+          state-message="Are you sure you want to archive this item?">
+        </ins-loader>`,
+      type: '',
+      showCancelButton: true,
+      confirmButtonText: 'Archive'
+    }).then((result) => {
+      deleteItem(value);
+      processTableData();
+    });
+  }
+
+  function archiveSelection(selections) {
+    swal({
+      title: '',
+      html: `
+      <ins-loader
+        state-icon="warning"
+        icon-color="warning"
+        state-message="Are you sure you want to archive these items?">
+      </ins-loader>`,
+      type: '',
+      showCancelButton: true,
+      confirmButtonText: 'Archive'
+    }).then((result) => {
+      if (result.value) {
+          let counter = 0;
+          selections.forEach(value => {
+            this.deleteItem(value);
+            counter++;
+            if (selections.length === counter){
+              insBaseTable.resetSelections();
+              processTableData()
+            }
+          });
+        }
+    });
+  }
+
+  function deleteItem(value) {
+    var selectionIndex;
+    var searchSelectionIndex;
+    if (rawData) {
+      selectionIndex = rawData.findIndex(item => {
+        return item.Id === value;
+      });
+    }
+    if (filteredData) {
+      searchSelectionIndex = filteredData.findIndex(item => {
+        return item.Id === value;
+      });
+    }
+    if (selectionIndex > -1){
+      rawData.splice(selectionIndex, 1);
+    }
+    if (searchSelectionIndex > -1){
+      filteredData.splice(searchSelectionIndex, 1);
+    }
+  }
+
+  function processTableData(){
+    var last_index = pageNumber * pageSize;
+    var first_index = (last_index - pageSize);// + 1;
+    displayedData = [];
+    if (searchKeyword) {
+      filteredData.forEach((value, index) => {
+        value['ArchiveLink'] = "#";
+        if (index >= first_index && index < last_index) {
+          displayedData.push(value);
+        } else if (filteredData.length < pageSize){
+          displayedData.push(value);
+        }
+      });
+      insBaseTable.totalCount = filteredData.length;
+    } else {
+      rawData.forEach((value, index) => {
+        value['ArchiveLink'] = "#";
+        if (index >= first_index && index < last_index) {
+          displayedData.push(value);
+        }
+      });
+      insBaseTable.totalCount = rawData.length;
+    }
+
+    insBaseTable.tableData = displayedData;
+    insBaseTable.loadingScreen = false;
+  }
+
+  function dynamicKeySort(key) {
+    var OrderSortIndex = 1;
+    if (key[0] === "-") {
+      OrderSortIndex = -1;
+      key = key.substr(1);
+    }
+    return function (a, b) {
+      var num = (a[key] < b[key]) ? -1 : (a[key] > b[key]) ? 1 : 0;
+      return num * OrderSortIndex;
+    }
+  }
+
+  function fetchDataFromSrc () {
+    insBaseTable.loadingScreen = true;
+    insBaseTable.loaderTitle = "Processing Your Data";
+    insBaseTable.loaderMessage = "Just a moment, we're fetching and processing your request.";
+    insBaseTable.loaderIcon = "processing";
+
+    // Generate 200 data entries
+    const tableData = generateIncrementingData(200);
+
+    rawData = tableData.map(function(data){
+      data["Default Column_Img"] = '';
+      return data;
+    });
+
+    insBaseTable.totalCount = 200;
+    insBaseTable.tableHeaders = [
+      { label: "Default Column", type: 'string', sortable: true, hasLink: true, hasImage: true },
+      { label: "Date Column", type: 'date', sortable: true, editable: true },
+      { label: "Number Column", type: 'number', sortable: true, editable: true },
+      { label: "Currency Column", type: 'currency', sortable: true, editable: true }
+    ];
+
+    setTimeout(() => {
+      processTableData();
+    }, 3000);
+  }
+
+  function generateRandomName() {
+    const firstNames = [
+      "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Heidi",
+      "Ivan", "Judy", "Kevin", "Linda", "Mike", "Nancy", "Oscar", "Pamela",
+      "Quinn", "Rachel", "Steve", "Tina", "Ursula", "Victor", "Wendy", "Xavier",
+      "Yara", "Zack", "Amber", "Brenda", "Caleb", "Diana", "Ethan", "Fiona",
+      "George", "Hannah", "Isaac", "Jasmine", "Kyle", "Lauren", "Mark", "Nora"
+    ];
+
+    const lastNames = [
+      "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis",
+      "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson",
+      "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee", "Perez", "Thompson",
+      "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson", "Walker"
+    ];
+
+    const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+    const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+
+    return `${randomFirstName} ${randomLastName}`;
+  }
+
+  function generateIncrementingData(count) {
+    const generatedTableData = [];
+    const startDate = new Date('2025-01-01');
+
+    for (let i = 0; i < count; i++) {
+      const currentDate = new Date(startDate);
+      currentDate.setDate(startDate.getDate() + i);
+
+      const year = currentDate.getFullYear();
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      const day = String(currentDate.getDate()).padStart(2, '0');
+      const formattedDate = `${year}-${month}-${day}`;
+
+      const dataEntry = {
+        "Default Column": generateRandomName(),
+        "Date Column": formattedDate,
+        "Number Column": String(i + 1),
+        "Currency Column": String((i + 1) * 100)
+      };
+
+      generatedTableData.push(dataEntry);
+    }
+
+    return generatedTableData;
+  }
+
+  fetchDataFromSrc();
+</script>
+<ins-timeline
+  label="Sample Heading"
+  static-timeline
+  total-count="4">
+
+    <!-- Each timeline entry is wrapped within <ins-timeline-item> -->
+
+    <ins-timeline-item
+      title="This is a sample title"
+      hex-color
+      font-hex-color="#FF0000"
+      border-hex-color="#FF0000"
+      background-hex-color="#FF0000"
+      icon="icon-star"
+      datetime="2019-01-30 10:22:39 UTC, by: John Doe">
+
+      <!-- Add 'slot="content"' to div to identify that it is the timeline content -->
+
+      <div slot="content">
+
+        <p>This is a timeline content.</p>
+
+      </div>
+
+      <!-- Add 'slot="actions"' to div to identify that it is the action content -->
+
+      <div slot="actions">
+
+        <ins-button label="" icon="icon-log-out" color="blue"></ins-button>
+
+      </div>
+    </ins-timeline-item>
+
+    <!-- timeline item 2 -->
+    <ins-timeline-item>
+      <div slot="content">
+        <p>This is the default styling of a timeline content without actions.</p>
+      </div>
+    </ins-timeline-item>
+
+    <!-- timeline item 3 -->
+    <ins-timeline-item solid>
+      <div slot="content">
+        <p>This uses timeline item 'solid' attribute. This can use along with 'color' attribute as well.</p>
+      </div>
+    </ins-timeline-item>
+
+    <!-- timeline item 4 -->
+
+    <ins-timeline-item datetime="6 days ago" inline="false" icon="icon-email-1" color="green" solid>
+
+      <div slot="content">
+
+        <p>This timeline item uses `inline` property `false`, thus the action options are positioned 'bottom-right'.</p>
+
+      </div>
+
+      <div slot="actions">
+
+        <ins-button
+          size="small"
+          color="blue"
+          solid label="Accept">
+        </ins-button>
+
+     </div>
+
+    </ins-timeline-item>
+
+ </ins-timeline>
+  </ins-renderer>
+</body>
+
+</html>

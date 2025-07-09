@@ -10,6 +10,7 @@
 | Property         | Attribute          | Description | Type      | Default                                                                                                                                              |
 | ---------------- | ------------------ | ----------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `checkLoad`      | `check-load`       |             | `boolean` | `false`                                                                                                                                              |
+| `dateFormat`     | `date-format`      |             | `string`  | `"YYYY-MM-DD"`                                                                                                                                       |
 | `dateFrom`       | `date-from`        |             | `string`  | `""`                                                                                                                                                 |
 | `dateOpt`        | `date-opt`         |             | `any`     | `[     'All',     'Today',     'This Week',     'Last Week',     'This Month',     'Last Month',     'This Year',     'Last Year',     'Custom'   ]` |
 | `dateTitle`      | `date-title`       |             | `any`     | `"Date Period"`                                                                                                                                      |

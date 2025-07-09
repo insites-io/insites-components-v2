@@ -64,6 +64,7 @@ export class InsTable {
   @Prop({ mutable: true }) defaultBulkAction: string = "";
   @Prop({ mutable: true }) paginationText: string = "Rows per page:";
   @Prop({ mutable: true }) initialSearch: string = "";
+  @Prop({ mutable: true }) timezoneIcon: string = "icon-clock";
 
   @State() pageInfo: any = "0-0 of 0";
   @State() nextDisabled: boolean = false;
@@ -579,7 +580,22 @@ export class InsTable {
   }
 
   extractDate(dateString) {
-    return dateString.match(/\(([^)]+)\)/)?.[1];
+    // console.log(dateString.match(/\(([^)]+)\)/)?.[1])
+    // return dateString.match(/\(([^)]+)\)/)?.[1];
+    return dateString;
+  }
+
+  getDeviceTimezone() {
+    const date = new Date();
+    const timezoneOffsetMinutes = date.getTimezoneOffset();
+
+    const offsetHours = -timezoneOffsetMinutes / 60;
+    const offsetSign = offsetHours >= 0 ? '+' : '';
+    let formattedOffset = `UTC${offsetSign}${offsetHours}`;
+
+    if (offsetHours === 0) return `UTC / GMT`;
+
+    return formattedOffset;
   }
 
   toUTC(date, format) {
@@ -599,58 +615,48 @@ export class InsTable {
   }
 
   rowDataRenderer(item, tableHeader) {
-    if (tableHeader.type === "date") {
+    if (tableHeader.type === "date_time" || tableHeader.type === "datetime") {
+      const content = `<div class="overlay-tooltip">
+        <div class="timezones">
+          <p class="paragraph-medium main-text time-info">
+            Device Time (${tableHeader?.date_format?.device_time || this.getDeviceTimezone() })
+          </p>
+          <p class="paragraph-medium time">
+            ${this.extractDate(item[tableHeader.label])}
+          </p>
+        </div>
+        <div class="timezones">
+          <p class="paragraph-medium main-text time-info">
+            Instance Time (
+            ${tableHeader?.date_format?.instance_time || "UTC / GMT"})
+          </p>
+          <p class="paragraph-medium time">
+            ${this.offsetDateTime(
+              item[tableHeader.label],
+              tableHeader?.date_format?.instance_timezone,
+              tableHeader?.date_format?.date_time_format
+            )}
+          </p>
+        </div>
+        <div class="timezones last">
+          <p class="paragraph-medium main-text time-info">UTC / GMT</p>
+          <p class="paragraph-medium time">
+            ${this.toUTC(
+              item[tableHeader.label],
+              tableHeader?.date_format?.date_time_format
+            )}
+          </p>
+        </div>
+      </div>`;
+
       return (
-        <div class="timezone-overlay">
-          <div class="overlay-container">
-            <i class="icon-clock timezone-icon"></i>
-            <span
-              class="ibt-link"
-              onClick={() => {
-                !this.rowActions.length
-                  ? this.rowActionHandler(
-                      "rowItemClick",
-                      item,
-                      item[tableHeader.label]
-                    )
-                  : "";
-              }}
-            >
-              {item[tableHeader.label]}
-            </span>
-            <div class="overlay-tooltip">
-              <div class="timezones">
-                <p class="paragraph-medium main-text time-info">
-                  Device Time ({tableHeader?.date_format?.device_time || "UTC"})
-                </p>
-                <p class="paragraph-medium time">
-                  {this.extractDate(item[tableHeader.label])}
-                </p>
-              </div>
-              <div class="timezones">
-                <p class="paragraph-medium main-text time-info">
-                  Instance Time (
-                  {tableHeader?.date_format?.instance_time || "UTC"})
-                </p>
-                <p class="paragraph-medium time">
-                  {this.offsetDateTime(
-                    this.extractDate(item[tableHeader.label]),
-                    tableHeader?.date_format?.instance_timezone,
-                    tableHeader?.date_format?.date_time_format
-                  )}
-                </p>
-              </div>
-              <div class="timezones last">
-                <p class="paragraph-medium main-text time-info">UTC</p>
-                <p class="paragraph-medium time">
-                  {this.toUTC(
-                    this.extractDate(item[tableHeader.label]),
-                    tableHeader?.date_format?.date_time_format
-                  )}
-                </p>
-              </div>
-            </div>
-          </div>
+        <div class="timezone-overlay-container">
+          <ins-input-tooltip
+            label={item[tableHeader.label]}
+            icon={this.timezoneIcon}
+            content={content}
+            trigger="mouseenter">
+          </ins-input-tooltip>
         </div>
       );
     }
@@ -1367,27 +1373,27 @@ export class InsTable {
                   this.bulkActions.length ? "" : "full"
                 }`}
               >
-                <div class="ibt-table-wrap__pagination">
-                  <span>{this.paginationText}</span>
-                  <select
-                    class="ibt-table-wrap__pagination--option"
-                    onChange={(event) => this.pageSizeChangeHandler(event)}
-                  >
-                    {this.pageSizeOptions
-                      ? this.pageSizeOptions.map((option) => (
-                          <option
-                            value={option}
-                            selected={this.pageSize == option}
-                          >
-                            {option}
-                          </option>
-                        ))
-                      : ""}
-                  </select>
+                <div class="ibt-table-wrap__page-nav">
+                  <div class="ibt-table-wrap__pagination">
+                    <span>{this.paginationText}</span>
+                    <select
+                      class="ibt-table-wrap__pagination--option"
+                      onChange={(event) => this.pageSizeChangeHandler(event)}
+                    >
+                      {this.pageSizeOptions
+                        ? this.pageSizeOptions.map((option) => (
+                            <option
+                              value={option}
+                              selected={this.pageSize == option}
+                            >
+                              {option}
+                            </option>
+                          ))
+                        : ""}
+                    </select>
+                  </div>
+                  <div class="ibt-table-wrap__page">{this.pageInfo}</div>
                 </div>
-
-                <div class="ibt-table-wrap__page">{this.pageInfo}</div>
-
                 <div class="ibt-table-wrap__prev-next">
                   <button
                     name="button-table_first"

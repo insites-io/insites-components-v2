@@ -231,6 +231,7 @@ export class InsInputSearch {
 
   clearSearchResults() {
     this.empty = true;
+    this.noResults = false;
     this.optionsData = [];
   }
 
@@ -242,11 +243,10 @@ export class InsInputSearch {
         let values = this.value.map(item => item.value)
         if (values.indexOf(option.value) === -1) options.push(option);
       } else {
-        // if (this.value?.value !== option.value) options.push(option);
         options.push(option);
       }
     }
-// ${!options.length ? 'no-result' : ''}
+
     return (
       <div class={`ins-input-search-options-wrap ${options.length ? 'has-options' : ''} ${this.multiple && this.value.length ? 'has-multiple-value' : ''}`}>
 
@@ -303,6 +303,8 @@ export class InsInputSearch {
       this.insInputSearchEl.querySelector('.ins-input-search').classList.add('active');
       let searchInput = this.insInputSearchEl.querySelector('.ins-input-search-text input') as HTMLInputElement;
       searchInput.focus();
+
+      if (this.value.length) this.checkDropUp();
     }
   }
 
@@ -333,15 +335,14 @@ export class InsInputSearch {
     let searchValueWrap = this.insInputSearchEl.querySelector('.ins-input-search-value') as HTMLInputElement;
     let descriptionWrap = this.insInputSearchEl.querySelector('.ins-description') as HTMLInputElement;
     let errorWrap = this.insInputSearchEl.querySelector('.ins-input-search.has-error .error-message') as HTMLInputElement;
-    // let searchingOptions = this.insInputSearchEl.querySelector('.loading-searching') as HTMLInputElement;
-    // let noResultsFound = this.insInputSearchEl.querySelector('.no-results-found') as HTMLInputElement;
+    let searchInput = this.insInputSearchEl.querySelector('.ins-input-search-text') as HTMLInputElement;
 
     if (!this.dropUp) {
-      searchOptions.setAttribute('style', `top: ${(fieldEl?.offsetHeight + 6) + (labelWrap?.offsetHeight ? labelWrap?.offsetHeight + 3 : 0) + (searchValueWrap?.offsetHeight ? searchValueWrap?.offsetHeight - 1 : 0)}px`);
+      searchOptions.setAttribute('style', `top: ${(fieldEl?.offsetHeight + 6) + (labelWrap?.offsetHeight ? labelWrap?.offsetHeight + 3 : 0) + (searchValueWrap?.offsetHeight ? searchValueWrap?.offsetHeight + 6 : 0)}px`);
+      if (this.multiple && this.value.length) searchInput.removeAttribute('style');
     } else {
-      // if (searchingOptions) searchingOptions.setAttribute('style', `bottom: ${(fieldEl?.offsetHeight) + (searchValueWrap?.offsetHeight || 0)}px`);
-      // if (noResultsFound) noResultsFound.setAttribute('style', `bottom: ${(fieldEl?.offsetHeight) + (searchValueWrap?.offsetHeight || 0)}px`);
-      searchOptions.setAttribute('style', `bottom: ${(!this.multiple ? fieldEl?.offsetHeight + 1 : 0) + (searchValueWrap?.offsetHeight || 0) + (errorWrap?.offsetHeight ? errorWrap?.offsetHeight + 4 : 0) + (descriptionWrap?.offsetHeight + 4 || 0)}px`);
+      searchOptions.setAttribute('style', `bottom: ${(!this.multiple ? fieldEl?.offsetHeight + 1 : 7) + (this.multiple && this.value.length ? searchInput?.offsetHeight : 0) + (searchValueWrap?.offsetHeight || 0) + (errorWrap?.offsetHeight ? errorWrap?.offsetHeight + 4 : 0) + (descriptionWrap?.offsetHeight + 4 || 0)}px`);
+      if (this.multiple && this.value.length) searchInput.setAttribute('style', `bottom: ${searchValueWrap?.offsetHeight + 7 || 0}px`);
     }
   }
 

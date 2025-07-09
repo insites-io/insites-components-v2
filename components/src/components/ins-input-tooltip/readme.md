@@ -7,9 +7,12 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type     | Default |
-| --------- | --------- | ----------- | -------- | ------- |
-| `content` | `content` |             | `string` | `""`    |
+| Property  | Attribute | Description | Type     | Default   |
+| --------- | --------- | ----------- | -------- | --------- |
+| `content` | `content` |             | `string` | `""`      |
+| `icon`    | `icon`    |             | `string` | `""`      |
+| `label`   | `label`   |             | `string` | `""`      |
+| `trigger` | `trigger` |             | `string` | `"click"` |
 
 
 ## Dependencies
@@ -36,6 +39,7 @@
  - [ins-radio](../ins-radio)
  - [ins-radio-group](../ins-radio-group)
  - [ins-select](../ins-select)
+ - [ins-table](../ins-table)
  - [ins-textarea](../ins-textarea)
  - [ins-toggle-switch](../ins-toggle-switch)
 
@@ -62,6 +66,7 @@ graph TD;
   ins-radio --> ins-input-tooltip
   ins-radio-group --> ins-input-tooltip
   ins-select --> ins-input-tooltip
+  ins-table --> ins-input-tooltip
   ins-textarea --> ins-input-tooltip
   ins-toggle-switch --> ins-input-tooltip
   style ins-input-tooltip fill:#f9f,stroke:#333,stroke-width:4px

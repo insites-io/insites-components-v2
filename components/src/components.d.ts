@@ -433,6 +433,7 @@ export namespace Components {
     interface InsFilter {
         "checkLoad": boolean;
         "closeDateFilter": () => Promise<void>;
+        "dateFormat": string;
         "dateFrom": string;
         "dateOpt": any;
         "dateTitle": any;
@@ -870,6 +871,9 @@ export namespace Components {
     }
     interface InsInputTooltip {
         "content": string;
+        "icon": string;
+        "label": string;
+        "trigger": string;
     }
     interface InsInstances {
         "checkLoad": boolean;
@@ -1300,6 +1304,7 @@ export namespace Components {
         "tableData": any;
         "tableHeaders": any;
         "textOverflow": string;
+        "timezoneIcon": string;
         "totalCount": any;
         "updatePageInfo": () => Promise<void>;
         "updatedRows": any;
@@ -1371,9 +1376,13 @@ export namespace Components {
         "timelineData": any;
     }
     interface InsTimelineItem {
+        "backgroundHexColor": string;
+        "borderHexColor": string;
         "color": string;
         "datetime": string;
+        "fontHexColor": string;
         "heading": string;
+        "hexColor": boolean;
         "icon": string;
         "inline": boolean;
         "solid": boolean;
@@ -3750,6 +3759,7 @@ declare namespace LocalJSX {
     }
     interface InsFilter {
         "checkLoad"?: boolean;
+        "dateFormat"?: string;
         "dateFrom"?: string;
         "dateOpt"?: any;
         "dateTitle"?: any;
@@ -4169,6 +4179,9 @@ declare namespace LocalJSX {
     }
     interface InsInputTooltip {
         "content"?: string;
+        "icon"?: string;
+        "label"?: string;
+        "trigger"?: string;
     }
     interface InsInstances {
         "checkLoad"?: boolean;
@@ -4602,6 +4615,7 @@ declare namespace LocalJSX {
         "tableData"?: any;
         "tableHeaders"?: any;
         "textOverflow"?: string;
+        "timezoneIcon"?: string;
         "totalCount"?: any;
         "updatedRows"?: any;
         "withoutPagination"?: boolean;
@@ -4673,9 +4687,13 @@ declare namespace LocalJSX {
         "timelineData"?: any;
     }
     interface InsTimelineItem {
+        "backgroundHexColor"?: string;
+        "borderHexColor"?: string;
         "color"?: string;
         "datetime"?: string;
+        "fontHexColor"?: string;
         "heading"?: string;
+        "hexColor"?: boolean;
         "icon"?: string;
         "inline"?: boolean;
         "solid"?: boolean;

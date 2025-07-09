@@ -39,6 +39,7 @@
 | `tableData`            | `table-data`            |             | `any`     | `[]`               |
 | `tableHeaders`         | `table-headers`         |             | `any`     | `[]`               |
 | `textOverflow`         | `text-overflow`         |             | `string`  | `""`               |
+| `timezoneIcon`         | `timezone-icon`         |             | `string`  | `"icon-clock"`     |
 | `totalCount`           | `total-count`           |             | `any`     | `0`                |
 | `updatedRows`          | `updated-rows`          |             | `any`     | `[]`               |
 | `withoutPagination`    | `without-pagination`    |             | `boolean` | `false`            |
@@ -105,6 +106,7 @@ Type: `Promise<void>`
 - [ins-select](../ins-select)
 - [ins-select-option](../ins-select-option)
 - [ins-input](../ins-input)
+- [ins-input-tooltip](../ins-input-tooltip)
 - [ins-checkbox](../ins-checkbox)
 - [ins-loader](../ins-loader)
 - [ins-button](../ins-button)
@@ -116,6 +118,7 @@ graph TD;
   ins-table --> ins-select
   ins-table --> ins-select-option
   ins-table --> ins-input
+  ins-table --> ins-input-tooltip
   ins-table --> ins-checkbox
   ins-table --> ins-loader
   ins-table --> ins-button

@@ -7,14 +7,18 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type      | Default     |
-| ---------- | ---------- | ----------- | --------- | ----------- |
-| `color`    | `color`    |             | `string`  | `undefined` |
-| `datetime` | `datetime` |             | `string`  | `undefined` |
-| `heading`  | `heading`  |             | `string`  | `undefined` |
-| `icon`     | `icon`     |             | `string`  | `undefined` |
-| `inline`   | `inline`   |             | `boolean` | `true`      |
-| `solid`    | `solid`    |             | `boolean` | `false`     |
+| Property             | Attribute              | Description | Type      | Default     |
+| -------------------- | ---------------------- | ----------- | --------- | ----------- |
+| `backgroundHexColor` | `background-hex-color` |             | `string`  | `undefined` |
+| `borderHexColor`     | `border-hex-color`     |             | `string`  | `undefined` |
+| `color`              | `color`                |             | `string`  | `undefined` |
+| `datetime`           | `datetime`             |             | `string`  | `undefined` |
+| `fontHexColor`       | `font-hex-color`       |             | `string`  | `undefined` |
+| `heading`            | `heading`              |             | `string`  | `undefined` |
+| `hexColor`           | `hex-color`            |             | `boolean` | `false`     |
+| `icon`               | `icon`                 |             | `string`  | `undefined` |
+| `inline`             | `inline`               |             | `boolean` | `true`      |
+| `solid`              | `solid`                |             | `boolean` | `false`     |
 
 
 ## Dependencies
