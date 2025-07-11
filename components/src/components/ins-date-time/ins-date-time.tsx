@@ -1,5 +1,6 @@
 import { h, Component, Element, Prop, Event, EventEmitter, Method } from "@stencil/core";
 import flatpickr from "flatpickr";
+import dayjs from "dayjs";
 
 @Component({
   tag: 'ins-date-time',
@@ -151,12 +152,21 @@ export class InsDateTime {
       minTime: this.minTime,
       maxTime: this.maxTime,
       onChange: this.insInputHandler.bind(this),
+      onValueUpdate: this.mode === "timepicker" ? this.insValueUpdate.bind(this) : null,
       appendTo: wrapper,
       defaultDate: this.value,
       onReady() {
         if (this.mode !== "datepicker") this.showTimeInput = true;
       }
     });
+  }
+
+  insValueUpdate(selected_dates, date_string) {
+    const timeFormat = this.noMeridiem ? 'HH:mm' : 'h:mm A';
+    if (dayjs(date_string, timeFormat).isValid()) {
+      this.selectedDates = selected_dates;
+      this.value = date_string;
+    }
   }
 
   insInputHandler(selected_dates, date_string) {
