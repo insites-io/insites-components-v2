@@ -13,10 +13,10 @@ import {
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
-import customParseFormat from "dayjs/plugin/customParseFormat"
+import customParseFormat from "dayjs/plugin/customParseFormat";
 
 dayjs.extend(utc);
-dayjs.extend(customParseFormat)
+dayjs.extend(customParseFormat);
 
 @Component({ tag: "ins-table" })
 export class InsTable {
@@ -544,7 +544,14 @@ export class InsTable {
               id={`${editedItem.id}_${tableHeader.label.split(" ").join("_")}`}
               data-id={editedItem.id}
               data-property={tableHeader.label}
-              value={tableHeader.hasTag && tableHeader.multipleTags ? typeof editedItem[tableHeader.label] === "object" && editedItem[tableHeader.label]?.length ? editedItem[tableHeader.label] : [] : editedItem[tableHeader.label]}
+              value={
+                tableHeader.hasTag && tableHeader.multipleTags
+                  ? typeof editedItem[tableHeader.label] === "object" &&
+                    editedItem[tableHeader.label]?.length
+                    ? editedItem[tableHeader.label]
+                    : []
+                  : editedItem[tableHeader.label]
+              }
               multiple={tableHeader.hasTag && tableHeader.multipleTags}
             >
               {tableHeader.selectOptions && tableHeader.selectOptions.length ? (
@@ -579,10 +586,10 @@ export class InsTable {
     }
   }
 
-  extractDate(dateString) {
-    // console.log(dateString.match(/\(([^)]+)\)/)?.[1])
-    // return dateString.match(/\(([^)]+)\)/)?.[1];
-    return dateString;
+  extractDate(dateString: string): string {
+    const trimmedString = dateString.trim();
+    const match = trimmedString.match(/\(([^)]+)\)/);
+    return match ? match[1] : trimmedString;
   }
 
   getDeviceTimezone() {
@@ -590,28 +597,33 @@ export class InsTable {
     const timezoneOffsetMinutes = date.getTimezoneOffset();
 
     const offsetHours = -timezoneOffsetMinutes / 60;
-    const offsetSign = offsetHours >= 0 ? '+' : '';
-    let formattedOffset = `UTC${offsetSign}${offsetHours}`;
+    const offsetMinutes = Math.abs(timezoneOffsetMinutes % 60);
+    const offsetSign = offsetHours >= 0 ? "+" : "-";
+    let formattedOffset = `UTC${offsetSign}${String(offsetHours).padStart(
+      2,
+      "0"
+    )}:${String(offsetMinutes).padStart(2, "0")}`;
 
-    if (offsetHours === 0) return `UTC / GMT`;
+    if (offsetHours === 0 && offsetMinutes === 0) return `UTC / GMT`;
 
     return formattedOffset;
   }
 
-  toUTC(date, format) {
+  toUTC(date: string, format: string): string {
     const localDate = dayjs(date, format);
     const utcDate = localDate.utc();
     const utcString = utcDate.format(format);
     return utcString;
   }
 
-  offsetDateTime(date, offset, format) {
-    const localDate = dayjs(date, format);
-    const utcDate = localDate.utc();
-    const offsetDate = utcDate
-      .utcOffset(offset?.split("@")[0] || "+0000")
-      .format(format);
-    return offsetDate;
+  offsetDateTime(localDate: string, offset: string, format: string): string {
+    const offsetParts = offset.split("@");
+    const offsetHours = parseInt(offsetParts[0]) / 100;
+
+    const localDateTime = dayjs(localDate, format);
+    const offsetDateTime = localDateTime.utcOffset(offsetHours);
+
+    return offsetDateTime.format(format);
   }
 
   rowDataRenderer(item, tableHeader) {
@@ -619,7 +631,9 @@ export class InsTable {
       const content = `<div class="overlay-tooltip">
         <div class="timezones">
           <p class="paragraph-medium main-text time-info">
-            Device Time (${tableHeader?.date_format?.device_time || this.getDeviceTimezone() })
+            Device Time • ${
+              tableHeader?.date_format?.device_time || this.getDeviceTimezone()
+            }
           </p>
           <p class="paragraph-medium time">
             ${this.extractDate(item[tableHeader.label])}
@@ -627,22 +641,21 @@ export class InsTable {
         </div>
         <div class="timezones">
           <p class="paragraph-medium main-text time-info">
-            Instance Time (
-            ${tableHeader?.date_format?.instance_time || "UTC / GMT"})
+            Instance Time • ${tableHeader?.date_format?.instance_time}
           </p>
           <p class="paragraph-medium time">
             ${this.offsetDateTime(
-              item[tableHeader.label],
+              this.extractDate(item[tableHeader.label]),
               tableHeader?.date_format?.instance_timezone,
               tableHeader?.date_format?.date_time_format
             )}
           </p>
         </div>
         <div class="timezones last">
-          <p class="paragraph-medium main-text time-info">UTC / GMT</p>
+          <p class="paragraph-medium main-text time-info">UTC</p>
           <p class="paragraph-medium time">
             ${this.toUTC(
-              item[tableHeader.label],
+              this.extractDate(item[tableHeader.label]),
               tableHeader?.date_format?.date_time_format
             )}
           </p>
@@ -655,8 +668,8 @@ export class InsTable {
             label={item[tableHeader.label]}
             icon={this.timezoneIcon}
             content={content}
-            trigger="mouseenter">
-          </ins-input-tooltip>
+            trigger="mouseenter"
+          ></ins-input-tooltip>
         </div>
       );
     }
@@ -672,39 +685,43 @@ export class InsTable {
     }
 
     if (tableHeader.image) {
-      return (
-        item[tableHeader.label] ?
-          <img class="ibt-image" alt={item[tableHeader.label]} src={item[tableHeader.label]} />
-          : ""
-      )
+      return item[tableHeader.label] ? (
+        <img
+          class="ibt-image"
+          alt={item[tableHeader.label]}
+          src={item[tableHeader.label]}
+        />
+      ) : (
+        ""
+      );
     }
 
-    return (
-      tableHeader.hasTag
-        && tableHeader.multipleTags ?
-          item[tableHeader.label].length > 0 && typeof item[tableHeader.label] === "object" ?
-          item[tableHeader.label].map((tag) => (
-            <span class={`ibt-link ibt-tag ${tag}`}>{tag}</span>
-          ))
-          :
-          <span class="ibt-link">-</span>
-        :
-        <span
-          class="ibt-link"
-          onClick={() => {
-            !this.rowActions.length
-              ? this.rowActionHandler(
-                  "rowItemClick",
-                  item,
-                  item[tableHeader.label]
-                )
-              : "";
-          }}
-        >
-          {tableHeader.type === "currency"
-            ? `${this.currency ? this.currency : "$"}${item[tableHeader.label]}`
-            : item[tableHeader.label]}
-        </span>
+    return tableHeader.hasTag && tableHeader.multipleTags ? (
+      item[tableHeader.label].length > 0 &&
+      typeof item[tableHeader.label] === "object" ? (
+        item[tableHeader.label].map((tag) => (
+          <span class={`ibt-link ibt-tag ${tag}`}>{tag}</span>
+        ))
+      ) : (
+        <span class="ibt-link">-</span>
+      )
+    ) : (
+      <span
+        class="ibt-link"
+        onClick={() => {
+          !this.rowActions.length
+            ? this.rowActionHandler(
+                "rowItemClick",
+                item,
+                item[tableHeader.label]
+              )
+            : "";
+        }}
+      >
+        {tableHeader.type === "currency"
+          ? `${this.currency ? this.currency : "$"}${item[tableHeader.label]}`
+          : item[tableHeader.label]}
+      </span>
     );
   }
 
@@ -1097,7 +1114,9 @@ export class InsTable {
                             ? `tagged ${
                                 item[`${tableHeader.label}_tagClass`]
                                   ? item[`${tableHeader.label}_tagClass`]
-                                  : tableHeader.multipleTags ? "multiple-tags" : item[tableHeader.label]
+                                  : tableHeader.multipleTags
+                                  ? "multiple-tags"
+                                  : item[tableHeader.label]
                               }`
                             : ""
                         }
@@ -1255,7 +1274,9 @@ export class InsTable {
                                   ? `tagged ${
                                       item[`${tableHeader.label}_tagClass`]
                                         ? item[`${tableHeader.label}_tagClass`]
-                                        : tableHeader.multipleTags ? "multiple-tags" : item[tableHeader.label]
+                                        : tableHeader.multipleTags
+                                        ? "multiple-tags"
+                                        : item[tableHeader.label]
                                     }`
                                   : ""
                               }`}

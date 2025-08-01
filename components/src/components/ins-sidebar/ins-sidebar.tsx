@@ -157,8 +157,8 @@ export class InsSidebar {
         return true;
 
       } else if (formattedRoute
-        && currentHash.includes(formattedRoute)
-        && currentHash.includes("?reroute=")
+        && currentHash?.includes(formattedRoute)
+        && currentHash?.includes("?reroute=")
         && this.sidebarItemEls[i].app
       ){
         this.reroute = true;

@@ -25,7 +25,7 @@ export class InsTab {
       this.insTabChange.emit({
         event: event,
         index: index,
-        label: this.insTabHeaders[index].innerText.trim()
+        label: this.insTabHeaders[index]?.innerText?.trim()
       });
     }
   }
