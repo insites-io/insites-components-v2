@@ -79,8 +79,9 @@ ins-drawer .ins-drawer-wrap .ins-content {
   position: fixed;
   z-index: 9999;
   width: 420px;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  padding-bottom: 95px;
+  max-height: 100dvh;
   box-sizing: border-box;
   transition: right .35s;
   -webkit-transition: right .35s;

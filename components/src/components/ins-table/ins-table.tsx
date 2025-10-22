@@ -52,6 +52,9 @@ export class InsTable {
   @Prop({ mutable: true }) pageSize: number = 10;
   @Prop({ mutable: true }) pageSizeOptions: any = [10, 20, 50];
   @Prop({ mutable: true }) totalCount: any = 0;
+  @Prop({ mutable: true }) isTotalCountEstimated: boolean = false;
+  @Prop({ mutable: true }) totalCountLoading: boolean = false;
+  @Prop({ mutable: true }) totalCountLoadingFailed: boolean = false;
   @Prop({ mutable: true }) bulkActions: any = [];
   @Prop({ mutable: true }) rowActions: any = [];
   @Prop({ mutable: true }) rowActionsSettings: any;
@@ -163,7 +166,11 @@ export class InsTable {
   }
 
   numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    let formatted = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    if (this.isTotalCountEstimated) {
+      formatted = `~${formatted}`;
+    }
+    return formatted;
   }
 
   @Listen("insInput")
@@ -356,8 +363,17 @@ export class InsTable {
     to = to > this.totalCount ? this.totalCount : to;
 
     if (!this.staticTable && !this.tableData.length) from = 0;
-    this.pageInfo =
-      from + "-" + to + " of " + this.numberWithCommas(this.totalCount);
+
+    let totalCountDisplay;
+    if (this.totalCountLoading) {
+      totalCountDisplay = "loading...";
+    } else if (this.totalCountLoadingFailed) {
+      totalCountDisplay = "loading failed";
+    } else {
+      totalCountDisplay = this.numberWithCommas(this.totalCount);
+    }
+
+    this.pageInfo = from + "-" + to + " of " + totalCountDisplay;
   }
 
   sortTable(column) {
@@ -1464,17 +1480,21 @@ export class InsTable {
                     <i class={`icon-angle-right`}></i>
                   </button>
 
-                  <button
-                    name="button-table_last"
-                    class="last button-table_last"
-                    onClick={() => this.pageNumberChangeHandler("last")}
-                    disabled={
-                      this.pageNumber * this.pageSize >= this.totalCount
-                    }
-                    aria-label="last"
-                  >
-                    <i class={`icon-chevrons-right`}></i>
-                  </button>
+                  {!this.isTotalCountEstimated &&
+                    !this.totalCountLoading &&
+                    !this.totalCountLoadingFailed && (
+                    <button
+                      name="button-table_last"
+                      class="last button-table_last"
+                      onClick={() => this.pageNumberChangeHandler("last")}
+                      disabled={
+                        this.pageNumber * this.pageSize >= this.totalCount
+                      }
+                      aria-label="last"
+                    >
+                      <i class={`icon-chevrons-right`}></i>
+                    </button>
+                  )}
                 </div>
               </div>
             )}

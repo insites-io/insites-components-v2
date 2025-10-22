@@ -697,7 +697,7 @@ ins-table .timezone-overlay-container ins-input-tooltip .ins-input-tooltip .tool
 
 ins-table .timezone-overlay-container ins-input-tooltip .ins-input-tooltip,
 ins-table .timezone-overlay-container ins-input-tooltip .ins-input-tooltip:hover {
-  color: var(--ins-color-ink);
+  color: var(--ins-text-1);
   font-size: 14px;
   word-wrap: break-word;
   font-family: var(--ins-font-family);
