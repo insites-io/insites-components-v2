@@ -32,6 +32,7 @@ export class InsGallery {
   progress;
   viewports;
   hasLoad = false;
+  currentThumbIndex: number = 0; // Track current thumb for non-slidable slider thumbs
 
   @Listen("insGalleryUpdate")
   insUpdateSrcHandler(e) {
@@ -46,6 +47,9 @@ export class InsGallery {
     if (i !== undefined) this.setProgress(i);
     this.loading();
     this.imgEl.src = img;
+    if (this.thumbnailLayout === "slider" && !this.slidable) {
+      this.currentThumbIndex = i !== undefined ? i : 0;
+    }
   }
 
   updateSlide(i, img) {
@@ -69,7 +73,10 @@ export class InsGallery {
     let selector = ".ins-gallery_current-image img";
     this.imgEl = this.el.querySelector(selector);
     this.thumbs[0].activate();
-    this.updateSrc(this.thumbs[0].image);
+    this.updateSrc(this.thumbs[0].image, 0);
+    if (this.thumbnailLayout === "slider" && !this.slidable) {
+      this.currentThumbIndex = 0;
+    }
   }
 
   setProgress(i) {
@@ -88,7 +95,7 @@ export class InsGallery {
     if (this.slidable && !this.zoomable) {
       this.initSlider();
     }
-    if (this.thumbnailLayout === "slider" || this.slidable) {
+    if (this.thumbnailLayout === "slider") {
       this.initSliderThumbs();
     }
     this.progress = this.el.querySelector(".ins-gallery_progress");
@@ -311,11 +318,49 @@ export class InsGallery {
   }
 
   prevSlideThumb() {
-    this.slider.prev();
+    // If slidable, control the main slider as before
+    if (this.slidable && this.slider) {
+      this.slider.prev();
+      return;
+    }
+    // If thumbnailLayout is slider and not slidable, control the thumbnail slider and update main image
+    if (this.thumbnailLayout === "slider" && this.sliderThumbs && !this.slidable) {
+      this.sliderThumbs.prev();
+      // Update currentThumbIndex and wrap around if needed
+      if (this.currentThumbIndex > 0) {
+        this.currentThumbIndex--;
+      } else {
+        this.currentThumbIndex = this.thumbs.length - 1;
+      }
+      // Activate the thumb and update the main image
+      if (this.thumbs[this.currentThumbIndex]) {
+        this.thumbs[this.currentThumbIndex].activate();
+        this.updateSrc(this.thumbs[this.currentThumbIndex].image, this.currentThumbIndex);
+      }
+    }
   }
 
   nextSlideThumb() {
-    this.slider.next();
+    // If slidable, control the main slider as before
+    if (this.slidable && this.slider) {
+      this.slider.next();
+      return;
+    }
+    // If thumbnailLayout is slider and not slidable, control the thumbnail slider and update main image
+    if (this.thumbnailLayout === "slider" && this.sliderThumbs && !this.slidable) {
+      this.sliderThumbs.next();
+      // Update currentThumbIndex and wrap around if needed
+      if (this.currentThumbIndex < this.thumbs.length - 1) {
+        this.currentThumbIndex++;
+      } else {
+        this.currentThumbIndex = 0;
+      }
+      // Activate the thumb and update the main image
+      if (this.thumbs[this.currentThumbIndex]) {
+        this.thumbs[this.currentThumbIndex].activate();
+        this.updateSrc(this.thumbs[this.currentThumbIndex].image, this.currentThumbIndex);
+      }
+    }
   }
 
   generateThumbs() {

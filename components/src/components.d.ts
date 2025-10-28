@@ -1282,6 +1282,7 @@ export namespace Components {
         "hasLoad": string;
         "heading": string;
         "initialSearch": string;
+        "isTotalCountEstimated": boolean;
         "load": boolean;
         "loaderIcon": any;
         "loaderImageSource": string;
@@ -1308,6 +1309,8 @@ export namespace Components {
         "textOverflow": string;
         "timezoneIcon": string;
         "totalCount": any;
+        "totalCountLoading": boolean;
+        "totalCountLoadingFailed": boolean;
         "updatePageInfo": () => Promise<void>;
         "updatedRows": any;
         "withoutPagination": boolean;
@@ -4590,6 +4593,7 @@ declare namespace LocalJSX {
         "hasLoad"?: string;
         "heading"?: string;
         "initialSearch"?: string;
+        "isTotalCountEstimated"?: boolean;
         "load"?: boolean;
         "loaderIcon"?: any;
         "loaderImageSource"?: string;
@@ -4621,6 +4625,8 @@ declare namespace LocalJSX {
         "textOverflow"?: string;
         "timezoneIcon"?: string;
         "totalCount"?: any;
+        "totalCountLoading"?: boolean;
+        "totalCountLoadingFailed"?: boolean;
         "updatedRows"?: any;
         "withoutPagination"?: boolean;
         "withoutSearch"?: boolean;

@@ -8344,8 +8344,9 @@ ins-drawer .ins-drawer-wrap .ins-content {
   position: fixed;
   z-index: 9999;
   width: 420px;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  padding-bottom: 95px;
   box-sizing: border-box;
   transition: right .35s;
   -webkit-transition: right .35s;
@@ -11517,7 +11518,7 @@ ins-table .timezone-overlay-container ins-input-tooltip .ins-input-tooltip .tool
 
 ins-table .timezone-overlay-container ins-input-tooltip .ins-input-tooltip,
 ins-table .timezone-overlay-container ins-input-tooltip .ins-input-tooltip:hover {
-  color: var(--ins-color-ink);
+  color: var(--ins-text-1);
   font-size: 14px;
   word-wrap: break-word;
   font-family: var(--ins-font-family);
