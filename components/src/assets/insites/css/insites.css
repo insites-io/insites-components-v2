@@ -13288,15 +13288,6 @@ ins-input-search .ins-input-search.multiple-search.drop-up.activated .ins-input-
   position: absolute
 }
 
-/* ins-input-search[multiple="true"] .ins-input-search.drop-up.active .ins-input-search-container.has-value,
-ins-input-search[multiple] .ins-input-search.drop-up.active .ins-input-search-container.has-value,
-ins-input-search[multiple="true"] .ins-input-search.drop-up.activated .ins-input-search-container.has-value,
-ins-input-search[multiple] .ins-input-search.drop-up.activated .ins-input-search-container.has-value {
-  border-radius: 0 0 4px 4px;
-  border-top-color: transparent;
-  border-bottom-color: var(--ins-color-blue);
-} */
-
 ins-input-search .ins-input-search.multiple-search.drop-up.active .ins-input-search-container,
 ins-input-search .ins-input-search.multiple-search.drop-up.activated .ins-input-search-container {
   border-radius: 0 0 4px 4px;
@@ -13324,13 +13315,6 @@ ins-input-search .ins-input-search.multiple-search.has-error.drop-up.active.no-r
 ins-input-search .ins-input-search.multiple-search.has-error.drop-up.activated.no-results .ins-input-search-container.has-value .ins-input-search-text {
   border-top-color: transparent;
 }
-
-/* ins-input-search[multiple="true"] .ins-input-search.has-error.drop-up.active .ins-input-search-container.has-value,
-ins-input-search[multiple] .ins-input-search.has-error.drop-up.active .ins-input-search-container.has-value,
-ins-input-search[multiple="true"] .ins-input-search.has-error.drop-up.activated .ins-input-search-container.has-value,
-ins-input-search[multiple] .ins-input-search.has-error.drop-up.activated .ins-input-search-container.has-value {
-  border-bottom-color: var(--ins-color-negative);
-} */
 
 ins-input-search .ins-input-search.multiple-search.has-error.drop-up.active .ins-input-search-container,
 ins-input-search .ins-input-search.multiple-search.has-error.drop-up.activated .ins-input-search-container {
