@@ -669,6 +669,8 @@ export namespace Components {
         "value": string;
     }
     interface InsInputSearch {
+        "addPx": number;
+        "blankSearch": boolean;
         "checkLoad": boolean;
         "checkValue": boolean;
         "description": string;
@@ -3993,6 +3995,8 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface InsInputSearch {
+        "addPx"?: number;
+        "blankSearch"?: boolean;
         "checkLoad"?: boolean;
         "checkValue"?: boolean;
         "description"?: string;

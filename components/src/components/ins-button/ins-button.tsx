@@ -177,7 +177,7 @@ export class InsButton {
     if (this.options){
 
       return (
-        <div class="ins-button-options-wrap"
+        <div class={`ins-button-options-wrap${this.optionsOnly ? ' options-only' : ''}`}
           onClick={e => this.rippleHandler(e, this.target)}>
 
           <div class="button-wrap">

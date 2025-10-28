@@ -347,7 +347,9 @@
       <br/>
 <!-- value='[{ "labels": "Test 1", "values": "1" },{ "label": "Test 1222", "value": "1" },{"value":"asjkdhasjkd"}]' -->
       <ins-input-search html-description description="<i>I tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>" id="insSearchEl1" label="Single Value" placeholder="Search One" tooltip="Test Tooltip" error-message="Test Error"></ins-input-search>
-      <ins-input-search value='[{ "labels": "Test 1", "values": "1" },{ "label": "Test 1222", "value": "1" },{"value":"asjkdhasjkd"}]' id="insSearchEl2" html-description description="<i>I tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>" label="Multiple Value" placeholder="Search Multiple" tooltip="Test Tooltip" error-message="Test Error" multiple has-error></ins-input-search>
+      <!-- <ins-input-search value='[{ "labels": "Test 1", "values": "1" },{ "label": "Test 1222", "value": "1" },{"value":"asjkdhasjkd"}]' id="insSearchEl2" html-description description="<i>I tried it before but did not work, I don't know how it did now, maybe a new version update fixed it. Thank you</i>" label="Multiple Value" placeholder="Search Multiple" tooltip="Test Tooltip" error-message="Test Error" multiple has-error></ins-input-search> -->
+      <ins-input-search  id="insSearchEl2" label="Multiple Value" placeholder="Search Multiple" blank-search tooltip="Test Tooltip" error-message="Test Error" multiple></ins-input-search>
+
       <ins-input-search label="Multiple Value" placeholder="Search Multiple" tooltip="Test Tooltip" disabled multiple value='[{ "labels": "Test 1", "values": "1" },{ "label": "Test 1222", "value": "1" },{"value":"asjkdhasjkd"}]'></ins-input-search>
 
       <script>
@@ -421,6 +423,14 @@
         // setTimeout(() => {
         //   insSearchEl2.setValue([{ "labels": "Test 1", "values": "1" },{ "label": "Test 1222", "value": "1" },{"value":"asjkdhasjkd"}]);
         // }, 300);
+
+        insSearchEl1.addEventListener('insInput', event => {
+          console.log(event.detail);
+        });
+
+        insSearchEl2.addEventListener('insInput', event => {
+          console.log(event.detail);
+        });
 
         insSearchEl2.addEventListener('insSearch', event => {
           if (event.detail.value === "test") {

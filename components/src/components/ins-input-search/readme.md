@@ -9,6 +9,8 @@
 
 | Property          | Attribute          | Description | Type      | Default               |
 | ----------------- | ------------------ | ----------- | --------- | --------------------- |
+| `addPx`           | `add-px`           |             | `number`  | `35`                  |
+| `blankSearch`     | `blank-search`     |             | `boolean` | `false`               |
 | `checkLoad`       | `check-load`       |             | `boolean` | `false`               |
 | `checkValue`      | `check-value`      |             | `boolean` | `false`               |
 | `description`     | `description`      |             | `string`  | `""`                  |
