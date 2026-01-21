@@ -9667,11 +9667,14 @@ body.mini ins-sidebar:not(.style-guide) .sidebar .sidebar-action>div {
   width: 100%
 }
 
-body.mini ins-sidebar:not(.style-guide) .sidebar-items-wrap>ins-sidebar-item>.ins-sidebar-item-wrap.show-tooltip {
-  position: relative
+body.mini ins-sidebar:not(.style-guide) .sidebar-items-wrap>ins-sidebar-item>.ins-sidebar-item-wrap.show-tooltip,
+body.mini ins-sidebar:not(.style-guide) .sidebar-items-wrap>div>ins-sidebar-item>.ins-sidebar-item-wrap.show-tooltip {
+  position: relative;
+  overflow: initial;
 }
 
-body.mini ins-sidebar:not(.style-guide) .sidebar-items-wrap>ins-sidebar-item>.ins-sidebar-item-wrap.show-tooltip>.ins-sidebar-item-tooltip {
+body.mini ins-sidebar:not(.style-guide) .sidebar-items-wrap>ins-sidebar-item>.ins-sidebar-item-wrap.show-tooltip>.ins-sidebar-item-tooltip,
+body.mini ins-sidebar:not(.style-guide) .sidebar-items-wrap>div>ins-sidebar-item>.ins-sidebar-item-wrap.show-tooltip>.ins-sidebar-item-tooltip {
   display: block
 }
 
@@ -10504,7 +10507,8 @@ ins-instances .active-instance.has-items .icons-wrap {
   height: calc(100% - 56px)
 }
 
-.sidebar .sidebar-items-wrap>ins-sidebar-item>.no-icon .fas {
+.sidebar .sidebar-items-wrap>ins-sidebar-item>.no-icon .fas,
+.sidebar .sidebar-items-wrap>div>ins-sidebar-item>.no-icon .fas {
   border: solid 1px #1e86e3;
   height: 12px;
   width: 12px;

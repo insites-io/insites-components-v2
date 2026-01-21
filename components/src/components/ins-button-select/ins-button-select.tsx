@@ -33,6 +33,7 @@ export class InsButtonSelect {
     @Prop({ mutable: true }) hasError: boolean = false;
     @Prop({ mutable: true }) errorMessage: string = "";
     @Prop({ mutable: true }) blankLabel: boolean = false;
+    @Prop({ mutable: true }) noLabel: boolean = false;
     @Prop({ mutable: true }) labelKey: string = "";
     @Prop({ mutable: true }) valueKey: string = "";
     @Prop({ mutable: true }) optionsData: Array<any> = [];
@@ -473,7 +474,7 @@ export class InsButtonSelect {
 
                 <div class={`ins-select-label-wrap  ${!this.disabled? 'ripple' : ''}`}
                     onClick={() => this.expandSection()}>
-                    { this.label } :
+                    { !this.noLabel ? this.label + " :" : "" }
                     <span class="label-of-value">{this.labelOfValue ? this.labelOfValue : this.placeholder}</span>
                     { this.renderSelections() }
 
@@ -550,7 +551,7 @@ export class InsButtonSelect {
         return (
             <div class={`ins-select-label-wrap  ${!this.disabled? 'ripple' : ''}`}
                 onClick={() => this.expandSection()}>
-                { this.label }:
+                { !this.noLabel ? this.label + " :" : "" }
                 <span>{this.blankLabel && !this.value ? "" : this.labelOfValue ? this.labelOfValue : this.placeholder}</span>
                 { this.renderCaret() }
             </div>

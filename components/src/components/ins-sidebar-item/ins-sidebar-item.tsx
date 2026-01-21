@@ -18,6 +18,7 @@ export class InsSidebarItem {
   @Prop({mutable: true}) landingPage: boolean = false;
   @Prop({ mutable: true }) load: boolean = false;
   @Prop({ mutable: true }) checkLoad: boolean = false;
+  @Prop({ mutable: true }) tooltip: boolean = false;
   // @Prop({ context: 'formatUrl' }) formatUrl: any = () => {};
   // @Prop({ context: 'addRippleEffect' }) addRippleEffect: any;
 
@@ -270,12 +271,12 @@ export class InsSidebarItem {
 
           <div class="ins-ripple-button">
 
-            <a onClick={() => this.showSubMenu()} class="ins-ripple-link">
+            <a onClick={() => this.showSubMenu()}
+              class="ins-ripple-link"
+              onMouseEnter={() => this.toggleTooltip(true)}
+              onMouseLeave={() => this.toggleTooltip(false)}>
 
-              <i class={`fas ${this.icon}`}
-                onMouseEnter={() => this.toggleTooltip(true)}
-                onMouseLeave={() => this.toggleTooltip(false)}>
-              </i>
+              <i class={`fas ${this.icon}`}></i>
               <span class="ins-sidebar-item-label">{this.label}</span>
               <i class="fas icon-chevron-right"></i>
             </a>
@@ -309,29 +310,27 @@ export class InsSidebarItem {
             <div class="ins-ripple-button">
               {this.app ?
                 <a class="ins-ripple-link"
-                  href={`${this.formattedRoute}`}>
+                  href={`${this.formattedRoute}`}
+                  onMouseEnter={() => this.toggleTooltip(true)}
+                  onMouseLeave={() => this.toggleTooltip(false)}>
 
-                  <i class={`fas ${this.icon}`}
-                    onMouseEnter={() => this.toggleTooltip(true)}
-                    onMouseLeave={() => this.toggleTooltip(false)}>
-
-                  </i>
+                  <i class={`fas ${this.icon}`}></i>
                   <span class="ins-sidebar-item-label">{this.label}</span>
                 </a>
                 : this.externalLink ?
-                  <a class="ins-ripple-link"
-                    href={`${this.formattedRoute}`} target="_blank">
+                  <a class="ins-ripple-link updated"
+                    href={`${this.formattedRoute}`} target="_blank"
+                    onMouseEnter={() => this.toggleTooltip(true)}
+                    onMouseLeave={() => this.toggleTooltip(false)}>
 
-                    <i class={`fas ${this.icon}`}
-                      onMouseEnter={() => this.toggleTooltip(true)}
-                      onMouseLeave={() => this.toggleTooltip(false)}>
-
-                    </i>
+                    <i class={`fas ${this.icon}`}></i>
                     <span class="ins-sidebar-item-label">{this.label}<span class={`ext-icon ${this.externalLinkIcon}`}></span></span>
                   </a>
                   :
                   <a class="ins-ripple-link"
-                  href={this.link ? this.link : ''}>
+                  href={this.link ? this.link : ''}
+                  onMouseEnter={() => this.toggleTooltip(true)}
+                  onMouseLeave={() => this.toggleTooltip(false)}>
 
                   <i class={`fas ${this.icon}`}></i>
                   <span class="ins-sidebar-item-label">{this.label}</span>

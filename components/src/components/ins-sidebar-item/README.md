@@ -20,6 +20,7 @@
 | `landingPage`      | `landing-page`       |             | `boolean` | `false`                  |
 | `link`             | `link`               |             | `any`     | `''`                     |
 | `load`             | `load`               |             | `boolean` | `false`                  |
+| `tooltip`          | `tooltip`            |             | `boolean` | `false`                  |
 | `withSubmenu`      | `with-submenu`       |             | `boolean` | `false`                  |
 
 

@@ -134,6 +134,7 @@ export namespace Components {
         "lookupScrolling": boolean;
         "multiple": boolean;
         "name": string;
+        "noLabel": boolean;
         "optionsData": Array<any>;
         "placeholder": string;
         "readonly": boolean;
@@ -1202,6 +1203,7 @@ export namespace Components {
         "load": boolean;
         "routePageHandler": (e: any) => Promise<{ crumbs: any[]; }>;
         "showSubMenu": () => Promise<boolean>;
+        "tooltip": boolean;
         "withSubmenu": boolean;
     }
     interface InsSort {
@@ -3477,6 +3479,7 @@ declare namespace LocalJSX {
         "lookupScrolling"?: boolean;
         "multiple"?: boolean;
         "name"?: string;
+        "noLabel"?: boolean;
         "onDidLoad"?: (event: InsButtonSelectCustomEvent<any>) => void;
         "onInsChange"?: (event: InsButtonSelectCustomEvent<any>) => void;
         "onInsDynamicSubmit"?: (event: InsButtonSelectCustomEvent<any>) => void;
@@ -4506,6 +4509,7 @@ declare namespace LocalJSX {
         "load"?: boolean;
         "onDidLoad"?: (event: InsSidebarItemCustomEvent<any>) => void;
         "onRoutePage"?: (event: InsSidebarItemCustomEvent<any>) => void;
+        "tooltip"?: boolean;
         "withSubmenu"?: boolean;
     }
     interface InsSort {

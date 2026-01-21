@@ -32,6 +32,7 @@
 | `lookupScrolling`       | `lookup-scrolling`       |             | `boolean` | `false`            |
 | `multiple`              | `multiple`               |             | `boolean` | `false`            |
 | `name`                  | `name`                   |             | `string`  | `undefined`        |
+| `noLabel`               | `no-label`               |             | `boolean` | `false`            |
 | `optionsData`           | --                       |             | `any[]`   | `[]`               |
 | `placeholder`           | `placeholder`            |             | `string`  | `""`               |
 | `readonly`              | `readonly`               |             | `boolean` | `false`            |

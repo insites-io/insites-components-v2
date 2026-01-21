@@ -45,10 +45,10 @@
 
 <body>
   <ins-sidebar>
-    <ins-sidebar-item label="Route 1" link="#/route-1" icon="icon-move-to-folder"></ins-sidebar-item>
+    <ins-sidebar-item label="Route 1" link="#/route-1" icon="icon-move-to-folder" tooltip></ins-sidebar-item>
     <ins-sidebar-item label="Route 2" link="#/route-2" icon="icon-codepen"></ins-sidebar-item>
 
-    <ins-sidebar-item label="Route 3 Route 3 Route 3 Route 3 Route 3 Route 3 Route 3 Route 3" with-submenu icon="icon-github">
+    <ins-sidebar-item label="Route 3" with-submenu icon="icon-github">
       <ins-sidebar-item label="Route 4" link="#/route-4"></ins-sidebar-item>
       <ins-sidebar-item label="Route 5" link="#/route-5"></ins-sidebar-item>
     </ins-sidebar-item>
@@ -539,7 +539,7 @@
         }, 200);
       </script>
 
-      <ins-button-select id="insSelectEl" label-key="name" value-key="value">
+      <ins-button-select label="Button Select" no-label id="insSelectEl" label-key="name" value-key="value">
         <ins-button-select-option
         label="Static 2"
         value="Static 2">
