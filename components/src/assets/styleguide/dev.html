@@ -125,7 +125,7 @@
   id="fieldTable4"
   default-bulk-action="Update"
   no-wrap
-  heading="Field Table"
+  heading="Field Table 4"
   page-size="3"
   page-number="1"
   without-search>
@@ -236,11 +236,12 @@
       Disable: ["Enable", "Archive", "Delete"],
     },
   };
-
+  //
   // set table headers
   fieldTable4.tableHeaders = [
     { label: 'Name', type: "string", editable: false, hasImage: true },
-    { label: 'Birthday', type: "date", editable: false },
+    { label: 'Birthday', type: "date", editable: false, timezone_overlay: { date_format: "MM/DD/YYYY", time_format: "h:mm A", time: "12:00 AM", instance_time: "UTC-03", instance_timezone: "-0330@Newfoundland" } },
+    { label: 'Birth Date Time', type: "date_time", editable: false, date_format: { date_time_format: "MM/DD/YYYY h:mm A", instance_time: "UTC-03", instance_timezone: "-0330@Newfoundland" } },
     { label: 'Status', type: "select", hasTag: true, multipleTags: true, editable: false, selectOptions: ['Active', 'Inactive'] },
     { label: 'Image', image: true },
     { label: 'Only Status', type: "select", hasTag: true }
@@ -248,9 +249,9 @@
 
   // set table data
   fieldTable4.tableData = [
-    { "id": "sample-001", "Name": "John Doe", "Birthday": "01/02/1990", "Status": ["Active", "Inactive"],"Image": "https://placehold.co/1600x400", "Only Status": "Enable" },
-    { "id": "sample-002", "Name": "Derek de Guzman", "Birthday": "11/29/1990", "Status": ["Inactive"], "Image": "https://placehold.co/600x1400", "Only Status": "Disable" },
-    { "id": "sample-003", "Name": "Juan Daw", "Birthday": "02/02/1992", "Status": null, "Image": null, "Only Status": null }
+    { "id": "sample-001", "Name": "John Doe", "Birthday": "07/31/2025", "Birth Date Time": "01/02/1990 3:05 AM", "Status": ["Active", "Inactive"],"Image": "https://placehold.co/1600x400", "Only Status": "Enable" },
+    { "id": "sample-002", "Name": "Derek de Guzman", "Birthday": "11/29/1990", "Birth Date Time": "11/29/1990 6:10 PM", "Status": ["Inactive"], "Image": "https://placehold.co/600x1400", "Only Status": "Disable" },
+    { "id": "sample-003", "Name": "Juan Daw", "Birthday": "02/02/1992", "Birth Date Time": "02/02/1992 7:15 AM", "Status": null, "Image": null, "Only Status": null }
   ];
 
   // add table event listener
@@ -1390,7 +1391,7 @@ Ready to start writing?  Either start changing stuff on the left or
   // set table headers
   fieldTable.tableHeaders = [
     { label: 'Name', type: "string", editable: true, hasImage: true },
-    { label: 'Birthday', type: "date", editable: true },
+    { label: 'Birthday', type: "date", editable: true, date_format: { date_time_format: "YYYY.MM.DD h:mm A", instance_time: "UTC-03", instance_timezone: "-0330@Newfoundland" } },
     { label: 'Status', type: "select", hasTag: true, multipleTags: true, editable: true, selectOptions: ['Active', 'Inactive'] },
     { label: 'Image', image: true },
     { label: 'Only Status', type: "select", hasTag: true }

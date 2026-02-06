@@ -642,28 +642,42 @@ export class InsTable {
     return offsetDateTime.format(format);
   }
 
+  setDefaultTime(timeValue, timeFormat) {
+    if (timeValue) return timeValue;
+
+    return dayjs('00:00:00', 'HH:mm:ss').format(timeFormat);
+  }
+
   rowDataRenderer(item, tableHeader) {
-    if (tableHeader.type === "date_time" || tableHeader.type === "datetime") {
+    if ((tableHeader.type === "date" || tableHeader.type === "date_time" || tableHeader.type === "datetime")
+      && (tableHeader.date_format || tableHeader.timezone_overlay)) {
+      let timezoneOverlay = tableHeader.timezone_overlay || tableHeader.date_format;
+      let dateValue = item[tableHeader.label];
+      let dateTimeFormat = timezoneOverlay?.date_time_format;
+
+      if (timezoneOverlay.date_format && timezoneOverlay.time_format) dateTimeFormat = `${timezoneOverlay.date_format} ${timezoneOverlay.time_format}`;
+      if (tableHeader.type === "date" && timezoneOverlay.time_format) dateValue = `${dateValue} ${this.setDefaultTime(timezoneOverlay.time, timezoneOverlay.time_format)}`;
+
       const content = `<div class="overlay-tooltip">
         <div class="timezones">
           <p class="paragraph-medium main-text time-info">
             Device Time • ${
-              tableHeader?.date_format?.device_time || this.getDeviceTimezone()
+              timezoneOverlay?.device_time || this.getDeviceTimezone()
             }
           </p>
           <p class="paragraph-medium time">
-            ${this.extractDate(item[tableHeader.label])}
+            ${this.extractDate(dateValue)}
           </p>
         </div>
         <div class="timezones">
           <p class="paragraph-medium main-text time-info">
-            Instance Time • ${tableHeader?.date_format?.instance_time}
+            Instance Time • ${timezoneOverlay?.instance_time}
           </p>
           <p class="paragraph-medium time">
             ${this.offsetDateTime(
-              this.extractDate(item[tableHeader.label]),
-              tableHeader?.date_format?.instance_timezone,
-              tableHeader?.date_format?.date_time_format
+              this.extractDate(dateValue),
+              timezoneOverlay?.instance_timezone,
+              dateTimeFormat
             )}
           </p>
         </div>
@@ -671,8 +685,8 @@ export class InsTable {
           <p class="paragraph-medium main-text time-info">UTC</p>
           <p class="paragraph-medium time">
             ${this.toUTC(
-              this.extractDate(item[tableHeader.label]),
-              tableHeader?.date_format?.date_time_format
+              this.extractDate(dateValue),
+              dateTimeFormat
             )}
           </p>
         </div>
