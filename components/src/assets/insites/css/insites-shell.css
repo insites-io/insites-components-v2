@@ -368,6 +368,7 @@ html {
 
 .ins-sidebar-item-tooltip {
   display: none;
+  pointer-events: none;
   position: absolute;
   white-space: nowrap;
   opacity: 1;
