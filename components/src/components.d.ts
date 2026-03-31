@@ -2983,6 +2983,7 @@ declare global {
     interface HTMLInsSidebarItemElementEventMap {
         "routePage": any;
         "didLoad": any;
+        "didHover": any;
     }
     interface HTMLInsSidebarItemElement extends Components.InsSidebarItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLInsSidebarItemElementEventMap>(type: K, listener: (this: HTMLInsSidebarItemElement, ev: InsSidebarItemCustomEvent<HTMLInsSidebarItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4507,6 +4508,7 @@ declare namespace LocalJSX {
         "landingPage"?: boolean;
         "link"?: any;
         "load"?: boolean;
+        "onDidHover"?: (event: InsSidebarItemCustomEvent<any>) => void;
         "onDidLoad"?: (event: InsSidebarItemCustomEvent<any>) => void;
         "onRoutePage"?: (event: InsSidebarItemCustomEvent<any>) => void;
         "tooltip"?: boolean;

@@ -1,1 +1,0 @@
-import{r as s,h as c}from"./p-9d4c1737.js";const e=class{constructor(c){s(this,c)}render(){return c("div",{key:"f118260d15f6a4bee4c47bf1433a0e373d298b6c",class:"ins-page-wrap"},c("slot",{key:"13ca4398d076454659786cfd7411c901499704fb"}))}};export{e as ins_page}
