@@ -1,1 +1,0 @@
-import{r as c,h as a}from"./p-9d4c1737.js";const e=class{constructor(a){c(this,a)}render(){return a("div",{key:"a70f3a52ca4e3a5b44d06cfc8feaa2c5b9a789cc"},a("slot",{key:"877532bf0e7dc817a9196c9b5c86d1d8b8f13e4d"}))}};export{e as ins_accordion_item_heading}

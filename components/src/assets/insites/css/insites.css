@@ -9678,6 +9678,10 @@ body.mini ins-sidebar:not(.style-guide) .sidebar-items-wrap>div>ins-sidebar-item
   display: block
 }
 
+body.mini ins-sidebar:not(.style-guide)>.ins-sidebar.show-tooltip .ins-sidebar-item-tooltip {
+  display: block
+}
+
 body.mini .ins-renderer-wrap.content {
   margin-left: 50px;
   width: calc(100% - 50px)
@@ -10464,6 +10468,20 @@ ins-instances .active-instance.has-items .icons-wrap {
   }
 }
 
+/* .ins-sidebar .ins-sidebar-tooltip {
+  display: none;
+}
+
+.ins-sidebar.show-tooltip .ins-sidebar-tooltip {
+  position: fixed;
+  background: #2c3148;
+  color: var(--ins-color-white);
+  padding: 7px 10px;
+  font-size: 12px;
+  border-radius: 2px;
+  z-index: 9999
+} */
+
 .sidebar {
   width: 240px;
   height: 100vh;
@@ -10504,7 +10522,9 @@ ins-instances .active-instance.has-items .icons-wrap {
 .sidebar .sidebar-items-wrap {
   position: relative;
   padding: 16px 0;
-  height: calc(100% - 56px)
+  height: calc(100% - 109px);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .sidebar .sidebar-items-wrap>ins-sidebar-item>.no-icon .fas,
@@ -10770,18 +10790,14 @@ html {
 
 .ins-sidebar-item-tooltip {
   display: none;
-  pointer-events: none;
-  position: absolute;
+  position: fixed;
   white-space: nowrap;
   opacity: 1;
-  transition-delay: 1s;
   background: #2c3148;
   color: var(--ins-color-white);
   padding: 7px 10px;
   font-size: 12px;
   border-radius: 2px;
-  left: 50%;
-  top: 75%;
   height: auto;
   opacity: .95;
   z-index: 9999

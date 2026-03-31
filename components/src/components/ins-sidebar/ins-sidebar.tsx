@@ -207,6 +207,18 @@ export class InsSidebar {
     }
   }
 
+  @Listen('didHover')
+  didHoverEventHandler(event: CustomEvent) {
+    const insSidebarContainerEl = this.insSidebarEl.querySelector('.ins-sidebar') as HTMLElement;
+    const insSidebarTooltipEl = insSidebarContainerEl.querySelector('.ins-sidebar-item-tooltip') as HTMLElement;
+    const insSidebarItemLabelEl = insSidebarTooltipEl.querySelector('.ins-sidebar-item-label') as HTMLElement;
+
+    insSidebarTooltipEl.style.left = event.detail.x + 2 + 'px';
+    insSidebarTooltipEl.style.top = event.detail.y + 8 + 'px';
+    insSidebarItemLabelEl.textContent = event.detail.label;
+    insSidebarContainerEl.classList.toggle('show-tooltip', event.detail.state);
+  }
+
   @Method()
   async deactivateSidebarItems(){
     for (let i = 0; i < this.sidebarItemEls.length; ++i) {
@@ -238,16 +250,21 @@ export class InsSidebar {
 
   render() {
     return (
-      <div class={`sidebar ${this.noFooter ? 'no-footer':''}`}>
-        <div class="insites-logo-wrap">
-        { this.minimised
-            ? <img src={ this.getIcon() } />
-            : <img src={ this.getLogo() } />
-          }
+      <div class="ins-sidebar">
+        <div class="ins-sidebar-item-tooltip">
+          <span class="ins-sidebar-item-label"></span>
         </div>
+        <div class={`sidebar ${this.noFooter ? 'no-footer':''}`}>
+          <div class="insites-logo-wrap">
+          { this.minimised
+              ? <img src={ this.getIcon() } />
+              : <img src={ this.getLogo() } />
+            }
+          </div>
 
-        <div class="sidebar-items-wrap">
-          <slot />
+          <div class="sidebar-items-wrap">
+            <slot />
+          </div>
         </div>
       </div>
     )

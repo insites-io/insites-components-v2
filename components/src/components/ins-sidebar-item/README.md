@@ -28,6 +28,7 @@
 
 | Event       | Description | Type               |
 | ----------- | ----------- | ------------------ |
+| `didHover`  |             | `CustomEvent<any>` |
 | `didLoad`   |             | `CustomEvent<any>` |
 | `routePage` |             | `CustomEvent<any>` |
 

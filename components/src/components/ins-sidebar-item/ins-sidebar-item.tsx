@@ -5,6 +5,7 @@ export class InsSidebarItem {
   @Element() insSidebarItemEl: HTMLElement;
   @Event() routePage: EventEmitter;
   @Event() didLoad: EventEmitter;
+  @Event() didHover: EventEmitter;
   @Prop() hasLoad: string;
 
   @Prop({mutable: true}) link: any = '';
@@ -25,7 +26,6 @@ export class InsSidebarItem {
   @State() submenuVisible: boolean;
   @State() isActive: boolean;
   @State() formattedRoute: string;
-  @State() showTooltip: boolean = false;
 
   @Method()
   async routePageHandler(e){
@@ -256,8 +256,10 @@ export class InsSidebarItem {
     }
   }
 
-  toggleTooltip(state){
-    this.showTooltip = state;
+  toggleTooltip(event, state){
+    this.didHover.emit({
+      x: event.target.getBoundingClientRect().right, y:  event.target.getBoundingClientRect().top, label: this.label, state: state
+    });
   }
 
   render(){
@@ -266,23 +268,20 @@ export class InsSidebarItem {
       return (
         <div class={`ins-sidebar-item-wrap
           ${this.isActive ? 'active': ''}
-          ${this.showTooltip ? 'show-tooltip': ''}
-          ${this.icon ? '' : 'no-icon'}` }>
+          ${this.icon ? '' : 'no-icon'}` }
+          onMouseEnter={(event) => this.toggleTooltip(event, true)}
+          onMouseLeave={(event) => this.toggleTooltip(event, false)}>
 
           <div class="ins-ripple-button">
 
             <a onClick={() => this.showSubMenu()}
-              class="ins-ripple-link"
-              onMouseEnter={() => this.toggleTooltip(true)}
-              onMouseLeave={() => this.toggleTooltip(false)}>
+              class="ins-ripple-link">
 
               <i class={`fas ${this.icon}`}></i>
               <span class="ins-sidebar-item-label">{this.label}</span>
               <i class="fas icon-chevron-right"></i>
             </a>
           </div>
-
-          <div class="ins-sidebar-item-tooltip">{this.label}</div>
 
           <div class="relative-wrap">
             <div class={`submenu-wrap ${this.submenuVisible ? 'is-active':''}`}
@@ -304,40 +303,34 @@ export class InsSidebarItem {
         return (
           <div class={`ins-sidebar-item-wrap
             ${this.isActive ? 'active': ''}
-            ${this.showTooltip ? 'show-tooltip': ''}
-            ${this.icon ? '' : 'no-icon'}`}>
+            ${this.icon ? '' : 'no-icon'}`}
+            onMouseEnter={(event) => this.toggleTooltip(event, true)}
+            onMouseLeave={(event) => this.toggleTooltip(event, false)}>
 
             <div class="ins-ripple-button">
               {this.app ?
                 <a class="ins-ripple-link"
-                  href={`${this.formattedRoute}`}
-                  onMouseEnter={() => this.toggleTooltip(true)}
-                  onMouseLeave={() => this.toggleTooltip(false)}>
+                  href={`${this.formattedRoute}`}>
 
                   <i class={`fas ${this.icon}`}></i>
                   <span class="ins-sidebar-item-label">{this.label}</span>
                 </a>
                 : this.externalLink ?
                   <a class="ins-ripple-link updated"
-                    href={`${this.formattedRoute}`} target="_blank"
-                    onMouseEnter={() => this.toggleTooltip(true)}
-                    onMouseLeave={() => this.toggleTooltip(false)}>
+                    href={`${this.formattedRoute}`} target="_blank">
 
                     <i class={`fas ${this.icon}`}></i>
                     <span class="ins-sidebar-item-label">{this.label}<span class={`ext-icon ${this.externalLinkIcon}`}></span></span>
                   </a>
                   :
                   <a class="ins-ripple-link"
-                  href={this.link ? this.link : ''}
-                  onMouseEnter={() => this.toggleTooltip(true)}
-                  onMouseLeave={() => this.toggleTooltip(false)}>
+                  href={this.link ? this.link : ''}>
 
                   <i class={`fas ${this.icon}`}></i>
                   <span class="ins-sidebar-item-label">{this.label}</span>
                 </a>
               }
             </div>
-            <div class="ins-sidebar-item-tooltip">{this.label}</div>
           </div>
         )
       }
