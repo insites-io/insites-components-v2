@@ -1,73 +1,41 @@
 # Insites Commit Message Convention
 
-All commits across Insites repositories must follow this format.
-
 ## Format
 
 ```
-type(scope): short description
-
-[optional body]
-
-[optional footer]
+[TW#<id>] Short description of what changed
 ```
-
-## Types
-
-| Type       | When to Use                                                  |
-| ---------- | ------------------------------------------------------------ |
-| `feat`     | A new feature or user-facing functionality                   |
-| `fix`      | A bug fix                                                    |
-| `refactor` | Code change that neither fixes a bug nor adds a feature      |
-| `chore`    | Build process, dependency updates, tooling changes           |
-| `docs`     | Documentation only changes                                   |
-| `style`    | Formatting, missing semicolons, white-space (no code change) |
-| `test`     | Adding or updating tests                                     |
-| `perf`     | Performance improvement                                      |
-| `ci`       | CI/CD pipeline changes                                       |
-| `build`    | Build file updates (app.css, app.js)                         |
-| `revert`   | Reverting a previous commit                                  |
-
-## Scope (optional)
-
-The module area affected, in parentheses:
-
-- `feat(contacts): add bulk export action`
-- `fix(orders): correct tax calculation on quotes`
-- `refactor(events): extract ticket pricing composable`
 
 ## Examples
 
-```
-feat(contacts): add bulk email export for selected contacts
-
-Adds a new action button to the contacts list page that exports
-email addresses for all selected contacts as CSV.
-
-[TW#25132704]
-```
-
-```
-fix: contacts search pagination total
-
-The total count was not being updated after filtering, causing
-pagination to show incorrect page numbers.
-```
-
-```
-chore: update insites-components-v2 CDN to v2.15.3
-```
-
-```
-build: update app.css and app.js for release v5.11.2
-```
+- `[TW#21345] Add bulk contact export to CSV`
+- `[TW#21346] Fix cart total calculation for discounted items`
+- `[TW#21347] Update ins-table pagination event handling`
+- `[TW#21348] Standardise event stream payload format across modules`
 
 ## Rules
 
-1. Use **imperative mood** in the description ("add feature" not "added feature")
-2. Do **not** capitalise the first letter of the description
-3. Do **not** end the description with a period
-4. Keep the first line under **72 characters**
-5. Reference Teamwork tasks in the footer as `[TW#taskId]`
-6. Separate `build` commits from feature/fix commits so the PR diff is reviewable
-7. Use `WIP:` prefix for work-in-progress commits that will be squashed before merge
+1. Always include the Teamwork task ID in square brackets at the start.
+2. Describe **what** changed and **why**, not how (the diff shows the how).
+3. Each commit should represent **one logical change**, not an entire day of work.
+4. Small related tasks should be grouped together to avoid over-committing small amounts of work.
+5. If a task involves updating the UI and fixing a backend query, those should be **separate commits**.
+6. Never commit `console.log` statements, commented-out code blocks, or hardcoded test data.
+7. Code is pushed at the end of each working day at minimum.
+
+## Multiple Tasks in One Commit
+
+If a commit addresses multiple related tasks:
+
+```
+[TW#21345][TW#21346] Standardise contact export and import validation
+```
+
+## Commits Without a Teamwork Task
+
+For build output, dependency updates, or tooling changes that do not have a Teamwork task:
+
+```
+Update build files for v5.13.3
+Update insites-components-v2 CDN to v2.15.3
+```
