@@ -1,47 +1,41 @@
-## Summary
+## Merge Type
 
-<!-- What does this PR do? Keep it to 1-3 sentences. -->
+- [ ] Version branch → Staging (all tasks completed and QA-passed)
+- [ ] Staging → Master (ready for production deployment)
+- [ ] Hotfix → Master (emergency production fix)
 
-## Type of Change
+## Version
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] Refactor (code change that neither fixes a bug nor adds a feature)
-- [ ] Build / CI (changes to build process, dependencies, or CI configuration)
-- [ ] Documentation (changes to docs only)
+<!-- e.g. v5.13.3 -->
 
-## Module(s) Affected
+## Summary of Changes
 
-<!-- Which IIA module(s) does this change touch? -->
+<!-- Brief overview of what this version/hotfix includes. -->
 
-## Changes Made
+## Teamwork Tasks
 
-<!-- Describe the specific changes in detail. -->
+<!-- List all Teamwork task IDs addressed in this version. -->
 
-## How to Test
+- [TW#]
+- [TW#]
 
-<!-- Step-by-step instructions for QA or reviewers to verify this works. -->
+## Breaking Changes
 
-1.
-2.
-3.
+<!-- List any breaking changes or migration steps required. Write "None" if not applicable. -->
 
-## Screenshots / Recordings
+## Migration Notes
 
-<!-- If applicable, add screenshots or screen recordings showing the change. -->
+<!-- Any database changes, config updates, or deployment steps beyond the standard process. Write "None" if not applicable. -->
 
-## Checklist
+## QA Status
 
-- [ ] Code follows the [Insites Development Standard](https://docs.google.com/document/d/1OYqTNbvpD4l297RiGaI1KmSMpi9d64kv/edit)
-- [ ] Commit messages follow the conventional format (`type: description`)
-- [ ] Self-reviewed my own code
-- [ ] No console.log or debug statements left in
-- [ ] No new `any` types introduced (TypeScript)
-- [ ] Tested on at least one customer instance
-- [ ] Build files are up to date (if applicable)
-- [ ] CHANGELOG.md updated (if applicable)
+- [ ] All tasks QA-passed on UAT instance
+- [ ] Changelogs updated
+- [ ] Version metadata bumped
+- [ ] Build files updated (app.css, app.js)
 
-## Teamwork Task
+## Post-Merge
 
-<!-- Link to the Teamwork task, e.g. [TW#12345678] -->
+- [ ] Create version tag (vX.Y.Z) on GitHub (for staging → master merges)
+- [ ] Deploy to production on AWS S3 (for staging → master merges)
+- [ ] Merge master back into any active version branch (for hotfix merges)
