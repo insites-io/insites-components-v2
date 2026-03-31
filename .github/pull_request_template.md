@@ -1,6 +1,6 @@
 ## Merge Type
 
-- [ ] Version branch → Staging (all tasks completed and QA-passed)
+- [ ] Release branch → Staging (all tasks completed and QA-passed)
 - [ ] Staging → Master (ready for production deployment)
 - [ ] Hotfix → Master (emergency production fix)
 
